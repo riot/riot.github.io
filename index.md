@@ -13,7 +13,7 @@ description: Riot lets you build user interfaces with custom tags using simple a
 
 # Why on earth we need another UI library?
 
-The frontend space is indeed crowded, but we honestly feel the solution is still "out there" and we believe Riot is the best one to solve the big puzzle. While React seems to do it, they have serious weak points which Riot aims to solve. Most importantly: be your own judge and don't let a big corporation blur your thoughts.
+The frontend space is indeed crowded, but we honestly feel the solution is still "out there" and we believe Riot is the best one to solve the big puzzle. While React seems to do it, they have serious weak points which Riot aims to solve. Most importantly: be your own judge!
 
 So — here's why we need one:
 
@@ -163,18 +163,18 @@ Riot has all the essential building blocks for modern client-side applications:
 Riot is an "open stack". It's meant for developers who want to avoid framework specific idioms. The generic tools let you mix and match design patterns. Systems like Facebook Flux can be [self-made](https://github.com/jimsparkman/RiotControl).
 
 
+> I looked at the riot.js example, and it feels so clean, it's scary. [@paulbjensen](https://twitter.com/paulbjensen/status/558378720403419137)
+
+> Just messed around with #RiotJS for an hour. Got it setup with Gulp, Browsesify, and Babel in no time. I like it a lot so far! [@AndrewDelPrete](https://twitter.com/AndrewDelPrete/status/630976295011127296)
+
 > Today I have used #riotjs 2.0 for the first time and I could admit that It will be a long term relationship #js highly recommended. [@gianlucaguarini](https://twitter.com/gianlucaguarini/status/559756081862574080)
 
 > I liked the idea of #reactjs with #flux but I like #riotjs with #riotcontrol even better!
 [@tscok](https://twitter.com/tscok/status/580509124598829056)
 
-> I’m loving riot.js! So much power packed into 3.5kb. [@ncthis](https://twitter.com/ncthis/status/575204037877833728)
+> looking at RiotJS https://muut.com/riotjs/ — blown away by its simplicity. [@defeated](https://twitter.com/defeated/status/559215403541757952)
 
-> looking at RiotJS https://muut.com/riotjs/  - blown away by its simplicity. [@defeated](https://twitter.com/defeated/status/559215403541757952)
-
-> Played with riot.js and like it so much more than react. Minimalistic, fast and a comprehensible API. [@juriansluiman](https://twitter.com/juriansluiman/status/560399379035865088)
-
-> I looked at the riot.js example, and it feels so clean, it's scary. [@paulbjensen](https://twitter.com/paulbjensen/status/558378720403419137)
+> Played with riot.js and like it so much more than React. Minimalistic, fast and a comprehensible API. [@juriansluiman](https://twitter.com/juriansluiman/status/560399379035865088)
 
 
 ## Conclusion

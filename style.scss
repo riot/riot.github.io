@@ -5,8 +5,11 @@
 // styling based on github.com/poole/poole
 @import "base";
 @import "type";
-@import "layout";
-@import "header";
+
 @import "syntax";
 @import "code";
 @import "widgets";
+
+@import "header";
+@import "footer";
+

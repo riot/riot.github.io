@@ -1,5 +1,13 @@
 <!doctype html>
 
+{% capture nav %}
+  <a href="/riotjs/compare.html">Compare</a>
+  <a href="/riotjs/faq.html">FAQ</a>
+  <a href="/riotjs/compiler.html">Guide</a>
+  <a href="/riotjs/download.html">Download</a>
+  <a href="/riotjs/forum/">Forum</a>
+{% endcapture %}
+
 <html lang="en">
 
 <head>
@@ -34,7 +42,7 @@
 
 <body>
 
-  <div class="container content">
+  <div class="wrap">
 
     <a id="fork" href="{{ repo }}"><img src="/img/fork.png"></a>
 
@@ -45,13 +53,7 @@
         <a href="https://muut.com/"><img id="muut-logo" src="/img/logo/muut.png"></a>
       </span>
 
-      <nav id="nav">
-        <a href="/riotjs/compare.html">Compare</a>
-        <a href="/riotjs/faq.html">FAQ</a>
-        <a href="/riotjs/compiler.html">Guide</a>
-        <a href="/riotjs/download.html">Download</a>
-        <a href="/riotjs/forum/">Forum</a>
-      </nav>
+      <nav id="nav">{{ nav }}</nav>
 
     </header>
 
@@ -59,12 +61,15 @@
       {{ content }}
     </main>
 
-    <footer class="footer">
-      <small>
-        &copy; <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y' }}</time>. All rights reserved.
-      </small>
-    </footer>
   </div>
+
+  <footer id="footer">
+    <div class="wrap">
+      <div id="slogan">“Less is more.”</div>
+      <img src="/img/logo/riot120x.png">
+      <nav>{{ nav }}</nav>
+    </div>
+  </footer>
 
 </body>
 
