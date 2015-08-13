@@ -11,11 +11,16 @@ description: Riot lets you build user interfaces with custom tags using simple a
 </div>
 
 
-# Why we need another UI library?
+# Why on earth we need another UI library?
+
+The frontend space is indeed crowded, but we honestly feel the solution is still "out there" – and we believe Riot is the best one to solve the big puzzle. While React seems to do it, they have serious weak points which Riot aims to solve. Most importantly: don't let a big corporation fool you and let the best technology win.
+
+Okay – here's why we need another UI library:
+
 
 ## 1. Custom tags
 
-Riot brings custom tags to all browsers starting from IE8.
+Riot brings custom tags to all browsers starting from IE9.
 
 ``` html
 <todo>
@@ -137,8 +142,8 @@ Riot has between 10 and 100 times fewer API methods than other UI libraries.
 <small><em>polymer.min.js</em> – 120KB</small>
 <span class="bar red" style="width: 94%"></span>
 
-<small><em>riot.min.js</em> – 6.7KB</small>
-<span class="bar blue" style="width: 4.8%"></span>
+<small><em>riot.min.js</em> – 13KB</small>
+<span class="bar blue" style="width: 10%"></span>
 
 
 1. Fewer bugs.

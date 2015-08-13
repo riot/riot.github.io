@@ -11,17 +11,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
+  font-weight: normal;
 }
 
 h2 {
-  margin-top: 1rem;
-  font-size: 1.5rem;
+  margin-top: 3rem;
+  font-size: 1.4rem;
 }
 
 h3 {
-  margin-top: 1.5rem;
-  font-size: 1.25rem;
+  margin-top: 2.2rem;
+  font-size: 1.1rem;
 }
 
 h4, h5, h6 {
@@ -69,9 +70,11 @@ abbr {
 
 blockquote {
   padding: .5rem 1rem;
-  margin: .8rem 0;
+  margin: 2.5rem 0;
   color: #7a7a7a;
   border-left: .25rem solid #e5e5e5;
+  font-style: italic;
+  font-size: 110%;
 
   p:last-child {
     margin-bottom: 0;
