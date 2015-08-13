@@ -1,6 +1,17 @@
 
 // structural hierarchy of the site.
 
+#fork {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+
+  img {
+    width: 180px
+  }
+}
+
+
 .container {
   max-width: 38rem;
   padding: 0 .8rem;

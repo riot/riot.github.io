@@ -37,5 +37,4 @@ author:
 
 # Custom vars
 version:             2.3.0
-github:
-  repo:              https://github.com/riot/riot.github.io
+repo:                https://github.com/riot/riot
