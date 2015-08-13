@@ -1,13 +1,10 @@
-// Layout
-//
-// Styles for managing the structural hierarchy of the site.
+
+// structural hierarchy of the site.
 
 .container {
   max-width: 38rem;
-  padding-left:  1.5rem;
-  padding-right: 1.5rem;
-  margin-left:  auto;
-  margin-right: auto;
+  padding: 0 .8rem;
+  margin: 0 auto;
 }
 
 footer {
