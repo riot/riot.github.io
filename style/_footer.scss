@@ -20,7 +20,13 @@
       font-size: 80%;
       color: #ccc;
     }
+  }
 
+  .current {
+    text-decoration: none;
+    font-weight: bold;
+    cursor: default;
+    color: #999;
   }
 }
 
