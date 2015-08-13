@@ -1,12 +1,13 @@
 # Permalinks
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
+
 permalink:           pretty
 relative_permalinks: true
 
 # Setup
-title:               Riotjs
-tagline:             A React- like, 3.5KB user interface library
+title:               Riot.js
+tagline:             A React-like, user interface microlibrary
 url:                 http://riotjs.com
 paginate:            1
 baseurl:             ""
@@ -20,13 +21,13 @@ safe:               false
 include:            [".htaccess"]
 exclude:            ["*.tag"]
 encoding:           "utf-8"
-markdown_ext:       "markdown,mkdown,mkdn,mkd,md"
+markdown_ext:       "markdown,md"
 
 # Assets
 #
 # We specify the directory for Jekyll so we can use @imports.
 sass:
-  sass_dir:          _sass
+  sass_dir:         style
   style:            :compressed
 
 # About/contact
@@ -36,6 +37,6 @@ author:
   email:             riotjs@gmail.com
 
 # Custom vars
-version:             1.0.0
+version:             2.3.0
 github:
   repo:              https://github.com/riot/riot.github.io
