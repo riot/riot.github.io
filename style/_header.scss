@@ -44,4 +44,13 @@
     cursor: default;
     border-radius: 2px;
   }
+
+  @media (max-width: 600px) {
+    float: none;
+    margin-top: 1.5em;
+
+    a {
+      margin: 0 1em 0 0;
+    }
+  }
 }

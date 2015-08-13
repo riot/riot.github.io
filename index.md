@@ -13,9 +13,9 @@ description: Riot lets you build user interfaces with custom tags using simple a
 
 # Why on earth we need another UI library?
 
-The frontend space is indeed crowded, but we honestly feel the solution is still "out there" – and we believe Riot is the best one to solve the big puzzle. While React seems to do it, they have serious weak points which Riot aims to solve. Most importantly: don't let a big corporation fool you and let the best technology win.
+The frontend space is indeed crowded, but we honestly feel the solution is still "out there" and we believe Riot is the best one to solve the big puzzle. While React seems to do it, they have serious weak points which Riot aims to solve. Most importantly: be your own judge and don't let a big corporation blur your thoughts.
 
-Okay – here's why we need another UI library:
+So — here's why we need one:
 
 
 ## 1. Custom tags
@@ -57,6 +57,7 @@ Riot brings custom tags to all browsers starting from IE9.
 
 </todo>
 ```
+
 A custom tag glues relevant HTML and JavaScript together forming a reusable component. Think React + Polymer but with enjoyable syntax and a small learning curve.
 
 

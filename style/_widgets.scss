@@ -1,4 +1,22 @@
 
+// fork me
+#fork {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+
+  img {
+    width: 180px
+  }
+
+  @media (max-width: 900px) {
+    display: none
+  }
+
+}
+
+
+// hero
 #hero {
   text-align: center;
   margin: 2em -5em 4em;
@@ -31,6 +49,7 @@
 
 }
 
+// stat bar
 .bar {
   height: 5px;
   display: block;
