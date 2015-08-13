@@ -12,15 +12,15 @@ paginate:            1
 baseurl:             ""
 
 # Markdown
-markdown: redcarpet
-extensions: [fenced_code_blocks]
+markdown:           redcarpet
+extensions:         [fenced_code_blocks]
 
 # Handling Reading
-safe:         false
-include:      [".htaccess"]
-exclude:      ["*.tag"]
-encoding:     "utf-8"
-markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+safe:               false
+include:            [".htaccess"]
+exclude:            ["*.tag"]
+encoding:           "utf-8"
+markdown_ext:       "markdown,mkdown,mkdn,mkd,md"
 
 # Assets
 #

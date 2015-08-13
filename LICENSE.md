@@ -1,3 +1,8 @@
+---
+layout: default
+title: Something
+---
+
 # Released under MIT License
 
 Copyright (c) 2013 Mark Otto.
