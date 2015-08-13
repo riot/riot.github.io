@@ -1,0 +1,32 @@
+
+#hero {
+  text-align: center;
+  margin: 2em -5em 4em;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 3em;
+
+  img {
+    display: inline-block;
+    width: 180px;
+  }
+
+  h1 {
+    margin: -.4em 0 -.2em;
+    font-size: 230%;
+    font-weight: 100;
+    color: #777;
+  }
+
+  h4 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #444;
+    font-size: 90%;
+  }
+
+  @media (max-width: 700px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+}
