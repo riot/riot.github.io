@@ -24,19 +24,24 @@
   width: 50px
 }
 
-.masthead-title {
-  margin-top: 0;
-  margin-bottom: 0;
-  color: #505050;
+#nav {
+  float: right;
+  font-size: 70%;
+  line-height: 2;
 
   a {
-    color: #505050;
+    margin-left: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
   }
 
-  small {
-    font-size: 75%;
-    font-weight: 400;
-    color: #c0c0c0;
-    letter-spacing: 0;
+  .current {
+    background-color: #fc0e49;
+    padding: .3em .6em;
+    color: #fff;
+    text-decoration: none;
+    cursor: default;
+    border-radius: 2px;
   }
 }
