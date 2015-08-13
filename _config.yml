@@ -9,7 +9,6 @@ relative_permalinks: true
 title:               Riot.js
 tagline:             A React-like, user interface microlibrary
 url:                 http://riotjs.com
-paginate:            1
 baseurl:             ""
 
 # Markdown
