@@ -26,7 +26,7 @@ id: release-notes
 - Improve the loop performances and fix many bugs
 - Improve the AMD/commonjs compatibility
 - Fix the error thrown in the compiler for the tags using type=text/javascript attribute
-- Fix parent variables not exposed to the loop children, __now all the children in a loop will inherit the parent properties/methods__ [more details](https://github.com/riot/riot/issues/896)
+- Fix parent variables not exposed to the loop children, now __all the children in a loop will inherit the parent properties/methods__ [more details](https://github.com/riot/riot/issues/896)
 - Fix the error thrown trying to override read only events properties
 - Fix the riot cli combined with the --modular flag when no output file is specified
 

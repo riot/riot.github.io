@@ -11,7 +11,9 @@ Riot is against the current trend of boilerplate and unneeded complexity. We thi
 
 
 ## Why did you drop IE8?
-FILLME
+Finally, we can safely iqnore this pool quality browser. On muut.com the use of IE8 dropped a whopping 50% on the last 6 months. We expect that this browser drops globally below 1% on the next 12 months. Wasting developer time for IE8 is simply not clever.
+
+We'll provide accurate statistics and trends a bit later.
 
 
 ## Is Riot free?

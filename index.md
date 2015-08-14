@@ -104,7 +104,6 @@ The tags are [converted](/guide/compiler/) to JavaScript before browsers can exe
 
 ### Close to standards
 - No proprietary event system.
-- Event normalization for IE8.
 - The rendered DOM can be freely manipulated with other tools.
 - No extra HTML root elements or `data-` attributes.
 - Plays well with jQuery.
@@ -185,7 +184,7 @@ Riot is an "open stack". It's meant for developers who want to avoid framework s
 
 ## Conclusion
 
-Riot is React + Polymer + models + routing without the bloat. It works today, even on IE8. It's dead simple to use and it weighs almost nothing. No reinventing the wheel, but rather taking the good parts of what's there and making the simplest tool possible.
+Riot is React + Polymer + models + routing without the bloat. It's dead simple to use and it weighs almost nothing. And it works today. No reinventing the wheel, but rather taking the good parts of what's there and making the simplest tool possible.
 
 We should focus on reusable components instead of templates. According to the developers of React:
 
