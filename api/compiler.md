@@ -6,11 +6,11 @@ class: apidoc
 
 {% include api-tabs.html %}
 
-## On browser | #compile-on-browser
+## On browser
 
 Following methods apply to browsers only. Jump to [server section](#compile-on-server) if you want to compile under node or io.js.
 
-### riot.compile(callback) | #compile
+### <a name="compile"></a> riot.compile(callback)
 
 Compile all tags defined with `<script type="riot/tag">` to JavaScript. These can be inlined script definitions or external resources that load scripts defined with `src` attribute. After all scripts are compiled the given `callback` method is called. For example:
 
@@ -30,7 +30,7 @@ but you don't get to know when external resources are loaded and compiled and th
 
 For more details, read the compiler [general introduction](/riotjs/compiler.html).
 
-### riot.compile(url, callback)
+### <a name="compile-fn"></a> riot.compile(url, callback)
 
 Loads the given URL and compiles all tags after which the `callback` is called. For example:
 
@@ -40,7 +40,7 @@ riot.compile('my/tags.tag', function() {
 })
 ```
 
-### riot.compile(tag)
+### <a name="compile-tag"></a> riot.compile(tag)
 
 Compiles and executes the given `tag`. For example:
 
@@ -62,7 +62,7 @@ A tag definition is assumed if the first non- empty character is `<`, otherwise 
 
 @returns the compiled JavaScript as string
 
-### riot.compile(tag, true)
+### <a name="compile-to-str"></a> riot.compile(tag, true)
 
 Compiles the `tag` and returns it as a string. Only the transformation from the tag to JavaScript is performed and the tag is not executed on the browser. You can use this method to benchmark the compiler performance for example.
 
@@ -70,7 +70,7 @@ Compiles the `tag` and returns it as a string. Only the transformation from the 
 var js = riot.compile(my_tag.innerHTML, true)
 ```
 
-## On server | #compile-on-server
+## On server
 
 After `npm install riot` you can do following:
 
@@ -82,7 +82,7 @@ var js = riot.compile(tag)
 
 The compile function takes the tag definition (string) and returns JavaScript (string).
 
-### riot.parsers.css [tagName, css]
+### <a name="css-parser"></a> riot.parsers.css [tagName, css]
 
 Custom parsers that could be used to compile your tags css. For example:
 
@@ -112,7 +112,7 @@ will be compiled to:
 </custom-parsers>
 ```
 
-### riot.parsers.js [js, options]
+### <a name="js-parser"></a> riot.parsers.js [js, options]
 
 Custom parsers that could be used to compile your tags javascript. For example
 
@@ -142,7 +142,7 @@ will be compiled to:
 </custom-parsers>
 ```
 
-### riot.parsers.html [html]
+### <a name="html-parser"></a> riot.parsers.html [html]
 
 Custom parsers that could be used to compile your tags html
 
