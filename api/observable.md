@@ -7,7 +7,7 @@ class: apidoc
 {% include api-tabs.html %}
 
 
-### riot.observable(el)
+### <a name="constructor"></a> riot.observable(el)
 
 Adds [Observer](http://en.wikipedia.org/wiki/Observer_pattern) support for the given object `el` or if the argument is empty a new observable instance is created and returned. After this the object is able to trigger and listen to events. For example:
 
@@ -34,7 +34,7 @@ car.trigger('start')
 @returns the given object `el` or a new observable instance
 
 
-### el.on(events, callback) | #observable-on
+### <a name="on"></a> el.on(events, callback)
 
 Listen to the given space separated list of `events` and execute the `callback` each time an event is triggered.
 
@@ -54,7 +54,7 @@ el.on('start stop', function(type) {
 
 @returns `el`
 
-### el.one(event, callback) | #observable-one
+### <a name="one"></a> el.one(event, callback)
 
 Listen to the given `event` and execute the `callback` at most once.
 
@@ -67,7 +67,7 @@ el.one('start', function() {
 
 @returns `el`
 
-### el.off(events) | #observable-off
+### <a name="off"></a> el.off(events)
 
 Removes the given space separated list of event listeners
 
@@ -77,7 +77,7 @@ el.off('start stop')
 
 @returns `el`
 
-### el.off(events, fn)
+### <a name="off-fn"></a> el.off(events, fn)
 
 Removes the given callback from the list of events
 
@@ -94,14 +94,14 @@ el.off('start end', doIt)
 
 @returns `el`
 
-### el.off('*')
+### <a name="off-all"></a> el.off('*')
 
 Removes all listeners from all event types.
 
 @returns `el`
 
 
-### el.trigger(event) | #observable-trigger
+### <a name="trigger"></a> el.trigger(event)
 
 Execute all callback functions that listen to the given `event`
 
@@ -111,7 +111,7 @@ el.trigger('start')
 
 @returns `el`
 
-### el.trigger(event, arg1 ... argN)
+### <a name="trigger-args"></a> el.trigger(event, arg1 ... argN)
 
 Execute all callback functions that listen to the given `event`. Any number of extra parameters can be provided for the listeners.
 
