@@ -148,8 +148,8 @@ React is 10x bigger than Riot.
 <small><em>react.min.js</em> – 121KB</small>
 <span class="bar red"></span>
 
-<small><em>riot.min.js</em> – <span class="riot-size">12.75kb</span></small>
-<span class="bar blue" style="width: 10.8%"></span>
+<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
+<span class="bar blue" style="width: {{ site.size_min / 121 * 100 }}%"></span>
 
 <br>
 
@@ -193,8 +193,8 @@ Polymer (v0.5.6) is 10x bigger than Riot
 <small><em>polymer.min.js</em> – 123KB</small>
 <span class="bar red"></span>
 
-<small><em>riot.min.js</em> – <span class="riot-size">13.21kb</span></small>
-<span class="bar blue" style="width: 10%"></span>
+<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
+<span class="bar blue" style="width: {{ site.size_min / 123 * 100 }}%"></span>
 
 Web components are said to be the [king of all polyfilling challenges](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/) and this is why Polymer requires such a large amount of code.
 

@@ -44,5 +44,5 @@ minor_version:       2.3
 version:             2.3.0
 release_date:        Jun 23
 version_slurp:       Faster loops and improved attributes
-
+size_min:            12.5
 repo:                https://github.com/riot/riot
