@@ -14,6 +14,8 @@ baseurl:             ""
 # Markdown
 markdown:           redcarpet
 extensions:         [fenced_code_blocks]
+redcarpet:
+  extensions:       [with_toc_data]
 
 # Handling Reading
 safe:               false

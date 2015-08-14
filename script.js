@@ -1,12 +1,27 @@
 
-// navi selection
-if (document.querySelector) {
-  var els = document.querySelectorAll('nav a')
+var $ = function(q) {
+  return document.querySelectorAll(q)
+}
 
-  for (var i = 0, el; i < els.length; i++) {
+function each(els, fn) {
+  for (var i = 0, len = (els || []).length, el; i < len; i++) {
     el = els[i]
-    if (el.getAttribute('href') == location.pathname) {
-      el.setAttribute('class', 'current')
-    }
+    if (el != null && fn(el, i) === false) i--
   }
+  return els
+}
+
+// navi selection
+each($('nav a'), function(el) {
+  if (el.getAttribute('href') == location.pathname) {
+    el.setAttribute('class', 'current')
+  }
+})
+
+
+// table of contents
+if (toc) {
+  each($('#main h2'), function(el) {
+    toc.innerHTML += '<a href="#' + el.id + '">' + el.innerText + '</a>'
+  })
 }
