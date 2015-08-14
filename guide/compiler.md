@@ -3,7 +3,7 @@ layout: default
 title: Compiler
 ---
 
-{% include tabs.html %}
+{% include guide-tabs.html %}
 
 ## In-browser compilation
 

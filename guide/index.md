@@ -3,7 +3,7 @@ layout: default
 title: Custom tags
 ---
 
-{% include tabs.html %}
+{% include guide-tabs.html %}
 
 ## Example
 

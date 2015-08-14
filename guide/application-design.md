@@ -3,7 +3,7 @@ layout: default
 title: Application design
 ---
 
-{% include tabs.html %}
+{% include guide-tabs.html %}
 
 ## Tools, not policy
 
