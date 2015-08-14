@@ -12,21 +12,21 @@
   }
 
   nav {
-    margin-top: .6em;
+    margin: .6em 0 0 .3em;
+    max-width: 10em;
 
     a {
       display: block;
       margin-bottom: .3em;
-      font-size: 80%;
+      font-size: 85%;
       color: #ccc;
     }
   }
 
   .current {
     text-decoration: none;
-    font-weight: bold;
     cursor: default;
-    color: #999;
+    color: #777;
   }
 }
 
