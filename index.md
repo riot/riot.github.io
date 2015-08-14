@@ -11,7 +11,7 @@ description: Riot lets you build user interfaces with custom tags using simple a
 </div>
 
 
-# Why on earth we need another UI library?
+# Why on earth do we need another UI library?
 
 The frontend space is indeed crowded, but we honestly feel the solution is still "out there" and we believe Riot is the best one to solve the big puzzle. While React seems to do it, they have serious weak points which Riot aims to solve. Most importantly: be your own judge!
 
@@ -89,23 +89,22 @@ HTML syntax is the *de facto* language of the web and it's designed for building
 
 
 ### Virtual DOM
-- Absolutely the smallest possible amount of DOM updates and reflows.
-- One way data flow: updates and unmounts are propagated downwards from parent to children.
-- Expressions are pre-compiled and cached for high performance.
-- Lifecycle events for more control.
-- Server-side rendering of custom tags for isomorphic applications.
+- Absolutely the smallest possible amount of DOM updates and reflows
+- One way data flow: updates and unmounts are propagated downwards from parent to children
+- Expressions are pre-compiled and cached for high performance
+- Lifecycle events for more control
+- Server-side rendering of custom tags for isomorphic applications
 
 
 ### Close to standards
-- No proprietary event system.
-- Event normalization for IE8.
-- The rendered DOM can be freely manipulated with other tools.
-- No extra HTML root elements or `data-` attributes.
-- Plays well with jQuery.
+- No proprietary event system
+- The rendered DOM can be freely manipulated with other tools
+- No extra HTML root elements or `data-` attributes
+- Plays well with jQuery
 
 
 ### Use your favorite tools
-- Create tags with CoffeeScript, Jade, Typescript, LiveScript, ES6 or [any pre-processor](compiler.html#pre-processors) you want.
+- Create tags with ES6, Typescript, CoffeeScript, Jade, LiveScript or [any pre-processor](compiler.html#pre-processors) you want
 - Integrate with NPM, CommonJS, AMD, Bower or Component
 - Develop with [Gulp](https://github.com/e-jigsaw/gulp-riot), [Grunt](https://github.com/ariesjia/grunt-riot) or [Browserify](https://github.com/jhthorsen/riotify) plugins
 
@@ -120,7 +119,7 @@ Minimalism sets Riot apart from others:
 
 One of the design goals was to introduce a powerful tag syntax with as little boilerplate as possible:
 
-- Power shortcuts: `class={ enabled: is_enabled, hidden: hasErrors() }`.
+- Power shortcuts: `class={ enabled: is_enabled, hidden: hasErrors() }`
 - No extra brain load such as `render`, `state`, `constructor` or `shouldComponentUpdate`
 - Interpolation: `Add #{ items.length + 1 }` or `class="item { selected: flag }"`
 - The `<script>` tag to enclose the logic is optional
@@ -131,8 +130,8 @@ One of the design goals was to introduce a powerful tag syntax with as little bo
 
 Riot has between 10 and 100 times fewer API methods than other UI libraries.
 
-1. Less to learn. Fewer books and tutorials to view
-2. Less proprietary stuff and more standard stuff
+- Less to learn, fewer books and tutorials to view
+- Less proprietary stuff and more standard stuff
 
 
 ### 3. Tiny size
@@ -147,18 +146,19 @@ Riot has between 10 and 100 times fewer API methods than other UI libraries.
 <span class="bar blue" style="width: 10%"></span>
 
 
-1. Fewer bugs.
-4. Faster to parse and cheaper to download.
-3. Embeddable. The library should be smaller than the application.
-4. Less to maintain. We don't need a big team to maintain Riot.
+- Fewer bugs
+- Faster to parse and cheaper to download
+- Embeddable. The library should be smaller than the application
+- Less to maintain. We don't need a big team to maintain Riot
+
 
 ### 4. Small, but complete
 
 Riot has all the essential building blocks for modern client-side applications:
 
-- "Reactive" views for building user interfaces.
-- Event library for building APIs with isolated modules.
-- Router for taking care of URL and the back button.
+- "Reactive" views for building user interfaces
+- Event library for building APIs with isolated modules
+- Router for taking care of URL and the back button
 
 Riot is an "open stack". It's meant for developers who want to avoid framework specific idioms. The generic tools let you mix and match design patterns. Systems like Facebook Flux can be [self-made](https://github.com/jimsparkman/RiotControl).
 
@@ -179,7 +179,7 @@ Riot is an "open stack". It's meant for developers who want to avoid framework s
 
 ## Conclusion
 
-Riot is React + Polymer + models + routing without the bloat. It works today, even on IE8. It's dead simple to use and it weighs almost nothing. No reinventing the wheel, but rather taking the good parts of what's there and making the simplest tool possible.
+Riot is Web Components for everyone. Think React + Polymer but without the bloat. It's intuitive and weighs almost nothing. No reinventing the wheel, but rather taking the good parts of what's there and making the simplest tool possible.
 
 We should focus on reusable components instead of templates. According to the developers of React:
 
