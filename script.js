@@ -1,8 +1,8 @@
 
 (function(doc) {
 
-  var $ = function(q) {
-    return doc.querySelectorAll(q)
+  var $ = function(q, ctx) {
+    return (ctx || doc).querySelectorAll(q)
   }
 
   function each(els, fn) {
@@ -36,5 +36,12 @@
       toc.innerHTML += '<p><a href="#' + el.id + '">' + el.innerText + '</a></p>'
     })
   }
+
+  // permlinking
+  each($('h2, .apidoc h3'), function(el) {
+    el.onclick = function() {
+      location.hash = el.firstChild.name || el.getAttribute('id')
+    }
+  })
 
 })(document)
