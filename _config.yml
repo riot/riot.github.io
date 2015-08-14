@@ -38,5 +38,7 @@ author:
   email:             riotjs@gmail.com
 
 # Custom vars
+major_version:       2
+minor_version:       2.3
 version:             2.3.0
 repo:                https://github.com/riot/riot

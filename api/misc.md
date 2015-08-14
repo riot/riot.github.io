@@ -7,12 +7,12 @@ class: apidoc
 {% include api-tabs.html %}
 
 
-### <a name="version"></a> `riot.version`
+### <a name="version"></a> riot.version
 
-the current Riot version number as string: '{{ riot_version }}'
+The current version number as String: `'{{ site.version }}'`
 
 
-### <a name="brackets"></a> `riot.settings.brackets`
+### <a name="brackets"></a> riot.settings.brackets
 
 A global Riot setting to customize the start and end tokens of the expressions. For example
 
