@@ -53,7 +53,7 @@ Riot custom tags are the building blocks for user interfaces. They make the "vie
 </todo>
 ```
 
-Custom tags are [compiled](/riotjs/compiler.html) to JavaScript.
+Custom tags are [compiled](/guide/compiler/) to JavaScript.
 
 See the [live demo](http://muut.github.io/riotjs/demo/), browse the [sources](https://github.com/riot/riot/tree/gh-pages/demo), or download the [zip](https://github.com/riot/riot/archive/gh-pages.zip).
 
@@ -74,7 +74,6 @@ A Riot tag is a combination of layout (HTML) and logic (JavaScript). Here are th
 * Self-closing tags are supported: `<div/>` equals `<div></div>`. Well known "open tags" such as `<br>`, `<hr>`, `<img>` or `<input>` are never closed after the compilation.
 * Custom tags always need to be closed (normally or self-closed).
 * Standard HTML tags (`label`, `table`, `a` etc..) can also be customized, but not necessarily a wise thing to do.
-
 
 
 Tag definition in tag files always starts on the beginning of the line:
@@ -115,22 +114,24 @@ You can leave out the `<script>` tag:
 In which case the logic starts after the last HTML tag. This "open syntax" is more commonly used on the examples on this website.
 
 
-### Pre-processor
+## Pre-processor
 
 You can specify a pre-processor with `type` attribute. For example:
 
 ```html
-<script type="coffee">
-  # your coffeescript logic goes here
-</script>
+<my-tag>
+  <script type="coffee">
+    # your coffeescript logic goes here
+  </script>
+</my-tag>
 ````
 
 Currently available options are "coffee", "typescript", "es6" and "none". You can also prefix the language with "text/", such as "text/coffee".
 
-See [pre processors](/riotjs/compiler.html#pre-processors) for more details.
+See [pre processors](/guide/compiler/#pre-processors) for more details.
 
 
-### Tag styling
+## Tag styling
 
 You can put a `style` tag inside. Riot.js automatically takes it out and injects it into `<head>`.
 
@@ -220,69 +221,73 @@ riot.mount('todo, forum, comments')
 A document can contain multiple instances of the same tag.
 
 
-### Accessing the DOM Directly ###
+### Accessing DOM elements
+
 Riot gives you access to elements that have `name` attributes directly under the `this` keyword, and plenty of shorthand property-methods like the `if="{...}"` attribute, but occasionally you need to reference and touch pieces of HTML which don't really fit inside those prebaked functions.
 
-#### How to use jQuery/Zepto/`querySelector`/etc... in Riot ###
+
+### How to use jQuery, Zepto, querySelector, etc...
+
 If you need to access the DOM inside Riot, you'll want to take a look at the [Tag Lifecycle](https://github.com/riot/riot/blob/dev/doc/guide/index.md#tag-lifecycle) and notice that the DOM elements are instaniated until the `update()` event first fires, meaning any attempt to select an element before then will fail.
 
 ```html
 <example-tag>
-    <p id="findMe">Do I even Exist?</p>
+  <p id="findMe">Do I even Exist?</p>
 
-    <script>
-    var test1 = document.getElementById('findMe');
-    console.log('test1', test1);  // Fails
+  <script>
+  var test1 = document.getElementById('findMe')
+  console.log('test1', test1)  // Fails
 
-    this.on('update', function(){
-        var test2 = document.getElementById('findMe');
-        console.log('test2', test2); // Succeeds
-    });
-    </script>
+  this.on('update', function(){
+    var test2 = document.getElementById('findMe')
+    console.log('test2', test2) // Succeeds
+  })
+  </script>
 </example-tag>
 ```
 
-**However, you probably don't want to run whatever you're attempting to retrieve on every update.** Instead you'll most likely want to run on the `mount` event.
+You probably don't want to run whatever you're attempting to retrieve on every update. Instead you'll most likely want to run on the `mount` event.
 
 ```html
 <example-tag>
-    <p id="findMe">Do I even Exist?</p>
+  <p id="findMe">Do I even Exist?</p>
 
-    <script>
-    var test1 = document.getElementById('findMe');
-    console.log('test1', test1);  // Fails
+  <script>
+  var test1 = document.getElementById('findMe')
+  console.log('test1', test1)  // Fails
 
-    this.on('update', function(){
-        var test2 = document.getElementById('findMe');
-        console.log('test2', test2); // Succeeds, fires on every update
-    });
+  this.on('update', function(){
+    var test2 = document.getElementById('findMe')
+    console.log('test2', test2) // Succeeds, fires on every update
+  })
 
-    this.on('mount', function(){
-        var test3 = document.getElementById('findMe');
-        console.log('test3', test3); // Succeeds, fires once (per mount)
-    });
-    </script>
+  this.on('mount', function(){
+    var test3 = document.getElementById('findMe')
+    console.log('test3', test3) // Succeeds, fires once (per mount)
+  })
+  </script>
 </example-tag>
 ```
 
-#### Creating a Contexted DOM Query ####
+### Contexted DOM query
+
 Now that we know how to get DOM elements by waiting for the `update` or `mount` events, we can make this useful by also adding a context to our element queries to the `root element` (the riot tag we're creating).
 
 ```html
 <example-tag>
-    <p id="findMe">Do I even Exist?</p>
-    <p>Is this real life?</p>
-    <p>Or just fantasy?</p>
+  <p id="findMe">Do I even Exist?</p>
+  <p>Is this real life?</p>
+  <p>Or just fantasy?</p>
 
-    <script>
-    this.on('mount', function(){
-        // Contexted jQuery
-        $('p', this.root);
+  <script>
+  this.on('mount', function(){
+    // Contexted jQuery
+    $('p', this.root)
 
-        // Contexted Query Selector
-        this.root.querySelectorAll('p');
-    });
-    </script>
+    // Contexted Query Selector
+    this.root.querySelectorAll('p')
+  })
+  </script>
 </example-tag>
 ```
 
@@ -319,29 +324,25 @@ Mixins provide an easy way to share functionality across tags. When a tag is com
 
 ```js
 var OptsMixin = {
-    init: function() {
-      this.on('updated', function() { console.log('Updated!') })
-    },
+  init: function() {
+    this.on('updated', function() { console.log('Updated!') })
+  },
 
-    getOpts: function() {
-        return this.opts
-    },
+  getOpts: function() {
+    return this.opts
+  },
 
-    setOpts: function(opts, update) {
-        this.opts = opts
-
-        if(!update) {
-            this.update()
-        }
-
-        return this
-    }
+  setOpts: function(opts, update) {
+    this.opts = opts
+    if (!update) this.update()
+    return this
+  }
 }
 
 <my-tag>
-    <h1>{ opts.title }</h1>
+  <h1>{ opts.title }</h1>
 
-    this.mixin(OptsMixin)
+  this.mixin(OptsMixin)
 </my-tag>
 ```
 
@@ -350,7 +351,7 @@ In this example you are giving any instance of the `my-tag` Tag the `OptsMixin` 
 ```js
 var my_tag_instance = riot.mount('my-tag')[0]
 
-console.log(my_tag_instance.getOpts()) //will log out any opts that the tag has
+console.log(my_tag_instance.getOpts()) // will log out any opts that the tag has
 ```
 
 Tags will accept any object -- `{'key': 'val'}` `var mix = new function(...)` -- and will error out when any other type is passed to it.
@@ -359,17 +360,17 @@ The `my-tag` definition now has a `getId` method added to it along with anything
 
 ```js
 function IdMixin() {
-    this.getId = function() {
-        return this._id
-    }
+  this.getId = function() {
+    return this._id
+  }
 }
 
 var id_mixin_instance = new IdMixin()
 
 <my-tag>
-    <h1>{ opts.title }</h1>
+  <h1>{ opts.title }</h1>
 
-    this.mixin(OptsMixin, id_mixin_instance)
+  this.mixin(OptsMixin, id_mixin_instance)
 </my-tag>
 ```
 
@@ -387,9 +388,9 @@ To load the mixin to the tag, use `mixin()` method with the key.
 
 ```html
 <my-tag>
-    <h1>{ opts.title }</h1>
+  <h1>{ opts.title }</h1>
 
-    this.mixin('mixinName')
+  this.mixin('mixinName')
 </my-tag>
 ```
 
@@ -443,7 +444,7 @@ You can listen to various lifecyle events inside the tag as follows:
 </todo>
 ```
 
-You can have multiple event listeners for the same event. See [observable](/riotjs/api/#observable) for more details about events.
+You can have multiple event listeners for the same event. See [observable](/api/observable/) for more details about events.
 
 
 ## Expressions
@@ -535,7 +536,7 @@ riot.settings.brackets = '\{\{ }}'
 
 The start and end is separated with a space character.
 
-When using [pre-compiler](/riotjs/compiler.html#pre-compilation) you'll have to set `brackets` option there as well.
+When using [pre-compiler](/guide/compiler/#pre-compilation) you'll have to set `brackets` option there as well.
 
 
 
@@ -646,7 +647,7 @@ Custom tag is placed on a page with nested HTML
 </my-tag>
 ```
 
-See [API docs](/riotjs/api/#yield) for `yield`.
+See [API docs](/api/#yield) for `yield`.
 
 ## Named elements
 
@@ -764,7 +765,7 @@ The element with the `each` attribute will be repeated for all items in the arra
 
 ### Context
 
-A new context is created for each item. These are [tag instances](/riotjs/api/#tag-instance). When loops are nested, all the children tags in the loop inherit any of their parent loop's properties and methods they themselves have `undefined`. In this way, Riot avoids overriding things that should not be overridden by the parent tag.
+A new context is created for each item. These are [tag instances](/api/#tag-instance). When loops are nested, all the children tags in the loop inherit any of their parent loop's properties and methods they themselves have `undefined`. In this way, Riot avoids overriding things that should not be overridden by the parent tag.
 
 The parent can be explicitly accessed through the `parent` variable. For example:
 
@@ -786,7 +787,7 @@ The parent can be explicitly accessed through the `parent` variable. For example
 
 In the looped element everything but the `each` attribute belongs to the child context, so the `title` can be accessed directly and `remove` needs to be prefixed with `parent.` since the method is not a property of the looped item.
 
-The looped items are [tag instances](/riotjs/api/#tag-instance). Riot does not touch the original items so no new properties are added to them.
+The looped items are [tag instances](/api/#tag-instance). Riot does not touch the original items so no new properties are added to them.
 
 
 ### Event handlers with looped items

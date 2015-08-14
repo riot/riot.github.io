@@ -13,7 +13,7 @@ class: apidoc
 
 `customTagSelector` selects elements from the page and mounts them with a custom tag. The selected elements' name must match the custom tag name.
 
-`opts` optional object is passed for the tags to consume. This can be anything, ranging from a simple object to a full application API. Or it can be a Flux- store. Really depends on how you want to structure your client-side applications. Read more about [modular Riot applications](/riotjs/guide/#modularity).
+`opts` optional object is passed for the tags to consume. This can be anything, ranging from a simple object to a full application API. Or it can be a Flux- store. Really depends on how you want to structure your client-side applications. Read more about [modular Riot applications](/guide/application-design/#modularity).
 
 
 ``` js
@@ -237,7 +237,7 @@ The child tags are initialized after the parent tag so the methods and propertie
 </my-tag>
 ```
 
-## Yielding nested HTML
+## <a name="yield"></a> Yielding nested HTML
 
 The `<yield>` tag it's a special riot core feature that allows you to inject and compile the content of any custom tag inside its template in runtime
 This technique allows you to extend your tags templates with html contents rendered eventually from the server
@@ -381,7 +381,7 @@ The above method and property names are reserved words for Riot tags. Don't use 
 Creates a new custom tag "manually" without the compiler.
 
 - `tagName` the tag name
-- `html` is the layout with [expressions](/riotjs/guide/#expressions)
+- `html` is the layout with [expressions](/guide/#expressions)
 - `css` is the style for the tag (optional)
 - `attrs` string of attributes for the tag (optional).
 - `constructor` is the initialization function being called before the tag expressions are calculated and before the tag is mounted
@@ -411,7 +411,7 @@ riot.tag('timer',
   })
 ```
 
-See [timer demo](http://jsfiddle.net/gnumanth/h9kuozp5/) and [riot.tag](/riotjs/api/#tag) API docs for more details and *limitations*.
+See [timer demo](http://jsfiddle.net/gnumanth/h9kuozp5/) and [riot.tag](/api/#tag-instance) API docs for more details and *limitations*.
 
 
 <span class="tag red">Warning</span> by using `riot.tag` you cannot enjoy the advantages of compiler and following features are not supported:

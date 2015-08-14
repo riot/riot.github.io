@@ -59,7 +59,7 @@ The compiler weights only 3.2KB (1.7K gzipped) so you can safely perform client 
 
 Just like Riot itself the compiler works on IE8 as well.
 
-Read the [compiler API](/riotjs/api/#compiler) for more details.
+Read the [compiler API](/api/compiler/) for more details.
 
 
 ### Demos

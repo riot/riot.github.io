@@ -91,7 +91,7 @@ Custom tags let you build complex views with HTML. Your application might look s
 
 HTML syntax is the *de facto* language of the web and it's designed for building user interfaces. The syntax is explicit, nesting is inherent to the language, and attributes offer a clean way to provide options for custom tags.
 
-<span class="tag">note</span> the tags are [converted](compiler.html) to JavaScript before browsers can execute them.
+The tags are [converted](/guide/compiler/) to JavaScript before browsers can execute them.
 
 
 ### Virtual DOM
@@ -111,7 +111,7 @@ HTML syntax is the *de facto* language of the web and it's designed for building
 
 
 ### Use your favorite tools
-- Create tags with CoffeeScript, Jade, Typescript, LiveScript, ES6 or [any pre-processor](compiler.html#pre-processors) you want.
+- Create tags with CoffeeScript, Jade, Typescript, LiveScript, ES6 or [any pre-processor](/guide/compiler/#pre-processors) you want.
 - Integrate with NPM, CommonJS, AMD, Bower or Component
 - Develop with [Gulp](https://github.com/e-jigsaw/gulp-riot), [Grunt](https://github.com/ariesjia/grunt-riot) or [Browserify](https://github.com/jhthorsen/riotify) plugins
 

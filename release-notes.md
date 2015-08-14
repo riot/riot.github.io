@@ -42,13 +42,13 @@ id: release-notes
 - Fix inconsistencies using loop with empty or null arrays
 - Fix the `mount` in the loop children
 - Increase the code coverage
-- Add the possibility to specify where riot will inject the custom tags [css in the DOM](/riotjs/guide/#scoped-css)
+- Add the possibility to specify where riot will inject the custom tags [css in the DOM](/guide/#scoped-css)
 
 List of bug fixes and details can be found [here](https://github.com/riot/riot/issues/773)
 
 ## 2.1.0 *May 20, 2015*
 
-- [Mixins](/riotjs/guide/#mixins)
+- [Mixins](/guide/#mixins)
 - Ability to define attributes for the root element on the tag definition
 - Split the node compiler from the browser compiler
 - Simplify the build script using [smash](https://github.com/mbostock/smash)
@@ -59,8 +59,8 @@ List of bug fixes and details can be found [here](https://github.com/riot/riot/i
 
 ## 2.0.15 *Apr 23, 2015*
 
-- A new `<yield>` core tag allowing [html transclusion](/riotjs/guide/#nested-html)
-- A new [riot-tag](/riotjs/guide/#riot-tag) attribute to use standard HTML elements as mount nodes
+- A new `<yield>` core tag allowing [html transclusion](/guide/#nested-html)
+- A new [riot-tag](/guide/#html-elements-as-tags) attribute to use standard HTML elements as mount nodes
 - `tag.unmount(flag)` to decide whether the parent should be removed or not from the DOM
 - `riot.route.start()` and `riot.route.stop()` methods to start and stop the Riot router. These methods allow the use of a different router on your appliaction.
 - The server side compiiler now supports AMD and CommonJS modules with `--modular` or `-m` command line option
@@ -70,7 +70,7 @@ List of bug fixes and details can be found [here](https://github.com/riot/riot/i
 
 ## 2.0.14 *Apr 8, 2015*
 
-- [Server side rendering](/riotjs/guide/#server-side)
+- [Server side rendering](/guide/#server-side-rendering)
 - [Bug fixes](https://github.com/riot/riot/compare/v2.0.13...v2.0.14)
 
 ## 2.0.13 *Mar 11, 2015*
@@ -80,8 +80,8 @@ List of bug fixes and details can be found [here](https://github.com/riot/riot/i
 
 ## 2.0.12 *Mar 2, 2015*
 
-- Support for [Scoped CSS](/riotjs/guide/#scoped-css)
-- Direct [access to nested tags](/riotjs/api/#nested-tags) and their API via `tags` variable. For example: `tags.my_timer.clear()`
+- Support for [Scoped CSS](/guide/#scoped-css)
+- Direct [access to nested tags](/api/#nested-tags) and their API via `tags` variable. For example: `tags.my_timer.clear()`
 - The custom tags are now constructed on parse time and initialized on mount time. This is preliminary work for the upcoming [plugin system](https://github.com/riot/riot/issues/416) and allows plugins to do their thing before initialization as well.
 - `--whitespace` compiler option to preserve newlines and whitespace on the generated output. Good with nested `pre` and `textarea` elements.
 - Using [Karma](http://karma-runner.github.io/0.12/index.html) for cross browser testing
@@ -122,13 +122,13 @@ List of bug fixes and details can be found [here](https://github.com/riot/riot/i
 
 ## 2.0.8 *Feb 9, 2015*
 
-- New `unmount()` method and `children[]` property for [tag instances](/riotjs/api/#tag-instance)
+- New `unmount()` method and `children[]` property for [tag instances](/api/#tag-instance)
 - One way data flow: updates and unmounts always propagate downwards from parent to children
 - The `if` attribute now works as expected by adding or removing the root node from DOM
-- [Compiler API](/riotjs/api/#compiler) exposed to the public
+- [Compiler API](/api/compiler/) exposed to the public
 - Global variables are supported in expressions, e.g. `{ location }`
 - Customizable `.tag` extension, e.g. `riot --ext html`
-- [Customizable brackets](/riotjs/api/#brackets), e.g. `riot.settings.brackets = '${ }'`
+- [Customizable brackets](/api/misc/#brackets), e.g. `riot.settings.brackets = '${ }'`
 - Ability to print the current version with: `riot --version`
 - The semi-hidden `riot._tmpl()` is now completely hidden and not part of the global `riot` object
 - Reorganized source code. The former big `view.js` is now split into [multiple files](https://github.com/riot/riot
@@ -137,11 +137,11 @@ List of bug fixes and details can be found [here](https://github.com/riot/riot/i
 
 ## 2.0.7 *Jan 29, 2015*
 
-- Super fast [in-browser compilation](compile.html) for: `<script type="riot/tag">`
-- Built-in [Typescript support](compiler.html#typescript)
+- Super fast [in-browser compilation](/guide/compile/) for: `<script type="riot/tag">`
+- Built-in [Typescript support](/guide/compiler/#typescript)
 - Ability to plug in a HTML pre-processor (along with JS processor)
-- Built-in [Jade support](compiler.html#jade)
-- Ability to define [custom parsers](api/#route-parser) for router.
+- Built-in [Jade support](/guide/compiler/#jade)
+- Ability to define [custom parsers](/api/#route-parser) for router.
 - Markup can be written with valid XML and HTML5 void tags are not self-closed
 - Allow definition of empty placeholder tags. Good on development phase.
 - `riot.observable()` now returns a new observable when called without the argument
