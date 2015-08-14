@@ -3,7 +3,7 @@ layout: default
 title: Comparing Riot with React and Polymer
 ---
 
-# **Riot.js** vs **React** & **Polymer**
+# **Riot** vs **React** & **Polymer**
 
 And how Riot differs from it's closest cousins.
 
@@ -17,7 +17,7 @@ We respect this insight. The goal is to build reusable components instead of tem
 
 By combining these related technologies together under the same component the system becomes cleaner. We respect React because of this important insight.
 
-React worked well for us, and we still use it in our [Disqus Importer](/importer/) but we were bothered by the syntax and size of React (*especially* the syntax). We started thinking it could be simpler; both internally and for the user.
+React worked well for us, and we still use it in our [Disqus Importer](/importer/) but we were bothered by the size and syntax of React (*especially* the syntax). We started thinking it could be simpler; both internally and for the user.
 
 
 ### React syntax
@@ -104,22 +104,22 @@ And this is how the above tag is mounted on a page:
 
 ### Same, same — but different
 
-In Riot HTML comes first and JavaScript second. Both are under the same component, but neatly separated from each other. The HTML can be mixed with JavaScript expressions.
+In Riot HTML and JavaScript appear much more familiar. Both are under the same component, but neatly separated from each other. The HTML can be mixed with JavaScript expressions.
 
 No proprietary stuff, except the notation of enclosing expressions inside curly braces.
 
 You see less boilerplate. Less brackets, commas, system properties and method names. Strings can be interpolated: `"Hello {world}"` instead of `"Hello " + this.state.world` and methods can be defined with compact ES6 syntax. Just less everything.
 
-We think Riot syntax is the cleanest way to separate layout and logic while enjoying the benefits of isolated components.
+We think Riot syntax is the cleanest way to separate layout and logic while enjoying the benefits of isolated reusable components.
 
 
 ### String based vs DOM based
 
 When a component is initialized React parses a string and Riot traverses a DOM tree.
 
-Riot takes the expressions from the tree and stores them to an array. Each expression has a pointer to a DOM node. On each run these expressions are evaluated and compared to the values on the DOM. When a value has changed the corresponding DOM node is updated. In a way Riot also has a virtual DOM, just a much simpler one.
+Riot takes the expressions from the tree and stores them in an array. Each expression has a pointer to a DOM node. On each run these expressions are evaluated and compared to the values in the DOM. When a value has changed the corresponding DOM node is updated. Riot has a virtual DOM, just a much simpler one.
 
-Since these expressions can be cached an update cycle is fast. Going through 100 or 1000 expressions usually takes 1ms or less.
+Since these expressions can be cached an update cycle is very fast. Going through 100 or 1000 expressions usually takes 1ms or less.
 
 The React sync algorithm is much more complex since the HTML layout can change randomly after each update. Given the enormous challenge, Facebook developers did an impressive job with it.
 
@@ -175,15 +175,11 @@ Polymer takes the Web Component standard and makes it available for the latest b
 
 Conceptually Riot is the same thing but there are differences:
 
-1. Riot updates only the elements that have changed resulting to less DOM operations.
-
-2. Polymer syntax is more complex and requires one to study more books.
-
-3. Individual components are imported with HTML `link rel="import"`. Polyfills must resort to queued up XHRs, which makes it painfully slow. Riot tags are imported with `script src` and multiple tags can be combined with regular tooling.
-
-4. Polymer uses two-way data binding while riot uses one-way data binding.
-
-5. No ability to perform server side rendering.
+- Riot updates only the elements that have changed resulting to less DOM operations
+- Polymer syntax is more complex and requires one to study more books
+- Individual components are imported with HTML `link rel="import"`. Polyfills must resort to queued up XHRs, which makes it painfully slow. Riot tags are imported with `script src` and multiple tags can be combined with regular tooling
+- Polymer uses two-way data binding while riot uses one-way data binding
+- No ability to perform server side rendering
 
 
 ### 22x bigger
@@ -203,4 +199,4 @@ Web components are said to be the [king of all polyfilling challenges](http://de
 
 Polymer is based on experimental technology. Native Web Component support is not present in Safari or IE. IE status is "under consideration" and Safari plans are uncertain. Some WebKit [commits](https://lists.webkit.org/pipermail/webkit-dev/2013-May/024894.html) hint that they plan not to support it at all. And Polymer is only capable of polyfilling the _latest versions_ of “evergreen”  browsers (IE 10+).
 
-Polymer project is over [2 years old](https://github.com/Polymer/polymer/commit/0452ada044a6fc5818902e685fb07bb4678b2bc2) and it hasn't gained any significant adoption. It's  uncertain whether Web Components will ever be natively supported.
+Polymer project is over [2 years old](https://github.com/Polymer/polymer/commit/0452ada044a6fc5818902e685fb07bb4678b2bc2) and it hasn't gained any significant adoption. It's uncertain whether Web Components will ever be natively supported.
