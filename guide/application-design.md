@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Designing client-side applications with Riot
+title: Application design
 ---
 
-# {{ page.title }}
+{% include tabs.html %}
 
 ## Tools, not policy
 

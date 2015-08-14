@@ -1,11 +1,9 @@
 ---
 layout: default
-title: Riot developer guide
+title: Custom tags
 ---
 
-# Custom tags
-
-<div id="toc"></div>
+{% include tabs.html %}
 
 ## Example
 

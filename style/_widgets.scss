@@ -62,9 +62,34 @@
   background-color: red;
 }
 
+// tabs
+#tabs {
+  border-bottom: 1px solid #ddd;
+
+  a {
+    display: inline-block;
+    padding: .3em 1.2em;
+    font-size: 90%;
+    color: #999;
+
+    &:hover {
+      text-decoration: none;
+      color: #333;
+    }
+
+    &.current {
+      border-bottom: 3px solid red;
+      color: #000;
+      cursor: default;
+    }
+  }
+
+}
+
 // table of contents
-#toc a {
-  display: block;
+#toc {
   font-size: 90%;
-  margin-bottom: .3em;
+  p {
+    margin: 0 0 .3em;
+  }
 }
