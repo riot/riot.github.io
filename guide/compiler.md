@@ -405,20 +405,20 @@ riot --m
 
 Example AMD:
 
-```js
+``` js
 
 define(['riot', 'tags'], function (riot) {
-  riot.mount('*');
-});
+  riot.mount('*')
+})
 ```
 
 Example CommonJS:
 
-```js
-var riot = require('riot');
-var tags = require('tags');
+``` js
+var riot = require('riot')
+var tags = require('tags')
 
-riot.mount('*');
+riot.mount('*')
 ```
 
 
