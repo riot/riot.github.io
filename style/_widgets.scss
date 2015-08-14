@@ -53,6 +53,11 @@
 
 }
 
+// on home page
+#version-slurp {
+  margin-top: 2em;
+}
+
 // stat bar
 .bar {
   height: 5px;
@@ -119,4 +124,34 @@ h2, .apidoc h3 {
 
 .download #main p {
   margin-bottom: .5em;
+}
+
+.tag {
+  background-color: #fc0e49;
+  padding: .3em .6em;
+  color: #fff;
+  font-weight: normal;
+  border-radius: .2em;
+  letter-spacing: 1px;
+  margin-right: .3em;
+}
+
+.blue {
+  background-color: #32709D;
+}
+
+a.tag:hover {
+  text-decoration: none;
+  background-color: lighten(#32709D, 10);
+}
+
+#release-notes h2 em {
+  font-style: normal;
+  color: #777;
+  font-size: 80%;
+  font-weight: normal;
+
+  &:before {
+    content: " — "
+  }
 }

@@ -37,12 +37,9 @@
   }
 
   .current {
-    background-color: #fc0e49;
-    padding: .3em .6em;
-    color: #fff;
+    @extend .tag;
     text-decoration: none;
     cursor: default;
-    border-radius: 2px;
   }
 
   @media (max-width: 600px) {

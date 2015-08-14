@@ -19,13 +19,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>
-    {% if page.title == "Home" %}
-      {{ site.title }} &middot; {{ site.tagline }}
-    {% else %}
-      {{ page.title }} &middot; {{ site.title }}
-    {% endif %}
+    {{ page.title }}{% if page.path != "index.md" %} &middot; {{ site.title }} {% endif %}
   </title>
 
+  {% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+  {% endif %}
 
   <!-- favicons -->
   <link rel="shortcut icon" href="/img/favicon-152x152.png">
@@ -41,7 +40,7 @@
 
 </head>
 
-<body class="{{ page.class }}">
+<body id="{{ page.id }}" class="{{ page.class }}">
 
   <div class="wrap">
 
