@@ -15,7 +15,7 @@ baseurl:             ""
 markdown:           redcarpet
 extensions:         [fenced_code_blocks]
 redcarpet:
-  extensions:       [with_toc_data]
+  extensions:       [with_toc_data,autolink,smart]
 
 # Handling Reading
 safe:               false
@@ -41,4 +41,5 @@ author:
 major_version:       2
 minor_version:       2.3
 version:             2.3.0
+release_date:        Jun 23
 repo:                https://github.com/riot/riot
