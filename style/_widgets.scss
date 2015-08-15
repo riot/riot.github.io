@@ -1,14 +1,23 @@
 
 // fork me
 #fork {
+  background-color: #32709D;
   position: absolute;
-  top: -12px;
-  right: -12px;
+  right: -45px;
+  top: 45px;
+  color: #fff;
+  font-size: 80%;
+  padding: .3em 3em;
+  text-decoration: none;
 
-  img {
-    width: 180px
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+
+  &:hover {
+    background-color: darken(#32709D, 5);
   }
-
   @media (max-width: 900px) {
     display: none
   }
