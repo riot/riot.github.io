@@ -228,7 +228,7 @@ Riot gives you access to elements that have `name` attributes directly under the
 
 ### How to use jQuery, Zepto, querySelector, etc...
 
-If you need to access the DOM inside Riot, you'll want to take a look at the [Tag Lifecycle](https://github.com/riot/riot/blob/dev/doc/guide/index.md#tag-lifecycle) and notice that the DOM elements are instaniated until the `update()` event first fires, meaning any attempt to select an element before then will fail.
+If you need to access the DOM inside Riot, you'll want to take a look at the [Tag Lifecycle](#tag-lifecycle) and notice that the DOM elements are instaniated until the `update()` event first fires, meaning any attempt to select an element before then will fail.
 
 ```html
 <example-tag>
@@ -896,4 +896,3 @@ console.log(html) // <timer><p>Seconds Elapsed: 42</p></timer>
 ```
 
 Loops and conditionals *are* supported.
-
