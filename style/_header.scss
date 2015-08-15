@@ -43,12 +43,14 @@
   }
 
   @media (max-width: 600px) {
-    float: none;
-    margin-top: 1.5em;
+    margin: 1.5em 2.4em 0;
+    text-align: center;
+    line-height: 2.4;
     font-size: 80%;
+    float: none;
 
     a {
-      margin: 0 1em 0 0;
+      margin: 0 .6em;
     }
   }
 }

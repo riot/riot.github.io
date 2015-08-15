@@ -89,6 +89,16 @@
     }
   }
 
+  @media (max-width: 600px) {
+    text-align: center;
+    padding: 0 1em;
+
+    a {
+      padding: .3em .8em;
+      margin-bottom: .8em;
+    }
+  }
+
 }
 
 // table of contents
@@ -127,7 +137,7 @@ h2, .apidoc h3 {
 }
 
 .tag {
-  background-color: #fc0e49;
+  background-color: lighten(#32709D, 10);
   padding: .3em .6em;
   color: #fff;
   font-weight: normal;
@@ -136,13 +146,14 @@ h2, .apidoc h3 {
   margin-right: .3em;
 }
 
-.blue {
-  background-color: #32709D;
+.red {
+  background-color: #fc0e49;
 }
 
-a.tag:hover {
+a.blue:hover {
+  background-color: #32709D;
   text-decoration: none;
-  background-color: lighten(#32709D, 10);
+
 }
 
 #release-notes h2 em {
