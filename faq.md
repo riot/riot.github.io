@@ -10,18 +10,17 @@ description: Questions and Answers about Riot, User Interface (UI) Micro-Libary
 Riot is against the current trend of boilerplate and unneeded complexity. We think that a small, powerful API and concise syntax are extremely important things on a client-side library.
 
 
-## Why did you drop IE8?
-Finally, we can safely iqnore this pool quality browser. On muut.com the use of IE8 dropped a whopping 50% on the last 6 months. We expect that this browser drops globally below 1% on the next 12 months. Wasting developer time for IE8 is simply not clever.
-
-We'll provide accurate statistics and trends a bit later.
-
-
 ## Is Riot free?
 Riot is free, open source and licensed under the MIT License. Free from [Additional Grant of Patent Rights](https://github.com/facebook/react/blob/master/PATENTS).
 
 
 ## Can I use Riot in production?
 We think so. We do that extensively under muut.com website: on registrations, forum settings and on account page. But not all scenarios are thoroughly tested, since Riot 2 is a big rewrite and not widely used yet. Please report issues [here](https://github.com/riot/riot/issues).
+
+## Why did you drop IE8?
+We think this low-quality browser can be ignored. Riot 2.0 originally had IE8 support but since we launched the use of IE8 has dropped [a whopping 45%](http://gs.statcounter.com/#browser_version_partially_combined-ww-monthly-201412-201507).
+
+Today only 2.5% are on IE8 and if the above trend continues the usage drops globally below 1% on the next year. Wasting developer time for IE8 is simply not clever.
 
 
 ## Should I use dash on the tag name?
