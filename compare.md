@@ -145,11 +145,11 @@ You can build a Flux-like system by using Riot's observable and router. In fact 
 
 React is 10x bigger than Riot.
 
-<small><em>react.min.js</em> – 121KB</small>
+<small><em>react.min.js</em> – 119KB</small>
 <span class="bar red"></span>
 
 <small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
-<span class="bar blue" style="width: {{ site.size_min / 121 * 100 }}%"></span>
+<span class="bar blue" style="width: {{ site.size_min / 119 * 100 }}%"></span>
 
 <br>
 

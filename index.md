@@ -17,9 +17,9 @@ description: Riot lets you build user interfaces with custom tags using simple a
 </div>
 
 
-# Why on earth do we need another UI library?
+# Why do we need a new UI library?
 
-The frontend space is indeed crowded, but we honestly feel the solution is still "out there" and we believe Riot is the best one to solve the big puzzle. While React seems to do it, they have serious weak points which Riot aims to solve. Most importantly: be your own judge!
+The frontend space is indeed crowded, but we honestly feel the solution is still "out there". We believe Riot offers the right balance for solving the great puzzle. While React seems to do it, they have serious weak points that Riot will solve.
 
 So — here's why we need one:
 
@@ -91,7 +91,7 @@ Custom tags let you build complex views with HTML. Your application might look s
 
 HTML syntax is the *de facto* language of the web and it's designed for building user interfaces. The syntax is explicit, nesting is inherent to the language, and attributes offer a clean way to provide options for custom tags.
 
-The tags are [converted](/guide/compiler/) to JavaScript before browsers can execute them.
+Riot tags are [converted](/guide/compiler/) to pure JavaScript before browsers can execute them.
 
 
 ### Virtual DOM
@@ -99,7 +99,7 @@ The tags are [converted](/guide/compiler/) to JavaScript before browsers can exe
 - One way data flow: updates and unmounts are propagated downwards from parent to children
 - Expressions are pre-compiled and cached for high performance
 - Lifecycle events for more control
-- Server-side rendering of custom tags for isomorphic applications
+- Server-side rendering of custom tags for universal (isomorphic) applications
 
 
 ### Close to standards
@@ -109,7 +109,7 @@ The tags are [converted](/guide/compiler/) to JavaScript before browsers can exe
 - Plays well with jQuery
 
 
-### Use your favorite tools
+### Tooling friendly
 - Create tags with ES6, Typescript, CoffeeScript, Jade, LiveScript or [any pre-processor](/guide/compiler/#pre-processors) you want
 - Integrate with NPM, CommonJS, AMD, Bower or Component
 - Develop with [Gulp](https://github.com/e-jigsaw/gulp-riot), [Grunt](https://github.com/ariesjia/grunt-riot) or [Browserify](https://github.com/jhthorsen/riotify) plugins
@@ -142,20 +142,21 @@ Riot has between 10 and 100 times fewer API methods than other UI libraries.
 
 ### 3. Tiny size
 
-<small><em>react.min.js</em> – 127KB</small>
+<small><em>polymer.min.js</em> – 138KB</small>
 <span class="bar red"></span>
 
-<small><em>polymer.min.js</em> – 120KB</small>
-<span class="bar red" style="width: 94%"></span>
+<small><em>react.min.js</em> – 119KB</small>
+<span class="bar red" style="width: {{ 138 / 119 * 100 }}"></span>
 
-<small><em>riot.min.js</em> – 13KB</small>
-<span class="bar blue" style="width: 10%"></span>
-
+<small><em>riot.min.js</em> – {{ site.size_min }}KB</small>
+<span class="bar blue" style="width: {{ site.size_min / 121 * 100 }}%"></span>
 
 - Fewer bugs
 - Faster to parse and cheaper to download
-- Embeddable. The library should be smaller than the application
+- Embeddable. The library ought to be smaller than the application
 - Less to maintain. We don't need a big team to maintain Riot
+
+
 
 ### 4. Small, but complete
 
