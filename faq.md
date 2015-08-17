@@ -11,16 +11,18 @@ Riot is against the current trend of boilerplate and unneeded complexity. We thi
 
 
 ## Is Riot free?
-Riot is free, open source and licensed under the MIT License. Free from [Additional Grant of Patent Rights](https://github.com/facebook/react/blob/master/PATENTS).
+Riot is free, open source and licensed under the MIT License. There are no [Additional Grant of Patent Rights](https://github.com/facebook/react/blob/master/PATENTS).
 
 
 ## Can I use Riot in production?
-We think so. We do that extensively under muut.com website: on registrations, forum settings and on account page. But not all scenarios are thoroughly tested, since Riot 2 is a big rewrite and not widely used yet. Please report issues [here](https://github.com/riot/riot/issues).
+Absolutely. It's a mature framework [embraced daily](https://twitter.com/search?q=riotjs).
 
-## Why did you drop IE8?
-We think this low-quality browser can be ignored. Riot 2.0 originally had IE8 support but since we launched the use of IE8 has dropped [a whopping 45%](http://gs.statcounter.com/#browser_version_partially_combined-ww-monthly-201412-201507).
+## Why IE8 is not supported?
+Because it's crazy to waste developer time for a dying browser. According to [W3 counter](http://www.w3counter.com/trends), only 2.5% are on IE8.
 
-Today only 2.5% are on IE8 and if the above trend continues the usage drops globally below 1% on the next year. Wasting developer time for IE8 is simply not clever.
+![](/img/ie8-trend.png)
+
+This low-quality browser can safely be ignored. Riot 2.0 originally had IE8 support but since we launched the use of IE8 has [dropped 45%](http://gs.statcounter.com/#browser_version_partially_combined-ww-monthly-201412-201507).
 
 
 ## Should I use dash on the tag name?
@@ -51,10 +53,5 @@ It's not evil, it just looks "old". To have JS and HTML under the same module is
 
 ## Any future plans?
 
-Yes:
-
-1. Performance improvements ( especially looping )
-2. Plugin system
-3. Tag option validation using HTML attributes
-
+Sure. We mostly focus on [stability and performance](https://github.com/riot/riot/issues) and try to provide more [examples](https://github.com/riot/examples).
 
