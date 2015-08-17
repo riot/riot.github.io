@@ -33,7 +33,7 @@
   // table of contents
   if (window.toc) {
     each($('#main h2'), function(el) {
-      toc.innerHTML += '<p><a href="#' + el.id + '">' + el.innerText + '</a></p>'
+      toc.innerHTML += '<p><a href="#' + el.id + '">' + (el.innerText || el.textContent) + '</a></p>'
     })
   }
 
