@@ -18,11 +18,13 @@ Riot is free, open source and licensed under the MIT License. There are no [Addi
 Absolutely. It's a mature framework [embraced daily](https://twitter.com/search?q=riotjs).
 
 ## Why IE8 is not supported?
-Because it's crazy to waste developer time for a dying browser. According to [W3 counter](http://www.w3counter.com/trends), only 2.5% are on IE8.
+Because it's crazy to waste developer time for a dying browser. According to [W3 counter](http://www.w3counter.com/trends), only 1.5% are on IE8:
 
 ![](/img/ie8-trend.png)
 
-This low-quality browser can safely be ignored. Riot 2.0 originally had IE8 support but since we launched the use of IE8 has [dropped 45%](http://gs.statcounter.com/#browser_version_partially_combined-ww-monthly-201412-201507).
+Statcounter [says 2.5%](http://gs.statcounter.com/#browser_version_partially_combined-ww-monthly-201408-201507).
+
+This low-quality browser can safely be ignored. Riot 2.0 was launched with IE8 support but since then the use has dropped more than 50%.
 
 
 ## Should I use dash on the tag name?
