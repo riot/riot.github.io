@@ -12,7 +12,7 @@ function update {
   # take the header from the old api file
   sed -n -e  "1,/{% include api-tabs.html %}/w $tmp_file" api/$1.md
   # print the doc/api.md of each submodule after the files headers
-  tail -n +2 tmp/$1/doc/api.md >> $tmp_file
+  tail -n +2 tmp/$1/doc/README.md >> $tmp_file
   # prefix the submodule api methods using riot (observable => riot.observable)
   sed -i '' "s/$1/riot.$1/g" $tmp_file
   # replace the old api file
