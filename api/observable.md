@@ -9,12 +9,12 @@ class: apidoc
 
 ### <a name="constructor"></a> riot.observable(el)
 
-Adds [Observer](http://en.wikipedia.org/wiki/Observer_pattern) support for the given object `el` or if the argument is empty a new riot.observable instance is created and returned. After this the object is able to trigger and listen to events. For example:
+Adds [Observer](http://en.wikipedia.org/wiki/Observer_pattern) support for the given object `el` or if the argument is empty a new observable instance is created and returned. After this the object is able to trigger and listen to events. For example:
 
 ``` js
 function Car() {
 
-  // Make Car instances riot.observable
+  // Make Car instances observable
   riot.observable(this)
 
   // listen to 'start' event
@@ -31,7 +31,7 @@ var car = new Car()
 car.trigger('start')
 ```
 
-@returns the given object `el` or a new riot.observable instance
+@returns the given object `el` or a new observable instance
 
 
 ### <a name="on"></a> el.on(events, callback)
