@@ -41,7 +41,7 @@ Riotは、`riot.mount()`が呼び出される前に、インラインまたは�
 
 ### タグインスタンスにアクセスする
 
-If you are loading tags with `script src` and want to get access to the mounted tags you need to wrap the call with `riot.compile` as follows:
+もし`script src`でタグを読み込もうとしていて、マウントされたタグにアクセスする必要があるなら、次のように`riot.compile`で囲む必要があります:
 
 ``` html
 <script>
@@ -54,9 +54,9 @@ riot.compile(function() {
 
 ### コンパイラのパフォーマンス
 
-Compilation phase is basically free and takes no time at all. Compiling a [timer tag](https://github.com/riot/riot/blob/master/test/tag/timer.tag) 30 times takes 2 milliseconds on a regular laptop. If you have a crazy page with 1000 different timer-sized tags, the compilation takes around 35ms.
+コンパイルは基本的にはまったく時間がかかりません。[タイマータグ](https://github.com/riot/riot/blob/master/test/tag/timer.tag)を30回コンパイルするのにかかる時間は、普通のラップトップで2ミリ秒です。もし、同じくらいのサイズの1000個の異なるタグからなるクレイジーなページを作ったとしても、35msしかかからないという計算になります。
 
-The compiler weights only 3.2KB (1.7K gzipped) so you can safely perform client side compilation on production without download or performance or issues.
+コンパイラのサイズはたかだか3.2KB(gzip圧縮で1.7KB)なので、本番環境でのクライアントサイド・コンパイルも、ダウンロード量やパフォーマンスの点で心配なく使えます。
 
 詳しくは[コンパイラAPI](/ja/api/compiler/)を見てください.
 
@@ -72,32 +72,32 @@ The compiler weights only 3.2KB (1.7K gzipped) so you can safely perform client 
 
 プリ(事前の)コンパイルには次のようなメリットがあります:
 
-- Ability to compile tags with your [favorite pre-processor](#pre-processors).
-- Small performance benefit. No need to load and execute the compiler on browser.
-- Universal (isomorphic) apps and the ability to pre- render tags on the server (released soon).
+- あなたの好きな[プリプロセッサ](#プリプロセッサ)と合わせてコンパイル可能。
+- 若干のパフォーマンス向上。コンパイラを読み込む/実行する必要がありません。
+- ユニバーサル(アイソモーフィック)アプリケーション。サーバで事前にタグを描画しておくことが可能。(近日公開)
 
 
-Pre-compilation happens with a `riot` executable, which can be installed with NPM as follows:
+プリコンパイルは`riot`コマンドで実行します。NPMから次のようにインストールできます:
 
 ``` sh
 npm install riot -g
 ```
 
-Type `riot --help` and make sure it works. [node.js](http://nodejs.org/) is required on your machine.
+`riot --help`を実行して、正しく動作することを確認します。[node.js](http://nodejs.org/)がインストールされている必要があります。
 
-With pre-compilation your HTML is something like this:
+プリコンパイル版のHTMLは次のようになるでしょう:
 
 ``` html
-<!-- mount point -->
+<!-- タグをマウントする場所 -->
 <my-tag></my-tag>
 
-<!-- include riot.js only -->
+<!-- riot.jsのみ読み込み -->
 <script src="//cdn.jsdelivr.net/riot/2.2/riot.min.js"></script>
 
-<!-- include pre-compiled tags (normal javascript) -->
+<!-- プリコンパイルされたタグを読み込み (通常のJavaScriptです) -->
 <script src="path/to/javascript/with-tags.js"></script>
 
-<!-- mount the same way -->
+<!-- 同じようにマウント -->
 <script>
 riot.mount('*')
 </script>
@@ -105,43 +105,44 @@ riot.mount('*')
 
 ### 使い方
 
-Here is how `riot` command works:
+`riot`コマンドがどのように動くか説明します:
 
 ``` sh
-# compile a file to current folder
+# ファイルを現在のフォルダにコンパイル
 riot some.tag
 
-# compile file to target folder
+# 指定フォルダにファイルをにコンパイル
 riot some.tag some_folder
 
-# compile file to target path
+# 指定パスにファイルをコンパイル
 riot some.tag some_folder/some.js
 
-# compile all files from source folder to target folder
+# 元フォルダのすべてのファイルを、指定フォルダにコンパイル
 riot some/folder path/to/dist
 
-# compile all files from source folder to a single concatenated file
+# 元フォルダのすべてのファイルを、結合ずみの単一ファイルとしてコンパイル
 riot some/folder all-my-tags.js
 
 ```
 
-The source file can contain one or more custom tags and there can be regular JavaScript mixed together with custom tags. The compiler will only transform the custom tags and does not touch other parts of the source file.
+ソースファイルは、ひとつあるいは複数のタグを含むことができ、通常のJavaScriptを一緒に混ぜても構いません。コンパイラはカスタムタグの部分だけを変換し、ソースファイルのほかの部分はそのままにします。
 
-For more information, type: `riot --help`
+詳しい情報は、`riot --help`を参照してください。
 
 
 ### 監視モード
 
-You can watch directories and automatically transform files when they are changed.
+ディレクトリを監視して、ファイルが変更されたときに自動的にファイルを変換することが可能です。
 
 ``` sh
-# watch for
+# srcフォルダを監視(watch)
 riot -w src dist
 ```
 
 
 ### カスタム拡張子
 
+タグファイルを好きな拡張子にすることができます(デフォルトの`.tag`の代わりに):
 You're free to use any file extension for your tags (instead of default `.tag`):
 
 ``` sh
@@ -157,7 +158,7 @@ var riot = require('riot')
 var js = riot.compile(source_string)
 ```
 
-The compile function takes a string and returns a string.
+compile関数は文字列を受け取って、文字列を返します。
 
 ### ワークフローへの組み込み
 
@@ -168,9 +169,9 @@ The compile function takes a string and returns a string.
 
 ## プリプロセッサ
 
-This is the main fruit of pre- compilation. You can use your favourite pre- processor to create custom tags. Both HTML and JavaScript processor can be customized.
+プリコンパイルの一番美味しい部分です。カスタムタグを作るのに、好きなプリプロセッサを使うことができます。HTMLとJavaScript(訳注・CSSも)、どちらのプリプロセッサもカスタマイズが可能です。
 
-The source language is specified with `--type` or `-t` argument on the command line or you can define the language on the script tag as follows:
+ソースの言語は、コマンドラインの`--type`か`-t`引数で指定するか、あるいは後述のようにスクリプトタグの言語を自分で定義することもできます。
 
 ``` html
 <my-tag>
@@ -186,11 +187,11 @@ The source language is specified with `--type` or `-t` argument on the command l
 ### CoffeeScript
 
 ``` sh
-# use coffeescript pre-processor
+# CoffeeScript プリプロセッサを使う
 riot --type coffee --expr source.tag
 ```
 
-The `--expr` argument specifies that all the expressions are also processed as well. You can also use "cs" as an alias to "coffee". Here is a sample tag written in CoffeeScript:
+`--expr`引数は、テンプレート変数(expression)の中でもプリプロセッサを使うことを指定します。"coffee"のエイリアスとして、"cs"を使うこともできます。CoffeeScriptで書かれたタグの例です:
 
 ``` javascript
 <kids>
@@ -207,7 +208,7 @@ The `--expr` argument specifies that all the expressions are also processed as w
 </kids>
 ```
 
-Note that `each` attribute is CoffeeScript as well. CoffeeScript must be present on your machine:
+`each`属性もCoffeeScriptになっていますね。なお、CoffeeScriptがあなたのマシンにインストールされていることが必要です:
 
 ``` sh
 npm install coffee-script -g
@@ -216,14 +217,14 @@ npm install coffee-script -g
 
 ### EcmaScript 6
 
-ECMAScript 6 is enabled with a type "es6":
+ECMAScript 6は、"es6"を指定することで有効になります:
 
 ``` sh
-# use ES6 pre-processor
+# ES6プリプロセッサを使う
 riot --type es6 source.tag
 ```
 
-An sample tag written in ES6:
+ES6で書かれたタグの例:
 
 ``` html
 <test>
@@ -236,24 +237,24 @@ An sample tag written in ES6:
 </test>
 ```
 
-All ECMAScript 6 [features](https://github.com/lukehoban/es6features) can be used. [Babel](https://babeljs.io/) is used for the transformation:
+すべてのECMAScript 6の[機能](https://github.com/lukehoban/es6features)を使うことができます。変換には[Babel](https://babeljs.io/)が使われています:
 
 ``` sh
 npm install babel
 ```
 
-Here is a [bigger example](https://github.com/txchen/feplay/tree/gh-pages/riot_babel) on using Babel with Riot.
+ここに、BabelをRiotと使ったより[大きなサンプル](https://github.com/txchen/feplay/tree/gh-pages/riot_babel)があります。
 
 ### TypeScript
 
-TypeScript adds optional static typing to JavaScript. Use `--type typescript` to enable it:
+TypeScriptは静的型付けをJavaScriptに追加します。`--type typescript`を使って有効にします:
 
 ``` sh
-# use TypeScript pre-processor
+# TypeScriptプリプロセッサを使う
 riot --type typescript source.tag
 ```
 
-An sample tag written in TypeScript:
+TypeScriptで書かれたタグのサンプルです:
 
 ``` html
 <test>
@@ -266,23 +267,23 @@ An sample tag written in TypeScript:
 </test>
 ```
 
-[typescript-simple](https://github.com/teppeis/typescript-simple) is used for the transformation:
+[typescript-simple](https://github.com/teppeis/typescript-simple)が変換に使われます:
 
 ``` sh
 npm install typescript-simple
 ```
 ### LiveScript
 
-Check out [LiveScript](http://livescript.net) for language features and documentation.
+言語の特徴やドキュメントについては、[LiveScript](http://livescript.net)を確認してください。
 
-The source language is specified with `--type` or `-t` argument:
+ソース言語は、`--type`か`-t`引数で指定します:
 
 ``` sh
-# use livescript pre-processor
+# LiveScriptプリプロセッサを使う
 riot --type livescript --expr source.tag
 ```
 
-The `--expr` argument specifies that all the expressions are also processed as well. You can also use "ls" as an alias to "livescript". Here is a sample tag written in LiveScript:
+`--expr`引数はテンプレート変数についても変換することを指定します。"livescript"のエイリアスとして"ls"も使えます。LiveScriptで書かれたタグの例はこちら:
 
 ``` html
 <kids>
@@ -298,7 +299,7 @@ this.kids =
 </kids>
 ```
 
-Note that `each` attribute is LiveScript as well. LiveScript must be present on your machine:
+`each`属性もLiveScriptになっています。LiveScriptがインストールされている必要があります:
 
 ``` sh
 npm install LiveScript -g
@@ -306,15 +307,15 @@ npm install LiveScript -g
 
 ### Jade
 
-HTML layout can be processed with `template` configuration option. Here's an example with Jade – a "clean, whitespace sensitive syntax for writing html"
+HTMLレイアウトは`template`設定オプションで、処理することができます。これは、「クリーンでホワイトスペース・センシティブなHTMLを書くための文法」Jadeを使った例です。
 
 
 ``` sh
-# use Jade HTML pre-processor
+# Jade HTMLプリプロセッサを使う
 riot --template jade source.tag
 ```
 
-A Jade sample:
+Jadeの例:
 
 ``` jade
 sample
@@ -333,7 +334,7 @@ npm install jade
 
 ### どんな言語でも
 
-You can configure your favourite language by making a custom parser function. For example:
+カスタムパーサーを用意することで、お好みのどんな言語でも設定できます (訳注:上記の定義済みのものの他に)。例:
 
 ``` js
 function myParser(js, options) {
@@ -341,7 +342,7 @@ function myParser(js, options) {
 }
 ```
 
-This parser is then passed for the compiler with `parser` option:
+このパーサーはコンパイラの`parser`オプションで渡されます。
 
 ``` js
 var riot = require('riot')
@@ -349,11 +350,11 @@ var riot = require('riot')
 var js = riot.compile(source_string, { parser: myParser, expr: true })
 ```
 
-Set `expr: true` if you want the expressions to be parsed as well.
+テンプレート変数も同様に処理したければ、`expr: true`をセットします。
 
 #### riot.parsers をブラウザとサーバで使う
 
-You can also create your custom riot parsers adding them to the `riot.parsers` property and share them across the browsers and server. For example
+Riotのカスタムパーサを`riot.parsers`プロパティで指定して、ブラウザとサーバで共通して使うこともできます。例:
 
 ```js
 riot.parsers.js.myJsParser = function(js, options) {
@@ -365,7 +366,7 @@ riot.parsers.css.myCssParser = function(tagName, css) {
 }
 ```
 
-Once you have created your own `riot.parsers` you will be able to compile your tags using them in the following way
+一度、自分の`riot.parsers`を作ってしまえば、次の方法でタグをコンパイルすることができます。
 
 ```html
 <custom-parsers>
@@ -393,9 +394,9 @@ riot --type none --expr source.tag
 
 ### AMDとCommonJS
 
-Riot tags can be compiled with `AMD` (Asynchronous Module Definition) and `CommonJS` support. This configuration option is necessary if Riot is used with an AMD loader such as [RequireJS](http://requirejs.org/) or a CommonJS loader such as [Browserify](http://browserify.org/).
+Riotのタグは、`AMD`(Asynchronous Module Definition)や`CommonJS`としてコンパイルすることができます。このオプションは、Riotを[RequireJS](http://requirejs.org/)のようなAMDローダ、あるいは[Browserify](http://browserify.org/)のような`CommonJS`ローダと利用する場合に必要です。
 
-The Riot library must be defined / required as `riot` in both cases.
+いずれのケースでも、Riotライブラリ自体も`riot`として、define/requireされていなければなりません。
 
 ``` sh
 # AMD と CommonJS を有効に
