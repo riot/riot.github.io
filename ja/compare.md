@@ -5,24 +5,25 @@ title: RiotをReact・Polymerと比較する
 
 # **Riot** vs **React** & **Polymer**
 
-そして、Riotはこれらと何が違うのか。
+Riotは何が違うの?
 
 ## React
 
-Riot is inspired by React and from the idea of "cohesion". According to Facebook developers:
+Riotは、Reactとその「まとめ方(cohesion)」のアイデアからインスパイアされました。Facebookの開発者いわく:
 
+> 「テンプレートは、問題ではなく、技術を分けるだけだ」
 > "Templates separate technologies, not concerns."
 
-We respect this insight. The goal is to build reusable components instead of templates. By separating logic from the templates (by using jQuery selectors for example) we are actually keeping out things that should be together.
+僕たちは、この直感に敬意を表します。ゴールは、再利用可能なテンプレートを作ることではなく、コンポーネントを作ることです。ロジックをテンプレートから分離することで(例えば、jQueryセレクタを使って)、本来一緒にしておくべきものを追い出してしまっているのです。
 
-By combining these related technologies together under the same component the system becomes cleaner. We respect React because of this important insight.
+関連するこれらの技術をコンポーネント内にまとめることで、システムはよりクリーンになります。この重要な直感において、Reactは偉大でした。
 
-React worked well for us, and we still use it in our [Disqus Importer](/importer/) but we were bothered by the size and syntax of React (*especially* the syntax). We started thinking it could be simpler; both internally and for the user.
+Reactはよく機能し、まだ使っているプロジェクトもありますが、Reactのサイズと文法 (**特に** 文法!) には不満もありました。僕たちは、ユーザにとっても、実装としても、もっと単純にできないものか考え始めたのです。
 
 
-### React syntax
+### Reactの文法
 
-The following example was taken directly from the React home page:
+次の例は、Reactのホームページから直接持ってきたものです。
 
 
 ``` javascript
@@ -64,12 +65,12 @@ var TodoApp = React.createClass({
 React.render(<TodoApp />, mountNode);
 ```
 
-JSX is mixture of HTML and JavaScript. You can include HTML anywhere on the component; inside methods and in property assignments.
+JSXはHTMLとJavaScriptのミックスです。HTMLをコンポーネントの好きなところに含めることができます。メソッドの中でも、プロパティの値としても。
 
 
-### Riot syntax
+### Riotの文法
 
-Here is the above thing with Riot:
+そして、こちらは上と同じ内容をRiotで書いた場合です。
 
 ``` html
 <todo>
@@ -94,7 +95,7 @@ Here is the above thing with Riot:
 </todo>
 ```
 
-And this is how the above tag is mounted on a page:
+このタグはこのページに次のようにマウントされます。
 
 ``` html
 <todo></todo>
@@ -102,48 +103,48 @@ And this is how the above tag is mounted on a page:
 <script>riot.mount('todo')</script>
 ```
 
-### Same, same — but different
+### 同じ、だけど全然違う
 
-In Riot HTML and JavaScript appear much more familiar. Both are under the same component, but neatly separated from each other. The HTML can be mixed with JavaScript expressions.
+Riotでは、HTMLとJavaScriptはより見慣れた形であらわれます。どちらも、同じコンポーネントのもとにありますが、きちんとそれぞれが分けられています。HTMLはJavaScriptのテンプレート変数(expressions)と混ぜることができます。
 
-No proprietary stuff, except the notation of enclosing expressions inside curly braces.
+テンプレート変数を波括弧で囲むこと以外、独自路線は一切なしです。
 
-You see less boilerplate. Less brackets, commas, system properties and method names. Strings can be interpolated: `"Hello {world}"` instead of `"Hello " + this.state.world` and methods can be defined with compact ES6 syntax. Just less everything.
+少ないボイラープレート、少ない括弧にカンマ、システムプロパティやメソッド名に気がつくでしょう。文字列には、変数を挿入することができます: `"Hello " + this.state.world`の代わりに、`"Hello {world}"`でOK。そして、メソッドはES6のコンパクトな文法で定義できます。
 
-We think Riot syntax is the cleanest way to separate layout and logic while enjoying the benefits of isolated reusable components.
-
-
-### String based vs DOM based
-
-When a component is initialized React parses a string and Riot traverses a DOM tree.
-
-Riot takes the expressions from the tree and stores them in an array. Each expression has a pointer to a DOM node. On each run these expressions are evaluated and compared to the values in the DOM. When a value has changed the corresponding DOM node is updated. In a way Riot also has a virtual DOM, just a much simpler one.
-
-Since these expressions can be cached an update cycle is very fast. Going through 100 or 1000 expressions usually takes 1ms or less.
-
-The React sync algorithm is much more complex since the HTML layout can change randomly after each update. Given the enormous challenge, Facebook developers did an impressive job with it.
-
-We saw that the complex diffing can be avoided.
-
-In Riot the HTML structure is fixed. Only loops and conditionals can add and remove elements. But a `div` cannot be converted to a `label` for example. Riot only updates the expressions without complex subtree replacements.
+再利用可能なコンポーネントとして分離しつつも、レイアウトとロジックを分けるのに、Riotの文法は一番すっきりした方法だと、僕たちは考えています。
 
 
-### Flux and routing
+### 文字列ベースかDOMベースか
 
-React deals with the UI only, which is a good thing. All great software projects have a sharp focus.
+コンポーネントが初期化される際、Reactは文字列をパースし、RiotはDOMツリーをトラバースします。
 
-Facebook recommends to use [Flux](http://facebook.github.io/flux/docs/overview.html) to structure the client-side code. It's more of a pattern than a framework and is packed with great ideas.
+Riotはテンプレート変数をそのツリーから取得し、配列に保持します。それぞれのテンプレート変数は、DOMノードへのポインターを持っています。それぞれでテンプレート変数は評価され、DOMの値と比較されます。もし、値が変更されていれば、該当するDOMノードが更新されます。その過程で、Riotは仮想DOM(と言ってもよりシンプルなものですが)を持ちます。
 
-Riot comes bundled with custom tags, an event emitter (observable) and router. We believe that these are the fundamental building blocks of client side applications. Events bring modularity, a router takes care of the URL and the back button and custom tags take care of the user interface.
+これらのテンプレート変数はキャッシュされ、更新は非常に高速です。100か1000のテンプレート変数があっても通常1ミリ秒かそれ以下です。
 
-Just like Flux, Riot is flexible and leaves the bigger architectural decisions for the developer. It's just a library to help you achieve the goal.
+Reactの場合、更新後にHTMLレイアウトがランダムに変更されうるため、同期アルゴリズムはもっと複雑怪奇です。この計り知れない挑戦に、Facebookの開発者たちは素晴らしい仕事をしました。
 
-You can build a Flux-like system by using Riot's observable and router. In fact such thing [already exists](https://github.com/jimsparkman/RiotControl).
+でも、この複雑さに挑戦する必要はなかったのです。
+
+RiotではHTMLの構造は固定です。ループと条件文だけが、要素の追加と削除を行います。ですが、例えば`div`が`label`に変換されるようなことは起きえません。Riotは複雑な部分木(DOMツリー)の置き換えなしに、テンプレート変数だけを更新します。
 
 
-### 10x - 128x bigger
+### Fluxとルーティング
 
-React is 10x bigger than Riot.
+ReactはUIのみを扱います。それ自体は良いことです。偉大なソフトウェアプロジェクトは必ず鋭いフォーカスを持っています。
+
+Facebookは、クライアントサイドのコードを構造化するのに、[Flux](http://facebook.github.io/flux/docs/overview.html)の利用を推奨しています。これはフレームワークというよりも素晴らしいアイデアを詰め込んだ、ひとつのパターンです。
+
+Riotはカスタムタグとともに、イベントエミッタ(オブザーバブル)とルータがついて来ます。これらがクライアントサイドアプリケーション構築の基礎的なブロックだと信じているからです。イベントはモジュール性をもたらし、ルータはURLと「戻る」ボタンをハンドリングし、カスタムタグがユーザインターフエースを担います。
+
+ちょうどFluxのように、Riotは柔軟で、開発者に設計上の大きな決定権を残しています。これは、ゴールに到達するのを助けるライブラリにすぎません。
+
+RiotのオブザーバブルとルータでFluxライクなシステムを構築することも可能です。実際、そういった試みも[すでにあります](https://github.com/jimsparkman/RiotControl)。
+
+
+### 10〜128倍大きい
+
+Reactは、Riotの10倍のサイズです。
 
 <small><em>react.min.js</em> – 119KB</small>
 <span class="bar red"></span>
@@ -153,7 +154,7 @@ React is 10x bigger than Riot.
 
 <br>
 
-The recommended React router is 128x larger than Riot router.
+Reactの推奨ルータは、Riotのルータの128倍巨大です。
 
 <small><em>react-router.min.js</em> – 54.9KB</small>
 <span class="bar red"></span>
@@ -164,29 +165,30 @@ The recommended React router is 128x larger than Riot router.
 <small><em>riot.router.min.js</em> – 0.43KB</small>
 <span class="bar blue" style="width: 0.7%"></span>
 
-Admittedly this router comparison is a bit unfair because [react-router](https://github.com/rackt/react-router) has a lot more features. But the above chart clearly highlights the goal of Riot: to provide the most minimalistic API for the job.
 
-The React ecosystem is more frameworky and favors larger API surfaces. The bigger alternative is more popular than [react-mini-router](https://github.com/larrymyers/react-mini-router) in the React community.
+確かに、このルータ比較はちょっと不公平です。[react-router](https://github.com/rackt/react-router)はより多くの機能を持っています。ですが、この図はRiotのゴール、つまり「最もミニマリスティックなAPIを提供すること」を明確に示すものです。
+
+Reactのエコシステムは、よりフレームワーク的で、APIの肥大化の気配がします。実際、小さな実装の[react-mini-router](https://github.com/larrymyers/react-mini-router)よりも、この大きな選択肢がReactコミュニティでは人気です。
 
 
 # Polymer
 
-Polymer takes the Web Component standard and makes it available for the latest browsers. This allows you to write custom tags in a standard manner.
+PolymerはWeb Component標準に則り、最新ブラウザで利用可能にします。これは、カスタムタグを標準的な方法で書けるということです。
 
-Conceptually Riot is the same thing but there are differences:
+コンセプトとしてはRiotも同じなのですが、いくつかの違いがあります:
 
-1. Riot updates only the elements that have changed resulting to less DOM operations.
+1. Riotは変更のあった要素だけを更新するため、少ないDOM操作で済みます。
 
-2. Polymer syntax is more complex and requires one to study more books.
+2. Polymerの文法はもっと複雑で、本を何冊か読まなくてはいけません。
 
-3. Individual components are imported with HTML `link rel="import"`. Polyfills must resort to queued up XHRs, which makes it painfully slow unless the dedicated [vulcanize](https://github.com/polymer/vulcanize) tool is used. Riot tags are imported with `script src` and multiple tags can be combined with regular tooling.
+3. それぞれのコンポーネントはHTMLの`link rel="import"`で読み込まれます。PolyfillsはXHRsに頼る必要があり、専用の[vulcanize](https://github.com/polymer/vulcanize)ツールを使わない限り、耐えられない遅さです。Riotのタグは`script src`で読み込まれ、一般的なツールで複数のタグを結合することができます。
 
-4. No ability to perform server side rendering.
+4. サーバサイドレンダリングができません。
 
 
-### 11x bigger
+### 11倍大きい
 
-Polymer(v1.0.6) + WebComponents(v0.7.7) is 11x bigger than Riot
+Polymer(v1.0.6) + WebComponents(v0.7.7)はRiotの11倍のサイズです。
 
 <small><em>polymer.min.js</em> – 138KB</small>
 <span class="bar red"></span>
@@ -194,11 +196,11 @@ Polymer(v1.0.6) + WebComponents(v0.7.7) is 11x bigger than Riot
 <small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
 <span class="bar blue" style="width: {{ site.size_min / 138 * 100 }}%"></span>
 
-Web components are said to be the [king of all polyfilling challenges](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/) and this is why Polymer requires such a large amount of code.
+Web Componentsは[Polyfill挑戦の王様](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/)と呼ばれ、Polymerがこんなにも巨大なコードを必要とする所以です。
 
 
-### Experimental
+### 実験的
 
-Polymer is based on experimental technology. Native Web Component support is not present in Safari or IE. IE status is "under consideration" and Safari plans are uncertain. Some WebKit [commits](https://lists.webkit.org/pipermail/webkit-dev/2013-May/024894.html) hint that they plan not to support it at all. And Polymer is only capable of polyfilling the _latest versions_ of “evergreen”  browsers (IE 10+).
+Polymerは実験的な技術の上に成り立っています。ネイティブのWeb Componentsサポートは、まだSafariやIEにありません。いまだ、IEのステータスは「検討中」中であり、Safariのプランは不透明です。いくつかのWebKitへの[コミット](https://lists.webkit.org/pipermail/webkit-dev/2013-May/024894.html)からは彼らにその気がまったくないことが伺えます。そして、Polymerが唯一、「新鮮な」最新版ブラウザたち(IE 10+)に対応するPolyfillです。
 
-Polymer project is over [2 years old](https://github.com/Polymer/polymer/commit/0452ada044a6fc5818902e685fb07bb4678b2bc2) and it hasn't gained any significant adoption. It's uncertain whether Web Components will ever be natively supported.
+Polymerは[2年以上経過した](https://github.com/Polymer/polymer/commit/0452ada044a6fc5818902e685fb07bb4678b2bc2)プロジェクトですが、いまだ目立った普及を見せていません。今後、Web Componentsがネイティブサポートされるかどうかは、不透明です。
