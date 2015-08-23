@@ -9,7 +9,7 @@ class: apidoc
 
 ### <a name="constructor"></a> riot.observable(el)
 
-Adds [Observer](http://en.wikipedia.org/wiki/Observer_pattern) support for the given object `el` or if the argument is empty a new observable instance is created and returned. After this the object is able to trigger and listen to events. For example:
+与えられたオブジェクト`el`に[Observer](https://ja.wikipedia.org/wiki/Observer_パターン)機能を付加するか、引数をとらない場合は新しいオブジェクトを生成して返します。この後、オブジェクトはイベントのトリガーおよび監視ができるようになります。例:
 
 ``` js
 function Car() {
@@ -31,23 +31,23 @@ var car = new Car()
 car.trigger('start')
 ```
 
-@returns the given object `el` or a new observable instance
+@returns 与えられた`el`オブジェクト、または新しいobservableインスタンス
 
 
 ### <a name="on"></a> el.on(events, callback)
 
-Listen to the given space separated list of `events` and execute the `callback` each time an event is triggered.
+与えられたイベントを監視して、イベントがトリガーされるごとに`callback`を実行します。`events`はスペースで区切って複数指定可能。
 
 ``` js
-// listen to single event
+// ひとつのイベントを監視
 el.on('start', function() {
 
 })
 
-// listen to multiple events, the event type is given as the argument
+// 複数のイベントを監視。type引数にはどのイベントが発火したかが渡される
 el.on('start stop', function(type) {
 
-  // type is either 'start' or 'stop'
+  // typeは'start'か'stop'のどちらか
 
 })
 ```
@@ -56,7 +56,7 @@ el.on('start stop', function(type) {
 
 ### <a name="one"></a> el.one(event, callback)
 
-Listen to the given `event` and execute the `callback` at most once.
+一度だけ、与えられた`event`を監視し、`callback`を実行します。
 
 ``` js
 // run the function once, even if 'start' is triggered multiple times
@@ -69,7 +69,7 @@ el.one('start', function() {
 
 ### <a name="off"></a> el.off(events)
 
-Removes the given space separated list of event listeners
+指定されたイベントのリスナ(コールバック)を削除します。`events`はスペースで区切って複数指定可能。
 
 ``` js
 el.off('start stop')
@@ -79,7 +79,7 @@ el.off('start stop')
 
 ### <a name="off-fn"></a> el.off(events, fn)
 
-Removes the given callback from the list of events
+指定されたイベントについて、特定のリスナ`fn`を削除します。
 
 ``` js
 function doIt() {
@@ -88,7 +88,7 @@ function doIt() {
 
 el.on('start middle end', doIt)
 
-// remove a specific listener from start and end events
+// startとendイベントから特定のリスナだけを削除
 el.off('start end', doIt)
 ```
 
@@ -96,14 +96,14 @@ el.off('start end', doIt)
 
 ### <a name="off-all"></a> el.off('*')
 
-Removes all listeners from all event types.
+すべてのイベントのすべてのリスナを削除します。
 
 @returns `el`
 
 
 ### <a name="trigger"></a> el.trigger(event)
 
-Execute all callback functions that listen to the given `event`
+`event`を監視しているすべてのコールバック関数を実行します。
 
 ``` js
 el.trigger('start')
@@ -113,15 +113,15 @@ el.trigger('start')
 
 ### <a name="trigger-args"></a> el.trigger(event, arg1 ... argN)
 
-Execute all callback functions that listen to the given `event`. Any number of extra parameters can be provided for the listeners.
+`event`を監視しているすべてのコールバック関数を実行します。任意の数の引数をリスナに渡すことができます。
 
 ``` js
-// listen to 'start' event and expect extra arguments
+// startイベントを監視して、引数を待ち受け
 el.on('start', function(engine_details, is_rainy_day) {
 
 })
 
-// trigger start event with extra parameters
+// 引数とともに、startイベントをトリガー
 el.trigger('start', { fuel: 89 }, true)
 
 ```
