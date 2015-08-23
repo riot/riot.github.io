@@ -7,7 +7,7 @@ description: Riot lets you build user interfaces with custom tags using simple a
 <div id="hero">
   <img src="/img/logo/riot240x.png">
   <h1>A React-like user interface micro-library</h1>
-  <h4>カスタムタグ • 楽しい文法 • 仮装DOM • コンパクトな実装</h4>
+  <h4>カスタムタグ • 楽しい文法 • 仮想DOM • コンパクトな実装</h4>
 
   <div id="version-slurp">
     <a href="/download/" class="tag blue">v{{ site.version }}</a> &mdash;
