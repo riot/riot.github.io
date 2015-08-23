@@ -7,98 +7,97 @@ class: apidoc
 {% include ja/api-tabs.html %}
 
 
-## Mounting
+## マウント
 
 ### <a name="mount"></a> riot.mount(customTagSelector, [opts])
 
-`customTagSelector` selects elements from the page and mounts them with a custom tag. The selected elements' name must match the custom tag name.
+`customTagSelector` ページから要素を選択し、カスタムタグをそこにマウントします。選択された要素の名前は、カスタムタグの名前と一致していなければなりません。
 
-`opts` optional object is passed for the tags to consume. This can be anything, ranging from a simple object to a full application API. Or it can be a Flux- store. Really depends on how you want to structure your client-side applications. Read more about [modular Riot applications](/guide/application-design/#modularity).
+`opts` タグに渡すオブジェクトを指定できます (省略可)。ただのシンプルなオブシェクトから、アプリケーションAPIまで、なんでもOKです。あるいは、Fluxストアというのもありです。これは、あなたのクライアントサイドアプリケーションをどのように構築したいかにかかっています。さらに詳しくは、[Riot アプリケーションのモジュール性](/ja/guide/application-design/#モジュール性)を参照してください。
 
 
 ``` js
-// selects and mounts all <pricing> tags on the page
+// <pricing>要素に、カスタムタグをマウントする
 var tags = riot.mount('pricing')
 
-// mount all custom tags with a class name .customer
+// .customerクラスが指定された要素にカスタムタグをマウントする
 var tags = riot.mount('.customer')
 
-// mount <account> tag and pass an API object as options
+// <account>をマウントし、APIオブジェクトをオプションとして渡す
 var tags = riot.mount('account', api)
 ```
 
-@returns: an array of the mounted [tag instances](#tag-instance)
+@returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列を返します。
 
 ### <a name="mount-star"></a> riot.mount('*', [opts])
 
-A special Riot specific selector "*" can be used to mount all custom tags on the page:
+ページ上のすべてのカスタムタグをマウントするのに、Riot特有のセレクタとして"*"が使えます。
 
 ``` js
 riot.mount('*')
 ```
 
-@returns: an array of the mounted [tag instances](#tag-instance)
+@returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列を返します。
 
 ### <a name="mount-tag"></a> riot.mount(selector, tagName, [opts])
 
-Where
-
-- `selector` selects any DOM nodes from the page to be mounted
-- `tagName` specifies the custom tag name to be used
-- `opts` optional object is passed for the tags to consume
+- `selector` マウントするDOMノードを選択します
+- `tagName` 使用するカスタムタグの名前を指定します
+- `opts` タグに渡すオブジェクトを指定できます (省略可)
 
 
 ``` js
-// mounts custom tag "my-tag" to div#main and pass api as options
+// カスタムタグ"my-tag"をdiv#mainにマウントして、オプションとしてapiを渡す
 var tags = riot.mount('div#main', 'my-tag', api)
 ```
 
-@returns: an array of the mounted [tag instances](#tag-instance)
+@returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列を返します。
 
 ### <a name="mount-dom"></a> riot.mount(domNode, tagName, [opts])
 
-Mount a custom tag named tagName on a given domNode passing optional data with opts. For example:
+与えられた`domNode`に、`opts`(省略可)で渡されたデータとともに、`tagName`で指定されたカスタムタグをマウントします。例:
 
 ```
-// mounts "my-tag" to given DOM node
-riot.mount(document.getElementById('slide'), 'users', api)
+// "my-tag"を、与えられたDOMノードにマウント
+riot.mount(document.getElementById('slide'), 'my-tag', api)
 ```
 
-@returns: an array of the mounted [tag instances](#tag-instance)
+@returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列を返します。
 
 ### <a name="mount-to"></a> riot.mountTo(domNode, tagName, [opts])
 
-This method is deprecated since *v2.0.11*. This is the same as `riot.mount(domNode, tagName, [opts])`.
+このメソッドは *v2.0.11* から非推奨になりました。`riot.mount(domNode, tagName, [opts])`と同じ動作をします。
 
 
 
 
-## Rendering
+## レンダリング
 
 ### <a name="render"></a> riot.render(tagName, [opts])
 
+タグをHTMLとしてレンダリング。このメソッドは *サーバサイド* (Node/io.js) でのみ利用できます。例:
 Rendering a tag to html. This method is only available on *server-side* (Node/io.js). For example:
 
 ```
-// render "my-tag" to html
+// "my-tag"をHTMLにレンダリング
 var mytag = require('my-tag')
 riot.render(mytag, { foo: 'bar' })
 ```
 
-@returns: tags render as html
+@returns: HTMLとしてレンダリングされたタグ
 
 
-## Tag instance
+## タグのインスタンス
 
-Following properties are set for each tag instance:
+次のプロパティが、それぞれのタグのインスタンスにはセットされます:
 
-- `opts` - the options object
-- `parent` - the parent tag if any
-- `root` - root DOM node
-- `tags` - nested custom tags
+- `opts` - タグに渡されたオプション
+- `parent` - 親タグ (もしあれば)
+- `root` - ルートになるDOMノード
+- `tags` - 入れ子になっているカスタムタグ
 
 
-You can use these references in both the HTML and JavaScript code. For example:
+これらの参照はHTMLとJavaScriptのコードの双方から利用できます。例:
 
 
 ``` html
@@ -109,7 +108,7 @@ You can use these references in both the HTML and JavaScript code. For example:
 </my-tag>
 ```
 
-You can freely set any data to the instance (aka "context") and they are available in the HTML expressions. For example:
+自由に、好きなデータをインスタンスに対してセットできます (インスタンスを「コンテキスト」と言い換えても構いません)。それらは、HTML内のテンプレート変数からも利用可能です。例:
 
 ``` html
 <my-tag>
@@ -120,13 +119,13 @@ You can freely set any data to the instance (aka "context") and they are availab
 ```
 
 
-## Updating
+## 更新
 
 ### <a name="tag-update"></a> this.update()
 
-Updates all the expressions on the current tag instance as well as on all the children. This method is automatically called every time an event handler is called when user interacts with the application.
+現在のタグインスタンス内と、子タグについても同様に、すべてのテンプレート変数を更新します。ユーザのインタラクションによってイベントハンドラが呼ばれた場合、このメソッドも毎回自動的に呼ばれます。
 
-Other than that riot does not update the UI automatically so you need to call this method manually. This typically happens after some non-UI related event: after `setTimeout`, AJAX call or on some server event. For example:
+それ以外のケースでは、RiotはUIを自動更新しないので、このメソッドを手動で呼ぶ必要があります。典型的には次のような非UIイベントの後がありえます: `setTimeout`の後、AJAX呼び出しや、何かのサーバイベントなど。例:
 
 ``` html
 <my-tag>
@@ -146,10 +145,11 @@ Other than that riot does not update the UI automatically so you need to call th
 </my-tag>
 ```
 
-On above example the error message is displayed on the UI after the `update()` method has been called. We assign `this` variable to `self` since inside the AJAX callback `this` variable points to the response object and not to the tag instance.
+上の例では、`update()`が呼ばれた後、エラーメッセージがUIに表示されます。`this`変数を`self`にアサインしているのは、AJAX呼び出しの中では`this`変数が、タグインスタンスではなくレスポンスオブジェクトを参照しているためです。
 
 ### <a name="tag-update-data"></a> this.update(data)
 
+現在のインスタンスに値をセットして、テンプレート変数を更新します。これは、`this.update()`と同様ですが、呼び出しと同時にコンテキストデータをセットできます。つまり、このように書く代わりに:
 Set values of the current instance and update the expressions. This is same as `this.update()` but allows you to set context data at the same time. So instead of this:
 
 ``` js
@@ -157,79 +157,79 @@ self.error = error_message
 self.update()
 ```
 
-you can do this:
+次のように書くことができます:
 
 ``` js
 self.update({ error: error_message })
 ```
 
-which is shorter and cleaner.
+この方が短くてすっきりしてますね。
 
 ### <a name="update"></a> riot.update()
 
-Updates all the mounted tags and their expressions on the page.
+ページ上のすべてのタグとそのテンプレート変数を更新します。
 
-@returns: an array of [tag instances](#tag-instance) that are mounted on the page.
+@returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列を返します。
 
 
 
-## Unmounting
+## マウントの解除
 
 ### <a name="tag-unmount"></a> this.unmount(keepTheParent)
 
-Detaches the tag and it's children from the page. An "unmount" event is fired.
-If you want to unmount a tag without removing the parent tag you need to pass `true` to the unmount method
+タグとその子孫をページから取り除きます。"unmount"イベントが発火します。
+もし、親タグを削除せずにマウント解除したい場合は、`unmount`メソッドに`true`を渡す必要があります。
 
-Remove the tag from the DOM:
+DOMからタグを取り除く:
 
 ``` js
 mytag.unmount()
 ```
 
-Remove the tag children and keep only the parent tag:
+タグの子孫を取り除き、親タグだけ残す:
 
 ``` js
 mytag.unmount(true)
 ```
 
-## Nested tags
+## 入れ子のタグ
 
-You have access to nested tag instances via `tags` variable:
+入れ子になった(ネストされた)タグのインスタンスは、`tags`変数からアクセスできます:
 
 ``` html
 <my-tag>
 
   <child></child>
 
-  // access to child tag
+  // 子タグにアクセス
   var child = this.tags.child
 
 </my-tag>
 ```
 
-If more than one of the same child tag is used, it is accessed as an array `this.tags.child[n]`
+もし、ひとつ以上の同じ子タグが使われた場合は、配列`this.tags.child[n]`としてアクセスされます。
 
-You can also use the `name` attribute to give another name for the nested tag.
+入れ子のタグに、`name`属性で別名を与えてアクセスすることもできます。
 
 ``` html
 <my-tag>
 
   <child name="my_nested_tag"></child>
 
-  // access to child tag
+  // 子タグにアクセス
   var child = this.tags.my_nested_tag
 
 </my-tag>
 ```
 
-The child tags are initialized after the parent tag so the methods and properties are available on the "mount" event.
+子タグは、親タグの後に初期化されます。つまり、(子タグの)メソッドやプロパティには`mount`イベントでアクセスする必要があります。(訳注: コンストラクタではなく)
 
 ``` html
 <my-tag>
 
   <child name="my_nested_tag"></child>
 
-  // access to child tag methods
+  // 子タグのメソッドにアクセス
   this.on('mount', function() {
     this.tags.my_nested_tag.someMethod()
   })
@@ -237,12 +237,12 @@ The child tags are initialized after the parent tag so the methods and propertie
 </my-tag>
 ```
 
-## <a name="yield"></a> Yielding nested HTML
+## <a name="yield"></a> YieldによるHTMLの入れ子
 
-The `<yield>` tag it's a special riot core feature that allows you to inject and compile the content of any custom tag inside its template in runtime
-This technique allows you to extend your tags templates with html contents rendered eventually from the server
+`<yield />`タグは、Riotの特別なコア機能で、実行時に、カスタムタグで囲まれた部分をテンプレート内に挿入してコンパイルすることを可能にします。
+この技術によって、独自タグに、サーバでレンダリングされたHTMLコンテンツを入れて表示するといったことができます。
 
-For example using the following riot tag `my-post`
+例として、次のRiotタグ`my-post`を使います。
 
 ``` html
 <my-post>
@@ -252,7 +252,7 @@ For example using the following riot tag `my-post`
 </my-post>
 ```
 
-anytime you will include the `<my-post>` tag in your app
+`<my-post>`はアプリケーションの好きな場所に含めることができます。
 
 ``` html
 <my-post title="What a great title">
@@ -260,7 +260,7 @@ anytime you will include the `<my-post>` tag in your app
 </my-post>
 ```
 
-once mounted `riot.mount('my-post')` it will be rendered in this way:
+`riot.mount('my-post')`でマウントされると、次のようにレンダリングされます:
 
 ``` html
 <my-post>
@@ -269,11 +269,11 @@ once mounted `riot.mount('my-post')` it will be rendered in this way:
 </my-post>
 ```
 
-#### Yield and loops
+#### Yieldとループ
 
-The `<yield>` tag could be used also in a loop or in a child tag but you should be aware that __it will be always parsed and compiled using the child data__
+`<yield />`タグはループや子タグの中で使うことができますが、 __常に子タグのコンテキストでパースされる__ ことに注意してください。
 
-The following `blog.tag` riot component
+次のRiotコンポーネント、`blog.tag`は、
 
 
 ``` html
@@ -313,7 +313,7 @@ The following `blog.tag` riot component
 
 ```
 
-will be compiled in this way:
+次のようにコンパイルされます:
 
 ``` html
 <blog>
@@ -334,17 +334,17 @@ will be compiled in this way:
 ```
 
 
-## Events
+## イベント
 
-Each tag instance is an [observable](#observable) so you can use `on` and `one` methods to listen to the events that happen on the tag instance. Here's the list of supported events:
+それぞれのタグインスタンスは[オブザーバブル](#observable)なので、`on`と`one`メソッドをタグで起きるイベント監視のために使えます。サポートされているイベントは次のとおり:
 
 
-- "update" – right before the tag is updated. allows recalculation of context data before the UI expressions are updated.
-- "updated" – right after the tag is updated. allows do some work with updated DOM
-- "mount" – right after tag is mounted on the page
-- "unmount" – after the tag is removed from the page
+- "update" – タグの更新直前。UIが更新される前にコンテキストデータを再計算できる。
+- "updated" – タグの更新完了の直後。更新されたDOMに対して処理ができる。
+- "mount" – ページにタグがマウントされた直後。
+- "unmount" – ページからタグのマウントが解除された直後。
 
-For example:
+例:
 
 ``` js
 // cleanup resources after tag is no longer part of DOM
@@ -353,20 +353,21 @@ this.on('unmount', function() {
 })
 ```
 
-## Reserved words
+## 予約語
 
-The above method and property names are reserved words for Riot tags. Don't use any of following as your instance variable or method name: `opts`, `parent`, `root`, `update`, `unmount`, `on`, `off`, `one` and `trigger`. Local variables can be freely named. For example:
+上記のメソッドとプロパティの名前は、Riotタグの予約語です。次のいずれもインスタンス変数やメソッドの名前として使ってはいけません:  `opts`, `parent`, `root`, `update`, `unmount`, `on`, `off`, `one`, `trigger`
+ローカル変数については、自由に名前付けできます:
 
 ``` javascript
 <my-tag>
 
-  // allowed
+  // OK
   function update() { } 
 
-  // not allowed
+  // ダメ
   this.update = function() { }
 
-  // not allowed
+  // ダメ
   update() {
 
   }
@@ -374,20 +375,20 @@ The above method and property names are reserved words for Riot tags. Don't use 
 </my-tag>
 ```
 
-## Manual construction
+## 手動でのタグ構築
 
 ### <a name="tag"></a> riot.tag(tagName, html, [css], [attrs], [constructor])
 
-Creates a new custom tag "manually" without the compiler.
+新しいカスタムタグを「手動」でコンパイラを使わずに作成します。
 
-- `tagName` the tag name
-- `html` is the layout with [expressions](/guide/#expressions)
-- `css` is the style for the tag (optional)
-- `attrs` string of attributes for the tag (optional).
-- `constructor` is the initialization function being called before the tag expressions are calculated and before the tag is mounted
+- `tagName` タグの名前
+- `html` [テンプレート変数](/ja/guide/#テンプレート変数)を含むレイアウト
+- `css` タグのスタイル (省略可)
+- `attrs` タグの属性値 (省略可)
+- `constructor` タグのマウントやテンプレート変数が計算されるより前に呼ばれる、初期化関数
 
 
-#### Example
+#### 例
 
 ``` javascript
 riot.tag('timer',
@@ -411,20 +412,20 @@ riot.tag('timer',
   })
 ```
 
-See [timer demo](http://jsfiddle.net/gnumanth/h9kuozp5/) and [riot.tag](/api/#tag-instance) API docs for more details and *limitations*.
+詳細と *制約* については、[タイマーのデモ](http://jsfiddle.net/gnumanth/h9kuozp5/)と[riot.tag](#タグのインスタンス)のAPIドキュメントを参照してください。
 
 
-<span class="tag red">Warning</span> by using `riot.tag` you cannot enjoy the advantages of compiler and following features are not supported:
+<span class="tag red">警告</span> `riot.tag`を使うと、コンパイラの長所や次のような機能が使えなくなります:
 
-1. Self- closing tags
-2. Unquoted expressions. Write `value="{ val }"` instead of `value={ val }`
-3. Boolean attributes. Write `__checked="{ flag }"` instead of `checked={ flag }`
-4. Shorthand ES6 method signatures
-5. `<img src={ src }>` must be written as `<img riot-src={ src }>` in order to avoid illegal server requests
-6. `style="color: { color }"` must be written as `riot-style="color: { color }"` so that style attribute expressions work in IE.
+1. 自己閉じタグ
+2. コーテーションなしのテンプレート変数: `value={ val }`の代わりに、`value="{ val }"`と書くこと
+3. 真偽値属性: `checked={ flag }`の代わりに`__checked="{ flag }"`と書くこと
+4. ES6のメソッドの省略記法
+5. `<img src={ src }>`は`<img riot-src={ src }>`と書かなくてはならない: 不正なサーバリクエストを防止するため
+6. `style="color: { color }"`は`riot-style="color: { color }"`のように書かなくてはならない: スタイル属性がIEでも動作するように
 
 
-You can take advantage of `<template>` or `<script>` tags as follows:
+次のように書くことで`<template>`や`<script>`タグの利点を生かすことはできます:
 
 ``` html
 <script type="tmpl" id="my_tmpl">
