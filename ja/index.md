@@ -82,7 +82,7 @@ Riotは全てのブラウザで、カスタムタグを実現します。
 
 HTMLの文法はWebの *デファクト* 言語であり、ユーザインターフェースを構築するためにデザインされています。文法はシンプルで明確、入れ子構造が備わっていて、属性はカスタムタグにオプションを提供するための簡潔な方法です。
 
-<span class="tag">メモ</span> タグファイルは、ブラウザで実行する前に、JavaScriptに [変換されます](compiler.html)。
+<span class="tag">メモ</span> タグファイルは、ブラウザで実行する前に、JavaScriptに [変換されます](/ja/guide/compiler/)。
 
 
 ### 仮想DOM
@@ -101,7 +101,7 @@ HTMLの文法はWebの *デファクト* 言語であり、ユーザインター
 
 
 ### お気に入りのツールと一緒に
-- タグファイルは、CoffeeScriptやJade、Typescript、LiveScript、ES6や、その他の好きな[any pre-processor](compiler.html#pre-processors)でOK。
+- タグファイルは、CoffeeScriptやJade、Typescript、LiveScript、ES6や、その他の好きな[any pre-processor](/ja/guide/compiler/#%E3%83%97%E3%83%AA%E3%83%97%E3%83%AD%E3%82%BB%E3%83%83%E3%82%B5)でOK。
 - NPMやCommonJS、AMD、Bower、Componentが使えます。
 - [Gulp](https://github.com/e-jigsaw/gulp-riot)や[Grunt](https://github.com/ariesjia/grunt-riot)、[Browserify](https://github.com/jhthorsen/riotify)のプラグインでコンパイル
 
