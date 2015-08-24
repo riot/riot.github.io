@@ -101,7 +101,7 @@ HTMLの文法はWebの *デファクト* 言語であり、ユーザインター
 
 
 ### お気に入りのツールと一緒に
-- タグファイルは、CoffeeScriptやJade、Typescript、LiveScript、ES6や、その他の好きな[any pre-processor](/ja/guide/compiler/#%E3%83%97%E3%83%AA%E3%83%97%E3%83%AD%E3%82%BB%E3%83%83%E3%82%B5)でOK。
+- タグファイルは、CoffeeScriptやJade、Typescript、LiveScript、ES6や、その他の好きな[プリプロセッサ](/ja/guide/compiler/#%E3%83%97%E3%83%AA%E3%83%97%E3%83%AD%E3%82%BB%E3%83%83%E3%82%B5)でOK。
 - NPMやCommonJS、AMD、Bower、Componentが使えます。
 - [Gulp](https://github.com/e-jigsaw/gulp-riot)や[Grunt](https://github.com/ariesjia/grunt-riot)、[Browserify](https://github.com/jhthorsen/riotify)のプラグインでコンパイル
 
@@ -114,7 +114,7 @@ HTMLの文法はWebの *デファクト* 言語であり、ユーザインター
 
 ### 1. 楽しい文法
 
-デザインのゴールの一つは、できる限り最小の"boilerplate"で使える、協力な文法を導入することです。
+デザインのゴールの一つは、できる限り最小の"boilerplate"で使える、強力な文法を導入することです。
 
 - 強力なショートカット: `class={ enabled: is_enabled, hidden: hasErrors() }`
 - 余計なことを考えなくてOK。`render`とか`state`、`constructor`、`shouldComponentUpdate`などなど。
@@ -125,7 +125,7 @@ HTMLの文法はWebの *デファクト* 言語であり、ユーザインター
 
 ### 2. 小さな学習曲線
 
-Riotは他のURライブラリと比較して、10倍か100倍APIが少ないです。
+Riotは他のUIライブラリと比較して、APIの数が10分の1か、100分の1。
 
 1. 覚えることが少ない / 見なきゃいけない本もチュートリアルも少ない
 2. 独自形式なものが少なく、標準的なものが多い
