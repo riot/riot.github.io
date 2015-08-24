@@ -101,7 +101,7 @@ HTMLの文法はWebの *デファクト* 言語であり、ユーザインター
 
 
 ### お気に入りのツールと一緒に
-- タグファイルは、CoffeeScriptやJade、Typescript、LiveScript、ES6や、その他の好きな[any pre-processor](/ja/guide/compiler/#pre-processors)でOK。
+- タグファイルは、CoffeeScriptやJade、Typescript、LiveScript、ES6や、その他の好きな[any pre-processor](/ja/guide/compiler/#%E3%83%97%E3%83%AA%E3%83%97%E3%83%AD%E3%82%BB%E3%83%83%E3%82%B5)でOK。
 - NPMやCommonJS、AMD、Bower、Componentが使えます。
 - [Gulp](https://github.com/e-jigsaw/gulp-riot)や[Grunt](https://github.com/ariesjia/grunt-riot)、[Browserify](https://github.com/jhthorsen/riotify)のプラグインでコンパイル
 
