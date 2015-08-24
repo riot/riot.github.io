@@ -6,13 +6,13 @@ class: apidoc
 
 {% include ja/api-tabs.html %}
 
-## On browser
+## ブラウザ
 
-Following methods apply to browsers only. Jump to [server section](#compile-on-server) if you want to compile under node or io.js.
+ここに紹介するメソッドはブラウザのみに対応しています。Nodeかio.jsでコンパイルしたい場合は、[サーバの節](#サーバ)に進んでください。
 
 ### <a name="compile"></a> riot.compile(callback)
 
-Compile all tags defined with `<script type="riot/tag">` to JavaScript. These can be inlined script definitions or external resources that load scripts defined with `src` attribute. After all scripts are compiled the given `callback` method is called. For example:
+`<script type="riot/tag">`で定義されたすべてのタグをコンパイルします。インラインのスクリプト定義、あるいは`src`属性で指定された外部リソース、どちらでも大丈夫です。すべてのスクリプトがコンパイルされるとと、 `callback`メソッドが呼び出されます。例:
 
 ``` javascript
 riot.compile(function() {
@@ -20,29 +20,29 @@ riot.compile(function() {
 })
 ```
 
-You can leave out the `riot.compile` call and write just:
+`riot.compile`呼び出しを省略して、ただ次のように書くのでもOKです:
 
 ``` javascript
 var tags = riot.mount('*')
 ```
 
-but you don't get to know when external resources are loaded and compiled and the return value is an empty array if you have external scripts. If all scripts are defined on the page then riot.compile step can be left out.
+ただし、外部リソースのロードとコンパイルが完了するタイミングを知ることはできなくなります。戻り値も、外部スクリプトを含む場合は空の配列となります。つまり、すべてのスクリプトがページ上で定義されているのであれば、`riot.compile`のステップは外してしまって構わないでしょう。
 
-For more details, read the compiler [general introduction](/guide/compiler/).
+詳しくは、[一般的な説明](/ja/guide/compiler/)を参照してください。
 
 ### <a name="compile-fn"></a> riot.compile(url, callback)
 
-Loads the given URL and compiles all tags after which the `callback` is called. For example:
+指定のURLを読み込んで、すべてのタグをコンパイルし、その後`callback`が呼び出されます。例:
 
 ``` javascript
 riot.compile('my/tags.tag', function() {
-  // the loaded tags are ready to be used
+  // 読み込まれたタグはこの時点で利用可能
 })
 ```
 
 ### <a name="compile-tag"></a> riot.compile(tag)
 
-Compiles and executes the given `tag`. For example:
+与えられた`tag`をコンパイルし、実行します。例:
 
 ```
 <template id="my_tag">
@@ -56,23 +56,23 @@ riot.compile(my_tag.innerHTML)
 </script>
 ```
 
-After the call you can use `my-tag` normally.
+呼び出し後、`my-tag`を普通に使うことができます。
 
-A tag definition is assumed if the first non- empty character is `<`, otherwise the argument is taken as URL.
+タグ定義の最初の非空白文字が`<`だと仮定しています。そうでなければ、引数はURLとして解釈されます。
 
-@returns the compiled JavaScript as string
+@returns コンパイルされたJavaScript文字列
 
 ### <a name="compile-to-str"></a> riot.compile(tag, true)
 
-Compiles the `tag` and returns it as a string. Only the transformation from the tag to JavaScript is performed and the tag is not executed on the browser. You can use this method to benchmark the compiler performance for example.
+`tag`をコンパイルし、文字列として返します。タグからJavaScriptへの変換のみで、ブラウザ上でその変換結果が実行されることはありません。このメソッドは、例えば、コンパイラのパフォーマンスについてのベンチマークなどの目的で使えます。
 
 ``` js
 var js = riot.compile(my_tag.innerHTML, true)
 ```
 
-## On server
+## サーバ
 
-After `npm install riot` you can do following:
+`npm install riot`でインストール後、次のことができます:
 
 ```
 var riot = require('riot')
@@ -80,11 +80,11 @@ var riot = require('riot')
 var js = riot.compile(tag)
 ```
 
-The compile function takes the tag definition (string) and returns JavaScript (string).
+コンパイル関数は、タグ定義(文字列)をとって、JavaScript(文字列)を返します。
 
 ### <a name="css-parser"></a> riot.parsers.css [tagName, css]
 
-Custom parsers that could be used to compile your tags css. For example:
+タグ内のCSSをコンパイルするのに使われる、独自パーサ。例:
 
 ```js
 riot.parsers.css.myparser = function(tag, css) {
@@ -101,7 +101,7 @@ riot.parsers.css.myparser = function(tag, css) {
 </custom-parsers>
 ```
 
-will be compiled to:
+これは、次のように変換されます:
 
 ```html
 <custom-parsers>
@@ -114,7 +114,7 @@ will be compiled to:
 
 ### <a name="js-parser"></a> riot.parsers.js [js, options]
 
-Custom parsers that could be used to compile your tags javascript. For example
+タグ内のJavaScriptをコンパイルするのに使われる、独自パーサ。例:
 
 ```js
 riot.parsers.js.myparser = function(js) {
@@ -131,7 +131,7 @@ riot.parsers.js.myparser = function(js) {
 </custom-parsers>
 ```
 
-will be compiled to:
+これは、次のようにコンパイルされます:
 
 ```html
 <custom-parsers>
@@ -144,4 +144,4 @@ will be compiled to:
 
 ### <a name="html-parser"></a> riot.parsers.html [html]
 
-Custom parsers that could be used to compile your tags html
+タグ内のHTMLをコンパイルするのに使われる、独自パーサ。
