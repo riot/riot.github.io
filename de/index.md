@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Riot.js — A React-like user interface micro-library
+title: Riot.js — Eine React-ähnliche user interface micro-library
 description: Riot lets you build user interfaces with custom tags using simple and enjoyable syntax. It uses a virtual DOM similar to React but faster. Riot is very tiny compared to industry standards. We think there is a clear need for another UI library.
 ---
 
 <div id="hero">
   <img src="/img/logo/riot240x.png">
-  <h1>A React-like user interface micro-library</h1>
+  <h1>Eine React-ähnliche user interface micro-library</h1>
   <h4>Custom tags • Enjoyable syntax • Virtual DOM • Tiny size</h4>
 
   <div id="version-slurp">
@@ -17,16 +17,16 @@ description: Riot lets you build user interfaces with custom tags using simple a
 </div>
 
 
-# Why do we need a new UI library?
+# Wieso benötigen wir noch eine weitere UI Bibliothek?
 
-The frontend space is indeed crowded, but we honestly feel the solution is still "out there". We believe Riot offers the right balance for solving the great puzzle. While React seems to do it, they have serious weak points that Riot will solve.
+Der Frontendbereich ist mehr als überfüllt mit existierenden Lösungen, aber wir denken, dass noch immer nicht DIE Lösung existiert. Wir glauben, dass Riot der Mittelweg der Lösungsansätze ist. Während React die üblichen Anforderungen erfüllt, gibt es dennoch Problempunkte die wir mit Riot lösen wollen.
 
-So — here's why we need one:
+Nochmal im Detail:
 
 
 ## 1. Custom tags
 
-Riot brings custom tags to all browsers.
+Mit Riot kann man Browser-unabhängig custom Tags verwenden.
 
 ``` html
 <todo>
@@ -64,7 +64,7 @@ Riot brings custom tags to all browsers.
 </todo>
 ```
 
-A custom tag glues relevant HTML and JavaScript together forming a reusable component. Think React + Polymer but with enjoyable syntax and a small learning curve.
+Ein custom tag verbindet HTML mit Logiglues relevant HTML and JavaScript together forming a reusable component. Vergleichbar mit React + Polymer aber mit angenehmem Syntax und deutlich einfacherer Lernbarkeit.
 
 
 ### Human-readable
