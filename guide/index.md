@@ -228,7 +228,7 @@ Riot gives you access to elements that have `name` attributes directly under the
 
 ### How to use jQuery, Zepto, querySelector, etc...
 
-If you need to access the DOM inside Riot, you'll want to take a look at the [Tag Lifecycle](#tag-lifecycle) and notice that the DOM elements are instaniated until the `update()` event first fires, meaning any attempt to select an element before then will fail.
+If you need to access the DOM inside Riot, you'll want to take a look at the [Tag Lifecycle](#tag-lifecycle) and notice that the DOM elements aren't instantiated until the `update()` event first fires, meaning any attempt to select an element before then will fail.
 
 ```html
 <example-tag>
