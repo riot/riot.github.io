@@ -31,7 +31,7 @@ Mit Riot kann man Browser-unabhängig custom Tags verwenden.
 ``` html
 <todo>
 
-  <!-- layout -->
+  <!-- Layout -->
   <h3>{ opts.title }</h3>
 
   <ul>
@@ -43,14 +43,14 @@ Mit Riot kann man Browser-unabhängig custom Tags verwenden.
     <button>Add #{ items.length + 1 }</button>
   </form>
 
-  <!-- style -->
+  <!-- Style -->
   <style scoped>
     h3 {
       font-size: 14px;
     }
   </style>
 
-  <!-- logic -->
+  <!-- Logik -->
   <script>
     this.items = []
 
@@ -64,17 +64,17 @@ Mit Riot kann man Browser-unabhängig custom Tags verwenden.
 </todo>
 ```
 
-Ein custom tag verbindet HTML mit Logiglues relevant HTML and JavaScript together forming a reusable component. Vergleichbar mit React + Polymer aber mit angenehmem Syntax und deutlich einfacherer Lernbarkeit.
+Ein custom tag verbindet HTML mit der Logik von JavaScript um wiederverwendbare Module zu erstellen. Vergleichbar mit React + Polymer aber mit angenehmem Syntax und deutlich einfacherer Lernbarkeit.
 
 
 ### Human-readable
 
-Custom tags let you build complex views with HTML. Your application might look something like this:
+Mit Custom tags können komplexe Views erstellt werden. Deine Anwendung könnte in etwa so aussehen:
 
 ``` html
 <body>
 
-  <h1>Acme community</h1>
+  <h1>Acme Community</h1>
 
   <forum-header/>
 
@@ -89,7 +89,7 @@ Custom tags let you build complex views with HTML. Your application might look s
 </body>
 ```
 
-HTML syntax is the *de facto* language of the web and it's designed for building user interfaces. The syntax is explicit, nesting is inherent to the language, and attributes offer a clean way to provide options for custom tags.
+HTML ist die meistverwendete Sprache im Web, und sie ist dafür gemacht um User Interfaces zu kreieren. Mit eindeutiger Syntax und der Möglichkeit Elemente in einer Strukturhirarchie anzuordnen, bietet HTML mit Attributen um Custom Tags mit Optionen auszustatten, die beste Möglichkeit um User Interfaces zu entwickeln.
 
 Riot tags are [converted](/guide/compiler/) to pure JavaScript before browsers can execute them.
 
