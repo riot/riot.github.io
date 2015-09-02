@@ -89,12 +89,12 @@ Mit Custom tags können komplexe Views erstellt werden. Deine Anwendung könnte 
 </body>
 ```
 
-HTML ist die meistverwendete Sprache im Web, und sie ist dafür gemacht um User Interfaces zu kreieren. Mit eindeutiger Syntax und der Möglichkeit Elemente in einer Strukturhirarchie anzuordnen, bietet HTML mit Attributen um Custom Tags mit Optionen auszustatten, die beste Möglichkeit um User Interfaces zu entwickeln.
+HTML ist die meistverwendete Sprache im Web, und sie ist dafür gemacht um Inhalte und Layouts zu erschaffen. Mit eindeutiger Syntax und der Möglichkeit Elemente in einer Strukturhirarchie anzuordnen, bietet HTML mit Attributen um Custom Tags mit Optionen auszustatten, die beste Möglichkeit um User Interfaces zu entwickeln.
 
-Riot tags are [converted](/guide/compiler/) to pure JavaScript before browsers can execute them.
+Riot tags werden zu purem JavaScript [konvertiert](/guide/compiler/), bevor Browser diese ausführen können.
 
 
-### Virtual DOM
+### Virtuelles DOM
 - Absolutely the smallest possible amount of DOM updates and reflows
 - One way data flow: updates and unmounts are propagated downwards from parent to children
 - Expressions are pre-compiled and cached for high performance
@@ -196,6 +196,6 @@ By having related layout and logic together under the same component the overall
 
 ## The initial blog entry
 
-[From React to Riot 2.0](https://muut.com/blog/technology/riot-2.0/)
+[From React to Riot 2.0](https://muut.com/blog/technology/riot-2.0/) (Englisch)
 
 
