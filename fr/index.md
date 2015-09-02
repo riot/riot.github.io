@@ -89,7 +89,7 @@ Les balises personnalisées permettent de concevoir des vues complexes avec HTML
 </body>
 ```
 
-La syntaxe HTML est le langage *de facto* du Web et a été conçu pour faire des interfaces utilisateur. La syntaxe est explicite, and it's designed for building user interfaces. The syntax is explicit, l'imbrication des éléments est inhérente au langage, et les attributs offrent un moyen propre pour fournir des options aux balises personnalisées.
+La syntaxe HTML est le langage *de facto* du Web et a été conçu pour faire des interfaces utilisateur. La syntaxe est explicite, l'imbrication des éléments est inhérente au langage, et les attributs offrent un moyen propre pour fournir des options aux balises personnalisées.
 
 Les balises Riot sont [converties](/guide/compiler/) en JavaScript pur avant que les navigateurs puissent les exécuter..
 
