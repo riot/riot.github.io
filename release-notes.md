@@ -63,7 +63,7 @@ List of bug fixes and details can be found [here](https://github.com/riot/riot/i
 - A new [riot-tag](/guide/#html-elements-as-tags) attribute to use standard HTML elements as mount nodes
 - `tag.unmount(flag)` to decide whether the parent should be removed or not from the DOM
 - `riot.route.start()` and `riot.route.stop()` methods to start and stop the Riot router. These methods allow the use of a different router on your application.
-- The server side compiiler now supports AMD and CommonJS modules with `--modular` or `-m` command line option
+- The server side compiler now supports AMD and CommonJS modules with `--modular` or `-m` command line option
 - Numerous [bug fixes](https://github.com/riot/riot/issues/584)
 - Special thanks to *[@GianlucaGuarini](https://github.com/GianlucaGuarini)* for this release
 
