@@ -40,7 +40,7 @@ Mit Riot kann man Browser-unabhängig custom Tags verwenden.
 
   <form onsubmit={ add }>
     <input>
-    <button>Add #{ items.length + 1 }</button>
+    <button>#{ items.length + 1 } Hinzufügen</button>
   </form>
 
   <!-- Style -->

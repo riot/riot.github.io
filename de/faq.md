@@ -1,41 +1,41 @@
 ---
 layout: default
 title: Riot FAQ
-description: Questions and Answers about Riot, User Interface (UI) Micro-Libary
+description: Fragen und Antwort über Riot, User Interface (UI) Micro-Libary
 ---
 
 # Frequently asked questions
 
-## Why is this project called Riot?
-Riot is against the current trend of boilerplate and unneeded complexity. We think that a small, powerful API and concise syntax are extremely important things on a client-side library.
+## Wieso trägt dieses Projekt den Titel Riot?
+Riot bedeutet Aufstand, und wir sind gegen den heutigen Trend von unnötiger Komplexität und Boilerplates. Wir denken, dass eine kleine aber mächtige API mit eindeutigem Syntax fundamentale Aspekte einer client-side Bibliothek sind.
 
 
 ## Is Riot free?
-Riot is free, open source and licensed under the MIT License. There are no [Additional Grant of Patent Rights](https://github.com/facebook/react/blob/master/PATENTS).
+Riot ist gratis erhältlich, Open Source und unter der MIT Lizenz herausgegeben. Es gibt also keine [weiteren Patent-Rechte](https://github.com/facebook/react/blob/master/PATENTS).
 
 
 ## Can I use Riot in production?
-Absolutely. It's a mature framework [embraced daily](https://twitter.com/search?q=riotjs).
+Absolut. Riot ist ein fortgeschrittenes Framework welches [täglich](https://twitter.com/search?q=riotjs) Verwendung findet.
 
 ## Why IE8 is not supported?
-Because it's crazy to waste developer time for a dying browser. According to [W3 counter](http://www.w3counter.com/trends), only 1.5% are on IE8:
+Der Gedanke, einem sterbenden Browser Zeit zu widmen ist mehr als absurd. Wir erachten es als verrückt wichtige Entwicklerzeit in IE8 zu verschwenden. Gemeäß den Statistiken von [W3 counter](http://www.w3counter.com/trends), gibt es weltweit nur noch 1.5% IE8 Nutzer:
 
 ![](/img/ie8-trend.png)
 
 Statcounter [says 2.5%](http://gs.statcounter.com/#browser_version_partially_combined-ww-monthly-201408-201507).
 
-This low-quality browser can safely be ignored. Riot 2.0 was launched with IE8 support but since then the use has dropped more than 50%.
+Dieser Browser kann also mit Sicherheit ignoriert werden. Riot 2.0 wurde noch mit IE8 Support veröffentlicht, aber seit der raschen Weiterentwicklung haben wir mehr als 50% IE8 Support verworfen.
 
 
 ## Should I use dash on the tag name?
-W3C specification demands you use a dash in the tag name. Instead of `<person>` you must write `<my-person>`. Obey this rule if you care about W3C. Both work fine.
+Die W3C Spezifikation verlangt, dass eigene Tags mit einem Bindestrich versehen werden sollten. Also anstatt `<person>` sollte man `<my-person>` schreiben. Folge dieser Regel wenn du dich um die W3C Empfehlungen kümmerst. Beide Möglichkeiten funktionieren problemlos.
 
 
 ## Why are there no semicolons in the source code?
-Leaving out semicolons makes the code less crowded. This is aligned with our general minimalistic approach. We use single quotes for the same reason. If you contribute to Riot, please leave out semicolons and double quotes.
+Wir haben uns entschlossen Semicolons aus dem Code zu verbannen damit dieser leichter leserlich wird. Diese Konvention stimmt mit unserem minimalistischem Grundsatz über ein. Wir benutzen einfache Anführungszeichen aus dem selben Grund. Wenn du zu Riot beitragen möchtest, bitten wir dich Strichpunkte und doppelte Anführungszeichen zu unterlassen.
 
 ## Why the use of evil `==` operator?
-The equality operator is good when you know how it works. We do this for example:
+Der simple Vergleichsoperator ist gut wenn man weiß wie er funktioniert. Als beispiel machen wir uns das so zu nutze:
 
 `node.nodeValue = value == null ? '' : value`
 
@@ -46,7 +46,7 @@ This causes `0` and `false` to be printed but `null` and `undefined` are printed
 Yes. You can use CSS normally inside a tag. The web component standard also has a mechanism of encapsulating of CSS. However, it's unlikely that this improves the overall manageability of your CSS.
 
 
-## What's the role of jQuery?
+## Welche Rolle spielt jQuery?
 Riot reduces the need for jQuery. You no longer need selectors, traversing, events and manipulation features. Some features like delegated events can be useful. jQuery plugins can be used together with Riot.
 
 
