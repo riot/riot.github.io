@@ -10,8 +10,8 @@ description: Riot vous permet de concevoir des interfaces utilisateur avec des b
   <h4>Balises personnalisées • Syntaxe plaisante • DOM virtuel • Très léger</h4>
 
   <div id="version-slurp">
-    <a href="/download/" class="tag blue">v{{ site.version }}</a> &mdash;
-    <a href="/release-notes/">{{ site.version_slurp }}&hellip;</a>
+    <a href="/fr/download/" class="tag blue">v{{ site.version }}</a> &mdash;
+    <a href="/fr/release-notes/">{{ site.version_slurp }}&hellip;</a>
   </div>
 
 </div>
