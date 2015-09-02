@@ -106,8 +106,7 @@ List of bug fixes and details can be found [here](https://github.com/riot/riot/i
 - No illegal server requests with images: `<img src={ src }>`
 - Fix compiler to support custom brackets
 - `this.update()` is no longer needed when defining tags manually with `riot.tag`. This method is now automatically called after an event handler is executed
-- [Contributing guidelines](https://github.com/riot/riot
-`script`/blob/master/CONTRIBUTING.md)
+- [Contributing guidelines](https://github.com/riot/riot/blob/master/CONTRIBUTING.md)
 
 
 ## 2.0.9 *Feb 13, 2015*
@@ -116,8 +115,7 @@ List of bug fixes and details can be found [here](https://github.com/riot/riot/i
 - Ability to set `if`, `show` and `hide` attributes for a custom tag
 - Multiple class shortcut: `{ 'foo bar': baz }`
 - Took away `children` property, which was designed for theoretical need mostly.
-- A memory leak fix on `riot.observable`. Thanks to [@GianlucaGuarini](https://github.com/GianlucaGuarini) for the hard debug work and everyone else on this [pull request](https://github.com/riot/riot
-`script`/issues/248)
+- A memory leak fix on `riot.observable`. Thanks to [@GianlucaGuarini](https://github.com/GianlucaGuarini) for the hard debug work and everyone else on this [pull request](https://github.com/riot/riot/issues/248)
 
 
 ## 2.0.8 *Feb 9, 2015*
