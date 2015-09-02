@@ -131,8 +131,7 @@ List of bug fixes and details can be found [here](https://github.com/riot/riot/i
 - [Customizable brackets](/api/misc/#brackets), e.g. `riot.settings.brackets = '${ }'`
 - Ability to print the current version with: `riot --version`
 - The semi-hidden `riot._tmpl()` is now completely hidden and not part of the global `riot` object
-- Reorganized source code. The former big `view.js` is now split into [multiple files](https://github.com/riot/riot
-`script`/tree/master/lib/tag)
+- Reorganized source code. The former big `view.js` is now split into [multiple files](https://github.com/riot/riot/tree/master/lib/browser/tag)
 
 
 ## 2.0.7 *Jan 29, 2015*
