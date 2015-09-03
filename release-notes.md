@@ -62,8 +62,8 @@ List of bug fixes and details can be found [here](https://github.com/riot/riot/i
 - A new `<yield>` core tag allowing [html transclusion](/guide/#nested-html)
 - A new [riot-tag](/guide/#html-elements-as-tags) attribute to use standard HTML elements as mount nodes
 - `tag.unmount(flag)` to decide whether the parent should be removed or not from the DOM
-- `riot.route.start()` and `riot.route.stop()` methods to start and stop the Riot router. These methods allow the use of a different router on your appliaction.
-- The server side compiiler now supports AMD and CommonJS modules with `--modular` or `-m` command line option
+- `riot.route.start()` and `riot.route.stop()` methods to start and stop the Riot router. These methods allow the use of a different router on your application.
+- The server side compiler now supports AMD and CommonJS modules with `--modular` or `-m` command line option
 - Numerous [bug fixes](https://github.com/riot/riot/issues/584)
 - Special thanks to *[@GianlucaGuarini](https://github.com/GianlucaGuarini)* for this release
 
@@ -106,8 +106,7 @@ List of bug fixes and details can be found [here](https://github.com/riot/riot/i
 - No illegal server requests with images: `<img src={ src }>`
 - Fix compiler to support custom brackets
 - `this.update()` is no longer needed when defining tags manually with `riot.tag`. This method is now automatically called after an event handler is executed
-- [Contributing guidelines](https://github.com/riot/riot
-`script`/blob/master/CONTRIBUTING.md)
+- [Contributing guidelines](https://github.com/riot/riot/blob/master/CONTRIBUTING.md)
 
 
 ## 2.0.9 *Feb 13, 2015*
@@ -116,8 +115,7 @@ List of bug fixes and details can be found [here](https://github.com/riot/riot/i
 - Ability to set `if`, `show` and `hide` attributes for a custom tag
 - Multiple class shortcut: `{ 'foo bar': baz }`
 - Took away `children` property, which was designed for theoretical need mostly.
-- A memory leak fix on `riot.observable`. Thanks to [@GianlucaGuarini](https://github.com/GianlucaGuarini) for the hard debug work and everyone else on this [pull request](https://github.com/riot/riot
-`script`/issues/248)
+- A memory leak fix on `riot.observable`. Thanks to [@GianlucaGuarini](https://github.com/GianlucaGuarini) for the hard debug work and everyone else on this [pull request](https://github.com/riot/riot/issues/248)
 
 
 ## 2.0.8 *Feb 9, 2015*
@@ -131,8 +129,7 @@ List of bug fixes and details can be found [here](https://github.com/riot/riot/i
 - [Customizable brackets](/api/misc/#brackets), e.g. `riot.settings.brackets = '${ }'`
 - Ability to print the current version with: `riot --version`
 - The semi-hidden `riot._tmpl()` is now completely hidden and not part of the global `riot` object
-- Reorganized source code. The former big `view.js` is now split into [multiple files](https://github.com/riot/riot
-`script`/tree/master/lib/tag)
+- Reorganized source code. The former big `view.js` is now split into [multiple files](https://github.com/riot/riot/tree/master/lib/browser/tag)
 
 
 ## 2.0.7 *Jan 29, 2015*
