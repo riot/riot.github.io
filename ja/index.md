@@ -117,7 +117,7 @@ HTMLの文法はWebの *デファクト* 言語であり、ユーザインター
 デザインのゴールの一つは、できる限り最小の"boilerplate"で使える、強力な文法を導入することです。
 
 - 強力なショートカット: `class={ enabled: is_enabled, hidden: hasErrors() }`
-- 余計なことを考えなくてOK　`render`とか`state`、`constructor`、`shouldComponentUpdate`などなど
+- 余計なことを考えなくてOK・`render`とか`state`、`constructor`、`shouldComponentUpdate`などなど
 - インターポレーション: `Add #{ items.length + 1 }` あるいは `class="item { selected: flag }"`
 - ロジック部分を`<script>`タグで囲むのはオプション
 - コンパクトなES6のメソッドの書き方
