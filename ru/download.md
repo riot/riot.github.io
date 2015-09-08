@@ -1,6 +1,6 @@
 ---
 layout: ru
-title: Get Riot!
+title: Загрузить Riot!
 base: https://raw.githubusercontent.com/riot/riot/master
 cdnjs: https://cdnjs.cloudflare.com/ajax/libs/riot
 class: download
@@ -8,9 +8,9 @@ class: download
 
 # Riot v**{{ site.version }}**
 
-View our [version history](/release-notes). All Files are Open Source with [MIT License](/license/).
+Историю изменения можно посмотреть [тут](/release-notes). Все файлы распространяются под лицензией [MIT](/license/).
 
-## Direct downloads
+## Вы можете скачать файлы тут
 
 [riot.min.js]({{ page.base }}/riot.min.js)
 
@@ -25,7 +25,7 @@ View our [version history](/release-notes). All Files are Open Source with [MIT 
 [riot+compiler.js]({{ page.base }}/riot+compiler.js)
 
 
-## Content delivery networks
+## CDN
 
 
 #### [jsdelivr](http://www.jsdelivr.com/#!riot)
@@ -41,7 +41,7 @@ View our [version history](/release-notes). All Files are Open Source with [MIT 
 
 #### [cdnjs](https://cdnjs.com/libraries/riot)
 
-**NOTE** v{{ site.version }} was released on **{{ site.release_date }}** and CDNJS takes around 30 hours to update.
+**Внимание** последняя версия v{{ site.version }} была опубликована **{{ site.release_date }}** и обновление на CDNJS занимает около 30 часов.
 
 
 `{{ page.cdnjs }}/{{ site.version }}/riot+compiler.min.js`
@@ -49,7 +49,7 @@ View our [version history](/release-notes). All Files are Open Source with [MIT 
 `{{ page.cdnjs }}/{{ site.version }}/riot.min.js`
 
 
-### Package managers
+### Пакетные менеджеры
 
 #### [Bower](http://bower.io/search/?q=riot.js)
 
@@ -71,12 +71,11 @@ View our [version history](/release-notes). All Files are Open Source with [MIT 
 `git clone git@github.com:riot/riot.git`
 
 
-## Known issues
+## Известные проблемы
 
-- Looping table rows or cells with `each` attribute is not working on IE8 and IE9.
+- Перебор строк или ячеек таблиц через аттрибут `each` не работает в IE8 и IE9.
 
-
-## Logo
+## Логотип
 
 ![](/img/logo/riot480x.png)
 
