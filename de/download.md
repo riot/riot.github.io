@@ -8,9 +8,9 @@ class: download
 
 # Riot v**{{ site.version }}**
 
-View our [version history](/release-notes). All Files are Open Source with [MIT License](/license/).
+Wirf einen Blick in unsere [Version History](/release-notes). Alle Dateien wurden mit der [MIT License](/license/) publiziert.
 
-## Direct downloads
+## Direkte Downloads
 
 [riot.min.js]({{ page.base }}/riot.min.js)
 
@@ -25,7 +25,7 @@ View our [version history](/release-notes). All Files are Open Source with [MIT 
 [riot+compiler.js]({{ page.base }}/riot+compiler.js)
 
 
-## Content delivery networks
+## Content Delivery Netzwerke
 
 
 #### [jsdelivr](http://www.jsdelivr.com/#!riot)
@@ -41,7 +41,7 @@ View our [version history](/release-notes). All Files are Open Source with [MIT 
 
 #### [cdnjs](https://cdnjs.com/libraries/riot)
 
-**NOTE** v{{ site.version }} was released on **{{ site.release_date }}** and CDNJS takes around 30 hours to update.
+**HINWEIS** v{{ site.version }} wurde am **{{ site.release_date }}** veröffentlich und CDNJS benötigt etwa 30 Stunden um auf den neusten Stand upzudaten.
 
 
 `{{ page.cdnjs }}/{{ site.version }}/riot+compiler.min.js`
@@ -49,7 +49,7 @@ View our [version history](/release-notes). All Files are Open Source with [MIT 
 `{{ page.cdnjs }}/{{ site.version }}/riot.min.js`
 
 
-### Package managers
+### Paket Manager
 
 #### [Bower](http://bower.io/search/?q=riot.js)
 
@@ -71,9 +71,9 @@ View our [version history](/release-notes). All Files are Open Source with [MIT 
 `git clone git@github.com:riot/riot.git`
 
 
-## Known issues
+## Bekannte Probleme
 
-- Looping table rows or cells with `each` attribute is not working on IE8 and IE9.
+- Tabellen Reihen oder Zellen mit `each` zu loopen funktioniert zur Zeit in IE8 und IE9 nicht.
 
 
 ## Logo
