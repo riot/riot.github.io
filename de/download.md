@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Get Riot!
+title: Hol dir Riot!
 base: https://raw.githubusercontent.com/riot/riot/master
 cdnjs: https://cdnjs.cloudflare.com/ajax/libs/riot
 class: download
