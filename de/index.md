@@ -95,52 +95,52 @@ Riot tags werden zu purem JavaScript [konvertiert](/guide/compiler/), bevor Brow
 
 
 ### Virtuelles DOM
-- Absolutely the smallest possible amount of DOM updates and reflows
-- One way data flow: updates and unmounts are propagated downwards from parent to children
-- Expressions are pre-compiled and cached for high performance
-- Lifecycle events for more control
-- Server-side rendering of custom tags for universal (isomorphic) applications
+- Minimalst möglichste DOM Updates und Reflows
+- Logischer Datenfluss: Updates und Unmount werden von Elterntags hinab zu Kindertags der Reihe nach ausgeführt
+- Expressions werden vorkompiliert und gecached um beste Performance zu erzielen
+- Lifecycle events für mehr Kontrolle über die Applikation
+- Eigene Tags könen serverseitig gerendet werden um diese universell zu verwenden
 
 
-### Close to standards
-- No proprietary event system
-- The rendered DOM can be freely manipulated with other tools
-- No extra HTML root elements or `data-` attributes
-- Plays well with jQuery
+### Nahe dem Standard
+- Kein proprietäres Event-System
+- Das gerenderte DOM kann mit anderen Tools frei manipuliert werden
+- Keine zusätzlichen HTML root Elemente oder `data-` Attribute
+- Funktioniert problemlos zussammen mit jQuery
 
 
-### Tooling friendly
-- Create tags with ES6, Typescript, CoffeeScript, Jade, LiveScript or [any pre-processor](/guide/compiler/#pre-processors) you want
-- Integrate with NPM, CommonJS, AMD, Bower or Component
-- Develop with [Gulp](https://github.com/e-jigsaw/gulp-riot), [Grunt](https://github.com/ariesjia/grunt-riot) or [Browserify](https://github.com/jhthorsen/riotify) plugins
+### Nutze deine lieblingstools
+- Erstelle Tags mit ES6, Typescript, CoffeeScript, Jade, LiveScript oder jedem anderen [beliebigen pre-processor](/guide/compiler/#pre-processors)
+- Integriere Riot mit NPM, CommonJS, AMD, Bower oder Component
+- Entwickle mit [Gulp](https://github.com/e-jigsaw/gulp-riot), [Grunt](https://github.com/ariesjia/grunt-riot) oder [Browserify](https://github.com/jhthorsen/riotify) plugins
 
 
 
-## 2. Simple and minimalistic
+## 2. Simpel und minimalistisch
 
-Minimalism sets Riot apart from others:
+Riot zeichnet sich gegenüber anderen Lösungen durch Minimalismus aus:
 
 
-### 1. Enjoyable syntax
+### 1. gemütlicher Syntax
 
-One of the design goals was to introduce a powerful tag syntax with as little boilerplate as possible:
+Eines unserer Ziele, war es einen mächtigen Syntax anzubieten, während aber HTML so gering wie möglich gehalten wird: 
 
 - Power shortcuts: `class={ enabled: is_enabled, hidden: hasErrors() }`
-- No extra brain load such as `render`, `state`, `constructor` or `shouldComponentUpdate`
-- Interpolation: `Add #{ items.length + 1 }` or `class="item { selected: flag }"`
-- The `<script>` tag to enclose the logic is optional
-- Compact ES6 method syntax
+- Gedankenentlastung durch Vermeidung redundanter Befehle wie `render`, `state`, `constructor` oder `shouldComponentUpdate`
+- Interpolation: `Füge #{ items.length + 1 } hinzu` oder `class="item { selected: flag }"`
+- `<script>` um Logik zu deklarieren kann ausgelassen werden
+- Kompakter ES6 Funktions-syntax
 
 
-### 2. Small learning curve
+### 2. Geringe Lernkurve
 
-Riot has between 10 and 100 times fewer API methods than other UI libraries.
+Riot hat zwischen 10 und 100 mal weniger API Methoden als andere UI Bibliotheken.
 
-- Less to learn. Fewer books and tutorials to view
-- Less proprietary stuff and more standard stuff
+- Weniger zu lernen. Weniger Tutorials oder Bücher zu durchstöbern
+- Weniger proprietärer Zusatz und nahegelegen am Standard
 
 
-### 3. Tiny size
+### 3. Geringe Dateigröße
 
 <small><em>polymer.min.js</em> – 138KB</small>
 <span class="bar red"></span>
@@ -151,22 +151,22 @@ Riot has between 10 and 100 times fewer API methods than other UI libraries.
 <small><em>riot.min.js</em> – {{ site.size_min }}KB</small>
 <span class="bar blue" style="width: {{ site.size_min / 121 * 100 }}%"></span>
 
-- Fewer bugs
-- Faster to parse and cheaper to download
-- Embeddable. The library ought to be smaller than the application
-- Less to maintain. We don't need a big team to maintain Riot
+- Weniger Bugs
+- Schnelleres Parsen und günstigerer Download
+- Embeddable. Riot ist üblicherweiße kleiner als die Applikation
+- Weniger zu warten. Wir benötigen kein gigantisches Team um Riot zu warten
 
 
 
-### 4. Small, but complete
+### 4. Klein aber komplett
 
-Riot has all the essential building blocks for modern client-side applications:
+Riot besitzt bereits alle fundamentalen Bau-Blöcke um moderne clientseitige Applikationen zu bauen:
 
-- "Reactive" views for building user interfaces
-- Event library for building APIs with isolated modules
-- Router for taking care of URL and the back button
+- "Reactive" views um User Interfaces zu bauen
+- Event Bibliothek um APIs mit isolierten Modulen zu erstellen
+- Ein Router um sich um die URL und den Zurück-Button zu kümmern
 
-Riot is an "open stack". It's meant for developers who want to avoid framework specific idioms. The generic tools let you mix and match design patterns. Systems like Facebook Flux can be [self-made](https://github.com/jimsparkman/RiotControl).
+Riot wird als "open stack" bezeichnet. Was bedeutet, dass Entwickler, die Framework spezifische Ausdrücke und Ideen vermeiden einen einfachen Einstieg in die Technologie haben. Die generischen Werkzeuge lassen jeden Entwickler eigene Applikationsstrukturen und Designs implementieren. Systeme wie etwa Facebook Flux können problemlos mit Riot [selbst](https://github.com/jimsparkman/RiotControl) gemacht werden.
 
 
 > I looked at the riot.js example, and it feels so clean, it's scary. [@paulbjensen](https://twitter.com/paulbjensen/status/558378720403419137)
@@ -183,19 +183,19 @@ Riot is an "open stack". It's meant for developers who want to avoid framework s
 > Played with riot.js and like it so much more than React. Minimalistic, fast and a comprehensible API. [@juriansluiman](https://twitter.com/juriansluiman/status/560399379035865088)
 
 
-## Conclusion
+## Fazit
 
-Riot is Web Components for everyone. Think React + Polymer but without the bloat. It's intuitive to use and it weighs almost nothing. And it works today. No reinventing the wheel, but rather taking the good parts of what's there and making the simplest tool possible.
+Riot bietet Webkomponenten für alle. Denke etwa an React + Polymer aber weniger aufgeblasen. Es bildet eine intuitive Bibliothek und wiegt praktisch fast nichts. Kein Rad muss neu erfunden werden. Aber wir bevorzugen die guten Dinge von dem was bereits existiert um das wohl  einfachste Tool zu schaffen.
 
-We should focus on reusable components instead of templates. According to the developers of React:
+Wir sollten uns auf wiederverwendbare Komponenten konzentrieren als auf Templates. So nach den Entwicklern von React:
 
 > "Templates separate technologies, not concerns."
 
-By having related layout and logic together under the same component the overall system becomes cleaner. We respect React for this important insight.
+Wenn Layout und relevante Logik beieinander im selben Modul sitzen, wird das Gesamtsystem viel einfacher handzuhaben. Wir achten React für diesen wichtigen Einblick über den Tellerrand hinaus.
 
 
-## The initial blog entry
+## Ursprünglicher Blog Eintrach
 
-[From React to Riot 2.0](https://muut.com/blog/technology/riot-2.0/) (Englisch)
+[Von React zu Riot 2.0](https://muut.com/blog/technology/riot-2.0/) (Englisch)
 
 
