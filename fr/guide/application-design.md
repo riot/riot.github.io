@@ -73,11 +73,11 @@ auth.login = function(params) {
 }
 ```
 ```html
-<!-- login view -->
+<!-- vue login -->
 <login>
   <form onsubmit="{ login }">
-    <input name="username" type="text" placeholder="username">
-    <input name="password" type="password" placeholder="password">
+    <input name="username" type="text" placeholder="Nom d'utilisateur">
+    <input name="password" type="password" placeholder="Mot de passe">
   </form>
 
   login() {
@@ -87,7 +87,7 @@ auth.login = function(params) {
     })
   }
 
-  // any tag on the system can listen to login event
+  // n'importe quelle balise personnalisée peut écouter cet événement login
   opts.on('login', function() {
     $(body).addClass('logged')
   })
