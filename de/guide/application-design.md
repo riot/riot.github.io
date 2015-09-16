@@ -5,22 +5,22 @@ title: Application design
 
 {% include guide-tabs.html %}
 
-## Tools, not policy
+## nicht Regeln sondern Tools
 
-Riot comes bundled with custom tags, an event emitter (observable) and router. We believe that these are the fundamental building blocks for client-side applications:
+Riot wird zussammen mit eigenen Tags, Event Emitter (observable) und Router ausgegeben. Wir glauben, dass diese die essentiellsten Bausteine für Clientseitige Applikationen bildet:
 
-1. Custom tags for the user interface,
-2. Events for modularity, and
-3. Router for URL and the back button.
+1. Eigene tags für das User Interface,
+2. Events für Modularität, und
+3. Router um die URL zu überwachen und für den zurück-Button.
 
-Riot tries not to enforce strict rules, but rather provide basic tools for you to use creatively. This flexible approach leaves the bigger architectural decisions up to the developer.
+Riot versucht nicht strenge Regeln durchzusetzen, sondern simple frei verwendbare Tools anzubieten die kreativ miteinander kombiniert werden können. Diese Flexibilität ermöglicht es auch größere Software-Architektur zu designen und überlässt dem Designer die größeren organisatorischen Aufgaben..
 
-We also think that these building blocks should be minimal in terms of file size and API size. Elementary stuff should be simple so there's minimal cognitive load.
+Wir denken auch, dass diese Baubläcke nur ein Minimum der Dateigröße und API einnehmen sollte. Fundamentale Dinge sollten so simpel wie möglich gestaltet sein, um weniger Gedanken an kompelxe API Aufrufe zu verschwenden.
 
 
 ## Observable
 
-Observable is a generic tool to send and receive events. It's a common pattern to isolate modules without forming a dependency or "coupling". By using events a large program can be broken into smaller and simpler units. Modules can be added, removed, or modified without affecting the other parts of the application.
+Observable bietet ein sehr generisches Werkzeug um Events zu senden und zu empfangen. Es bildet eine sehr übliche Entwicklerart um Module zu isolieren, ohne Abhängigkeiten zu bilden oder sogenanntes "coupling". Events werden genutzt um sogar die größten Programme in kleinere Teile aufzubrechen. Module können hinzugefügt, entfernt oder modifiziert werden ohne andere Teile der Software zu beeinträchtigen.
 
 A common practice is to split the application into a single core and multiple extensions. The core sends events any time something remarkable happens: a new item is being added, an existing item is being removed, or something is loaded from the server.
 

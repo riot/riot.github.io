@@ -1,19 +1,19 @@
 ---
 layout: default
-title: Comparing Riot with React and Polymer
+title: Ein Vergleich von Riot mit React und Polymer
 ---
 
-# **Riot** vs **React** & **Polymer**
+# **Riot** gegen **React** & **Polymer**
 
-And how Riot differs from it's closest cousins.
+Wie sich Riot von seinen Nächsten unterscheided.
 
 ## React
 
-Riot is inspired by React and from the idea of "cohesion". According to Facebook developers:
+Riot wurde durch React inspiriert. Speziell von der Idee die "cohesion" prägt. Nach den Facebook Entwicklern:
 
-> "Templates separate technologies, not concerns."
+> "Templates separieren Technologien, und nicht verschiedene Bedenken."
 
-We respect this insight. The goal is to build reusable components instead of templates. By separating logic from the templates (by using jQuery selectors for example) we are actually keeping out things that should be together.
+Wir respektieren diese Einsicht. Das Ziel ist es, wiederverwendbare Komponenten anstatt von Templates zu erstellen. By separating logic from the templates (by using jQuery selectors for example) we are actually keeping out things that should be together.
 
 By combining these related technologies together under the same component the system becomes cleaner. We respect React because of this important insight.
 
