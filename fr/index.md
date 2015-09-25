@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Riot.js — Une micro-bibliothèque d'interface utilisateur ressemblant à React
-description: Riot vous permet de concevoir des interfaces utilisateur avec des balises personnalisées en utilisant une syntaxe simple et plaisante. Il utilise un DOM virtuel comme React mais en plus rapide. Riot est très léger comparer aux standards de l'industrie. Nous pensons qu'il y a un réel besoin pour une autre bibliothèque UI.
+description: Riot vous permet de concevoir des interfaces utilisateur avec des tags personnalisés en utilisant une syntaxe simple et plaisante. Il utilise un DOM virtuel comme React mais en plus rapide. Riot est très léger comparer aux standards de l'industrie. Nous pensons qu'il y a un réel besoin pour une autre bibliothèque UI.
 ---
 
 <div id="hero">
   <img src="/img/logo/riot240x.png">
   <h1>Une micro-bibliothèque d'interface utilisateur ressemblant à React</h1>
-  <h4>Balises personnalisées • Syntaxe plaisante • DOM virtuel • Très léger</h4>
+  <h4>Tags personnalisés • Syntaxe plaisante • DOM virtuel • Très léger</h4>
 
   <div id="version-slurp">
     <a href="/fr/download/" class="tag blue">v{{ site.version }}</a> &mdash;
@@ -24,9 +24,9 @@ La scène front-end est en effet bondée, mais nous pensons honnêtement que la 
 Donc - voici pourquoi nous en avons besoin:
 
 
-## 1. Balises personnalisées
+## 1. Tags personnalisés
 
-Riot amène les balises personnalisées à tous les navigateurs.
+Riot amène les tags personnalisés à tous les navigateurs.
 
 ``` html
 <todo>
@@ -64,12 +64,12 @@ Riot amène les balises personnalisées à tous les navigateurs.
 </todo>
 ```
 
-Une balise personnalisée colle ensemble le HTML correspondant et le JavaScript pour former un composant réutilisable. Considérez ça comme React + Polymer mais avec une syntaxe plaisante et un temps d'apprentissage très faible.
+Un tag personnalisé colle ensemble le HTML correspondant et le JavaScript pour former un composant réutilisable. Considérez ça comme React + Polymer mais avec une syntaxe plaisante et un temps d'apprentissage très faible.
 
 
 ### Lisible par les humains
 
-Les balises personnalisées permettent de concevoir des vues complexes avec HTML. Votre application ressemblera peut-être à quelque-chose comme ça:
+Les tags personnalisés permettent de concevoir des vues complexes avec HTML. Votre application ressemblera peut-être à quelque-chose comme ça:
 
 ``` html
 <body>
@@ -89,9 +89,9 @@ Les balises personnalisées permettent de concevoir des vues complexes avec HTML
 </body>
 ```
 
-La syntaxe HTML est le langage *de facto* du Web et a été conçu pour faire des interfaces utilisateur. La syntaxe est explicite, l'imbrication des éléments est inhérente au langage, et les attributs offrent un moyen propre pour fournir des options aux balises personnalisées.
+La syntaxe HTML est le langage *de facto* du Web et a été conçu pour faire des interfaces utilisateur. La syntaxe est explicite, l'imbrication des éléments est inhérente au langage, et les attributs offrent un moyen propre pour fournir des options aux tags personnalisés.
 
-Les balises Riot sont [converties](/guide/compiler/) en JavaScript pur avant que les navigateurs puissent les exécuter..
+Les tags Riot sont [compilés](/guide/compiler/) en JavaScript pur avant que les navigateurs puissent les exécuter..
 
 
 ### DOM virtuel
@@ -99,7 +99,7 @@ Les balises Riot sont [converties](/guide/compiler/) en JavaScript pur avant que
 - Un flux de données mono-directionnel: les mises à jour et démontages sont propagés vers le bas de parent à enfant
 - Des expressions pré-compilées et mises en cache pour une haute performance
 - Des évènements sur le cycle de vie pour plus de contrôle
-- Un rendu côté serveur des balises personnalisées pour des applications universelles (isomorphiques)
+- Un rendu côté serveur des tags personnalisés pour des applications universelles (isomorphiques)
 
 
 ### Proche des standards
@@ -110,7 +110,7 @@ Les balises Riot sont [converties](/guide/compiler/) en JavaScript pur avant que
 
 
 ### Prêt pour l'outillage
-- Créez des balises en ES6, TypeScript, CoffeeScript, Jade, LiveScript ou [n'importe quel préprocesseur](/guide/compiler/#pre-processors) de votre choix
+- Créez des tags en ES6, TypeScript, CoffeeScript, Jade, LiveScript ou [n'importe quel préprocesseur](/guide/compiler/#pre-processors) de votre choix
 - Integrez avec NPM, CommonJS, AMD, Bower ou Component
 - Développez avec des plugins [Gulp](https://github.com/e-jigsaw/gulp-riot), [Grunt](https://github.com/ariesjia/grunt-riot) ou [Browserify](https://github.com/jhthorsen/riotify)
 
@@ -123,7 +123,7 @@ Le minimalisme de Riot le distingue des autres:
 
 ### 1. Syntaxe plaisante
 
-Un des objectifs de conception était d'introduire une syntaxe de balise puissante avec le minimum possible de code de préparation:
+Un des objectifs de conception était d'introduire une syntaxe de tag puissante avec le minimum possible de code de préparation:
 
 - Raccourcis puissants: `class={ enabled: is_enabled, hidden: hasErrors() }`
 - Pas de considérations inutiles comme `render`, `state`, `constructor` or `shouldComponentUpdate`

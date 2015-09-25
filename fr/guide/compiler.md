@@ -7,14 +7,14 @@ title: Compilateur
 
 ## Compilation dans le navigateur
 
-Les balises personnalisées doivent être transformées en JavaScript avant que le navigateur puisse les exécuter. Vous pouvez faire cela en mettant un attribut `type="riot/tag"` dans les scripts de vos balises personnalisées. Par exemple:
+Les tags personnalisés doivent être transformés en JavaScript avant que le navigateur puisse les exécuter. Vous pouvez faire cela en mettant un attribut `type="riot/tag"` dans les scripts de vos tags personnalisés. Par exemple:
 
 
 ``` html
 <!-- point de montage -->
 <my-tag></my-tag>
 
-<!-- définition inline de la balise -->
+<!-- définition inline du tag -->
 <script type="riot/tag">
   <my-tag>
     <h3>Tag layout</h3>
@@ -35,17 +35,17 @@ riot.mount('*')
 </script>
 ```
 
-La balise script et le fichier externe peuvent contenir de multiples définitions de balises combinées avec du JavaScript classique.
+La balise script et le fichier externe peuvent contenir de multiples définitions de tags combinés avec du JavaScript classique.
 
-Riot prend automatiquement les balises internes et externes et les compile avant que ces balises soient interprétées avec l'appel à `riot.mount()`.
+Riot prend automatiquement les tags internes et externes et les compile avant que ces tags soient interprétés avec l'appel à `riot.mount()`.
 
-### Acceder aux instances de balises
-Avec la compilation dans le navigateur, `riot.mount` fonctionne de manière asynchrone. Si vous chargez vos balises avec `script src` et souhaitez avoir une référence aux balises montées, vous devez envelopper l'appel avec `riot.compile` comme ci-dessous:
+### Acceder aux instances de tags
+Avec la compilation dans le navigateur, `riot.mount` fonctionne de manière asynchrone. Si vous chargez vos tags avec `script src` et souhaitez avoir une référence aux tags montés, vous devez envelopper l'appel avec `riot.compile` comme ci-dessous:
 
 ``` html
 <script>
 riot.compile(function() {
-  // ici les balises sont compilées et riot.mount fonctionne de manière synchrone
+  // ici les tags sont compilés et riot.mount fonctionne de manière synchrone
   var tags = riot.mount('*')
 })
 </script>
@@ -53,7 +53,7 @@ riot.compile(function() {
 
 ### Performance du compilateur
 
-La phase de compilation est quasiment négligeable et ne prend presque pas de temps. Compiler une [balise timer](https://github.com/riot/riot/blob/master/test/tag/timer.tag) 30 fois prend 2 millisecondes sur un ordinateur portable basique. Si vous avez une page complètement folle avec 1000 balises différentes de timer, la compilation prend autour de 35ms.
+La phase de compilation est quasiment négligeable et ne prend presque pas de temps. Compiler un [tag timer](https://github.com/riot/riot/blob/master/test/tag/timer.tag) 30 fois prend 2 millisecondes sur un ordinateur portable basique. Si vous avez une page complètement folle avec 1000 tags différents de timer, la compilation prend autour de 35ms.
 
 Le compilateur pèse seulement 3.2KB (1.7K gzippé) donc vous pouvez sans soucis effectuer la compilation côté client même en production sans impact sur les performances ou le temps de chargement.
 
@@ -73,9 +73,9 @@ Lisez l'[API du compilateur](/api/compiler/) pour plus de details.
 
 La précompilation sur le serveur vous donne les avantages suivants:
 
-- Possibilité de compiler vos balises avec votre [préprocesseur favori](#pre-processors).
+- Possibilité de compiler vos tags avec votre [préprocesseur favori](#pre-processors).
 - Petit gain de performances. Pas besoin de charger et d'exécuter le compilateur sur le navigateur.
-- Applications universelles (isomorphiques) avec la possibilité de précompiler les balises côté serveur (bientôt disponible).
+- Applications universelles (isomorphiques) avec la possibilité de précompiler les tags côté serveur (bientôt disponible).
 
 
 La précompilation se fait avec l'éxécutable `riot`, que vous pouvez installer avec NPM comme ceci:
@@ -95,7 +95,7 @@ Avec la précompilation, votre HTML est quelque-chose comme ça:
 <!-- inclusion de riot.js uniquement -->
 <script src="//cdn.jsdelivr.net/riot/2.2/riot.min.js"></script>
 
-<!-- inclusion des balises précompilées (JavaScript normal) -->
+<!-- inclusion des tags précompilés (JavaScript normal) -->
 <script src="chemin/vers/javascript/avec-tags.js"></script>
 
 <!-- montage de la même façon -->
@@ -126,7 +126,7 @@ riot some/folder all-my-tags.js
 
 ```
 
-Le fichier source peut contenir une ou plusieurs balises personnalisées et il peut y avoir du JavaScript classique mélangé avec les balises personnalisées. Le compilateur transformera uniquement les balises personnalisées et ne touchera pas aux autres parties du fichier source.
+Le fichier source peut contenir un ou plusieurs tags personnalisés et il peut y avoir du JavaScript classique mélangé avec les tags personnalisés. Le compilateur transformera uniquement les tags personnalisés et ne touchera pas aux autres parties du fichier source.
 
 Pour plus d'informations, tapez: `riot --help`
 
@@ -143,7 +143,7 @@ riot -w src dist
 
 ### Extension personnalisée
 
-Vous être libres d'utiliser n'importe qu'elle extension de fichier pour vos balises (au lieu de l'extension par défaut `.tag`):
+Vous être libres d'utiliser n'importe qu'elle extension de fichier pour vos tags (au lieu de l'extension par défaut `.tag`):
 
 ``` sh
 riot --ext html
@@ -169,7 +169,7 @@ La fonction de compilation prend une String en argument et retourne une String.
 
 ## Préprocesseurs
 
-C'est le meilleur côté de la précompilation. Vous pouvez utiliser votre préprocesseur favori pour créer des balises personnalisées. Vous pouvez personnaliser à la fois les processeurs de HTML et de JavaScript.
+C'est le meilleur côté de la précompilation. Vous pouvez utiliser votre préprocesseur favori pour créer des tags personnalisés. Vous pouvez personnaliser à la fois les processeurs de HTML et de JavaScript.
 
 Le langage source est spécifié avec l'argument `--type` ou `-t` en ligne de commande ou alors vous pouvez définir le langage dans la balise script comme suit:
 
@@ -191,7 +191,7 @@ Le langage source est spécifié avec l'argument `--type` ou `-t` en ligne de co
 riot --type coffee --expr source.tag
 ```
 
-L'argument `--expr` indique que toutes les expressions sont également traitées. Vous pouvez également utiliser "cs" comme alias de "coffee". Voici un exemple de balise écrite en CoffeeScript:
+L'argument `--expr` indique que toutes les expressions sont également traitées. Vous pouvez également utiliser "cs" comme alias de "coffee". Voici un exemple de tag écrit en CoffeeScript:
 
 ``` javascript
 <kids>
@@ -224,7 +224,7 @@ ECMAScript 6 est activé avec le type "es6":
 riot --type es6 source.tag
 ```
 
-Un exemple de balise écrite en ES6:
+Un exemple de tag écrit en ES6:
 
 ``` html
 <test>
@@ -254,7 +254,7 @@ TypeScript ajoute un typage statique optionnel à JavaScript. Utilisez `--type t
 riot --type typescript source.tag
 ```
 
-Un exemple de balise écrite en TypeScript:
+Un exemple de tag écrit en TypeScript:
 
 ``` html
 <test>
@@ -283,7 +283,7 @@ Le langage source est spécifié avec l'argument `-type` ou `-t`:
 riot --type livescript --expr source.tag
 ```
 
-L'argument `--expr` indique que les expressions sont également traitées. Vous pouvez aussi utiliser "ls" comme alias à "livescript". Voilà un exemple de balise écrite en LiveScript:
+L'argument `--expr` indique que les expressions sont également traitées. Vous pouvez aussi utiliser "ls" comme alias à "livescript". Voilà un exemple de tag écrit en LiveScript:
 
 ``` html
 <kids>
@@ -366,7 +366,7 @@ riot.parsers.css.myCssParser = function(tagName, css) {
 }
 ```
 
-Une fois que vous avez créé votre propre `riot.parsers`, vous serez capable de compiler vos balises en utilisant ces parsers de la manière suivante:
+Une fois que vous avez créé votre propre `riot.parsers`, vous serez capable de compiler vos tags en utilisant ces parsers de la manière suivante:
 
 ```html
 <custom-parsers>
@@ -394,7 +394,7 @@ riot --type none --expr source.tag
 
 ### AMD et CommonJS
 
-Les balises Riot pvuent être compilées en supportant `AMD` (Asynchronous Module Definition) et `CommonJS`. Cette option de configuration est nécessaire si Riot est utilisé avec un chargeur AMD tel que [RequireJS](http://requirejs.org/) ou un chargeur CommonJS tel que [Browserify](http://browserify.org/).
+Les tags Riot pvuent être compilés en supportant `AMD` (Asynchronous Module Definition) et `CommonJS`. Cette option de configuration est nécessaire si Riot est utilisé avec un chargeur AMD tel que [RequireJS](http://requirejs.org/) ou un chargeur CommonJS tel que [Browserify](http://browserify.org/).
 
 La bibliothèque Riot doit être définie/requise en tant que `riot` dans les deux cas.
 

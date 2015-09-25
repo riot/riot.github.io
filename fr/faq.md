@@ -27,8 +27,8 @@ Statcounter [dit 2.5%](http://gs.statcounter.com/#browser_version_partially_comb
 Ce navigateur de mauvaise qualité peut être ignoré en toute prudence. Riot 2.0 a été initialement lancé avec le support IE8 mais depuis, l'utilisation de IE8 a diminué de plus de 50%.
 
 
-## Dois-je utiliser un tiret dans le nom de la balise ?
-Les spécifications W3C vous demandent de mettre au moins un tiret dans le nom de vos balises personnalisées. Au lieu de `<person>` vous devez écrire `<my-person>`. Obéissez à cette règle si vous vous souciez du W3C. Les deux fonctionnent bien.
+## Dois-je utiliser un tiret dans le nom du tag ?
+Les spécifications W3C vous demandent de mettre au moins un tiret dans le nom de vos tags personnalisés. Au lieu de `<person>` vous devez écrire `<my-person>`. Obéissez à cette règle si vous vous souciez du W3C. Les deux fonctionnent bien.
 
 
 ## Pourquoi n'y a-t-il pas de points virgule dans le code source ?
@@ -43,7 +43,7 @@ Cela affiche `0` et `false` mais `null` et `undefined` sont affichées comme une
 
 
 ## Puis-je utiliser des balises `style` dans un fichier .tag ?
-Oui. Vous pouvez utiliser du CSS normalement à l'intérieur d'une balise personnalisée. Le standard Web Components a aussi un mécanisme pour encapsuler du CSS. Cependant, il est peu probable que cela améliore la gestion globale de votre CSS.
+Oui. Vous pouvez utiliser du CSS normalement à l'intérieur d'une tag personnalisé. Le standard Web Components a aussi un mécanisme pour encapsuler du CSS. Cependant, il est peu probable que cela améliore la gestion globale de votre CSS.
 
 
 ## Quel est le rôle de jQuery?

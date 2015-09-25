@@ -22,10 +22,10 @@ id: release-notes
 ## 2.2.2 *5 juillet 2015*
 
 - Nouveau: les composants enfants héritent des propriétés de leur parent, y-compris dans une boucle
-- Nouveau: riot est capable de compiler les attributs sur la balise de plus haut niveau ; [plus de détails](https://github.com/riot/riot/issues/948)
+- Nouveau: riot est capable de compiler les attributs sur le tag de plus haut niveau ; [plus de détails](https://github.com/riot/riot/issues/948)
 - Amélioration de la performance des boucles et nombreux correctifs de bugs
 - Amélioration de la compatibilité AMD/CommonJS
-- Correction de l'erreur renvoyée dans le compilateur pour les balises utilisant l'attribut `type=text/javascript`
+- Correction de l'erreur renvoyée dans le compilateur pour les tags utilisant l'attribut `type=text/javascript`
 - Correction des variables du parent qui n'était pas exposées aux enfants dans une boucle, maintenant __tous les enfants dans une boucle héritent des propriétés et méthodes de leur parent__ ; [plus de détails](https://github.com/riot/riot/issues/896)
 - Correction de l'erreur renvoyée lorsque l'on essayait de surcharger des propriétés d'évènements en lecture seule
 - Correction de riot cli combiné au flag --modular quand il n'y a pas de fichier de destination spécifié
@@ -42,14 +42,14 @@ id: release-notes
 - Inconsistances réglées lorsque l'on utilisait des boucles avec des listes vides ou nulles
 - Correction de `mount` dans les éléments enfants des boucles
 - Couverture de code augmentée
-- Ajout de la possibilité de spécifier où riot doit injecter le [CSS des balises personnalisées](/guide/#scoped-css) dans le DOM
+- Ajout de la possibilité de spécifier où riot doit injecter le [CSS des tags personnalisés](/guide/#scoped-css) dans le DOM
 
 La liste des correctifs de bugs et les détails peuvent être trouvés [ici](https://github.com/riot/riot/issues/773)
 
 ## 2.1.0 *20 mai 2015*
 
 - [Mixins](/guide/#mixins)
-- Possibilité de définir des attributs sur l'élément racine de la définition de la balise
+- Possibilité de définir des attributs sur l'élément racine de la définition du tag
 - Séparation du compilateur node et du compilateur sur navigateur
 - Script de build simplifié avec [smash](https://github.com/mbostock/smash)
 - Ajout des branchements Saucelabs pour les tests multi-navigateurs
@@ -59,7 +59,7 @@ La liste des correctifs de bugs et les détails peuvent être trouvés [ici](htt
 
 ## 2.0.15 *23 avril 2015*
 
-- La nouvelle balise centrale `<yield>` permet la [transclusion HTML](/guide/#nested-html)
+- Le nouveau tag central `<yield>` permet la [transclusion HTML](/guide/#nested-html)
 - Un nouvel attribut [riot-tag](/guide/#html-elements-as-tags) pour utiliser des éléments HTML standards comme points de montage
 - Ajout de `tag.unmount(flag)` pour décider si le parent doit être supprimé ou non du DOM
 - Ajout des méthodes `riot.route.start()` et `riot.route.stop()` pour démarrer et arrêter le routeur Riot. Ces méthodes vous permettent d'utiliser un routeur différent pour votre application.
@@ -81,8 +81,8 @@ La liste des correctifs de bugs et les détails peuvent être trouvés [ici](htt
 ## 2.0.12 *2 mars 2015*
 
 - Support des [Scopes CSS](/guide/#scoped-css)
-- Accès direct aux [balises imbriquées](/api/#nested-tags) et à leur API via la variable `tags`. Par exemple: `tags.my_timer.clear()`
-- Les balises personnalisées sont maintenant construites pendant la phase de lecture et initialisées pendant la phase de montage. Ceci est un travail préliminaire pour le prochain [système de plugins](https://github.com/riot/riot/issues/416) et permet aux plugins de faire leur boulot avant l'initialisation.
+- Accès direct aux [tags imbriqués](/api/#nested-tags) et à leur API via la variable `tags`. Par exemple: `tags.my_timer.clear()`
+- Les tags personnalisés sont maintenant construites pendant la phase de lecture et initialisées pendant la phase de montage. Ceci est un travail préliminaire pour le prochain [système de plugins](https://github.com/riot/riot/issues/416) et permet aux plugins de faire leur boulot avant l'initialisation.
 - L'option `--whitespace` du compilateur préserve les nouvelles lignes et espaces blancs dans le code généré. Bien pour les éléments imbriqués `pre` et `textarea`.
 - Utilisation de [Karma](http://karma-runner.github.io/0.12/index.html) pour le test multi-navigateurs.
 - *ATTENTION* le déprécié `riot.mountTo` sera supprimé à la prochaine livraison
@@ -91,8 +91,8 @@ La liste des correctifs de bugs et les détails peuvent être trouvés [ici](htt
 ## 2.0.11 *23 février 2015*
 
 - `riot.mount` accepte maintenant les mêmes paramètres que `riot.mountTo`, qui est maintenant *deprécié*
-- Le nouveau `riot.mount(selector, tagName, opts)` vous permet de monter une certaine balise sur n'importe quelle sélection d'éléments HTML
-- `riot.unmount` suivi par `riot.mount` remplace maintenant correctement la balise précédente
+- Le nouveau `riot.mount(selector, tagName, opts)` vous permet de monter un certain tag sur n'importe quelle sélection d'éléments HTML
+- `riot.unmount` suivi par `riot.mount` remplace maintenant correctement le tag précédent
 - Suite de tests v1. Attendez-vous à la voir grandir en taille et en fonctionnalités. Merci à [@GianlucaGuarini](https://github.com/GianlucaGuarini)
 
 
@@ -101,18 +101,18 @@ La liste des correctifs de bugs et les détails peuvent être trouvés [ici](htt
 - [Exemple Todo MVC](https://github.com/txchen/feplay/tree/gh-pages/riot_todo)
 - Les éléments de liste peuvent être triés et arrangés et la vue se mettra à jour en fonction. Merci à [@pakastin](https://github.com/pakastin)!
 - Les balises `style` imbriquées sont automatiquement injectées dans `<head>` pour éviter un duplicat des definitions
-- Possibilité de définir des balises sur la même ligne: `<tag></tag>`
+- Possibilité de définir des tags sur la même ligne: `<tag></tag>`
 - Support de la notation en une ligne pour les méthodes ES6: `foo() { this.bar = 'baz' }`
 - Pas de requêtes serveur illégales avec les images: `<img src={ src }>`
 - Correction du compilateur pour supporter les notations crochets personnalisées
-- `this.update()` n'est plus nécessaire pour définir des balises manuellement avec `riot.tag`. Cette méthode est maintenant automatiquement appelée après qu'un gestionnaire d'évènements est exécuté
+- `this.update()` n'est plus nécessaire pour définir des tags manuellement avec `riot.tag`. Cette méthode est maintenant automatiquement appelée après qu'un gestionnaire d'évènements est exécuté
 - [Guidelines pour les contributeurs](https://github.com/riot/riot/blob/master/CONTRIBUTING.md)
 
 
 ## 2.0.9 *13 février 2015*
 
 - Support de LiveScript
-- Possibilité de définir les attributs `if`, `show` et `hide` pour une balise personnalisée
+- Possibilité de définir les attributs `if`, `show` et `hide` pour un tag personnalisé
 - Raccourci pour les classes multiples: `{ 'foo bar': baz }`
 - Propriété `children` retirée, son besoin était surtout théorique.
 - Fuite mémoire corrigée sur `riot.observable`. Merci à [@GianlucaGuarini](https://github.com/GianlucaGuarini) pour le gros travail de débogage et à tous les autres sur cette [pull request](https://github.com/riot/riot/issues/248)
@@ -120,7 +120,7 @@ La liste des correctifs de bugs et les détails peuvent être trouvés [ici](htt
 
 ## 2.0.8 *9 février 2015*
 
-- Nouvelle méthode `unmount()` et nouvelle propriété `children[]` pour les [instances de balises](/api/#tag-instance)
+- Nouvelle méthode `unmount()` et nouvelle propriété `children[]` pour les [instances de tags](/api/#tag-instance)
 - Flux de données mono-directionnel: les mises à jour et démontages se propagent toujours vers le bas du parent aux enfants
 - L'attribut `if` fonctionne maintenant comme prévu en ajoutant ou supprimant le noeud racine du DOM
 - [L'API du compilateur](/api/compiler/) est désormais exposée au public
@@ -140,7 +140,7 @@ La liste des correctifs de bugs et les détails peuvent être trouvés [ici](htt
 - Support natif de [Jade](/guide/compiler/#jade)
 - Possibilité de définir des [interpréteurs personnalisés](/api/#route-parser) pour le routeur
 - Les balises peuvent être du XML valide et les balises vides HTML5 ne sont pas auto-fermantes
-- Autorise la définition de balises vides pour réserver un espace. Bien pour la phase de développement.
+- Autorise la définition de tags vides pour réserver un espace. Bien pour la phase de développement.
 - `riot.observable()` retourne maintenant un nouvel observable quand il est appelé sans argument
 - Le compilateur s'appelle désormais comme ceci:
 

@@ -94,7 +94,7 @@ Voici la même chose avec Riot:
 </todo>
 ```
 
-Et voilà comment la balise précédente est montée sur une page:
+Et voilà comment le tag précédent est monté sur une page:
 
 ``` html
 <todo></todo>
@@ -134,7 +134,7 @@ React s'occupe uniquement de l'interface utilisateur, ce qui est une bonne chose
 
 Facebook recommande d'utiliser [Flux](http://facebook.github.io/flux/docs/overview.html) pour structurer le code côté client. Il s'agit plus d'un modèle de conception qu'un framework et il comporte des idées excellentes.
 
-Riot est fourni avec des balises personnalisées, un émetteur d'évènements (observable) et un routeur. Nous croyons qu'il s'agit là des blocs de construction fondamentaux pour les applications côté client. Les évènements amènent la modularité, le routeur gère l'URL et le bouton précédent et les balises personnalisées s'occupent de l'interface utilisateur.
+Riot est fourni avec des tags personnalisés, un émetteur d'évènements (observable) et un routeur. Nous croyons qu'il s'agit là des blocs de construction fondamentaux pour les applications côté client. Les évènements amènent la modularité, le routeur gère l'URL et le bouton précédent et les tags personnalisés s'occupent de l'interface utilisateur.
 
 Tout comme Flux, Riot est flexible et laisse les grosses décisions architecturelles au développeur. C'est juste une bibliothèque pour vous aider à atteindre votre but.
 
@@ -171,7 +171,7 @@ L'écosystème React ressemble plus à un framework et privilégie les API plus 
 
 # Polymer
 
-Polymer prend le standard des Web Components et le rend disponible sur les derniers navigateurs. Cela permet d'écrire des balises personnalisées en suivant le standard.
+Polymer prend le standard des Web Components et le rend disponible sur les derniers navigateurs. Cela permet d'écrire des tags personnalisés en suivant le standard.
 
 Conceptuellement, Riot fait la même chose mais il y a des différences:
 
@@ -179,7 +179,7 @@ Conceptuellement, Riot fait la même chose mais il y a des différences:
 
 2. La syntaxe Polymer est plus complexe et requiert d'étudier plus de livres.
 
-3. Les composants individuels sont importés via le HTML `link rel="import"`. Des polyfills doivent recourir à des files d'attentes de requêtes XHR, ce qui rend le tout douloureusement lent sauf si un outil dédié comme [vulcanize](https://github.com/polymer/vulcanize) est utilisé. Les balises Riot sont importées via `script src` et de multiples balises peuvent être combinées avec l'outillage usuel.
+3. Les composants individuels sont importés via le HTML `link rel="import"`. Des polyfills doivent recourir à des files d'attentes de requêtes XHR, ce qui rend le tout douloureusement lent sauf si un outil dédié comme [vulcanize](https://github.com/polymer/vulcanize) est utilisé. Les tags Riot sont importées via `script src` et de multiples tags peuvent être combinés avec l'outillage usuel.
 
 4. Aucun moyen de réaliser le rendu côté serveur
 
