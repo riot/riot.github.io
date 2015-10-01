@@ -18,11 +18,14 @@ Riot versucht nicht strenge Regeln durchzusetzen, sondern simple frei verwendbar
 Wir denken auch, dass diese Baubläcke nur ein Minimum der Dateigröße und API einnehmen sollte. Fundamentale Dinge sollten so simpel wie möglich gestaltet sein, um weniger Gedanken an kompelxe API Aufrufe zu verschwenden.
 
 
-## Observable
+## Überwachungsmodul (Observable)
 
-Observable bietet ein sehr generisches Werkzeug um Events zu senden und zu empfangen. Es bildet eine sehr übliche Entwicklerart um Module zu isolieren, ohne Abhängigkeiten zu bilden oder sogenanntes "coupling". Events werden genutzt um sogar die größten Programme in kleinere Teile aufzubrechen. Module können hinzugefügt, entfernt oder modifiziert werden ohne andere Teile der Software zu beeinträchtigen.
+Das Überwachungsmodul bietet ein sehr generisches Werkzeug um Events innerhalb zu senden und darauf zu reagieren. Observable wurde geschaffen um Module isolierbar zu machen, ohne Abhängigkeiten zu bilden oder sogenanntes "coupling" entstehen zu lassen. Events werden genutzt um sogar die größten Programme in kleinere Teile aufzubrechen. Module können hinzugefügt, entfernt oder modifiziert werden ohne andere Teile der Software zu beeinträchtigen.
 
-A common practice is to split the application into a single core and multiple extensions. The core sends events any time something remarkable happens: a new item is being added, an existing item is being removed, or something is loaded from the server.
+
+Üblicherweise wird eine große Applikation in eine einzige core mit mehreren Erweiterungen gesplittet. Der Hauptteil sendet dann Events zu den kleineren Erweiterungen und kann darauf reagiert werden:
+Ein neues Object wird hinzugefügt, ein existierendes gelöscht, oder Daten werden von einem Server geladen.
+
 
 By using the observable the extensions can listen to these events and react to them. They extend the core so that the core is not aware of these modules. This is called "loose coupling".
 
