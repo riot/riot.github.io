@@ -27,43 +27,46 @@ Das Überwachungsmodul bietet ein sehr generisches Werkzeug um Events innerhalb 
 Ein neues Object wird hinzugefügt, ein existierendes gelöscht, oder Daten werden von einem Server geladen.
 
 
-By using the observable the extensions can listen to these events and react to them. They extend the core so that the core is not aware of these modules. This is called "loose coupling".
+Die Module erweitern den Hauptteil, sodass dieser nicht über die Erweiterungen Bescheid weiß. So bleiben die Erweiterungen lose and den Hauptteil gekoppelt.
 
-These extensions can be custom tags (UI components) or non-UI modules.
+Diese Erweiterungen können eigene Tags sein (UI Komponenten oder nur Logik enthalten.
 
-Once the core and events are carefully designed the team members are enabled to develop the system on their own without disturbing others.
+Sobald die Hauptapplikationen und Events sorgfältig designed wurden, kann jeder andere Entwickler das System erweitern ohne dabei andere zu stören.
 
 [Observable API](/api/observable/)
 
 
 ## Routing
 
-Router is a generic tool to take care of the URL and the back button. It's the smallest implementation you can find. It can do the following:
+Der Router bildet ein Tool um Macht über die URL und den Zurück-Button zu erlangen. Es ist eine der kleinsten Implementationen die man finden kann.
+Der Router is darauf ausgelegt folgendes zu tun:
 
-1. Change the hash part of the URL
-2. Notify when the hash changes
-3. Study the current hash
+1. Den Teil der Url nach dem Hash ändern
+2. Benachrichtigen wenn der Teil sich ändert
+3. Den momentanen Hash unter die Lupe nehmen
 
-You can place routing logic everywhere; in custom tags or non-UI modules. Some application frameworks make the router a central element that dispatches work to the other pieces of the application. Some take a milder approach where URL events are like keyboard events, not affecting the overall architecture.
+Routing Logik kann überall hinverfrachtet werden. In eigene Tags, oder Modulen nur mit Logik. Einige Applikationen machen den Router zu einem zentralen Element ihrer Architektur, welcher die Aufgabe hat, Arbeit an andere Teile der Applikation zu senden. 
+Andere wiederum machen sich den Router zunutze, um die URL events wie Tastatur events zu verwenden, ohne die Architektur zu beeinträchtigen.
 
-Every browser application needs routing since there is always an URL in the location bar.
+Jede Browser-Applikation benötigt Routing, da immer eine URL in der Adressleiste vorhanden ist.
 
 [Router API](/api/route/)
 
 
-## Modularity
+## Modularität
 
-Custom tags make the view part of your application. In modular application these tags should not be aware of each other and they should be isolated. Ideally you can use the same tag across projects regardless of the outer HTML layout.
+Eigene Tags machen den View Teil deiner Applikation aus. In modularen Applikationen sollten diese Tags nicht voneinander wissen müssen um funktionieren zu können.
+Idealerweiße kannst du dann diese Tags als Teil jedes Projektes verwenden, ganz unabhängig vom restlichen HTML Layout. Was bedeutet, dass du die Möglichkeit hast, schnell eigene Werkzeuge und UI Komponenten zu basteln.
 
-If two tags know about each other they become depdendent and a "tight coupling" is introduced. These tags cannot be freely moved around without breaking the system.
+Wenn zwei Tags von einander wissen und voneinander abhängig werden sind sie eng aneinander gebunden. Diese Tags können nicht frei bewegt werden ohne Fehler zu verursachen.
 
-To reduce coupling, have the tags listen for events rather than call each other directly. What you need is a publish/subscribe system built with `riot.observable` or similar.
+Um dieses enge Koppeln zu verhindern, können Tags auf Events anderer Tags hören und darauf reagieren. Sprich eine Art Publish/Subscribe System entwickelt mit `riot.observable`.
 
-This event emitting system can range from a simple API to a larger architectural choice like Facebook Flux.
+Dieses Event-Sende und Empfang System kann von einer simplen API bis zu einer großen Architektur reichen wie es Facebook mit Flux getan hat.
 
-### Example Riot application design
+### Beispiel des Riot Application Designs
 
-Here is a very bare bones Riot application structure for user login:
+Hier siehst du ein Grundgerüst für einen Loginbereich.
 
 ```js
 // Login API
@@ -76,11 +79,11 @@ auth.login = function(params) {
 }
 ```
 ```html
-<!-- login view -->
+<!-- Login View -->
 <login>
   <form onsubmit="{ login }">
-    <input name="username" type="text" placeholder="username">
-    <input name="password" type="password" placeholder="password">
+    <input name="username" type="text" placeholder="Benutzername">
+    <input name="password" type="password" placeholder="Passwort">
   </form>
 
   login() {
@@ -90,14 +93,14 @@ auth.login = function(params) {
     })
   }
 
-  // any tag on the system can listen to login event
+  // Jeder Tag im System kann das 'login' Event empfangen
   opts.on('login', function() {
     $(body).addClass('logged')
   })
 </login>
 ```
 
-And here we mount the application
+Hier wird die Applikation schließlich gemounted.
 
 ```html
 <body>
@@ -106,6 +109,6 @@ And here we mount the application
 </body>
 ```
 
-On the above setup the other tags on the system do not need to know about each other since they can simply listen to the "login" event and do what they please.
+Im oberen Setup müssen die Tags nicht voneinander wissen, da sie ganz simpel nach dem "login" Event Ausschau halten können und darauf entsprechend reagieren.
 
-Observable is a classic building block for a decoupled (modular) application.
+Observable bietet eine klassische Möglichkeit um modulare Applikationen zu gestalten.
