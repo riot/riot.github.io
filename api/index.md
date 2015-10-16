@@ -177,7 +177,7 @@ Updates all the mounted tags and their expressions on the page.
 
 ### <a name="tag-unmount"></a> this.unmount(keepTheParent)
 
-Detaches the tag and it's children from the page. An "unmount" event is fired.
+Detaches the tag and its children from the page. An "unmount" event is fired.
 If you want to unmount a tag without removing the parent tag you need to pass `true` to the unmount method
 
 Remove the tag from the DOM:
@@ -239,7 +239,7 @@ The child tags are initialized after the parent tag so the methods and propertie
 
 ## <a name="yield"></a> Yielding nested HTML
 
-The `<yield>` tag it's a special riot core feature that allows you to inject and compile the content of any custom tag inside its template in runtime
+The `<yield>` tag is a special riot core feature that allows you to inject and compile the content of any custom tag inside its template in runtime
 This technique allows you to extend your tags templates with html contents rendered eventually from the server
 
 For example using the following riot tag `my-post`
