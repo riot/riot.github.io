@@ -3,7 +3,7 @@ layout: fr
 title: Design d'application
 ---
 
-{% include guide-tabs.html %}
+{% include fr/guide-tabs.html %}
 
 ## Les outils avant tout
 

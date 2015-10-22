@@ -3,7 +3,7 @@ layout: fr
 title: Compilateur
 ---
 
-{% include guide-tabs.html %}
+{% include fr/guide-tabs.html %}
 
 ## Compilation dans le navigateur
 

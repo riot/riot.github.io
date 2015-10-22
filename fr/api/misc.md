@@ -4,7 +4,7 @@ layout: fr
 class: apidoc
 ---
 
-{% include api-tabs.html %}
+{% include fr/api-tabs.html %}
 
 
 ### <a name="version"></a> riot.version

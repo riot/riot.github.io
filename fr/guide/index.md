@@ -3,7 +3,7 @@ layout: fr
 title: Tags personnalisés
 ---
 
-{% include guide-tabs.html %}
+{% include fr/guide-tabs.html %}
 
 ## Exemple
 
