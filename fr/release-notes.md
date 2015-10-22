@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: fr
 title: Notes de versions
 id: release-notes
 ---

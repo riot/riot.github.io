@@ -1,6 +1,6 @@
 ---
 title: Compilateur
-layout: default
+layout: fr
 class: apidoc
 ---
 

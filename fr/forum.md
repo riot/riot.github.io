@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: fr
 title: Forum Riot
 id: forum-page
 ---

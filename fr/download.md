@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: fr
 title: Téléchargez Riot!
 base: https://raw.githubusercontent.com/riot/riot/master
 cdnjs: https://cdnjs.cloudflare.com/ajax/libs/riot

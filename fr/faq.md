@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: fr
 title: Riot FAQ
 description: Questions et Réponses à propos de Riot, la micro-bibliothèque d'interface utilisateur (UI)
 ---

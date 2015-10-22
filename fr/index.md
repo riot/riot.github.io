@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: fr
 title: Riot.js — Une micro-bibliothèque d'interface utilisateur ressemblant à React
 description: Riot vous permet de concevoir des interfaces utilisateur avec des tags personnalisés en utilisant une syntaxe simple et plaisante. Il utilise un DOM virtuel comme React mais en plus rapide. Riot est très léger comparer aux standards de l'industrie. Nous pensons qu'il y a un réel besoin pour une autre bibliothèque UI.
 ---
