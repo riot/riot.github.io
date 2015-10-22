@@ -1,66 +1,64 @@
 ---
 layout: ru
-title: Application design
+title: Структура приложения
 ---
 
 {% include guide-tabs.html %}
 
-## Tools, not policy
+## Инсттрументы, не политики
 
-Riot comes bundled with custom tags, an event emitter (observable) and router. We believe that these are the fundamental building blocks for client-side applications:
+Riot включает в себя пользовательские теги, слушатель событий и маршрутизатор. Мы верим, что это - основной набор, достаточный для клиентского приложения.
 
-1. Custom tags for the user interface,
-2. Events for modularity, and
-3. Router for URL and the back button.
-
-Riot tries not to enforce strict rules, but rather provide basic tools for you to use creatively. This flexible approach leaves the bigger architectural decisions up to the developer.
-
-We also think that these building blocks should be minimal in terms of file size and API size. Elementary stuff should be simple so there's minimal cognitive load.
+1. Пользовательские теги для интерфейсов.
+2. Слушатель событий для модульности, и
+3. Маршрутизатор, который берёт на себя URL и кнопку "назад".
 
 
-## Observable
+Riot стремится  не применять строгие правила, а, скорее, обеспечить основные инструменты. Такой подход оставляет архитектурные решения для разработчика, но избавляет его от рутины.
 
-Observable is a generic tool to send and receive events. It's a common pattern to isolate modules without forming a dependency or "coupling". By using events a large program can be broken into smaller and simpler units. Modules can be added, removed, or modified without affecting the other parts of the application.
+Мы также счтиаем, что компоненты приложения должны быть как можно более минималистичными. Это упрощает понимание API и ускоряет загрузку.
 
-A common practice is to split the application into a single core and multiple extensions. The core sends events any time something remarkable happens: a new item is being added, an existing item is being removed, or something is loaded from the server.
+## Наблюдатель
 
-By using the observable the extensions can listen to these events and react to them. They extend the core so that the core is not aware of these modules. This is called "loose coupling".
+Наблюдатель - это основной инструмент, который отправляет и принимает события. С его помошью реализуется шаблон проектирования, помогающий создать "модульность" без образования зависимостей и связей. Благодая этому патерну, большая программа может быть разбита на более мелкие и простые единицы. Модули могут быть добавлены, удалены или изменены, не затрагивая другие части приложения.
 
-These extensions can be custom tags (UI components) or non-UI modules.
+Обычной практикой является разделение приложения на ядро и несколько расширений. Ядро посылает события, это может быть что угодно: новый элемент добавляется, существующий элемент удаляется, или что-то загружается с сервера.
 
-Once the core and events are carefully designed the team members are enabled to develop the system on their own without disturbing others.
+При использовании наблюдателя, расширения могут слушать эти события и реагировать на них. Они относятся к ядру так, что ядро не знает про эти модулей. Это называется "слабая связь".
 
-[Observable API](/api/observable/)
+Эти модули могут быть пользовательскими тегами (компоненты пользовательского интерфейса) или модулями без пользовательского интерфейса.
 
+Если ядро и события тщательно продуманы, члены команды могут развивать систему очень самостоятельно, не мешая другим.
 
-## Routing
+[API наблюдателя](/api/observable/)
 
-Router is a generic tool to take care of the URL and the back button. It's the smallest implementation you can find. It can do the following:
+## Маршрутизация
 
-1. Change the hash part of the URL
-2. Notify when the hash changes
-3. Study the current hash
+Маршрутизатор является основным инструментом для работы с URL и кнопкой "назад". Это самая маленькая реализация роутера, которую вы можете найти. Он может сделать следующее:
 
-You can place routing logic everywhere; in custom tags or non-UI modules. Some application frameworks make the router a central element that dispatches work to the other pieces of the application. Some take a milder approach where URL events are like keyboard events, not affecting the overall architecture.
+1. Изменение хэш-части URL (часть после символа #)
+2. Остлеживание изменений хеш-части URL
+3. Парсинг текущей хэш-части
 
-Every browser application needs routing since there is always an URL in the location bar.
+Вы можете размещать логику маршрутизации где угодно: в пользовательских тегах или в модулях без пользовательского интерфейса.
 
-[Router API](/api/route/)
+Практически каждому приложению в браузере необходим маршрутизатор, так как всегда есть URL в адресной строке.
 
+[API Маршрутизаторв](/api/route/)
 
-## Modularity
+## Модульность
 
-Custom tags make the view part of your application. In modular application these tags should not be aware of each other and they should be isolated. Ideally you can use the same tag across projects regardless of the outer HTML layout.
+Пользовательские теги - это представление, вид вашего приложения. В модульном применении эти теги не должны знать друг друга, они должны быть изолированы. В идеале вы можете использовать один и тот же тег в разных проектах, независимо от макета HTML.
 
-If two tags know about each other they become depdendent and a "tight coupling" is introduced. These tags cannot be freely moved around without breaking the system.
+Если два тега знают друг о друге они становятся зависимым и появляется "тесная связь". Эти теги не могут свободно удаляться, не нарушая систему.
 
-To reduce coupling, have the tags listen for events rather than call each other directly. What you need is a publish/subscribe system built with `riot.observable` or similar.
+Чтобы уменьшить связь, используйте патерн наблюдателя чтобы прослушивать события. Не обращайтесь друг к другу напрямую. Всё, что вам нужно, это публикация и подписка на события, построенная на `riot.observable` или на аналоге.
 
-This event emitting system can range from a simple API to a larger architectural choice like Facebook Flux.
+Эта система событий может очень простой, или более сложной, такой как Facebook Flux.
 
-### Example Riot application design
+### Пример модульного приложения Riot
 
-Here is a very bare bones Riot application structure for user login:
+Это лишь заготовка для авторизации на Riot.
 
 ```js
 // Login API
@@ -87,14 +85,14 @@ auth.login = function(params) {
     })
   }
 
-  // any tag on the system can listen to login event
+  // любой тег в системе может слушать событие login
   opts.on('login', function() {
     $(body).addClass('logged')
   })
 </login>
 ```
 
-And here we mount the application
+Монтируетм приложение в шаблон
 
 ```html
 <body>
@@ -103,6 +101,4 @@ And here we mount the application
 </body>
 ```
 
-On the above setup the other tags on the system do not need to know about each other since they can simply listen to the "login" event and do what they please.
-
-Observable is a classic building block for a decoupled (modular) application.
+На приведенном выше примере теги в системе не должны знать друг о друге, так как они могут просто слушать события и делать то, что им заблагорассудится. Наблюдатель является классическим компонентом для постоения модульной архитектуры.
