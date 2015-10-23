@@ -53,7 +53,7 @@ Riot réduit le besoin de jQuery. Vous n'avez plus besoin de sélecteurs, de par
 ## `onclick` n'est-il pas dangereux ?
 Ce n'est pas dangereux, ça a juste l'air "vieux". Avoir du JS et du HTML dans le même module est plus important que les questions esthétiques. La syntaxe minimale de Riot donne aux gestionnaires d'évènements un air décent.
 
-## De futurs projets ?
+## Des évolutions à venir ?
 
 Bien sûr. Nous nous concentrons surtout sur [la stabilité et la performance](https://github.com/riot/riot/issues) et essayons de fournir [plus d'exemples](https://github.com/riot/examples).
 
