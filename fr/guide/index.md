@@ -709,14 +709,14 @@ submit() {
 
 
 
-### Object événement
+### Objet événement
 
 Le gestionnaire d'événement reçoit l'objet standard événement en tant que premier argument. Les propriétés suivantes sont normalisées pour fonctionner à travers tous les navigateurs:
 
 - `e.currentTarget` pointe vers l'élément sur lequel le gestionnaire d'événement est spécifié.
 - `e.target` est l'élément d'origine de l'événement. Il ne s'agit pas nécessairement du même que `currentTarget`.
 - `e.which` est le code de touche dans le cas d'un événement clavier (`keypress`, `keyup`, etc...).
-- `e.item` est l'élément courant dans une boucle. Voir les [boucles](#loops) pour plus de détails.
+- `e.item` est l'élément courant dans une boucle. Voir les [boucles](#boucles) pour plus de détails.
 
 
 ## Conditions
@@ -738,7 +738,7 @@ Une fois encore, cette expression peut être une simple propriété ou une expre
 L'opérateur d'égalité est `==` et non `===`. Par exemple: `'a string' == true`.
 
 
-## Loops
+## Boucles
 
 Les boucles sont implémentées avec l'attribut `each` comme ceci:
 
