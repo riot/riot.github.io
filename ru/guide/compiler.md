@@ -1,92 +1,89 @@
 ---
 layout: ru
-title: Compiler
+title: Компилятор
 ---
 
 {% include guide-tabs.html %}
 
-## In-browser compilation
+## Компилация в браузере
 
-Custom tags need to be transformed to JavaScript before the browser can execute them. You can do this by setting a `type="riot/tag"` attribute for your script tags. For example:
-
+Пользовательские теги должны быть преобразованы в JavaScript, прежде чем браузер может выполнять их. Вы можете сделать это, установив атрибут `type="riot/tag"` для подколючаемых на странице скриптов. Например:
 
 ``` html
-<!-- mount point -->
+<!-- точка монтирования -->
 <my-tag></my-tag>
 
-<!-- inlined tag definition -->
+<!-- подключение тега -->
 <script type="riot/tag">
   <my-tag>
-    <h3>Tag layout</h3>
+    <h3>Шаблон тега</h3>
     <inner-tag />
   </my-tag>
 </script>
 
-<!-- <inner-tag/> is specified on external file -->
+<!-- <inner-tag/> определённый пользовательский тег -->
 <script src="path/to/javascript/with-tags.js" type="riot/tag"></script>
 
-<!-- include riot.js and the compiler -->
+<!-- подключение riot.js с компилятором  -->
 <script src="//cdn.jsdelivr.net/g/riot@2.2(riot.min.js+compiler.min.js)"></script>
 
 
-<!-- mount normally -->
+<!-- монтирование -->
 <script>
 riot.mount('*')
 </script>
 ```
 
-The script tag and the external file can contain multiple tags definitions combined with regular javascript.
+Тег script и подключаемые файлы могут содержать множество пользовательских тегов, которые могут сочетаться с обычным JavaScript.
 
-Riot automatically takes inlined and external tags and compiles them before the tags are rendered with the `riot.mount()` call.
+Riot автоматически компилирует пользовательские теги, прежде чем они будут использованы при вызове `riot.mount ()`.
 
-### Access tag instances
-If you are loading tags with `script src` and want to get access to the mounted tags you need to wrap the call with `riot.compile` as follows:
+### Доступ к объектам тегов
+Если вы загружаете теги через `script src` и хотите получить доступ к подключаемому тегу, вам нужно обернуть вызов `riot.compile` следующим образом:
 
 ``` html
 <script>
 riot.compile(function() {
-  // here tags are compiled and riot.mount works synchronously
+  // здесь теги компилируются и riot.mount сработает в синхнонной манере
   var tags = riot.mount('*')
 })
 </script>
 ```
 
-### Compiler performance
+### Производительность компилятора
 
-Compilation phase is basically free and takes no time at all. Compiling a [timer tag](https://github.com/riot/riot/blob/master/test/tag/timer.tag) 30 times takes 2 milliseconds on a regular laptop. If you have a crazy page with 1000 different timer-sized tags, the compilation takes around 35ms.
+Фаза компиляции почти нисколько не занимает времени. Компиляция [тега таймера] (https://github.com/riot/riot/blob/master/test/tag/timer.tag) 30 раз занимает 2 миллисекунды на обычном ноутбуке. Если у вас есть сумасшедшая страница с 1000 различных таймеров размера тегов, компиляция этого добра составит около 35 мс.
 
-The compiler weights only 3.2KB (1.7K gzipped) so you can safely perform client side compilation on production without download or performance or issues.
+Вес компилятора всего лишь 3.2KB (1.7K сжатый), так что вы можете безопасно выполнять на стороне клиента компиляцию на продакшене без лишних проблем.
 
-Read the [compiler API](/api/compiler/) for more details.
+Читайте [API компилятора](/api/compiler/) для более подробной информации.
 
+### Демо
 
-### Demos
-
-- [In-browser compiled](http://muut.github.io/riotjs/demo/)
-- [Pre-compiled](http://muut.github.io/riotjs/demo/)
+- [Компилация в браузере](http://muut.github.io/riotjs/demo/)
+- [Пре-компиляция](http://muut.github.io/riotjs/demo/)
 - [Source code](https://github.com/riot/riot/tree/gh-pages/demo)
-- Download the demo as a [zip file](https://github.com/riot/riot/archive/gh-pages.zip)
+- Скачайте демо как [zip-файл](https://github.com/riot/riot/archive/gh-pages.zip)
 
 
 
-## Pre-compilation
+## Пре-компиляция
 
-Pre- compilation on the server gives you following benefits:
+Пре-компиляция на сервере даёт вам следующее:
 
-- Ability to compile tags with your [favorite pre-processor](#pre-processors).
-- Small performance benefit. No need to load and execute the compiler on browser.
-- Universal (isomorphic) apps and the ability to pre- render tags on the server (released soon).
+- Возсожность компилировать теги с вашим [любимым пре-процессором](#Пре-процессоры).
+- Небольшой выигрыш в производительности. Избавляет от необходимости загружать компилятор в браузер и выполнять сборку там.
+- Универсальное (изоморфное) приложение и возможность рендерить теги на стороне сервера.
 
-
-Pre-compilation happens with a `riot` executable, which can be installed with NPM as follows:
+Пре-компиляция производится с помощью исполняемой программы `riot`, которую можно установить через npm следующим образом:
 
 ``` sh
 npm install riot -g
 ```
 
-Type `riot --help` and make sure it works. [node.js](http://nodejs.org/) is required on your machine.
+После уставки введите `riot --help` чтобы убедиться, что установка прошла успешно. Разумеется, для этого нужен установленный [node.js](http://nodejs.org/).
 
-With pre-compilation your HTML is something like this:
+С пре-компиляцией ваш шаблон будет выглядеть примерно так:
 
 ``` html
 <!-- mount point -->
@@ -104,36 +101,36 @@ riot.mount('*')
 </script>
 ```
 
-### Using
+### Использование
 
-Here is how `riot` command works:
+Комманда `riot` работает так:
 
 ``` sh
-# compile a file to current folder
+# компилировать файл в текущей директории
 riot some.tag
 
-# compile file to target folder
+# компилировать файл в определённую директорию
 riot some.tag some_folder
 
-# compile file to target path
+# компилировать файл по определённому пути
 riot some.tag some_folder/some.js
 
-# compile all files from source folder to target folder
+# компилировать файлы из определённой директории в определённое место
 riot some/folder path/to/dist
 
-# compile all files from source folder to a single concatenated file
+# компилировать файлы из директории и объединить их в один файл
 riot some/folder all-my-tags.js
 
 ```
 
-The source file can contain one or more custom tags and there can be regular JavaScript mixed together with custom tags. The compiler will only transform the custom tags and does not touch other parts of the source file.
+Исходный файл может содержать один или несколько пользовательских тегов и может быть регулярным JavaScript, который можно смешивать с пользовательскими тегами. Компилятор только преобразовать пользовательские теги и не затрагивает других частей исходного файла.
 
-For more information, type: `riot --help`
+Детальная информация: `riot --help`
 
 
-### Watch mode
+### Watch-мод
 
-You can watch directories and automatically transform files when they are changed.
+Вы можете следить за изменениями в файлах и автоматически их компилировать при изменнии:
 
 ``` sh
 # watch for
@@ -141,16 +138,16 @@ riot -w src dist
 ```
 
 
-### Custom extension
+### Определённое расширение
 
-You're free to use any file extension for your tags (instead of default `.tag`):
+Вместо дефолтного расширения `.tag`, вы можете использовать любое своё:
 
 ``` sh
 riot --ext html
 ```
 
 
-### Node module
+### Модуль node
 
 ``` javascript
 var riot = require('riot')
@@ -158,20 +155,21 @@ var riot = require('riot')
 var js = riot.compile(source_string)
 ```
 
-The compile function takes a string and returns a string.
+Функция compile принимает строку и отдаёт другую строку.
 
-### Plug into your workflow
+### Плагины для популярных сборщиков
 
 - [Gulp](https://github.com/e-jigsaw/gulp-riot)
 - [Grunt](https://github.com/ariesjia/grunt-riot)
 - [Browserify](https://github.com/jhthorsen/riotify)
 
 
-## Pre-processors
+## Пре-процессоры
 
-This is the main fruit of pre- compilation. You can use your favourite pre- processor to create custom tags. Both HTML and JavaScript processor can be customized.
+Это основной повод использовать пре-компиляцию. Вы можете использовать ваш любимый препроцессор для создания пользовательских тегов.
 
-The source language is specified with `--type` or `-t` argument on the command line or you can define the language on the script tag as follows:
+Исходный язык задается через аргумент `--type` или `-t` в командной строке, или вы можете определить язык в теге script следующим образом:
+
 
 ``` html
 <my-tag>
@@ -183,22 +181,21 @@ The source language is specified with `--type` or `-t` argument on the command l
 </my-tag>
 ```
 
-
 ### CoffeeScript
 
 ``` sh
-# use coffeescript pre-processor
+# использвание препроцессора coffeescript
 riot --type coffee --expr source.tag
 ```
 
-The `--expr` argument specifies that all the expressions are also processed as well. You can also use "cs" as an alias to "coffee". Here is a sample tag written in CoffeeScript:
+Вы также можете использовать "cs" в качестве псевдонима "coffee". Вот пример тэг, записанный в CoffeeScript:
 
 ``` javascript
 <kids>
 
   <h3 each={ kids[1 .. 2] }>{ name }</h3>
 
-  # Here are the kids
+  # дети
   this.kids = [
     { name: "Max" }
     { name: "Ida" }
@@ -208,7 +205,7 @@ The `--expr` argument specifies that all the expressions are also processed as w
 </kids>
 ```
 
-Note that `each` attribute is CoffeeScript as well. CoffeeScript must be present on your machine:
+Отметьте, что `each` аттрибут работает в CoffeeScript так же как и в нативном JS. Разумеется, что CoffeeScript должен быть установлен на вашей машине:
 
 ``` sh
 npm install coffee-script -g
@@ -217,14 +214,14 @@ npm install coffee-script -g
 
 ### EcmaScript 6
 
-ECMAScript 6 is enabled with a type "es6":
+Для ECMAScript 6 используется тип тега "es6":
 
 ``` sh
-# use ES6 pre-processor
+# использвание препроцессора ES6
 riot --type es6 source.tag
 ```
 
-An sample tag written in ES6:
+Пример тега, написанный в ES6:
 
 ``` html
 <test>
@@ -237,24 +234,24 @@ An sample tag written in ES6:
 </test>
 ```
 
-All ECMAScript 6 [features](https://github.com/lukehoban/es6features) can be used. [Babel](https://babeljs.io/) is used for the transformation:
+Все ECMAScript 6 [фичи](https://github.com/lukehoban/es6features) доступны. В реализации используется [Babel](https://babeljs.io/):
 
 ``` sh
 npm install babel
 ```
 
-Here is a [bigger example](https://github.com/txchen/feplay/tree/gh-pages/riot_babel) on using Babel with Riot.
+Вот другой [пример](https://github.com/txchen/feplay/tree/gh-pages/riot_babel) в котором испольуется Babel с Riot.
 
 ### TypeScript
 
-TypeScript adds optional static typing to JavaScript. Use `--type typescript` to enable it:
+TypeScript добавляет опциональную проверку в JavaScript. Для этого языка используйте `--type typescript`:
 
 ``` sh
-# use TypeScript pre-processor
+# Использование препроцессора TypeScript
 riot --type typescript source.tag
 ```
 
-An sample tag written in TypeScript:
+Пример на TypeScript:
 
 ``` html
 <test>
@@ -267,23 +264,23 @@ An sample tag written in TypeScript:
 </test>
 ```
 
-[typescript-simple](https://github.com/teppeis/typescript-simple) is used for the transformation:
+Для трансформации используется [typescript-simple](https://github.com/teppeis/typescript-simple):
 
 ``` sh
 npm install typescript-simple
 ```
 ### LiveScript
 
-Check out [LiveScript](http://livescript.net) for language features and documentation.
+Cписк фич языка можно увидеть [тут](http://livescript.net).
 
 The source language is specified with `--type` or `-t` argument:
 
 ``` sh
-# use livescript pre-processor
+# Использование препроцессора livescript
 riot --type livescript --expr source.tag
 ```
 
-The `--expr` argument specifies that all the expressions are also processed as well. You can also use "ls" as an alias to "livescript". Here is a sample tag written in LiveScript:
+Вы также можете использовать "ls" в качестве псевдонима "livescript". Вот пример тэг, записанный в livescript:
 
 ``` html
 <kids>
@@ -299,23 +296,19 @@ this.kids =
 </kids>
 ```
 
-Note that `each` attribute is LiveScript as well. LiveScript must be present on your machine:
+LiveScript должен быть установлен:
 
 ``` sh
 npm install LiveScript -g
 ```
 
 ### Jade
-
-HTML layout can be processed with `template` configuration option. Here's an example with Jade – a "clean, whitespace sensitive syntax for writing html"
-
-
 ``` sh
 # use Jade HTML pre-processor
 riot --template jade source.tag
 ```
 
-A Jade sample:
+Пример с Jade:
 
 ``` jade
 sample
@@ -324,7 +317,7 @@ sample
     @value = 'sample'
 ```
 
-As you notice, you can define the script type on the template as well. Above we use coffee. [jade](https://github.com/jadejs/jade) is used for the transformation:
+Для трансформации используется [jade](https://github.com/jadejs/jade).
 
 ``` sh
 npm install jade
@@ -332,9 +325,9 @@ npm install jade
 
 
 
-### Any language
+### Любой другой язык
 
-You can configure your favourite language by making a custom parser function. For example:
+Вы можете использовать любой язык для компиляции пользовательских тегов. Для этого вам нужно создать специальную функцию:
 
 ``` js
 function myParser(js, options) {
@@ -342,7 +335,7 @@ function myParser(js, options) {
 }
 ```
 
-This parser is then passed for the compiler with `parser` option:
+И передать её как параметр `parser` в `riot.compile`
 
 ``` js
 var riot = require('riot')
@@ -350,11 +343,11 @@ var riot = require('riot')
 var js = riot.compile(source_string, { parser: myParser, expr: true })
 ```
 
-Set `expr: true` if you want the expressions to be parsed as well.
+Установите `expr: true` если хотите, чтобы выражения js так же обрабатвыались.
 
-#### riot.parsers on the browser and the server
+#### riot.parsers в браузере и на сервере
 
-You can also create your custom riot parsers adding them to the `riot.parsers` property and share them across the browsers and server. For example
+Вы можете создать свой собственный парсер для Riot и добавить его в `riot.parsers`. Например:
 
 ```js
 riot.parsers.js.myJsParser = function(js, options) {
@@ -365,8 +358,7 @@ riot.parsers.css.myCssParser = function(tagName, css) {
   return doYourThing(tagName, css)
 }
 ```
-
-Once you have created your own `riot.parsers` you will be able to compile your tags using them in the following way
+Создав парсер и добавив его в `riot.parsers`, вы можете использовать его таким образом:
 
 ```html
 <custom-parsers>
@@ -380,30 +372,26 @@ Once you have created your own `riot.parsers` you will be able to compile your t
 </custom-parsers>
 ```
 
+### Без трансформации
 
-
-
-### No transformation
-
-By default Riot uses a build-in transpiler that simply enables shorter ES6- stylish method signatures. You can disable all transformation with `--type none`:
+По умолчанию Riot использует встроенный преобразователь, что позволяет использовать некоторые ES6-фичи. Вы можете отключить все преобразования с `--type none`:
 
 ``` sh
-# no pre-processor
+# без преобразований
 riot --type none --expr source.tag
 ```
 
-### AMD and CommonJS
+### AMD и CommonJS
+Теги Riot совместимы с `AMD` и ` CommonJS`. Это необходимо для тех случаев, когда Riot размещается на странице через загрузчики, вроде [RequireJS](http://requirejs.org/) или [Browserify](http://browserify.org/).
 
-Riot tags can be compiled with `AMD` (Asynchronous Module Definition) and `CommonJS` support. This configuration option is necessary if Riot is used with an AMD loader such as [RequireJS](http://requirejs.org/) or a CommonJS loader such as [Browserify](http://browserify.org/).
-
-The Riot library must be defined / required as `riot` in both cases.
+Библиотека Riot должен быть подключён как `riot` в обоих случаях.
 
 ``` sh
-# enable AMD and CommonJS
+# Включение AMD и CommonJS
 riot --m
 ```
 
-Example AMD:
+Пример с AMD:
 
 ``` js
 
@@ -412,7 +400,7 @@ define(['riot', 'tags'], function (riot) {
 })
 ```
 
-Example CommonJS:
+Прмиер с CommonJS:
 
 ``` js
 var riot = require('riot')
@@ -421,5 +409,4 @@ var tags = require('tags')
 riot.mount('*')
 ```
 
-
-If you make something great, please [share it](https://github.com/riot/riot/issues/58) !
+Если вы сделали что-то интересное, пожалуйста, [поделитесь](https://github.com/riot/riot/issues/58) этим с сообществом!
