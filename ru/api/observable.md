@@ -1,5 +1,5 @@
 ---
-title: Observable
+title: Наблюдатель
 layout: ru
 class: apidoc
 ---
@@ -9,45 +9,45 @@ class: apidoc
 
 ### <a name="constructor"></a> riot.observable(el)
 
-Adds [Observer](http://en.wikipedia.org/wiki/Observer_pattern) support for the given object `el` or if the argument is empty a new observable instance is created and returned. After this the object is able to trigger and listen to events. For example:
+Добавляет функционал [наблюдателя] (http://en.wikipedia.org/wiki/Observer_pattern) для данного объекта `el` или, если аргумент пуст, создаёт и возвращает новый экземпляр наблюдателя. После этого объект может вызвать и слушать событий. Например:
 
 ``` js
 function Car() {
 
-  // Make Car instances observable
+  // создаём объект наблюдателя Car
   riot.observable(this)
 
-  // listen to 'start' event
+  // слушаем событие 'start'
   this.on('start', function() {
-    // engine started
+    // ...
   })
 
 }
 
-// make a new Car instance
+// новый объект Car
 var car = new Car()
 
-// trigger 'start' event
+// вызываем событие 'start'
 car.trigger('start')
 ```
 
-@returns the given object `el` or a new observable instance
+@returns полученный объект `el` или новый объект наблюдателя
 
 
 ### <a name="on"></a> el.on(events, callback)
 
-Listen to the given space separated list of `events` and execute the `callback` each time an event is triggered.
+Подписка на слушание списка событий `events`, которые передаются в виде строки, разделённых запятой. Функция `callback` вызывается каждый раз, когда какое-либо из событий срабатывает.
 
 ``` js
-// listen to single event
+// слушание одного события
 el.on('start', function() {
 
 })
 
-// listen to multiple events, the event type is given as the argument
+// прослушивание нескольких событий. тип события передаётся в виде аргумента `type`
 el.on('start stop', function(type) {
 
-  // type is either 'start' or 'stop'
+  // type равен 'start' или 'stop'
 
 })
 ```
@@ -56,10 +56,10 @@ el.on('start stop', function(type) {
 
 ### <a name="one"></a> el.one(event, callback)
 
-Listen to the given `event` and execute the `callback` at most once.
+Подписка на `event`. `callback` срабатывает только один раз.
 
 ``` js
-// run the function once, even if 'start' is triggered multiple times
+// функция выполняется только один раз, даже, если событие `start` вызывается множество раз
 el.one('start', function() {
 
 })
@@ -69,7 +69,7 @@ el.one('start', function() {
 
 ### <a name="off"></a> el.off(events)
 
-Removes the given space separated list of event listeners
+Удаление всех слушателей, которые подписаны на данное событие
 
 ``` js
 el.off('start stop')
@@ -79,7 +79,7 @@ el.off('start stop')
 
 ### <a name="off-fn"></a> el.off(events, fn)
 
-Removes the given callback from the list of events
+Удаляет определённый метод из тех, которые подписаны на данные события.
 
 ``` js
 function doIt() {
@@ -88,7 +88,7 @@ function doIt() {
 
 el.on('start middle end', doIt)
 
-// remove a specific listener from start and end events
+// удаление определённого метода из событий start и end
 el.off('start end', doIt)
 ```
 
@@ -96,14 +96,13 @@ el.off('start end', doIt)
 
 ### <a name="off-all"></a> el.off('*')
 
-Removes all listeners from all event types.
+Удаление всех слушателей
 
 @returns `el`
 
 
 ### <a name="trigger"></a> el.trigger(event)
-
-Execute all callback functions that listen to the given `event`
+Выполнить все функции callback, которые слушают данный `event`
 
 ``` js
 el.trigger('start')
@@ -113,15 +112,15 @@ el.trigger('start')
 
 ### <a name="trigger-args"></a> el.trigger(event, arg1 ... argN)
 
-Execute all callback functions that listen to the given `event`. Any number of extra parameters can be provided for the listeners.
+Выполнить все callback-функции, которые слушают данный `event`. Любое количество дополнительных параметров могут быть предоставлены для слушателей.
 
 ``` js
-// listen to 'start' event and expect extra arguments
+// подписка на событие 'start'. слушатель может принимать дополнительне параметры
 el.on('start', function(engine_details, is_rainy_day) {
 
 })
 
-// trigger start event with extra parameters
+// вызов события start c параметрами
 el.trigger('start', { fuel: 89 }, true)
 
 ```
