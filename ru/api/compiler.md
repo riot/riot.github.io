@@ -1,18 +1,18 @@
 ---
-title: Compiler
+title: Компилятор
 layout: ru
 class: apidoc
 ---
 
 {% include api-tabs.html %}
 
-## On browser
+## В браузере
 
-Following methods apply to browsers only. Jump to [server section](#compile-on-server) if you want to compile under node or io.js.
+Следующие методы применимы только в браузере. Смотрите [серверные методы](#compile-on-server) если используете компиляцию на сервере.
 
 ### <a name="compile"></a> riot.compile(callback)
 
-Compile all tags defined with `<script type="riot/tag">` to JavaScript. These can be inlined script definitions or external resources that load scripts defined with `src` attribute. After all scripts are compiled the given `callback` method is called. For example:
+Компиляция в JavaScript всех тегов с типом `<script type="riot/tag">`. Они могут быть встроены в страницу, или могут быть подключены как внешний ресурс с помощью атрибута `src`. После того как все теги скомпилируются, вызывается метод `callback`. Например:
 
 ``` javascript
 riot.compile(function() {
@@ -20,29 +20,29 @@ riot.compile(function() {
 })
 ```
 
-You can leave out the `riot.compile` call and write just:
+Вы можете опустить метод `riot.compile` и писать просто:
 
 ``` javascript
 var tags = riot.mount('*')
 ```
 
-but you don't get to know when external resources are loaded and compiled and the return value is an empty array if you have external scripts. If all scripts are defined on the page then riot.compile step can be left out.
+но так вы не сможете определить когда пользовательские теги были загружены и скомпилированы.
 
-For more details, read the compiler [general introduction](/guide/compiler/).
+Для более подробной информации, смотрите [основное описание](/guide/compiler/).
 
 ### <a name="compile-fn"></a> riot.compile(url, callback)
 
-Loads the given URL and compiles all tags after which the `callback` is called. For example:
+Загружает и компилирует все теги, которые содержатся в ресурсе по URL. После компиляции вызывается `callback`. Например:
 
 ``` javascript
 riot.compile('my/tags.tag', function() {
-  // the loaded tags are ready to be used
+  // загруженные теги готовы к использованию
 })
 ```
 
 ### <a name="compile-tag"></a> riot.compile(tag)
 
-Compiles and executes the given `tag`. For example:
+Компилирует и выполняет полученный тег `tag`. Например:
 
 ```
 <template id="my_tag">
@@ -56,23 +56,23 @@ riot.compile(my_tag.innerHTML)
 </script>
 ```
 
-After the call you can use `my-tag` normally.
+После вызова, вы можете использовать `my-tag` как обычно.
 
-A tag definition is assumed if the first non- empty character is `<`, otherwise the argument is taken as URL.
+Предполагается, что первый непробельный символ строки - `<`, в противном случае аргумент воспринимается как URL.
 
-@returns the compiled JavaScript as string
+@returns скомпилированный JavaScript в виде строка
 
 ### <a name="compile-to-str"></a> riot.compile(tag, true)
 
-Compiles the `tag` and returns it as a string. Only the transformation from the tag to JavaScript is performed and the tag is not executed on the browser. You can use this method to benchmark the compiler performance for example.
+Компилирует `tag` и возвращает его в виде строки. Выполняется только трансформация тега в JavaScript, но полученный тег не исполняется в браузере. Вы можете использовать этот метод, например, для сравнения производительности компилятора.
 
 ``` js
 var js = riot.compile(my_tag.innerHTML, true)
 ```
 
-## On server
+## На сервере
 
-After `npm install riot` you can do following:
+После того, как вы устанвите riot (`npm install riot`), вы сможете использовать следующий функционал:
 
 ```
 var riot = require('riot')
@@ -80,11 +80,11 @@ var riot = require('riot')
 var js = riot.compile(tag)
 ```
 
-The compile function takes the tag definition (string) and returns JavaScript (string).
+Принимает пользовательский тег в виде строки и возвращает JavaScript так же в виде строки.
 
 ### <a name="css-parser"></a> riot.parsers.css [tagName, css]
 
-Custom parsers that could be used to compile your tags css. For example:
+Пользовательские парсеры, которые могут быть использованы для компиляции CSS. Например:
 
 ```js
 riot.parsers.css.myparser = function(tag, css) {
@@ -101,7 +101,7 @@ riot.parsers.css.myparser = function(tag, css) {
 </custom-parsers>
 ```
 
-will be compiled to:
+скомпилируется в:
 
 ```html
 <custom-parsers>
@@ -114,7 +114,7 @@ will be compiled to:
 
 ### <a name="js-parser"></a> riot.parsers.js [js, options]
 
-Custom parsers that could be used to compile your tags javascript. For example
+Пользовательские парсеры, которые могут быть использованы для компиляции javascript. Например:
 
 ```js
 riot.parsers.js.myparser = function(js) {
@@ -131,7 +131,7 @@ riot.parsers.js.myparser = function(js) {
 </custom-parsers>
 ```
 
-will be compiled to:
+скомпилируется в:
 
 ```html
 <custom-parsers>
@@ -144,6 +144,4 @@ will be compiled to:
 
 ### <a name="html-parser"></a> riot.parsers.html [html]
 
-Custom parsers that could be used to compile your tags html
-
-
+Пользовательские парсеры, которые могут быть использованы для компиляции html.
