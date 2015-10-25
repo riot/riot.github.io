@@ -47,13 +47,13 @@ riot.route.start() // start again
 
 ### riot.route.stop()
 
-Remove the hashchange listeners clearing also the [riot.route.route](#route) callbacks.
+Remove the hashchange listeners clearing also the [riot.route](#route) callbacks.
 
 ```javascript
 riot.route.stop()
 ```
 
-Stopping the default router allow the use of a different router on your appliaction.
+Stopping the default router allow the use of a different router on your application.
 
 ### riot.route(to)
 
