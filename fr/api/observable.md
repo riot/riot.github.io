@@ -47,7 +47,7 @@ el.on('start', function() {
 // écoute plusieurs événements, le type d'événement observé est passé en argument de la fonction callback
 el.on('start stop', function(type) {
 
-  // type is either 'start' or 'stop'
+  // type est soit 'start', soit 'stop'
 
 })
 ```
