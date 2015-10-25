@@ -1,5 +1,5 @@
 ---
-title: Miscellaneous
+title: Разное
 layout: ru
 class: apidoc
 ---
@@ -9,16 +9,15 @@ class: apidoc
 
 ### <a name="version"></a> riot.version
 
-The current version number as String: `'{{ site.version }}'`
+Текущая версия: `'{{ site.version }}'`
 
 
 ### <a name="brackets"></a> riot.settings.brackets
 
-A global Riot setting to customize the start and end tokens of the expressions. For example
-
+Глобальные настройки Riot, которые задают вид открывающих и закрывающих символов для выражений в шаблонах. Открывающие и закрывающие символы должны быть разделены пробелом Например:
 
 ``` js
 riot.settings.brackets = '[% %]'
 ```
 
-let's you write expressions `<p>[% like_this %]</p>`. The start and end is separated with a space character.
+Это позволит вам использовать выражение вроде `<p>[% like_this %]</p>`.
