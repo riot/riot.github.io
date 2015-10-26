@@ -60,7 +60,7 @@ var tags = riot.mount('div#main', 'my-tag', api)
 Mount a custom tag named tagName on a given domNode passing optional data with opts. For example:
 
 ```
-// mounts "my-tag" to given DOM node
+// mounts "users" tag to #slide node and pass api as options
 riot.mount(document.getElementById('slide'), 'users', api)
 ```
 
