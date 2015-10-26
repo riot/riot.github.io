@@ -201,4 +201,4 @@ On parle des Web components comme le [roi de tous les défis du polyfilling](htt
 
 Polymer est basée sur une technologie expérimentale. Le support natif des Web Components n'est pas présent sur Safari ou IE. Le statut IE est "en considération" et les plans de Safari sont incertains. Certains [commits](https://lists.webkit.org/pipermail/webkit-dev/2013-May/024894.html) sur Webkit semblent indiquer qu'ils ne comptent pas les supporter du tout. Et Polymer est capable d'apporter ses polyfills uniquement sur les _dernières versions_ des navigateurs “evergreen” (IE 10+).
 
-Le projet Polymer est là [depuis 2 ans](https://github.com/Polymer/polymer/commit/0452ada044a6fc5818902e685fb07bb4678b2bc2) et n'a pas été adopté de mnanière significative. Il n'est pas encore certain que les Web Components soient un jour nativement supportés.
+Le projet Polymer est là [depuis 2 ans](https://github.com/Polymer/polymer/commit/0452ada044a6fc5818902e685fb07bb4678b2bc2) et n'a pas été adopté de manière significative. Il n'est pas encore certain que les Web Components soient un jour nativement supportés.
