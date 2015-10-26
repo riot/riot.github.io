@@ -275,7 +275,7 @@ var OptsMixin = {
 <my-tag>
   <h3>{ opts.title }</h3>
 
-    this.mixin(OptsMixin)
+  this.mixin(OptsMixin)
 </my-tag>
 ```
 
@@ -303,7 +303,7 @@ var id_mixin_instance = new IdMixin()
 <my-tag>
   <h3>{ opts.title }</h3>
 
-    this.mixin(OptsMixin, id_mixin_instance)
+  this.mixin(OptsMixin, id_mixin_instance)
 </my-tag>
 ```
 
@@ -323,7 +323,7 @@ riot.mixin('mixinName', mixinObject)
 <my-tag>
   <h3>{ opts.title }</h3>
 
-    this.mixin('mixinName')
+  this.mixin('mixinName')
 </my-tag>
 ```
 
