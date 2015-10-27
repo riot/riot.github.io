@@ -220,6 +220,77 @@ riot.mount('todo, forum, comments')
 文書には、同じタグの複数のインスタンスを含めることができます。
 
 
+
+### DOM要素へのアクセス
+
+Riotは、thisキーワードに続くname属性を持つ要素へのアクセスと、豊富なショートハンドとしてif="{...}"属性のようなプロパティメソッドを提供します。
+しかし、時によっては、あなたはこれらの組み込みの機能とは相性の良くないHTMLの要素を参照したり、操作したりする必要に迫られるでしょう。
+
+### jQueryやZepto、querySelectorなどをどのように使うべきか
+
+もし、Riotの中でDOMにアクセスする必要が生じたならば、 あなたは[タグのライフサイクル](#タグのライフサイクル) を見てみたいと思うでしょう。そして、 `update()`イベントが最初に発火するまで、DOM要素が生成されないことに気づくかもしれません。つまり、それより前の、要素を選択しようとするあらゆる試みが失敗することを意味します。
+
+```html
+<example-tag>
+  <p id="findMe">Do I even Exist?</p>
+
+  <script>
+  var test1 = document.getElementById('findMe')
+  console.log('test1', test1)  // Fails
+
+  this.on('update', function(){
+    var test2 = document.getElementById('findMe')
+    console.log('test2', test2) // Succeeds
+  })
+  </script>
+</example-tag>
+```
+
+あなたはおそらく、update毎に何かを取得するようなことは望まないでしょう。その代わりに、あなたは十中八九、 `mount`イベントでそれを実行しようと思うはずです。
+
+```html
+<example-tag>
+  <p id="findMe">Do I even Exist?</p>
+
+  <script>
+  var test1 = document.getElementById('findMe')
+  console.log('test1', test1)  // Fails
+
+  this.on('update', function(){
+    var test2 = document.getElementById('findMe')
+    console.log('test2', test2) // Succeeds, fires on every update
+  })
+
+  this.on('mount', function(){
+    var test3 = document.getElementById('findMe')
+    console.log('test3', test3) // Succeeds, fires once (per mount)
+  })
+  </script>
+</example-tag>
+```
+
+### コンテキスト依存のDOMクエリ
+
+さて、私たちは今、`update`または`mount`イベントを待つことによって、DOM要素を得る方法を知っています。さらに、要素のコンテキストを`root element`（私たちが作成しているRiotタグ）へのクエリに追加することによって、このやり方をさらに便利にすることができます。
+
+```html
+<example-tag>
+  <p id="findMe">Do I even Exist?</p>
+  <p>Is this real life?</p>
+  <p>Or just fantasy?</p>
+
+  <script>
+  this.on('mount', function(){
+    // Contexted jQuery
+    $('p', this.root)
+
+    // Contexted Query Selector
+    this.root.querySelectorAll('p')
+  })
+  </script>
+</example-tag>
+```
+
 ### オプション
 
 第二引数にタグのオプションを渡すことができます。
