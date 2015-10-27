@@ -1,13 +1,13 @@
 ---
 layout: ru
-title: Custom tags
+title: Пользовательские теги
 ---
 
 {% include guide-tabs.html %}
 
-## Example
+## Пример
 
-Riot custom tags are the building blocks for user interfaces. They make the "view" part of the application. Let's start with an extended TODO example highlighting various features of Riot:
+Пользовательские теги в Riot - основные строительные блоки для интерфейсов. Они берут на себя часть "представление" в приложении. Давайте начнём с TODO-приложения, чтобы осветить различный функционал Riot:
 
 ```html
 <todo>
@@ -53,247 +53,240 @@ Riot custom tags are the building blocks for user interfaces. They make the "vie
 </todo>
 ```
 
-Custom tags are [compiled](/guide/compiler/) to JavaScript.
+Пользовательские теги [компилируются](/guide/compiler/) в JavaScript.
 
-See the [live demo](http://muut.github.io/riotjs/demo/), browse the [sources](https://github.com/riot/riot/tree/gh-pages/demo), or download the [zip](https://github.com/riot/riot/archive/gh-pages.zip).
-
-
-
-## Tag syntax
-
-A Riot tag is a combination of layout (HTML) and logic (JavaScript). Here are the basic rules:
-
-* HTML is defined first and the logic is enclosed inside an optional `<script>` tag. *note: the script tag can not be used when including tag definitions in the document body, only in external tag files*
-* Without the `<script>` tag the JavaScript starts where the last HTML tag ends.
-* Custom tags can be empty, HTML only or JavaScript only
-* Quotes are optional: `<foo bar={ baz }>` becomes `<foo bar="{ baz }">`.
-* ES6 method syntax is supported: `methodName()` becomes `this.methodName = function()` and `this` variable always points to the current tag instance.
-* A shorthand syntax for class names is available: `class={ completed: done }` renders to `class="completed"`when the value of `done` is a true value.
-* Boolean attributes (checked, selected etc..) are ignored when the expression value is falsy: `<input checked={ undefined }>` becomes `<input>`.
-* All attribute names *must be lowercase*. This is due to browser specification.
-* Self-closing tags are supported: `<div/>` equals `<div></div>`. Well known "open tags" such as `<br>`, `<hr>`, `<img>` or `<input>` are never closed after the compilation.
-* Custom tags always need to be closed (normally or self-closed).
-* Standard HTML tags (`label`, `table`, `a` etc..) can also be customized, but not necessarily a wise thing to do.
+Смотри [пример](http://muut.github.io/riotjs/demo/), изучай [исходный код](https://github.com/riot/riot/tree/gh-pages/demo), или скачай [zip-архив](https://github.com/riot/riot/archive/gh-pages.zip).
 
 
-Tag definition in tag files always starts on the beginning of the line:
+
+## Синтаксис пользовательских тегов
+
+Теги Riot - это сочетание шаблона (HTML) и логики (JavaScript). Вот основные правила:
+
+* Сначала описывается HTML, затем следует логика, которая опционально заключается в тег `<script>`.
+* Если не использовать опциональный тег `<script>`, то JavaScript начинается там, где заканчивается последний HTML-тег внутри пользовательского тега.
+* Пользовательские теги могут быть пустыми, содержащими только HTML или только JavaScript
+* Кавычки писать не обязательно: `<foo bar={ baz }>` всё равно, что `<foo bar="{ baz }">`.
+* Поддерживается написание методов в ES6-манере: `methodName()` всё равно, что `this.methodName = function()` и `this` всегда ссылается на тег
+* Доступен короткий синтаксис в выражениях: `class={ completed: done }` рендерится как `class="completed"` если `done` равен true.
+* Булевые аттрибуты (checked, selected и т.д.) игнорируются, если выражение отрицательно: `<input checked={ undefined }>` становится `<input>`.
+* Все имена оттрибутов *должны быть в нижнем регистре*. В соответствии со спецификациями браузеров.
+* Поддерживаются самозакрывающиеся теги: `<div/>` всё равно, что `<div></div>`. Но такие теги, как `<br>`, `<hr>`, `<img>` или `<input>` никогда не закрываются после компиляции
+* Пользовательские теги всегда *должны быть закрыты* (или должны закрывать сами себя).
+* Стандартные HTML-теги (`label`, `table`, `a` и т.д) можно использовать, но этого делать не стоит.
+
+
+Определение тега всегда должно быть в начале файла.
 
 ```html
-<!-- works -->
+<!-- правильно -->
 <my-tag>
 
 </my-tag>
 
-<!-- also works -->
+<!-- правильно -->
 <my-tag></my-tag>
 
-  <!-- this fails, because of indentation -->
+  <!-- вызовет ошибку из-за отступа -->
   <my-tag>
 
   </my-tag>
 ```
 
-Inline tag definitions(in document body) must be properly indented, with all custom tags equally indented at the lowest indent level, mixing of tabs and spaces is discouraged.
+### Без тега <script>
 
-### No script tag
-
-You can leave out the `<script>` tag:
+Не обязательно всегда писать тег `<script>`:
 
 ```html
 <todo>
 
-  <!-- layout -->
+  <!-- шаблон -->
   <h3>{ opts.title }</h3>
 
-  // logic comes here
+  // логика
   this.items = [1, 2, 3]
 
 </todo>
 ```
+В этом случае логика начинается после последнего HTML тега. Этот «открытый синтаксис", он часто используется в примерах на этом сайте.
 
-In which case the logic starts after the last HTML tag. This "open syntax" is more commonly used on the examples on this website.
+## Пре-процессинг
 
-
-## Pre-processor
-
-You can specify a pre-processor with `type` attribute. For example:
+Вы можете затать тип пре-процессора через аттрибут `type`. Например:
 
 ```html
 <my-tag>
   <script type="coffee">
-    # your coffeescript logic goes here
+    # тут ваш coffeescript
   </script>
 </my-tag>
 ````
 
-Currently available options are "coffee", "typescript", "es6" and "none". You can also prefix the language with "text/", such as "text/coffee".
+Сейчас доступны "coffee", "typescript", "es6" и "none".
 
-See [pre processors](/guide/compiler/#pre-processors) for more details.
+Подробности можно посмтотреть [здесь](/guide/compiler/#pre-processors).
 
 
-## Tag styling
+## Стили тегов
 
-You can put a `style` tag inside. Riot.js automatically takes it out and injects it into `<head>`.
+Вы можете положить `style` внутрь пользовательго тега. Riot.js автоматически вынесет содержимое в `<head>`.
 
 ```html
 <todo>
 
-  <!-- layout -->
+  <!-- шаблон -->
   <h3>{ opts.title }</h3>
 
   <style>
     todo { display: block }
     todo h3 { font-size: 120% }
-    /** other tag specific styles **/
+    /** стили **/
   </style>
 
 </todo>
 ```
 
-### Scoped CSS
+### Локальные CSS
 
-[Scoped CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) is also available. The example below is equivalent to the first one.
+Так же доступны [локальный CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope). Пример ниже равносилен первому.
 
 ```html
 <todo>
 
-  <!-- layout -->
+  <!-- шаблон -->
   <h3>{ opts.title }</h3>
 
   <style scoped>
     :scope { display: block }
     h3 { font-size: 120% }
-    /** other tag specific styles **/
+    /** стили **/
   </style>
 
 </todo>
 ```
 
-This happens once, no matter how many times the tag is initialized.
+Стили обрабатываются только один раз, вне зависимости от того, сколько раз был инициирован пользовательский тег.
 
-To make it easier to override the CSS you can specify where in the `<head>` Riot should inject tag styles:
+Для того, чтобы проще было переопределять стили, и использовать темы, вы можете указать где в `<head>` Riot должен поместить стили из пользовательских тегов:
 
 ```html
 <style type="riot"></style>
 ```
 
-Example use case would be to insert tag styles from a component library after normalize.css but before your website's theme CSS allowing you to override the library's default styling.
+Стили вставятся после normalize.css, но перед стилями сайта и тем, что позволит вам переопределить дефолтные CSS на те, которые будут в теме.
 
-## Mounting
+## Монтирование
 
-Once a tag is created you can mount it on the page as follows:
+Теперь, когда у вас есть тег, вы можете примонтировать его на странице таким образом:
 
 
 ```html
 <body>
 
-  <!-- place the custom tag anywhere inside the body -->
+  <!-- вы можете разместить тег в любой части страницы -->
   <todo></todo>
 
-  <!-- include riot.js -->
+  <!-- подключаем riot.js -->
   <script src="riot.min.js"></script>
 
-  <!-- include the tag -->
+  <!-- подключаем тег -->
   <script src="todo.js" type="riot/tag"></script>
 
-  <!-- mount the tag -->
+  <!-- монтируем тег -->
   <script>riot.mount('todo')</script>
 
 </body>
 ```
 
-Custom tags inside the `body` of the page needs to be closed normally: `<todo></todo>` and self-closing: `<todo/>` is not supported.
+Пользовательские теги внутри `body` должны закрываться, используя такой синтаксис: `<todo></todo>` самозакрытие (`<todo/>`) не поддерживается.
 
-
-Some example uses of the mount method:
+Немного наглядных примеров:
 
 ```js
-// mount all custom tags on the page
+// монтируем все пользовательские теги на странице
 riot.mount('*')
 
-// mount an element with a specific id
+// монтируем элемент с определённым id
 riot.mount('#my-element')
 
-// mount selected elements
+// монтируем выбранные элементы
 riot.mount('todo, forum, comments')
 ```
 
-A document can contain multiple instances of the same tag.
+Один и тот же тег можно монтировать на странице множество раз.
 
 
-### Accessing DOM elements
+### Доступ к элементам DOM
 
-Riot gives you access to elements that have `name` attributes directly under the `this` keyword, and plenty of shorthand property-methods like the `if="{...}"` attribute, but occasionally you need to reference and touch pieces of HTML which don't really fit inside those prebaked functions.
+Riot дает вам доступ к элементам, имеющим атрибут `name` непосредственно из переменной `this`.
 
-
-### How to use jQuery, Zepto, querySelector, etc...
-
-If you need to access the DOM inside Riot, you'll want to take a look at the [Tag Lifecycle](#tag-lifecycle) and notice that the DOM elements aren't instantiated until the `update()` event first fires, meaning any attempt to select an element before then will fail.
+### Как использовать jQuery, Zepto, querySelector, и т.д.
+Если вам нужно получить доступ к DOM внутри Riot, взгляните на [жизненный цикл тегов](#tag-lifecycle) и обратите внимание, что элементы DOM не будут созданы до вызоыва метода `update()`. Учтите это при обращении к DOM-элементам из сторонних библиоте, так как это может быть причиной ошибок.
 
 ```html
 <example-tag>
-  <p id="findMe">Do I even Exist?</p>
+  <p id="findMe">Я существую?</p>
 
   <script>
   var test1 = document.getElementById('findMe')
-  console.log('test1', test1)  // Fails
+  console.log('test1', test1)  // ошибка
 
   this.on('update', function(){
     var test2 = document.getElementById('findMe')
-    console.log('test2', test2) // Succeeds
+    console.log('test2', test2) // всё верно!
   })
   </script>
 </example-tag>
 ```
 
-You probably don't want to run whatever you're attempting to retrieve on every update. Instead you'll most likely want to run on the `mount` event.
+Скорее всего, вам не потребуется, чтобы ваш код запускался каждый раз, когда тег обновляется. В большинстве случаев, вам будет достаточно события `mount`.
 
 ```html
 <example-tag>
-  <p id="findMe">Do I even Exist?</p>
+  <p id="findMe">Я существую?</p>
 
   <script>
   var test1 = document.getElementById('findMe')
-  console.log('test1', test1)  // Fails
+  console.log('test1', test1)  // ошибка
 
   this.on('update', function(){
     var test2 = document.getElementById('findMe')
-    console.log('test2', test2) // Succeeds, fires on every update
+    console.log('test2', test2) // сработает. Будет вызываться при каждом обновлении
   })
 
   this.on('mount', function(){
     var test3 = document.getElementById('findMe')
-    console.log('test3', test3) // Succeeds, fires once (per mount)
+    console.log('test3', test3) // сработает. Сработает лишь однажды (при монтировании)
   })
   </script>
 </example-tag>
 ```
 
-### Contexted DOM query
+### Контекстные запросы к DOM
 
-Now that we know how to get DOM elements by waiting for the `update` or `mount` events, we can make this useful by also adding a context to our element queries to the `root element` (the riot tag we're creating).
+Теперь, когда мы знаем, как получить элементы DOM, мы можем сделать это более удобным, добавив контекст для наших запросов в корневой `root` элемент.
 
 ```html
 <example-tag>
-  <p id="findMe">Do I even Exist?</p>
-  <p>Is this real life?</p>
-  <p>Or just fantasy?</p>
+  <p id="findMe">Я существую?</p>
+  <p>Это - что, жизнь?</p>
+  <p>Или сон?</p>
 
   <script>
   this.on('mount', function(){
-    // Contexted jQuery
+    // контекстный jQuery
     $('p', this.root)
 
-    // Contexted Query Selector
+    // контекстный Query Selector
     this.root.querySelectorAll('p')
   })
   </script>
 </example-tag>
 ```
 
-### Options
+### Параметры
 
-You can pass options for tags in the second argument
+Вы можете передать параметры для тегов во втором аргументе
 
 ```html
 <script>
@@ -301,26 +294,26 @@ riot.mount('todo', { title: 'My TODO app', items: [ ... ] })
 </script>
 ```
 
-The passed data can be anything, ranging from a simple object to a full application API. Or it can be a Flux store. Depends on the designed architecture.
+Передаваемые данные могут быть чем угодно, начиная от простого объекта до полномасштабного API приложения. Или это может быть хранилище Flus. Это зависит от архитектуры приложения.
 
-Inside the tag the options can be referenced with the `opts` variable as follows:
+Внутри тега можно получить параметры через `opts`:
 
 ```html
 <my-tag>
 
-  <!-- Options in HTML -->
+  <!-- параметры в HTML -->
   <h3>{ opts.title }</h3>
 
-  // Options in JavaScript
+  // параметры в JavaScript
   var title = opts.title
 
 </my-tag>
 ```
 
 
-### Mixins
+### Примеси (Mixins)
 
-Mixins provide an easy way to share functionality across tags. When a tag is compiled by riot, any defined mixins are added and available to use in the tag.
+Примеси обеспечивают легкий способ делиться функционалом между тегами. Когда тег компилируется, Riot может расширить его заранее определёнными примесями.
 
 ```js
 var OptsMixin = {
@@ -346,17 +339,17 @@ var OptsMixin = {
 </my-tag>
 ```
 
-In this example you are giving any instance of the `my-tag` Tag the `OptsMixin` which provides `getOpts` and `setOpts` methods. `init` method is special one which can initialize the mixin when it's loaded to the tag. (`init` method is not accessible from the tag its mixed in)
+В этом примере любой экземпляр тега `my-tag` получает примесь `OptsMixin` которая позволяет использовать методы `getOpts` и `setOpts`. Специальный метод `init` вызывается, когда примесь загружается в тег (`init` не доступен из тега).
 
 ```js
 var my_tag_instance = riot.mount('my-tag')[0]
 
-console.log(my_tag_instance.getOpts()) // will log out any opts that the tag has
+console.log(my_tag_instance.getOpts()) // выведет список всех параметров, которые доступны в теге
 ```
 
-Tags will accept any object -- `{'key': 'val'}` `var mix = new function(...)` -- and will error out when any other type is passed to it.
+Теги могут принимать любой объект -- `{'key': 'val'}` `var mix = new function(...)` -- и выдают ошибку, когда получают любой другой тип.
 
-The `my-tag` definition now has a `getId` method added to it along with anything defined in the `OptsMixin` except for the `init` function.
+Тег `my-tag` теперь иммет метод `getId`.
 
 ```js
 function IdMixin() {
@@ -374,17 +367,17 @@ var id_mixin_instance = new IdMixin()
 </my-tag>
 ```
 
-By being defined on the tag level, mixins not only extend the functionality of your tag, but also allows for a repeatable interface. Every time a tag is mounted, even sub-tags, the instance will have the mixed-in code.
+Будучи определена на уровне тегов, примесь может не только расширить функциональность вашего тега, но также позволяет создавать повторяемые интерфейсы. Каждый раз, когда тег монтируется, экземпляр тега будет иметь код из примеси.
 
-### Sharing mixin
+### Разделяемые примеси
 
-To share the mixins over files or projects, `riot.mixin` API is provided. You can register your mixin globally like this:
+Для того, чтобы делить примеси между тегами или проектами, существует `riot.mixin`. Вы можете зарегистрировать вашу примесь глобально:
 
 ```js
 riot.mixin('mixinName', mixinObject)
 ```
 
-To load the mixin to the tag, use `mixin()` method with the key.
+Для того, чтобы загрузить вашу примесь в тег, используйти метод `mixin()` с указанимем имени примеси:
 
 ```html
 <my-tag>
@@ -395,26 +388,26 @@ To load the mixin to the tag, use `mixin()` method with the key.
 ```
 
 
-### Tag lifecycle
+### Жизненный цикл тегов
 
-A tag is created in following sequence:
 
-1. Tag is constructed
-2. Tag's JavaScript logic is executed
-3. HTML expressions are calculated and "update" event is fired
-4. Tag is mounted on the page and "mount" event is fired
+Тег создаётся в такой последовательности:
 
-After the tag is mounted the expressions are updated as follows:
+1. Тег инициилизируется
+2. Выполняется JavaScript-логика тега
+3. Вычисляются HTML выражения и выщывается метод "update"
+4. Тег монтируется в приложение и вызывается метод "mount"
 
-1. Automatically after an event handler is called. (unless you set e.preventUpdate to true in your event handler) For example the `toggle` method in the above example.
-2. When `this.update()` is called on the current tag instance
-3. When `this.update()` is called on a parent tag, or any parent upwards. Updates flow uni-directionally from parent to child.
-4. When `riot.update()` is called, which globally updates all expressions on the page.
+После того, как тег было примонтирован, выражения вычисляются следующим образом:
 
-The "update" event is fired every time the tag is updated.
+1. Автоматически в момент, когда вызывается trigger(). (если вы не установите e.preventUpdate в значение true в обработчике событий) Например, вызов метода `toggle` в примере выше.
+2. Когда вызывается `this.update()` в текущей сущности тега
+3. Когда вызывается `this.update()` в каком-нибудь из родительских тегов. Обновления происходят сверху вниз, от родительских к дочерним тегам.
+4. Когда вызывается `riot.update()`, который глобально обновляет все выражения на странице.
 
-Since the values are calculated before mounting there are no surprise issues such as failed `<img src={ src }>` calls.
+Метод "update" вызывается каждый раз, когда тег обновляется.
 
+Так как значения рассчитываются перед монтированием нет проблемных сюрпризов, связанных с некоректными запросами в случаях, вроде этого: `<img src={ src }>`.
 
 ### Listening to lifecycle events
 
