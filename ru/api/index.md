@@ -1,5 +1,5 @@
 ---
-title: Custom tags
+title: Пользовательские теги
 layout: ru
 class: apidoc
 ---
@@ -7,98 +7,94 @@ class: apidoc
 {% include api-tabs.html %}
 
 
-## Mounting
+## Монтирование
 
 ### <a name="mount"></a> riot.mount(customTagSelector, [opts])
 
-`customTagSelector` selects elements from the page and mounts them with a custom tag. The selected elements' name must match the custom tag name.
+`customTagSelector` выбирает элементы со страницы и монтирует их как пользовательские теги. Имя выбранного элемента должно совпадать с именем пользовательског тега.
 
-`opts` optional object is passed for the tags to consume. This can be anything, ranging from a simple object to a full application API. Or it can be a Flux- store. Really depends on how you want to structure your client-side applications. Read more about [modular Riot applications](/guide/application-design/#modularity).
+`opts` - необязательный объект параметров, который передаётся в теги. Это может быть что угодно, начиная от простого объекта до большого API приложения. Или это может быть Flux-хранилище. Это зависит от того, как вы стуктурируете ваше приложение. Вы можете узнать больше о модульности [здесь](/guide/application-design/#modularity).
 
 
 ``` js
-// selects and mounts all <pricing> tags on the page
+// выбрать и смонтировать все <pricing> теги на странице
 var tags = riot.mount('pricing')
 
-// mount all custom tags with a class name .customer
+// смонтировать все пользовательские теги с классом .customer
 var tags = riot.mount('.customer')
 
-// mount <account> tag and pass an API object as options
+// смонтировать тег <account> и передать ему объект api
 var tags = riot.mount('account', api)
 ```
 
-@returns: an array of the mounted [tag instances](#tag-instance)
+@returns: массив смонтированных [объектов тегов](#tag-instance)
 
 ### <a name="mount-star"></a> riot.mount('*', [opts])
 
-A special Riot specific selector "*" can be used to mount all custom tags on the page:
+Специальный селектор "*" используется для монтирования всех пользовательских тегов на странице:
 
 ``` js
 riot.mount('*')
 ```
 
-@returns: an array of the mounted [tag instances](#tag-instance)
+@returns: массив смонтированных [объектов тегов](#tag-instance)
 
 ### <a name="mount-tag"></a> riot.mount(selector, tagName, [opts])
 
-Where
-
-- `selector` selects any DOM nodes from the page to be mounted
-- `tagName` specifies the custom tag name to be used
-- `opts` optional object is passed for the tags to consume
+Здесь
+- `selector` выбирает любой элемент DOM, к которому будет примонтирован тег
+- `tagName` определяет, какой тег будет использоваться
+- `opts` необязательный объект, содержащий параметры
 
 
 ``` js
-// mounts custom tag "my-tag" to div#main and pass api as options
+// монтирует тег "my-tag" в div#main и передаёт в него параметры из объекта api
 var tags = riot.mount('div#main', 'my-tag', api)
 ```
 
-@returns: an array of the mounted [tag instances](#tag-instance)
+@returns: массив смонтированных [объектов тегов](#tag-instance)
 
 ### <a name="mount-dom"></a> riot.mount(domNode, tagName, [opts])
 
-Mount a custom tag named tagName on a given domNode passing optional data with opts. For example:
+Монтирует пользовательский тег tagName в конкретный элемент DOM domNode. Например:
 
 ```
-// mounts "my-tag" to given DOM node
+// монтируем "my-tag" в определённый DOM элемент
 riot.mount(document.getElementById('slide'), 'users', api)
 ```
 
-@returns: an array of the mounted [tag instances](#tag-instance)
+@returns: массив смонтированных [объектов тегов](#tag-instance)
 
 ### <a name="mount-to"></a> riot.mountTo(domNode, tagName, [opts])
 
-This method is deprecated since *v2.0.11*. This is the same as `riot.mount(domNode, tagName, [opts])`.
+Этот метод устарел с версии *v2.0.11*. Это тоже самое, что и `riot.mount(domNode, tagName, [opts])`.
 
 
-
-
-## Rendering
+## Рендеринг
 
 ### <a name="render"></a> riot.render(tagName, [opts])
 
-Rendering a tag to html. This method is only available on *server-side* (Node/io.js). For example:
+Рендерит пользовательский тег как html. Этот метод доступен только *на серверной стороне* (Node/io.js). Например:
 
 ```
-// render "my-tag" to html
+// рендерим "my-tag" в html
 var mytag = require('my-tag')
 riot.render(mytag, { foo: 'bar' })
 ```
 
-@returns: tags render as html
+@returns: строка html
 
 
-## Tag instance
+## Объект пользовательского тега
 
-Following properties are set for each tag instance:
+Это свойства есть у каждого сущности тега;
 
-- `opts` - the options object
-- `parent` - the parent tag if any
-- `root` - root DOM node
-- `tags` - nested custom tags
+- `opts` - объект, который передаётся в тег в качестве параметров
+- `parent` - родительский тег
+- `root` - DOM элемент, к которому примонтирован тег
+- `tags` - внутренние пользовательские теги
 
-
-You can use these references in both the HTML and JavaScript code. For example:
+Вы можете использовать эти свойства как в HTML, так и в JavaScript. Например:
 
 
 ``` html
@@ -109,9 +105,9 @@ You can use these references in both the HTML and JavaScript code. For example:
 </my-tag>
 ```
 
-You can freely set any data to the instance (aka "context") and they are available in the HTML expressions. For example:
+Вы можете свободно задавать значения этих свойств и читать их HTML из выражений. Например:
 
-``` html
+``2` html
 <my-tag>
   <h3>{ title }</h3>
 
@@ -120,13 +116,13 @@ You can freely set any data to the instance (aka "context") and they are availab
 ```
 
 
-## Updating
+## Обновление
 
 ### <a name="tag-update"></a> this.update()
 
-Updates all the expressions on the current tag instance as well as on all the children. This method is automatically called every time an event handler is called when user interacts with the application.
+Обновление всех выражений в экземпляре тега, а также во всех всех вложенных тегах. Этот метод вызывается автоматически каждый раз, когда chf,fnsdftnобработчик события, когда пользователь взаимодействует с приложением.
 
-Other than that riot does not update the UI automatically so you need to call this method manually. This typically happens after some non-UI related event: after `setTimeout`, AJAX call or on some server event. For example:
+Riot не обновляет пользовательский интерфейс автоматически, поэтому вы должны вызвать этот метод вручную. Это обычно происходит после каких-либо событий, на связанный с UI: после `setTimeout`, AJAX вызова или из-за какого-либо события на сервере. Например:
 
 ``` html
 <my-tag>
@@ -145,91 +141,82 @@ Other than that riot does not update the UI automatically so you need to call th
   }
 </my-tag>
 ```
-
-On above example the error message is displayed on the UI after the `update()` method has been called. We assign `this` variable to `self` since inside the AJAX callback `this` variable points to the response object and not to the tag instance.
+На примере выше сообщение об ошибке отображается в UI после того, как вызывается метод `update()`. Мы передали в `self` значение из `this` так как внутри AJAX обратного вызова `this` имеет другой контекст.
 
 ### <a name="tag-update-data"></a> this.update(data)
 
-Set values of the current instance and update the expressions. This is same as `this.update()` but allows you to set context data at the same time. So instead of this:
+Устанавливает значения свойств текущего элемента и обновляет выражения. Например, вместо этого:
 
 ``` js
 self.error = error_message
 self.update()
 ```
 
-you can do this:
+Вы можете делать так:
 
 ``` js
 self.update({ error: error_message })
 ```
 
-which is shorter and cleaner.
+Что выглядит короче и чище.
 
 ### <a name="update"></a> riot.update()
 
-Updates all the mounted tags and their expressions on the page.
+Обновляет все примонтированные пользовательские теги.
 
-@returns: an array of [tag instances](#tag-instance) that are mounted on the page.
+@returns: массив [тегов](#tag-instance) которые примонтированы на странице.
 
-
-
-## Unmounting
+## Отмонтирование
 
 ### <a name="tag-unmount"></a> this.unmount(keepTheParent)
 
-Detaches the tag and it's children from the page. An "unmount" event is fired.
-If you want to unmount a tag without removing the parent tag you need to pass `true` to the unmount method
+Открепляет тег и его дочерние элементы и вызывает событие тега "unmount".
+Если вы хотите открепить тег, но оставить его тег-контейнер, вызывайте метод "unmount" с параметром `true`.
 
-Remove the tag from the DOM:
+Удаление тега из DOM:
 
 ``` js
 mytag.unmount()
 ```
 
-Remove the tag children and keep only the parent tag:
+Удаление пользовательского тега, за исключением тега, в который он был смонтирован:
 
 ``` js
 mytag.unmount(true)
 ```
 
-## Nested tags
+## Вложенные теги
 
-You have access to nested tag instances via `tags` variable:
+У вас есть доступ к вложенным тегам благодаря аттрибуту `tags`:
 
 ``` html
 <my-tag>
-
   <child></child>
-
-  // access to child tag
   var child = this.tags.child
-
 </my-tag>
 ```
+Если вложенных тегов больше одного, они помещаются в массив `this.tags.child[n]`
 
-If more than one of the same child tag is used, it is accessed as an array `this.tags.child[n]`
-
-You can also use the `name` attribute to give another name for the nested tag.
+Вы можете давать тегам названия через аттрибут `name`.
 
 ``` html
 <my-tag>
 
   <child name="my_nested_tag"></child>
 
-  // access to child tag
+  // обращение к вложенному тегу
   var child = this.tags.my_nested_tag
 
 </my-tag>
 ```
 
-The child tags are initialized after the parent tag so the methods and properties are available on the "mount" event.
+Вложенные теги инициилизируются сразу после того, как монтируется родительский тег, так что вложенные теги и все их методы доступны в событии "mount".
 
 ``` html
 <my-tag>
 
   <child name="my_nested_tag"></child>
 
-  // access to child tag methods
   this.on('mount', function() {
     this.tags.my_nested_tag.someMethod()
   })
@@ -239,10 +226,9 @@ The child tags are initialized after the parent tag so the methods and propertie
 
 ## <a name="yield"></a> Yielding nested HTML
 
-The `<yield>` tag it's a special riot core feature that allows you to inject and compile the content of any custom tag inside its template in runtime
-This technique allows you to extend your tags templates with html contents rendered eventually from the server
+Специальный тег `<yield>` позволяет расширять шаблон пользовательского тега уже после компиляции.
 
-For example using the following riot tag `my-post`
+Например, у нас есть тег `my-post`
 
 ``` html
 <my-post>
@@ -252,7 +238,7 @@ For example using the following riot tag `my-post`
 </my-post>
 ```
 
-anytime you will include the `<my-post>` tag in your app
+в любой момент мы подключаем тег `<my-post>` в нашем приложении
 
 ``` html
 <my-post title="What a great title">
@@ -260,7 +246,7 @@ anytime you will include the `<my-post>` tag in your app
 </my-post>
 ```
 
-once mounted `riot.mount('my-post')` it will be rendered in this way:
+при монтировании `riot.mount('my-post')` тег будет выглятеть так:
 
 ``` html
 <my-post>
@@ -269,11 +255,11 @@ once mounted `riot.mount('my-post')` it will be rendered in this way:
 </my-post>
 ```
 
-#### Yield and loops
+#### Yield и циклы
 
-The `<yield>` tag could be used also in a loop or in a child tag but you should be aware that __it will be always parsed and compiled using the child data__
+Тег `<yield>` может быть использован в циклах или в дочерних тегах. Но вы должны быть внимательны, так как в этом случае __всегда используются данные из дочених тегов__.
 
-The following `blog.tag` riot component
+Имеем компонент `blog.tag`
 
 
 ``` html
@@ -292,14 +278,9 @@ The following `blog.tag` riot component
     { title: "post 2", description: 'my post description' }
   ]
 
-  // the bind is needed in this case to keep the parent context
-  // also in the child tags
+  // bind нужен для сохранения контекста переменной this
   deleteAllPosts() {
     this.posts = []
-
-    // we need to trigger manually the update function
-    // because this function gets triggered from a child tag
-    // and it does not bubble up automatically
     this.update()
   }.bind(this)
 
@@ -313,7 +294,7 @@ The following `blog.tag` riot component
 
 ```
 
-will be compiled in this way:
+После компиляции будет выглядеть так:
 
 ``` html
 <blog>
@@ -334,39 +315,38 @@ will be compiled in this way:
 ```
 
 
-## Events
+## События
 
-Each tag instance is an [observable](#observable) so you can use `on` and `one` methods to listen to the events that happen on the tag instance. Here's the list of supported events:
+Каждый объект пользовательского тега - это [наблюдатель](#observable) пожтому, вы можете использовать методы `on` и `one` для того, чтобы наблюдать за событиями тега. Вот список поддерживаемых в Riot событий:
 
+- "update" – вызывается непосредственно перед обновлением тега. Позволяет изменить данные тега перед тем, как выражения в шаблоне будут пересчитанны.
+- "updated" – вызывается сразу после обновления тега. Позволяет манипулировать с обновлённым DOM-деревом
+- "mount" – сразу после того, как тег примонтируется в приложении
+- "unmount" – сразу после того, как приложение будет отмонтированно
 
-- "update" – right before the tag is updated. allows recalculation of context data before the UI expressions are updated.
-- "updated" – right after the tag is updated. allows do some work with updated DOM
-- "mount" – right after tag is mounted on the page
-- "unmount" – after the tag is removed from the page
-
-For example:
+Пример:
 
 ``` js
-// cleanup resources after tag is no longer part of DOM
+// освобождаем ресурсы когда тег уже не является частью DOM
 this.on('unmount', function() {
   clearTimeout(timer)
 })
 ```
 
-## Reserved words
+## Зарезервированные слова
 
-The above method and property names are reserved words for Riot tags. Don't use any of following as your instance variable or method name: `opts`, `parent`, `root`, `update`, `unmount`, `on`, `off`, `one` and `trigger`. Variables beginning with an underscore (e.g.: ```this._item```) are reserved for internal use too. Local variables can be freely named. For example:
+Вышеперечисленные имена методов и переменные - зарезервированные слова в Riot. Не используйте эти названия для аттрибутов тегов или их методов: `opts`, `parent`, `root`, `update`, `unmount`, `on`, `off`, `one` and `trigger`. Переменные, начинающиеся с подчеркивания (например: `this._item`) тоже зарезервированы для внутреннего использования. Локальные переменные можно называть как угодно. Например:
 
 ``` javascript
 <my-tag>
 
-  // allowed
+  // можно
   function update() { } 
 
-  // not allowed
+  // нельзя
   this.update = function() { }
 
-  // not allowed
+  // нельзя
   update() {
 
   }
@@ -374,24 +354,24 @@ The above method and property names are reserved words for Riot tags. Don't use 
 </my-tag>
 ```
 
-## Manual construction
+## Создание тега вручную
 
 ### <a name="tag"></a> riot.tag(tagName, html, [css], [attrs], [constructor])
 
-Creates a new custom tag "manually" without the compiler.
+Метод создаёт новую сущность тега "вручную", без компилятора.
 
-- `tagName` the tag name
-- `html` is the layout with [expressions](/guide/#expressions)
-- `css` is the style for the tag (optional)
-- `attrs` string of attributes for the tag (optional).
-- `constructor` is the initialization function being called before the tag expressions are calculated and before the tag is mounted
+- `tagName` имя тега
+- `html` шаблон с [выражениями](/guide/#expressions)
+- `css` стили (необязательно)
+- `attrs` аттрибуты (необязательно)
+- `constructor` функция, которая будет вызвана перед вычислением выражений и перед тем, как тег будет смонтирован
 
 
-#### Example
+#### Пример
 
 ``` javascript
 riot.tag('timer',
-  '<p>Seconds Elapsed: { time }</p>',
+  '<p>Времени прошло: { time }</p>',
   'timer { display: block; border: 2px }',
   'class="tic-toc"',
   function (opts) {
@@ -411,21 +391,21 @@ riot.tag('timer',
   })
 ```
 
-See [timer demo](http://jsfiddle.net/gnumanth/h9kuozp5/) and [riot.tag](/api/#tag-instance) API docs for more details and *limitations*.
+Смотри документацию к [timer demo](http://jsfiddle.net/gnumanth/h9kuozp5/) и [riot.tag](/api/#tag-instance) API для подробной информации.
 
 
-<span class="tag red">Warning</span> by using `riot.tag` you cannot enjoy the advantages of the compiler and the following features are not supported:
+<span class="tag red">Внимание</span>, при использовании `riot.tag` вы не сможете насладиться преимуществами компилятора и список нижеперечисленных функций не поддерживается:
 
-1. Self-closing tags
-2. Unquoted expressions. Write `value="{ val }"` instead of `value={ val }`
+1. Самозакрывающиеся теги
+2. Незаковыченные выражения. Пишите `value="{ val }"` вместо `value={ val }`
 3. Boolean attributes. Write `__checked="{ flag }"` instead of `checked={ flag }`
-4. Shorthand ES6 method signatures
-5. `<img src={ src }>` must be written as `<img riot-src={ src }>` in order to avoid illegal server requests
-6. `style="color: { color }"` must be written as `riot-style="color: { color }"` so that style attribute expressions work in IE
-7. Scoped CSS precompilation.
+4. Короткий синтаксис из ES6
+5. `<img src={ src }>` должно быть написано как `<img riot-src={ src }>` для избегания некоректных запросов к серверу
+6. `style="color: { color }"` должно быть написано как `riot-style="color: { color }"` чтобы это работало в IE
+7. Локальные CSS стили
 
 
-You can take advantage of `<template>` or `<script>` tags as follows:
+Вы можете получить преимущества `<template>` или `<script>` следующим образом:
 
 ``` html
 <script type="tmpl" id="my_tmpl">
