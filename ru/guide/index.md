@@ -398,38 +398,37 @@ riot.mixin('mixinName', mixinObject)
 3. Вычисляются HTML выражения и выщывается метод "update"
 4. Тег монтируется в приложение и вызывается метод "mount"
 
-После того, как тег было примонтирован, выражения вычисляются следующим образом:
+После того, как тег был примонтирован, выражения вычисляются следующим образом:
 
 1. Автоматически в момент, когда вызывается trigger(). (если вы не установите e.preventUpdate в значение true в обработчике событий) Например, вызов метода `toggle` в примере выше.
 2. Когда вызывается `this.update()` в текущей сущности тега
 3. Когда вызывается `this.update()` в каком-нибудь из родительских тегов. Обновления происходят сверху вниз, от родительских к дочерним тегам.
 4. Когда вызывается `riot.update()`, который глобально обновляет все выражения на странице.
 
-Метод "update" вызывается каждый раз, когда тег обновляется.
+Метод "update" автоматически вызывается каждый раз, когда тег обновляется.
 
-Так как значения рассчитываются перед монтированием нет проблемных сюрпризов, связанных с некоректными запросами в случаях, вроде этого: `<img src={ src }>`.
+Так как значения вычисляются перед монтированием, то не возникает сюрпризов, вроде http-запросов на несуществующий ресурс: `<img src={ src }>`.
 
-### Listening to lifecycle events
+### Подписка на события из жизненного цикла тегов
 
-You can listen to various lifecyle events inside the tag as follows:
-
+Вы можете прослушивать дефолтные события тегов таким образом:
 
 ```js
 <todo>
 
   this.on('mount', function() {
-    // right after tag is mounted on the page
+    // сразу после того, как тег будет примонтирован
   })
 
   this.on('update', function() {
-    // allows recalculation of context data before the update
+    // позволяет изменять данные тега перед тем, как выражения пересчитаются
   })
 
   this.on('unmount', function() {
-    // when the tag is removed from the page
+    // когда тег открепляется от страницы
   })
 
-  // curious about all events ?
+  // нужно сразу несколько событий?
   this.on('mount update unmount', function(eventName) {
     console.info(eventName)
   })
@@ -437,26 +436,26 @@ You can listen to various lifecyle events inside the tag as follows:
 </todo>
 ```
 
-You can have multiple event listeners for the same event. See [observable](/api/observable/) for more details about events.
+Вы можете использовать множество обработчиков для одного и того же события. Смотри API [наблюдателя](/api/observable/) для более подробной информации.
 
 
-## Expressions
+## Выражения
 
-HTML can be mixed with expressions that are enclosed in curly braces:
+В HTML-шаблоне можно использовать выражения, заключённые в фигурные скобки:
 
 ```js
-{ /* my_expression goes here */ }
+{ /* здесь размещается выражение */ }
 ```
 
-Expressions can set attributes or nested text nodes:
+Выражения можно использовать для отображения текста или для изменения структуры HTML:
 
 ```html
-<h3 id={ /* attribute_expression */ }>
-  { /* nested_expression */ }
+<h3 id={ /* выражение для аттрибута */ }>
+  { /* выражение, результат которого увидит пользователь */ }
 </h3>
 ```
 
-Expressions are 100% JavaScript. A few examples:
+Выражения на все 100% - JavaScript. Вот несколько примеров:
 
 ```js
 { title || 'Untitled' }
@@ -466,16 +465,16 @@ Expressions are 100% JavaScript. A few examples:
 { Math.round(rating) }
 ```
 
-The goal is to keep the expressions small so your HTML stays as clean as possible. If your expression grows in complexity consider moving some of logic to the "update" event. For example:
+Выражения нужны для того, чтобы сохранять HTML как можно более чистым и очевидным. Если ваши варажения слишком громоздки, попробуйте вынести часть логики в обработчик события "update". Например:
 
 
 ```html
 <my-tag>
 
-  <!-- the `val` is calculated below .. -->
+  <!-- `val` будет вычисленно ниже .. -->
   <p>{ val }</p>
 
-  // ..on every update
+  // при каждом обновлении
   this.on('update', function() {
     this.val = some / complex * expression ^ here
   })
@@ -483,64 +482,62 @@ The goal is to keep the expressions small so your HTML stays as clean as possibl
 ```
 
 
-### Boolean attributes
+### Булевые аттрибуты
 
-Boolean attributes (checked, selected etc..) are ignored when the expression value is falsy:
+Булевые аттрибуты (checked, selected etc..) игнорируются, если выражение не равно `true`:
 
 `<input checked={ null }>` becomes `<input>`.
 
-W3C states that a boolean property is true if the attribute is present at all — even if the value is empty of `false`.
+Стандарт W3C гласит, что булевый аттрибут считается установленным если присутствует среди аттрибутов тега, каким бы ни было его значение, даже `false`.
 
-The following expression does not work:
+Нижеследующиее выражение работать не будет:
 
 ```html
 <input type="checkbox" { true ? 'checked' : ''}>
 ```
 
-since only attribute and nested text expressions are valid. Riot detects 44 different boolean attributes.
+так как оно не является сеттером булевого аттрибута и не находится внутри html-тега. Riot распознаёт 44 булевых аттрибута.
 
 
-### Class shorthand
+### Сокращённая запись CSS-классов
 
-Riot has a special syntax for CSS class names. For example:
+В Riot есть специальный синтаксис для имён CSS-классов:
 
 ```html
 <p class={ foo: true, bar: 0, baz: new Date(), zorro: 'a value' }></p>
 ```
 
-evaluates to "foo baz zorro". Property names whose value is truthful are appended to the list of class names. Of course you can use this notation in other places than class names if you find a suitable use case.
+это равно "foo baz zorro". Если значение свойства верно, то название свойства отображается в списке классов.
+
+### Экранирование выражений
+
+Вы можете отобразить выражение как текст, если заэкранируете открывающие и закрывающие символы:
+
+`\\{ this is not evaluated \\}` выведет `{ this is not evaluated }`
 
 
-### Printing brackets
+### Символы для выражений
 
-You can output an expression without evaluation by escaping the opening brace:
-
-`\\{ this is not evaluated \\}` outputs `{ this is not evaluated }`
-
-
-### Customizing curly braces
-
-You are free to customize the braces to your liking. For example:
+Вы можете задать символы, которые будут определять начало и конец выражения:
 
 ```js
 riot.settings.brackets = '${ }'
 riot.settings.brackets = '\{\{ }}'
 ```
 
-The start and end is separated with a space character.
+Они должны разделяться пробелом.
 
-When using [pre-compiler](/guide/compiler/#pre-compilation) you'll have to set `brackets` option there as well.
-
-
-
-### Etc
-
-Expressions inside `style` tags are ignored.
+При использовании [пре-компилятора](/guide/compiler/#pre-compilation) вам стоит настроить `brackets`.
 
 
-### Render unescaped HTML
+### Остальное
 
-Riot expressions can only render text values without HTML formatting. However you can make a custom tag to do the job. For example:
+Выражения внутри `style` игнорируются.
+
+
+### Вывод HTML в выражениях
+
+Выражения могут выводить только текстовые значения без HTML. Однако вы можете сделать пользовательский тег, который будет это делать. Например:
 
 ```html
 <raw>
@@ -550,7 +547,7 @@ Riot expressions can only render text values without HTML formatting. However yo
 </raw>
 ```
 
-After the tag is defined you can use it inside other tags. For example
+Этот тег можно использовать в других тегах:
 
 ```html
 <my-tag>
@@ -560,15 +557,15 @@ After the tag is defined you can use it inside other tags. For example
 </my-tag>
 ```
 
-[demo on jsfiddle](http://jsfiddle.net/23g73yvx/)
+[demo на jsfiddle](http://jsfiddle.net/23g73yvx/)
 
 <span class="tag red">warning</span> this could expose the user to XSS attacks so make sure you never load data from an untrusted source.
 
 
 
-## Nested tags
+## Вложенные теги
 
-Let's define a parent tag `<account>` and with a nested tag `<subscription>`:
+Давайте создадим родительский тег `<account>` с вложенным тегом `<subscription>`:
 
 
 ```html
@@ -580,19 +577,18 @@ Let's define a parent tag `<account>` and with a nested tag `<subscription>`:
 <subscription>
   <h3>{ opts.plan.name }</h3>
 
-  // Get JS handle to options
   var plan = opts.plan,
       show_details = opts.show_details
 
-  // access to the parent tag
+  // доступ к родителю
   var parent = this.parent
 
 </subscription>
 ```
 
-<span class="tag red">important</span> Note how we named the `show_details` attribute using an underscore instead of camel case, which due to browser specification would have been automatically converted to lowercase.
+<span class="tag red">важно</span> Заметьте, что мы используем нижние подчёркивания `show_details` вместо camelCase. Это связано с тем, что браузеры автоматически конвертируют формат html в нижний регистр.
 
-Then we mount the `account` tag to the page with a `plan` configuration option:
+Затем мы монтируем `account` на страницу и передаём ему объект с параметром `plan`:
 
 ```html
 <body>
@@ -604,11 +600,11 @@ riot.mount('account', { plan: { name: 'small', term: 'monthly' } })
 </script>
 ```
 
-Parent tag options are passed with the `riot.mount` method and child tag options are passed on the tag attribute.
+Параметры из родительского тега можно прочитать в методе `riot.mount`.
 
-<span class="tag red">important</span> Nested tags are always declared inside a parent custom tag. They are not initialized if they are defined on the page.
+<span class="tag red">важно</span> Вложенные теги всегда объявляются в родительском теге. Они не инициилизируются, если будут определены на странице.
 
-### Nested HTML
+### Вложенный HTML
 
 "HTML transclusion" is a way to process the inner HTML on the page. This is achieved with a build-in `<yield>` tag. Example:
 
