@@ -44,4 +44,8 @@
     }
   })
 
+  $('#current-lang')[0].addEventListener('click', function() {
+    $('#langs')[0].className = $('#langs')[0].className ? '' : 'open'
+  })
+
 })(document)

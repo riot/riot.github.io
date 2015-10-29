@@ -4,6 +4,7 @@
 
 #header {
   padding: .6rem 0 2em;
+  position: relative;
 }
 
 #riot-logo {
@@ -52,5 +53,67 @@
     a {
       margin: 0 .6em;
     }
+  }
+}
+
+#current-lang {
+  border-radius: 3px;
+  padding: 4px;
+
+  &::after {
+    margin-left: 2px;
+    content: "\25BE"
+  }
+
+  &:hover {
+    background-color: #eee;
+    text-decoration: none;
+  }
+}
+
+#langs {
+  display: none;
+
+  clear: both;
+  text-align: center;
+  background: #eee;
+  border-radius: 2px;
+
+  width: 170px;
+  font-size: 70%;
+  position: absolute;
+  right: 0;
+
+  a {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px;
+    color: #999;
+
+    &:not(:first-child) {
+      border-top: 1px solid white;
+    }
+    &:hover {
+      text-decoration: none;
+      background-color: #e9e9e9;
+    }
+  }
+  a > span {
+    color: #aaa;
+    background: white;
+    padding: 0 7px;
+    border-radius: 3px;
+    margin-right: 2px;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+    font-size: 90%;
+    position: relative;
+  }
+
+  &.open {
+    display: block;
   }
 }
