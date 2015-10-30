@@ -44,7 +44,7 @@ Riot 会自动提取内置和外部标签定义，并在调用 `riot.mount()` �
 ``` html
 <script>
 riot.compile(function() {
-  // here tags are compiled and riot.mount works synchronously
+  // 这种写法标签的编译和加载（mount）操作是同步的
   var tags = riot.mount('*')
 })
 </script>
@@ -136,7 +136,7 @@ riot some/folder all-my-tags.js
 你可以 watch 目录，当文件有变化时自动编译
 
 ``` sh
-# watch for
+# 自动检测文件修改
 riot -w src dist
 ```
 
@@ -171,7 +171,7 @@ compile 函数接受string参数，返回string.
 
 这是预编译的最大优势. 你可以使用你喜欢的预处理器来创建自定义标签。HTML 和 JavaScript 处理器都可以自定义。
 
-源语言使用命令行参数 `--type` or `-t` 来指定，也可以在script标签上指定:
+源语言使用命令行参数 `--type` 或 `-t` 来指定，也可以在script标签上指定:
 
 ```html
 <my-tag>

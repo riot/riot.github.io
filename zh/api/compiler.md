@@ -6,15 +6,15 @@ class: apidoc
 
 {% include zh/api-tabs.html %}
 
-## On browser 
+## On browser
 
 以下方法仅适用于浏览器内编译器. 如果希望用node或io.js编译，请参考 [服务端编译](#compile-on-server) .
 
-### <a name="compile"></a> riot.compile(callback) 
+### <a name="compile"></a> riot.compile(callback)
 
 将所有用 `<script type="riot/tag">` 定义的标签编译成 JavaScript. 这些标签可以是页面上的脚本定义或用 script `src` 属性加载的外部资源。 当所有脚本被编译完成后会调用指定的 `callback` 方法。 例如:
 
-``` javascript
+```js
 riot.compile(function() {
   var tags = riot.mount('*')
 })
@@ -22,7 +22,7 @@ riot.compile(function() {
 
 可以省去 `riot.compile` 直接写:
 
-``` javascript
+```js
 var tags = riot.mount('*')
 ```
 
@@ -34,7 +34,7 @@ var tags = riot.mount('*')
 
 加载指定的 URL 并编译所有的标签，编译完成后调用 `callback` 。例如:
 
-``` javascript
+```js
 riot.compile('my/tags.tag', function() {
   // 加载的标签定义已经可用
 })
@@ -44,7 +44,7 @@ riot.compile('my/tags.tag', function() {
 
 编译并执行指定的 `tag`. 例如:
 
-```
+```html
 <template id="my_tag">
   <my-tag>
     <p>Hello, World!</p>

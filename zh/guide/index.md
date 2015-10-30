@@ -265,7 +265,7 @@ Riot 允许开发人员通过 `this` 实例直接访问设置了 `name` 属性�
 </example-tag>
 ```
 
-### 基于上下文的 DOM 查询 
+### 基于上下文的 DOM 查询
 
 现在我们知道了如何在处理 `update` 或 `mount` 事件时获取 DOM 元素，现在我们可以利用这一点，将 `根元素` (我们所创建的 riot 标签实例)作为DOM元素查询的上下文。
 
@@ -347,7 +347,7 @@ var OptsMixin = {
 
 上例中，我们为所有 `my-tag` 标签实例混入了 `OptsMixin` ，它提供 `getOpts` 和 `setOpts` 方法. `init` 是个特殊方法，用来在标签载入时对mixin进行初始化。 (`init` 方法不能混入此mixin的标签中访问)
 
-```
+```js
 var my_tag_instance = riot.mount('my-tag')[0]
 
 console.log(my_tag_instance.getOpts()) //will log out any opts that the tag has
@@ -357,7 +357,7 @@ console.log(my_tag_instance.getOpts()) //will log out any opts that the tag has
 
 `my-tag` 定义现在又加入了一个 `getId` 方法，以及`OptMixin`中除`init`以外的所有其它方法
 
-```
+```js
 function IdMixin() {
     this.getId = function() {
         return this._id
@@ -379,13 +379,13 @@ var id_mixin_instance = new IdMixin()
 
 为了能够在文件之间和项目之间共享mixin，提供了 `riot.mixin` API. 你可以象这样全局性地注册mixin :
 
-```javascript
+```js
 riot.mixin('mixinName', mixinObject)
 ```
 
 用 `mixin()` 加上mixin名字来将mixin混入标签.
 
-```
+```html
 <my-tag>
     <h1>{ opts.title }</h1>
 
@@ -527,7 +527,7 @@ Riot 为 CSS class 名称提供了特殊语法. 例如:
 
 你可以随自己的喜欢来自定义括号. 例如:
 
-``` js
+```js
 riot.settings.brackets = '${ }'
 riot.settings.brackets = '\{\{ }}'
 ```
@@ -547,7 +547,7 @@ riot.settings.brackets = '\{\{ }}'
 
 Riot 表达式只能渲染不带HTML格式的文本值。如果真的需要，可以写一个自定义标签来做这件事. 例如:
 
-``` js
+```html
 <raw>
   <span></span>
 
@@ -557,7 +557,7 @@ Riot 表达式只能渲染不带HTML格式的文本值。如果真的需要，�
 
 这个标签定义以后，可以被用在其它的标签里. 例如
 
-```js
+```html
 <my-tag>
   <p>原始HTML: <raw content="{ html }"/> </p>
 
@@ -595,7 +595,7 @@ Riot 表达式只能渲染不带HTML格式的文本值。如果真的需要，�
 </subscription>
 ```
 
-<span class="tag red">重要</span> 注意我们使用下划线的风格（而不是驼峰风格）对 `show_details` 进行命名，由于浏览器的设定，驼峰风格的命名会被自动转换成小写.
+<span class="tag red">重要</span> 注意我们使用下划线的风格（而不是驼峰风格）对 `show_details` 进行命名，由于浏览器的约定，驼峰风格的命名会被自动转换成小写.
 
 如果在页面上加载 `account` 标签，带 `plan` 选项:
 
@@ -651,7 +651,7 @@ riot.mount('account', { plan: { name: 'small', term: 'monthly' } })
 
 带有 `name` 或 `id` 属性的DOM元素将自动被绑定到上下文中，这样就可以从JavaScript中方便地访问它们：
 
-```js
+```html
 <login>
   <form id="login" onsubmit={ submit }>
     <input name="username">
@@ -675,13 +675,13 @@ riot.mount('account', { plan: { name: 'small', term: 'monthly' } })
 
 响应DOM事件的函数称为 "事件处理器". 这样定义:
 
-```js
+```html
 <login>
   <form onsubmit={ submit }>
 
   </form>
 
-  // this method is called when above form is submitted
+  // 上面的表单提交时调用此方法
   submit(e) {
 
   }
@@ -742,7 +742,7 @@ submit() {
 
 循环是用 `each` 属性来实现的:
 
-```js
+```html
 <todo>
   <ul>
     <li each={ items } class={ completed: done }>
@@ -758,7 +758,7 @@ submit() {
 </todo>
 ```
 
-定义 `each` 属性的html元素根据对数组中的所有项进行重复。 当数组使用 `push()`, `slice()` or `splice` 方法进行操作后，新的元素将被自动添加或删除，
+定义 `each` 属性的html元素根据对数组中的所有项进行重复。 当数组使用 `push()`, `slice()` 或 `splice` 方法进行操作后，新的元素将被自动添加或删除，
 
 
 ### 上下文
@@ -768,7 +768,7 @@ Riot通过这种方法来避免重写不应在父标签中重写的东西。
 从子符合中可以通过显式地调用 `parent` 变量来访问上级上下文. 例如:
 
 
-```js
+```html
 <todo>
   <div each={ items }>
     <h3>{ title }</h3>
@@ -792,7 +792,7 @@ Riot通过这种方法来避免重写不应在父标签中重写的东西。
 
 事件处理器中可以通过 `event.item` 来访问单个集合项. 下面我们来实现 `remove` 函数:
 
-```js
+```html
 <todo>
   <div each={ items }>
     <h3>{ title }</h3>
@@ -834,7 +834,7 @@ Riot通过这种方法来避免重写不应在父标签中重写的东西。
 数组元素不要求是对象. 也可以是字符串或数字. 这时可以用 `{ name, i in items }` 写法:
 
 
-```js
+```html
 <my-tag>
   <p each="{ name, i in arr }">{ i }: { name }</p>
 
@@ -849,7 +849,7 @@ Riot通过这种方法来避免重写不应在父标签中重写的东西。
 
 也可以对普通对象做循环. 例如:
 
-```js
+```html
 <my-tag>
   <p each="{ name, value in obj }">{ name } = { value }</p>
 
