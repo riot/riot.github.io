@@ -11,94 +11,94 @@ class: apidoc
 
 ### <a name="mount"></a> riot.mount(customTagSelector, [opts])
 
-`customTagSelector` selects elements from the page and mounts them with a custom tag. The selected elements' name must match the custom tag name.
+`customTagSelector` selecciona los elementos de la página y los monta con una etiqueta personalizada. Los nombres de los elementos seleccionados deben coincidir con el nombre de la etiqueta personalizada.
 
-`opts` optional object is passed for the tags to consume. This can be anything, ranging from a simple object to a full application API. Or it can be a Flux- store. Really depends on how you want to structure your client-side applications. Read more about [modular Riot applications](/guide/application-design/#modularity).
+El objeto opcional `opts` es pasado a las etiquetas para su consumo. Este puede ser cualquier cosa, desde un simple objeto a una API de aplicación completa. O puede ser un depósito Flux. Realmente depende de cómo quiere usted estructurar sus aplicaciones de lado cliente. Lea más acerca de [aplicaciones Riot modulares](/guide/application-design/#modularity).
 
 
 ``` js
-// selects and mounts all <pricing> tags on the page
+// seleccina y monta todas las etiquetas <pricing> en la página
 var tags = riot.mount('pricing')
 
-// mount all custom tags with a class name .customer
+// monta todas las etiquetas personalizadas con un nombre de clase .customer
 var tags = riot.mount('.customer')
 
-// mount <account> tag and pass an API object as options
+// monta la etiqueta <account> y le pasa un objeto API de opciones
 var tags = riot.mount('account', api)
 ```
 
-@returns: an array of the mounted [tag instances](#tag-instance)
+Devuelve: un arreglo con las [instancias de las etiquetas](#tag-instance) montadas.
 
 ### <a name="mount-star"></a> riot.mount('*', [opts])
 
-A special Riot specific selector "*" can be used to mount all custom tags on the page:
+El selector Riot especial "*" puede usarse para montar todas las etiquetas personalizadas en la página:
 
 ``` js
 riot.mount('*')
 ```
 
-@returns: an array of the mounted [tag instances](#tag-instance)
+Devuelve: un arreglo con las [instancias de las etiquetas](#tag-instance) montadas.
 
 ### <a name="mount-tag"></a> riot.mount(selector, tagName, [opts])
 
-Where
+Donde
 
-- `selector` selects any DOM nodes from the page to be mounted
-- `tagName` specifies the custom tag name to be used
-- `opts` optional object is passed for the tags to consume
+- `selector` selecciona no o más nodos DOM de la página para ser montados
+- `tagName` especifica el nombre de la etiqueta personalizada a usarse
+- `opts` es un objeto opcional pasado a las etiquetas para su consumo
 
 
 ``` js
-// mounts custom tag "my-tag" to div#main and pass api as options
+// monta la etiqueta "my-tag" en div#main y le pasa api
 var tags = riot.mount('div#main', 'my-tag', api)
 ```
 
-@returns: an array of the mounted [tag instances](#tag-instance)
+Devuelve: un arreglo con las [instancias de las etiquetas](#tag-instance) montadas.
 
 ### <a name="mount-dom"></a> riot.mount(domNode, tagName, [opts])
 
-Mount a custom tag named tagName on a given domNode passing optional data with opts. For example:
+Monta una etiqueta personalizada llamada `tagName` en un `domNode` dado, pasandole datos opcionales con `opts`. Por ejemplo:
 
 ```
-// mounts "users" tag to #slide node and pass api as options
+// monta la etiqueta "users" en el nodo #slide y le pasa api
 riot.mount(document.getElementById('slide'), 'users', api)
 ```
 
-@returns: an array of the mounted [tag instances](#tag-instance)
+Devuelve: un arreglo con las [instancias de las etiquetas](#tag-instance) montadas.
 
 ### <a name="mount-to"></a> riot.mountTo(domNode, tagName, [opts])
 
-This method is deprecated since *v2.0.11*. This is the same as `riot.mount(domNode, tagName, [opts])`.
+Éste método está obsoleto desde la versión *2.0.11*. Es lo mismo que `riot.mount(domNode, tagName, [opts])`.
 
 
 
 
-## Rendering
+## Renderizado
 
 ### <a name="render"></a> riot.render(tagName, [opts])
 
-Rendering a tag to html. This method is only available on *server-side* (Node/io.js). For example:
+Crea la representación (renderiza) una etiqueta como html. Este método solamente está disponible en el *lado servidor* (Node/io.js). Por ejemplo:
 
 ```
-// render "my-tag" to html
+// renderiza "my-tag" a html
 var mytag = require('my-tag')
 riot.render(mytag, { foo: 'bar' })
 ```
 
-@returns: tags render as html
+Devuelve: las etiquetas representadas como html
 
 
-## Tag instance
+## Instancias de etiquetas
 
-Following properties are set for each tag instance:
+Las siguientes propiedades se establecen para cada instancia de etiqueta:
 
-- `opts` - the options object
-- `parent` - the parent tag if any
-- `root` - root DOM node
-- `tags` - nested custom tags
+- `opts` - el objeto de opciones
+- `parent` - la etiqueta padre, si la hay
+- `root` - nodo DOM raíz
+- `tags` - etiquetas personalizadas anidadas
 
 
-You can use these references in both the HTML and JavaScript code. For example:
+Usted puede usar estas referencias en el texto HTML y/o en el código JavaScript. Por ejemplo:
 
 
 ``` html
@@ -109,7 +109,7 @@ You can use these references in both the HTML and JavaScript code. For example:
 </my-tag>
 ```
 
-You can freely set any data to the instance (aka "context") and they are available in the HTML expressions. For example:
+Puede establecer libremente cualquier dato de la instancia (aka "contexto") y éste estará disponible en las expresiones HTML. Por ejemplo:
 
 ``` html
 <my-tag>
@@ -120,13 +120,13 @@ You can freely set any data to the instance (aka "context") and they are availab
 ```
 
 
-## Updating
+## Actualizando
 
 ### <a name="tag-update"></a> this.update()
 
-Updates all the expressions on the current tag instance as well as on all the children. This method is automatically called every time an event handler is called when user interacts with the application.
+Actualiza todas las expresiones de la instancia actual de la etiqueta, así como en todos los hijos. Este método es ejecutado automáticamente cada vez que un controlador de eventos se llama por la interacción del usuario con la aplicación.
 
-Other than that riot does not update the UI automatically so you need to call this method manually. This typically happens after some non-UI related event: after `setTimeout`, AJAX call or on some server event. For example:
+Aparte de eso, riot no actualiza la interfaz de usuario automáticamente, por lo que deberá llamar a este método de forma explícita. Esto normalmente se hace después de algunos eventos no relacionados con la UI: después de `setTimeout`, una llamada AJAX o algún evento del servidor. Por ejemplo:
 
 ``` html
 <my-tag>
@@ -146,90 +146,90 @@ Other than that riot does not update the UI automatically so you need to call th
 </my-tag>
 ```
 
-On above example the error message is displayed on the UI after the `update()` method has been called. We assign `this` variable to `self` since inside the AJAX callback `this` variable points to the response object and not to the tag instance.
+En el ejemplo anterior, el mensaje de error se muestra en la interfaz de usuario después de que el método `update()` se ha llamado. Asignamos `this` a la variable` self` debido a que, dentro de la función de retorno (callback) AJAX, la variable `this` apunta al objeto de la respuesta y no a la instancia de la etiqueta.
 
 ### <a name="tag-update-data"></a> this.update(data)
 
-Set values of the current instance and update the expressions. This is same as `this.update()` but allows you to set context data at the same time. So instead of this:
+Establece los valores de la instancia actual y actualiza las expresiones. Esto es igual que `this.update()`, pero le permite establecer datos de contexto al mismo tiempo. Así que en lugar de esto:
 
 ``` js
 self.error = error_message
 self.update()
 ```
 
-you can do this:
+usted puede escribir esto:
 
 ``` js
 self.update({ error: error_message })
 ```
 
-which is shorter and cleaner.
+lo cual es más corto y claro.
 
 ### <a name="update"></a> riot.update()
 
-Updates all the mounted tags and their expressions on the page.
+Actualiza todas las etiquetas montadas y sus expresiones en la página.
 
-@returns: an array of [tag instances](#tag-instance) that are mounted on the page.
+Devuelve: un arreglo de las [instancias de etiquetas](#tag-instance) que fueron montadas en la página.
 
 
 
-## Unmounting
+## Desmontando
 
 ### <a name="tag-unmount"></a> this.unmount(keepTheParent)
 
-Detaches the tag and its children from the page. An "unmount" event is fired.
-If you want to unmount a tag without removing the parent tag you need to pass `true` to the unmount method
+Separa la etiqueta y sus "hijas" de la página. Se dispara un evento "unmount".
+Si desea desmontar una etiqueta sin remover la etiqueta principal, necesita pasar `true` al método unmount.
 
-Remove the tag from the DOM:
+Remueve la etiqueta `mytag` del DOM:
 
 ``` js
 mytag.unmount()
 ```
 
-Remove the tag children and keep only the parent tag:
+Remueve las etiquetas hijas conservando solamente la etiqueta principal:
 
 ``` js
 mytag.unmount(true)
 ```
 
-## Nested tags
+## Etiquetas anidadas
 
-You have access to nested tag instances via `tags` variable:
+Usted tiene acceso a las etiquetas anidadas vía la variable `tags`:
 
 ``` html
 <my-tag>
 
   <child></child>
 
-  // access to child tag
+  // accede a la etiqueta hija
   var child = this.tags.child
 
 </my-tag>
 ```
 
-If more than one of the same child tag is used, it is accessed as an array `this.tags.child[n]`
+Si se utiliza más de una misma etiqueta hija, se accede a ella como en una matriz `this.tags.child[n]`
 
-You can also use the `name` attribute to give another name for the nested tag.
+Puede también usar el atributo `name` para dar otro nombre a la etiqueta anidada.
 
 ``` html
 <my-tag>
 
   <child name="my_nested_tag"></child>
 
-  // access to child tag
+  // accede a la etiqueta hija
   var child = this.tags.my_nested_tag
 
 </my-tag>
 ```
 
-The child tags are initialized after the parent tag so the methods and properties are available on the "mount" event.
+Las etiquetas hijas se inicializan después de la etiqueta principal, por lo que sus métodos y propiedades están disponibles en el evento "mount".
 
 ``` html
 <my-tag>
 
   <child name="my_nested_tag"></child>
 
-  // access to child tag methods
+  // accede a métodos de la etiqueta hija
   this.on('mount', function() {
     this.tags.my_nested_tag.someMethod()
   })

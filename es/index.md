@@ -17,11 +17,11 @@ description: Riot le permite construir interfaces de usuario con _etiquetas_ per
 </div>
 
 
-# Porqué necesitamos una nueva biblioteca para UI?
+# ¿Porqué necesitamos una nueva biblioteca para UI?
 
 El espacio de los frentes para aplicaciones está repleto, pero honestamente, sentimos que la solución aun está "allá afuera". Creemos que Riot ofrece el balance correcto para resolver el gran rompecabezas. Mientras React parece hacerlo, tiene serios puntos débiles que Riot resolverá.
 
-He aquí porqué lo necesitamos una nueva biblioteca:
+He aquí porqué necesitamos una nueva biblioteca:
 
 
 ## 1. Etiquetas (tags) personalizadas
@@ -64,7 +64,7 @@ Riot brinda etiquetas personalizadas para todos los navegadores.
 </todo>
 ```
 
-Una etiqueta personalizada fusiona texto HTML y código JavaScript formando un componente reusable. Piense en React + Polymer, pero con una sintaxis agradable y una mínima curva de aprendizaje.
+Una etiqueta personalizada fusiona texto HTML y código JavaScript en un componente reutilizable. Piense en React + Polymer, pero con una sintaxis agradable y una mínima curva de aprendizaje.
 
 
 ### Lejible a humanos
@@ -96,9 +96,9 @@ Las etiquetas Riot son [convertidas](/guide/compiler/) a JavaScript "puro" antes
 
 ### DOM virtual
 
-- Absolutamente la mínima cantidad de actualizaciones y reflujos al DOM
+- La mínima cantidad de actualizaciones y reflujos al DOM
 - Flujo de datos de una vía: las actualizaciones y demontajes son propagados hacia abajo, del padre a los hijos
-- Las expresiones son pre-compiladas y guardadas en caché para un alto desempeño
+- Las expresiones son precompiladas y guardadas en caché para un alto desempeño
 - Ciclo de vida de los eventos, para un mayor control
 - Renderizado de las etiquetas en el lado servidor para aplicaciones universales (isomórficas)
 
@@ -156,7 +156,7 @@ Riot tiene entre 10 y 100 veces menos API que otras bibliotecas UI.
 - Menos "bugs"
 - Más fácil de analizar y rápido para descargar
 - Incorporable. La biblioteca debería ser menor que la aplicación
-- menos que mantener. No necesitamos un equipo grande para mantener Riot
+- Menos que mantener. No necesitamos un equipo grande para mantener Riot
 
 
 
@@ -173,7 +173,7 @@ Riot es una "pila abierta". Esto es importante para los desarrolladores que quie
 
 > Vi el ejemplo de riot.js, y se siente tan limpio que da miedo. [@paulbjensen](https://twitter.com/paulbjensen/status/558378720403419137)
 
-> Sólo me lié con #RiotJS durante una hora. Lo tuve configurado con Gulp, Browserify y Babel en un instante. Me gusta mucho lo que va! [@AndrewDelPrete](https://twitter.com/AndrewDelPrete/status/630976295011127296)
+> Sólo me lié con #RiotJS durante una hora. Lo tuve configurado con Gulp, Browserify y Babel al instante. Me gusta mucho lo que va! [@AndrewDelPrete](https://twitter.com/AndrewDelPrete/status/630976295011127296)
 
 > Hoy usé #riotjs 2.0 por primera vez y puedo admitir que será una relación a largo plazo #js altamente recomendado. [@gianlucaguarini](https://twitter.com/gianlucaguarini/status/559756081862574080)
 
@@ -188,7 +188,8 @@ Riot es una "pila abierta". Esto es importante para los desarrolladores que quie
 
 Riot es componentes Web para todos. Piense en React + Polymer, pero sin la sobrecarga. Su uso es intuitivo y pesa casi nada. Y trabaja _hoy_. No reinventa la rueda, sino más bien toma las partes buenas de lo que hay y crea la herramienta más simple posible.
 
-Deberíamos enfocarnos en componentes reutilizables en lugar de plantillas. Según los desarrolladores de React:
+Deberíamos enfocarnos en componentes reutilizables en lugar de plantillas.
+Según los desarrolladores de React:
 
 > "Las plantillas separan tecnologías, no quitan preocupaciones."
 
