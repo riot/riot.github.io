@@ -36,7 +36,7 @@ car.trigger('start')
 
 ### <a name="on"></a> el.on(events, callback)
 
-监听用空格分隔的 `event` 列表，每次事件被触发时调用 `callback` 
+监听用空格分隔的 `event` 列表，每次事件被触发时调用 `callback`
 
 ``` js
 // 监听单个事件
@@ -67,7 +67,7 @@ el.one('start', function() {
 
 @返回值 `el`
 
-### <a name="off"></a> el.off(events) 
+### <a name="off"></a> el.off(events)
 
 删除参数中指定的以空格分隔的事件的监听器
 
@@ -101,7 +101,7 @@ el.off('start end', doIt)
 @返回值 `el`
 
 
-### <a name="trigger"></a> el.trigger(event) | #observable-trigger
+### <a name="trigger"></a> el.trigger(event)
 
 触发事件。执行所有监听 `event` 的回调函数
 

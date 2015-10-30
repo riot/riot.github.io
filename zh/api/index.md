@@ -30,7 +30,7 @@ var tags = riot.mount('account', api)
 
 @返回值: 加载成功的[标签实例](#标签实例)的数组
 
-### <a name="mount-star"></a> riot.mount('*', [opts]) 
+### <a name="mount-star"></a> riot.mount('*', [opts])
 
 Riot使用特殊选择器 "*" 来加载页面上所有自定义标签:
 
@@ -41,7 +41,7 @@ riot.mount('*')
 @返回值: 加载成功的[标签实例](#标签实例)的数组
 
 
-### <a name="mount-tag"></a> riot.mount(selector, tagName, [opts]) 
+### <a name="mount-tag"></a> riot.mount(selector, tagName, [opts])
 
 其中
 
@@ -58,11 +58,11 @@ var tags = riot.mount('div#main', 'my-tag', api)
 @返回值: 加载成功的 [标签实例](#标签实例)数组
 
 
-### <a name="mount-dom"></a> riot.mount(domNode, tagName, [opts]) 
+### <a name="mount-dom"></a> riot.mount(domNode, tagName, [opts])
 
 将名为 tagName 的自定义标签加载到指定的 domNode 上，将可选的 opts 作为参数. 示例:
 
-```
+```js
 // 加载 "my-tag" 到指定的 DOM 结点
 riot.mount(document.getElementById('slide'), 'users', api)
 ```
@@ -70,17 +70,17 @@ riot.mount(document.getElementById('slide'), 'users', api)
 @返回值: 加载成功的 [标签实例](#标签实例) 数组
 
 
-### <a name="mount-to"></a> riot.mountTo(domNode, tagName, [opts]) 
+### <a name="mount-to"></a> riot.mountTo(domNode, tagName, [opts])
 
 此方法从 *v2.0.11* 版本开始被 deprecated. 等价的写法是 `riot.mount(domNode, tagName, [opts])`.
 
 ## 渲染
 
-### <a name="render"></a> riot.render(tagName, [opts]) 
+### <a name="render"></a> riot.render(tagName, [opts])
 
 将标签渲染成 html. 只在 *服务端渲染* (Node/io.js) 时可用. 例如:
 
-```
+```js
 // 将 "my-tag" 渲染成 html
 var mytag = require('my-tag')
 riot.render(mytag, { foo: 'bar' })
@@ -122,7 +122,7 @@ riot.render(mytag, { foo: 'bar' })
 
 ## 更新
 
-### <a name="tag-update"></a> this.update() 
+### <a name="tag-update"></a> this.update()
 
 更新当前标签实例及所有子标签实例的所有表达式。此方法在每次用户与应用交互导致事件处理器被调用时会自动调用。
 
@@ -149,7 +149,7 @@ riot.render(mytag, { foo: 'bar' })
 上例中错误信息在调用 `update()` 方法后才显示. 我们将 `this` 赋值给 `self` 是因为在 AJAX 回调函数内部 `this` 将指向 response 对象，而不是标签实例。
 
 
-### <a name="tag-update-data"></a> this.update(data) 
+### <a name="tag-update-data"></a> this.update(data)
 
 设置当前实例的值，并更新表达式。 效果与 `this.update()` 等价，但可以同时指定要更新的数据。所以，与其写:
 
@@ -164,7 +164,7 @@ self.update()
 self.update({ error: error_message })
 ```
 
-更简短和干净。
+更简短干净。
 
 ### <a name="update"></a> riot.update() | #update
 
@@ -175,7 +175,7 @@ self.update({ error: error_message })
 
 ## 卸载
 
-### <a name="tag-unmount"></a> this.unmount(keepTheParent) 
+### <a name="tag-unmount"></a> this.unmount(keepTheParent)
 
 将当前标签实例及其子孙从页面上移除。会触发 "unmount" 事件.
 如果希望移除标签但保留最顶级的实例，需要给unmount方法一个 `true` 参数
@@ -235,7 +235,7 @@ mytag.unmount(true)
 </my-tag>
 ```
 
-### <a name="yield"></a> 使用 `<yield>` 标签来包含内部HTML 
+### <a name="yield"></a> 使用 `<yield>` 标签来包含内部HTML
 
 `<yield>` 标签是riot的特殊核心功能，可以在运行时将自定义标签的内部模板进行编译和插入，这个技术使你可以用从服务端渲染生成的html内容来扩展你的标签模板
 
@@ -266,7 +266,7 @@ mytag.unmount(true)
 </my-post>
 ```
 
-#### yield 与 循环 
+#### yield 与 循环
 
 `<yield>` 标签可以用在循环中或子标签中，但你必须知道 __它总是使用子标签的数据进行解析和编译__
 
@@ -372,7 +372,7 @@ this.on('unmount', function() {
 
 ## 手动创建标签实例
 
-### <a name="tag"></a> riot.tag(tagName, html, [css], [attrs], [constructor]) 
+### <a name="tag"></a> riot.tag(tagName, html, [css], [attrs], [constructor])
 
 不使用编译器“手动”定义一个新的自定义标签.
 
@@ -422,7 +422,7 @@ riot.tag('timer',
 
 可以象下面这样利用 `<template>` 或 `<script>` :
 
-```
+```html
 <script type="tmpl" id="my_tmpl">
   <h3>{ opts.hello }</h3>
   <p>And a paragraph</p>

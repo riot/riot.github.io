@@ -7,7 +7,7 @@ description: Riot lets you build user interfaces with custom tags using simple a
 <div id="hero">
   <img src="/img/logo/riot240x.png">
   <h1>类似 React 的微型 UI 库</h1>
-  <h4>自定义标签 • 快速上手的语法 • 虚拟 DOM • 超小</h4>
+  <h4>自定义标签 • 快速上手的语法 • 虚拟 DOM • 体积超小</h4>
 
   <div id="version-slurp">
     <a href="/download/" class="tag blue">v{{ site.version }}</a> &mdash;
@@ -17,7 +17,7 @@ description: Riot lets you build user interfaces with custom tags using simple a
 </div>
 
 
-# 我们还需要另一个新的 UI 库吗? 
+# 我们还需要又一个新的 UI 库吗?
 
 前端世界的库已经太多了，但我们认为终极解决方案仍有待探索。我们相信 Riot 为解决前端开发的难题提供了正确的方向。React 似乎能够解决问题，但其自身仍有重大弱点，这些弱点正是 Riot 要克服的。
 
@@ -94,7 +94,7 @@ Riot 标签首先被 [编译](/zh/guide/compiler/) 成标准 JavaScript，然后
 
 ### 虚拟 DOM
 - 保证最少量的DOM 更新和数据流动
-- 单向数据流: 更新和删除由父节点updates and unmounts are propagated downwards from parent to children
+- 单向数据流: 更新和删除操作由父组件向子组件传播
 - 表达式会进行预编译和缓存以保证性能
 - 为更精细的控制提供生命周期事件
 - 支持自定义标签的服务端渲染，支持单语言应用
@@ -108,7 +108,7 @@ Riot 标签首先被 [编译](/zh/guide/compiler/) 成标准 JavaScript，然后
 
 
 ### 对工具友好
-- 可选择使用 ES6, Typescript, CoffeeScript, Jade, LiveScript or [其它预处理器](/zh/guide/compiler/#pre-processors) 创建自定义标签
+- 可选择使用 ES6, Typescript, CoffeeScript, Jade, LiveScript 或 [其它预处理器](/zh/guide/compiler/#pre-processors) 创建自定义标签
 - 可与 NPM, CommonJS, AMD, Bower 或 Component 集成
 - 可以利用 [Gulp](https://github.com/e-jigsaw/gulp-riot), [Grunt](https://github.com/ariesjia/grunt-riot) 或 [Browserify](https://github.com/jhthorsen/riotify) 插件
 
@@ -121,7 +121,7 @@ Riot 标签首先被 [编译](/zh/guide/compiler/) 成标准 JavaScript，然后
 
 ### 1. 友好的语法
 
-设计目标之一是用尽量少的boilerplate代码来实现强大的标签语法:
+设计目标之一是尽量少写脚手架（boilerplate）代码就能实现强大的标签语法:
 
 - 强大的简化写法: `class={ enabled: is_enabled, hidden: hasErrors() }`
 - 不需要费脑记忆 `render`, `state`, `constructor` 或 `shouldComponentUpdate`
@@ -132,10 +132,10 @@ Riot 标签首先被 [编译](/zh/guide/compiler/) 成标准 JavaScript，然后
 
 ### 2. 非常低的学习成本
 
-Riot has between 10 and 100 times fewer API methods than other UI libraries.
+与其它 UI 库比较，Riot 所提供的 API 方法的数量要少 10 至 100倍。这意味着
 
-- Less to learn. Fewer books and tutorials to view
-- Less proprietary stuff and more standard stuff
+- 需要学习的内容更少。需要阅读的书籍和指南文档更少。
+- 专有的内容更少，而更多符合标准的成分。
 
 
 ### 3. 麻雀极小
@@ -164,7 +164,7 @@ Riot 拥有创建现代客户端应用的所有必需的成分:
 - 用来在各独立模块之间进行通信的事件库
 - 用来管理URL和浏览器回退按钮的路由器（Router）
 
-Riot 是一个 "开放栈". 它主要面向不希望被框架所牵制的开发人员。它提供的一般性的工具让开发者可以对设计模式进行混合和匹配。 类似 Facebook Flux 的系统完全可以 [自制](https://github.com/jimsparkman/RiotControl).
+Riot 是一个 "开放栈". 它主要面向不希望被框架所牵制的开发人员。它提供的一般化的工具让开发者可以对设计模式进行混合和匹配。 类似 Facebook Flux 的系统完全可以 [自制](https://github.com/jimsparkman/RiotControl).
 
 
 > 看了下 riot.js 的例子, 感觉如此干净, 惊呆了. [@paulbjensen](https://twitter.com/paulbjensen/status/558378720403419137)
@@ -183,7 +183,7 @@ Riot 是一个 "开放栈". 它主要面向不希望被框架所牵制的开发�
 
 ## 结论
 
-Riot 是普通人的 Web Component. 可以理解成去除了臃肿的 React + Polymer。 使用起来非常直观，而且轻若无物。 它现在就好用。我们并没有重新发明轮子，而是从已有的工具中提取精华，构建出尽量简单的工具。
+Riot 是普通人的 Web Component. 可以理解成不那么臃肿的 React + Polymer。 使用起来非常直观，而且轻若无物。它现在就好用。我们并没有重新发明轮子，而是从已有的工具中提取精华，构建出尽量简单的工具。
 
 我们应该关注组件而不是模板. 引用 React 作者的话:
 

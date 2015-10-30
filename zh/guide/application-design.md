@@ -71,8 +71,9 @@ auth.login = function(params) {
     auth.trigger('login', json)
   })
 }
+```
 
-
+```html
 <!-- login 视图 -->
 <login>
   <form onsubmit="{ login }">

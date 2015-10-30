@@ -7,7 +7,7 @@ description: Questions and Answers about Riot, User Interface (UI) Micro-Libary
 # 常见问题
 
 ### 为什么叫 Riot?
-Riot 是对当前写大量 boilerplate 代码和不必要的复杂性的反动。我们认为对前端库来说，少量而强大的API加上简洁的语法是至关重要的。
+Riot 是对当前写大量脚手架（boilerplate）代码和不必要的复杂性的反动。我们认为对前端库来说，少量而强大的API加上简洁的语法是至关重要的。
 
 
 ### Riot 免费吗?

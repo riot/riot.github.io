@@ -73,7 +73,7 @@ class: download
 
 ## 已知的问题
 
-- Looping table rows or cells with 使用 `each` 属性对表格（table）的行或列进行循环在 IE8 和 IE9 上不能正常工作。
+- 使用 `each` 属性对表格（table）的行或列进行循环在 IE8 和 IE9 上不能正常工作。
 
 
 ## Logo
