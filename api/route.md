@@ -129,12 +129,16 @@ riot.route('customers/267393/edit', 'Editing customer page')
 
 ### riot.route.start()
 
-Start listening the url changes and it's automatically called when riot gets loaded. You typically use this method together with [riot.route.stop](#route-stop). Example:
+Start listening the url changes.
 
 ```javascript
-riot.route.stop() // clear all the old router callbacks
-riot.route.start() // start again
+riot.route.start()
 ```
+
+<span class="tag red">&gt;= v2.3</span>
+
+Riot doesn't `start` its router automatically. DON'T FORGET TO START IT BY YOURSELF. This also means that you can choose your favorite router.
+(Note: before v2.3 Riot started the router automatically. The behavior was changed)
 
 ### riot.route.stop()
 
@@ -144,7 +148,12 @@ Stop the all routings. It'll removes the listeners and clear also the callbacks.
 riot.route.stop()
 ```
 
-To use different router with Riot on your application, you need to call this, at the first.
+You typically use this method together with [riot.route.start](#route-start). Example:
+
+```javascript
+riot.route.stop() // clear all the old router callbacks
+riot.route.start() // start again
+```
 
 ### subRoute.stop()
 
