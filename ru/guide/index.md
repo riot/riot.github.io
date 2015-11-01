@@ -604,12 +604,11 @@ riot.mount('account', { plan: { name: 'small', term: 'monthly' } })
 
 <span class="tag red">важно</span> Вложенные теги всегда объявляются в родительском теге. Они не инициилизируются, если будут определены на странице.
 
-### Вложенный HTML
+### Внутренний HTML (тег` <yield>`)
 
-"HTML transclusion" is a way to process the inner HTML on the page. This is achieved with a build-in `<yield>` tag. Example:
+"Включение HTML" - это способ обработки внутреннего HTML на странице. Это достигается путём использования встроенного тега `<yield>`. Пример:
 
-
-### Tag definition
+### Определение тега
 
 ```html
 <my-tag>
@@ -618,9 +617,9 @@ riot.mount('account', { plan: { name: 'small', term: 'monthly' } })
 </my-tag>
 ```
 
-### Usage
+### Использование
 
-Custom tag is placed on a page with nested HTML
+Пользовательский тег размещается на странице с внутренним HTML
 
 ```html
 <my-tag>
@@ -628,7 +627,7 @@ Custom tag is placed on a page with nested HTML
 </my-tag>
 ```
 
-### Result
+### Результат
 
 ```html
 <my-tag>
@@ -636,11 +635,11 @@ Custom tag is placed on a page with nested HTML
 </my-tag>
 ```
 
-See [API docs](/api/#yield) for `yield`.
+Подробности есть в [API](/api/#yield).
 
-## Named elements
+## Именнованные элементы
 
-Elements with `name` or `id` attribute are automatically bound to the context so you'll have an easy access to them with JavaScript:
+Элементы с аттрибутами `name` или `id` автоматически привязываются к соответвующему параметру переменной `this`, вы можете с лёгкостью обращаться к ним через JavaScript:
 
 ```html
 <login>
@@ -650,7 +649,6 @@ Elements with `name` or `id` attribute are automatically bound to the context so
     <button name="submit">
   </form>
 
-  // grab above HTML elements
   var form = this.login,
     username = this.username.value,
     password = this.password.value,
@@ -659,12 +657,12 @@ Elements with `name` or `id` attribute are automatically bound to the context so
 </login>
 ```
 
-Of course these named elements can be referred to in HTML as well: `<div>{ username.value }</div>`
+К именнованным элеменам так же можно обращаться через HTML: `<div>{ username.value }</div>`
 
 
-## Event handlers
+## Обработчики DOM-событий
 
-A function that deals with DOM events is called an "event handler". Event handlers are defined as follows:
+Обработчики DOM-событий определяются следующим образом:
 
 ```html
 <login>
@@ -672,25 +670,24 @@ A function that deals with DOM events is called an "event handler". Event handle
 
   </form>
 
-  // this method is called when above form is submitted
+  // Этот метод вызывается перед отправкой вышеописанной формы формы
   submit(e) {
 
   }
 </login>
 ```
 
-Attributes beginning with "on" (`onclick`, `onsubmit`, `oninput` etc...) accept a function value which is called when the event occurs. This function can also be defined dynamically with an expression. For example:
-
+Аттрибуты, которе начинаются с "on"  (`onclick`, `onsubmit`, `oninput` и т.д.) принимают в качестве параметра функцию, которая будет обрабатывать действие. Этот параметр может быть так же определён динамически, в виде выражения:
 
 ```html
 <form onsubmit={ condition ? method_a : method_b }>
 ```
 
-In the function `this` refers to the current tag instance. After the handler is called `this.update()` is automatically called reflecting all the possible changes to the UI.
+Внутри этого обработчика `this` относится к текущему экземпляру тега.
 
-The default event handler behavior is *automatically cancelled* unless the element is a checkbox or radio button. This means that `e.preventDefault()` is already called for you, because this is what you usually want (or forget to do). You can let the browser do the default thing by returning `true` on the handler.
+Поведение дефолтного поведения *автоматически отменяется* если элемент не checkbox или radio-кнопка. Это означает, что `e.preventDefault()` уже вызвано за вас, потому что это как правило, нужно сделать (или забывают сделать). Вы можете позволить браузеру выполнить поведение по-умолчанию, вернув `true` в обработчике.
 
-For example, this submit handler will actually submit the form to the server:
+Например, этот обработчик будет на самом деле отправлять форму на сервер:
 
 ```js
 submit() {
@@ -699,20 +696,19 @@ submit() {
 ```
 
 
+### Объект события
 
-### Event object
+Обработчик DOM-события принимает в качестве первого аргумента стандартный объект события. Ниже приведён список его свойств, которые работают во всех браузерах:
 
-The event handler receives the standard event object as the first argument. The following properties are normalized to work across browsers:
-
-- `e.currentTarget` points to the element where the event handler is specified.
-- `e.target` is the originating element. This is not necessarily the same as `currentTarget`.
-- `e.which` is the key code in a keyboard event (`keypress`, `keyup`, etc...).
-- `e.item` is the current element in a loop. See [loops](#loops) for more details.
+- `e.currentTarget` указывает на элемент, к которому было применено событие.
+- `e.target` оригинальный элемент. То же самое, что `currentTarget`.
+- `e.which` код нажатой клавиши, если событие было вызвано нажатием клавиши (`keypress`, `keyup`, и т.д.).
+- `e.item` текущий элемент в цикле. Смотри подробности в разделе [циклы](#loops).
 
 
-## Conditionals
+## Условия
 
-Conditionals let you show / hide elements based on a condition. For example:
+Условия помогают вам показывать/скрывать элементы в зависимости от ситуации:
 
 ```html
 <div if={ is_premium }>
@@ -720,18 +716,17 @@ Conditionals let you show / hide elements based on a condition. For example:
 </div>
 ```
 
-Again, the expression can be just a simple property or a full JavaScript expression. The following special attributes are available:
+Ещё раз, выражения могут быть обычным свойством или полноценным JavaScript выражением. Вот список доступных условных аттрибутов:
 
-- `show` – show the element using `style="display: ''"` when the value is true
-- `hide` – hide the element using `style="display: none"` when the value is true
-- `if` – add (true value) or remove (false value) the element from the document
+- `show` – показывает элемент, используя `style="display: ''"` если значение равно true
+- `hide` – скрывает элемент, используя `style="display: none"` если значение равно true
+- `if` – добавляет (при true) или удаляет (false) элемент из документа
 
-The equality operator is `==` and not `===`. For example: `'a string' == true`.
+Используется оператор сравнения `==`, не `===`. То есть : `'a string' == true`.
 
+## Циклы
 
-## Loops
-
-Loops are implemented with `each` attribute as follows:
+Циклы реализованы благодаря аттрибуту `each`:
 
 ```html
 <todo>
@@ -749,15 +744,13 @@ Loops are implemented with `each` attribute as follows:
 </todo>
 ```
 
-The element with the `each` attribute will be repeated for all items in the array. New elements are automatically added / created when the items array is manipulated using `push()`, `slice()` or `splice` methods for example.
+Элемент с аттрибутом `each` будет повторён для всех значений массива. Новый элемент будет автоматически добавлен/создан если в массив добавится новое значение через такие методы, как `push()`, `slice()` или `splice`.
 
+### Контекст
 
-### Context
+Новый контекст создаётся для каждого элемента массива. `this` всегда ссылается на [экземпляр тега](/api/#tag-instance). Если в цикле используется пользовательские теги, то все дочерние теги в цикле наследуют все родительские свойства и методы, котрые не определены в самом дочернем элементе. Таким образом Riot предотвращает нежелательное переопределение от родительского тега.
 
-A new context is created for each item. These are [tag instances](/api/#tag-instance). When loops are nested, all the children tags in the loop inherit any of their parent loop's properties and methods they themselves have `undefined`. In this way, Riot avoids overriding things that should not be overridden by the parent tag.
-
-The parent can be explicitly accessed through the `parent` variable. For example:
-
+Родитель доступен через переменную `parent`. Например:
 
 ```html
 <todo>
@@ -774,14 +767,14 @@ The parent can be explicitly accessed through the `parent` variable. For example
 </todo>
 ```
 
-In the looped element everything but the `each` attribute belongs to the child context, so the `title` can be accessed directly and `remove` needs to be prefixed with `parent.` since the method is not a property of the looped item.
+Всё, что внутри элемента с аттрибутом `each` принадлежит дочернему контексту. То есть, к `title` можно обращаться напрямую, но `remove` должен вызываться с преффиксом `parent.` так как метод не является аттрибутом элемента в цикле.
 
-The looped items are [tag instances](/api/#tag-instance). Riot does not touch the original items so no new properties are added to them.
+Перебираемые элементы - экземпляры [пользовательских тегов](/api/#tag-instance). Riot не изменяет исходные элементы массива, новые свойства просто добавляются к исходному элементу.
 
 
-### Event handlers with looped items
+### Обработчики DOM-событий в циклах
 
-Event handlers can access individual items in a collection with `event.item`. Now let's implement the `remove` function:
+Обработчики DOM-событий имеют доступ к конкретному элементу, вызывавшему событие через `event.item`. Вот пример функции `remove`:
 
 ```html
 <todo>
@@ -806,23 +799,22 @@ Event handlers can access individual items in a collection with `event.item`. No
 </todo>
 ```
 
-After the event handler is executed the current tag instance is updated using `this.update()` (unless you set e.preventUpdate to true in your event handler) which causes all the looped items to execute as well. The parent notices that an item has been removed from the collection and removes the corresponding DOM node from the document.
+После того, как обработчик DOM-события выполнится, текущий экземпляр пользовательского тега обновится, используя `this.update()` (если только в обработчике не указано e.preventUpdate = true). Родитель следит за состоянием первоначального массива. Если какой-либо элемент был удалён из массива, родитель удаляет его из DOM.
 
+### Перебор пользовательских тегов
 
-### Looping custom tags
-
-Custom tags can also be looped. For example:
+Пользовтаельские теги так же могут быть использованы в циклах:
 
 ```html
 <todo-item each="{ items }" data="{ this }"></todo-item>
 ```
 
-The currently looped item can be referenced with `this` which you can use to pass the item as an option to the looped tag.
+Текущий элемент в цикле доступен через переменную `this` которую вы можете использовать для того, чтобы передавать пользовательскому тегу параметры.
 
 
-### Non-object arrays
+### Массивы из не-объектов
 
-The array elements need not be objects. They can be strings or numbers as well. In this case you need to use the `{ name, i in items }` construct as follows:
+Элементы массива не обязательно должны быть объектами. Они так же могут быть строками или числами. В этом случае, вы должны использовать конструкцию `{ name, i in items }`, как показано ниже:
 
 
 ```html
@@ -833,12 +825,11 @@ The array elements need not be objects. They can be strings or numbers as well. 
 </my-tag>
 ```
 
-The `name` is the name of the element and `i` is the index number. Both of these labels can be anything that's best suited for the situation.
+`name` - это значение элемента и `i` - его порядновый ключ. И ключ и значение вы можете выбрать на своё усмотрение, в зависимости от ситуации.
 
+### Перебор объектов
 
-### Object loops
-
-Plain objects can also be looped. For example:
+Одноуровневые объекты так же могут быть использованы для циклов:
 
 ```html
 <my-tag>
@@ -852,28 +843,28 @@ Plain objects can also be looped. For example:
 </my-tag>
 ```
 
-Object loops are not recommended since internally Riot detects changes on the object with `JSON.stringify`. The *whole* object is studied and when there is a change the whole loop is re-rendered. This can be slow. Normal arrays are much faster and only the changes are drawn on the page.
+Не рекомендуется использовать циклы по объектам, так как Riot определяет, изменился ли объект с помощью `JSON.stringify`. Изучается *весь* объект целиком, и если в нём что-то меняется, то весь цикл рендерится заново. Обычные массивы гораздо быстрее и изменения отдельного элемента затрагивают конкретный элемент на странице.
 
 
-## HTML elements as tags
+## HTML-элементы и пользовательские теги
 
-Standard HTML elements can be used as riot tags in the page body with the addition of the `riot-tag` attribute.
+Стандартные HTML-элементы могут быть использованы как пользовтаельские теги путём добавления аттрибута `riot-tag`.
 
 ```html
 <ul riot-tag="my-tag"></ul>
 ```
 
-This provides users with an alternative that can provide greater compatibility with css frameworks.  The tags are treated like any other custom tag.
+Такой тег рассматривается как любой другой пользовательский тег.
 
 ```js
 riot.mount('my-tag')
 ```
 
-will mount the `ul` element shown above as if it were `<my-tag></my-tag>`
+примонтирует `ul`-элемент если определён `<my-tag></my-tag>`
 
-## Server-side rendering
+## Рендеринг на стороне сервера
 
-Riot supports server-side rendering with Node/io.js. You can `require` tags and render them:
+Riot поддерживает рендеринг на стороне сервера с помощью Node/io.js. Вы можете использовать `require` и рендерить теги:
 
 ```js
 var riot = require('riot')
@@ -884,4 +875,4 @@ var html = riot.render(timer, { start: 42 })
 console.log(html) // <timer><p>Seconds Elapsed: 42</p></timer>
 ```
 
-Loops and conditionals *are* supported.
+Циклы и условия *поддерживаются*.
