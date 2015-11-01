@@ -35,14 +35,14 @@ sass:
 author:
   name:              Riot
   url:               http://riotjs.com
-  email:             riotjs@gmail.com
+  email:             hello.riotjs@gmail.com
 
 # Custom vars
-major_version:       2
-minor_version:       2.2
+major_version:       0
+minor_version:       2.3
 
-version:             2.2.4
-release_date:        August 12
-version_slurp:       Support for multiple syntax blocks
-size_min:            12.5
+version:             2.3.0
+release_date:        November 1st
+version_slurp:       Html5 history support - new compiler - enhanced loops
+size_min:            18.3
 repo:                https://github.com/riot/riot
