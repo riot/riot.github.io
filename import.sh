@@ -1,5 +1,5 @@
 # store the riot submodules in an array
-SUBMODULES=(route observable)
+SUBMODULES=(route observable compiler)
 
 # clone the riot submodules in a temporary folder
 function clone {
