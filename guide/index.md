@@ -424,12 +424,24 @@ You can listen to various lifecyle events inside the tag as follows:
 ```js
 <todo>
 
+  this.on('before-mount', function() {
+    // before the tag is mounted
+  })
+
   this.on('mount', function() {
-    // right after tag is mounted on the page
+    // right after the tag is mounted on the page
   })
 
   this.on('update', function() {
     // allows recalculation of context data before the update
+  })
+
+  this.on('updated', function() {
+    // right after the tag template is updated
+  })
+
+  this.on('before-unmount', function() {
+    // before the tag is removed
   })
 
   this.on('unmount', function() {
@@ -437,7 +449,7 @@ You can listen to various lifecyle events inside the tag as follows:
   })
 
   // curious about all events ?
-  this.on('mount update unmount', function(eventName) {
+  this.on('all', function(eventName) {
     console.info(eventName)
   })
 
@@ -739,6 +751,9 @@ Again, the expression can be just a simple property or a full JavaScript express
 
 The equality operator is `==` and not `===`. For example: `'a string' == true`.
 
+<span class="tag red">important</span>
+Using conditionals attributes on custom nested tags does not stop riot from evaluating the hidden expressions - we are working on a patch to solve [this issue](https://github.com/riot/riot/pull/1256)
+
 
 ## Loops
 
@@ -865,6 +880,33 @@ Plain objects can also be looped. For example:
 
 Object loops are not recommended since internally Riot detects changes on the object with `JSON.stringify`. The *whole* object is studied and when there is a change the whole loop is re-rendered. This can be slow. Normal arrays are much faster and only the changes are drawn on the page.
 
+
+### Loops advanced tips
+
+#### Performances
+
+In riot v2.3 to make the loops rendering more reliable the DOM nodes will be moved, inserted and removed always in sync with your data collections: this strategy will make the rendering slower compared to the previous 2.2 releases. To enable a faster rendering algorithm you can add the attribute `no-reorder` to the loop nodes. For example
+
+```html
+<loop>
+  <div each="{ item in items }" no-reorder>{ item }</div>
+</loop>
+```
+
+#### The `virtual` tag
+
+<span class="tag red">experimental</span>
+
+In some cases you may need to loop some html without having a particular wrapper tag. In that case you can use the `<virtual>` tag that will be removed rendering just the html tags wrapped in it. For example:
+
+```html
+<dl>
+  <virtual each={item in items}>
+    <dt>{item.key}</dt>
+    <dd>{item.value}</dd>
+  </virtual>
+</dl>
+```
 
 ## HTML elements as tags
 

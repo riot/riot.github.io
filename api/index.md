@@ -66,13 +66,6 @@ riot.mount(document.getElementById('slide'), 'users', api)
 
 @returns: an array of the mounted [tag instances](#tag-instance)
 
-### <a name="mount-to"></a> riot.mountTo(domNode, tagName, [opts])
-
-This method is deprecated since *v2.0.11*. This is the same as `riot.mount(domNode, tagName, [opts])`.
-
-
-
-
 ## Rendering
 
 ### <a name="render"></a> riot.render(tagName, [opts])
