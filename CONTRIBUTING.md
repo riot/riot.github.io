@@ -57,3 +57,4 @@ If you use Windows, [check this instruction](http://jekyllrb.com/docs/windows/),
 ## Note
 
 - No need to translate [v1.0 docs](https://github.com/riot/riot.github.io/blob/master/guide/v1.0.md)
+- For translations into languages with [T–V distinction](https://en.wikipedia.org/wiki/T%E2%80%93V_distinction), it is recommend to use V-form.
