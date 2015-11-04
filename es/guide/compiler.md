@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Compiler
+title: El compilador
 ---
 
 {% include guide-tabs.html %}
 
-## In-browser compilation
+## Compilación en el navegador
 
 Custom tags need to be transformed to JavaScript before the browser can execute them. You can do this by setting a `type="riot/tag"` attribute for your script tags. For example:
 

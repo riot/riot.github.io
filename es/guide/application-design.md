@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Application design
+title: Diseño de aplicaciones
 ---
 
 {% include guide-tabs.html %}

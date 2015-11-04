@@ -1,5 +1,5 @@
 ---
-title: Compiler
+title: El compilador
 layout: default
 class: apidoc
 ---
@@ -12,9 +12,9 @@ Los siguientes métodos se aplican solo a los navegadores. Vaya a la [sección d
 
 ### <a name="compile"></a> riot.compile(callback)
 
-Compila todas las etiquetas (tags) definidas con `<script type="riot/tag">` como JavaScript. Estas pueden ser definiciones en scripts incrustados o recursos externos que cargan scripts definidos con el atributo `src`. Después que todos los scripts son compilados, se llama al método `callback` dado. Por ejemplo:
+Compila todas las etiquetas (tags) definidas con `<script type="riot/tag">` como JavaScript. Estas pueden ser definiciones en scripts incluidos en la página, o recursos externos que cargan scripts definidos con el atributo `src`. Después que todos los scripts son compilados, se llama al método `callback` dado. Por ejemplo:
 
-``` javascript
+```javascript
 riot.compile(function() {
   var tags = riot.mount('*')
 })
@@ -22,7 +22,7 @@ riot.compile(function() {
 
 Puede omitir la llamada a `riot.compile` y solamente escribir:
 
-``` javascript
+```javascript
 var tags = riot.mount('*')
 ```
 
@@ -34,7 +34,7 @@ Para más detalles, lea la [introducción general](/guide/compiler/) al compilad
 
 Carga el URL dado y compila todos las etiquetas, después de lo cuál el `callback` es llamado. Por ejemplo:
 
-``` javascript
+```javascript
 riot.compile('my/tags.tag', function() {
   // los tags cargados están listos para ser usados
 })
@@ -42,9 +42,9 @@ riot.compile('my/tags.tag', function() {
 
 ### <a name="compile-tag"></a> riot.compile(tag)
 
-Compila y ejecuta el `tag` dado. Por ejemplo:
+Compila y ejecuta la etiqueta `tag` dada. Por ejemplo:
 
-```
+```html
 <template id="my_tag">
   <my-tag>
     <p>Hola, mundo!</p>
@@ -56,17 +56,17 @@ riot.compile(my_tag.innerHTML)
 </script>
 ```
 
-Después de la llamada, usted puede usar `my-tag` normalmente.
+Después de la llamada, usted puede usar `my-tag` de manera normal.
 
-Se asume una definición de etiqueta si el primer carácter no-blanco es `<`, en caso contrario, el argumento es considerado un URL.
+Se asume una definición de etiqueta si el primer carácter no-blanco es `<`, en caso contrario el argumento es considerado un URL.
 
 Devuelve el código JavaScript compilado como una cadena de caracteres (string).
 
 ### <a name="compile-to-str"></a> riot.compile(tag, true)
 
-Compila `tag` y lo devuelve como una cadena. Solo se lleva a cabo la transformación de la etiqueta a JavaScript, la etiqueta no es ejecutada en el navegador. Se puede usar éste método para medir el desempeño del compilador. Por ejemplo.
+Compila `tag` y lo devuelve como una cadena de caracteres. Solo se lleva a cabo la transformación de la etiqueta a JavaScript, sin ejecutarla en el navegador. Se puede usar éste método para medir el desempeño del compilador. Por ejemplo:
 
-``` js
+```js
 var js = riot.compile(my_tag.innerHTML, true)
 ```
 
@@ -74,17 +74,17 @@ var js = riot.compile(my_tag.innerHTML, true)
 
 Después de `npm install riot`, usted puede hacer lo siguiente:
 
-```
+```js
 var riot = require('riot')
 
 var js = riot.compile(tag)
 ```
 
-La función compile toma la definición de la etiqueta (string) y devuelve JavaScript (string).
+La función `compile` toma la definición de la etiqueta (string) y devuelve JavaScript (string).
 
 ### <a name="css-parser"></a> riot.parsers.css [tagName, css]
 
-Analizadores (parsers) personalizados que se pueden usar para compilar el contenido css de sus etiquetas. Por ejemplo:
+Analizadores (<dfn lang="en">parsers</dfn>) personalizados que se pueden usar para compilar el contenido CSS de sus etiquetas. Por ejemplo:
 
 ```js
 riot.parsers.css.myparser = function(tag, css) {
@@ -114,7 +114,7 @@ será compilado como:
 
 ### <a name="js-parser"></a> riot.parsers.js [js, options]
 
-Analizadores personalizados que se pueden usar para compilar el código JavaScript de sus etiquetas. Por ejemplo
+Analizadores personalizados que se pueden usar para compilar el código JavaScript de sus etiquetas. Por ejemplo:
 
 ```js
 riot.parsers.js.myparser = function(js) {
@@ -144,5 +144,4 @@ será compilado como:
 
 ### <a name="html-parser"></a> riot.parsers.html [html]
 
-Analizadores personalizados que pueden usarse para compilar el contenido html de sus etiquetas.
-
+Analizadores personalizados que pueden usarse para compilar el contenido HTML de sus etiquetas.

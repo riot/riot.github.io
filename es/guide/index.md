@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Custom tags
+title: Etiquetas personalizadas
 ---
 
 {% include guide-tabs.html %}

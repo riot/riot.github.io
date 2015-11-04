@@ -17,18 +17,18 @@ description: Riot le permite construir interfaces de usuario con _etiquetas_ per
 </div>
 
 
-# ¿Porqué necesitamos una nueva biblioteca para UI?
+# ¿Porqué necesitamos una nueva biblioteca para <abbr title="Interfaz de usuario, por sus siglas en Inglés">UI</abbr>?
 
-El espacio de los frentes para aplicaciones está repleto, pero honestamente, sentimos que la solución aun está "allá afuera". Creemos que Riot ofrece el balance correcto para resolver el gran rompecabezas. Mientras React parece hacerlo, tiene serios puntos débiles que Riot resolverá.
+El espacio de los frentes para aplicaciones está repleto, pero honestamente, sentimos que la solución aun está "allá afuera". Creemos que Riot ofrece el balance correcto para resolver el gran rompecabezas. Mientras React parece hacerlo, tiene serios puntos débiles que Riot resuelve.
 
-He aquí porqué necesitamos una nueva biblioteca:
+He aquí porqué necesitamos esta nueva biblioteca:
 
 
-## 1. Etiquetas (tags) personalizadas
+## 1. Etiquetas (<dfn lang="en">tags</dfn>) personalizadas
 
 Riot brinda etiquetas personalizadas para todos los navegadores.
 
-``` html
+```html
 <todo>
 
   <!-- diseño -->
@@ -71,7 +71,7 @@ Una etiqueta personalizada fusiona texto HTML y código JavaScript en un compone
 
 Las etiquetas personalizadas le permiten construir vistas complejas con HTML. Su aplicación podría verse como algo así:
 
-``` html
+```html
 <body>
 
   <h1>Comunidad Acme</h1>
@@ -153,7 +153,7 @@ Riot tiene entre 10 y 100 veces menos API que otras bibliotecas UI.
 <small><em>riot.min.js</em> – {{ site.size_min }}KB</small>
 <span class="bar blue" style="width: {{ site.size_min / 121 * 100 }}%"></span>
 
-- Menos "bugs"
+- Menos errores
 - Más fácil de analizar y rápido para descargar
 - Incorporable. La biblioteca debería ser menor que la aplicación
 - Menos que mantener. No necesitamos un equipo grande para mantener Riot
@@ -168,7 +168,7 @@ Riot tiene todos los bloques necesarios para construir aplicaciones modernas de 
 - Biblioteca de eventos para construir APIs con módulos aislados
 - _Router_ que administra el URL y el botón de retroceso
 
-Riot es una "pila abierta". Esto es importante para los desarrolladores que quieren evitar lenguajes específicos a un _framework_. Las herramientas genéricas le permiten mezclar y seguir patrones de diseño. Sistemas como Flux de Facebook pueden ser [hechos por usted](https://github.com/jimsparkman/RiotControl).
+Riot es una "pila abierta". Esto es importante para los desarrolladores que quieren evitar lenguajes específicos a un _framework_. Las herramientas genéricas le permiten mezclar y seguir patrones de diseño. Sistemas como <dfn>Flux</dfn> de Facebook pueden ser [hechos por usted](https://github.com/jimsparkman/RiotControl).
 
 
 > Vi el ejemplo de riot.js, y se siente tan limpio que da miedo. [@paulbjensen](https://twitter.com/paulbjensen/status/558378720403419137)
@@ -199,5 +199,3 @@ Al tener el diseño y la lógica relacionada juntos en el mismo componente el si
 ## La entrada inicial del blog
 
 [De React a Riot 2.0](https://muut.com/blog/technology/riot-2.0/)
-
-

@@ -1,5 +1,5 @@
 ---
-title: Custom tags
+title: Etiquetas personalizadas
 layout: default
 class: apidoc
 ---
@@ -7,16 +7,16 @@ class: apidoc
 {% include api-tabs.html %}
 
 
-## Mounting
+## Montaje
 
 ### <a name="mount"></a> riot.mount(customTagSelector, [opts])
 
-`customTagSelector` selecciona los elementos de la página y los monta con una etiqueta personalizada. Los nombres de los elementos seleccionados deben coincidir con el nombre de la etiqueta personalizada.
+`customTagSelector` selecciona elementos de la página y los monta con una etiqueta personalizada. Los nombres de los elementos seleccionados deben coincidir con el nombre de la etiqueta personalizada.
 
-El objeto opcional `opts` es pasado a las etiquetas para su consumo. Este puede ser cualquier cosa, desde un simple objeto a una API de aplicación completa. O puede ser un depósito Flux. Realmente depende de cómo quiere usted estructurar sus aplicaciones de lado cliente. Lea más acerca de [aplicaciones Riot modulares](/guide/application-design/#modularity).
+El objeto opcional `opts` es pasado a las etiquetas para su consumo. Este puede ser cualquier cosa, desde un simple objeto a una API de aplicación completa. O puede ser un depósito <dfn lang="en">Flux</dfn>. Realmente depende de cómo quiere usted estructurar sus aplicaciones de lado cliente. Lea más acerca de las [aplicaciones Riot modulares](/guide/application-design/#modularity).
 
 
-``` js
+```js
 // seleccina y monta todas las etiquetas <pricing> en la página
 var tags = riot.mount('pricing')
 
@@ -29,11 +29,11 @@ var tags = riot.mount('account', api)
 
 Devuelve: un arreglo con las [instancias de las etiquetas](#tag-instance) montadas.
 
-### <a name="mount-star"></a> riot.mount('*', [opts])
+### <a name="mount-star"></a> riot.mount('\*', [opts])
 
-El selector Riot especial "*" puede usarse para montar todas las etiquetas personalizadas en la página:
+El selector Riot especial "\*" puede usarse para montar todas las etiquetas personalizadas en la página:
 
-``` js
+```js
 riot.mount('*')
 ```
 
@@ -43,12 +43,12 @@ Devuelve: un arreglo con las [instancias de las etiquetas](#tag-instance) montad
 
 Donde
 
-- `selector` selecciona no o más nodos DOM de la página para ser montados
+- `selector` selecciona uno o más nodos DOM de la página para ser montados
 - `tagName` especifica el nombre de la etiqueta personalizada a usarse
 - `opts` es un objeto opcional pasado a las etiquetas para su consumo
 
 
-``` js
+```js
 // monta la etiqueta "my-tag" en div#main y le pasa api
 var tags = riot.mount('div#main', 'my-tag', api)
 ```
@@ -57,9 +57,9 @@ Devuelve: un arreglo con las [instancias de las etiquetas](#tag-instance) montad
 
 ### <a name="mount-dom"></a> riot.mount(domNode, tagName, [opts])
 
-Monta una etiqueta personalizada llamada `tagName` en un `domNode` dado, pasandole datos opcionales con `opts`. Por ejemplo:
+Monta una etiqueta personalizada llamada `tagName` en un `domNode` dado, pasándole datos opcionales con `opts`. Por ejemplo:
 
-```
+```js
 // monta la etiqueta "users" en el nodo #slide y le pasa api
 riot.mount(document.getElementById('slide'), 'users', api)
 ```
@@ -71,24 +71,22 @@ Devuelve: un arreglo con las [instancias de las etiquetas](#tag-instance) montad
 Éste método está obsoleto desde la versión *2.0.11*. Es lo mismo que `riot.mount(domNode, tagName, [opts])`.
 
 
-
-
 ## Renderizado
 
 ### <a name="render"></a> riot.render(tagName, [opts])
 
 Crea la representación (renderiza) una etiqueta como html. Este método solamente está disponible en el *lado servidor* (Node/io.js). Por ejemplo:
 
-```
+```js
 // renderiza "my-tag" a html
 var mytag = require('my-tag')
 riot.render(mytag, { foo: 'bar' })
 ```
 
-Devuelve: las etiquetas representadas como html
+Devuelve: las etiquetas representadas como HTML
 
 
-## Instancias de etiquetas
+## <a name="tag-instance"></a> Instancias de etiquetas
 
 Las siguientes propiedades se establecen para cada instancia de etiqueta:
 
@@ -101,7 +99,7 @@ Las siguientes propiedades se establecen para cada instancia de etiqueta:
 Usted puede usar estas referencias en el texto HTML y/o en el código JavaScript. Por ejemplo:
 
 
-``` html
+```html
 <my-tag>
   <h3>{ opts.title }</h3>
 
@@ -120,15 +118,15 @@ Puede establecer libremente cualquier dato de la instancia (aka "contexto") y é
 ```
 
 
-## Actualizando
+## Actualización
 
 ### <a name="tag-update"></a> this.update()
 
-Actualiza todas las expresiones de la instancia actual de la etiqueta, así como en todos los hijos. Este método es ejecutado automáticamente cada vez que un controlador de eventos se llama por la interacción del usuario con la aplicación.
+Actualiza todas las expresiones de la instancia actual de la etiqueta, así como en todas las hijas. Este método es ejecutado automáticamente cada vez que un controlador de eventos es llamado por la interacción del usuario con la aplicación.
 
-Aparte de eso, riot no actualiza la interfaz de usuario automáticamente, por lo que deberá llamar a este método de forma explícita. Esto normalmente se hace después de algunos eventos no relacionados con la UI: después de `setTimeout`, una llamada AJAX o algún evento del servidor. Por ejemplo:
+Aparte de eso, riot no actualiza la interfaz de usuario automáticamente, por lo que deberá llamar a este método de forma explícita. Esto normalmente se hace después de algunos eventos no relacionados con la UI: después de `setTimeout`, una llamada AJAX, o algún evento del servidor. Por ejemplo:
 
-``` html
+```html
 <my-tag>
 
   <input name="username" onblur={ validate }>
@@ -146,20 +144,20 @@ Aparte de eso, riot no actualiza la interfaz de usuario automáticamente, por lo
 </my-tag>
 ```
 
-En el ejemplo anterior, el mensaje de error se muestra en la interfaz de usuario después de que el método `update()` se ha llamado. Asignamos `this` a la variable` self` debido a que, dentro de la función de retorno (callback) AJAX, la variable `this` apunta al objeto de la respuesta y no a la instancia de la etiqueta.
+En el ejemplo anterior, el mensaje de error se muestra en la interfaz de usuario después de que el método `update()` se ha llamado. Asignamos `this` a la variable `self` debido a que, dentro de la función de retorno (callback) AJAX, la variable `this` apunta al objeto de la respuesta y no a la instancia de la etiqueta.
 
 ### <a name="tag-update-data"></a> this.update(data)
 
-Establece los valores de la instancia actual y actualiza las expresiones. Esto es igual que `this.update()`, pero le permite establecer datos de contexto al mismo tiempo. Así que en lugar de esto:
+Establece los valores de la instancia actual y actualiza las expresiones. Esto es igual que `this.update()`, pero le permite establecer los datos de contexto al mismo tiempo. Así que en lugar de esto:
 
-``` js
+```js
 self.error = error_message
 self.update()
 ```
 
 usted puede escribir esto:
 
-``` js
+```js
 self.update({ error: error_message })
 ```
 
@@ -172,8 +170,7 @@ Actualiza todas las etiquetas montadas y sus expresiones en la página.
 Devuelve: un arreglo de las [instancias de etiquetas](#tag-instance) que fueron montadas en la página.
 
 
-
-## Desmontando
+## Desmontaje
 
 ### <a name="tag-unmount"></a> this.unmount(keepTheParent)
 
@@ -201,7 +198,7 @@ Usted tiene acceso a las etiquetas anidadas vía la variable `tags`:
 
   <child></child>
 
-  // accede a la etiqueta hija
+  // accede a la etiqueta hija "child"
   var child = this.tags.child
 
 </my-tag>
@@ -237,12 +234,12 @@ Las etiquetas hijas se inicializan después de la etiqueta principal, por lo que
 </my-tag>
 ```
 
-## <a name="yield"></a> Yielding nested HTML
+## <a name="yield"></a> Produciendo HTML anidado con Yield
 
-The `<yield>` tag is a special riot core feature that allows you to inject and compile the content of any custom tag inside its template in runtime
-This technique allows you to extend your tags templates with html contents rendered eventually from the server
+La etiqueta `<yield>` es una característica especial del núcleo de riot que le permite inyectar y compilar el contenido de cualquier etiqueta personalizada a su plantilla en tiempo de ejecución.
+Esta técnica le permite ampliar sus plantillas de etiquetas con contenido HTML renderizado eventualmente desde el servidor.
 
-For example using the following riot tag `my-post`
+Por ejemplo, al usar la siguiente etiqueta riot `my-post`
 
 ``` html
 <my-post>
@@ -252,54 +249,53 @@ For example using the following riot tag `my-post`
 </my-post>
 ```
 
-anytime you will include the `<my-post>` tag in your app
+e incluir la etiqueta `<my-post>` en su aplicación
 
 ``` html
-<my-post title="What a great title">
-  <p id="my-content-{ id }">My beautiful post is just awesome</p>
+<my-post title="Qué gran título">
+  <p id="my-content-{ id }">Mi hermosa publicación es impresionante</p>
 </my-post>
 ```
 
-once mounted `riot.mount('my-post')` it will be rendered in this way:
+una vez montada con `riot.mount('my-post')` será generada así:
 
 ``` html
 <my-post>
-  <h1>What a great title</h1>
-  <p id="my-content-666">My beautiful post is just awesome</p>
+  <h1>Qué gran título</h1>
+  <p id="my-content-666">Mi hermosa publicación es impresionante</p>
 </my-post>
 ```
 
-#### Yield and loops
+#### Yield y bucles
 
-The `<yield>` tag could be used also in a loop or in a child tag but you should be aware that __it will be always parsed and compiled using the child data__
+La etiqueta `<yield>` puede ser usada también en un bucle o en una etiqueta hija, pero debe tener en cuenta que ésta __siempre será compilada usando los datos del bucle o la etiqueta hija__.
 
-The following `blog.tag` riot component
-
+El siguiente componente `blog.tag` de riot
 
 ``` html
 <blog>
   <h1>{ title }</h1>
   <my-post each={ posts }>
-    <a href={ this.parent.backToHome }>Back to home</a>
-    <div onclick={ this.parent.deleteAllPosts }>Delete all the posts</div>
+    <a href={ this.parent.backToHome }>Regresar a Inicio</a>
+    <div onclick={ this.parent.deleteAllPosts }>Eliminar todas las publicaciones</div>
   </my-post>
 
   this.backToHome = '/homepage'
-  this.title = 'my blog title'
+  this.title = 'Título de mi blog'
 
   this.posts = [
-    { title: "post 1", description: 'my post description' },
-    { title: "post 2", description: 'my post description' }
+    { title: "post 1", description: 'descripción de mi publicación' },
+    { title: "post 2", description: 'descripción de mi publicación' }
   ]
 
-  // the bind is needed in this case to keep the parent context
-  // also in the child tags
+  // `bind` es necesario en este caso para conservar el contexto principal
+  // (de la etiqueta madre) también en las etiquetas hijas
   deleteAllPosts() {
     this.posts = []
 
-    // we need to trigger manually the update function
-    // because this function gets triggered from a child tag
-    // and it does not bubble up automatically
+    // tenemos que ejecutar manualmente la función update porque
+    // esta función se activa desde una etiqueta hija y no se
+    // replica automáticamente a la etiqueta madre.
     this.update()
   }.bind(this)
 
@@ -313,60 +309,60 @@ The following `blog.tag` riot component
 
 ```
 
-will be compiled in this way:
+será compilado en esta manera:
 
 ``` html
 <blog>
-  <h1>my blog title</h1>
+  <h1>Título de mi blog</h1>
   <my-post>
     <h2>post 1</h2>
-    <p>my post description</p>
-    <a href="/homepage">Back to home</a>
-    <div>Delete all the posts</div>
+    <p>descripción de mi publicación</p>
+    <a href="/homepage">Regresar a Inicio</a>
+    <div>Eliminar todas las publicaciones</div>
   </my-post>
   <my-post>
     <h2>post 2</h2>
-    <p>my post description</p>
-    <a href="/homepage">Back to home</a>
-    <div>Delete all the posts</div>
+    <p>descripción de mi publicación</p>
+    <a href="/homepage">Regresar a Inicio</a>
+    <div>Eliminar todas las publicaciones</div>
   </my-post>
 </blog>
 ```
 
 
-## Events
+## Eventos
 
-Each tag instance is an [observable](#observable) so you can use `on` and `one` methods to listen to the events that happen on the tag instance. Here's the list of supported events:
+Cada instancia de etiqueta es un [observable](#observable), así que usted puede usar los métodos `on` y `one` para "escuchar" los eventos que suceden en la instancia de la etiqueta. Esta es una lista de los eventos soportados:
 
 
-- "update" – right before the tag is updated. allows recalculation of context data before the UI expressions are updated.
-- "updated" – right after the tag is updated. allows do some work with updated DOM
-- "mount" – right after tag is mounted on the page
-- "unmount" – after the tag is removed from the page
+- "update" – Sucede justo antes de que la etiqueta se actualice. Permite la modificación de los datos del contexto antes de que las expresiones de la UI sean reevaluadas
+- "updated" – Sucede después de que la etiqueta es actualizada. Permite trabajar con el DOM ya actualizado
+- "mount" – Sucede después de que la etiqueta es montada en la página
+- "unmount" – Sucede después de que la etiqueta es removida de la página
 
-For example:
+Por ejemplo:
 
 ``` js
-// cleanup resources after tag is no longer part of DOM
+// limpia los recursos después que la etiqueta ya no es parte del DOM
 this.on('unmount', function() {
   clearTimeout(timer)
 })
 ```
 
-## Reserved words
+## Palabras reservadas
 
-The above method and property names are reserved words for Riot tags. Don't use any of following as your instance variable or method name: `opts`, `parent`, `root`, `update`, `unmount`, `on`, `off`, `one` and `trigger`. Variables beginning with an underscore (e.g.: ```this._item```) are reserved for internal use too. Local variables can be freely named. For example:
+Los nombres de los métodos y propiedades anteriores están reservados para las etiquetas de Riot. No use ninguno de los siguientes nombres para sus métodos o variables de instancia: `opts`, `parent`, `root`, `update`, `unmount`, `on`, `off`, `one` and `trigger`. Las variables que comienzan con un subrayado (ej.: ```this._item```) también están reservadas para uso interno. Las variables locales pueden ser nombradas libremente. Por ejemplo:
 
 ``` javascript
 <my-tag>
 
-  // allowed
+  // permitido
   function update() { } 
 
-  // not allowed
+  // no permitido
   this.update = function() { }
 
-  // not allowed
+  // no permitido
   update() {
 
   }
@@ -374,24 +370,24 @@ The above method and property names are reserved words for Riot tags. Don't use 
 </my-tag>
 ```
 
-## Manual construction
+## Construcción manual
 
 ### <a name="tag"></a> riot.tag(tagName, html, [css], [attrs], [constructor])
 
-Creates a new custom tag "manually" without the compiler.
+Crea una nueva etiqueta personalizada "manualmente", sin el compilador.
 
-- `tagName` the tag name
-- `html` is the layout with [expressions](/guide/#expressions)
-- `css` is the style for the tag (optional)
-- `attrs` string of attributes for the tag (optional).
-- `constructor` is the initialization function being called before the tag expressions are calculated and before the tag is mounted
+- `tagName` - El nombre de la etiqueta
+- `html` - Es el diseño con [expresiones](/guide/#expressions)
+- `css` - Es el estilo para la etiqueta (opcional)
+- `attrs` - Cadena de caracteres con los atributos para la etiqueta (opcional).
+- `constructor` - Función de inicialización llamada antes de que las expresiones de la etiqueta sean calculadas y antes de que la etiqueta sea montada
 
 
-#### Example
+#### Ejemplo
 
 ``` javascript
 riot.tag('timer',
-  '<p>Seconds Elapsed: { time }</p>',
+  '<p>Segundos transcurridos: { time }</p>',
   'timer { display: block; border: 2px }',
   'class="tic-toc"',
   function (opts) {
@@ -411,26 +407,26 @@ riot.tag('timer',
   })
 ```
 
-See [timer demo](http://jsfiddle.net/gnumanth/h9kuozp5/) and [riot.tag](/api/#tag-instance) API docs for more details and *limitations*.
+Vea el [demo timer](http://jsfiddle.net/gnumanth/h9kuozp5/) y la documentación de la API de [riot.tag](/api/#tag-instance) para más detalles y *limitaciones*.
 
 
-<span class="tag red">Warning</span> by using `riot.tag` you cannot enjoy the advantages of the compiler and the following features are not supported:
+<span class="tag red">Cuidado</span> al usar `riot.tag` no podrá disfrutar de las ventajas del compilador ni las siguientes características que no están soportadas por ésta función:
 
-1. Self-closing tags
-2. Unquoted expressions. Write `value="{ val }"` instead of `value={ val }`
-3. Boolean attributes. Write `__checked="{ flag }"` instead of `checked={ flag }`
-4. Shorthand ES6 method signatures
-5. `<img src={ src }>` must be written as `<img riot-src={ src }>` in order to avoid illegal server requests
-6. `style="color: { color }"` must be written as `riot-style="color: { color }"` so that style attribute expressions work in IE
-7. Scoped CSS precompilation.
+1. Etiquetas de cierre automático (terminadas en "/>")
+2. Expresiones no entrecomilladas. Debe escribir `value="{ val }"` en lugar de `value={ val }`
+3. Atributos booleanos. Debe escribir `__checked="{ flag }"` en lugar de `checked={ flag }`
+4. Formato abreviado para métodos estilo ES6
+5. `<img src={ src }>` debe escribirse como `<img riot-src={ src }>` para evitar solicitudes ilegales al servidor
+6. `style="color: { color }"` debe escribirse como `riot-style="color: { color }"` para que las expresiones en los estilos funcionen en IE
+7. Precompilación de <dfn lang="en">Scoped CSS</dfn> (estilos limitados al contexto).
 
 
-You can take advantage of `<template>` or `<script>` tags as follows:
+Puede tomar ventaja de las etiquetas `<template>` o `<script>` como se muestra:
 
 ``` html
 <script type="tmpl" id="my_tmpl">
   <h3>{ opts.hello }</h3>
-  <p>And a paragraph</p>
+  <p>Y un párrafo</p>
 </script>
 
 <script>
@@ -439,7 +435,3 @@ riot.tag('tag-name', my_tmpl.innerHTML, function(opts) {
 })
 </script>
 ```
-
-
-
-

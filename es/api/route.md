@@ -1,5 +1,5 @@
 ---
-title: Router
+title: El router
 layout: default
 class: apidoc
 ---

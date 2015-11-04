@@ -1,5 +1,5 @@
 ---
-title: Miscellaneous
+title: Miscelánea
 layout: default
 class: apidoc
 ---
@@ -9,16 +9,17 @@ class: apidoc
 
 ### <a name="version"></a> riot.version
 
-The current version number as String: `'{{ site.version }}'`
+El número de la versión actual como cadena de caracteres: `'{{ site.version }}'`
 
 
 ### <a name="brackets"></a> riot.settings.brackets
 
-A global Riot setting to customize the start and end tokens of the expressions. For example
-
+Una configuración global de Riot para personalizar los caracteres que indican el inicio y fin de una expresión. Por ejemplo:
 
 ``` js
 riot.settings.brackets = '[% %]'
 ```
 
-let's you write expressions `<p>[% like_this %]</p>`. The start and end is separated with a space character.
+le permite escribir expresiones `<p>[% como_esta %]</p>`.
+
+Ambas secuencias, inicial y final, pueden consistir de uno o más caracteres, separadas por un espacio. Evite los corchetes angulados (`<` y `>`) pues causan conflictos con algunos navegadores.
