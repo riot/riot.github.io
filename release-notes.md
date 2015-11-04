@@ -6,6 +6,30 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.3.0 *November 5, 2015*
+
+This major release is a big step forward for riot and it fixes [many issues](https://github.com/riot/riot/issues?q=is%3Aissue+milestone%3A2.3.0+is%3Aclosed)
+organizing the code base in several modules.
+Riot was split in 6 different modules:
+
+- [compiler](https://github.com/riot/compiler)
+- [tmpl](https://github.com/riot/tmpl)
+- [observable](https://github.com/riot/observable)
+- [route](https://github.com/riot/route)
+- [core](https://github.com/riot/riot)
+- [cli](https://github.com/riot/cli)
+
+Here the list of our biggest changes:
+
+- Add html5 history router please check [the documentation](/api/route/)
+- Add new rewritten versions of the compiler, template engine and the command line
+- Deprecate `riot.mountTo`
+- Change tag._id to tag._riot_id __you should not use it__
+- Fix the use of `yield` on the server
+- Fix memory leak in `riot.render`
+- Fix the use dynamic `name` `id` attributes inside a tag
+- Update loop behaviour, they will be a bit slower but more reliable you can use the `no-reorder` option if you want to enable a faster rendering algorithm [more details](/guide/#loops-advanced-tips)
+
 ## 2.2.4 *August 12, 2015*
 
 - Fix the remaining core bugs before the bigger 2.3.0 release [more details](https://github.com/riot/riot/issues?q=is%3Aissue+milestone%3A2.2.4)

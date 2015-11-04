@@ -379,7 +379,6 @@ Creates a new custom tag "manually" without the compiler.
 - `attrs` string of attributes for the tag (optional).
 - `constructor` is the initialization function being called before the tag expressions are calculated and before the tag is mounted
 
-
 #### Example
 
 ``` javascript
@@ -433,6 +432,46 @@ riot.tag('tag-name', my_tmpl.innerHTML, function(opts) {
 </script>
 ```
 
+### riot.Tag(impl, conf, innerHTML)
+
+<span class="tag red">experimental</span>
+
+In riot 2.3 we have give you the access to the internal Tag instance in order to let you creating your custom tags in more creative ways.
+
+- `impl`
+  - `tmpl` tag template
+  - `fn(opts)` the callback function called on the mount event
+  - `attrs` root tag html attributes as object (key => value)
+- `conf`
+  - `root` DOM node where you will mount the tag template
+  - `opts` tag options
+  - `isLoop` is it used in as loop tag?
+  - `hasImpl` was already registered using riot.tag?
+  - `item` loop item in the loop assigned to this instance
+- `innerHTML` html that can be used replacing a nested `yield` tag in its template
+
+
+For example using ES2015:
+
+```js
+
+class MyTag extends riot.Tag {
+  constructor(el) {
+    super({ tmpl: MyTag.template() }, { root: el })
+    this.msg = 'hello'
+  }
+  bye() {
+    this.msg = 'goodbye'
+  }
+  static template() {
+    return `<p onclick="{ bye }">{ msg }</p>`
+  }
+}
+
+new MyTag(document.getElementById('my-div')).mount()
+```
+
+The `riot.Tag` method is not recommended. You should use it only if you need to achieve special features not available with the previous riot methods
 
 
 

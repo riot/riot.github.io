@@ -39,7 +39,7 @@ major_version:       0
 minor_version:       2.3
 
 version:             2.3.0
-release_date:        November 1st
+release_date:        November 5
 version_slurp:       Html5 history support - new compiler - enhanced loops
 repo:                https://github.com/riot/riot
 
