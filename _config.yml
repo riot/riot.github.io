@@ -46,3 +46,9 @@ release_date:        August 12
 version_slurp:       Support for multiple syntax blocks
 size_min:            12.5
 repo:                https://github.com/riot/riot
+
+# Languages
+translations:
+  fr: v2.2.4
+  ja: v2.2.3
+  zh: v2.2.4

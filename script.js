@@ -44,4 +44,23 @@
     }
   })
 
+  // language selector
+  var menu = $('#langs')[0]
+  function mClose(e) {
+    if (e && e.keyCode && e.keyCode != 27) return
+    doc.removeEventListener('keyup', mClose)
+    doc.removeEventListener('click', mClose)
+    menu.className = ''
+  }
+  function mOpen() {
+    doc.addEventListener('keyup', mClose)
+    doc.addEventListener('click', mClose)
+    menu.className = 'open'
+  }
+  $('#current-lang')[0].addEventListener('click', function(e) {
+    e.stopPropagation()
+    if (menu.className) mClose()
+      else mOpen()
+  })
+
 })(document)
