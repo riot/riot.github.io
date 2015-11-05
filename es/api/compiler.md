@@ -12,7 +12,7 @@ Los siguientes métodos se aplican solo a los navegadores. Vaya a la [sección d
 
 ### <a name="compile"></a> riot.compile(callback)
 
-Compila todas las etiquetas (tags) definidas con `<script type="riot/tag">` como JavaScript. Estas pueden ser definiciones en scripts incluidos en la página, o recursos externos que cargan scripts definidos con el atributo `src`. Después que todos los scripts son compilados, se llama al método `callback` dado. Por ejemplo:
+Compila todas las etiquetas (<dfn lang="en">tags</dfn>) definidas con `<script type="riot/tag">` como JavaScript. Estas pueden ser definiciones en <dfn lang="en">scripts</dfn> incorporados en la página, o recursos externos que cargan scripts definidos con el atributo `src`. Después que todos los scripts son compilados, se llama al método `callback` dado. Por ejemplo:
 
 ```javascript
 riot.compile(function() {
@@ -32,11 +32,11 @@ Para más detalles, lea la [introducción general](/guide/compiler/) al compilad
 
 ### <a name="compile-fn"></a> riot.compile(url, callback)
 
-Carga el URL dado y compila todos las etiquetas, después de lo cuál el `callback` es llamado. Por ejemplo:
+Carga el <abbr title="Uniform Resource Locator, por sus siglas en inglés">URL</abbr> dado y compila todos las etiquetas, después de lo cuál la función `callback` es llamada. Por ejemplo:
 
 ```javascript
 riot.compile('my/tags.tag', function() {
-  // los tags cargados están listos para ser usados
+  // las etiquetas cargadas están listas para ser usadas
 })
 ```
 

@@ -1,19 +1,19 @@
 ---
-title: El router
+title: El rúter
 layout: default
 class: apidoc
 ---
 
 {% include api-tabs.html %}
 
-The Riot Router is the most minimal router implementation you can find and it works consistently on all browsers including IE9. It only listens to changes on the URL hash (the part after the `#` character). Most single page applications deal with the hash only but if you really care about full URL changes you should use a different router implementation.
+El rúter de Riot (<dfn lang="en">Router</dfn>) es la mínima implementación de un rúter que se puede encontrar y funciona consistentemente en todos los navegadores, incluyendo IE. Este rúter solo escucha cambios en el <dfn lang="en">hash</dfn> de la ruta <abbr title="Uniform Resource Locator, por sus siglas en inglés">URL</abbr> (la parte que sigue al caracter `#`). La mayoría de las aplicaciones de una sola página sólo tratan con el hash, si usted necesita controlar el URL completo debe usar una implementación de rúter diferente.
 
-The Riot Router is best in routing schemes in which the route's hierarchical parts, after the "#", are separated with the "/" character. In that case Riot gives you direct access to these parts.
+El rúter Riot funciona mejor con esquemas de enrutamiento en los cuales las partes jerárquicas de la ruta, después del "#", se separan con diagonales (caracter "/"). En estos esquemas Riot le da acceso directo a las partes.
 
 
 ### riot.route(callback)
 
-Execute the given `callback` when the URL hash changes. For example
+Ejecuta la función de retorno `callback` dada cuando el hash del URL cambia. Por ejemplo:
 
 ```javascript
 riot.route(function(collection, id, action) {
@@ -21,7 +21,7 @@ riot.route(function(collection, id, action) {
 })
 ```
 
-If for example the hash changes to `#customers/987987/edit` then in the above example the arguments would be:
+Si, por ejemplo, el hash cambia a `#customers/987987/edit`, en el ejemplo anterior los argumentos serán:
 
 
 ```javascript
@@ -30,34 +30,34 @@ id = '987987'
 action = 'edit'
 ```
 
-The hash can change in the following ways:
+El hash puede cambiar en las siguientes formas:
 
-1. A new hash is typed into the location bar
-2. When the back/forward buttons are pressed
-3. When `riot.route(to)` is called
+1. Se escribe un nuevo hash en la barra de direcciones
+2. Cuando se presionan los botones Atrás o Adelante
+3. Cuando se llama a `riot.route(to)`
 
 ### riot.route.start()
 
-Start listening the window hash changes and it's automatically called when riot gets loaded. You typically use this method together with [riot.route.stop](#route-stop). Example:
+Inicia la escucha de los cambios en el hash de la ventana y es llamado automáticamente cuando Riot es cargado. Típicamente, usted usa este método junto con [riot.route.stop](#route-stop). Ejemplo:
 
 ```javascript
-riot.route.stop() // clear all the old router callbacks
-riot.route.start() // start again
+riot.route.stop()  // elimina todas las funciones de retorno anteriores del rúter
+riot.route.start() // lo inicia de nuevo
 ```
 
 ### riot.route.stop()
 
-Remove the hashchange listeners clearing also the [riot.route](#route) callbacks.
+Remueve las escuchas del cambio de hash, limpiando también las funciones de retorno [riot.route](#route).
 
 ```javascript
 riot.route.stop()
 ```
 
-Stopping the default router allow the use of a different router on your application.
+Detener el rúter predeterminado le permite el uso de uno diferente en su aplicación.
 
 ### riot.route(to)
 
-Changes the browser URL and notifies all the listeners assigned with `riot.route(callback)`. For example:
+Cambia la URL del navegador y notifica a todas las escuchas asignadas con `riot.route(callback)`. Por ejemplo:
 
 ```javascript
 riot.route('customers/267393/edit')
@@ -65,7 +65,7 @@ riot.route('customers/267393/edit')
 
 ### riot.route.exec(callback)
 
-Study the current hash "in place" using given `callback` without waiting for it to change. For example
+Estudia el hash actual "en el lugar" usando la función `callback` dada, sin esperar a que el hash cambie. Por ejemplo:
 
 ```javascript
 riot.route.exec(function(collection, id, action) {
@@ -75,7 +75,7 @@ riot.route.exec(function(collection, id, action) {
 
 ### riot.route.parser(parser)
 
-Changes the default parser to a custom one. Here's one that parses paths like this:
+Cambia el analizador predeterminado por uno personalizado. He aquí uno que analiza rutas como esta:
 
 `!/user/activation?token=xyz`
 
@@ -98,7 +98,7 @@ riot.route.parser(function(path) {
 })
 ```
 
-And here you'll receive the params when the URL changes:
+Y usted recibirá aquí los parámetros cuando el URL cambie:
 
 ```javascript
 riot.route(function(target, action, params) {

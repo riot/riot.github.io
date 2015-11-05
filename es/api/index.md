@@ -13,7 +13,7 @@ class: apidoc
 
 `customTagSelector` selecciona elementos de la página y los monta con una etiqueta personalizada. Los nombres de los elementos seleccionados deben coincidir con el nombre de la etiqueta personalizada.
 
-El objeto opcional `opts` es pasado a las etiquetas para su consumo. Este puede ser cualquier cosa, desde un simple objeto a una API de aplicación completa. O puede ser un depósito <dfn lang="en">Flux</dfn>. Realmente depende de cómo quiere usted estructurar sus aplicaciones de lado cliente. Lea más acerca de las [aplicaciones Riot modulares](/guide/application-design/#modularity).
+El objeto opcional `opts` es pasado a las etiquetas para su consumo. Este puede ser cualquier cosa, desde un simple objeto a una API de aplicación completa. O puede ser un depósito <dfn lang="en">Flux</dfn>. Realmente depende de cómo quiera usted estructurar sus aplicaciones de lado cliente. Lea más acerca de las [aplicaciones Riot modulares](/guide/application-design/#modularity).
 
 
 ```js

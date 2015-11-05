@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Riot.js — Una micro biblioteca para interfaz de usuario similar a React
-description: Riot le permite construir interfaces de usuario con _etiquetas_ personalizadas, usando una sintaxis simple y agradable, y un DOM virtual similar a React, pero más veloz. Riot es muy pequeño comparado a los estándares de la industria. Riot existe porque creemos que hay una clara necesidad de otra biblioteca UI.
+description: Riot le permite construir interfaces de usuario con _etiquetas_ personalizadas, usando una sintaxis simple y agradable, y un DOM virtual similar a React, pero más veloz. Riot es muy pequeño comparado a los estándares de la industria. Riot existe porque creemos que hay una clara necesidad de otra biblioteca IU.
 ---
 
 <div id="hero">
@@ -17,7 +17,7 @@ description: Riot le permite construir interfaces de usuario con _etiquetas_ per
 </div>
 
 
-# ¿Porqué necesitamos una nueva biblioteca para <abbr title="Interfaz de usuario, por sus siglas en Inglés">UI</abbr>?
+# ¿Porqué necesitamos una nueva biblioteca para <abbr title="Interfaz de usuario, UI (User Interface) por sus siglas en Inglés">IU</abbr>?
 
 El espacio de los frentes para aplicaciones está repleto, pero honestamente, sentimos que la solución aun está "allá afuera". Creemos que Riot ofrece el balance correcto para resolver el gran rompecabezas. Mientras React parece hacerlo, tiene serios puntos débiles que Riot resuelve.
 
@@ -91,7 +91,7 @@ Las etiquetas personalizadas le permiten construir vistas complejas con HTML. Su
 
 La sintaxis HTML es el idioma *de facto* de la web y está diseñado para construir interfaces de usuario. La sintaxis es explícita, la anidación es inherente al lenguaje, y los atributos ofrecen una manera limpia de proporcionar opciones a las etiquetas personalizadas.
 
-Las etiquetas Riot son [convertidas](/guide/compiler/) a JavaScript "puro" antes que los navegadores las ejecuten.
+Las etiquetas Riot son [convertidas](/guide/compiler/) a JavaScript "puro" antes de que los navegadores las ejecuten.
 
 
 ### DOM virtual
@@ -166,9 +166,9 @@ Riot tiene todos los bloques necesarios para construir aplicaciones modernas de 
 
 - Vistas "reactivas" para construir interfaces de usuario
 - Biblioteca de eventos para construir APIs con módulos aislados
-- _Router_ que administra el URL y el botón de retroceso
+- <dfn lang="en">Router</dfn> que administra el URL y el botón de retroceso
 
-Riot es una "pila abierta". Esto es importante para los desarrolladores que quieren evitar lenguajes específicos a un _framework_. Las herramientas genéricas le permiten mezclar y seguir patrones de diseño. Sistemas como <dfn>Flux</dfn> de Facebook pueden ser [hechos por usted](https://github.com/jimsparkman/RiotControl).
+Riot es una "pila abierta" (_open stack_). Esto es importante para los desarrolladores que quieren evitar lenguajes específicos a un <dfn lang="en">framework</dfn>. Las herramientas genéricas le permiten mezclar y seguir patrones de diseño. Sistemas como [Flux](https://facebook.github.io/flux/) de Facebook pueden ser [hechos por usted](https://github.com/jimsparkman/RiotControl).
 
 
 > Vi el ejemplo de riot.js, y se siente tan limpio que da miedo. [@paulbjensen](https://twitter.com/paulbjensen/status/558378720403419137)
@@ -186,14 +186,14 @@ Riot es una "pila abierta". Esto es importante para los desarrolladores que quie
 
 ## Conclusión
 
-Riot es componentes Web para todos. Piense en React + Polymer, pero sin la sobrecarga. Su uso es intuitivo y pesa casi nada. Y trabaja _hoy_. No reinventa la rueda, sino más bien toma las partes buenas de lo que hay y crea la herramienta más simple posible.
+Riot es [Web Components](http://webcomponents.org/) para todos. Piense en React + Polymer, pero sin la sobrecarga. Su uso es intuitivo y pesa casi nada. Y trabaja _hoy_. No reinventa la rueda, sino más bien toma las partes buenas de lo que hay y crea la herramienta más simple posible.
 
 Deberíamos enfocarnos en componentes reutilizables en lugar de plantillas.
 Según los desarrolladores de React:
 
-> "Las plantillas separan tecnologías, no quitan preocupaciones."
+> "Las plantillas alejan tecnologías, no preocupaciones."
 
-Al tener el diseño y la lógica relacionada juntos en el mismo componente el sistema en general se vuelve más limpio. Respetamos a React por esta importante idea.
+Al tener el diseño y la lógica relacionada juntos en el mismo componente el sistema en general se vuelve más limpio. Nuestro reconocimiento a React por esta importante idea.
 
 
 ## La entrada inicial del blog

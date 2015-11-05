@@ -5,65 +5,65 @@ title: Diseño de aplicaciones
 
 {% include guide-tabs.html %}
 
-## Tools, not policy
+## Herramientas, no política
 
-Riot comes bundled with custom tags, an event emitter (observable) and router. We believe that these are the fundamental building blocks for client-side applications:
+Riot viene con etiquetas personalizadas, un emisor de eventos (<dfn lang="en">Observable</dfn>) y un rúter (<dfn lang="en">Router</dfn>). Creemos que éstos son los bloques de construcción fundamentales para aplicaciones de lado cliente:
 
-1. Custom tags for the user interface,
-2. Events for modularity, and
-3. Router for URL and the back button.
+1. Etiquetas personalizadas para la interfaz de usuario,
+2. Eventos para modularidad, y
+3. Rúter para el URL y el botón de retroceso.
 
-Riot tries not to enforce strict rules, but rather provide basic tools for you to use creatively. This flexible approach leaves the bigger architectural decisions up to the developer.
+Riot trata de no imponer reglas estrictas, sino más bien proveer herramientas básicas para que usted las use de forma creativa. Este enfoque flexible deja las mayores decisiones arquitectónicas al desarrollador.
 
-We also think that these building blocks should be minimal in terms of file size and API size. Elementary stuff should be simple so there's minimal cognitive load.
+También pensamos que estos bloques de construcción deben ser mínimos en términos de tamaño de archivo y de funciones la API. Las cosas elementales deben ser simples, así la carga cognitiva es mínima.
 
 
 ## Observable
 
-Observable is a generic tool to send and receive events. It's a common pattern to isolate modules without forming a dependency or "coupling". By using events a large program can be broken into smaller and simpler units. Modules can be added, removed, or modified without affecting the other parts of the application.
+Observable es una herramienta genérica para emitir y recibir eventos. Es un patrón común aislar los módulos sin formar una dependencia o "acoplamiento" entre ellos. Al usar eventos, un programa grande puede ser dividido en unidades más pequeñas y simples. Los módulos se pueden agregar, remover, o modificar, sin afectar a las otras partes de la aplicación.
 
-A common practice is to split the application into a single core and multiple extensions. The core sends events any time something remarkable happens: a new item is being added, an existing item is being removed, or something is loaded from the server.
+Una práctica común es la de dividir la aplicación en un solo núcleo y varias extensiones. El núcleo envía eventos en el momento que algo importante sucede: se añade un nuevo elemento, se quita un elemento existente, o algo se carga desde el servidor.
 
-By using the observable the extensions can listen to these events and react to them. They extend the core so that the core is not aware of these modules. This is called "loose coupling".
+Mediante el uso de Observable las extensiones pueden escuchar estos eventos y reaccionar ante ellos. Observable extiende el núcleo de manera que éste no es consciente de los módulos. Esto se llama "acoplamiento débil" (<dfn lang="en">_loose coupling_</dfn>).
 
-These extensions can be custom tags (UI components) or non-UI modules.
+Las extensiones pueden ser etiquetas personalizadas (componentes de <abbr title="Interfaz de usuario, o UI (User Interface) por sus siglas en inglés">IU</abbr>) o módulos no-IU.
 
-Once the core and events are carefully designed the team members are enabled to develop the system on their own without disturbing others.
+Cuando el núcleo y los eventos se diseñan cuidadosamente, cada miembro del equipo puede desarrollar el sistema por su cuenta sin perturbar a los otros.
 
-[Observable API](/api/observable/)
-
-
-## Routing
-
-Router is a generic tool to take care of the URL and the back button. It's the smallest implementation you can find. It can do the following:
-
-1. Change the hash part of the URL
-2. Notify when the hash changes
-3. Study the current hash
-
-You can place routing logic everywhere; in custom tags or non-UI modules. Some application frameworks make the router a central element that dispatches work to the other pieces of the application. Some take a milder approach where URL events are like keyboard events, not affecting the overall architecture.
-
-Every browser application needs routing since there is always an URL in the location bar.
-
-[Router API](/api/route/)
+[API de Observable](/api/observable/)
 
 
-## Modularity
+## Enrutamiento
 
-Custom tags make the view part of your application. In modular application these tags should not be aware of each other and they should be isolated. Ideally you can use the same tag across projects regardless of the outer HTML layout.
+El rúter (<dfn lang="en">Router</dfn>) es una herramienta genérica que toma cuidado del URL y el botón de retroceso del navegador. Es la implementación más pequeña que podrá encontrar. Hace lo siguiente:
 
-If two tags know about each other they become depdendent and a "tight coupling" is introduced. These tags cannot be freely moved around without breaking the system.
+1. Cambia el hash de la URL
+2. Notifica cuando el hash cambia
+3. Estudia el hash actual
 
-To reduce coupling, have the tags listen for events rather than call each other directly. What you need is a publish/subscribe system built with `riot.observable` or similar.
+Puede colocar lógica de enrutamiento en cualquier parte; en etiquetas personalizadas o módulos no-IU. Algunos marcos de aplicaciones (<dfn lang="en">frameworks</dfn>) hacen del rúter un elemento central que distribuye el trabajo a las otras partes de la aplicación. Algunos toman un enfoque medio donde los eventos de URL son como eventos de teclado, que no afectan a la arquitectura general.
 
-This event emitting system can range from a simple API to a larger architectural choice like Facebook Flux.
+Cada aplicación del navegador necesita enrutamiento, ya que siempre hay una URL en la barra de direcciones.
 
-### Example Riot application design
+[API del rúter](/api/route/)
 
-Here is a very bare bones Riot application structure for user login:
+
+## Modularidad
+
+Las etiquetas personalizadas forman la parte visual de su aplicación. En una aplicación modular, estas etiquetas no deben ser conscientes la una de la otra y deben estar aisladas. Lo ideal es que se pueda utilizar la misma etiqueta en todos los proyectos, independientemente del diseño HTML externo.
+
+Si dos etiquetas saben la una de la otra, se vuelven dependientes y se introduce una "conexión estrecha" (_tight coupling_). Estas etiquetas no se pueden mover libremente sin "romper" el sistema.
+
+Para reducir el acoplamiento, las etiquetas deben escuchar a eventos en lugar de llamarse directamente entre sí. Lo que se necesita es un sistema de publicación/suscripción construido con `riot.observable` o algo similar.
+
+Este sistema emisor de eventos puede ir desde una API simple hasta una elección arquitectónica mayor, como [Facebook Flux](https://facebook.github.io/flux/).
+
+### Diseño de ejemplo de una aplicación Riot
+
+He aquí una estructura muy básica de una aplicación Riot para inicio de sesión de usuarios:
 
 ```js
-// Login API
+// API de inicio de sesión
 var auth = riot.observable()
 
 auth.login = function(params) {
@@ -72,12 +72,13 @@ auth.login = function(params) {
   })
 }
 ```
+
 ```html
 <!-- login view -->
 <login>
   <form onsubmit="{ login }">
-    <input name="username" type="text" placeholder="username">
-    <input name="password" type="password" placeholder="password">
+    <input name="username" type="text" placeholder="nombre de usuario">
+    <input name="password" type="password" placeholder="contraseña">
   </form>
 
   login() {
@@ -87,14 +88,14 @@ auth.login = function(params) {
     })
   }
 
-  // any tag on the system can listen to login event
+  // cualquier etiqueta del sistema puede escuchar al evento "login"
   opts.on('login', function() {
     $(body).addClass('logged')
   })
 </login>
 ```
 
-And here we mount the application
+Y aquí montamos la aplicación:
 
 ```html
 <body>
@@ -103,6 +104,6 @@ And here we mount the application
 </body>
 ```
 
-On the above setup the other tags on the system do not need to know about each other since they can simply listen to the "login" event and do what they please.
+En la configuración anterior las otras etiquetas en el sistema no necesitan saber la una de la otra, ya que simplemente pueden escuchar el evento "login" y hacer lo que les parezca.
 
-Observable is a classic building block for a decoupled (modular) application.
+Observable es un clásico bloque de construcción para una aplicación desacoplada (modular).

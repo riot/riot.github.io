@@ -5,9 +5,9 @@ title: Etiquetas personalizadas
 
 {% include guide-tabs.html %}
 
-## Example
+## Ejemplo
 
-Riot custom tags are the building blocks for user interfaces. They make the "view" part of the application. Let's start with an extended TODO example highlighting various features of Riot:
+Las etiquetas personalizadas Riot son los bloques de construcción para las interfaces de usuario. Ellas representan la parte visual de la aplicación (<dfn lang="es">View</dfn> en el modelo MVC). Comencemos con un ejemplo <abbr title="El típico “Cosas por hacer”, o “To Do”, en inglés)">TODO</abbr> extendido que destaca varias características de Riot:
 
 ```html
 <todo>
@@ -24,7 +24,7 @@ Riot custom tags are the building blocks for user interfaces. They make the "vie
 
   <form onsubmit={ add }>
     <input name="input" onkeyup={ edit }>
-    <button disabled={ !text }>Add #{ items.length + 1 }</button>
+    <button disabled={ !text }>Agregar #{ items.length + 1 }</button>
   </form>
 
   <script>
@@ -53,15 +53,14 @@ Riot custom tags are the building blocks for user interfaces. They make the "vie
 </todo>
 ```
 
-Custom tags are [compiled](/guide/compiler/) to JavaScript.
+Las etiquetas personalizadas son [compiladas](/guide/compiler/) a JavaScript.
 
-See the [live demo](http://muut.github.io/riotjs/demo/), browse the [sources](https://github.com/riot/riot/tree/gh-pages/demo), or download the [zip](https://github.com/riot/riot/archive/gh-pages.zip).
+Vea el [demo en vivo](http://muut.github.io/riotjs/demo/), examine el [código fuente](https://github.com/riot/riot/tree/gh-pages/demo), o descarge el [archivo zip](https://github.com/riot/riot/archive/gh-pages.zip).
 
 
+## Sintaxis de las etiquetas
 
-## Tag syntax
-
-A Riot tag is a combination of layout (HTML) and logic (JavaScript). Here are the basic rules:
+Una etiqueta Riot es una combinación de diseño (HTML) y lógica (JavaScript). He aquí las reglas básicas:
 
 * HTML is defined first and the logic is enclosed inside an optional `<script>` tag. *note: the script tag can not be used when including tag definitions in the document body, only in external tag files*
 * Without the `<script>` tag the JavaScript starts where the last HTML tag ends.

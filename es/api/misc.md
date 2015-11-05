@@ -9,12 +9,12 @@ class: apidoc
 
 ### <a name="version"></a> riot.version
 
-El número de la versión actual como cadena de caracteres: `'{{ site.version }}'`
+El número de versión actual como cadena de caracteres: `'{{ site.version }}'`
 
 
 ### <a name="brackets"></a> riot.settings.brackets
 
-Una configuración global de Riot para personalizar los caracteres que indican el inicio y fin de una expresión. Por ejemplo:
+Una configuración global de Riot para personalizar los caracteres que indican el inicio y final de una expresión. Por ejemplo:
 
 ``` js
 riot.settings.brackets = '[% %]'

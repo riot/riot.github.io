@@ -9,77 +9,77 @@ class: apidoc
 
 ### <a name="constructor"></a> riot.observable(el)
 
-Adds [Observer](http://en.wikipedia.org/wiki/Observer_pattern) support for the given object `el` or if the argument is empty a new observable instance is created and returned. After this the object is able to trigger and listen to events. For example:
+Agrega soporte [Observer](http://en.wikipedia.org/wiki/Observer_pattern) al objeto `el` dado o, si el argumento está en blanco, crea y devuelve una nueva instancia de <dfn lang="en">Observable</dfn>. Después de esto el objeto es capaz de emitir y escuchar eventos. Por ejemplo:
 
 ``` js
 function Car() {
 
-  // Make Car instances observable
+  // Hace observable las instancias de Car
   riot.observable(this)
 
-  // listen to 'start' event
+  // escucha al evento 'start'
   this.on('start', function() {
-    // engine started
+    // motor iniciado
   })
 
 }
 
-// make a new Car instance
+// crea una nueva instancia de Car
 var car = new Car()
 
-// trigger 'start' event
+// genera el evento 'start'
 car.trigger('start')
 ```
 
-@returns the given object `el` or a new observable instance
+Devuelve el objeto `el` dado o una nueva instancia de Observable
 
 
 ### <a name="on"></a> el.on(events, callback)
 
-Listen to the given space separated list of `events` and execute the `callback` each time an event is triggered.
+Escucha los eventos dados por `events` (una lista separada por espacios) y ejecuta la función `callback` cada vez que un evento es generado.
 
 ``` js
-// listen to single event
+// escucha un solo evento
 el.on('start', function() {
 
 })
 
-// listen to multiple events, the event type is given as the argument
+// escucha múltiples eventos, el tipo del evento es pasado como parámetro al callback
 el.on('start stop', function(type) {
 
-  // type is either 'start' or 'stop'
+  // type es 'start' o 'stop'
 
 })
 ```
 
-@returns `el`
+Devuelve: `el`
 
 ### <a name="one"></a> el.one(event, callback)
 
-Listen to the given `event` and execute the `callback` at most once.
+Escucha al evento `event` dado y ejecuta la función `callback` una sola vez.
 
 ``` js
-// run the function once, even if 'start' is triggered multiple times
+// ejecuta la función una vez, aun si 'start' es emitido múltiples veces
 el.one('start', function() {
 
 })
 ```
 
-@returns `el`
+Devuelve: `el`
 
 ### <a name="off"></a> el.off(events)
 
-Removes the given space separated list of event listeners
+Remueve los eventos dados por la lista separada por espacios.
 
 ``` js
 el.off('start stop')
 ```
 
-@returns `el`
+Devuelve: `el`
 
 ### <a name="off-fn"></a> el.off(events, fn)
 
-Removes the given callback from the list of events
+Remueve la función de retorno dada de la lista de eventos.
 
 ``` js
 function doIt() {
@@ -88,42 +88,42 @@ function doIt() {
 
 el.on('start middle end', doIt)
 
-// remove a specific listener from start and end events
+// remueve un escucha específico de los eventos "start" y "end"
 el.off('start end', doIt)
 ```
 
-@returns `el`
+Devuelve: `el`
 
-### <a name="off-all"></a> el.off('*')
+### <a name="off-all"></a> el.off('\*')
 
-Removes all listeners from all event types.
+Remueve todas las escuchas de todos los tipos de eventos.
 
-@returns `el`
+Devuelve: `el`
 
 
 ### <a name="trigger"></a> el.trigger(event)
 
-Execute all callback functions that listen to the given `event`
+Ejecuta todas las funciones de retorno que escuchan al evento `event` dado.
 
 ``` js
 el.trigger('start')
 ```
 
-@returns `el`
+Devuelve: `el`
 
 ### <a name="trigger-args"></a> el.trigger(event, arg1 ... argN)
 
-Execute all callback functions that listen to the given `event`. Any number of extra parameters can be provided for the listeners.
+Ejecuta todas las funciones de retorno que escuchan al evento `event` dado. Se puede proveer cualquier número de parámetros adicionales a los escucha.
 
 ``` js
-// listen to 'start' event and expect extra arguments
+// escucha al evento 'start' y espera parámetros adicionales
 el.on('start', function(engine_details, is_rainy_day) {
 
 })
 
-// trigger start event with extra parameters
+// genera un evento "start" con parámetros adicionales
 el.trigger('start', { fuel: 89 }, true)
 
 ```
 
-@returns `el`
+Devuelve: `el`
