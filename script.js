@@ -59,6 +59,7 @@
   }
   $('#current-lang')[0].addEventListener('click', function(e) {
     e.stopPropagation()
+    e.preventDefault()
     if (menu.className) mClose()
       else mOpen()
   })
