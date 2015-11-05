@@ -70,4 +70,8 @@ react_mini_router:
   size:    7.98
   version: 1.1.7
 
-
+# Languages
+translations:
+  fr: v2.2.4
+  ja: v2.2.3
+  zh: v2.2.4
