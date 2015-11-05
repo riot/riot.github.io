@@ -24,10 +24,10 @@ Here the list of our biggest changes:
 - Add html5 history router please check [the documentation](/api/route/)
 - Add new rewritten versions of the compiler, template engine and the command line
 - Deprecate `riot.mountTo`
-- Change tag._id to tag._riot_id __you should not use it__
+- Change `tag._id` to `tag._riot_id` **you should not use riot internal "private" properties anyway**
 - Fix the use of `yield` on the server
 - Fix memory leak in `riot.render`
-- Fix the use dynamic `name` `id` attributes inside a tag
+- Fix the use of dynamic attributes such as `name` `id`
 - Update loop behaviour, they will be a bit slower but more reliable you can use the `no-reorder` option if you want to enable a faster rendering algorithm [more details](/guide/#loops-advanced-tips)
 
 ## 2.2.4 *August 12, 2015*
