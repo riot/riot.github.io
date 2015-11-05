@@ -142,7 +142,7 @@ Riot doesn't `start` its router automatically. DON'T FORGET TO START IT BY YOURS
 
 ### riot.route.stop()
 
-Stop the all routings. It'll removes the listeners and clear also the callbacks.
+Stop all the routings. It'll removes the listeners and clear also the callbacks.
 
 ```javascript
 riot.route.stop()
