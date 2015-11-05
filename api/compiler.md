@@ -44,7 +44,7 @@ riot.compile('my/tags.tag', function() {
 
 Compiles and executes the given `tag`. For example:
 
-```
+```html
 <template id="my_tag">
   <my-tag>
     <p>Hello, World!</p>
@@ -74,7 +74,7 @@ var js = riot.compile(my_tag.innerHTML, true)
 
 After `npm install riot` you can do following:
 
-```
+```js
 var riot = require('riot')
 
 var js = riot.compile(tag)
@@ -144,6 +144,22 @@ will be compiled to:
 
 ### <a name="html-parser"></a> riot.parsers.html [html]
 
-Custom parsers that could be used to compile your tags html
+Custom parsers that could be used to compile your tags html.
 
+The predefined parsers are:
+#### html
+- `jade`
 
+#### css
+- `stylus`
+
+#### js
+- `none` or `javascript`
+- `livescript`
+- `typescript`
+- `es6` - (using `babel-core` or `babel`)
+- `coffee` or `coffeescript`
+
+## Changes
+
+In previous versions, escaped brackets were preserved, generating incorrect HTML or invalid JavaScript code. This version removes them at an early stage, after passing the tag to the html parser, but before that the JavaScript code and expressions are sent to the js parser.
