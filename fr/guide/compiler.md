@@ -400,7 +400,7 @@ La bibliothèque Riot doit être définie/requise en tant que `riot` dans les de
 
 ``` sh
 # active AMD et CommonJS
-riot --m
+riot -m
 ```
 
 Exemple AMD:

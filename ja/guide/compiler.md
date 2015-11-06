@@ -400,7 +400,7 @@ Riotのタグは、`AMD`(Asynchronous Module Definition)や`CommonJS`として�
 
 ``` sh
 # AMD と CommonJS を有効に
-riot --m
+riot -m
 ```
 
 AMDの例:
