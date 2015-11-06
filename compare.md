@@ -5,7 +5,7 @@ title: Comparing Riot with React and Polymer
 
 # **Riot** vs **React** & **Polymer**
 
-And how Riot differs from it's closest cousins.
+And how Riot differs from its closest cousins.
 
 ## React
 
