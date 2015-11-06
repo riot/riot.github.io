@@ -74,7 +74,7 @@ var js = riot.compile(my_tag.innerHTML, true)
 
 `npm install riot` 后你可以做这些:
 
-```
+```js
 var riot = require('riot')
 
 var js = riot.compile(tag)
@@ -144,4 +144,49 @@ riot.parsers.js.myparser = function(js) {
 
 ### <a name="html-parser"></a> riot.parsers.html [html]
 
-指定用来编译html的自定义编译器
+指定用来生成标签html的自定义转换器.
+
+有一些已定义好的转换器：
+#### html
+- `jade`
+
+#### css
+- `stylus`
+
+#### js
+- `none` 或 `javascript`
+- `livescript`
+- `typescript`
+- `es6` - (using `babel-core` or `babel`)
+- `coffee` or `coffeescript`
+
+## 变化
+在旧版本中，转义括号是保留字，可能会导致生成错误的HTML或JavaScript代码。新的版本在编译早期（在标签代码传给html转换器之后，但在JavaScript代码或表达式传给js转换器之前）就将它们拿掉了.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

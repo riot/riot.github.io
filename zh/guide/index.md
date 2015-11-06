@@ -55,7 +55,7 @@ Riot 自定义标签是构建用户界面的单元。它们构成了应用的"�
 
 自定义标签会被 [编译](compiler.md) 成 JavaScript.
 
-参阅 [在线示例](http://muut.github.io/riotjs/demo/), 也可以浏览 [代码](https://github.com/riotjs/riotjs/tree/gh-pages/demo), 或下载[zip包](https://github.com/riotjs/riotjs/archive/gh-pages.zip).
+参阅 [在线示例](http://riotjs.com/examples/plunker/?app=todo-app), 也可以浏览 [代码](https://github.com/riot/examples/tree/gh-pages/todo-app), 或下载[zip包](https://github.com/riot/examples/archive/gh-pages.zip).
 
 
 
@@ -422,6 +422,10 @@ riot.mixin('mixinName', mixinObject)
 ``` js
 <todo>
 
+this.on('before-mount', function() {
+    // 标签被加载之前
+  })
+
   this.on('mount', function() {
     // 标签实例被加载到页面上以后
   })
@@ -430,12 +434,20 @@ riot.mixin('mixinName', mixinObject)
     // 允许在更新之前重新计算上下文数据
   })
 
+  this.on('updated', function() {
+      // 标签模板更新后
+    })
+
+  this.on('before-unmount', function() {
+    // 标签实例被删除之前
+  })
+
   this.on('unmount', function() {
     // 标签实例被从页面上删除后
   })
 
-  // 监听多个事件的方法
-  this.on('mount update unmount', function(eventName) {
+  // 想监听所有事件？
+  this.on('all', function(eventName) {
     console.info(eventName)
   })
 
@@ -737,6 +749,10 @@ submit() {
 
 判断用的操作符是 `==` 而非 `===`. 例如: `'a string' == true`.
 
+<span class="tag red">重要</span>
+
+在自定义嵌套标签中使用条件属性不会阻止 riot 对隐藏的表达式求值 - 我们正在努力解决 [这个问题](https://github.com/riot/riot/pull/1256)
+
 
 ## 循环
 
@@ -863,6 +879,32 @@ Riot通过这种方法来避免重写不应在父标签中重写的东西。
 
 不太建议使用对象循环，因为在内部实现中，Rio使用 `JSON.stringify` 来探测对象内容的改变. *整个* 对象都会被检查，只要有一处改变，整个循环将会被重新渲染. 会很慢. 普通的数组要快得多，而且只有变化的部分会在页面上体现。
 
+### 循环的高级技巧
+
+#### 性能
+
+在 riot v2.3 中，为了使循环渲染更可靠，DOM 结点的移动，插入和删除总是与数据集合同步的: 这种策略会导致渲染过程比之前的版本慢一些。要使用更快的渲染算法，可以在循环结点上加上 `no-reorder` 属性。例如：
+
+```html
+<loop>
+  <div each="{ item in items }" no-reorder>{ item }</div>
+</loop>
+```
+
+#### `virtual` 标签
+
+<span class="tag red">试验性功能</span>
+
+有时候你需要对html内容进行循环，但不需要一个额外的标签来包住它们. 这时你可以使用 `<virtual>` 标签，当被包住的 html 标签被渲染完成后，它自身将被删除. 例如:
+
+```html
+<dl>
+  <virtual each={item in items}>
+    <dt>{item.key}</dt>
+    <dd>{item.value}</dd>
+  </virtual>
+</dl>
+```
 
 ## 使用标准 HTML 元素作为标签 | #riot-tag
 

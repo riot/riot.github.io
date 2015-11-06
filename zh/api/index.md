@@ -63,16 +63,11 @@ var tags = riot.mount('div#main', 'my-tag', api)
 将名为 tagName 的自定义标签加载到指定的 domNode 上，将可选的 opts 作为参数. 示例:
 
 ```js
-// 加载 "my-tag" 到指定的 DOM 结点
+// 加载 "users" 标签到 #slide 结点，api参数放在opts里
 riot.mount(document.getElementById('slide'), 'users', api)
 ```
 
 @返回值: 加载成功的 [标签实例](#标签实例) 数组
-
-
-### <a name="mount-to"></a> riot.mountTo(domNode, tagName, [opts])
-
-此方法从 *v2.0.11* 版本开始被 deprecated. 等价的写法是 `riot.mount(domNode, tagName, [opts])`.
 
 ## 渲染
 
@@ -434,5 +429,45 @@ riot.tag('tag-name', my_tmpl.innerHTML, function(opts) {
 })
 </script>
 ```
+
+### riot.Tag(impl, conf, innerHTML)
+
+<span class="tag red">试验性api</span>
+
+在 riot 2.3 中我们允许开发者访内部的 Tag 实例，以便使开发者能够以更加创新的方式来创建自定义标签。
+
+- `impl`
+  - `tmpl` 标签模板
+  - `fn(opts)` 在 mount 事件发生时调用回调函数
+  - `attrs` 一个对象(键值对容器)，包含根标签的html属性
+- `conf`
+  - `root` 要将标签模板加载到的ＤＯＭ结点
+  - `opts` 标签参数
+  - `isLoop` 是否用在循环标签里？
+  - `hasImpl` 已经被用riot.tag注册过？
+  - `item` 循环中绑定到此实例上的循环项
+- `innerHTML` 用来替换模板中嵌入的`yield`标签的html内容
+
+例如，用ES2015的写法：
+
+```js
+
+class MyTag extends riot.Tag {
+  constructor(el) {
+    super({ tmpl: MyTag.template() }, { root: el })
+    this.msg = 'hello'
+  }
+  bye() {
+    this.msg = 'goodbye'
+  }
+  static template() {
+    return `<p onclick="{ bye }">{ msg }</p>`
+  }
+}
+
+new MyTag(document.getElementById('my-div')).mount()
+```
+
+一般情况下，不建议使用 `riot.Tag` 方法。只有在使用前面的riot方法无法满足你的特殊需求的时候才考虑用它。
 
 

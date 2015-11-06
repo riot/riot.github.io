@@ -50,13 +50,20 @@ el.on('start stop', function(type) {
   // type 是 'start' 或 'stop'
 
 })
+
+// 监听此 observable 上的所有事件
+el.on('all', function(event, param1, param2) {
+  // event will be the name of any event triggered
+  // do something with the parameters
+})
+
 ```
 
 @返回值 `el`
 
-### <a name="one"></a> el.one(event, callback)
+### <a name="one"></a> el.one(events, callback)
 
-监听指定的 `event` 但只执行 `callback` 最多一次.
+监听的由空格分隔的 `events` 但只执行 `callback` 最多一次.
 
 ``` js
 // 即使 'start' 被触发多次，也只执行回调函数一次
@@ -69,7 +76,7 @@ el.one('start', function() {
 
 ### <a name="off"></a> el.off(events)
 
-删除参数中指定的以空格分隔的事件的监听器
+删除参数中指定的以空格分隔的 `events` 的监听器
 
 ``` js
 el.off('start stop')
@@ -101,12 +108,13 @@ el.off('start end', doIt)
 @返回值 `el`
 
 
-### <a name="trigger"></a> el.trigger(event)
+### <a name="trigger"></a> el.trigger(events)
 
-触发事件。执行所有监听 `event` 的回调函数
+触发事件。执行所有监听由空格分隔的 `events` 的回调函数
 
 ``` js
 el.trigger('start')
+el.trigger('render update')
 ```
 
 @返回值 `el`
