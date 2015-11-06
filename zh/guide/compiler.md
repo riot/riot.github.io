@@ -395,7 +395,7 @@ Riot 标签的编译可以加入 `AMD` (Asynchronous Module Definition) 和 `Com
 
 ``` sh
 # 使用 AMD 和 CommonJS
-riot --m
+riot -m
 ```
 
 AMD 例子:

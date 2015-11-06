@@ -400,7 +400,7 @@ The Riot library must be defined / required as `riot` in both cases.
 
 ``` sh
 # enable AMD and CommonJS
-riot --m
+riot -m
 ```
 
 Example AMD:
