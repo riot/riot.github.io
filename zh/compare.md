@@ -141,28 +141,28 @@ Riot 提供了自定义标签，事件触发器 (observable) 和路由功能. �
 你可以使用Riot的observable和路由器构造一个类似 Flux 的系统. 事实上这东西已经 [有了](https://github.com/jimsparkman/RiotControl).
 
 
-### 大小相差 10倍 - 128倍
+### 大小相差 {{ site.react.size | divided_by: site.size_min | round: 0 }}倍 - {{ site.react_router.size | divided_by: site.riot_route_size_min | round: 0 }}倍
 
-React 比 Riot 大 10 倍
+React (v{{ site.react.version }}) 比 Riot 大 {{ site.react.size | divided_by: site.size_min | round: 0 }} 倍
 
-<small><em>react.min.js</em> – 121KB</small>
+<small><em>react.min.js</em> – {{ site.react.size }}KB</small>
 <span class="bar red"></span>
 
 <small><em>riot.min.js</em> – 13.21KB</small>
-<span class="bar blue" style="width: 10.8%"></span>
+<span class="bar blue" style="width: {{ site.size_min | divided_by: site.react.size | times: 100 }}%"></span>
 
 <br>
 
-推荐的 React 路由器比较 Riot 路由器大 128 倍 .
+推荐的 React 路由器 (v{{ site.react_router.version }}) 比 Riot 路由器大 {{ site.react_router.size | divided_by: site.riot_route_size_min | round: 0 }} 倍 .
 
-<small><em>react-router.min.js</em> – 54.9KB</small>
+<small><em>react-router.min.js</em> – {{ site.react_router.size }}KB</small>
 <span class="bar red"></span>
 
-<small><em>react-mini-router.min.js</em> – 8.6KB</small>
-<span class="bar red" style="width: 15.6%"></span>
+<small><em>react-mini-router.min.js</em> – {{ site.react_mini_router.size }}KB</small>
+<span class="bar red" style="width: {{ site.react_mini_router.size | divided_by: site.react_router.size | times: 100 }}%"></span>
 
-<small><em>riot.router.min.js</em> – 0.43KB</small>
-<span class="bar blue" style="width: 0.7%"></span>
+<small><em>riot.route.min.js</em> – {{ site.riot_route_size_min }}KB</small>
+<span class="bar blue" style="width: {{ site.riot_route_size_min | divided_by: site.react_router.size | times:100 }}%"></span>
 
 必须承认，这个路由器比较是不公平的，因为 [react-router](https://github.com/rackt/react-router) 功能强大得多. 但上面的图表清晰地体现了Riot的目标: 只提供最少量的API.
 
@@ -186,15 +186,15 @@ Polymer 使用 Web Component 标准，使它在最新的浏览器上可用. 这�
 5. Polymer不支持服务端渲染。
 
 
-### 大小相差11倍
+### 大小相差 {{ site.polymer_and_webcomponents_size | divided_by: site.size_min | round: 0 }} 倍
 
-Polymer (v1.0.6) + WebComponents(v0.7.7) 比 Riot 大 11 倍
+Polymer (v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.version }}) 比 Riot 大 {{ site.polymer_and_webcomponents_size | divided_by: site.size_min | round: 0 }} 倍
 
-<small><em>polymer.min.js</em> – 138KB</small>
+<small><em>polymer.min.js</em> – {{ site.polymer.size }}KB</small>
 <span class="bar red"></span>
 
 <small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
-<span class="bar blue" style="width: {{ site.size_min / 138 * 100 }}%"></span>
+<span class="bar blue" style="width: {{ site.size_min | divided_by: site.polymer.size | times: 100 }}%"></span>
 
 Web components 被称为 [polyfill之王](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/) ，这就是为什么 Polymer的实现需要这么多代码。
 

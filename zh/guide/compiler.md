@@ -25,7 +25,7 @@ title: 编译器
 <script src="path/to/javascript/with-tags.js" type="riot/tag"></script>
 
 <!-- 包含 riot.js 和编译器 -->
-<script src="//cdn.jsdelivr.net/g/riot@2.2(riot.min.js+compiler.min.js)"></script>
+<script src="//cdn.jsdelivr.net/g/riot@2.3(riot.min.js+compiler.min.js)"></script>
 
 <!-- 正常加载 -->
 <script>
@@ -93,7 +93,7 @@ npm install riot -g
 <my-tag></my-tag>
 
 <!-- 包含 riot.js -->
-<script src="//cdn.jsdelivr.net/riot/2.2/riot.min.js"></script>
+<script src="//cdn.jsdelivr.net/riot/2.3/riot.min.js"></script>
 
 <!-- 包含预编译的自定义标签 (正常 javascript) -->
 <script src="path/to/javascript/with-tags.js"></script>
