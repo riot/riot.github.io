@@ -40,7 +40,7 @@ url 发生变化可能是以下几种情况:
 1. 地址栏中输入的新的 hash 值
 2. 当浏览器的 后退/前进按钮被点击
 3. 当代码中调用了 `riot.route(to)`
-4. 用户点击了锚点标签 (<a>)
+4. 用户点击了锚点标签 (a 标签)
 
 ### riot.route(filter, callback)
 
@@ -305,7 +305,7 @@ riot.route.parser(first, second)
   <script>
     var subRoute = riot.route.create() // 创建新的路由上下文
     subRoute('/fruit/*', function(name) {
-      /* do something common */
+      /* 公用的部分 */
     })
   </script>
 </first-tag>
@@ -315,7 +315,7 @@ riot.route.parser(first, second)
   <script>
     var subRoute = riot.route.create() // 创建新的路由上下文
     subRoute('/fruit/apple', function(name) {
-      /* do something SPECIAL */
+      /* 个别的部分 */
     })
   </script>
 </second-tag>

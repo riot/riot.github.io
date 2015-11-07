@@ -329,7 +329,7 @@ will be compiled in this way:
 
 ## Events
 
-Each tag instance is an [observable](#observable) so you can use `on` and `one` methods to listen to the events that happen on the tag instance. Here's the list of supported events:
+Each tag instance is an [observable](./observable) so you can use `on` and `one` methods to listen to the events that happen on the tag instance. Here's the list of supported events:
 
 
 - "update" – right before the tag is updated. allows recalculation of context data before the UI expressions are updated.

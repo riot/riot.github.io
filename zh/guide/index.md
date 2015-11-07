@@ -53,7 +53,7 @@ Riot 自定义标签是构建用户界面的单元。它们构成了应用的"�
 </todo>
 ```
 
-自定义标签会被 [编译](compiler.md) 成 JavaScript.
+自定义标签会被 [编译](compiler) 成 JavaScript.
 
 参阅 [在线示例](http://riotjs.com/examples/plunker/?app=todo-app), 也可以浏览 [代码](https://github.com/riot/examples/tree/gh-pages/todo-app), 或下载[zip包](https://github.com/riot/examples/archive/gh-pages.zip).
 
@@ -224,7 +224,7 @@ Riot 允许开发人员通过 `this` 实例直接访问设置了 `name` 属性�
 
 ### 如何使用 jQuery, Zepto, querySelector, 等等
 
-如果需要在Riot中访问DOM，你需要阅读 [标签生命周期](#tag-lifecycle) 文档，要注意 DOM 元素的初始化发生在在第一个 `update()` 事件被触发之后，这意味着在这之前试图选择这个元素的你叫什么都将失败。
+如果需要在Riot中访问DOM，你需要阅读 [标签生命周期](#标签生命周期) 文档，要注意 DOM 元素的初始化发生在在第一个 `update()` 事件被触发之后，这意味着在这之前试图选择这个元素的你叫什么都将失败。
 
 ```html
 <example-tag>
@@ -454,7 +454,7 @@ this.on('before-mount', function() {
 </todo>
 ```
 
-对同一个事件可以有多个事件监听器. 参阅 [observable](api/observable.md) 获取关于事件的更多细节。
+对同一个事件可以有多个事件监听器. 参阅 [observable](../api/observable) 获取关于事件的更多细节。
 
 
 ## 表达式
@@ -546,7 +546,7 @@ riot.settings.brackets = '\{\{ }}'
 
 起始括号和终止括号之间用空格分隔。
 
-如果使用 [预编译](compiler.md#预编译) ，必须提前指定 `brackets` 参数.
+如果使用 [预编译](compiler#预编译) ，必须提前指定 `brackets` 参数.
 
 
 
