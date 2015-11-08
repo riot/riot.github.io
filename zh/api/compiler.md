@@ -6,9 +6,9 @@ class: apidoc
 
 {% include zh/api-tabs.html %}
 
-## On browser
+## 浏览器内编译
 
-以下方法仅适用于浏览器内编译器. 如果希望用node或io.js编译，请参考 [服务端编译](#compile-on-server) .
+以下方法仅适用于浏览器内编译器. 如果希望用node或io.js编译，请参考 [服务端编译](#服务端编译) .
 
 ### <a name="compile"></a> riot.compile(callback)
 
@@ -28,7 +28,7 @@ var tags = riot.mount('*')
 
 但我们无法确定外部资源何时被加载和编译完成，所以如果有外部脚本，riot.mount的返回值可能是空数组。所以只有当所有的脚本定义在当前页面上时才能省略掉 riot.compile。
 
-了解更多细节，请阅读编译器 [介绍](/riotjs/compiler.html).
+了解更多细节，请阅读[编译器指南](../../guide/compiler).
 
 ### <a name="compile-fn"></a> riot.compile(url, callback)
 
@@ -74,7 +74,7 @@ var js = riot.compile(my_tag.innerHTML, true)
 
 `npm install riot` 后你可以做这些:
 
-```
+```js
 var riot = require('riot')
 
 var js = riot.compile(tag)
@@ -144,4 +144,49 @@ riot.parsers.js.myparser = function(js) {
 
 ### <a name="html-parser"></a> riot.parsers.html [html]
 
-指定用来编译html的自定义编译器
+指定用来生成标签html的自定义转换器.
+
+有一些已定义好的转换器：
+#### html
+- `jade`
+
+#### css
+- `stylus`
+
+#### js
+- `none` 或 `javascript`
+- `livescript`
+- `typescript`
+- `es6` - (using `babel-core` or `babel`)
+- `coffee` or `coffeescript`
+
+## 变化
+在旧版本中，转义括号是保留字，可能会导致生成错误的HTML或JavaScript代码。新的版本在编译早期（在标签代码传给html转换器之后，但在JavaScript代码或表达式传给js转换器之前）就将它们拿掉了.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

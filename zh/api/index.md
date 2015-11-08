@@ -14,7 +14,7 @@ class: apidoc
 其中
 
 - `customTagSelector` 选择器，从页面上选择元素，将自定义标签加载上去。选中的元素的标签名必须与自定义标签名相同;
-- `opts` 可选。构造自定义标签实例的参数。可以任何数据，从简单的对象到完整的应用API。或者是一个Flux数据仓库。完全取决于你想要如何构造你的客户端应用。参阅[模块化Rio应用](/riotjs/guide/#modularity).
+- `opts` 可选。构造自定义标签实例的参数。可以任何数据，从简单的对象到完整的应用API。或者是一个Flux数据仓库。完全取决于你想要如何构造你的客户端应用。参阅[模块化Rio应用](../guide/application-design/#模块化).
 
 
 ``` js
@@ -63,16 +63,11 @@ var tags = riot.mount('div#main', 'my-tag', api)
 将名为 tagName 的自定义标签加载到指定的 domNode 上，将可选的 opts 作为参数. 示例:
 
 ```js
-// 加载 "my-tag" 到指定的 DOM 结点
+// 加载 "users" 标签到 #slide 结点，api参数放在opts里
 riot.mount(document.getElementById('slide'), 'users', api)
 ```
 
 @返回值: 加载成功的 [标签实例](#标签实例) 数组
-
-
-### <a name="mount-to"></a> riot.mountTo(domNode, tagName, [opts])
-
-此方法从 *v2.0.11* 版本开始被 deprecated. 等价的写法是 `riot.mount(domNode, tagName, [opts])`.
 
 ## 渲染
 
@@ -332,7 +327,7 @@ mytag.unmount(true)
 
 ## 事件
 
-每个标签实例都是一个 [observable](#observable) 所以你可以使用 `on` 和 `one` 方法来监听发生在标签实例上的事件. 以下是内置支持的事件:
+每个标签实例都是一个 [observable](./observable) 所以你可以使用 `on` 和 `one` 方法来监听发生在标签实例上的事件. 以下是内置支持的事件:
 
 
 - "update" – 标签实例被更新之前触发. 使得在UI表达式被更新之前重新计算上下文数据。
@@ -434,5 +429,45 @@ riot.tag('tag-name', my_tmpl.innerHTML, function(opts) {
 })
 </script>
 ```
+
+### riot.Tag(impl, conf, innerHTML)
+
+<span class="tag red">试验性api</span>
+
+在 riot 2.3 中我们允许开发者访内部的 Tag 实例，以便使开发者能够以更加创新的方式来创建自定义标签。
+
+- `impl`
+  - `tmpl` 标签模板
+  - `fn(opts)` 在 mount 事件发生时调用回调函数
+  - `attrs` 一个对象(键值对容器)，包含根标签的html属性
+- `conf`
+  - `root` 要将标签模板加载到的ＤＯＭ结点
+  - `opts` 标签参数
+  - `isLoop` 是否用在循环标签里？
+  - `hasImpl` 已经被用riot.tag注册过？
+  - `item` 循环中绑定到此实例上的循环项
+- `innerHTML` 用来替换模板中嵌入的`yield`标签的html内容
+
+例如，用ES2015的写法：
+
+```js
+
+class MyTag extends riot.Tag {
+  constructor(el) {
+    super({ tmpl: MyTag.template() }, { root: el })
+    this.msg = 'hello'
+  }
+  bye() {
+    this.msg = 'goodbye'
+  }
+  static template() {
+    return `<p onclick="{ bye }">{ msg }</p>`
+  }
+}
+
+new MyTag(document.getElementById('my-div')).mount()
+```
+
+一般情况下，不建议使用 `riot.Tag` 方法。只有在使用前面的riot方法无法满足你的特殊需求的时候才考虑用它。
 
 

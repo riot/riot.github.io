@@ -50,13 +50,20 @@ el.on('start stop', function(type) {
   // type is either 'start' or 'stop'
 
 })
+
+// listen all the events of this observable
+el.on('all', function(event, param1, param2) {
+  // event will be the name of any event triggered
+  // do something with the parameters
+})
+
 ```
 
 @returns `el`
 
 ### <a name="one"></a> el.one(event, callback)
 
-Listen to the given `event` and execute the `callback` at most once.
+Listen to the given space separated list of `events` and execute the `callback` at most once
 
 ``` js
 // run the function once, even if 'start' is triggered multiple times
@@ -69,7 +76,7 @@ el.one('start', function() {
 
 ### <a name="off"></a> el.off(events)
 
-Removes the given space separated list of event listeners
+Removes the given space separated list of `events` listeners.
 
 ``` js
 el.off('start stop')
@@ -101,12 +108,13 @@ Removes all listeners from all event types.
 @returns `el`
 
 
-### <a name="trigger"></a> el.trigger(event)
+### <a name="trigger"></a> el.trigger(events)
 
-Execute all callback functions that listen to the given `event`
+Execute all callback functions that listen to the given space separated list of `events`.
 
 ``` js
 el.trigger('start')
+el.trigger('render update')
 ```
 
 @returns `el`

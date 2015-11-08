@@ -1,5 +1,5 @@
 # store the riot submodules in an array
-SUBMODULES=(route observable)
+SUBMODULES=(route observable compiler)
 
 # clone the riot submodules in a temporary folder
 function clone {
@@ -13,8 +13,18 @@ function update {
   sed -n -e  "1,/{% include api-tabs.html %}/w $tmp_file" api/$1.md
   # print the doc/README.md of each submodule after the files headers
   tail -n +2 tmp/$1/doc/README.md >> $tmp_file
+
   # prefix the submodule api methods using riot (observable => riot.observable)
-  sed -i '' "s/$1\([(|.]\)/riot.$1\1/g" $tmp_file
+  if [ $1 != 'compiler' ]
+    then
+    sed -i '' "s/$1\([(|.]\)/riot.$1\1/g" $tmp_file
+  # for the compiler api we just need to change
+  # the prefix of the methods(compiler.compile => riot.compile)
+  else
+    sed -i '' "s/$1\([(|.]\)/riot\1/g" $tmp_file
+  fi
+
+
   # replace the old api file
   mv $tmp_file api/$1.md
 }

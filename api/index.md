@@ -66,13 +66,6 @@ riot.mount(document.getElementById('slide'), 'users', api)
 
 @returns: an array of the mounted [tag instances](#tag-instance)
 
-### <a name="mount-to"></a> riot.mountTo(domNode, tagName, [opts])
-
-This method is deprecated since *v2.0.11*. This is the same as `riot.mount(domNode, tagName, [opts])`.
-
-
-
-
 ## Rendering
 
 ### <a name="render"></a> riot.render(tagName, [opts])
@@ -336,7 +329,7 @@ will be compiled in this way:
 
 ## Events
 
-Each tag instance is an [observable](#observable) so you can use `on` and `one` methods to listen to the events that happen on the tag instance. Here's the list of supported events:
+Each tag instance is an [observable](./observable) so you can use `on` and `one` methods to listen to the events that happen on the tag instance. Here's the list of supported events:
 
 
 - "update" – right before the tag is updated. allows recalculation of context data before the UI expressions are updated.
@@ -385,7 +378,6 @@ Creates a new custom tag "manually" without the compiler.
 - `css` is the style for the tag (optional)
 - `attrs` string of attributes for the tag (optional).
 - `constructor` is the initialization function being called before the tag expressions are calculated and before the tag is mounted
-
 
 #### Example
 
@@ -440,6 +432,46 @@ riot.tag('tag-name', my_tmpl.innerHTML, function(opts) {
 </script>
 ```
 
+### riot.Tag(impl, conf, innerHTML)
+
+<span class="tag red">experimental</span>
+
+In riot 2.3 we have give you the access to the internal Tag instance in order to let you creating your custom tags in more creative ways.
+
+- `impl`
+  - `tmpl` tag template
+  - `fn(opts)` the callback function called on the mount event
+  - `attrs` root tag html attributes as object (key => value)
+- `conf`
+  - `root` DOM node where you will mount the tag template
+  - `opts` tag options
+  - `isLoop` is it used in as loop tag?
+  - `hasImpl` was already registered using riot.tag?
+  - `item` loop item in the loop assigned to this instance
+- `innerHTML` html that can be used replacing a nested `yield` tag in its template
+
+
+For example using ES2015:
+
+```js
+
+class MyTag extends riot.Tag {
+  constructor(el) {
+    super({ tmpl: MyTag.template() }, { root: el })
+    this.msg = 'hello'
+  }
+  bye() {
+    this.msg = 'goodbye'
+  }
+  static template() {
+    return `<p onclick="{ bye }">{ msg }</p>`
+  }
+}
+
+new MyTag(document.getElementById('my-div')).mount()
+```
+
+The `riot.Tag` method is not recommended. You should use it only if you need to achieve special features not available with the previous riot methods
 
 
 

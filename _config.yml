@@ -1,9 +1,6 @@
 # Permalinks
 #
-# Use of `relative_permalinks` ensures post links from the index work properly.
-
 permalink:           pretty
-relative_permalinks: true
 
 # Setup
 title:               Riot.js
@@ -35,14 +32,46 @@ sass:
 author:
   name:              Riot
   url:               http://riotjs.com
-  email:             riotjs@gmail.com
+  email:             hello.riotjs@gmail.com
 
 # Custom vars
-major_version:       2
-minor_version:       2.2
+major_version:       0
+minor_version:       2.3
 
-version:             2.2.4
-release_date:        August 12
-version_slurp:       Support for multiple syntax blocks
-size_min:            12.5
+version:             2.3.0
+release_date:        November 5
+version_slurp:       Html5 history support - new compiler - enhanced loops
 repo:                https://github.com/riot/riot
+
+# Vars needed for the compare.md page
+
+size_min:            18.3
+riot_route_size_min: 2.93
+
+polymer:
+  size:    112
+  version: 1.2.1
+
+webcomponents:
+  size:    117
+  version: 0.7.15
+
+polymer_and_webcomponents_size: 229 # 112 + 117
+
+react:
+  size:    135
+  version: 0.14.1
+
+react_router:
+  size:    36
+  version: 0.13.4
+
+react_mini_router:
+  size:    7.98
+  version: 1.1.7
+
+# Languages
+translations:
+  fr: v2.2.4
+  ja: v2.2.3
+  zh: v2.3.0
