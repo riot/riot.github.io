@@ -58,7 +58,17 @@
         <a href="https://muut.com/"><img id="muut-logo" src="/img/logo/muut.png"></a>
       </span>
 
-      <nav id="nav">{{ nav }}</nav>
+      <nav id="nav">
+        {{ nav }}
+        <a id="current-lang" href="#"><i class="fa fa-globe"></i> ru</a>
+      </nav>
+
+      <nav id="langs">
+        <a href="/"><span>en</span> latest</a>
+        {% for lang in site.translations %}
+          <a href="/{{ lang[0] }}/"><span>{{ lang[0] }}</span> {{ lang[1] }}</a>
+        {% endfor %}
+      </nav>
 
     </header>
 
