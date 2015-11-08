@@ -11,7 +11,7 @@ description: Riot позволяет создавать интерфейсы с 
 
   <div id="version-slurp">
     <a href="/ru/download/" class="tag blue">v{{ site.version }}</a> &mdash;
-    <a href="/ru/release-notes/">{{ site.version_slurp }}&hellip;</a>
+    <a href="/release-notes/">{{ site.version_slurp }}&hellip;</a>
   </div>
 
 </div>
@@ -110,7 +110,7 @@ HTML *дефакто* - язык веба, спроектированный сп
 
 
 ### Легко применять инструменты
-- Используйте ES6, Typescript, CoffeeScript, Jade, LiveScript или любой другой [препроцессор](/ru/guide/compiler/#pre-processors)
+- Используйте ES6, Typescript, CoffeeScript, Jade, LiveScript или любой другой [препроцессор](/ru/guide/compiler/#pre-compilation)
 - Интегрируйте NPM, CommonJS, AMD, Bower или Component
 - Разрабатывайте с [Gulp](https://github.com/e-jigsaw/gulp-riot), [Grunt](https://github.com/ariesjia/grunt-riot) или [Browserify](https://github.com/jhthorsen/riotify)
 
@@ -170,7 +170,7 @@ Riot - открытый проект, он не заточен под чьи-л�
 
 > Я посмотрел на примеры riot.js, и он показался мне настолько чистым, это страшно [@paulbjensen](https://twitter.com/paulbjensen/status/558378720403419137)
 
-> Просто возился с #RiotJS в течение часа. Установил его с Gulp, Browsesify, и Babelв в кратчайшие сроки. Мне он очень нравится до сих пор! [@AndrewDelPrete](https://twitter.com/AndrewDelPrete/status/630976295011127296)
+> Просто возился с #RiotJS в течение часа. Установил его с Gulp, Browsesify, и Babel в кратчайшие сроки. Мне он очень нравится до сих пор! [@AndrewDelPrete](https://twitter.com/AndrewDelPrete/status/630976295011127296)
 
 > Сегодня я использовал #riotjs 2,0 впервые, и я не мог не признать, что это будут долгосрочные отношения #js рекомендуется. [@gianlucaguarini](https://twitter.com/gianlucaguarini/status/559756081862574080)
 

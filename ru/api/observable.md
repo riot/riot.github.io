@@ -4,12 +4,12 @@ layout: ru
 class: apidoc
 ---
 
-{% include api-tabs.html %}
+{% include ru/api-tabs.html %}
 
 
 ### <a name="constructor"></a> riot.observable(el)
 
-Добавляет функционал [наблюдателя] (http://en.wikipedia.org/wiki/Observer_pattern) для данного объекта `el` или, если аргумент пуст, создаёт и возвращает новый экземпляр наблюдателя. После этого объект может вызвать и слушать событий. Например:
+Добавляет функционал [наблюдателя](https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D0%B1%D0%BB%D1%8E%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8C_(%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F)) для данного объекта `el` или, если аргумент пуст, создаёт и возвращает новый экземпляр наблюдателя. После этого объект может вызвать и слушать событий. Например:
 
 ``` js
 function Car() {

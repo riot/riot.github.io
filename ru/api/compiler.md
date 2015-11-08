@@ -4,7 +4,7 @@ layout: ru
 class: apidoc
 ---
 
-{% include api-tabs.html %}
+{% include ru/api-tabs.html %}
 
 ## В браузере
 
