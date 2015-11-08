@@ -21,7 +21,14 @@
 
   // navi selection
   each($('nav a'), function(link) {
-    setActive(link, '/' + location.pathname.split('/')[1] + '/')
+    var chapterUrl = location.pathname.split('/')[1]
+
+    // for translations chapterUrl begins from "/ja", "/ru" etc
+    if (chapterUrl.length == 2) {
+      chapterUrl = chapterUrl + '/' + location.pathname.split('/')[2]
+    }
+
+    setActive(link, '/' + chapterUrl + '/')
   })
 
   // tab selection
