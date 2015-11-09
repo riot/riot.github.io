@@ -35,7 +35,7 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-major_version:       0
+major_version:       1
 minor_version:       2.3
 
 version:             2.3.1
