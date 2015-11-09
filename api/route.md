@@ -140,6 +140,21 @@ riot.route.start()
 Riot doesn't `start` its router automatically. DON'T FORGET TO START IT BY YOURSELF. This also means that you can choose your favorite router.
 (Note: before v2.3 Riot started the router automatically. The behavior was changed)
 
+### riot.route.start(autoExec)
+
+Start listening the url changes and also exec routing on the current url.
+
+```js
+riot.route.start(true)
+```
+
+This is a shorthand for:
+
+```js
+riot.route.start()
+riot.route.exec()
+```
+
 ### riot.route.stop()
 
 Stop all the routings. It'll removes the listeners and clear also the callbacks.
