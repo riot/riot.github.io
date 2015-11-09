@@ -45,7 +45,7 @@ repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page
 
-size_min:            18.3
+size_min:            18
 riot_route_size_min: 2.93
 
 polymer:

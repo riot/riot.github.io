@@ -6,7 +6,7 @@ id: release-notes
 
 # {{ page.title }}
 
-## 2.3.0 *November 10, 2015*
+## 2.3.1 *November 10, 2015*
 
 - Add the `babel` parser to support the brand new babel 6 release, use `es6` if you still want to use the previous babel releases
 - Update `riot.route.start(autoExec)` start listening the url changes and also exec routing on the current url.
