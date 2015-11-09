@@ -142,14 +142,14 @@ Riot has between 10 and 100 times fewer API methods than other UI libraries.
 
 ### 3. Tiny size
 
-<small><em>polymer.min.js</em> – 138KB</small>
+<small><em>react.min.js</em> – {{ site.react.size }}KB</small>
 <span class="bar red"></span>
 
-<small><em>react.min.js</em> – 119KB</small>
-<span class="bar red" style="width: {{ 138 / 119 * 100 }}"></span>
+<small><em>polymer.min.js</em> – {{ site.polymer.size }}KB</small>
+<span class="bar red" style="width: {{ site.polymer.size | divided_by: site.react.size | times: 100 }}%"></span>
 
 <small><em>riot.min.js</em> – {{ site.size_min }}KB</small>
-<span class="bar blue" style="width: {{ site.size_min / 121 * 100 }}%"></span>
+<span class="bar blue" style="width: {{ site.size_min | divided_by: site.react.size | times: 100 }}%"></span>
 
 - Fewer bugs
 - Faster to parse and cheaper to download
