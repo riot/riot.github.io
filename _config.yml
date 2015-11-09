@@ -38,9 +38,9 @@ author:
 major_version:       0
 minor_version:       2.3
 
-version:             2.3.0
-release_date:        November 5
-version_slurp:       Html5 history support - new compiler - enhanced loops
+version:             2.3.1
+release_date:        November 10
+version_slurp:       Babel 6 support - bug fix
 repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page

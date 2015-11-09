@@ -6,6 +6,14 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.3.0 *November 10, 2015*
+
+- Add the `babel` parser to support the brand new babel 6 release, use `es6` if you still want to use the previous babel releases
+- Update `riot.route.start(autoExec)` start listening the url changes and also exec routing on the current url.
+- Remove `compiler.js` `compiler.min.js` from the project root, please use always `riot+compiler.js` instead
+- Fix the broken [`modular` option](https://github.com/riot/cli/issues/7) in the `riot-cli`
+- Fix the broken [`riot.render`](https://github.com/riot/riot/pull/1330) method
+
 ## 2.3.0 *November 5, 2015*
 
 This major release is a big step forward for riot and it fixes [many issues](https://github.com/riot/riot/issues?q=is%3Aissue+milestone%3A2.3.0+is%3Aclosed)
