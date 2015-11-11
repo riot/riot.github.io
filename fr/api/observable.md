@@ -50,13 +50,20 @@ el.on('start stop', function(type) {
   // type est soit 'start', soit 'stop'
 
 })
+
+
+// écoute tous les événements observés
+el.on('all', function(event, param1, param2) {
+  // event est le nom de l'événement déclenché
+  // faites quelque-chose avec les paramètres passés en arguments
+})
 ```
 
 @returns - retourne `el`
 
-### <a name="one"></a> el.one(event, callback)
+### <a name="one"></a> el.one(events, callback)
 
-Ecoute l'événement `event` et appelle la fonction `callback` la première fois, après quoi les événements suivants sont ignorés.
+Ecoute une liste d'événements `events` (séparés par des espaces) et appelle la fonction `callback` la première fois, après quoi les événements suivants sont ignorés.
 
 ``` js
 // appelle la fonction une seule fois, même si 'start' est déclenché plusieurs fois
@@ -101,9 +108,9 @@ Supprime tous les écouteurs de tous les événements sur cet élément.
 @returns - retourne `el`
 
 
-### <a name="trigger"></a> el.trigger(event)
+### <a name="trigger"></a> el.trigger(events)
 
-Déclenche l'événement `event` sur l'élément `el` et appelle toutes les fonctions de callback associées
+Déclenche la liste d'événements `events` (séparés par des espaces) sur l'élément `el` et appelle toutes les fonctions de callback associées
 
 ``` js
 el.trigger('start')

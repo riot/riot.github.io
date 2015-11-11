@@ -141,28 +141,28 @@ Tout comme Flux, Riot est flexible et laisse les grosses décisions architecture
 Vous pouvez concevoir un système comme Flux en utilisant les observables et le routeur de Riot. En fait, une telle chose [existe déjà](https://github.com/jimsparkman/RiotControl).
 
 
-### 10 à 128 fois plus gros
-
-React est dix fois plus gros que Riot.
-
-<small><em>react.min.js</em> – 119KB</small>
+### {{ site.react.size | divided_by: site.size_min | round: 0 }} à {{ site.react_router.size | divided_by: site.riot_route_size_min | round: 0 }} fois plus gros
+    
+React (v{{ site.react.version }}) est {{ site.react.size | divided_by: site.size_min | round: 0 }} fois plus gros que Riot.
+    
+<small><em>react.min.js</em> – {{ site.react.size }}Ko</small>
 <span class="bar red"></span>
-
-<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
-<span class="bar blue" style="width: {{ site.size_min / 119 * 100 }}%"></span>
-
+    
+<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}Ko</span></small>
+<span class="bar blue" style="width: {{ site.size_min | divided_by: site.react.size | times: 100 }}%"></span>
+    
 <br>
 
-Le routeur recommandé pour React est 128 fois plus gros que le routeur de Riot.
+Le routeur recommandé pour React (v{{ site.react_router.version }}) est {{ site.react_router.size | divided_by: site.riot_route_size_min | round: 0 }} fois plus gros que le routeur de Riot.
 
-<small><em>react-router.min.js</em> – 54.9KB</small>
+<small><em>react-router.min.js</em> – {{ site.react_router.size }}Ko</small>
 <span class="bar red"></span>
 
-<small><em>react-mini-router.min.js</em> – 8.6KB</small>
-<span class="bar red" style="width: 15.6%"></span>
+<small><em>react-mini-router.min.js</em> – {{ site.react_mini_router.size }}Ko</small>
+<span class="bar red" style="width: {{ site.react_mini_router.size | divided_by: site.react_router.size | times: 100 }}%"></span>
 
-<small><em>riot.router.min.js</em> – 0.43KB</small>
-<span class="bar blue" style="width: 0.7%"></span>
+<small><em>riot.route.min.js</em> – {{ site.riot_route_size_min }}Ko</small>
+<span class="bar blue" style="width:{{ site.riot_route_size_min | divided_by: site.react_router.size | times:100 }}%"></span>
 
 Nous admettons que la comparaison de ces routeurs n'est pas très juste car [react-router](https://github.com/rackt/react-router) a bien plus de fonctionnalités. Mais le graphique ci-dessus montre clairement l'objectif de Riot: fournir l'API le plus minimaliste pour faire le boulot.
 
@@ -184,15 +184,15 @@ Conceptuellement, Riot fait la même chose mais il y a des différences:
 4. Aucun moyen de réaliser le rendu côté serveur
 
 
-### 11 fois plus gros
+### {{ site.polymer_and_webcomponents_size | divided_by: site.size_min | round: 0 }} fois plus gros
 
-Polymer(v1.0.6) + WebComponents(v0.7.7) est 11 fois plus gros que Riot
+Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.version }}) est {{ site.polymer_and_webcomponents_size | divided_by: site.size_min | round: 0 }} fois plus gros que Riot
 
-<small><em>polymer.min.js</em> – 138KB</small>
+<small><em>polymer.min.js</em> – {{ site.polymer.size }}Ko</small>
 <span class="bar red"></span>
 
-<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
-<span class="bar blue" style="width: {{ site.size_min / 138 * 100 }}%"></span>
+<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}Ko</span></small>
+<span class="bar blue" style="width: {{ site.size_min | divided_by: site.polymer.size | times: 100 }}%"></span>
 
 On parle des Web components comme le [roi de tous les défis du polyfilling](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/) et c'est pourquoi Polymer requiert une telle quantité de code.
 

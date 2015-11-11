@@ -59,18 +59,11 @@ var tags = riot.mount('div#main', 'my-tag', api)
 Monte un tag personnalisé nommé `tagName` sur le noeud `domNode` en passant des données optionnelles avec `opts`. Par exemple:
 
 ```
-// monte le tag personnalisé "users" sur le noeud DOM donné avec l'objet optionnel api
+// monte le tag personnalisé "users" sur le noeud #slide avec l'objet api en options
 riot.mount(document.getElementById('slide'), 'users', api)
 ```
 
 @returns - retourne la liste des [instances de tags](#tag-instance) montées
-
-### <a name="mount-to"></a> riot.mountTo(domNode, tagName, [opts])
-
-Cette méthode est dépréciée depuis la version *v2.0.11*. C'est la même chose que `riot.mount(domNode, tagName, [opts])`.
-
-
-
 
 ## Interprétation du tag
 
@@ -334,7 +327,7 @@ sera compilé comme ceci:
 
 ## Evénements
 
-Chaque instance de tag est [observable](#observable) donc vous pouvez utiliser les méthodes `on` et `one` pour réagir aux événements survenant sur l'instance de tag. Voici une liste des événements supportés:
+Chaque instance de tag est [observable](./observable) donc vous pouvez utiliser les méthodes `on` et `one` pour réagir aux événements survenant sur l'instance de tag. Voici une liste des événements supportés:
 
 
 - "update" – déclenché juste avant que le tag soit mis à jour. permet de recalculer les données de contexte avant que les expressions soient mises à jour.
@@ -383,7 +376,6 @@ Crée un nouveau tag personnalisé "manuellement" sans le compilateur.
 - `css` est le style du tag (facultatif)
 - `attrs` est une String listant les attributs du tag (facultatif)
 - `constructor` est la fonction d'initialisation appelée avant que les expressions du tag soient calculées et que le tag soit monté
-
 
 #### Exemple
 
@@ -438,6 +430,46 @@ riot.tag('tag-name', my_tmpl.innerHTML, function(opts) {
 </script>
 ```
 
+### riot.Tag(impl, conf, innerHTML)
+
+<span class="tag red">expérimental</span>
+
+Dans riot v2.3, nous avons donné accès au constructeur interne Tag afin de vous permettre de créer des tags personnalisés par des moyens plus créatifs.
+
+- `impl`
+  - `tmpl` template du tag
+  - `fn(opts)` fonction callback appelée lors de l'événement mount
+  - `attrs` attributs HTML du tag racine sous forme d'objet (clé => valeur)
+- `conf`
+  - `root` noeud du DOM où sera monté le tag
+  - `opts` options du tag
+  - `isLoop` booléen, true si utilisé en tant que boucle
+  - `hasImpl` booléen, true si déjà inscrit via riot.tag
+  - `item` itération dans la boucle assignée à cette instance
+- `innerHTML` html pouvant être inséré en remplacement d'un tag `yield` dans le template
+
+
+Par exemple, en utilisant ES2015:
+
+```js
+
+class MyTag extends riot.Tag {
+  constructor(el) {
+    super({ tmpl: MyTag.template() }, { root: el })
+    this.msg = 'hello'
+  }
+  bye() {
+    this.msg = 'goodbye'
+  }
+  static template() {
+    return `<p onclick="{ bye }">{ msg }</p>`
+  }
+}
+
+new MyTag(document.getElementById('my-div')).mount()
+```
+
+Il n'est pas recommandé d'utiliser la méthode `riot.Tag`. Vous devriez l'utiliser seulement si vous avez besoin de certaines fonctionnalités non disponibles via les méthodes précédentes.
 
 
 

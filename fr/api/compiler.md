@@ -44,7 +44,7 @@ riot.compile('my/tags.tag', function() {
 
 Compile et exécute le `tag` donné. Par exemple:
 
-```
+```html
 <template id="mon_tag">
   <mon-tag>
     <p>Hello, World!</p>
@@ -72,7 +72,7 @@ var js = riot.compile(my_tag.innerHTML, true)
 
 Après avoir exécuté `npm install riot` , vous pouvez faire les choses suivantes:
 
-```
+```js
 var riot = require('riot')
 
 var js = riot.compile(tag)
@@ -144,4 +144,22 @@ sera compilé en:
 
 Des parseurs personnalisés pouvant être utilisés pour compiler le HTML de vos tags.
 
+Les parseurs prédéfinis sont:
+
+#### html
+- `jade`
+
+#### css
+- `stylus`
+
+#### js
+- `none` ou `javascript`
+- `livescript`
+- `typescript`
+- `es6` - (utilise `babel-core` ou `babel`)
+- `coffee` ou `coffeescript`
+
+## Changements
+
+Dans les versions précédentes, les parenthèses échappées étaient conservées, en générant du code HTML et JavaScript parfois invalide. La version actuelle les supprime à une étape antérieure, après avoir passé le tag au parseur HTML, mais avant que le code JavaScript et les expressions soient envoyées au parseur JavaScript.
 
