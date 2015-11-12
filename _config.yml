@@ -70,9 +70,17 @@ react_mini_router:
   size:    7.98
   version: 1.1.7
 
+
+# precalculated values because of {{round}} liquid filter bug
+compare:
+  react: 7.5 # react.size / size_min
+  react_router_vs_riot_router: 12.3 # react_router.size / riot_route_size_min
+  react_mini_router_vs_riot_router: 12.3 # react_router.size / riot_route_size_min
+  polymer_and_webcomponents: 12.7 # polymer_and_webcomponents_size / size_min
+
 # Languages
 translations:
   fr: v2.2.4
   ja: v2.2.3
   ru: v2.2.4
-  zh: v2.3.0
+  zh: v2.3.1
