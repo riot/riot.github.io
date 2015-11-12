@@ -141,9 +141,9 @@ Tout comme Flux, Riot est flexible et laisse les grosses décisions architecture
 Vous pouvez concevoir un système comme Flux en utilisant les observables et le routeur de Riot. En fait, une telle chose [existe déjà](https://github.com/jimsparkman/RiotControl).
 
 
-### {{ site.react.size | divided_by: site.size_min | round: 0 }} à {{ site.react_router.size | divided_by: site.riot_route_size_min | round: 0 }} fois plus gros
+### {{ site.compare.react }} fois plus gros
     
-React (v{{ site.react.version }}) est {{ site.react.size | divided_by: site.size_min | round: 0 }} fois plus gros que Riot.
+React (v{{ site.react.version }}) est {{ site.compare.react }} fois plus gros que Riot.
     
 <small><em>react.min.js</em> – {{ site.react.size }}Ko</small>
 <span class="bar red"></span>
@@ -153,7 +153,7 @@ React (v{{ site.react.version }}) est {{ site.react.size | divided_by: site.size
     
 <br>
 
-Le routeur recommandé pour React (v{{ site.react_router.version }}) est {{ site.react_router.size | divided_by: site.riot_route_size_min | round: 0 }} fois plus gros que le routeur de Riot.
+Le routeur recommandé pour React (v{{ site.react_router.version }}) est {{ site.compare.react_router_vs_riot_router }} fois plus gros que le routeur de Riot.
 
 <small><em>react-router.min.js</em> – {{ site.react_router.size }}Ko</small>
 <span class="bar red"></span>
@@ -184,9 +184,9 @@ Conceptuellement, Riot fait la même chose mais il y a des différences:
 4. Aucun moyen de réaliser le rendu côté serveur
 
 
-### {{ site.polymer_and_webcomponents_size | divided_by: site.size_min | round: 0 }} fois plus gros
+### {{ site.compare.polymer_and_webcomponents }} fois plus gros
 
-Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.version }}) est {{ site.polymer_and_webcomponents_size | divided_by: site.size_min | round: 0 }} fois plus gros que Riot
+Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.version }}) est {{ site.compare.polymer_and_webcomponents }} fois plus gros que Riot
 
 <small><em>polymer.min.js</em> – {{ site.polymer.size }}Ko</small>
 <span class="bar red"></span>
