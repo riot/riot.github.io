@@ -72,7 +72,7 @@ var js = riot.compile(my_tag.innerHTML, true)
 
 ## На сервере
 
-После того, как вы устанвите riot (`npm install riot`), вы сможете использовать следующий функционал:
+После того, как вы установите riot (`npm install riot`), вы сможете использовать следующий функционал:
 
 ```
 var riot = require('riot')
