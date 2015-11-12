@@ -142,6 +142,21 @@ riot.route.start()
 Riot不会自动 `start` 路由器。**不要忘记手动启动它**。 这也意味着你可以选择你喜欢的路由器。
 (注意：在 v2.3 之前的版本中，Riot会自动启动路由器。这个行为发生了变化)
 
+### riot.route.start(autoExec)
+
+开始监听 url 变化，同时对当前 url 执行路由。
+
+```js
+riot.route.start(true)
+```
+
+这只是对下面写法的简写形式:
+
+```js
+riot.route.start()
+riot.route.exec()
+```
+
 
 ### riot.route.stop()
 

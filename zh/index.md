@@ -140,14 +140,14 @@ Riot 标签首先被 [编译](/zh/guide/compiler/) 成标准 JavaScript，然后
 
 ### 3. 麻雀极小
 
-<small><em>polymer.min.js</em> – 138KB</small>
+<small><em>react.min.js</em> – {{ site.react.size }}KB</small>
 <span class="bar red"></span>
 
-<small><em>react.min.js</em> – 119KB</small>
-<span class="bar red" style="width: {{ 138 / 119 * 100 }}"></span>
+<small><em>polymer.min.js</em> – {{ site.polymer.size }}KB</small>
+<span class="bar red" style="width: {{ site.polymer.size | divided_by: site.react.size | times: 100 }}%"></span>
 
 <small><em>riot.min.js</em> – {{ site.size_min }}KB</small>
-<span class="bar blue" style="width: {{ site.size_min / 121 * 100 }}%"></span>
+<span class="bar blue" style="width: {{ site.size_min | divided_by: site.react.size | times: 100 }}%"></span>
 
 - 更少的bug
 - 解析更快，下载更迅速
