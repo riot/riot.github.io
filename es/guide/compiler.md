@@ -37,11 +37,11 @@ El código de la etiqueta `script` y el del archivo externo pueden contener defi
 
 Riot toma automáticamente las etiquetas internas y externas, y las compila antes de que las etiquetas sean renderizadas con una llamada a `riot.mount()`.
 
-<a name="note1">1)</a> _n.t._ La terminología de riot usa "custom tags" para nombrar sus etiquetas personalizadas. Esto crea cierta confusión con la palabra "tag" usada por HTML para nombrar el bloque básico de sus elementos. En realidad las etiquetas personalizadas de riot son componentes que combinan HTML, CSS y JavaScript, transformados por el compilador en JavaScript puro. Estos componentes, aunque similares a elementos HTML, usan un lenguaje combinado que puede "vivir" en un bloque especial de JavaScript, por lo cual en una página HTML deben insertarse dentro de un bloque <code>&lt;script&gt;</code> de tipo "riot/tag", o en un archivo externo.
+<a name="note1">1)</a> _n.t._: La terminología de riot usa "custom tags" para nombrar sus etiquetas personalizadas. Esto crea cierta confusión con la palabra "tag" usada por HTML para nombrar el bloque básico de sus elementos. En realidad las etiquetas personalizadas de riot son componentes que combinan HTML, CSS y JavaScript, transformados por el compilador en JavaScript puro. Estos componentes, aunque similares a elementos HTML, usan un lenguaje combinado que puede "vivir" en un bloque especial de JavaScript, por lo cual en una página HTML deben insertarse dentro de un bloque `<script>` de tipo "riot/tag", o en un archivo externo.
 
 ### Acceso a instancias de las etiquetas
 
-Si está cargando etiquetas con `script src` y desea tener acceso a las etiquetas montadas, necesita envolver la llamada con ` riot.compile` de la siguiente manera:
+Si está cargando etiquetas con `script src` y desea tener acceso a las etiquetas montadas, necesita envolver la llamada con `riot.compile` de la siguiente manera:
 
 ```html
 <script>

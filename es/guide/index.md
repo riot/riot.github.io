@@ -7,7 +7,7 @@ title: Etiquetas personalizadas
 
 ## Ejemplo
 
-Las etiquetas personalizadas Riot son los bloques de construcción para las interfaces de usuario. Ellas representan la parte visual de la aplicación (<dfn lang="es">View</dfn> en el modelo MVC). Comencemos con un ejemplo <abbr title="El típico “Cosas por hacer”, o “To Do”, en inglés)">TODO</abbr> extendido que destaca varias características de Riot:
+Las etiquetas personalizadas (<dfn lang="en">custom tags</dfn>) de Riot son los bloques de construcción para la interfaz de usuario. Ellas representan la parte visual de la aplicación (<dfn lang="es">View</dfn> en el modelo MVC). Comencemos con un ejemplo <abbr title="El típico “Cosas por hacer”, o “To Do”, en inglés)">TODO</abbr> extendido que destaca varias características de Riot:
 
 ```html
 <todo>
@@ -64,15 +64,15 @@ Una etiqueta Riot es una combinación de diseño (HTML) y lógica (JavaScript). 
 
 * Primero se define el HTML y la lógica es encerrada dentro de una etiqueta `<script>` opcional. *nota: la etiqueta script no se puede utilizar en definiciones de etiquetas dentro del cuerpo del documento, solamente en archivos de .tag externos*
 * Sin la etiqueta `<script>`, el código JavaScript inicia donde la última etiqueta HTML termina.
-* Las etiquetas personalizadas pueden estar vacías, o contener solamente HTML o JavaScript.
+* Las etiquetas personalizadas pueden estar vacías, o contener HTML o JavaScript solamente.
 * Las comillas son opcionales: `<foo bar={ baz }>` se convierte a `<foo bar="{ baz }">`.
 * Se soporta la sintaxis de métodos ES6: `methodName()` se convierte a `this.methodName = function()` y la variable `this` siempre apunta a la instancia de la etiqueta actual.
 * Está disponible un sintáxis abreviada para nombres de clases: `class={ completed: done }` se renderiza a `class="completed"` cuendo el valor de `done` es verdadero.
-* Los atributos booleanos (checked, selected, etc.) son ignorados cuando el valor de la expresión es falso o vacío: `<input checked={ undefined }>` se convierte a `<input>`.
-* Todos los nombres de los atributos *deben estar en minúsculas*. Esto es debido a las especificaciones de los navegadores.
-* Se soportan etiquetas cerradas: `<div/>` es igual a `<div></div>`. Las "etiquetas abiertas" conocidas, como `<br>`, `<hr>`, `<img>` o `<input>` se dejarán siempre abiertas después la compilación.
-* Las etiquetas personalizadas necesitan cerrarse siempre (finalizada con '/>' o con su etiqueta de cierre).
-* Las etiquetas HTML estándar (`label`, `table`, `a`, etc.) también pueden personalizarse, pero no es necesariamente algo sabio que hacer.
+* Los atributos booleanos (checked, selected, etc.) se ignoran cuando el valor de la expresión es falso o vacío: `<input checked={ undefined }>` se convierte a `<input>`.
+* Todos los nombres de los atributos *deben estar en minúsculas*. Esto se debe a las especificaciones de los navegadores.
+* Se soportan etiquetas cerradas: `<div/>` es igual a `<div></div>`. Las "etiquetas abiertas" conocidas, como `<br>`, `<hr>`, `<img>` o `<input>` se dejan siempre abiertas después la compilación.
+* Las etiquetas personalizadas necesitan cerrarse siempre (finalizarse con `/>` o con su etiqueta de cierre).
+* Las etiquetas HTML estándar (`label`, `table`, `a`, etc.) también pueden personalizarse, pero no es necesariamente una buena idea.
 
 
 La definición de una etiqueta en archivos .tag siempre inicia al principio de una línea:
@@ -92,7 +92,7 @@ La definición de una etiqueta en archivos .tag siempre inicia al principio de u
   </my-tag>
 ```
 
-Las definiciones de etiqueta en línea (en el cuerpo del documento) deben ser indentadas adecuadamente, con todas las etiquetas personalizadas igualmente indentadas a nivel más bajo, no se recomienda mezclar tabuladores y espacios.
+Las definiciones de etiqueta en línea (en el cuerpo del documento) deben ser indentadas adecuadamente, con todas las etiquetas personalizadas igualmente indentadas un nivel más, no se recomienda mezclar tabuladores y espacios.
 
 ### Sin etiqueta script
 
@@ -110,40 +110,40 @@ Puede omitir la etiqueta `<script>`:
 </todo>
 ```
 
-En cuyo caso, la lógica inicia después de la última etiqueta HTML. Este "sintaxis abierta" se usa comúnmente en los ejemplos en este sitio web.
+En cuyo caso, la lógica inicia después de la última etiqueta HTML. Esta "sintaxis abierta" se usa comúnmente en los ejemplos en este sitio web.
 
 
 ## Preprocesador
 
-You can specify a pre-processor with `type` attribute. For example:
+Usted puede especificar un preprocesador con el atributo `type`. Por ejemplo:
 
 ```html
 <my-tag>
   <script type="coffee">
-    # your coffeescript logic goes here
+    # su lógica coffeescript va aquí
   </script>
 </my-tag>
 ````
 
-Currently available options are "coffee", "typescript", "es6" and "none". You can also prefix the language with "text/", such as "text/coffee".
+Las opciones disponibles actualmente son "coffee", "typescript", "es6" y "none". También se puede prefijar el lenguaje con "text/", como en "text/coffee".
 
-See [pre processors](/guide/compiler/#pre-processors) for more details.
+Vea [preprocesadores](/guide/compiler/#Preprocesadores) para mayores detalles.
 
 
-## Tag styling
+## Estilado de las etiquetas
 
-You can put a `style` tag inside. Riot.js automatically takes it out and injects it into `<head>`.
+Puede colocar una etiqueta `style` dentro. Riot.js la remueve y la inyecta en la cabecera de la página (el elemento `<head>`) automáticamente.
 
 ```html
 <todo>
 
-  <!-- layout -->
+  <!-- diseño -->
   <h3>{ opts.title }</h3>
 
   <style>
     todo { display: block }
     todo h3 { font-size: 120% }
-    /** other tag specific styles **/
+    /** otros estilos específicos a la etiqueta "todo" **/
   </style>
 
 </todo>
@@ -151,166 +151,165 @@ You can put a `style` tag inside. Riot.js automatically takes it out and injects
 
 ### Scoped CSS
 
-[Scoped CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) is also available. The example below is equivalent to the first one.
+Tambiés está disponible [Scoped CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope). El ejemplo de abajo es equivalente al anterior:
 
 ```html
 <todo>
 
-  <!-- layout -->
+  <!-- diseño -->
   <h3>{ opts.title }</h3>
 
   <style scoped>
     :scope { display: block }
     h3 { font-size: 120% }
-    /** other tag specific styles **/
+    /** otros estilos específicos a la etiqueta "todo" **/
   </style>
 
 </todo>
 ```
 
-This happens once, no matter how many times the tag is initialized.
+Esto sucede una sola vez, no importa cuántas veces se inicialice la etiqueta.
 
-To make it easier to override the CSS you can specify where in the `<head>` Riot should inject tag styles:
+Para hacer más fácil la sobreescritura de CSS, se puede especificar en qué lugar del `<head>` Riot debe inyectar los estilos de la etiqueta:
 
 ```html
 <style type="riot"></style>
 ```
 
-Example use case would be to insert tag styles from a component library after normalize.css but before your website's theme CSS allowing you to override the library's default styling.
+Un ejemplo de su uso sería insertar los estilos de la etiqueta desde una biblioteca de componentes, después de normalize.css pero antes del CSS del tema de su sitio web, lo que le permitiría anular los estilos por defecto de la biblioteca.
 
-## Mounting
+## Montaje
 
-Once a tag is created you can mount it on the page as follows:
+Una vez que se crea una etiqueta, se puede montar en la página de la siguiente manera:
 
 
 ```html
 <body>
 
-  <!-- place the custom tag anywhere inside the body -->
+  <!-- coloque la etiqueta personalizada en cualquier lugar dentro del cuerpo -->
   <todo></todo>
 
-  <!-- include riot.js -->
+  <!-- incluya riot.js -->
   <script src="riot.min.js"></script>
 
-  <!-- include the tag -->
+  <!-- incluya la etiqueta -->
   <script src="todo.js" type="riot/tag"></script>
 
-  <!-- mount the tag -->
+  <!-- monte la etiqueta -->
   <script>riot.mount('todo')</script>
 
 </body>
 ```
 
-Custom tags inside the `body` of the page needs to be closed normally: `<todo></todo>` and self-closing: `<todo/>` is not supported.
+Las etiquetas personalizadas dentro del `body` de la página necesitan cerrarse normalmente: `<todo></todo>`. El cierre abreviado, como `<todo/>`, no está soportado.
 
-
-Some example uses of the mount method:
+Algunos ejemplos del uso del método mount:
 
 ```js
-// mount all custom tags on the page
+// monta todas las etiquetas personalizadas en la página
 riot.mount('*')
 
-// mount an element with a specific id
+// monta un elemento con id específico
 riot.mount('#my-element')
 
-// mount selected elements
+// monta los elementos seleccionados
 riot.mount('todo, forum, comments')
 ```
 
-A document can contain multiple instances of the same tag.
+Un documento puede contener múltiples instancias de la misma etiqueta.
 
 
-### Accessing DOM elements
+### Accediendo a elementos DOM
 
-Riot gives you access to elements that have `name` attributes directly under the `this` keyword, and plenty of shorthand property-methods like the `if="{...}"` attribute, but occasionally you need to reference and touch pieces of HTML which don't really fit inside those prebaked functions.
+Riot le da acceso a elementos que tienen un atributo `name` directamente por medio de la palabra clave `this`, y varias propiedades y métodos abreviados como el atributo `if="{...}"`, pero en ocasiones necesitará referenciar y llegar a piezas HTML que no pueden ser accedidas por medio de las funciones predefinidas.
 
 
-### How to use jQuery, Zepto, querySelector, etc...
+### Cómo usar jQuery, Zepto, querySelector, etc...
 
-If you need to access the DOM inside Riot, you'll want to take a look at the [Tag Lifecycle](#tag-lifecycle) and notice that the DOM elements aren't instantiated until the `update()` event first fires, meaning any attempt to select an element before then will fail.
+Si necesita acceder al DOM dentro de Riot, querrá echar un vistazo al [ciclo de vida de la etiqueta](#tag-lifecycle). Notará que los elementos DOM no son instanciados hasta después de dispararse el evento `update()`, lo que origina que falle cualquier intento de seleccionar un elemento antes de este evento.
 
 ```html
 <example-tag>
-  <p id="findMe">Do I even Exist?</p>
+  <p id="findMe">¿Debo siquiera existir?</p>
 
   <script>
   var test1 = document.getElementById('findMe')
-  console.log('test1', test1)  // Fails
+  console.log('test1', test1)  // Falla
 
   this.on('update', function(){
     var test2 = document.getElementById('findMe')
-    console.log('test2', test2) // Succeeds
+    console.log('test2', test2) // Tiene éxito
   })
   </script>
 </example-tag>
 ```
 
-You probably don't want to run whatever you're attempting to retrieve on every update. Instead you'll most likely want to run on the `mount` event.
+Es probable que no desee ejecutar lo que esté intentando hacer en cada actualización. En su lugar, lo más probable desee ejecutarlo en el evento `mount`.
 
 ```html
 <example-tag>
-  <p id="findMe">Do I even Exist?</p>
+  <p id="findMe">¿Debo siquiera existir?</p>
 
   <script>
   var test1 = document.getElementById('findMe')
-  console.log('test1', test1)  // Fails
+  console.log('test1', test1)  // Falla
 
   this.on('update', function(){
     var test2 = document.getElementById('findMe')
-    console.log('test2', test2) // Succeeds, fires on every update
+    console.log('test2', test2) // Tiene éxito, se ejecuta en cada actualización
   })
 
   this.on('mount', function(){
     var test3 = document.getElementById('findMe')
-    console.log('test3', test3) // Succeeds, fires once (per mount)
+    console.log('test3', test3) // Tiene éxito, se ejecuta una sola vez (por montaje)
   })
   </script>
 </example-tag>
 ```
 
-### Contexted DOM query
+### Consulta DOM contextual
 
-Now that we know how to get DOM elements by waiting for the `update` or `mount` events, we can make this useful by also adding a context to our element queries to the `root element` (the riot tag we're creating).
+Ahora que sabemos cómo obtener elementos DOM esperando eventos `update` o `mount`, podemos hacer esto más útil agregando como contexto a nuestras consultas el elemento raíz (el <dfn lang="en">`root element`</dfn>, la etiqueta riot que estamos creando).
 
 ```html
 <example-tag>
-  <p id="findMe">Do I even Exist?</p>
-  <p>Is this real life?</p>
-  <p>Or just fantasy?</p>
+  <p id="findMe">¿Debo siquiera existir?</p>
+  <p>¿Es esta la vida real?</p>
+  <p>¿O sólo una fantasía?</p>
 
   <script>
   this.on('mount', function(){
-    // Contexted jQuery
+    // jQuery contextual
     $('p', this.root)
 
-    // Contexted Query Selector
+    // Selector de consulta contextual
     this.root.querySelectorAll('p')
   })
   </script>
 </example-tag>
 ```
 
-### Options
+### Opciones
 
-You can pass options for tags in the second argument
+Puede pasar opciones para las etiquetas en el segundo argumento
 
 ```html
 <script>
-riot.mount('todo', { title: 'My TODO app', items: [ ... ] })
+riot.mount('todo', { title: 'Mi aplicación TODO', items: [ ... ] })
 </script>
 ```
 
-The passed data can be anything, ranging from a simple object to a full application API. Or it can be a Flux store. Depends on the designed architecture.
+Los datos pasados pueden ser cualquier cosa, desde un simple objeto hasta una API de aplicación completa. O puede ser un depósito <dfn lang="en">Flux</dfn>. Depende de la arquitectura diseñada.
 
-Inside the tag the options can be referenced with the `opts` variable as follows:
+Dentro de la etiqueta las opciones pueden referenciarse con la variable `opts` de la siguiente manera:
 
 ```html
 <my-tag>
 
-  <!-- Options in HTML -->
+  <!-- Opciones en HTML -->
   <h3>{ opts.title }</h3>
 
-  // Options in JavaScript
+  // Opciones en JavaScript
   var title = opts.title
 
 </my-tag>
@@ -319,12 +318,12 @@ Inside the tag the options can be referenced with the `opts` variable as follows
 
 ### Mixins
 
-Mixins provide an easy way to share functionality across tags. When a tag is compiled by riot, any defined mixins are added and available to use in the tag.
+Los <dfn lang="en">Mixins</dfn> proporcionan una forma fácil de compartir funcionalidad a través de las etiquetas. Cuando una etiqueta es compilada por riot, los mixins definidos se añaden y están disponibles para su uso en la etiqueta.
 
 ```js
 var OptsMixin = {
   init: function() {
-    this.on('updated', function() { console.log('Updated!') })
+    this.on('updated', function() { console.log('¡Actualizado!') })
   },
 
   getOpts: function() {
@@ -345,17 +344,17 @@ var OptsMixin = {
 </my-tag>
 ```
 
-In this example you are giving any instance of the `my-tag` Tag the `OptsMixin` which provides `getOpts` and `setOpts` methods. `init` method is special one which can initialize the mixin when it's loaded to the tag. (`init` method is not accessible from the tag its mixed in)
+En este ejemplo, usted está dando a cualquier instancia de la etiqueta `my-tag` el mixin `OptsMixin` que proporciona los métodos `setOpts` y `getOpts`. El método especial `init` puede inicializar el mixin cuando se carga a la etiqueta (el método `init` no es accesible desde la etiqueta en que fue insertado).
 
 ```js
 var my_tag_instance = riot.mount('my-tag')[0]
 
-console.log(my_tag_instance.getOpts()) // will log out any opts that the tag has
+console.log(my_tag_instance.getOpts()) // registrará las opciones que tenga la etiqueta
 ```
 
-Tags will accept any object -- `{'key': 'val'}` `var mix = new function(...)` -- and will error out when any other type is passed to it.
+Las etiquetas aceptarán cualquier objeto -- `{'key': 'val'}` `var mix = new function(...)` -- y generarán un error cuando les sea pasado cualquier otro tipo.
 
-The `my-tag` definition now has a `getId` method added to it along with anything defined in the `OptsMixin` except for the `init` function.
+La definición de `my-tag` ahora tiene un método `getId` agregado junto con todos los definidos en el mixin `OptsMixin`, a excepción de la función `init`.
 
 ```js
 function IdMixin() {
@@ -373,17 +372,17 @@ var id_mixin_instance = new IdMixin()
 </my-tag>
 ```
 
-By being defined on the tag level, mixins not only extend the functionality of your tag, but also allows for a repeatable interface. Every time a tag is mounted, even sub-tags, the instance will have the mixed-in code.
+Al estar definidos en el nivel de la etiqueta, los mixins no sólo extienden la funcionalidad de su etiqueta, sino que también permiten una interfaz repetible. Cada vez que se monta una etiqueta, incluso sub-etiquetas, la instancia tendrá el código de los mixins.
 
-### Sharing mixin
+### Compartiendo mixins
 
-To share the mixins over files or projects, `riot.mixin` API is provided. You can register your mixin globally like this:
+Para compartir los mixins en archivos o proyectos, se proporciona la API `riot.mixin`. Puede registrar su mixin a nivel global así:
 
 ```js
 riot.mixin('mixinName', mixinObject)
 ```
 
-To load the mixin to the tag, use `mixin()` method with the key.
+Para cargar el mixin a la etiqueta, use el método `mixin()` con la llave (el nombre del mixin).
 
 ```html
 <my-tag>
@@ -394,48 +393,48 @@ To load the mixin to the tag, use `mixin()` method with the key.
 ```
 
 
-### Tag lifecycle
+### Ciclo de vida de las etiquetas
 
-A tag is created in following sequence:
+Una etiqueta se crea en la siguiente secuencia:
 
-1. Tag is constructed
-2. Tag's JavaScript logic is executed
-3. HTML expressions are calculated and "update" event is fired
-4. Tag is mounted on the page and "mount" event is fired
+1. Se construye la etiqueta
+2. Se ejecuta la lógica JavaScript de la etiqueta
+3. Se computan las expresiones HTML y se dispara el evento "update"
+4. La etiqueta se monta en la página y se dispara el evento "mount"
 
-After the tag is mounted the expressions are updated as follows:
+Después de montar la etiqueta, las expresiones se actualizan de la siguiente manera:
 
-1. Automatically after an event handler is called. (unless you set e.preventUpdate to true in your event handler) For example the `toggle` method in the above example.
-2. When `this.update()` is called on the current tag instance
-3. When `this.update()` is called on a parent tag, or any parent upwards. Updates flow uni-directionally from parent to child.
-4. When `riot.update()` is called, which globally updates all expressions on the page.
+1. Automáticamente después de que un controlador es llamado (a menos que establezca e.preventUpdate en true en su controlador de eventos).
+2. Cuando `this.update()` es llamado en la instancia de la etiqueta actual.
+3. Cuando `this.update()` es llamado en una etiqueta de un nivel superior. Las actualizaciones fluyen uni-direccionalmente, de las etiquetas "madre" a las hijas.
+4. Cuando `riot.update()` es llamado, lo cual actualiza globalmente todas las expresiones en la página.
 
-The "update" event is fired every time the tag is updated.
+El evento "update" se dispara cada vez que la etiqueta se actualiza.
 
-Since the values are calculated before mounting there are no surprise issues such as failed `<img src={ src }>` calls.
+Dado que los valores se calculan antes del montaje, no hay problemas sorpresivos como llamadas `<img src={ src }>` fallidas.
 
 
-### Listening to lifecycle events
+### Escuchando los eventos del ciclo de vida
 
-You can listen to various lifecyle events inside the tag as follows:
+Puede escuchar varios eventos del ciclo de vida dentro de la etiqueta de la siguiente manera:
 
 
 ```js
 <todo>
 
   this.on('mount', function() {
-    // right after tag is mounted on the page
+    // justo después de que la etiqueta se monta en la página
   })
 
   this.on('update', function() {
-    // allows recalculation of context data before the update
+    // permite recalcular los datos del contexto antes de la actualización
   })
 
   this.on('unmount', function() {
-    // when the tag is removed from the page
+    // cuando la etiqueta se remueve de la página
   })
 
-  // curious about all events ?
+  // ¿curiosidad por todos los eventos?
   this.on('mount update unmount', function(eventName) {
     console.info(eventName)
   })
@@ -443,45 +442,45 @@ You can listen to various lifecyle events inside the tag as follows:
 </todo>
 ```
 
-You can have multiple event listeners for the same event. See [observable](/api/observable/) for more details about events.
+Puede tener varios escuchas de eventos para el mismo evento. Ver [observable](/api/observable/) para más detalles sobre los eventos.
 
 
-## Expressions
+## Expresiones
 
-HTML can be mixed with expressions that are enclosed in curly braces:
+Su HTML puede ser mezclado con expresiones que se encierran entre llaves:
 
 ```js
-{ /* my_expression goes here */ }
+{ /* mi_expresion va aquí */ }
 ```
 
-Expressions can set attributes or nested text nodes:
+Las expresiones pueden establecer atributos o nodos de texto anidados:
 
 ```html
-<h3 id={ /* attribute_expression */ }>
-  { /* nested_expression */ }
+<h3 id={ /* atributo_como_expresion */ }>
+  { /* expresion_anidada */ }
 </h3>
 ```
 
-Expressions are 100% JavaScript. A few examples:
+Las expresiones son 100% JavaScript. Unos cuantos ejemplos:
 
 ```js
-{ title || 'Untitled' }
-{ results ? 'ready' : 'loading' }
+{ title || 'Sin título' }
+{ results ? 'preparado' : 'cargando' }
 { new Date() }
-{ message.length > 140 && 'Message is too long' }
+{ message.length > 140 && 'El mansaje es demasiado largo' }
 { Math.round(rating) }
 ```
 
-The goal is to keep the expressions small so your HTML stays as clean as possible. If your expression grows in complexity consider moving some of logic to the "update" event. For example:
+El objetivo es mantener las expresiones pequeñas, de tal forma que su código HTML se mantenga lo más limpio posible. Si su expresión crece en complejidad, considere trasladar algo de lógica al evento "update". Por ejemplo:
 
 
 ```html
 <my-tag>
 
-  <!-- the `val` is calculated below .. -->
+  <!-- `val` se calcula abajo .. -->
   <p>{ val }</p>
 
-  // ..on every update
+  // ..en cada actualización
   this.on('update', function() {
     this.val = some / complex * expression ^ here
   })
@@ -489,64 +488,66 @@ The goal is to keep the expressions small so your HTML stays as clean as possibl
 ```
 
 
-### Boolean attributes
+### Atributos booleanos
 
-Boolean attributes (checked, selected etc..) are ignored when the expression value is falsy:
+Los atributos booleanos (checked, selected, etc.) se ignoran cuando el valor de la expresión es falso[<sup>(1)</sup>](#note1):
 
 `<input checked={ null }>` becomes `<input>`.
 
 W3C states that a boolean property is true if the attribute is present at all — even if the value is empty of `false`.
 
-The following expression does not work:
+<a name="note1">1)</a> _n.t._: <dfn lang="en">falsy</dfn> en la documentación original en inglés, es cualquier valor cuya comprobación en JavaScript devuelve falso, lo que incluye null, undefined y cadenas de caracteres vacías.
+
+La siguiente expresión no funciona:
 
 ```html
 <input type="checkbox" { true ? 'checked' : ''}>
 ```
 
-since only attribute and nested text expressions are valid. Riot detects 44 different boolean attributes.
+ya que solamente se reconocen los atributos y las expresiones de texto anidadas. Riot detecta 44 atributos booleanos diferentes.
 
 
-### Class shorthand
+### Atajos de clases
 
-Riot has a special syntax for CSS class names. For example:
+Riot posee una sintaxis especial para nombres de clases CSS. Por ejemplo:
 
 ```html
-<p class={ foo: true, bar: 0, baz: new Date(), zorro: 'a value' }></p>
+<p class={ foo: true, bar: 0, baz: new Date(), zorro: 'un valor' }></p>
 ```
 
-evaluates to "foo baz zorro". Property names whose value is truthful are appended to the list of class names. Of course you can use this notation in other places than class names if you find a suitable use case.
+se evalúa a "foo baz zorro". Los nombres de las propiedades cuyo valor es verdadero se agrega a la lista de nombres de clase. Por supuesto, puede utilizar esta notación en otros lugares además de los nombres de clase, si encuentra un uso adecuado.
 
 
 ### Printing brackets
 
-You can output an expression without evaluation by escaping the opening brace:
+Puede generar una salida a una expresión sin evaluarla escapando las llaves:
 
-`\\{ this is not evaluated \\}` outputs `{ this is not evaluated }`
+`\\{ esto no es evaluado \\}` genera `{ esto no es evaluado }`
 
 
-### Customizing curly braces
+### Personalizando las llaves
 
-You are free to customize the braces to your liking. For example:
+Usted tiene la libertad de personalizar las llaves a su gusto. Por ejemplo:
 
 ```js
 riot.settings.brackets = '${ }'
 riot.settings.brackets = '\{\{ }}'
 ```
 
-The start and end is separated with a space character.
+El inicio y el final se separan con un carácter de espacio.
 
-When using [pre-compiler](/guide/compiler/#pre-compilation) you'll have to set `brackets` option there as well.
+Cuando se utiliza la [compilación previa](/guide/compiler/#compilación-previa) se deberá configurar la opción `brackets` allí también.
 
 
 
 ### Etc
 
-Expressions inside `style` tags are ignored.
+Se ignoran las expresiones dentro de etiquetas `style`.
 
 
-### Render unescaped HTML
+### Renderizado de HTML sin escapar
 
-Riot expressions can only render text values without HTML formatting. However you can make a custom tag to do the job. For example:
+Las expresiones de Riot sólo pueden representar valores de texto sin formato HTML. Sin embargo, se puede crear una etiqueta personalizada para renderizar HTML. Por ejemplo:
 
 ```html
 <raw>
@@ -556,25 +557,25 @@ Riot expressions can only render text values without HTML formatting. However yo
 </raw>
 ```
 
-After the tag is defined you can use it inside other tags. For example
+Después de definir la etiqueta, ésta se puede utilizar dentro de otras etiquetas. Por ejemplo:
 
 ```html
 <my-tag>
-  <p>Here is some raw content: <raw content="{ html }"/> </p>
+  <p>He aquí un contenido sin formato: <raw content="{ html }"/> </p>
 
-  this.html = 'Hello, <strong>world!</strong>'
+  this.html = 'Hola, <strong>mundo!</strong>'
 </my-tag>
 ```
 
-[demo on jsfiddle](http://jsfiddle.net/23g73yvx/)
+[demo en jsfiddle](http://jsfiddle.net/23g73yvx/)
 
-<span class="tag red">warning</span> this could expose the user to XSS attacks so make sure you never load data from an untrusted source.
+<span class="tag red">advertencia</span> esto podría exponer al usuario a ataques XSS, así que asegúrese de que nunca cargar datos desde fuentes no confiables.
 
 
 
-## Nested tags
+## Etiquetas anidadas
 
-Let's define a parent tag `<account>` and with a nested tag `<subscription>`:
+Vamos a definir una etiqueta principal `<account>` y una etiqueta anidada `<subscription>`:
 
 
 ```html
@@ -586,19 +587,19 @@ Let's define a parent tag `<account>` and with a nested tag `<subscription>`:
 <subscription>
   <h3>{ opts.plan.name }</h3>
 
-  // Get JS handle to options
+  // lee los valores de las opciones
   var plan = opts.plan,
       show_details = opts.show_details
 
-  // access to the parent tag
+  // accede a la etiqueta principal
   var parent = this.parent
 
 </subscription>
 ```
 
-<span class="tag red">important</span> Note how we named the `show_details` attribute using an underscore instead of camel case, which due to browser specification would have been automatically converted to lowercase.
+<span class="tag red">importante</span> Note que nombramos el atributo `show_details` utilizando un guión en lugar de un formato [CamelCase](https://es.wikipedia.org/wiki/CamelCase) que, debido a sus especificaciones, el navegador convertiría automáticamente a minúsculas.
 
-Then we mount the `account` tag to the page with a `plan` configuration option:
+Luego montamos la etiqueta `account` a la página con una opción de configuración `plan`:
 
 ```html
 <body>
@@ -610,27 +611,27 @@ riot.mount('account', { plan: { name: 'small', term: 'monthly' } })
 </script>
 ```
 
-Parent tag options are passed with the `riot.mount` method and child tag options are passed on the tag attribute.
+Las opciones de las etiquetas superiores se pasan con el método `riot.mount` y las opciones de las etiquetas anidadas se pasan en el atributo de la etiqueta.
 
-<span class="tag red">important</span> Nested tags are always declared inside a parent custom tag. They are not initialized if they are defined on the page.
+<span class="tag red">importante</span> Las etiquetas anidadas siempre se declaran dentro de una etiqueta personalizada principal (la etiqueta "madre"). No se inicializan si se definen en la página.
 
-### Nested HTML
+### HTML anidado
 
-"HTML transclusion" is a way to process the inner HTML on the page. This is achieved with a build-in `<yield>` tag. Example:
+La "Transclusión HTML" es una manera de procesar el HTML interno en la página. Esto se consigue con una etiqueta `<yield>` incorporada. Ejemplo:
 
 
-### Tag definition
+### Definición de la etiqueta
 
 ```html
 <my-tag>
-  <p>Hello <yield/></p>
-  this.text = 'world'
+  <p>Hola <yield/></p>
+  this.text = 'mundo'
 </my-tag>
 ```
 
-### Usage
+### Uso
 
-Custom tag is placed on a page with nested HTML
+La etiqueta personalizada se coloca en una página con HTML anidado
 
 ```html
 <my-tag>
@@ -638,19 +639,19 @@ Custom tag is placed on a page with nested HTML
 </my-tag>
 ```
 
-### Result
+### Resultado
 
 ```html
 <my-tag>
-  <p>Hello <b>world</b><p>
+  <p>Hola <b>mundo</b><p>
 </my-tag>
 ```
 
-See [API docs](/api/#yield) for `yield`.
+Var la documentación del [API](/api/#yield) para más detalles sobre `yield`.
 
-## Named elements
+## Elementos con nombre
 
-Elements with `name` or `id` attribute are automatically bound to the context so you'll have an easy access to them with JavaScript:
+Los elementos con un atributo `name` o `id` se incluyen automáticamente en el contexto por lo que tendrá un fácil acceso a ellos con JavaScript:
 
 ```html
 <login>
@@ -660,7 +661,7 @@ Elements with `name` or `id` attribute are automatically bound to the context so
     <button name="submit">
   </form>
 
-  // grab above HTML elements
+  // obtener los elementos HTML anteriores
   var form = this.login,
     username = this.username.value,
     password = this.password.value,
@@ -669,12 +670,12 @@ Elements with `name` or `id` attribute are automatically bound to the context so
 </login>
 ```
 
-Of course these named elements can be referred to in HTML as well: `<div>{ username.value }</div>`
+Por supuesto que estos elementos con nombre pueden referenciarse en HTML también: `<div>{ username.value }</div>`
 
 
-## Event handlers
+## Controladores de eventos
 
-A function that deals with DOM events is called an "event handler". Event handlers are defined as follows:
+Una función que se ocupa de eventos DOM es llamada un "controlador de eventos". Los controladores de eventos se definen como sigue:
 
 ```html
 <login>
@@ -682,25 +683,25 @@ A function that deals with DOM events is called an "event handler". Event handle
 
   </form>
 
-  // this method is called when above form is submitted
+  // este método se llama cuando el formulario anterior es enviado
   submit(e) {
 
   }
 </login>
 ```
 
-Attributes beginning with "on" (`onclick`, `onsubmit`, `oninput` etc...) accept a function value which is called when the event occurs. This function can also be defined dynamically with an expression. For example:
+Los atributos que comienzan con "on" (`onclick`, `onsubmit`, `oninput`, etc.) aceptan como valor una función que es llamada cuando ocurre el evento. Esta función también se puede definir de forma dinámica con una expresión. Por ejemplo:
 
 
 ```html
 <form onsubmit={ condition ? method_a : method_b }>
 ```
 
-In the function `this` refers to the current tag instance. After the handler is called `this.update()` is automatically called reflecting all the possible changes to the UI.
+En la función, `this` se refiere a la instancia de la etiqueta actual. Después de que el controlador se ejecuta, `this.update()` es llamado automáticamente, reflejando todos los posibles cambios a la interfaz de usuario.
 
-The default event handler behavior is *automatically cancelled* unless the element is a checkbox or radio button. This means that `e.preventDefault()` is already called for you, because this is what you usually want (or forget to do). You can let the browser do the default thing by returning `true` on the handler.
+El comportamiento del controlador de eventos predeterminado *se cancelará automáticamente* a menos que el elemento sea una casilla de comprobación o un botón de radio. Es decir, `e.preventDefault()` se llama implícitamente porque esto es lo que normalmente se desea (y se olvida hacer). Puede dejar que el navegador haga lo predeterminado devolviendo `true` en el controlador.
 
-For example, this submit handler will actually submit the form to the server:
+Por ejemplo, este controlador eventualmente enviará el formulario al servidor:
 
 ```js
 submit() {
@@ -710,38 +711,37 @@ submit() {
 
 
 
-### Event object
+### El objeto Event
 
-The event handler receives the standard event object as the first argument. The following properties are normalized to work across browsers:
+El controlador de eventos recibe el objeto event estándar como primer argumento. Las siguientes propiedades se normalizan para que funcionen en todos los navegadores:
 
-- `e.currentTarget` points to the element where the event handler is specified.
-- `e.target` is the originating element. This is not necessarily the same as `currentTarget`.
-- `e.which` is the key code in a keyboard event (`keypress`, `keyup`, etc...).
-- `e.item` is the current element in a loop. See [loops](#loops) for more details.
+- `e.currentTarget` apunta al elemento donde se especificó el controlador de eventos.
+- `e.target` es el elemento de origen. Este no es necesariamente el mismo que `currentTarget`.
+- `e.which` es el código de tecla en un evento de teclado (`keypress`, `keyup`, etc.).
+- `e.item` es el elemento actual en un bucle. Ver [bucles](#bucles) para mayores detalles.
 
 
-## Conditionals
+## Condicionales
 
-Conditionals let you show / hide elements based on a condition. For example:
+Las condicionales permiten mostrar u ocultar elementos basándose en una condición. Por ejemplo:
 
 ```html
 <div if={ is_premium }>
-  <p>This is for premium users only</p>
+  <p>Esto es para usuarios premium solamente</p>
 </div>
 ```
 
-Again, the expression can be just a simple property or a full JavaScript expression. The following special attributes are available:
+De nuevo, la expresión puede solamente ser una simple propiedad o una expresión JavaScript completa. Los siguientes atributos especiales están disponibles:
 
-- `show` – show the element using `style="display: ''"` when the value is true
-- `hide` – hide the element using `style="display: none"` when the value is true
-- `if` – add (true value) or remove (false value) the element from the document
+- `show` – muestra el elemento usando `style="display: ''"` cuando el valor es verdadero
+- `hide` – oculta el elemento usando `style="display: none"` cuando el valor es verdadero
+- `if` – agrega (si verdadero) o remueve (si falso) el elemento del documento.
+El operador de igualdad es `==`, y no `===`. Por ejemplo: `'una cadena' == true`.
 
-The equality operator is `==` and not `===`. For example: `'a string' == true`.
 
+## Bucles
 
-## Loops
-
-Loops are implemented with `each` attribute as follows:
+Los bucles se implementan por medio del atributo `each` como sigue:
 
 ```html
 <todo>
@@ -752,31 +752,31 @@ Loops are implemented with `each` attribute as follows:
   </ul>
 
   this.items = [
-    { title: 'First item', done: true },
-    { title: 'Second item' },
-    { title: 'Third item' }
+    { title: 'Primer elemento', done: true },
+    { title: 'Segundo elemento' },
+    { title: 'Tercer elemento' }
   ]
 </todo>
 ```
 
-The element with the `each` attribute will be repeated for all items in the array. New elements are automatically added / created when the items array is manipulated using `push()`, `slice()` or `splice` methods for example.
+El elemento con el atributo `each` se repite para todos los elementos de la matriz. Nuevos elementos se agregan o crean automáticamente cuando la matriz `items` se manipula usando los métodos `push`, `slice`, o `splice`. Por ejemplo.
 
 
-### Context
+### El contexto
 
-A new context is created for each item. These are [tag instances](/api/#tag-instance). When loops are nested, all the children tags in the loop inherit any of their parent loop's properties and methods they themselves have `undefined`. In this way, Riot avoids overriding things that should not be overridden by the parent tag.
+Se crea un nuevo contexto para cada elemento. Este contexto es una [instancia de etiqueta](/api/#tag-instance). Cuando se anidan bucles, todas las etiquetas del bucle anidado heredan las propiedades y métodos del bucle donde anidan, y cuyo contenido (en las etiquetas anidadas) no sea `undefined`. De esta manera, riot evita que la etiqueta principal sobreescriba lo que se desea conservar.
 
-The parent can be explicitly accessed through the `parent` variable. For example:
+Se puede acceder explícitamente a la etiqueta principal a través de la variable `parent`. Por ejemplo:
 
 
 ```html
 <todo>
   <div each={ items }>
     <h3>{ title }</h3>
-    <a onclick={ parent.remove }>Remove</a>
+    <a onclick={ parent.remove }>Remover</a>
   </div>
 
-  this.items = [ { title: 'First' }, { title: 'Second' } ]
+  this.items = [ { title: 'Primero' }, { title: 'Segundo' } ]
 
   remove(event) {
 
@@ -784,71 +784,71 @@ The parent can be explicitly accessed through the `parent` variable. For example
 </todo>
 ```
 
-In the looped element everything but the `each` attribute belongs to the child context, so the `title` can be accessed directly and `remove` needs to be prefixed with `parent.` since the method is not a property of the looped item.
+En cada elemento de `items` en el bucle todo, excepto el atributo `each`, pertenece al contexto anidado, por lo que `title` se puede acceder directamente pero `remove` necesita el prefijo `parent.`, ya que el método no es una propiedad del elemento en el bucle.
 
-The looped items are [tag instances](/api/#tag-instance). Riot does not touch the original items so no new properties are added to them.
+Los elementos en el bucle son [instancias de etiquetas](/api/#tag-instance). Riot no toca los elementos originales, así que no hay nuevas propiedades se agregen a ellos.
 
 
-### Event handlers with looped items
+### Controladores de eventos con elementos en bucle
 
-Event handlers can access individual items in a collection with `event.item`. Now let's implement the `remove` function:
+Los controladores de eventos pueden acceder a los elementos individuales en una colección con `event.item`. Ahora vamos a aplicar la función `remove`:
 
 ```html
 <todo>
   <div each={ items }>
     <h3>{ title }</h3>
-    <a onclick={ parent.remove }>Remove</a>
+    <a onclick={ parent.remove }>Remover</a>
   </div>
 
-  this.items = [ { title: 'First' }, { title: 'Second' } ]
+  this.items = [ { title: 'Primero' }, { title: 'Segundo' } ]
 
   remove(event) {
 
-    // looped item
+    // elemento en el bucle
     var item = event.item
 
-    // index on the collection
+    // índice en la colección
     var index = this.items.indexOf(item)
 
-    // remove from collection
+    // remover de la colección
     this.items.splice(index, 1)
   }
 </todo>
 ```
 
-After the event handler is executed the current tag instance is updated using `this.update()` (unless you set e.preventUpdate to true in your event handler) which causes all the looped items to execute as well. The parent notices that an item has been removed from the collection and removes the corresponding DOM node from the document.
+Después de que se ejecuta el controlador de eventos, la instancia de etiqueta actual se actualiza usando `this.update()` (a menos que establezca e.preventUpdate en true en su controlador de eventos), lo que provoca que todos los elementos en el bucle se ejecuten también. La etiqueta principal nota que un elemento ha sido eliminado de la colección y remueve el nodo DOM correspondiente del documento.
 
 
-### Looping custom tags
+### Bucles en etiquetas personalizadas
 
-Custom tags can also be looped. For example:
+Las etiquetas personalizadas también pueden contener bucles. Por ejemplo:
 
 ```html
 <todo-item each="{ items }" data="{ this }"></todo-item>
 ```
 
-The currently looped item can be referenced with `this` which you can use to pass the item as an option to the looped tag.
+El elemento actual en el bucle se puede referenciar con `this`, que se puede utilizar para pasar el elemento como una opción a la etiqueta en el bucle.
 
 
-### Non-object arrays
+### Matrices que no contienen objetos
 
-The array elements need not be objects. They can be strings or numbers as well. In this case you need to use the `{ name, i in items }` construct as follows:
+Los elementos de la matriz (array) no necesitan ser objetos. Pueden ser cadenas o números también. En este caso es necesario utilizar la construcción `{name, i in items}` de la siguiente manera:
 
 
 ```html
 <my-tag>
   <p each="{ name, i in arr }">{ i }: { name }</p>
 
-  this.arr = [ true, 110, Math.random(), 'fourth']
+  this.arr = [ true, 110, Math.random(), 'cuarto']
 </my-tag>
 ```
 
-The `name` is the name of the element and `i` is the index number. Both of these labels can be anything that's best suited for the situation.
+Donde `name` es el nombre del elemento e `i` es el número del índice o posición dentro de la matriz. Ambos nombres pueden ser sustituidos por lo que sea más adecuado para la situación.
 
 
-### Object loops
+### Bucle de objeto
 
-Plain objects can also be looped. For example:
+Los objetos simples también pueden iterar. Por ejemplo:
 
 ```html
 <my-tag>
@@ -862,28 +862,28 @@ Plain objects can also be looped. For example:
 </my-tag>
 ```
 
-Object loops are not recommended since internally Riot detects changes on the object with `JSON.stringify`. The *whole* object is studied and when there is a change the whole loop is re-rendered. This can be slow. Normal arrays are much faster and only the changes are drawn on the page.
+No se recomienda iterar sobre objetos debido a que, internamente, Riot detecta cambios en el objeto con `JSON.stringify`. Se analiza el objeto *completo* y cuando hay un cambio el bucle completo es renderizado de nuevo. Esto puede ser lento. Las matrices normales son mucho más rápidas y sólo los cambios se reflejan en la página.
 
 
-## HTML elements as tags
+## Elementos HTML como etiquetas
 
-Standard HTML elements can be used as riot tags in the page body with the addition of the `riot-tag` attribute.
+Se pueden utilizar elementos HTML estándar como etiquetas riot en el cuerpo de la página, con la adición del atributo `riot-tag`.
 
 ```html
 <ul riot-tag="my-tag"></ul>
 ```
 
-This provides users with an alternative that can provide greater compatibility with css frameworks.  The tags are treated like any other custom tag.
+Esto ofrece a los usuarios una alternativa que puede proporcionar una mayor compatibilidad con los <dfn lang="en">frameworks</dfn> css. Las etiquetas son tratadas como cualquier otra etiqueta personalizada.
 
 ```js
 riot.mount('my-tag')
 ```
 
-will mount the `ul` element shown above as if it were `<my-tag></my-tag>`
+montará el elemento `ul` como si este fuese `<my-tag></my-tag>`
 
-## Server-side rendering
+## Renderizado en el Servidor
 
-Riot supports server-side rendering with Node/io.js. You can `require` tags and render them:
+Riot soporta el renderizado en el lado servidor con node/io.js. Usted puede cargar las etiquetas con `require` y renderizarlas:
 
 ```js
 var riot = require('riot')
@@ -891,7 +891,7 @@ var timer = require('timer.tag')
 
 var html = riot.render(timer, { start: 42 })
 
-console.log(html) // <timer><p>Seconds Elapsed: 42</p></timer>
+console.log(html) // <timer><p>Segundos transcurridos: 42</p></timer>
 ```
 
-Loops and conditionals *are* supported.
+Los bucles y las condicionales *están* soportadas.
