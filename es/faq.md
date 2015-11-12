@@ -12,7 +12,7 @@ Riot está en contra de la tendencia actual de código repetitivo y complejidad 
 * _n.t._ un de los significados de "riot" en inglés es "motín".
 
 ## ¿Es Riot gratuito?
-Riot es gratuito, de código abierto y licenciado bajo la licencia MIT. No hay [subvenciones adicionales por derechos de patente](https://github.com/facebook/react/blob/master/PATENTS).
+Riot es gratuito, de código abierto y distribuido bajo la licencia MIT. No hay [subvenciones adicionales por derechos de patente](https://github.com/facebook/react/blob/master/PATENTS).
 
 
 ## ¿Puedo usar Riot en producción?
@@ -25,35 +25,35 @@ Debido a que es una locura gastar tiempo de desarrollo en un navegador moribundo
 
 Statcounter [dice 2.5%](http://gs.statcounter.com/#browser_version_partially_combined-ww-monthly-201408-201507).
 
-Este navegador de baja calidad se puede ignorar con seguridad. Riot 2.0 fue lanzado con apoyo a IE8, pero desde entonces su uso ha bajado más de un 50%.
+Este navegador de baja calidad se puede ignorar con seguridad. Riot 2.0 fue lanzado con soporte para IE8, pero desde entonces su uso ha disminuido en más de un 50%.
 
 
-## Should I use dash on the tag name?
-W3C specification demands you use a dash in the tag name. Instead of `<person>` you must write `<my-person>`. Obey this rule if you care about W3C. Both work fine.
+## ¿Debo usar un guión en el nombre de la etiqueta?
+La especificación W3C demanda que usted use un guión en el nombre de la etiqueta. En lugar de `<person>` debe escribir `<my-person>`. Siga esta regla si le preocupa el W3C. Ambos modos funcionan bien.
 
 
-## Why are there no semicolons in the source code?
-Leaving out semicolons makes the code less crowded. This is aligned with our general minimalistic approach. We use single quotes for the same reason. If you contribute to Riot, please leave out semicolons and double quotes.
+## ¿Porqué no hay puntos y comas en el código fuente?
+Omitir el punto y coma hace que el código se vea más claro. Esto va de acuerdo con nuestro enfoque minimalista en general. Utilizamos comillas simples por el mismo motivo. Si usted contribuye a Riot, por favor omita puntos y comas y comillas dobles.
 
-## Why the use of evil `==` operator?
-The equality operator is good when you know how it works. We do this for example:
+## ¿Porqué usar el nefasto operador `==`?
+El operador de igualdad es bueno cuando usted sabe cómo funciona. Por ejemplo, podemos hacer esto:
 
 `node.nodeValue = value == null ? '' : value`
 
-This causes `0` and `false` to be printed but `null` and `undefined` are printed as an empty string. Exactly what we want!
+Lo que provoca que `0` y `false` sean impresos tal cual, pero `null` y `undefined` sean impresos como una cadena en blanco. ¡Exactamente lo que queremos!
 
 
-## Can I use `style` tags in a .tag file?
-Yes. You can use CSS normally inside a tag. The web component standard also has a mechanism of encapsulating of CSS. However, it's unlikely that this improves the overall manageability of your CSS.
+## ¿Puedo usar etiquetas `style` en un archivo .tag?
+Sí. Puede usar CSS normalmente dentro de una etiqueta. El estándar de componentes web también cuenta con un mecanismo de encapsulación de CSS. Sin embargo, es poco probable que esto mejore la capacidad de administración general de su CSS.
 
 
-## What's the role of jQuery?
-Riot reduces the need for jQuery. You no longer need selectors, traversing, events and manipulation features. Some features like delegated events can be useful. jQuery plugins can be used together with Riot.
+## ¿Cuál es el papel de jQuery?
+Riot reduce la necesidad de jQuery. Ya no necesita selectores, desplazamiento, eventos y características de manipulación. Algunas características como eventos delegados pueden ser útiles. Se pueden utilizar los plugins de jQuery junto con Riot.
 
 
-## Isn't `onclick` evil?
-It's not evil, it just looks "old". To have JS and HTML under the same module is more important than aesthetics. The minimal Riot syntax makes event handlers look decent.
+## ¿No es `onclick` funesto?
+No lo es, solamente se ve "viejo". El tener JS y HTML bajo el mismo módulo es más importante que lo estético. La sintaxis minimalista de Riot hace que los controladores de eventos se vean decentes.
 
-## Any future plans?
+## ¿Hay planes futuros?
 
-Sure. We mostly focus on [stability and performance](https://github.com/riot/riot/issues) and try to provide more [examples](https://github.com/riot/examples).
+Por supuesto. Nos estamos centrando, sobre todo, en [la estabilidad y el desempeño](https://github.com/riot/riot/issues) e intentamos proporcionar más [ejemplos](https://github.com/riot/examples).

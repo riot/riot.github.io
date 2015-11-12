@@ -62,58 +62,58 @@ Vea el [demo en vivo](http://muut.github.io/riotjs/demo/), examine el [código f
 
 Una etiqueta Riot es una combinación de diseño (HTML) y lógica (JavaScript). He aquí las reglas básicas:
 
-* HTML is defined first and the logic is enclosed inside an optional `<script>` tag. *note: the script tag can not be used when including tag definitions in the document body, only in external tag files*
-* Without the `<script>` tag the JavaScript starts where the last HTML tag ends.
-* Custom tags can be empty, HTML only or JavaScript only
-* Quotes are optional: `<foo bar={ baz }>` becomes `<foo bar="{ baz }">`.
-* ES6 method syntax is supported: `methodName()` becomes `this.methodName = function()` and `this` variable always points to the current tag instance.
-* A shorthand syntax for class names is available: `class={ completed: done }` renders to `class="completed"`when the value of `done` is a true value.
-* Boolean attributes (checked, selected etc..) are ignored when the expression value is falsy: `<input checked={ undefined }>` becomes `<input>`.
-* All attribute names *must be lowercase*. This is due to browser specification.
-* Self-closing tags are supported: `<div/>` equals `<div></div>`. Well known "open tags" such as `<br>`, `<hr>`, `<img>` or `<input>` are never closed after the compilation.
-* Custom tags always need to be closed (normally or self-closed).
-* Standard HTML tags (`label`, `table`, `a` etc..) can also be customized, but not necessarily a wise thing to do.
+* Primero se define el HTML y la lógica es encerrada dentro de una etiqueta `<script>` opcional. *nota: la etiqueta script no se puede utilizar en definiciones de etiquetas dentro del cuerpo del documento, solamente en archivos de .tag externos*
+* Sin la etiqueta `<script>`, el código JavaScript inicia donde la última etiqueta HTML termina.
+* Las etiquetas personalizadas pueden estar vacías, o contener solamente HTML o JavaScript.
+* Las comillas son opcionales: `<foo bar={ baz }>` se convierte a `<foo bar="{ baz }">`.
+* Se soporta la sintaxis de métodos ES6: `methodName()` se convierte a `this.methodName = function()` y la variable `this` siempre apunta a la instancia de la etiqueta actual.
+* Está disponible un sintáxis abreviada para nombres de clases: `class={ completed: done }` se renderiza a `class="completed"` cuendo el valor de `done` es verdadero.
+* Los atributos booleanos (checked, selected, etc.) son ignorados cuando el valor de la expresión es falso o vacío: `<input checked={ undefined }>` se convierte a `<input>`.
+* Todos los nombres de los atributos *deben estar en minúsculas*. Esto es debido a las especificaciones de los navegadores.
+* Se soportan etiquetas cerradas: `<div/>` es igual a `<div></div>`. Las "etiquetas abiertas" conocidas, como `<br>`, `<hr>`, `<img>` o `<input>` se dejarán siempre abiertas después la compilación.
+* Las etiquetas personalizadas necesitan cerrarse siempre (finalizada con '/>' o con su etiqueta de cierre).
+* Las etiquetas HTML estándar (`label`, `table`, `a`, etc.) también pueden personalizarse, pero no es necesariamente algo sabio que hacer.
 
 
-Tag definition in tag files always starts on the beginning of the line:
+La definición de una etiqueta en archivos .tag siempre inicia al principio de una línea:
 
 ```html
-<!-- works -->
+<!-- funciona -->
 <my-tag>
 
 </my-tag>
 
-<!-- also works -->
+<!-- también funciona -->
 <my-tag></my-tag>
 
-  <!-- this fails, because of indentation -->
+  <!-- esto falla, debido a la indentación -->
   <my-tag>
 
   </my-tag>
 ```
 
-Inline tag definitions(in document body) must be properly indented, with all custom tags equally indented at the lowest indent level, mixing of tabs and spaces is discouraged.
+Las definiciones de etiqueta en línea (en el cuerpo del documento) deben ser indentadas adecuadamente, con todas las etiquetas personalizadas igualmente indentadas a nivel más bajo, no se recomienda mezclar tabuladores y espacios.
 
-### No script tag
+### Sin etiqueta script
 
-You can leave out the `<script>` tag:
+Puede omitir la etiqueta `<script>`:
 
 ```html
 <todo>
 
-  <!-- layout -->
+  <!-- diseño -->
   <h3>{ opts.title }</h3>
 
-  // logic comes here
+  // la lógica viene aquí
   this.items = [1, 2, 3]
 
 </todo>
 ```
 
-In which case the logic starts after the last HTML tag. This "open syntax" is more commonly used on the examples on this website.
+En cuyo caso, la lógica inicia después de la última etiqueta HTML. Este "sintaxis abierta" se usa comúnmente en los ejemplos en este sitio web.
 
 
-## Pre-processor
+## Preprocesador
 
 You can specify a pre-processor with `type` attribute. For example:
 
