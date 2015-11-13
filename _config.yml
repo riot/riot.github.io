@@ -71,12 +71,12 @@ react_mini_router:
   version: 1.1.7
 
 
-# precalculated values because of {{round}} liquid filter bug
+# precalculated round values because of {{round}} liquid filter bug
 compare:
-  react: 7.5 # react.size / size_min
-  react_router_vs_riot_router: 12.3 # react_router.size / riot_route_size_min
-  react_mini_router_vs_riot_router: 12.3 # react_router.size / riot_route_size_min
-  polymer_and_webcomponents: 12.7 # polymer_and_webcomponents_size / size_min
+  react: 8 # react.size / size_min
+  react_router_vs_riot_router: 12 # react_router.size / riot_route_size_min
+  react_mini_router_vs_riot_router: 12 # react_router.size / riot_route_size_min
+  polymer_and_webcomponents: 13 # polymer_and_webcomponents_size / size_min
 
 # Languages
 translations:
