@@ -1,9 +1,9 @@
 ---
-layout: default
+layout: es
 title: Diseño de aplicaciones
 ---
 
-{% include guide-tabs.html %}
+{% include es/guide-tabs.html %}
 
 ## Herramientas, no política
 
@@ -30,7 +30,7 @@ Las extensiones pueden ser etiquetas personalizadas (componentes de <abbr title=
 
 Cuando el núcleo y los eventos se diseñan cuidadosamente, cada miembro del equipo puede desarrollar el sistema por su cuenta sin perturbar a los otros.
 
-[API de Observable](/api/observable/)
+[API de Observable](/es/api/observable/)
 
 
 ## Enrutamiento
@@ -45,7 +45,7 @@ Puede colocar lógica de enrutamiento en cualquier parte; en etiquetas personali
 
 Cada aplicación del navegador necesita enrutamiento, ya que siempre hay una URL en la barra de direcciones.
 
-[API del rúter](/api/route/)
+[API del rúter](/es/api/route/)
 
 
 ## Modularidad

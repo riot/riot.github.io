@@ -1,9 +1,9 @@
 ---
-layout: default
+layout: es
 title: El compilador
 ---
 
-{% include guide-tabs.html %}
+{% include es/guide-tabs.html %}
 
 ## Compilación en el navegador
 
@@ -58,7 +58,7 @@ La fase de compilación prácticamente no toma tiempo. Compilar una [etiqueta ti
 
 El compilador pesa sólo 3.2 kb (1.7k gzip), así que puede realizar con seguridad la compilación en el cliente en producción sin problemas en la descarga o el rendimiento.
 
-Lea el [API del compilador](/api/compiler/) para más detalles.
+Lea el [API del compilador](/es/api/compiler/) para más detalles.
 
 
 ### Demos (en inglés)
@@ -134,7 +134,7 @@ Para mayor información, escriba: `riot --help`
 
 ### Modo de observación (<dfn lang="en">Watch mode</dfn>)
 
-Se pueden observar directorios y transformar los archivos automáticamente cuando éstos cambian.
+Se pueden observar directorios y transformar los archivos automáticamente cuando estos cambian.
 
 ```sh
 # observar
@@ -151,7 +151,7 @@ riot --ext html
 ```
 
 
-## Módulo node
+### Módulo node
 
 ```js
 var riot = require('riot')

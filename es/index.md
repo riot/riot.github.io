@@ -1,27 +1,27 @@
 ---
-layout: default
+layout: es
 title: Riot.js — Una micro biblioteca para interfaz de usuario similar a React
-description: Riot le permite construir interfaces de usuario con _etiquetas_ personalizadas, usando una sintaxis simple y agradable, y un DOM virtual similar a React, pero más veloz. Riot es muy pequeño comparado a los estándares de la industria. Riot existe porque creemos que hay una clara necesidad de otra biblioteca IU.
+description: Riot le permite construir interfaces de usuario con _etiquetas_ personalizadas, usando una sintaxis simple y agradable, y un DOM virtual similar a React, pero más veloz. Riot es muy pequeño comparado con los estándares de la industria. Riot existe porque creemos que hay una clara necesidad de otra biblioteca para IU.
 ---
 
 <div id="hero">
   <img src="/img/logo/riot240x.png">
-  <h1>Una micro biblioteca para interfaz de usuario similar a React</h1>
+  <h1>Una micro biblioteca para <abbr title="Interfaz de usuario, UI (User Interface) por sus siglas en Inglés">IU</abbr> similar a React</h1>
   <h4>Etiquetas personalizadas • Sintaxis agradable • DOM virtual • Tamaño minúsculo</h4>
 
   <div id="version-slurp">
-    <a href="/download/" class="tag blue">v{{ site.version }}</a> &mdash;
-    <a href="/release-notes/">{{ site.version_slurp }}&hellip;</a>
+    <a href="/es/download/" class="tag blue">v{{ site.version }}</a> &mdash;
+    <a href="/es/release-notes/">{{ site.version_slurp }}&hellip;</a>
   </div>
 
 </div>
 
 
-# ¿Porqué necesitamos una nueva biblioteca para <abbr title="Interfaz de usuario, UI (User Interface) por sus siglas en Inglés">IU</abbr>?
+# ¿Porqué necesitamos otra biblioteca para IU?
 
-El espacio de los frentes para aplicaciones está repleto, pero honestamente, sentimos que la solución aun está "allá afuera". Creemos que Riot ofrece el balance correcto para resolver el gran rompecabezas. Mientras React parece hacerlo, tiene serios puntos débiles que Riot resuelve.
+El espacio de los frentes para aplicaciones está repleto pero, honestamente, sentimos que la solución aun está "allá afuera". Creemos que Riot ofrece el balance correcto para resolver el gran rompecabezas. Mientras React parece hacerlo, tiene serios puntos débiles que Riot resuelve.
 
-He aquí porqué necesitamos esta nueva biblioteca:
+Así que — He aquí porqué necesitamos esta nueva biblioteca:
 
 
 ## 1. Etiquetas (<dfn lang="en">tags</dfn>) personalizadas

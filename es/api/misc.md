@@ -1,10 +1,10 @@
 ---
 title: Miscelánea
-layout: default
+layout: es
 class: apidoc
 ---
 
-{% include api-tabs.html %}
+{% include es/api-tabs.html %}
 
 
 ### <a name="version"></a> riot.version

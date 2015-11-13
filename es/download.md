@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: es
 title: ¡Obtener Riot!
 base: https://raw.githubusercontent.com/riot/riot/master
 cdnjs: https://cdnjs.cloudflare.com/ajax/libs/riot
@@ -8,7 +8,7 @@ class: download
 
 # Riot v**{{ site.version }}**
 
-Vea nuestro [historial de versiones](/release-notes). Todos los archivos son de código abierto con [licencia MIT](/license/).
+Vea nuestro [historial de versiones](/es/release-notes). Todos los archivos son de código abierto con [licencia MIT](/license/).
 
 ## Descargas directas
 
@@ -73,7 +73,7 @@ Vea nuestro [historial de versiones](/release-notes). Todos los archivos son de 
 
 ## Problemas conocidos
 
-- los bucles sobre filas o celdas de una tabla con el atributo `each` no están trabajando en IE8 e IE9.
+- Los bucles sobre filas o celdas de una tabla con el atributo `each` no están trabajando en IE8 e IE9.
 
 
 ## Logotipo

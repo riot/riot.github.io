@@ -1,10 +1,10 @@
 ---
 title: Etiquetas personalizadas
-layout: default
+layout: es
 class: apidoc
 ---
 
-{% include api-tabs.html %}
+{% include es/api-tabs.html %}
 
 
 ## Montaje
@@ -13,7 +13,7 @@ class: apidoc
 
 `customTagSelector` selecciona elementos de la página y los monta con una etiqueta personalizada. Los nombres de los elementos seleccionados deben coincidir con el nombre de la etiqueta personalizada.
 
-El objeto opcional `opts` es pasado a las etiquetas para su consumo. Este puede ser cualquier cosa, desde un simple objeto a una API de aplicación completa. O puede ser un depósito <dfn lang="en">Flux</dfn>. Realmente depende de cómo quiera usted estructurar sus aplicaciones de lado cliente. Lea más acerca de las [aplicaciones Riot modulares](/guide/application-design/#modularity).
+El objeto opcional `opts` es pasado a las etiquetas para su consumo. Este puede ser cualquier cosa, desde un simple objeto a una API de aplicación completa. O puede ser un depósito <dfn lang="en">Flux</dfn>. Realmente depende de cómo quiera usted estructurar sus aplicaciones de lado cliente. Lea más acerca de las [aplicaciones Riot modulares](/es/guide/application-design/#modularidad).
 
 
 ```js
@@ -377,7 +377,7 @@ Los nombres de los métodos y propiedades anteriores están reservados para las 
 Crea una nueva etiqueta personalizada "manualmente", sin el compilador.
 
 - `tagName` - El nombre de la etiqueta
-- `html` - Es el diseño con [expresiones](/guide/#expressions)
+- `html` - Es el diseño con [expresiones](/es/guide/#expressions)
 - `css` - Es el estilo para la etiqueta (opcional)
 - `attrs` - Cadena de caracteres con los atributos para la etiqueta (opcional).
 - `constructor` - Función de inicialización llamada antes de que las expresiones de la etiqueta sean calculadas y antes de que la etiqueta sea montada
@@ -407,7 +407,7 @@ riot.tag('timer',
   })
 ```
 
-Vea el [demo timer](http://jsfiddle.net/gnumanth/h9kuozp5/) y la documentación de la API de [riot.tag](/api/#tag-instance) para más detalles y *limitaciones*.
+Vea el [demo timer](http://jsfiddle.net/gnumanth/h9kuozp5/) y la documentación de la API de [riot.tag](#tag-instance) para más detalles y *limitaciones*.
 
 
 <span class="tag red">Cuidado</span> al usar `riot.tag` no podrá disfrutar de las ventajas del compilador ni las siguientes características que no están soportadas por ésta función:

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: es
 title: Foro Riot
 id: forum-page
 ---

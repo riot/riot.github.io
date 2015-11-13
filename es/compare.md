@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: es
 title: Comparando Riot con React y Polymer
 ---
 

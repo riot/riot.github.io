@@ -1,10 +1,10 @@
 ---
 title: El compilador
-layout: default
+layout: es
 class: apidoc
 ---
 
-{% include api-tabs.html %}
+{% include es/api-tabs.html %}
 
 ## En el navegador
 
@@ -28,7 +28,7 @@ var tags = riot.mount('*')
 
 pero no podrá saber cuándo se cargan y compilan los recursos externos, y el valor de retorno es un arreglo vacío si usted tiene scripts externos. Si todos los scripts son definidos en la página, puede omitir la etapa riot.compile.
 
-Para más detalles, lea la [introducción general](/guide/compiler/) al compilador.
+Para más detalles, lea la [introducción general](/es/guide/compiler/) al compilador.
 
 ### <a name="compile-fn"></a> riot.compile(url, callback)
 

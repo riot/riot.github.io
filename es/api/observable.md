@@ -1,15 +1,15 @@
 ---
 title: Observable
-layout: default
+layout: es
 class: apidoc
 ---
 
-{% include api-tabs.html %}
+{% include es/api-tabs.html %}
 
 
 ### <a name="constructor"></a> riot.observable(el)
 
-Agrega soporte [Observer](http://en.wikipedia.org/wiki/Observer_pattern) al objeto `el` dado o, si el argumento está en blanco, crea y devuelve una nueva instancia de <dfn lang="en">Observable</dfn>. Después de esto el objeto es capaz de emitir y escuchar eventos. Por ejemplo:
+Agrega soporte [Observer](https://es.wikipedia.org/wiki/Observer_(patrón_de_diseño)) al objeto `el` dado o, si el argumento está en blanco, crea y devuelve una nueva instancia de <dfn lang="en">Observable</dfn>. Después de esto el objeto es capaz de emitir y escuchar eventos. Por ejemplo:
 
 ``` js
 function Car() {

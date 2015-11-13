@@ -1,10 +1,10 @@
 ---
 title: El rúter
-layout: default
+layout: es
 class: apidoc
 ---
 
-{% include api-tabs.html %}
+{% include es/api-tabs.html %}
 
 El rúter de Riot (<dfn lang="en">Router</dfn>) es la mínima implementación de un rúter que se puede encontrar y funciona consistentemente en todos los navegadores, incluyendo IE. Este rúter solo escucha cambios en el <dfn lang="en">hash</dfn> de la ruta <abbr title="Uniform Resource Locator, por sus siglas en inglés">URL</abbr> (la parte que sigue al caracter `#`). La mayoría de las aplicaciones de una sola página sólo tratan con el hash, si usted necesita controlar el URL completo debe usar una implementación de rúter diferente.
 
@@ -38,7 +38,7 @@ El hash puede cambiar en las siguientes formas:
 
 ### riot.route.start()
 
-Inicia la escucha de los cambios en el hash de la ventana y es llamado automáticamente cuando Riot es cargado. Típicamente, usted usa este método junto con [riot.route.stop](#route-stop). Ejemplo:
+Inicia la escucha de los cambios en el hash de la ventana y es llamado automáticamente cuando Riot es cargado. Típicamente, usted usa este método junto con [riot.route.stop](#riot-route-stop). Ejemplo:
 
 ```javascript
 riot.route.stop()  // elimina todas las funciones de retorno anteriores del rúter
@@ -47,7 +47,7 @@ riot.route.start() // lo inicia de nuevo
 
 ### riot.route.stop()
 
-Remueve las escuchas del cambio de hash, limpiando también las funciones de retorno [riot.route](#route).
+Remueve las escuchas del cambio de hash, limpiando también las funciones de retorno [riot.route](#riot-route-callback).
 
 ```javascript
 riot.route.stop()

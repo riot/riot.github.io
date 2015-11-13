@@ -1,9 +1,9 @@
 ---
-layout: default
+layout: es
 title: Etiquetas personalizadas
 ---
 
-{% include guide-tabs.html %}
+{% include es/guide-tabs.html %}
 
 ## Ejemplo
 
