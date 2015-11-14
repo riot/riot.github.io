@@ -846,7 +846,7 @@ Los elementos de la matriz (array) no necesitan ser objetos. Pueden ser cadenas 
 Donde `name` es el nombre del elemento e `i` es el número del índice o posición dentro de la matriz. Ambos nombres pueden ser sustituidos por lo que sea más adecuado para la situación.
 
 
-### Bucle de objeto
+### Bucles con objetos
 
 Los objetos simples también pueden iterar. Por ejemplo:
 
