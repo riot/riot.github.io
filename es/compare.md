@@ -9,13 +9,13 @@ Y cómo se diferencia Riot de sus primos más cercanos.
 
 ## React
 
-Riot está inspira en React y por la idea de la "cohesión". De acuerdo a los desarrolladores de Facebook:
+Riot se inspiró en React y en la idea de la "cohesión". De acuerdo a los desarrolladores de Facebook:
 
 > "Las plantillas alejan tecnologías, no preocupaciones."
 
-Respetamos esta idea. El objetivo es construir componentes reutilizables en lugar de plantillas. Al separar la lógica de las plantillas (utilizando selectores de jQuery, por ejemplo) en realidad estamos dejando fuera cosas que deberían estar juntas.
+Honramos esta idea. El objetivo es construir componentes reutilizables en lugar de plantillas. Al separar la lógica de las plantillas (utilizando selectores de jQuery, por ejemplo) en realidad estamos dejando fuera cosas que deberían estar juntas.
 
-Al combinar estas tecnologías relacionadas juntas bajo el mismo componente, el sistema se vuelve más limpio. Nuestros respetos a React por esta importante idea.
+Al combinar tecnologías relacionadas, juntas bajo el mismo componente, el sistema se vuelve más limpio. Nuestros respetos a React por esta importante idea.
 
 React funcionó bien para nosotros, y aun lo usamos en nuestro [Disqus Importer](https://importer.disqus.com/), pero nos molestaba el tamaño y la sintaxis de React (*especialmente* la sintaxis). Empezamos a pensar que podría ser más simple; tanto internamente como para el usuario.
 

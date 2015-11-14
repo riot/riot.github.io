@@ -17,7 +17,7 @@ El objeto opcional `opts` es pasado a las etiquetas para su consumo. Este puede 
 
 
 ```js
-// seleccina y monta todas las etiquetas <pricing> en la página
+// selecciona y monta todas las etiquetas <pricing> en la página
 var tags = riot.mount('pricing')
 
 // monta todas las etiquetas personalizadas con un nombre de clase .customer

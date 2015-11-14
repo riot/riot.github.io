@@ -51,7 +51,7 @@ La lista de los errores corregidos y los detalles se pueden encontrar [aquí](ht
 - [Mixins](/es/guide/#mixins)
 - Capacidad para definir atributos para el elemento raíz en la definición de la etiqueta
 - Se separa el compilador para node del compilador para el navegador
-- Se simplifica el guión de construcción usando [smash](https://github.com/mbostock/smash)
+- Se simplifica el guion de construcción usando [smash](https://github.com/mbostock/smash)
 - Se agregan hooks de pruebas Saucelabs para comprobación en múltiples navegadores
 - Se agregan hooks de Coveralls para comprobar la cobertura del código en cualquier "pull request"
 
@@ -81,7 +81,7 @@ La lista de los errores corregidos y los detalles se pueden encontrar [aquí](ht
 ## 2.0.12 *Marzo 2, 2015*
 
 - Soporte para [Scoped CSS](/es/guide/#scoped-css)
-- Accesso directo a [etiquetas anidadas](/es/api/#etiquetas-anidadas) y su API por medio de la variable `tags`. Por ejemplo: `tags.my_timer.clear()`
+- Acceso directo a [etiquetas anidadas](/es/api/#etiquetas-anidadas) y su API por medio de la variable `tags`. Por ejemplo: `tags.my_timer.clear()`
 - Las etiquetas personalizadas ahora se construyen cuando se analizan y se inicializan durante el montaje. Este es un trabajo preliminar para el próximo [sistema de plugins](https://github.com/riot/riot/issues/416) y permitirá a los plugins hacer su labor antes de la inicialización también.
 - La opción `--whitespace` del compilador para preservar finales de línea y espacios en blanco en la salida generada, algo bueno para elementos `pre` y `textarea` anidados.
 - Uso de [Karma](http://karma-runner.github.io/0.12/index.html) para pruebas en múltiples navegadores
@@ -179,7 +179,7 @@ Una actualización significativa, no compatible hacia atrás.
 ![](https://muut.com/blog/technology/riot-2.0/riot1to2.png)
 
 
-## 1.0 *April 15, 2014*
+## 1.0 *Abril 15, 2014*
 
 Se remueve la dependencia de jQuery.
 

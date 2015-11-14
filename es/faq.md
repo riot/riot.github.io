@@ -9,7 +9,7 @@ description: Preguntas y respuestas acerca de Riot, la micro-biblioteca de Inter
 ## ¿Porqué este proyecto fue llamado Riot?
 Riot está en contra de la tendencia actual de código repetitivo y complejidad innecesaria. Pensamos que una pequeña, pero potente API y una sintaxis concisa son cosas muy importantes en una biblioteca de lado cliente.
 
-* _n.t._ un de los significados de "riot" en inglés es "motín".
+* _n.t._ "riot" es "motín" en inglés, entre otros significados.
 
 ## ¿Es Riot gratuito?
 Riot es gratuito, de código abierto y distribuido bajo la licencia MIT. No hay [subvenciones adicionales por derechos de patente](https://github.com/facebook/react/blob/master/PATENTS).
@@ -18,8 +18,8 @@ Riot es gratuito, de código abierto y distribuido bajo la licencia MIT. No hay 
 ## ¿Puedo usar Riot en producción?
 Absolutamente. Este es un marco de programación maduro [adoptado a diario](https://twitter.com/search?q=riotjs).
 
-## ¿Porqué no está soportado IE8?
-Debido a que es una locura gastar tiempo de desarrollo en un navegador moribundo. De acuerdo a [W3 counter](http://www.w3counter.com/trends), solo el 1.5% está con IE8:
+## ¿Por qué no está soportado IE8?
+Porque es una locura gastar tiempo de desarrollo en un navegador moribundo. De acuerdo a [W3 counter](http://www.w3counter.com/trends), solo el 1.5% permanece con IE8:
 
 ![](/img/ie8-trend.png)
 
@@ -28,8 +28,8 @@ Statcounter [dice 2.5%](http://gs.statcounter.com/#browser_version_partially_com
 Este navegador de baja calidad se puede ignorar con seguridad. Riot 2.0 fue lanzado con soporte para IE8, pero desde entonces su uso ha disminuido en más de un 50%.
 
 
-## ¿Debo usar un guión en el nombre de la etiqueta?
-La especificación W3C demanda que usted use un guión en el nombre de la etiqueta. En lugar de `<person>` debe escribir `<my-person>`. Siga esta regla si le preocupa el W3C. Ambos modos funcionan bien.
+## ¿Debo usar un guion en el nombre de la etiqueta?
+La especificación W3C demanda que se use un guion en el nombre de la etiqueta. En lugar de `<person>`, se debe escribir `<my-person>`. Siga esta regla si le preocupa el W3C. Ambos modos funcionan bien.
 
 
 ## ¿Porqué no hay puntos y comas en el código fuente?

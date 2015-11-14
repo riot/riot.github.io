@@ -97,10 +97,10 @@ Las etiquetas Riot son [convertidas](/guide/compiler/) a JavaScript "puro" antes
 ### DOM virtual
 
 - La mínima cantidad de actualizaciones y reflujos al DOM
-- Flujo de datos de una vía: las actualizaciones y demontajes son propagados hacia abajo, del padre a los hijos
+- Flujo de datos de una vía: las actualizaciones y desmontajes son propagados hacia abajo, del padre a los hijos
 - Las expresiones son precompiladas y guardadas en caché para un alto desempeño
 - Ciclo de vida de los eventos, para un mayor control
-- Renderizado de las etiquetas en el lado servidor para aplicaciones universales (isomórficas)
+- Renderizado de las etiquetas en el lado servidor para aplicaciones universales (isomorfas)
 
 
 ### Cercano a los estándares

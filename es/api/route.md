@@ -1,5 +1,5 @@
 ---
-title: El rúter
+title: Router
 layout: es
 class: apidoc
 ---

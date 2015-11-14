@@ -76,16 +76,16 @@ La precompilación en el servidor le brinda los siguientes beneficios:
 
 - La habilidad de compilar etiquetas con su [preprocesador favorito](#preprocesadores)
 - Beneficios en el desempeño. No hay necesidad de cargar y ejecutar el compilador en el navegador
-- Aplicaciones universales (isomorfas) y la habilidad de pre-renderizar etiquetas en el servidor
+- Aplicaciones universales (isomorfas) y la habilidad de renderizar etiquetas en el servidor
 
 
-La precompilación se lleva a cabo con un ejecutable `riot`, que puede ser instalado con NPM como sigue:
+La compilación previa se lleva a cabo con un ejecutable `riot`, que puede ser instalado con NPM como sigue:
 
 ```sh
 npm install riot -g
 ```
 
-Escriba `riot --help` y asegúrese de que trabaja. Se requiere [node.js](http://nodejs.org/) instalado en su equipo.
+Escriba `riot --help` y asegúrese de que funciona. Se requiere [node.js](http://nodejs.org/) instalado en su equipo.
 
 Con la compilación previa, su HTML será algo así:
 
@@ -382,7 +382,7 @@ Una vez que haya creado su `riot.parsers` propio, podrá compilar sus etiquetas 
 
 ### Sin transformación
 
-De forma predeterminada, Riot utiliza una transcompilador (<dfn lang="en">transpiler</dfn> incorporado que simplemente permite una forma abreviada de definir métodos estilo ES6. Puede desactivar toda transformación con `--type none`:
+De forma predeterminada, Riot utiliza una transcompilador (<dfn lang="en">transpiler</dfn>) incorporado que simplemente permite una forma abreviada de definir métodos estilo ES6. Puede desactivar toda transformación con `--type none`:
 
 ```sh
 # sin preprocesador

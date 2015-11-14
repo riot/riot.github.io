@@ -55,7 +55,7 @@ Las etiquetas personalizadas (<dfn lang="en">custom tags</dfn>) de Riot son los 
 
 Las etiquetas personalizadas son [compiladas](/guide/compiler/) a JavaScript.
 
-Vea el [demo en vivo](http://muut.github.io/riotjs/demo/), examine el [código fuente](https://github.com/riot/riot/tree/gh-pages/demo), o descarge el [archivo zip](https://github.com/riot/riot/archive/gh-pages.zip).
+Vea el [demo en vivo](http://muut.github.io/riotjs/demo/), examine el [código fuente](https://github.com/riot/riot/tree/gh-pages/demo), o descargue el [archivo zip](https://github.com/riot/riot/archive/gh-pages.zip).
 
 
 ## Sintaxis de las etiquetas
@@ -67,7 +67,7 @@ Una etiqueta Riot es una combinación de diseño (HTML) y lógica (JavaScript). 
 * Las etiquetas personalizadas pueden estar vacías, o contener HTML o JavaScript solamente.
 * Las comillas son opcionales: `<foo bar={ baz }>` se convierte a `<foo bar="{ baz }">`.
 * Se soporta la sintaxis de métodos ES6: `methodName()` se convierte a `this.methodName = function()` y la variable `this` siempre apunta a la instancia de la etiqueta actual.
-* Está disponible un sintáxis abreviada para nombres de clases: `class={ completed: done }` se renderiza a `class="completed"` cuendo el valor de `done` es verdadero.
+* Está disponible un sintáxis abreviada para nombres de clases: `class={ completed: done }` se renderiza a `class="completed"` cuando el valor de `done` es verdadero.
 * Los atributos booleanos (checked, selected, etc.) se ignoran cuando el valor de la expresión es falso o vacío: `<input checked={ undefined }>` se convierte a `<input>`.
 * Todos los nombres de los atributos *deben estar en minúsculas*. Esto se debe a las especificaciones de los navegadores.
 * Se soportan etiquetas cerradas: `<div/>` es igual a `<div></div>`. Las "etiquetas abiertas" conocidas, como `<br>`, `<hr>`, `<img>` o `<input>` se dejan siempre abiertas después la compilación.
@@ -151,7 +151,7 @@ Puede colocar una etiqueta `style` dentro. Riot.js la remueve y la inyecta en la
 
 ### Scoped CSS
 
-Tambiés está disponible [Scoped CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope). El ejemplo de abajo es equivalente al anterior:
+También está disponible [Scoped CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope). El siguiente ejemplo es equivalente al anterior:
 
 ```html
 <todo>
@@ -406,7 +406,7 @@ Después de montar la etiqueta, las expresiones se actualizan de la siguiente ma
 
 1. Automáticamente después de que un controlador es llamado (a menos que establezca e.preventUpdate en true en su controlador de eventos).
 2. Cuando `this.update()` es llamado en la instancia de la etiqueta actual.
-3. Cuando `this.update()` es llamado en una etiqueta de un nivel superior. Las actualizaciones fluyen uni-direccionalmente, de las etiquetas "madre" a las hijas.
+3. Cuando `this.update()` es llamado en una etiqueta de un nivel superior. Las actualizaciones fluyen unidireccionalmente, de las etiquetas "madre" a las hijas.
 4. Cuando `riot.update()` es llamado, lo cual actualiza globalmente todas las expresiones en la página.
 
 El evento "update" se dispara cada vez que la etiqueta se actualiza.
@@ -490,13 +490,13 @@ El objetivo es mantener las expresiones pequeñas, de tal forma que su código H
 
 ### Atributos booleanos
 
-Los atributos booleanos (checked, selected, etc.) se ignoran cuando el valor de la expresión es falso[<sup>(1)</sup>](#note1):
+Los atributos lógicos, o booleanos, (checked, selected, etc.) se ignoran cuando el valor de la expresión es falso[<sup>(1)</sup>](#note1):
 
-`<input checked={ null }>` becomes `<input>`.
+`<input checked={ null }>` se convierte en `<input>`.
 
-W3C states that a boolean property is true if the attribute is present at all — even if the value is empty of `false`.
+La W3C establece que una propiedad booleana es verdadera si el atributo está presente en alguna forma — incluso si el valor está vacío o es `false`.
 
-<a name="note1">1)</a> _n.t._: <dfn lang="en">falsy</dfn> en la documentación original en inglés, es cualquier valor cuya comprobación en JavaScript devuelve falso, lo que incluye null, undefined y cadenas de caracteres vacías.
+<a name="note1">1)</a> _n.t._: <dfn lang="en">falsy</dfn> en la documentación original en inglés, es cualquier valor cuya comprobación en JavaScript devuelve falso, lo que incluye `null`, `undefined`, y cadenas de caracteres vacías.
 
 La siguiente expresión no funciona:
 
@@ -504,7 +504,7 @@ La siguiente expresión no funciona:
 <input type="checkbox" { true ? 'checked' : ''}>
 ```
 
-ya que solamente se reconocen los atributos y las expresiones de texto anidadas. Riot detecta 44 atributos booleanos diferentes.
+ya que solamente se reconocen los atributos y las expresiones de texto iternas. Riot detecta 44 atributos booleanos diferentes.
 
 
 ### Atajos de clases
@@ -518,9 +518,9 @@ Riot posee una sintaxis especial para nombres de clases CSS. Por ejemplo:
 se evalúa a "foo baz zorro". Los nombres de las propiedades cuyo valor es verdadero se agrega a la lista de nombres de clase. Por supuesto, puede utilizar esta notación en otros lugares además de los nombres de clase, si encuentra un uso adecuado.
 
 
-### Printing brackets
+### Imprimiendo llaves
 
-Puede generar una salida a una expresión sin evaluarla escapando las llaves:
+Puede generar la salida de una expresión sin evaluarla, escapando las llaves:
 
 `\\{ esto no es evaluado \\}` genera `{ esto no es evaluado }`
 
@@ -540,7 +540,7 @@ Cuando se utiliza la [compilación previa](/guide/compiler/#compilación-previa)
 
 
 
-### Etc
+### Miscelanea
 
 Se ignoran las expresiones dentro de etiquetas `style`.
 
@@ -617,7 +617,7 @@ Las opciones de las etiquetas superiores se pasan con el método `riot.mount` y 
 
 ### HTML anidado
 
-La "Transclusión HTML" es una manera de procesar el HTML interno en la página. Esto se consigue con una etiqueta `<yield>` incorporada. Ejemplo:
+La "[Transclusión HTML](https://es.wikipedia.org/wiki/Transclusi%C3%B3n)" es una manera de procesar el HTML interno en la página. Esto se consigue con una etiqueta `<yield>` incorporada. Ejemplo:
 
 
 ### Definición de la etiqueta
@@ -764,7 +764,7 @@ El elemento con el atributo `each` se repite para todos los elementos de la matr
 
 ### El contexto
 
-Se crea un nuevo contexto para cada elemento. Este contexto es una [instancia de etiqueta](/api/#tag-instance). Cuando se anidan bucles, todas las etiquetas del bucle anidado heredan las propiedades y métodos del bucle donde anidan, y cuyo contenido (en las etiquetas anidadas) no sea `undefined`. De esta manera, riot evita que la etiqueta principal sobreescriba lo que se desea conservar.
+Se crea un nuevo contexto para cada elemento. Este contexto es una [instancia de etiqueta](/api/#tag-instance). Cuando se anidan bucles, todas las etiquetas del bucle anidado heredan las propiedades y métodos del bucle donde anidan, y cuyo contenido (en las etiquetas anidadas) no sea `undefined`. De esta manera, riot evita que la etiqueta principal sobrescriba lo que se desea conservar.
 
 Se puede acceder explícitamente a la etiqueta principal a través de la variable `parent`. Por ejemplo:
 
@@ -786,7 +786,7 @@ Se puede acceder explícitamente a la etiqueta principal a través de la variabl
 
 En cada elemento de `items` en el bucle todo, excepto el atributo `each`, pertenece al contexto anidado, por lo que `title` se puede acceder directamente pero `remove` necesita el prefijo `parent.`, ya que el método no es una propiedad del elemento en el bucle.
 
-Los elementos en el bucle son [instancias de etiquetas](/api/#tag-instance). Riot no toca los elementos originales, así que no hay nuevas propiedades se agregen a ellos.
+Los elementos en el bucle son [instancias de etiquetas](/api/#tag-instance). Riot no toca los elementos originales, así que no hay nuevas propiedades se agreguen a ellos.
 
 
 ### Controladores de eventos con elementos en bucle
