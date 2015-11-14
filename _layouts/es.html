@@ -1,0 +1,78 @@
+<!doctype html>
+
+{% capture nav %}
+  <a href="/es/compare/">Comparar</a>
+  <a href="/es/faq/">FAQ</a>
+  <a href="/es/guide/">Guía</a>
+  <a href="/es/api/">API</a>
+  <a href="/es/download/">Descargas</a>
+  <a href="/es/forum/">Foro</a>
+{% endcapture %}
+
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>
+    {{ page.title }}{% if page.path != "index.md" %} &middot; {{ site.title }} {% endif %}
+  </title>
+
+  {% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+  {% endif %}
+
+  <!-- favicons -->
+  <link rel="shortcut icon" href="/img/favicon-152x152.png">
+  <link rel="icon" type="image/png" sizes="152x152" href="/img/favicon-152x152.png">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/img/favicon-152x152.png">
+
+  <!-- RSS
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="/atom.xml">
+  -->
+
+  <!-- style -->
+  <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body id="{{ page.id }}" class="{{ page.class }}">
+
+  <div class="wrap">
+
+    <a id="fork" href="{{ site.repo }}">Fork me on GitHub</a>
+
+    <header id="header">
+      <span id="logo">
+        <a href="/es/"><img id="riot-logo" src="/img/logo/riot120x.png"></a>
+        <strong>by</strong>
+        <a href="https://muut.com/"><img id="muut-logo" src="/img/logo/muut.png"></a>
+      </span>
+
+      <nav id="nav">{{ nav }}</nav>
+
+    </header>
+
+    <main id="main">
+      {{ content }}
+    </main>
+
+  </div>
+
+  <footer id="footer">
+    <div class="wrap">
+      <a href="/es/"><img src="/img/logo/riot120x.png"></a>
+      <nav>{{ nav }}</nav>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+
+</body>
+
+
+</html>
