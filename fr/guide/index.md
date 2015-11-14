@@ -55,7 +55,7 @@ Les tags personnalisés de Riot sont les blocs de construction des interfaces ut
 
 Les tags personnalisés sont [compilés](/guide/compiler/) en JavaScript.
 
-Regardez la [démo en ligne](http://muut.github.io/riotjs/demo/), consultez les [sources](https://github.com/riot/riot/tree/gh-pages/demo), ou téléchargez le [zip](https://github.com/riot/riot/archive/gh-pages.zip).
+Regardez la [démo en ligne](http://riotjs.com/examples/plunker/?app=todo-app), consultez les [sources](https://github.com/riot/examples/tree/gh-pages/todo-app), ou téléchargez le [zip](https://github.com/riot/examples/archive/gh-pages.zip).
 
 
 
@@ -422,16 +422,28 @@ Vous pouvez écouter et réagir aux divers événements du cycle de vie du tag c
 ```js
 <todo>
 
+  this.on('before-mount', function() {
+    // déclenché avant que le tag soit monté
+  })
+
   this.on('mount', function() {
     // déclenché une fois le tag monté sur la page
   })
 
   this.on('update', function() {
-    // permet le nouveau calcul des données de contexte après mise à jour
+    // permet de recalculer les données de contexte avant la mise à jour
+  })
+  
+  this.on('updated', function() {
+    // déclenché une fois le tag mis à jour
+  })
+  
+  this.on('before-unmount', function() {
+    // déclenché avant le tag soit retiré de la page
   })
 
   this.on('unmount', function() {
-    // déclenché lorsque le tag est retiré de la page
+    // déclenché après que le tag soit retiré de la page
   })
 
   // curieux sur tous les événements ?
@@ -737,6 +749,9 @@ Une fois encore, cette expression peut être une simple propriété ou une expre
 
 L'opérateur d'égalité est `==` et non `===`. Par exemple: `'a string' == true`.
 
+<span class="tag red">important</span>
+Utiliser des attributs conditionnels sur des tags imbriqués n'empêche pas Riot d'évaluer les expressions cachées à l'intérieur - nous travaillons sur un patch pour résoudre [ce problème](https://github.com/riot/riot/pull/1256)
+
 
 ## Boucles
 
@@ -863,6 +878,33 @@ Il est également possible de boucler sur les propriétés d'objets classiques. 
 
 Boucler sur des objets n'est pas recommandé car Riot utilis en interne `JSON.stringify` pour comparer les objets. L'objet *entier* est étudié et dès qu'un changement est repéré, toute la boucle est réinterprétée. Cela peut être lent. Les listes classiques sont bien plus rapides et seuls les éléments changeants sont redessinés sur la page.
 
+
+### Conseils avancés sur les boucles
+
+#### Performances
+
+Dans riot v2.3, pour rendre les boucles plus fiables, les éléments du DOM seront déplacés, insérés ou supprimés toujours en synchronisation avec vos collections de données: cette stratégie ralentit un peu le rendu des boucles comparé à la version précédente 2.2. Pour utiliser l'ancien algorithme plus rapide , vous pouvez ajouter l'attribut `no-reorder` aux noeuds bouclés. Par exemple:
+
+```html
+<loop>
+  <div each="{ item in items }" no-reorder>{ item }</div>
+</loop>
+```
+
+#### Tag virtuel `virtual`
+
+<span class="tag red">expérimental</span>
+
+Dans certains cas, vous pouvez avoir besoin de répéter un code HTML sans avoir de nouvel élément qui emballe le tout. Vous pouvez alors utiliser le tag `<virtual>`  qui sera supprimé au montage, ne laissant que les éléments contenus à l'intérieur. Par exemple:
+
+```html
+<dl>
+  <virtual each={item in items}>
+    <dt>{item.key}</dt>
+    <dd>{item.value}</dd>
+  </virtual>
+</dl>
+```
 
 ## Elements HTML en guise de tags Riot
 
