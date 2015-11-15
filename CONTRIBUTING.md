@@ -27,7 +27,7 @@ If there's no translation yet, follow the instruction below.
 - Fork the branch, and add some files and directories below.
 - Send pull request to the branch. You don't have to complete. It's OK if it's on the way.
 
-### Files and directories
+### Files and directories:
 
 - Make a new directory at `/` (root) with the name from your language code. For example: [/ja/](https://github.com/riot/riot.github.io/blob/master/ja/)
 - Put your translated files into your directory. Follow the original structure. For example:
@@ -46,6 +46,12 @@ See [Jekyll document](http://jekyllrb.com/docs/quickstart/). Don't worry, easy s
 - `$ jekyll serve` at the root directory of this project.
 
 If you use Windows, [check this instruction](http://jekyllrb.com/docs/windows/), too.
+
+### When translation complete:
+
+- Send PR to `master` branch and let someone merge it. (PR is preferred way, but, maintainer can merge it directly if the change is small)
+- Remove working branch: ex. `fr/v2.2.4` or `ja/v2.3.0`
+- Add tag: ex. `v2.2.4-fr` or `v2.3.0-ja`
 
 ### Keep updating continuously:
 
