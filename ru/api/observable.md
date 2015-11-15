@@ -50,13 +50,20 @@ el.on('start stop', function(type) {
   // type равен 'start' или 'stop'
 
 })
+
+
+// прослушивание всех событий
+el.on('all', function(event, param1, param2) {
+  // event - имя того метода, который вызывается
+})
+
 ```
 
 @returns `el`
 
 ### <a name="one"></a> el.one(event, callback)
 
-Подписка на `event`. `callback` срабатывает только один раз.
+Подписка на список событий `event`, разделённых пробелом. `callback` срабатывает только один раз.
 
 ``` js
 // функция выполняется только один раз, даже, если событие `start` вызывается множество раз
@@ -101,11 +108,11 @@ el.off('start end', doIt)
 @returns `el`
 
 
-### <a name="trigger"></a> el.trigger(event)
-Выполнить все функции callback, которые слушают данный `event`
+### <a name="trigger"></a> el.trigger(events)
+Выполнить все функции callback, которые слушают данный список событий `events`, разделённых пробелом.
 
 ``` js
-el.trigger('start')
+el.trigger('render update')
 ```
 
 @returns `el`

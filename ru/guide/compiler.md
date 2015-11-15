@@ -25,7 +25,7 @@ title: Компилятор
 <script src="path/to/javascript/with-tags.js" type="riot/tag"></script>
 
 <!-- подключение riot.js с компилятором  -->
-<script src="//cdn.jsdelivr.net/g/riot@2.2(riot.min.js+compiler.min.js)"></script>
+<script src="//cdn.jsdelivr.net/g/riot@2.3(riot.min.js+compiler.min.js)"></script>
 
 
 <!-- монтирование -->
@@ -90,7 +90,7 @@ npm install riot -g
 <my-tag></my-tag>
 
 <!-- include riot.js only -->
-<script src="//cdn.jsdelivr.net/riot/2.2/riot.min.js"></script>
+<script src="//cdn.jsdelivr.net/riot/2.3/riot.min.js"></script>
 
 <!-- include pre-compiled tags (normal javascript) -->
 <script src="path/to/javascript/with-tags.js"></script>
@@ -388,7 +388,7 @@ riot --type none --expr source.tag
 
 ``` sh
 # Включение AMD и CommonJS
-riot --m
+riot -m
 ```
 
 Пример с AMD:

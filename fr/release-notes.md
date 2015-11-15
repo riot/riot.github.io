@@ -6,6 +6,38 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.3.1 *10 novembre 2015*
+
+- Ajout du parseur `babel` pour supporter babel 6 sorti tout récemment; utilisez `es6` si vous voulez toujours utiliser les versions précédentes de babel
+- Ajout de `riot.route.start(autoExec)` qui démarre le routeur et exécute automatiquement la route associée à l'URL en cours.
+- Suppression de `compiler.js` `compiler.min.js` dans le répertoire projet, utilisez toujours `riot+compiler.js` à la place
+- Correction de [l'option `modular`](https://github.com/riot/cli/issues/7) dans `riot-cli`
+- Correction de la méthode [`riot.render`](https://github.com/riot/riot/pull/1330)
+
+## 2.3.0 *5 novembre 2015*
+
+Cette nouvelle version majeure est un grand pas en avant pour Riot et fixe [de nombreux problèmes](https://github.com/riot/riot/issues?q=is%3Aissue+milestone%3A2.3.0+is%3Aclosed) en organisant le code dans plusieurs modules.
+Riot a été divisé en 6 modules différents:
+
+- [compiler](https://github.com/riot/compiler)
+- [tmpl](https://github.com/riot/tmpl)
+- [observable](https://github.com/riot/observable)
+- [route](https://github.com/riot/route)
+- [core](https://github.com/riot/riot)
+- [cli](https://github.com/riot/cli)
+
+Voici la liste des plus gros changements:
+
+- Ajout de l'API History de HTML5 au routeur, veuillez consulter la [documentation](/api/route/)
+- Versions réécrites du compilateur, du moteur de templates et de l'interface en ligne de commandes
+- Dépréciation de `riot.mountTo`
+- Changement de `tag._id` en `tag._riot_id` **vous ne devriez pas utiliser les propriétés internes de Riot de toute façon**
+- Correction de `yield` côté serveur
+- Correction d'une fuite mémoire dans `riot.render`
+- Correction des attributs dynamiques tels que `name` `id`
+- Nouveau comportement pour les boucles, elles sont un peu plus lentes mais plus fiables ; vous pouvez utiliser l'option `no-reorder` si vous voulez utiliser l'algorithme précédent plus rapide ([plus de détails ici](/guide/#loops-advanced-tips))
+
+
 ## 2.2.4 *12 août 2015*
 
 - Correction des bugs restants du noyau avant la plus grosse livraison 2.3.0 ; [plus de détails](https://github.com/riot/riot/issues?q=is%3Aissue+milestone%3A2.2.4)

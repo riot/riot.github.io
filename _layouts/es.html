@@ -1,15 +1,15 @@
 <!doctype html>
 
 {% capture nav %}
-  <a href="/ru/compare/">Сравнение</a>
-  <a href="/ru/faq/">ЧАВО</a>
-  <a href="/ru/guide/">Учебник</a>
-  <a href="/ru/api/">API</a>
-  <a href="/ru/download/">Скачать</a>
-  <a href="/ru/forum/">Форум</a>
+  <a href="/es/compare/">Comparar</a>
+  <a href="/es/faq/">FAQ</a>
+  <a href="/es/guide/">Guía</a>
+  <a href="/es/api/">API</a>
+  <a href="/es/download/">Descargas</a>
+  <a href="/es/forum/">Foro</a>
 {% endcapture %}
 
-<html lang="ru">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -37,12 +37,7 @@
 
   <!-- style -->
   <link rel="stylesheet" href="/style.css">
-  <style type="text/css">
-    @import url(https://fonts.googleapis.com/css?family=Didact+Gothic&subset=latin,cyrillic);
-    html {
-      font-family: 'Didact Gothic', sans-serif;
-    }
-  </style>
+
 </head>
 
 <body id="{{ page.id }}" class="{{ page.class }}">
@@ -53,22 +48,12 @@
 
     <header id="header">
       <span id="logo">
-        <a href="/ru/"><img id="riot-logo" src="/img/logo/riot120x.png"></a>
+        <a href="/es/"><img id="riot-logo" src="/img/logo/riot120x.png"></a>
         <strong>by</strong>
         <a href="https://muut.com/"><img id="muut-logo" src="/img/logo/muut.png"></a>
       </span>
 
-      <nav id="nav">
-        {{ nav }}
-        <a id="current-lang" href="#"><i class="fa fa-globe"></i> ru</a>
-      </nav>
-
-      <nav id="langs">
-        <a href="/"><span>en</span> latest</a>
-        {% for lang in site.translations %}
-          <a href="/{{ lang[0] }}/"><span>{{ lang[0] }}</span> {{ lang[1] }}</a>
-        {% endfor %}
-      </nav>
+      <nav id="nav">{{ nav }}</nav>
 
     </header>
 
@@ -80,7 +65,7 @@
 
   <footer id="footer">
     <div class="wrap">
-      <a href="/ru/"><img src="/img/logo/riot120x.png"></a>
+      <a href="/es/"><img src="/img/logo/riot120x.png"></a>
       <nav>{{ nav }}</nav>
     </div>
   </footer>
