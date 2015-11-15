@@ -55,7 +55,7 @@ title: Пользовательские теги
 
 Пользовательские теги [компилируются](/guide/compiler/) в JavaScript.
 
-Смотри [пример](http://muut.github.io/riotjs/demo/), изучай [исходный код](https://github.com/riot/riot/tree/gh-pages/demo), или скачай [zip-архив](https://github.com/riot/riot/archive/gh-pages.zip).
+Вы увидеть [пример](http://riotjs.com/examples/plunker/?app=todo-app), изучить [исходный код](https://github.com/riot/examples/tree/gh-pages/todo-app), или скачать [zip-архив]]](https://github.com/riot/examples/archive/gh-pages.zip).
 
 
 
@@ -415,6 +415,9 @@ riot.mixin('mixinName', mixinObject)
 
 ```js
 <todo>
+  this.on('before-mount', function() {
+    // перед тем, как тег будет примонтирован
+  })
 
   this.on('mount', function() {
     // сразу после того, как тег будет примонтирован
@@ -424,12 +427,20 @@ riot.mixin('mixinName', mixinObject)
     // позволяет изменять данные тега перед тем, как выражения пересчитаются
   })
 
+  this.on('updated', function() {
+    // сразу после того, как те обновился
+  })
+
+  this.on('before-unmount', function() {
+    // перед тем, как тег отмонтируется
+  })
+
   this.on('unmount', function() {
     // когда тег открепляется от страницы
   })
 
-  // нужно сразу несколько событий?
-  this.on('mount update unmount', function(eventName) {
+  // нужны сразу все события?
+  this.on('all', function(eventName) {
     console.info(eventName)
   })
 
@@ -724,6 +735,9 @@ submit() {
 
 Используется оператор сравнения `==`, не `===`. То есть : `'a string' == true`.
 
+<span class="tag red">important</span>
+Использование условных аттрибутов не предотвращает выполенение выражений в скрытых выражениях. Мы работает над этим, прогресс можно увидеть в [задаче на Github](https://github.com/riot/riot/pull/1256)
+
 ## <a name="loops"></a> Циклы
 
 Циклы реализованы благодаря атрибуту `each`:
@@ -845,6 +859,33 @@ submit() {
 
 Не рекомендуется использовать циклы по объектам, так как Riot определяет, изменился ли объект с помощью `JSON.stringify`. Изучается *весь* объект целиком, и если в нём что-то меняется, то весь цикл рендерится заново. Обычные массивы гораздо быстрее и изменения отдельного элемента затрагивают конкретный элемент на странице.
 
+
+### О циклах более подробно
+
+#### Производительность
+
+В Riot v2.3 для большей надёжности узлы DOM удаляются, создаются и перемещаются синхронно с данными в вашей коллекции: эта стратегия более медленная в сравнении с предыдущими релизами v2.2. Чтобы включить быстрый режим рендеринга, вам нужно добавить аттрибут `no-reorder` в DOM-узлы. Например:
+
+```html
+<loop>
+  <div each="{ item in items }" no-reorder>{ item }</div>
+</loop>
+```
+
+#### Тег `virtual`
+
+<span class="tag red">экспериментальный</span>
+
+В некоторых случаях вам может потребоваться перебирать теги без родительского тега-обёртки. В этом случае вы можете использовать тег `<virtual>`, который удаляется, будто html-теги ни во что не обёртывались. Например:
+
+```html
+<dl>
+  <virtual each={item in items}>
+    <dt>{item.key}</dt>
+    <dd>{item.value}</dd>
+  </virtual>
+</dl>
+```
 
 ## HTML-элементы и пользовательские теги
 

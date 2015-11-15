@@ -59,16 +59,11 @@ var tags = riot.mount('div#main', 'my-tag', api)
 Монтирует пользовательский тег tagName в конкретный элемент DOM domNode. Например:
 
 ```
-// монтируем "my-tag" в определённый DOM элемент
+// монтируем "users" в определённый DOM элемент и отправляем в него объект api.
 riot.mount(document.getElementById('slide'), 'users', api)
 ```
 
 @returns: массив смонтированных [тегов](#tag-instance)
-
-### <a name="mount-to"></a> riot.mountTo(domNode, tagName, [opts])
-
-Этот метод устарел с версии *v2.0.11*. Это тоже самое, что и `riot.mount(domNode, tagName, [opts])`.
-
 
 ## Рендеринг
 
@@ -420,6 +415,45 @@ riot.tag('tag-name', my_tmpl.innerHTML, function(opts) {
 </script>
 ```
 
+### riot.Tag(impl, conf, innerHTML)
 
+<span class="tag red">экспериментальный</span>
+
+В 2.3 мы предоставили доступ к методу Tag, ранее использовавшемуся лишь внутренне. Блягодаря этому, вы можете применять более гибкий подход к созданию тегов.
+
+- `impl`
+  - `tmpl` шаблон тега
+  - `fn(opts)` функция обратного вызова. Автоматически вызывается при монтировании
+  - `attrs` аттрибуты тега
+- `conf`
+  - `root` узел DOM, в который будет примонтирован тег
+  - `opts` опции тега
+  - `isLoop` флаг, указывающий на то, данный тег используется для цикла?
+  - `hasImpl` был ли этот тег уже зарегистрирован через riot.tag?
+  - `item` элемент цикла (если используется для цикла)
+- `innerHTML` html который будет использоваться для `yield` в шаблоне.
+
+
+Пример с ES2015:
+
+```js
+
+class MyTag extends riot.Tag {
+  constructor(el) {
+    super({ tmpl: MyTag.template() }, { root: el })
+    this.msg = 'hello'
+  }
+  bye() {
+    this.msg = 'goodbye'
+  }
+  static template() {
+    return `<p onclick="{ bye }">{ msg }</p>`
+  }
+}
+
+new MyTag(document.getElementById('my-div')).mount()
+```
+
+Метод `riot.Tag` не рекомендуется использовать. Его следует использовать только в том случае, если вам не хватает вышеописанных методов.
 
 

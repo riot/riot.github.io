@@ -139,28 +139,28 @@ Riot предоставляется в комплекте с пользоват�
 
 Вы можете создать Flux-подобную систему, используя observable и router, встроенные в Riot. Вообще-то, такие инструменты [уже есть](https://github.com/jimsparkman/RiotControl).
 
-### 10x - 128x больше
+### {{ site.compare.react }}x bigger
 
-React в 10 раз больше Riot.
+React (v{{ site.react.version }}) в {{ site.compare.react }} раз больше Riot.
 
-<small><em>react.min.js</em> – 119KB</small>
+<small><em>react.min.js</em> – {{ site.react.size }}KB</small>
 <span class="bar red"></span>
 
 <small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
-<span class="bar blue" style="width: {{ site.size_min / 119 * 100 }}%"></span>
+<span class="bar blue" style="width: {{ site.size_min | divided_by: site.react.size | times: 100 }}%"></span>
 
 <br>
 
-Маршрутизатор, рекомендованный React в 128 раз больше, чем в Riot.
+Маршрутизатор, рекомендованный React (v{{ site.react_router.version }}) в {{ site.compare.react_router_vs_riot_router }} раз больше, чем в Riot.
 
-<small><em>react-router.min.js</em> – 54.9KB</small>
+<small><em>react-router.min.js</em> – {{ site.react_router.size }}KB</small>
 <span class="bar red"></span>
 
-<small><em>react-mini-router.min.js</em> – 8.6KB</small>
-<span class="bar red" style="width: 15.6%"></span>
+<small><em>react-mini-router.min.js</em> – {{ site.react_mini_router.size }}KB</small>
+<span class="bar red" style="width: {{ site.react_mini_router.size | divided_by: site.react_router.size | times: 100 }}%"></span>
 
-<small><em>riot.router.min.js</em> – 0.43KB</small>
-<span class="bar blue" style="width: 0.7%"></span>
+<small><em>riot.route.min.js</em> – {{ site.riot_route_size_min }}KB</small>
+<span class="bar blue" style="width:{{ site.riot_route_size_min | divided_by: site.react_router.size | times:100 }}%"></span>
 
 Правда, это сравнение немного несправедливо, ведь у [react-router](https://github.com/rackt/react-router) гораздо больше возможностей. Но представленные выше графики прекрасно иллюстрируют главную цель Riot: предоставить наиболее минималистичный API для работы.
 
@@ -181,15 +181,15 @@ Polymer взял и стандартные Wev компоненты и сдел�
 4. Нет возможности рендеринга на стороне сервера.
 
 
-### В 11 раз больше
+### В {{ site.compare.polymer_and_webcomponents }} раз больше
 
-Polymer(v1.0.6) + WebComponents(v0.7.7) в 11 раз больше, чем Riot
+Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.version }}) в {{ site.compare.polymer_and_webcomponents }} раз больше, чем Riot
 
-<small><em>polymer.min.js</em> – 138KB</small>
+<small><em>polymer.min.js</em> – {{ site.polymer.size }}KB</small>
 <span class="bar red"></span>
 
 <small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
-<span class="bar blue" style="width: {{ site.size_min / 138 * 100 }}%"></span>
+<span class="bar blue" style="width: {{ site.size_min | divided_by: site.polymer.size | times: 100 }}%"></span>
 
 WeВеб-компоненты считаются [основой всех проблем polyfilling](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/). Это главная причина, по которой Polymer нуждается в таком количестве кода.
 

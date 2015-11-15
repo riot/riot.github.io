@@ -145,3 +145,21 @@ riot.parsers.js.myparser = function(js) {
 ### <a name="html-parser"></a> riot.parsers.html [html]
 
 Пользовательские парсеры, которые могут быть использованы для компиляции html.
+
+Изначально есть такие парсеры:
+#### html
+- `jade`
+
+#### css
+- `stylus`
+
+#### js
+- `none` or `javascript`
+- `livescript`
+- `typescript`
+- `es6` - (using `babel-core` or `babel`)
+- `coffee` or `coffeescript`
+
+## Изменения
+
+В предыдущих версиях экранирующие скобки сохранялись, что приводило к генерации неправильного HTML или JavaScript. В текущей версии они удаляются на ранней стадии, после прохождения тега HTML-парсера, но до того, как тег попадёт в JavaScript-парсер.
