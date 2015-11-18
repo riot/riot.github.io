@@ -26,42 +26,46 @@ The following example was taken directly from the React home page:
 
 
 ``` javascript
-var TodoList = React.createClass({
-  render: function() {
-    var createItem = function(itemText) {
-      return <li>{itemText}</li>;
-    };
-    return <ul>{this.props.items.map(createItem)}</ul>;
-  }
-});
-var TodoApp = React.createClass({
-  getInitialState: function() {
-    return {items: [], text: ''};
-  },
-  onChange: function(e) {
-    this.setState({text: e.target.value});
-  },
-  handleSubmit: function(e) {
-    e.preventDefault();
-    var nextItems = this.state.items.concat([this.state.text]);
-    var nextText = '';
-    this.setState({items: nextItems, text: nextText});
-  },
-  render: function() {
-    return (
-      <div>
-        <h3>TODO</h3>
-        <TodoList items={this.state.items} />
-        <form onSubmit={this.handleSubmit}>
-          <input onChange={this.onChange} value={this.state.text} />
-          <button>{'Add #' + (this.state.items.length + 1)}</button>
-        </form>
-      </div>
-    );
-  }
-});
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-React.render(<TodoApp />, mountNode);
+class Todo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {items: [], text: ''};
+    }
+
+    render() {
+        const {items, text} = this.state;
+        return (
+            <div>
+                <h3>TODO</h3>
+                <ul>
+                    <li>{items.map((item, i)=> <li key={i}>{item}</li>)}</li>
+                </ul>
+                <form onSubmit={this._onSubmit}>
+                    <input onChange={this._onChange} value={text}/>
+                    <button>Add #{items.length + 1}</button>
+                </form>
+            </div>
+        );
+    }
+
+    _onChange(e) {
+        this.setState({text: e.target.value});
+    }
+
+    _onSubmit(e) {
+        e.preventDefault();
+        const {items, text} = this.state;
+        this.setState({
+            items: items.concat(text),
+            text: ''
+        });
+    }
+}
+
+ReactDOM.render(<Todo/>, mountNode);
 ```
 
 JSX is mixture of HTML and JavaScript. You can include HTML anywhere on the component; inside methods and in property assignments.
