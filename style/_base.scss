@@ -11,6 +11,8 @@
 html, body {
   margin: 0;
   padding: 0;
+  position: relative;
+  overflow-x: hidden;
 }
 
 /* Webfont: Lato-Regular */@font-face {
