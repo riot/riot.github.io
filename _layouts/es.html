@@ -1,12 +1,12 @@
 <!doctype html>
 
 {% capture nav %}
-  <a href="/compare/">Comparar</a>
-  <a href="/faq/">FAQ</a>
-  <a href="/guide/">Guía</a>
-  <a href="/api/">API</a>
-  <a href="/download/">Descargas</a>
-  <a href="/forum/">Foro</a>
+  <a href="/es/compare/">Comparar</a>
+  <a href="/es/faq/">FAQ</a>
+  <a href="/es/guide/">Guía</a>
+  <a href="/es/api/">API</a>
+  <a href="/es/download/">Descargas</a>
+  <a href="/es/forum/">Foro</a>
 {% endcapture %}
 
 <html lang="es">
@@ -36,6 +36,7 @@
   -->
 
   <!-- style -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/style.css">
 
 </head>
@@ -48,12 +49,22 @@
 
     <header id="header">
       <span id="logo">
-        <a href="/"><img id="riot-logo" src="/img/logo/riot120x.png"></a>
+        <a href="/es/"><img id="riot-logo" src="/img/logo/riot120x.png"></a>
         <strong>by</strong>
         <a href="https://muut.com/"><img id="muut-logo" src="/img/logo/muut.png"></a>
       </span>
 
-      <nav id="nav">{{ nav }}</nav>
+      <nav id="nav">
+        {{ nav }}
+        <a id="current-lang" href="#"><i class="fa fa-globe"></i> es</a>
+      </nav>
+
+      <nav id="langs">
+        <a href="/"><span>en</span> latest</a>
+        {% for lang in site.translations %}
+          <a href="/{{ lang[0] }}/"><span>{{ lang[0] }}</span> {{ lang[1] }}</a>
+        {% endfor %}
+      </nav>
 
     </header>
 
@@ -65,7 +76,13 @@
 
   <footer id="footer">
     <div class="wrap">
-      <a href="/"><img src="/img/logo/riot120x.png"></a>
+      <a href="/es/"><img src="/img/logo/riot120x.png"></a>
+      <nav>
+        <a href="/"><span>en</span> latest</a>
+        {% for lang in site.translations %}
+          <a href="/{{ lang[0] }}/"><span>{{ lang[0] }}</span> {{ lang[1] }}</a>
+        {% endfor %}
+      </nav>
       <nav>{{ nav }}</nav>
     </div>
   </footer>
