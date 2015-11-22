@@ -8,7 +8,7 @@ id: release-notes
 
 ## 2.2.4 *Agosto 12, 2015*
 
-- Corrige los errores en el núcleo que quedan antes de la liberación la versión mayor 2.3.0 [detalles](https://github.com/riot/riot/issues?q=is%3Aissue+milestone%3A2.2.4)
+- Corrige los errores en el núcleo que quedan antes de la liberación de la versión mayor 2.3.0 [detalles](https://github.com/riot/riot/issues?q=is%3Aissue+milestone%3A2.2.4)
 - Agrega soporte para múltiples bloques de estilo en el mismo componente
 - Corrige errores relacionados a la pérdida del contexto en bloques anidados
 - Se agregaron más pruebas al código base
@@ -23,12 +23,12 @@ id: release-notes
 
 - Los nuevos componentes hijos heredarán las propiedades del padre también en un bucle
 - El nuevo riot es capaz de compilar atributos también en la etiqueta de nivel superior [más detalles](https://github.com/riot/riot/issues/948)
-- Mejoras en el desempeño de los bucles y corrige muchos errores
+- Mejoras en el desempeño de los bucles y corrección de muchos errores
 - Mejoras en la compatibilidad AMD/CommonJS
 - Corrige el error generado en el compilador debido a etiquetas que usan el atributo type=text/javascript
 - Corrige las variables del padre no se exponen a los hijos en un bucle, ahora __todos los hijos en un bucle heredarán las propiedades y métodos del padre__ [más detalles](https://github.com/riot/riot/issues/896)
 - Corrige el error generado al tratar de sobrescribir propiedades de sólo-lectura de los eventos
-- Corrige la combinación del cli de riot con el indicador --modular cuando no se especifica ningún archivo de salida
+- Corrige la combinación del cli de riot con el indicador `--modular` cuando no se especifica ningún archivo de salida
 
 ## 2.2.1 *Junio 28, 2015*
 
