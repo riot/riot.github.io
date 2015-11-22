@@ -25,7 +25,7 @@ You can mount this tag on HTML easily. Save the source above as `sample.tag`, an
     <!-- include the tag -->
     <script type="riot/tag" src="sample.tag"></script>
     <!-- include riot.js -->
-    <script src="https://cdn.jsdelivr.net/g/riot@2.2(riot.min.js+compiler.min.js)"></script>
+    <script src="https://cdn.rawgit.com/riot/riot/master/riot+compiler.min.js"></script>
     <!-- mount the tag -->
     <script>riot.mount('sample')</script>
   </body>
