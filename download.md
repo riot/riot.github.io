@@ -68,12 +68,6 @@ View our [version history](/release-notes). All Files are Open Source with [MIT 
 
 `git clone git@github.com:riot/riot.git`
 
-
-## Known issues
-
-- Looping table rows or cells with `each` attribute is not working on IE8 and IE9.
-
-
 ## Logo
 
 ![](/img/logo/riot480x.png)
