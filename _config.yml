@@ -35,12 +35,12 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-major_version:       1
+major_version:       11
 minor_version:       2.3
 
-version:             2.3.1
-release_date:        November 10
-version_slurp:       Babel 6 support - bug fix
+version:             2.3.11
+release_date:        November 22
+version_slurp:       A more advanced compiler
 repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page

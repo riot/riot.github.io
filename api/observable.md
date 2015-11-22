@@ -59,6 +59,22 @@ el.on('all', function(event, param1, param2) {
 
 ```
 
+In case of errors in your `callbacks` the observable instance will emit the `error` event:
+
+``` js
+
+el.on('error', function(e) {
+  // the errors can be caught here
+})
+
+el.on('event', function() {
+  throw 'oops'
+})
+
+el.trigger('event')
+
+```
+
 @returns `el`
 
 ### <a name="one"></a> el.one(event, callback)
