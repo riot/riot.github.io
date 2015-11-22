@@ -16,10 +16,6 @@ View our [version history](/release-notes). All Files are Open Source with [MIT 
 
 [riot.js]({{ page.base }}/riot.js)
 
-[compiler.min.js]({{ page.base }}/compiler.min.js)
-
-[compiler.js]({{ page.base }}/compiler.js)
-
 [riot+compiler.min.js]({{ page.base }}/riot+compiler.min.js)
 
 [riot+compiler.js]({{ page.base }}/riot+compiler.js)

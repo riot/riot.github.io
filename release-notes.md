@@ -6,6 +6,31 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.3.11 *November 22, 2015*
+
+- __Compiler__
+  - Gets rid of the zero-indentation restriction for custom tags, now you can indent these tags, but the opening and closing tag must have exactly the same indentation (length and type). All the tag will be unindented by this amount.
+  - Support for `src` and `charset` attributes in `<script>` tags for reading JavaScript sources from the file system - [riot#507](https://github.com/riot/riot/issues/507)
+  - The `compile` function can return separate parts by setting the new `entities` option. These parts have unescaped newlines.
+  - New attribute `options` for `script` and `style` tags will append/overwrite attributes in the default configuration object of the parser at tag level.
+  - Fix [riot#1261](https://github.com/riot/riot/issues/1261): `<pre>` tag does not preserve neither `\n` nor `\t`.
+    Now whitespace within `<pre>` tags is always preserved.
+  - Fix [riot#1358](https://github.com/riot/riot/issues/1358): Empty style in tag (scoped) breaks.
+  - Fix [riot#1306](https://github.com/riot/riot/issues/1306): Compiler preserves newlines in class objects, causing "Unterminated String Constant" errors.
+  - Fix [riot#1314](https://github.com/riot/riot/issues/1314): `settings.brackets` no longer works.
+
+- __riot__
+  - Fix support for `riot.render` on the old node versions
+  - Fix loop small issues using
+  - Fix `riot.route` will not block not registered links with `event.preventDefault`
+  - Add `error` event on all the `riot.observable` instances to catch all the possible errors thrown in the callbacks
+
+- __riot-cli__
+  - Add better error messages if a parser is not locally installed
+  - Add the `export` option to extract singularly just portions of your tags like `css`, `js` or `html`
+  - Add the `style` option to chose the default preprocessor for your tags style
+  - Add built-in css preprocessor support for `sass`, `scss` and `less`
+
 ## 2.3.1 *November 10, 2015*
 
 - Add the `babel` parser to support the brand new babel 6 release, use `es6` if you still want to use the previous babel releases

@@ -163,7 +163,7 @@ Stop all the routings. It'll removes the listeners and clear also the callbacks.
 riot.route.stop()
 ```
 
-You typically use this method together with [riot.route.start](#riot-route-start). Example:
+You typically use this method together with [riot.route.start](#route-start). Example:
 
 ```javascript
 riot.route.stop() // clear all the old router callbacks

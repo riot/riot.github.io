@@ -26,7 +26,7 @@ You can leave out the `riot.compile` call and write just:
 var tags = riot.mount('*')
 ```
 
-but you don't get to know when external resources are loaded and compiled and the return value is an empty array if you have external scripts. If all scripts are defined on the page then riot.compile step can be left out.
+but you don't get to know when external resources are loaded and compiled and the return value is an empty array if you have external scripts. If all scripts are defined on the page then `riot.compile` step can be left out.
 
 For more details, read the compiler [general introduction](/guide/compiler/).
 
@@ -84,7 +84,7 @@ The compile function takes the tag definition (string) and returns JavaScript (s
 
 ### <a name="css-parser"></a> riot.parsers.css [tagName, css]
 
-Custom parsers that could be used to compile your tags css. For example:
+Custom parsers that could be used to compile your tags CSS. For example:
 
 ```js
 riot.parsers.css.myparser = function(tag, css) {
@@ -114,7 +114,7 @@ will be compiled to:
 
 ### <a name="js-parser"></a> riot.parsers.js [js, options]
 
-Custom parsers that could be used to compile your tags javascript. For example
+Custom parsers that could be used to compile your tags JavaScript. For example
 
 ```js
 riot.parsers.js.myparser = function(js) {
@@ -144,13 +144,17 @@ will be compiled to:
 
 ### <a name="html-parser"></a> riot.parsers.html [html]
 
-Custom parsers that could be used to compile your tags html.
+Custom parsers that could be used to compile your tags HTML.
 
 The predefined parsers are:
+
 #### html
 - `jade`
 
 #### css
+- `less`
+- `sass`
+- `scss`
 - `stylus`
 
 #### js
@@ -158,8 +162,9 @@ The predefined parsers are:
 - `livescript`
 - `typescript`
 - `es6` - (using `babel-core` or `babel`)
+- `babel` - (using `babel-core` v6.x and the `es2015` preset)
 - `coffee` or `coffeescript`
 
-## Changes
+## Changes in v2.3.0
 
-In previous versions, escaped brackets were preserved, generating incorrect HTML or invalid JavaScript code. This version removes them at an early stage, after passing the tag to the html parser, but before that the JavaScript code and expressions are sent to the js parser.
+In previous versions, escaped brackets were preserved, generating incorrect HTML or invalid JavaScript code. This version removes them at an early stage, after passing the tag to the html parser and before the JavaScript code and expressions are sent to the js parser.
