@@ -4,7 +4,7 @@ title: 在线演示
 description: 一系列用来展示采用 Riot 的好处的示例 Riot.
 ---
 
-{% include example-tabs.html %}
+{% include zh/example-tabs.html %}
 
 随意修改标签的定义代码（左侧），可实时看到渲染结果。
 

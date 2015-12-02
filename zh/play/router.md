@@ -4,7 +4,7 @@ title: 路由
 description: 一个简单的路由示例.
 ---
 
-{% include example-tabs.html %}
+{% include zh/example-tabs.html %}
 
 [在 Plunker 中打开](http://riotjs.com/examples/plunker/?app=router-complex) 并阅读源码.
 

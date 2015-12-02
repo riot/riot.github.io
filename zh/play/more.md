@@ -4,7 +4,7 @@ title: 更多示例
 description: 最简单的Todo App示例.
 ---
 
-{% include example-tabs.html %}
+{% include zh/example-tabs.html %}
 
 请访问我们的示例仓库。
 

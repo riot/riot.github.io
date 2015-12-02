@@ -4,7 +4,7 @@ title: Todo App
 description: 最简单的 ToDo 示例.
 ---
 
-{% include example-tabs.html %}
+{% include zh/example-tabs.html %}
 
 [在 Plunker 中打开](http://riotjs.com/examples/plunker/?app=todo-app) 并阅读源码.
 

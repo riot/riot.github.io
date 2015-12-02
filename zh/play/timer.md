@@ -4,7 +4,7 @@ title: 定时器
 description: 简单的定时器示例
 ---
 
-{% include example-tabs.html %}
+{% include zh/example-tabs.html %}
 
 [在 Plunker 中打开](http://riotjs.com/examples/plunker/?app=timer) 并阅读源码.
 
