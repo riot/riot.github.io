@@ -59,6 +59,21 @@ el.on('all', function(event, param1, param2) {
 
 ```
 
+如果你的 `callback` 中出现了错误，observable 实例将触发 `error` 事件：
+
+```js
+
+el.on('error', function(e) {
+  // the errors can be caught here
+})
+
+el.on('event', function() {
+  throw 'oops'
+})
+
+el.trigger('event')
+
+```
 @返回值 `el`
 
 ### <a name="one"></a> el.one(events, callback)

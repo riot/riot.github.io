@@ -26,7 +26,7 @@ riot.compile(function() {
 var tags = riot.mount('*')
 ```
 
-但我们无法确定外部资源何时被加载和编译完成，所以如果有外部脚本，riot.mount的返回值可能是空数组。所以只有当所有的脚本定义在当前页面上时才能省略掉 riot.compile。
+但我们无法确定外部资源何时被加载和编译完成，所以如果有外部脚本，riot.mount的返回值可能是空数组。所以只有当所有的脚本定义在当前页面上时才能省略掉 `riot.compile` 。
 
 了解更多细节，请阅读[编译器指南](../../guide/compiler).
 
@@ -84,7 +84,7 @@ var js = riot.compile(tag)
 
 ### <a name="css-parser"></a> riot.parser.css [tagName, css]
 
-可以使用自定义的预处理器来处理标签中的css. 例如
+可以使用自定义的预处理器来处理标签中的 CSS. 例如
 
 ```js
 riot.parsers.css.myparser = function(tag, css) {
@@ -114,7 +114,7 @@ riot.parsers.css.myparser = function(tag, css) {
 
 ### <a name="js-parser"></a> riot.parsers.js [js, options]
 
-可以使用自定义的预处理器来处理标签中的javascript. 例如
+可以使用自定义的预处理器来处理标签中的JavaScript. 例如
 
 ```js
 riot.parsers.js.myparser = function(js) {
@@ -144,23 +144,28 @@ riot.parsers.js.myparser = function(js) {
 
 ### <a name="html-parser"></a> riot.parsers.html [html]
 
-指定用来生成标签html的自定义转换器.
+指定用来生成标签 HTML 的自定义转换器.
 
 有一些已定义好的转换器：
+
 #### html
 - `jade`
 
 #### css
+- `less`
+- `sass`
+- `scss`
 - `stylus`
 
 #### js
 - `none` 或 `javascript`
 - `livescript`
 - `typescript`
-- `es6` - (using `babel-core` or `babel`)
-- `coffee` or `coffeescript`
+- `es6` - (使用 `babel-core` 或 `babel`)
+- `babel` - (使用 `babel-core` v6.x 及 `es2015` 预置 )
+- `coffee` 或 `coffeescript`
 
-## 变化
+## v2.3.0 引入的变化
 在旧版本中，转义括号是保留字，可能会导致生成错误的HTML或JavaScript代码。新的版本在编译早期（在标签代码传给html转换器之后，但在JavaScript代码或表达式传给js转换器之前）就将它们拿掉了.
 
 
