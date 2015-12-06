@@ -262,12 +262,60 @@ once mounted `riot.mount('my-post')` it will be rendered in this way:
 </my-post>
 ```
 
+#### Multi-Transclusion
+
+The `<yield>` tag also provides a slot mechanism that allows you to inject html contents on specific slots in the template
+
+For example using the following riot tag `my-other-post`
+
+``` html
+<my-other-post>
+  <h1>{ opts.title }</h1>
+  <p id="my-content-{ id }"><yield from="summary"/></p>
+  <div if={ contentVisible }>
+    <yield from="content"/>
+  </div>
+  <button onclick={ toggleContent }>+ more</button>
+  <h2>again!?</h2>
+  <p><yield from="summary"/></p>
+  this.id = 666
+</my-other-post>
+```
+
+anytime you will include the `<my-other-post>` tag in your app
+
+``` html
+<my-other-post title="What a great title">
+  <yield to="summary">My beautiful post is just awesome</yield>
+  <yield to="content">
+    <p>And the next paragraph describes just how awesome it is</p>
+    <p>Very</p>
+  </yield>
+</my-other-post>
+```
+
+once mounted `riot.mount('my-other-post')` it will be rendered in this way:
+
+``` html
+<my-other-post>
+  <h1>What a great title</h1>
+  <p id="my-content-666">My beautiful post is just awesome</p>
+  <div if={ contentVisible }>
+  <p>And the next paragraph describes just how awesome it is</p>
+  <p>Very</p>
+  </div>
+  <button onclick={ toggleContent }>+ more</button>
+  <h2>again!?</h2>
+  <p>My beautiful post is just awesome</p>
+</my-other-post>
+```
+
+
 #### Yield and loops
 
 The `<yield>` tag could be used also in a loop or in a child tag but you should be aware that __it will be always parsed and compiled using the child data__
 
 The following `blog.tag` riot component
-
 
 ``` html
 <blog>
@@ -303,7 +351,6 @@ The following `blog.tag` riot component
   <p>{ description }</p>
   <yield/>
 </my-post>
-
 ```
 
 will be compiled in this way:
@@ -354,7 +401,7 @@ The above method and property names are reserved words for Riot tags. Don't use 
 <my-tag>
 
   // allowed
-  function update() { } 
+  function update() { }
 
   // not allowed
   this.update = function() { }
@@ -472,6 +519,3 @@ new MyTag(document.getElementById('my-div')).mount()
 ```
 
 The `riot.Tag` method is not recommended. You should use it only if you need to achieve special features not available with the previous riot methods
-
-
-
