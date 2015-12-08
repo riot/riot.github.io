@@ -62,10 +62,10 @@ Read the [compiler API](/api/compiler/) for more details.
 
 ### Demos
 
-- [In-browser compiled](http://muut.github.io/riotjs/demo/)
-- [Pre-compiled](http://muut.github.io/riotjs/demo/)
-- [Source code](https://github.com/riot/riot/tree/gh-pages/demo)
-- Download the demo as a [zip file](https://github.com/riot/riot/archive/gh-pages.zip)
+- [In-browser compiled](/examples/todo-app/)
+- [Pre-compiled](/examples/todo-app-precompiled/)
+- [Source code](https://github.com/riot/examples/tree/gh-pages/todo-app)
+- Download the demo as a [zip file](https://github.com/riot/examples/archive/gh-pages.zip)
 
 
 
