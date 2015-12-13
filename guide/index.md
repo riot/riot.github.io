@@ -579,10 +579,7 @@ This will be your output
 </my-tag>
 ```
 
-[demo on jsfiddle](http://jsfiddle.net/23g73yvx/)
-
 <span class="tag red">warning</span> this could expose the user to XSS attacks so make sure you never load data from an untrusted source.
-
 
 
 ## Nested tags
