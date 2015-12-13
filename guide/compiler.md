@@ -149,13 +149,50 @@ You're free to use any file extension for your tags (instead of default `.tag`):
 riot --ext html
 ```
 
+### ES6 Config file
+
+You can use a config file to store and configure easily all your riot-cli options
+and create your custom parsers
+
+``` sh
+riot --config riot.config
+```
+
+The riot `riot.config.js` file:
+
+```js
+export default {
+  from: 'tags/src',
+  to: 'tags/dist',
+  // files extension
+  ext: 'foo'
+  // html parser
+  template: 'foo',
+  // js parser
+  type: 'baz',
+  // css parser
+  style: 'bar'
+  parsers: {
+    html: {
+      foo: (html, opts, url) => require('foo').compile(html)
+    },
+    css: {
+      bar: (tagName, css, opts, url) => require('bar').compile(css)
+    },
+    js: {
+      baz: (js, opts, url) => require('baz').compile(js)
+    }
+  }
+}
+```
+
 
 ### Node module
 
 ``` javascript
 var riot = require('riot')
 
-var js = riot.compile(source_string)
+var js = riot.compile(source_string, options, url)
 ```
 
 The compile function takes a string and returns a string.
@@ -224,7 +261,7 @@ ECMAScript 6 is enabled with a type "es6":
 riot --type es6 source.tag
 ```
 
-An sample tag written in ES6:
+A sample tag written in ES6:
 
 ``` html
 <test>
@@ -237,13 +274,49 @@ An sample tag written in ES6:
 </test>
 ```
 
-All ECMAScript 6 [features](https://github.com/lukehoban/es6features) can be used. [Babel](https://babeljs.io/) is used for the transformation:
+All ECMAScript 6 [features](https://github.com/lukehoban/es6features) can be used. [Babel 5](https://babeljs.io/) is used for the transformation:
 
 ``` sh
-npm install babel
+npm install babel@5.8
 ```
 
-Here is a [bigger example](https://github.com/txchen/feplay/tree/gh-pages/riot_babel) on using Babel with Riot.
+Here is a [bigger example](https://github.com/txchen/feplay/tree/gh-pages/riot_babel) on using Babel 5 with Riot.
+
+### Babel 6
+
+Babel 6 introduced many breaking changes so if you want to use it you should configure your environment first:
+
+ 1. install our [babel-preset-es2015-riot](https://github.com/riot/babel-preset-es2015-riot)<br /> `npm install babel-preset-es2015-riot --save-dev`
+ 2. install `babel-core` as well <br /> `npm install babel-core --save-dev`
+ 3. create a `.babelrc` file containing the preset id<br /> `{ "presets": ["es2015-riot"] }`
+
+Once your have configured your environment you can use:
+
+``` sh
+# use Babel pre-processor
+riot --type babel source.tag
+```
+
+Riot can be used with any Babel preset as long as the following option will be properly set:
+
+```json
+{
+  "plugins": [
+    ["transform-es2015-modules-commonjs", { "allowTopLevelThis": true }]
+  ]
+}
+```
+
+<span class="tag red">note</span> Babel generates a lot of extra code in your output so you may consider compiling your tags in 2 separate steps using the `babel-plugin-external-helpers-2` as well for example:
+
+``` sh
+# compile your tags using pure es6 code
+riot tags/folder dist/es6.tags.js
+# convert your es6 to valid es5 code
+babel es6.tags.js --out-file tags.js
+```
+
+Here is a [simple example](https://github.com/GianlucaGuarini/riot-preset-babel-test) on using Babel 6 with Riot.
 
 ### TypeScript
 
@@ -254,7 +327,7 @@ TypeScript adds optional static typing to JavaScript. Use `--type typescript` to
 riot --type typescript source.tag
 ```
 
-An sample tag written in TypeScript:
+A sample tag written in TypeScript:
 
 ``` html
 <test>

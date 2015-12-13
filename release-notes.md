@@ -10,17 +10,18 @@ id: release-notes
 
 - __compiler__
   - Fix issues on IE 9/10 and other minor issues
-  - Add the `exclude` singularly portions of your tags from the output like `css`, `js` or `html`
-  - Add `url` as third parameter to the `compile` method to debug the output
+  - Add the `exclude` to remove singularly portions of your tags from the output like `css`, `js` or `html`
+  - Add `url` as third parameter to the `compile` method to better debug the output
 - __route__
-  - Fix issues on IE and safari
+  - Fix important issues on IE and safari
   - Fix a [regression api bug](https://github.com/riot/route/issues/30)
 - __riot-cli__
-  - Add the `--config` option to load your cli options and parsers from an external es6 config file
-  - Add better support for `babel 6` using our custom [babel-preset-es2015-riot](https://github.com/riot/babel-preset-es2015-riot)
+  - Add the `--config` option to load your cli options and parsers from an external es6 config file [more details](/guide/compiler/#es6-config-file)
+  - Add better support for `babel 6` if combined with our [babel-preset-es2015-riot](https://github.com/riot/babel-preset-es2015-riot)
 - __riot__
-  - Add the possibility to render raw markup directly via template using `{= myHtml }`
-  - Add
+  - Add the possibility to render raw markup directly via template `{= myHtml }` [more details](render-unescaped-html)
+  - Add multi transclusion [more details](/api/#multi-transclusion)
+  - Fix loops containing null items
 
 ## 2.3.11 *November 22, 2015*
 

@@ -559,23 +559,23 @@ Expressions inside `style` tags are ignored.
 
 ### Render unescaped HTML
 
-Riot expressions can only render text values without HTML formatting. However you can make a custom tag to do the job. For example:
+<span class="tag red">&gt;=2.3.12</span>
 
-```html
-<raw>
-  <span></span>
-
-  this.root.innerHTML = opts.content
-</raw>
-```
-
-After the tag is defined you can use it inside other tags. For example
+Riot expressions can render your text content without escaping it just adding `=` at the opening of your template delimiters:
 
 ```html
 <my-tag>
-  <p>Here is some raw content: <raw content="{ html }"/> </p>
+  <div>Hello {= myHtml }</div>
 
-  this.html = 'Hello, <strong>world!</strong>'
+  this.myHtml = '<strong>world!</strong>'
+</my-tag>
+```
+
+This will be your output
+
+```html
+<my-tag>
+  <div>Hello, <strong>world!</strong></div>
 </my-tag>
 ```
 
