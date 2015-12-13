@@ -6,9 +6,25 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.3.12 *December 13, 2015*
+
+- __compiler__
+  - Fix issues on IE 9/10 and other minor issues
+  - Add the `exclude` singularly portions of your tags from the output like `css`, `js` or `html`
+  - Add `url` as third parameter to the `compile` method to debug the output
+- __route__
+  - Fix issues on IE and safari
+  - Fix a [regression api bug](https://github.com/riot/route/issues/30)
+- __riot-cli__
+  - Add the `--config` option to load your cli options and parsers from an external es6 config file
+  - Add better support for `babel 6` using our custom [babel-preset-es2015-riot](https://github.com/riot/babel-preset-es2015-riot)
+- __riot__
+  - Add the possibility to render raw markup directly via template using `{= myHtml }`
+  - Add
+
 ## 2.3.11 *November 22, 2015*
 
-- __Compiler__
+- __compiler__
   - Gets rid of the zero-indentation restriction for custom tags, now you can indent these tags, but the opening and closing tag must have exactly the same indentation (length and type). All the tag will be unindented by this amount.
   - Support for `src` and `charset` attributes in `<script>` tags for reading JavaScript sources from the file system - [riot#507](https://github.com/riot/riot/issues/507)
   - The `compile` function can return separate parts by setting the new `entities` option. These parts have unescaped newlines.
