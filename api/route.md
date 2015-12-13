@@ -11,8 +11,8 @@ The Riot Router is the minimal router implementation with such technologies:
 - pushState and history API
 - multiple routing groups
 - replacable parser
-- use polyfills for ie9 support and earlier.  Because ie.
-
+- use a [polyfill](https://github.com/devote/HTML5-History-API) for ie9 support and earlier.  Because ie.
+ 
 ## Setup routing
 
 ### riot.route(callback)
