@@ -35,48 +35,48 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-major_version:       11
+major_version:       12
 minor_version:       2.3
 
-version:             2.3.11
-release_date:        November 22
-version_slurp:       A more advanced compiler
+version:             2.3.12
+release_date:        December 13
+version_slurp:       Multi transclusion and raw markup via template engine
 repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page
 
-size_min:            18.00
-riot_route_size_min: 2.93
+size_min:            20.00
+riot_route_size_min: 3.32
 
 polymer:
-  size:    112.00
+  size:    183.00 # 118 + 48 + 17
   version: 1.2.1
 
 webcomponents:
-  size:    117.00
-  version: 0.7.15
+  size:    118.00
+  version: 0.7.19
 
-polymer_and_webcomponents_size: 229 # 112 + 117
+polymer_and_webcomponents_size: 301 # 183 + 118
 
 react:
-  size:    135.00
-  version: 0.14.1
+  size:    136.00
+  version: 0.14.3
 
 react_router:
-  size:    36.00
-  version: 0.13.4
+  size:    48.00
+  version: 1.0.2
 
 react_mini_router:
-  size:    7.98
-  version: 1.1.7
+  size:    9.91
+  version: 2.0.0
 
 
 # precalculated round values because of {{round}} liquid filter bug
 compare:
-  react: 8 # react.size / size_min
-  react_router_vs_riot_router: 12 # react_router.size / riot_route_size_min
-  react_mini_router_vs_riot_router: 12 # react_router.size / riot_route_size_min
-  polymer_and_webcomponents: 13 # polymer_and_webcomponents_size / size_min
+  react: 7 # react.size / size_min
+  react_router_vs_riot_router: 14 # react_router.size / riot_route_size_min
+  react_mini_router_vs_riot_router: 3 # react_router.size / riot_route_size_min
+  polymer_and_webcomponents: 15 # polymer_and_webcomponents_size / size_min
 
 # Languages
 translations:

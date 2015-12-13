@@ -264,21 +264,21 @@ once mounted `riot.mount('my-post')` it will be rendered in this way:
 
 #### Multi-Transclusion
 
+<span class="tag red">&gt;=2.3.12</span>
+
 The `<yield>` tag also provides a slot mechanism that allows you to inject html contents on specific slots in the template
 
 For example using the following riot tag `my-other-post`
 
 ``` html
 <my-other-post>
-  <h1>{ opts.title }</h1>
-  <p id="my-content-{ id }"><yield from="summary"/></p>
-  <div if={ contentVisible }>
-    <yield from="content"/>
-  </div>
-  <button onclick={ toggleContent }>+ more</button>
-  <h2>again!?</h2>
-  <p><yield from="summary"/></p>
-  this.id = 666
+  <article>
+    <h1>{ opts.title }</h1>
+    <h2><yield from="summary"/></h2>
+    <div>
+      <yield from="content"/>
+    </div>
+  </article>
 </my-other-post>
 ```
 
@@ -286,7 +286,9 @@ anytime you will include the `<my-other-post>` tag in your app
 
 ``` html
 <my-other-post title="What a great title">
-  <yield to="summary">My beautiful post is just awesome</yield>
+  <yield to="summary">
+    My beautiful post is just awesome
+  </yield>
   <yield to="content">
     <p>And the next paragraph describes just how awesome it is</p>
     <p>Very</p>
@@ -298,15 +300,14 @@ once mounted `riot.mount('my-other-post')` it will be rendered in this way:
 
 ``` html
 <my-other-post>
-  <h1>What a great title</h1>
-  <p id="my-content-666">My beautiful post is just awesome</p>
-  <div if={ contentVisible }>
-  <p>And the next paragraph describes just how awesome it is</p>
-  <p>Very</p>
-  </div>
-  <button onclick={ toggleContent }>+ more</button>
-  <h2>again!?</h2>
-  <p>My beautiful post is just awesome</p>
+  <article>
+    <h1>What a great title</h1>
+    <h2>My beautiful post is just awesome</h2>
+    <div>
+      <p>And the next paragraph describes just how awesome it is</p>
+      <p>Very</p>
+    </div>
+  </article>
 </my-other-post>
 ```
 
