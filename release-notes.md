@@ -19,7 +19,6 @@ id: release-notes
   - Add the `--config` option to load your cli options and parsers from an external es6 config file [more details](/guide/compiler/#es6-config-file)
   - Add better support for `babel 6` if combined with our [babel-preset-es2015-riot](https://github.com/riot/babel-preset-es2015-riot)
 - __riot__
-  - Add the possibility to render raw markup directly via template `{= myHtml }` [more details](/guide/#render-unescaped-html)
   - Add multi transclusion [more details](/api/#multi-transclusion)
   - Fix loops containing null items
 
