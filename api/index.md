@@ -29,6 +29,17 @@ var tags = riot.mount('account', api)
 
 @returns: an array of the mounted [tag instances](#tag-instance)
 
+Note: users of [In-browser compilation](/guide/compiler/#in-browser-compilation) will need to wrap calls to `riot.mount` in `riot.compile` in order to get returned [tag instances](#tag-instance). Without this, calls to `riot.mount` will return `undefined`.
+
+```javascript
+<script>
+riot.compile(function() {
+  // here tags are compiled and riot.mount works synchronously
+  var tags = riot.mount('*')
+})
+</script>
+```
+
 ### <a name="mount-star"></a> riot.mount('*', [opts])
 
 A special Riot specific selector "*" can be used to mount all custom tags on the page:
@@ -472,6 +483,3 @@ new MyTag(document.getElementById('my-div')).mount()
 ```
 
 The `riot.Tag` method is not recommended. You should use it only if you need to achieve special features not available with the previous riot methods
-
-
-
