@@ -179,9 +179,9 @@ Polymer takes the Web Component standard and makes it available for the latest b
 
 Conceptually Riot is the same thing but there are differences:
 
-1. Riot updates only the elements that have changed resulting to less DOM operations.
+1. The Web Components syntax is experimental and complex.
 
-2. Polymer syntax is more complex and requires one to study more books.
+2. Riot updates only the elements that have changed resulting to less DOM operations.
 
 3. Individual components are imported with HTML `link rel="import"`. Polyfills must resort to queued up XHRs, which makes it painfully slow unless the dedicated [vulcanize](https://github.com/polymer/vulcanize) tool is used. Riot tags are imported with `script src` and multiple tags can be combined with regular tooling.
 
@@ -201,8 +201,22 @@ Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.vers
 Web components are said to be the [king of all polyfilling challenges](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/) and this is why Polymer requires such a large amount of code.
 
 
-### Experimental
+# Web components
 
-Polymer is based on experimental technology. Native Web Component support is not present in Safari or IE. IE status is "under consideration" and Safari plans are uncertain. Some WebKit [commits](https://lists.webkit.org/pipermail/webkit-dev/2013-May/024894.html) hint that they plan not to support it at all. And Polymer is only capable of polyfilling the _latest versions_ of “evergreen”  browsers (IE 10+).
+Because web components is a standard it is ultimately the way to go. It will take [years](http://caniuse.com/#search=web%20components), but eventually the web will be full of these standard components.
 
-Polymer project is over [2 years old](https://github.com/Polymer/polymer/commit/0452ada044a6fc5818902e685fb07bb4678b2bc2) and it hasn't gained any significant adoption. It's uncertain whether Web Components will ever be natively supported.
+Because of the complexity involved there is a high chance that these components are not used directly. There will be layers on top of web components. Just like we have jQuery today. Most people are not using the DOM directly.
+
+Riot is one such abstraction. It provides an easy to use API that our applications can stick to. Once the web component specs evolve Riot can start using them *internally* if there are any true benefits, such as performance gains.
+
+The goal of Riot is to make UI development as easy as possible. The current API is designed to withstand the constant flux of web technologies. Think of it as the "jQuery for web components" - it takes syntaxical shortcuts to achieve the same goal. It simplifies the overall experience of writing reusable components.
+
+
+
+
+
+
+
+
+
+
