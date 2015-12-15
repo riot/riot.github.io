@@ -6,7 +6,7 @@ id: release-notes
 
 # {{ page.title }}
 
-## 2.3.12 *December 13, 2015*
+## 2.3.12 *December 15, 2015*
 
 - __compiler__
   - Fix issues on IE 9/10 and other minor issues

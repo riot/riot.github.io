@@ -39,7 +39,7 @@ major_version:       12
 minor_version:       2.3
 
 version:             2.3.12
-release_date:        December 13
+release_date:        December 15
 version_slurp:       Multi transclusion and external config file to compile your tags
 repo:                https://github.com/riot/riot
 
