@@ -173,7 +173,7 @@ Admittedly this router comparison is a bit unfair because [react-router](https:/
 The React ecosystem is more frameworky and favors larger API surfaces. The bigger alternative is more popular than [react-mini-router](https://github.com/larrymyers/react-mini-router) in the React community.
 
 
-# Polymer
+## Polymer
 
 Polymer takes the Web Component standard and makes it available for the latest browsers. This allows you to write custom tags in a standard manner.
 
@@ -201,7 +201,7 @@ Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.vers
 Web components are said to be the [king of all polyfilling challenges](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/) and this is why Polymer requires such a large amount of code.
 
 
-# Web components
+## Web components
 
 Because web components is a standard it is ultimately the way to go. It will take [years](http://caniuse.com/#search=web%20components), but eventually the web will be full of these standard components.
 
