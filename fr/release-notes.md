@@ -6,6 +6,47 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.3.12 *15 décembre 2015*
+
+- __compilateur__
+  - Correction de problèmes sur IE 9/10 et autres bugs mineurs
+  - Ajout de l'option `exclude` pour supprimer des portions de vos tags en sortie comme `css`, `js` ou `html`
+  - Ajout de `url` comme troisième argument de la méthode `compile` pour un meilleur débogage en sortie
+- __route__
+  - Corrections de problèmes importants sur IE et Safari
+  - Correction d'une [régression API](https://github.com/riot/route/issues/30)
+- __riot-cli__
+  - Ajout de l'option `--config` pour charger vos options CLI et vos parseurs depuis un fichier de configuration ES6 externe [plus de détails](/fr/guide/compiler/#es6-config-file)
+  - Ajout d'un meilleur support de `babel 6` si combiné avec notre preset [babel-preset-es2015-riot](https://github.com/riot/babel-preset-es2015-riot)
+- __riot__
+  - Ajout de la transclusion multiple [plus de détails](/fr/api/#multi-transclusion)
+  - Correction des boucles contenant des éléments `null`
+
+## 2.3.11 *22 november 2015*
+
+- __compilateur__
+  - Suppression des restrictions sur l'indentation nulle pour les tags personnalisés, maintenant vous pouvez indenter ces tags, mais le tag d'ouverture et de fermeture doivent être au même niveau d'indentation (en longueur et en type). Toute l'indentation du tag sera retranchée de cette quantité.
+  - Support des attributs `src` et `charset` dans les balises `<script>` pour lire des sources JavaScript depuis le système de fichiers - [riot#507](https://github.com/riot/riot/issues/507)
+  - La fonction `compile` peut retourner des parties séparées en renseignant la nouvelle option `entities`. Ces parties ont des sauts de ligne non échappés.
+  - Le nouvel attribut `options` pour les balises `script` et `style` viendra ajouter/écraser les attributs dans la configuration par défaut du parseur au niveau du tag.
+  - Correction [riot#1261](https://github.com/riot/riot/issues/1261): la balise `<pre>` ne préserve ni `\n` ni `\t`.
+    Maintenant les espaces dans les balises `<pre>` sont toujours préservés.
+  - Correction [riot#1358](https://github.com/riot/riot/issues/1358): Un style scopé vide fait crasher.
+  - Correction [riot#1306](https://github.com/riot/riot/issues/1306): Le compilateur préserve les sauts de ligne dans les classes, causant des erreurs "Unterminated String Constant".
+  - Correction [riot#1314](https://github.com/riot/riot/issues/1314): `settings.brackets` ne fonctionnait plus.
+
+- __riot__
+  - Correction de `riot.render` sur les vieilles versions de Node
+  - Correction de quelques petits bugs sur les boucles
+  - Correction: `riot.route` ne bloque plus les liens non inscrits avec `event.preventDefault`
+  - Ajout de l'événement `error` sur tous les instances `riot.observable` pour intercepter toutes les erreurs possibles déclenchées au sein des callbacks
+
+- __riot-cli__
+  - Ajout de meilleurs messages d'erreur si le parseur n'est pas installé localement
+  - Ajout de l'option `export` pour extraire des portions de vos tags comme `css`, `js` ou `html`
+  - Ajout de l'option `style` pour choisir le préprocesseur par défaut de vos balises de style
+  - Ajout du support natif des préprocesseurs `sass`, `scss` et `less`
+
 ## 2.3.1 *10 novembre 2015*
 
 - Ajout du parseur `babel` pour supporter babel 6 sorti tout récemment; utilisez `es6` si vous voulez toujours utiliser les versions précédentes de babel

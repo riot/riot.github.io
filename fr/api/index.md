@@ -260,12 +260,61 @@ une fois monté avec `riot.mount('my-post')` , il sera interprété comme ceci:
 </my-post>
 ```
 
+#### Multi-Transclusion
+
+<span class="tag red">&gt;=2.3.12</span>
+
+Le tag `<yield>` fournit également un mécanisme d'emplacements qui vous permet d'injecter du contenu HTML à des endroits spécifiques dans le template.
+
+Par exemple, en utilisant ce tag riot `my-other-post` :
+
+``` html
+<my-other-post>
+  <article>
+    <h1>{ opts.title }</h1>
+    <h2><yield from="summary"/></h2>
+    <div>
+      <yield from="content"/>
+    </div>
+  </article>
+</my-other-post>
+```
+
+chaque fois que vous incluerez le tag `<my-other-post>` dans votre application
+
+``` html
+<my-other-post title="Quel superbe titre">
+  <yield to="summary">
+    Mon magnifique post est juste formidable
+  </yield>
+  <yield to="content">
+    <p>Et le paragraphe qui suit décrit à quel point il est bien</p>
+    <p>Très</p>
+  </yield>
+</my-other-post>
+```
+
+une fois monté avec `riot.mount('my-other-post')` il sera rendu de cette manière:
+
+``` html
+<my-other-post>
+  <article>
+    <h1>Quel superbe titre</h1>
+    <h2>Mon magnifique post est juste formidable</h2>
+    <div>
+      <p>Et le paragraphe qui suit décrit à quel point il est bien</p>
+          <p>Très</p>
+    </div>
+  </article>
+</my-other-post>
+```
+
+
 #### Injection et boucles
 
 Le tag `<yield>` peut également être utilisé au sein d'une boucle ou d'un tag enfant mais vous devez être conscient qu'__il sera toujours interprété et compilé avec les données du contexte de l'enfant__
 
 Le composant riot suivant `blog.tag`
-
 
 ``` html
 <blog>
@@ -470,6 +519,3 @@ new MyTag(document.getElementById('my-div')).mount()
 ```
 
 Il n'est pas recommandé d'utiliser la méthode `riot.Tag`. Vous devriez l'utiliser seulement si vous avez besoin de certaines fonctionnalités non disponibles via les méthodes précédentes.
-
-
-

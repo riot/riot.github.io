@@ -62,10 +62,10 @@ Lisez l'[API du compilateur](/api/compiler/) pour plus de details.
 
 ### Demos
 
-- [Compilé dans le navigateur](http://muut.github.io/riotjs/demo/)
-- [Précompilé](http://muut.github.io/riotjs/demo/)
-- [Code source](https://github.com/riot/riot/tree/gh-pages/demo)
-- Téléchargez la démo en [fichier zip](https://github.com/riot/riot/archive/gh-pages.zip)
+- [Compilé dans le navigateur](/examples/todo-app/)
+- [Précompilé](/examples/todo-app-precompiled/)
+- [Code source](https://github.com/riot/examples/tree/gh-pages/todo-app)
+- Téléchargez la démo en [fichier zip](https://github.com/riot/examples/archive/gh-pages.zip)
 
 
 
@@ -149,13 +149,50 @@ Vous être libres d'utiliser n'importe qu'elle extension de fichier pour vos tag
 riot --ext html
 ```
 
+### Fichier de configuration ES6
+
+Vous pouvez utiliser un fichier de configuration pour stocker et configurer facilement toutes vos options riot-cli
+et créer vos parseurs personnalisés
+
+``` sh
+riot --config riot.config
+```
+
+Le fichier `riot.config.js`:
+
+```js
+export default {
+  from: 'tags/src',
+  to: 'tags/dist',
+  // extensions de fichiers
+  ext: 'foo'
+  // parseur HTML
+  template: 'foo',
+  // parseur JavaScript
+  type: 'baz',
+  // parseur CSS
+  style: 'bar'
+  parsers: {
+    html: {
+      foo: (html, opts, url) => require('foo').compile(html)
+    },
+    css: {
+      bar: (tagName, css, opts, url) => require('bar').compile(css)
+    },
+    js: {
+      baz: (js, opts, url) => require('baz').compile(js)
+    }
+  }
+}
+```
+
 
 ### Module node
 
 ``` javascript
 var riot = require('riot')
 
-var js = riot.compile(source_string)
+var js = riot.compile(source_string, options, url)
 ```
 
 La fonction de compilation prend une String en argument et retourne une String.
@@ -237,13 +274,50 @@ Un exemple de tag écrit en ES6:
 </test>
 ```
 
-Toutes les [fonctionnalités ECMAScript 6](https://github.com/lukehoban/es6features) peuvent être utilisées. [Babel](https://babeljs.io/) est utilisé pour la transpilation:
+Toutes les [fonctionnalités ECMAScript 6](https://github.com/lukehoban/es6features) peuvent être utilisées. [Babel 5](https://babeljs.io/) est utilisé pour la transpilation:
 
 ``` sh
-npm install babel
+npm install babel@5.8
 ```
 
-Voici un [exemple plus complet](https://github.com/txchen/feplay/tree/gh-pages/riot_babel) utilisant Babel avec Riot.
+Voici un [exemple plus complet](https://github.com/txchen/feplay/tree/gh-pages/riot_babel) utilisant Babel 5 avec Riot.
+
+### Babel 6
+
+Babel 6 a introduit plusieurs changements majeurs donc si vous voulez l'utiliser, vous devriez d'abord configurer votre environnement:
+
+ 1. installez notre preset [babel-preset-es2015-riot](https://github.com/riot/babel-preset-es2015-riot)<br /> `npm install babel-preset-es2015-riot --save-dev`
+ 2. installez aussi `babel-core` <br /> `npm install babel-core --save-dev`
+ 3. créez un fichier `.babelrc` indiquant le preset<br /> `{ "presets": ["es2015-riot"] }`
+
+Une fois votre environnement configuré, vous pouvez utiliser:
+
+``` sh
+# utilise le préprocesseur Babel
+riot --type babel source.tag
+```
+
+Riot peut être utilisé avec n'importe quel preset Babel à condition que les options suivantes soient définies correctement:
+
+```json
+{
+  "plugins": [
+    ["transform-es2015-modules-commonjs", { "allowTopLevelThis": true }]
+  ]
+}
+```
+
+<span class="tag red">note</span> Babel génère beaucoup de code superflu en sortie donc vous pourriez considérer le fait de compiler vos tags en deux étapes distinctes en utilisant par exemple `babel-plugin-external-helpers-2` en complément:
+
+``` sh
+# compile vos tags en utilisant du pur code ES6
+riot tags/folder dist/es6.tags.js
+# convertit le code ES6 en ES5 valide
+babel es6.tags.js --out-file tags.js
+```
+
+Voici un [exemple simple](https://github.com/GianlucaGuarini/riot-preset-babel-test) utilisant Babel 6 avec Riot.
+
 
 ### TypeScript
 

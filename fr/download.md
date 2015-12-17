@@ -16,10 +16,6 @@ Voir notre [historique des versions](/fr/release-notes). Tous les fichiers sont 
 
 [riot.js]({{ page.base }}/riot.js)
 
-[compiler.min.js]({{ page.base }}/compiler.min.js)
-
-[compiler.js]({{ page.base }}/compiler.js)
-
 [riot+compiler.min.js]({{ page.base }}/riot+compiler.min.js)
 
 [riot+compiler.js]({{ page.base }}/riot+compiler.js)
@@ -30,11 +26,11 @@ Voir notre [historique des versions](/fr/release-notes). Tous les fichiers sont 
 
 #### [jsdelivr](http://www.jsdelivr.com/#!riot)
 
-`https://cdn.jsdelivr.net/g/riot@{{ site.minor_version }}(riot.min.js+compiler.min.js)` <small>(dernière version {{ site.minor_version }}.X)</small>
+`https://cdn.jsdelivr.net/riot/{{ site.minor_version }}/riot+compiler.min.js` <small>(dernière version {{ site.minor_version }}.X)</small>
 
 `https://cdn.jsdelivr.net/riot/{{ site.minor_version }}/riot.min.js` <small>(dernière version {{ site.minor_version }}.X)</small>
 
-`https://cdn.jsdelivr.net/g/riot@{{ site.version }}(riot.min.js+compiler.min.js)`
+`https://cdn.jsdelivr.net/riot/{{ site.version }}/riot+compiler.min.js`
 
 `https://cdn.jsdelivr.net/riot/{{ site.version }}/riot.min.js`
 
@@ -69,12 +65,6 @@ Voir notre [historique des versions](/fr/release-notes). Tous les fichiers sont 
 #### [riot/riot](https://github.com/riot/riot)
 
 `git clone git@github.com:riot/riot.git`
-
-
-## Problèmes connus
-
-- Itérer sur des cellules ou des lignes de tableaux avec un attribut `each` ne fonctionne pas sur IE8 et IE9 is not working on IE8 and IE9.
-
 
 ## Logo
 
