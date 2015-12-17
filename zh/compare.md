@@ -169,15 +169,15 @@ React (v{{ site.react.version }}) 比 Riot 大 {{ site.react.size | divided_by: 
 React 的生态系统更框架化，倾向于庞大的 API 接口. 在React社区里上面这个大路由器比 [react-mini-router](https://github.com/larrymyers/react-mini-router) 更受欢迎。
 
 
-# Polymer
+## Polymer
 
 Polymer 使用 Web Component 标准，使它在最新的浏览器上可用. 这使得你可以以标准化的方式编写自定义标签。
 
 从概念上看 Riot 的目标是一样的，但也存在区别:
 
-1. Riot 只更新变化了的元素，因此DOM操作更少
+1. Web Component 语法是实验性的，比较复杂
 
-2. Polymer的语法更复杂，需要读一本或几本书
+2. Riot 只更新变化了的元素，因此DOM操作更少
 
 3. 组件是通过 HTML `link rel="import"` 载入的. 必须使用 Polyfill 来对 XHR 进行排队, 非常的慢. Riot 标签用 `script src` 载入，多个标签可以用常用的工具来进行合并。
 
@@ -199,8 +199,12 @@ Polymer (v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.ver
 Web components 被称为 [polyfill之王](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/) ，这就是为什么 Polymer的实现需要这么多代码。
 
 
-### 试验性
+### Web Componnets
 
-Polymer 基于试验性技术。原生的Web Component支持在 Safari 和 IE 上还不存在. IE 的状态是 "正在考虑" ，Safari的计划还不确定。有一些 WebKit [commits](https://lists.webkit.org/pipermail/webkit-dev/2013-May/024894.html) 暗示它们可能根本就不计划支持它。最后 Polymer 只能 polyfill  _最新版_ 的 “evergreen”  浏览器 (IE 10+).
+Web Component 是标准，所以会是组件技术的最终方向。最终互联网上将全部是这种标准组件，但这可能需要很长[时间](http://caniuse.com/#search=web%20components)
 
-Polymer 项目已经存在 [2年多了](https://github.com/Polymer/polymer/commit/0452ada044a6fc5818902e685fb07bb4678b2bc2) 但还没有获得广泛的采纳. 还不确定Web Component标准最终是否会被原生支持。
+由于其中涉及的复杂性，有很大的机率这些组件并不是被直接使用。在web component上面将会有新的层次。就象目前我们有jQuery一样。大部分开发者并不是直接使用DOM API.
+
+Riot就是这样一种抽象。它提供了应用可以一直使用的非常易用的API。一旦 web component 规范发生了进化，并带来了真实的好处，如性能上的提升，Riot可以 *在内部* 使用它。
+
+Riot的目标是使 UI 开发尽可能地简单。当前的 API 。可以把它理解成 "web component的jquery" - 它提供了达成同样目标的更简短的语法。它简化了编写可重用组件的整体开发体验。

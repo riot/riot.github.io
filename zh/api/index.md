@@ -261,6 +261,55 @@ mytag.unmount(true)
 </my-post>
 ```
 
+#### 多点yield
+
+<span class="tag red">&gt;=2.3.12</span>
+
+`<yield>`标签还支持将模板中不同位置的html内容插入到指定的位置。
+
+例如，使用下面的自定义标签 `my-other-post`
+
+``` html
+<my-other-post>
+  <article>
+    <h1>{ opts.title }</h1>
+    <h2><yield from="summary"/></h2>
+    <div>
+      <yield from="content"/>
+    </div>
+  </article>
+</my-other-post>
+```
+
+在应用中可以这样使用`<my-other-post>`标签：
+
+``` html
+<my-other-post title="What a great title">
+  <yield to="summary">
+    My beautiful post is just awesome
+  </yield>
+  <yield to="content">
+    <p>And the next paragraph describes just how awesome it is</p>
+    <p>Very</p>
+  </yield>
+</my-other-post>
+```
+
+使用 `riot.mount('my-other-post')` 加载后渲染结果是这样的：
+
+``` html
+<my-other-post>
+  <article>
+    <h1>What a great title</h1>
+    <h2>My beautiful post is just awesome</h2>
+    <div>
+      <p>And the next paragraph describes just how awesome it is</p>
+      <p>Very</p>
+    </div>
+  </article>
+</my-other-post>
+```
+
 #### yield 与 循环
 
 `<yield>` 标签可以用在循环中或子标签中，但你必须知道 __它总是使用子标签的数据进行解析和编译__
@@ -299,7 +348,6 @@ mytag.unmount(true)
   <p>{ description }</p>
   <yield/>
 </my-post>
-
 ```
 
 将编译成:

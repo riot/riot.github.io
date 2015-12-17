@@ -11,7 +11,7 @@ Riot 路由器是一个最小化的路由器实现，实现了以下技术：
 - pushState 和 history api
 - 多个路由组
 - 可替换的解析器
-- 兼容IE9+
+- 使用 [polyfill](https://github.com/devote/HTML5-History-API) 可兼容IE 9及以下版本 
 
 ## 配置路由
 

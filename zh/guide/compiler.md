@@ -60,10 +60,10 @@ riot.compile(function() {
 
 ### 示例
 
-- [浏览器内编译](http://muut.github.io/riotjs/demo/)
-- [预编译](http://muut.github.io/riotjs/demo/)
-- [源码](https://github.com/riot/riot/tree/gh-pages/demo)
-- 下载示例代码 [zip文件](https://github.com/riot/riot/archive/gh-pages.zip)
+- [浏览器内编译](/examples/todo-app/)
+- [预编译](/examples/todo-app-precompiled/)
+- [源码](https://github.com/riot/examples/tree/gh-pages/todo-app)
+- 下载示例代码 [zip文件](https://github.com/riot/examples/archive/gh-pages.zip)
 
 **译者注** 根据我们的使用经验，浏览器内编译对调试不友好。不建议使用。
 
@@ -149,13 +149,48 @@ riot -w src dist
 riot --ext html
 ```
 
+### ES6配置文件
+
+可以使用一个配置文件来保存和配置所有的 riot-cli 选项，以及创建自定义解析器
+
+``` sh
+riot --config riot.config
+```
+
+`riot.config.js` 文件:
+
+```js
+export default {
+  from: 'tags/src',
+  to: 'tags/dist',
+  // 文件后缀名
+  ext: 'foo'
+  // html parser
+  template: 'foo',
+  // js parser
+  type: 'baz',
+  // css parser
+  style: 'bar'
+  parsers: {
+    html: {
+      foo: (html, opts, url) => require('foo').compile(html)
+    },
+    css: {
+      bar: (tagName, css, opts, url) => require('bar').compile(css)
+    },
+    js: {
+      baz: (js, opts, url) => require('baz').compile(js)
+    }
+  }
+}
+```
 
 ### Node 模块
 
 ```js
 var riot = require('riot')
 
-var js = riot.compile(source_string)
+var js = riot.compile(source_string, options, url)
 ```
 
 compile 函数接受string参数，返回string.
@@ -237,13 +272,49 @@ ES6 自定义标签示例:
 </test>
 ```
 
-所有的 ECMAScript 6 [功能](https://github.com/lukehoban/es6features) 都能用. 转换过程是用 [Babel](https://babeljs.io/) 完成的:
+所有的 ECMAScript 6 [功能](https://github.com/lukehoban/es6features) 都能用. 转换过程是用 [Babel 5](https://babeljs.io/) 完成的:
 
 ``` sh
-npm install babel
+npm install babel@5.8
 ```
 
-这是一个在Riot中使用Babel的 [稍大的例子](https://github.com/txchen/feplay/tree/gh-pages/riot_babel) .
+这里有一个在Riot中使用Babel 5的 [稍大的例子](https://github.com/txchen/feplay/tree/gh-pages/riot_babel) .
+
+### Babel 6
+
+Babel 6 引入了很多不向后兼容变化，如果要使用它，你需要先配置你的环境：
+
+1. 安装我们的 [babel-preset-es2015-riot](https://github.com/riot/babel-preset-es2015-riot)<br /> `npm install babel-preset-es2015-riot --save-dev`
+1. 安装 `babel-core` <br /> `npm install babel-core --save-dev`
+1. 创建包含有预设 id 的 `.babelrc` 文件 <br /> `{ "presets": ["es2015-riot"] }`
+
+配置好环境后即可使用：
+
+``` sh
+# use Babel pre-processor
+riot --type babel source.tag
+```
+
+只要正确设置了下面的选项，Riot 可以使用任何 Babel 预设：
+
+```json
+{
+  "plugins": [
+    ["transform-es2015-modules-commonjs", { "allowTopLevelThis": true }]
+  ]
+}
+```
+
+<span class="tag red">注意</span> Babel 会在你的输出中生成非常多的额外代码，所以你可能会考虑使用 `babel-plugin-external-helpers-2` 将标签的编译过程分成2个独立的步骤：
+
+``` sh
+# 使用纯 es6 代码编译
+riot tags/folder dist/es6.tags.js
+# 将 es6 转译成合法的 es5
+babel es6.tags.js --out-file tags.js
+```
+
+这里有一个在Riot中使用Babel 6的 [简单例子](https://github.com/GianlucaGuarini/riot-preset-babel-test) .
 
 ### TypeScript
 
