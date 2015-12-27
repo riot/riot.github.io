@@ -150,6 +150,16 @@ You can put a `style` tag inside. Riot.js automatically takes it out and injects
 </todo>
 ```
 
+This happens once, no matter how many times the tag is initialized.
+
+To make it easier to override the CSS you can specify where in the `<head>` Riot should inject tag styles:
+
+```html
+<style type="riot"></style>
+```
+
+Example use case would be to insert tag styles from a component library after normalize.css but before your website's theme CSS allowing you to override the library's default styling.
+
 ### Scoped CSS
 
 [Scoped CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) is also available. The example below is equivalent to the first one.
@@ -169,15 +179,24 @@ You can put a `style` tag inside. Riot.js automatically takes it out and injects
 </todo>
 ```
 
-This happens once, no matter how many times the tag is initialized.
+### Dynamic CSS
 
-To make it easier to override the CSS you can specify where in the `<head>` Riot should inject tag styles:
+Styles can be also dynamically changed at runtime by providing a parser function:
 
-```html
-<style type="riot"></style>
-```
+```JavaScript
+riot.styleNode.parser = function(css)
+  return doYourThing(css)
+}
+```  
 
-Example use case would be to insert tag styles from a component library after normalize.css but before your website's theme CSS allowing you to override the library's default styling.
+If a parser function is defined, styles will be parsed before they are injected in the `<head>`. 
+
+Parsing and injection of styles occurs when:
+
+- a newly defined tag is mounted 
+- a manual update is invoked with: `riot.styleNode.updateStyles()`
+
+In the above code, `riot.styleNode` is a shorthand reference for the DOM node used for injecting styles (defined with `<style type="riot"></style>`).
 
 ## Mounting
 
