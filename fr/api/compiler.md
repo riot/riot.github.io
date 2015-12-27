@@ -150,6 +150,9 @@ Les parseurs prédéfinis sont:
 - `jade`
 
 #### css
+- `less`
+- `sass`
+- `scss`
 - `stylus`
 
 #### js
@@ -157,9 +160,10 @@ Les parseurs prédéfinis sont:
 - `livescript`
 - `typescript`
 - `es6` - (utilise `babel-core` ou `babel`)
+- `babel` - (utilise `babel-core` v6.x et le preset `es2015`)
 - `coffee` ou `coffeescript`
 
-## Changements
+## Changements dans la v2.3.0
 
-Dans les versions précédentes, les parenthèses échappées étaient conservées, en générant du code HTML et JavaScript parfois invalide. La version actuelle les supprime à une étape antérieure, après avoir passé le tag au parseur HTML, mais avant que le code JavaScript et les expressions soient envoyées au parseur JavaScript.
+Dans les versions précédentes, les parenthèses échappées étaient conservées, en générant du code HTML et JavaScript parfois invalide. La version actuelle les supprime à une étape antérieure, après avoir passé le tag au parseur HTML et avant que le code JavaScript et les expressions soient envoyées au parseur JavaScript.
 

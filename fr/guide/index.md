@@ -67,7 +67,7 @@ Un tag Riot est une combinaison d'éléments HTML et de logique JavaScript. Voil
 * Si la balise `<script>` est omise, le JavaScript commence là où la dernière balise HTML se termine.
 * Les tags personnalisés peuvent être vides, ou composés uniquement de HTML, ou composés uniquement de JavaScript
 * Les guillemets sont optionnels: `<foo bar={ baz }>` devient `<foo bar="{ baz }">`.
-* La syntaxe de méthodes ES6 est supportée: `methodName()` devient `this.methodName = function()` et la variable `this` pointe toujours sur l'instance actuelle de tag.
+* Une syntaxe semblable aux méthodes ES6 est supportée: `methodName()` devient `this.methodName = function() {}.bind(this)` et la variable `this` pointe toujours sur l'instance actuelle de tag.
 * Une syntaxe raccourcie pour les noms de classes est disponible: `class={ completed: done }` devient `class="completed"` quand la valeur `done` équivaut à `true`.
 * Les attributs booléens (checked, selected etc..) sont ignorés quand la valeur de l'expression équivaut à `false` : `<input checked={ undefined }>` devient `<input>`.
 * Les noms des attributs *doivent être en minuscules*. Cela est dû aux spécifications navigateur.
@@ -580,8 +580,6 @@ Une fois le tag défini, vous pouvez l'utiliser à l'intérieur d'autres tags. P
 [Démo sur jsfiddle](http://jsfiddle.net/23g73yvx/)
 
 <span class="tag red">attention</span> Ne pas échapper le HTML sortant peut exposer l'utilisateur à des attaques de type XSS donc assurez-vous de ne jamais utiliser de données ne provenant pas d'une source de confiance.
-
-
 
 ## Tags imbriqués
 

@@ -26,42 +26,46 @@ L'exemple suivant a été directement tiré de la page principale de React:
 
 
 ``` javascript
-var TodoList = React.createClass({
-  render: function() {
-    var createItem = function(itemText) {
-      return <li>{itemText}</li>;
-    };
-    return <ul>{this.props.items.map(createItem)}</ul>;
-  }
-});
-var TodoApp = React.createClass({
-  getInitialState: function() {
-    return {items: [], text: ''};
-  },
-  onChange: function(e) {
-    this.setState({text: e.target.value});
-  },
-  handleSubmit: function(e) {
-    e.preventDefault();
-    var nextItems = this.state.items.concat([this.state.text]);
-    var nextText = '';
-    this.setState({items: nextItems, text: nextText});
-  },
-  render: function() {
-    return (
-      <div>
-        <h3>TODO</h3>
-        <TodoList items={this.state.items} />
-        <form onSubmit={this.handleSubmit}>
-          <input onChange={this.onChange} value={this.state.text} />
-          <button>{'Add #' + (this.state.items.length + 1)}</button>
-        </form>
-      </div>
-    );
-  }
-});
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-React.render(<TodoApp />, mountNode);
+class Todo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {items: [], text: ''};
+    }
+
+    render() {
+        const {items, text} = this.state;
+        return (
+            <div>
+                <h3>TODO</h3>
+                <ul>
+                    <li>{items.map((item, i)=> <li key={i}>{item}</li>)}</li>
+                </ul>
+                <form onSubmit={this._onSubmit}>
+                    <input onChange={this._onChange} value={text}/>
+                    <button>Add #{items.length + 1}</button>
+                </form>
+            </div>
+        );
+    }
+
+    _onChange(e) {
+        this.setState({text: e.target.value});
+    }
+
+    _onSubmit(e) {
+        e.preventDefault();
+        const {items, text} = this.state;
+        this.setState({
+            items: items.concat(text),
+            text: ''
+        });
+    }
+}
+
+ReactDOM.render(<Todo/>, mountNode);
 ```
 
 JSX est une mixture de HTML et de JavaScript. Vous pouvez inclure du HTML n'importe où dans le composant; à l'intérieur des méthodes et dans des assignations de propriétés.
@@ -175,9 +179,9 @@ Polymer prend le standard des Web Components et le rend disponible sur les derni
 
 Conceptuellement, Riot fait la même chose mais il y a des différences:
 
-1. Riot met à jour uniquement les éléments qui ont changé, causant moins d'opérations DOM.
+1. La syntaxe des Web Components est expérimentale et complexe
 
-2. La syntaxe Polymer est plus complexe et requiert d'étudier plus de livres.
+2. Riot met à jour uniquement les éléments qui ont changé, causant moins d'opérations DOM.
 
 3. Les composants individuels sont importés via le HTML `link rel="import"`. Des polyfills doivent recourir à des files d'attentes de requêtes XHR, ce qui rend le tout douloureusement lent sauf si un outil dédié comme [vulcanize](https://github.com/polymer/vulcanize) est utilisé. Les tags Riot sont importées via `script src` et de multiples tags peuvent être combinés avec l'outillage usuel.
 
@@ -197,8 +201,14 @@ Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.vers
 On parle des Web components comme le [roi de tous les défis du polyfilling](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/) et c'est pourquoi Polymer requiert une telle quantité de code.
 
 
-### Experimental
+## Web components
 
-Polymer est basée sur une technologie expérimentale. Le support natif des Web Components n'est pas présent sur Safari ou IE. Le statut IE est "en considération" et les plans de Safari sont incertains. Certains [commits](https://lists.webkit.org/pipermail/webkit-dev/2013-May/024894.html) sur Webkit semblent indiquer qu'ils ne comptent pas les supporter du tout. Et Polymer est capable d'apporter ses polyfills uniquement sur les _dernières versions_ des navigateurs “evergreen” (IE 10+).
+Parce que les Web Components sont un standard, il s'agit de la direction finale à prendre. Cela prendra des [années](http://caniuse.com/#search=web%20components), mais éventuellement le Web sera un jour rempli de ces composants standards.
 
-Le projet Polymer est là [depuis 2 ans](https://github.com/Polymer/polymer/commit/0452ada044a6fc5818902e685fb07bb4678b2bc2) et n'a pas été adopté de manière significative. Il n'est pas encore certain que les Web Components soient un jour nativement supportés.
+A cause de la complexité sous-jacente, il y a de fortes chances pour que ces composants ne soient pas utilisés directement. Il y aura des couches par-dessus les Web Components. Tout comme il y a jQuery aujourd'hui. La plupart des gens n'utilisent pas directement le DOM.
+
+Riot est une de ces abstractions. Il fournir une API facile à utiliser sur laquelle nos applications peuvent se reposer. Une fois que la spécification des Web Components aura évolué, Riot pourra l'utiliser *en interne* s'il y a de vrais bénéfices, tels que des gains de performance.
+
+Le but de Riot est de rendre le développement d'interfaces utilisateur aussi facile que possible. L'API actuelle est conçue pour résister au flux constant des technologies Web. Vous pouvez le comparer à un "jQuery pour les Web Components" - il prend des raccourcis syntaxiques pour parvenir au même but. Il simplifie l'expérience globale de l'écriture de composants réutilisables.
+
+

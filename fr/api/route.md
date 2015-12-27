@@ -11,7 +11,7 @@ Le Routeur Riot est l'implémentation la plus minimale de routeur avec ces fonct
 - pushState et API History
 - multiple groupes de routage
 - parseur d'URL remplaçable
-- compatible avec IE9 et supérieur
+- utilisation d'un [polyfill](https://github.com/devote/HTML5-History-API) pour le support IE9 et antérieur. Parce que IE.
 
 ## Mise en place du routage
 
