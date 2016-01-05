@@ -357,12 +357,24 @@ riot.mixin('mixinName', mixinObject)
 ```javascript
 <todo>
 
+  this.on('before-mount', function() {
+    // before the tag is mounted
+  })
+
   this.on('mount', function() {
-    // right after tag is mounted on the page
+    // right after the tag is mounted on the page
   })
 
   this.on('update', function() {
     // allows recalculation of context data before the update
+  })
+
+  this.on('updated', function() {
+    // right after the tag template is updated
+  })
+
+  this.on('before-unmount', function() {
+    // before the tag is removed
   })
 
   this.on('unmount', function() {
@@ -370,7 +382,7 @@ riot.mixin('mixinName', mixinObject)
   })
 
   // curious about all events ?
-  this.on('mount update unmount', function(eventName) {
+  this.on('all', function(eventName) {
     console.info(eventName)
   })
 
@@ -794,6 +806,32 @@ submit() {
 
 内部的にRiotは`JSON.stringify`で変更検知をしているため、オブジェクトループは推奨されていません。オブジェクト*全体*として調べられ、変更が見つかると全体を再描画してしまいます。これは、動作が遅くなる原因になりえます。通常の配列は、変更箇所だけが再描画されるためもっと速いです。
 
+### ループ使用のさらなるヒント
+
+#### パフォーマンス
+
+Riot v2.3では、ループのレンダリングを安定するため、データコレクションと常に同期してDOMノードが移動・挿入・削除されます。この方法はv2.2以前に比べてレンダリングが遅くなります。移動操作を伴わない高速アルゴリズムを有効にするには、ループ内のノードに`no-reorder`の属性を指定します。例えば:
+
+```html
+<loop>
+  <div each="{ item in items }" no-reorder>{ item }</div>
+</loop>
+```
+
+#### `virtual`タグ
+
+<span class="tag red">実験的</span>
+
+特定のタグに囲まれないループをしたい場合は`<virtual>`タグが使えます。ルーブ後に消滅し、内部のHTMLのみがレンダリングされます。
+
+```html
+<dl>
+  <virtual each={item in items}>
+    <dt>{item.key}</dt>
+    <dd>{item.value}</dd>
+  </virtual>
+</dl>
+```
 
 ## 標準のHTML要素にレンダリング
 

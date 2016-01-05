@@ -27,42 +27,46 @@ Reactはよく機能し、まだ使っているプロジェクトもあります
 
 
 ``` javascript
-var TodoList = React.createClass({
-  render: function() {
-    var createItem = function(itemText) {
-      return <li>{itemText}</li>;
-    };
-    return <ul>{this.props.items.map(createItem)}</ul>;
-  }
-});
-var TodoApp = React.createClass({
-  getInitialState: function() {
-    return {items: [], text: ''};
-  },
-  onChange: function(e) {
-    this.setState({text: e.target.value});
-  },
-  handleSubmit: function(e) {
-    e.preventDefault();
-    var nextItems = this.state.items.concat([this.state.text]);
-    var nextText = '';
-    this.setState({items: nextItems, text: nextText});
-  },
-  render: function() {
-    return (
-      <div>
-        <h3>TODO</h3>
-        <TodoList items={this.state.items} />
-        <form onSubmit={this.handleSubmit}>
-          <input onChange={this.onChange} value={this.state.text} />
-          <button>{'Add #' + (this.state.items.length + 1)}</button>
-        </form>
-      </div>
-    );
-  }
-});
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-React.render(<TodoApp />, mountNode);
+class Todo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {items: [], text: ''};
+    }
+
+    render() {
+        const {items, text} = this.state;
+        return (
+            <div>
+                <h3>TODO</h3>
+                <ul>
+                    <li>{items.map((item, i)=> <li key={i}>{item}</li>)}</li>
+                </ul>
+                <form onSubmit={this._onSubmit}>
+                    <input onChange={this._onChange} value={text}/>
+                    <button>Add #{items.length + 1}</button>
+                </form>
+            </div>
+        );
+    }
+
+    _onChange(e) {
+        this.setState({text: e.target.value});
+    }
+
+    _onSubmit(e) {
+        e.preventDefault();
+        const {items, text} = this.state;
+        this.setState({
+            items: items.concat(text),
+            text: ''
+        });
+    }
+}
+
+ReactDOM.render(<Todo/>, mountNode);
 ```
 
 JSXはHTMLとJavaScriptのミックスです。HTMLをコンポーネントの好きなところに含めることができます。メソッドの中でも、プロパティの値としても。
@@ -142,28 +146,28 @@ Riotはカスタムタグとともに、イベントエミッタ(オブザーバ
 RiotのオブザーバブルとルータでFluxライクなシステムを構築することも可能です。実際、そういった試みも[すでにあります](https://github.com/jimsparkman/RiotControl)。
 
 
-### 10〜128倍大きい
+### {{ site.compare.react }}倍大きい
 
-Reactは、Riotの10倍のサイズです。
+React(v{{ site.react.version }})は、Riotの{{ site.compare.react }}倍のサイズです。
 
-<small><em>react.min.js</em> – 119KB</small>
+<small><em>react.min.js</em> – {{ site.react.size }}KB</small>
 <span class="bar red"></span>
 
 <small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
-<span class="bar blue" style="width: {{ site.size_min / 119 * 100 }}%"></span>
+<span class="bar blue" style="width: {{ site.size_min | divided_by: site.react.size | times: 100 }}%"></span>
 
 <br>
 
-Reactの推奨ルータは、Riotのルータの128倍巨大です。
+Reactの推奨ルータ(v{{ site.react_router.version }})は、Riotのルータの{{ site.compare.react_router_vs_riot_router }}倍。
 
-<small><em>react-router.min.js</em> – 54.9KB</small>
+<small><em>react-router.min.js</em> – {{ site.react_router.size }}KB</small>
 <span class="bar red"></span>
 
-<small><em>react-mini-router.min.js</em> – 8.6KB</small>
-<span class="bar red" style="width: 15.6%"></span>
+<small><em>react-mini-router.min.js</em> – {{ site.react_mini_router.size }}KB</small>
+<span class="bar red" style="width: {{ site.react_mini_router.size | divided_by: site.react_router.size | times: 100 }}%"></span>
 
-<small><em>riot.router.min.js</em> – 0.43KB</small>
-<span class="bar blue" style="width: 0.7%"></span>
+<small><em>riot.router.min.js</em> – {{ site.riot_route_size_min }}KB</small>
+<span class="bar blue" style="width: {{ site.riot_route_size_min | divided_by: site.react_router.size | times:100 }}%"></span>
 
 
 確かに、このルータ比較はちょっと不公平です。[react-router](https://github.com/rackt/react-router)はより多くの機能を持っています。ですが、この図はRiotのゴール、つまり「最もミニマリスティックなAPIを提供すること」を明確に示すものです。
@@ -171,7 +175,7 @@ Reactの推奨ルータは、Riotのルータの128倍巨大です。
 Reactのエコシステムは、よりフレームワーク的で、APIの肥大化の気配がします。実際、小さな実装の[react-mini-router](https://github.com/larrymyers/react-mini-router)よりも、この大きな選択肢がReactコミュニティでは人気です。
 
 
-# Polymer
+## Polymer
 
 PolymerはWeb Component標準に則り、最新ブラウザで利用可能にします。これは、カスタムタグを標準的な方法で書けるということです。
 
@@ -186,15 +190,15 @@ PolymerはWeb Component標準に則り、最新ブラウザで利用可能にし
 4. サーバサイドレンダリングができません。
 
 
-### 11倍大きい
+### {{ site.compare.polymer_and_webcomponents }}倍大きい
 
-Polymer(v1.0.6) + WebComponents(v0.7.7)はRiotの11倍のサイズです。
+Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.version }})はRiotの{{ site.compare.polymer_and_webcomponents }}倍のサイズです。
 
-<small><em>polymer.min.js</em> – 138KB</small>
+<small><em>polymer.min.js</em> – {{ site.polymer.size }}KB</small>
 <span class="bar red"></span>
 
 <small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
-<span class="bar blue" style="width: {{ site.size_min / 138 * 100 }}%"></span>
+<span class="bar blue" style="width: {{ site.size_min | divided_by: site.polymer.size | times: 100 }}%"></span>
 
 Web Componentsは[Polyfill挑戦の王様](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/)と呼ばれ、Polymerがこんなにも巨大なコードを必要とする所以です。
 

@@ -133,14 +133,14 @@ Riotは他のUIライブラリと比較して、APIの数が10分の1か、100�
 
 ### 3. サイズが小さい
 
-<small><em>react.min.js</em> – 127KB</small>
+<small><em>polymer.min.js</em> – {{ site.polymer.size }}KB</small>
 <span class="bar red"></span>
 
-<small><em>polymer.min.js</em> – 120KB</small>
-<span class="bar red" style="width: 94%"></span>
+<small><em>react.min.js</em> – {{ site.react.size }}KB</small>
+<span class="bar red" style="width: {{ site.react.size | divided_by: site.polymer.size | times: 100 }}%"></span>
 
-<small><em>riot.min.js</em> – 6.7KB</small>
-<span class="bar blue" style="width: 4.8%"></span>
+<small><em>riot.min.js</em> – {{ site.size_min }}KB</small>
+<span class="bar blue" style="width: {{ site.size_min | divided_by: site.polymer.size | times: 100 }}%"></span>
 
 
 1. 少ないバグ

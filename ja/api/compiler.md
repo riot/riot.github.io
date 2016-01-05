@@ -44,7 +44,7 @@ riot.compile('my/tags.tag', function() {
 
 与えられた`tag`をコンパイルし、実行します。例:
 
-```
+```html
 <template id="my_tag">
   <my-tag>
     <p>Hello, World!</p>
@@ -74,7 +74,7 @@ var js = riot.compile(my_tag.innerHTML, true)
 
 `npm install riot`でインストール後、次のことができます:
 
-```
+```js
 var riot = require('riot')
 
 var js = riot.compile(tag)
@@ -142,6 +142,28 @@ riot.parsers.js.myparser = function(js) {
 </custom-parsers>
 ```
 
-### <a name="html-parser"></a> riot.parsers.html [html]
+### <a name="html-parser"></a> riot.compiler.parsers.html [html]
 
 タグ内のHTMLをコンパイルするのに使われる、独自パーサ。
+
+あらかじめ定義されたパーサは以下です。
+#### html
+- `jade`
+
+#### css
+- `less`
+- `sass`
+- `scss`
+- `stylus`
+
+#### js
+- `none` または `javascript`
+- `livescript`
+- `typescript`
+- `es6` - (`babel-core`または`babel`を使用)
+- `babel` - (`babel-core` v6.x または`es2015`を使用)
+- `coffee` または `coffeescript`
+
+## v2.3.0における変更
+
+以前のバージョンでは、エスケープされた波括弧(curly braces)が保存されていたため、不正なHTMLまたは無効なJavaScriptコードを生成することがありました。このバージョンでは、HTMLパーサにタグを通過した後、JavaScriptコードと表現がJSパーサに送られる前に、早い段階でそれらを削除します。
