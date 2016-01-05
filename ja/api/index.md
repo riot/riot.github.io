@@ -264,6 +264,8 @@ mytag.unmount(true)
 
 #### 複数のyield
 
+<span class="tag red">&gt;= v2.3.12</span>
+
 複数の`<yield>`タグを使い、任意の場所にHTMLを挿入する機能もあります。以下の例では`my-other-post`タグに、二カ所で`yield`が指定されています。
 
 ``` html
