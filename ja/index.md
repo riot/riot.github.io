@@ -87,8 +87,8 @@ HTMLの文法はWebの *デファクト* 言語であり、ユーザインター
 
 ### 仮想DOM
 - 最小のDOMの更新とリフロー
-- データは一方通行: 更新とアンマウントは親から子へ伝播します。
-- テンプレートは高いパフォーマンスを得るため、プリコンパイルされキャッシュされます。
+- データは一方通行: 更新とアンマウントは親から子へ伝播します
+- テンプレートは高いパフォーマンスを得るため、プリコンパイルされキャッシュされます
 - 細かい制御のためのライフサイクルイベント
 - アイソモーフィックアプリケーションを実現する、カスタムタグのサーバサイドレンダリング
 
@@ -101,8 +101,8 @@ HTMLの文法はWebの *デファクト* 言語であり、ユーザインター
 
 
 ### お気に入りのツールと一緒に
-- タグファイルは、CoffeeScriptやJade、Typescript、LiveScript、ES6や、その他の好きな[プリプロセッサ](/ja/guide/compiler/#%E3%83%97%E3%83%AA%E3%83%97%E3%83%AD%E3%82%BB%E3%83%83%E3%82%B5)でOK。
-- NPMやCommonJS、AMD、Bower、Componentが使えます。
+- - タグファイルは、CoffeeScriptやJade、Typescript、LiveScript、ES6や、その他の好きな[プリプロセッサ](/ja/guide/compiler/#%E3%83%97%E3%83%AA%E3%83%97%E3%83%AD%E3%82%BB%E3%83%83%E3%82%B5)でOK
+- NPMやCommonJS、AMD、Bower、Componentが使えます
 - [Gulp](https://github.com/e-jigsaw/gulp-riot)や[Grunt](https://github.com/ariesjia/grunt-riot)、[Browserify](https://github.com/jhthorsen/riotify)のプラグインでコンパイル
 
 
@@ -117,7 +117,7 @@ HTMLの文法はWebの *デファクト* 言語であり、ユーザインター
 デザインのゴールの一つは、できる限り最小の"boilerplate"で使える、強力な文法を導入することです。
 
 - 強力なショートカット: `class={ enabled: is_enabled, hidden: hasErrors() }`
-- 余計なことを考えなくてOK。`render`とか`state`、`constructor`、`shouldComponentUpdate`などなど。
+- 余計なことを考えなくてOK：`render`とか`state`、`constructor`、`shouldComponentUpdate`などなど
 - インターポレーション: `Add #{ items.length + 1 }` あるいは `class="item { selected: flag }"`
 - ロジック部分を`<script>`タグで囲むのはオプション
 - コンパクトなES6のメソッドの書き方
