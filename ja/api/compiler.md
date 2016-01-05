@@ -142,7 +142,7 @@ riot.parsers.js.myparser = function(js) {
 </custom-parsers>
 ```
 
-### <a name="html-parser"></a> riot.compiler.parsers.html [html]
+### <a name="html-parser"></a> riot.parsers.html [html]
 
 タグ内のHTMLをコンパイルするのに使われる、独自パーサ。
 
