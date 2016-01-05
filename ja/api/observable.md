@@ -17,7 +17,7 @@ function Car() {
   // Carインスタンスを監視できるようにする
   riot.observable(this)
 
-  // 'start'イベントを監視始める
+  // 'start'イベントの監視を始める
   this.on('start', function() {
     // エンジン、スタート
   })
@@ -53,7 +53,7 @@ el.on('start stop', function(type) {
 
 // すべてのイベントを監視
 el.on('all', function(event, param1, param2) {
-  // eventは発火されたイベントの名前
+  // eventはイベントの名前
   // パラメータによってここで何かをする
 })
 ```
@@ -63,7 +63,7 @@ el.on('all', function(event, param1, param2) {
 ``` js
 
 el.on('error', function(e) {
-  // ここでエラー対処ができます
+  // ここでエラー対処ができる
 })
 
 el.on('event', function() {

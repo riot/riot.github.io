@@ -29,12 +29,12 @@ var tags = riot.mount('account', api)
 
 @returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列を返します。
 
-メモ: [ブラウザ内のコンパイル](/ja/guide/compiler/#ブラウザ)を使用している場合は`riot.mount`を`riot.compile`で囲み、タグインスタンスを取得する必要があります。そうしなければ`riot.mount`は`undefined`を返します。
+メモ: [ブラウザ内のコンパイル](/ja/guide/compiler/#ブラウザ)を使用している場合は`riot.mount`を`riot.compile`で囲み、コンパイル後のタグを取得する必要があります。そうしなければ`riot.mount`は`undefined`を返します。
 
 ```javascript
 <script>
 riot.compile(function() {
-  // タグがコンパイルされた後にriot.mountを呼びます
+  // タグがコンパイルされた後にriot.mountを呼ぶ
   var tags = riot.mount('*')
 })
 </script>
@@ -483,7 +483,7 @@ riot.tag('tag-name', my_tmpl.innerHTML, function(opts) {
 
 <span class="tag red">実験的</span>
 
-Riot 2.3では、内部で使用されているTagを利用して、より自由にカスタムタグを作ることができます。
+Riot 2.3では、内部で使用されているTag関数を利用して、より自由にカスタムタグを作ることができます。
 
 - `impl`
   - `tmpl` タグのテンプレート
@@ -494,7 +494,7 @@ Riot 2.3では、内部で使用されているTagを利用して、より自由
   - `opts` タグに渡すオプション
   - `isLoop` ループに使われているか (true/false)
   - `hasImpl` すでにriot.tagで登録されているか
-  - `item` このインスタンスに指定されたループのループ・アイテム
+  - `item` このインスタンスに指定されたループのアイテム
 - `innerHTML` 入れ子ループでの`yield`を置き換えるHTML
 
 
@@ -518,4 +518,4 @@ class MyTag extends riot.Tag {
 new MyTag(document.getElementById('my-div')).mount()
 ```
 
-`riot.Tag`の使用は非推奨となっています。従来の方法では実現できない特別な場合以外は、使わないほうがいいです。
+`riot.Tag`の使用は非推奨となっています。従来の方法では足りない特別な場合以外は、使わないほうがいいです。
