@@ -26,7 +26,7 @@ title: コンパイラ
 <script src="path/to/javascript/with-tags.js" type="riot/tag"></script>
 
 <!-- riot.jsとコンパイラを読み込む -->
-<script src="//cdn.jsdelivr.net/g/riot@2.2(riot.min.js+compiler.min.js)"></script>
+<script src="//cdn.jsdelivr.net/g/riot@2.3(riot.min.js+compiler.min.js)"></script>
 
 
 <!-- 通常のマウント -->
@@ -92,7 +92,7 @@ npm install riot -g
 <my-tag></my-tag>
 
 <!-- riot.jsのみ読み込み -->
-<script src="//cdn.jsdelivr.net/riot/2.2/riot.min.js"></script>
+<script src="//cdn.jsdelivr.net/riot/2.3/riot.min.js"></script>
 
 <!-- プリコンパイルされたタグを読み込み (通常のJavaScriptです) -->
 <script src="path/to/javascript/with-tags.js"></script>
@@ -111,7 +111,7 @@ riot.mount('*')
 # ファイルを現在のフォルダにコンパイル
 riot some.tag
 
-# 指定フォルダにファイルをにコンパイル
+# 指定フォルダにファイルをコンパイル
 riot some.tag some_folder
 
 # 指定パスにファイルをコンパイル
