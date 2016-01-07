@@ -423,7 +423,7 @@ riot.tag('timer',
 4. ES6のメソッドの省略記法
 5. `<img src={ src }>`は`<img riot-src={ src }>`と書かなくてはならない: 不正なサーバリクエストを防止するため
 6. `style="color: { color }"`は`riot-style="color: { color }"`のように書かなくてはならない: スタイル属性がIEでも動作するように
-
+7. [Scoped CSS](/ja/guide/#scoped-css)のプリコンパイル
 
 次のように書くことで`<template>`や`<script>`タグの利点を生かすことはできます:
 
