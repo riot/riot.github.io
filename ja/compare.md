@@ -175,15 +175,15 @@ Reactの推奨ルータは、Riotのルータの128倍巨大です。
 Reactのエコシステムは、よりフレームワーク的で、APIの肥大化の気配がします。実際、小さな実装の[react-mini-router](https://github.com/larrymyers/react-mini-router)よりも、この大きな選択肢がReactコミュニティでは人気です。
 
 
-# Polymer
+## Polymer
 
 PolymerはWeb Component標準に則り、最新ブラウザで利用可能にします。これは、カスタムタグを標準的な方法で書けるということです。
 
 コンセプトとしてはRiotも同じなのですが、いくつかの違いがあります:
 
-1. Riotは変更のあった要素だけを更新するため、少ないDOM操作で済みます。
+1. Web Componentsの文法は、実験的で複雑です。
 
-2. Polymerの文法はもっと複雑で、本を何冊か読まなくてはいけません。
+2. Riotは変更のあった要素だけを更新するため、少ないDOM操作で済みます。
 
 3. それぞれのコンポーネントはHTMLの`link rel="import"`で読み込まれます。PolyfillsはXHRsに頼る必要があり、専用の[vulcanize](https://github.com/polymer/vulcanize)ツールを使わない限り、耐えられない遅さです。Riotのタグは`script src`で読み込まれ、一般的なツールで複数のタグを結合することができます。
 
@@ -203,8 +203,12 @@ Polymer(v1.0.6) + WebComponents(v0.7.7)はRiotの11倍のサイズです。
 Web Componentsは[Polyfill挑戦の王様](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/)と呼ばれ、Polymerがこんなにも巨大なコードを必要とする所以です。
 
 
-### 実験的
+# Web components
 
-Polymerは実験的な技術の上に成り立っています。ネイティブのWeb Componentsサポートは、まだSafariやIEにありません。いまだ、IEのステータスは「検討中」中であり、Safariのプランは不透明です。いくつかのWebKitへの[コミット](https://lists.webkit.org/pipermail/webkit-dev/2013-May/024894.html)からは彼らにその気がまったくないことが伺えます。そして、Polymerが唯一、「新鮮な」最新版ブラウザたち(IE 10+)に対応するPolyfillです。
+最終的には、業界標準としてのWeb Componentsに辿り着くべきです。それは[長い年月](http://caniuse.com/#search=web%20components)を必要としますが、いずれは標準コンポーネントがウェブを満たすことになります。
 
-Polymerは[2年以上経過した](https://github.com/Polymer/polymer/commit/0452ada044a6fc5818902e685fb07bb4678b2bc2)プロジェクトですが、いまだ目立った普及を見せていません。今後、Web Componentsがネイティブサポートされるかどうかは、不透明です。
+これらのコンポーネントは複雑であるため、直接に使われない可能性が大きいです。今日多くの人が、直接DOMを操作せずjQueryを使うように、Web Componentsの上にもさらなる層が作られるでしょう。
+
+Riotはそういった抽象化の一層です。それはアプリケーションが頼りにできる簡単なAPIを提供します。Web Componentsの仕様が発達するにつれ、パフォーマンス向上など実際のメリットがあるのであれば、Riotは内部でそれらを導入することができます。
+
+Riotの目的はUI開発を可能な限り簡単にすることです。現在のAPIは、ウェブテクノロジーの日進月歩の流転に耐えうるよう設計されています。Web ComponentsのjQueryと見てもいいでしょう。より簡潔な文法で同じ目的を果たすからです。それは再利用可能なコンポーネントの作成をシンプルな体験にします。
