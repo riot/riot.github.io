@@ -25,7 +25,7 @@ route(function(collection, id, action) {
 })
 ```
 
-もし、例えばURLが`#customers/987987/edit`に変わったとすると、上の例の引数は次のようになるでしょう。
+もし、例えばURLが`customers/987987/edit`に変わったとすると、上の例の引数は次のようになるでしょう。
 
 
 ```javascript
