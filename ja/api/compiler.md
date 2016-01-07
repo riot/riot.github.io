@@ -12,7 +12,7 @@ class: apidoc
 
 ### <a name="compile"></a> riot.compile(callback)
 
-`<script type="riot/tag">`で定義されたすべてのタグをコンパイルします。インラインのスクリプト定義、あるいは`src`属性で指定された外部リソース、どちらでも大丈夫です。すべてのスクリプトがコンパイルされるとと、 `callback`メソッドが呼び出されます。例:
+`<script type="riot/tag">`で定義されたすべてのタグをコンパイルします。インラインのスクリプト定義、あるいは`src`属性で指定された外部リソース、どちらでも大丈夫です。すべてのスクリプトがコンパイルされると、 `callback`メソッドが呼び出されます。例:
 
 ``` javascript
 riot.compile(function() {
