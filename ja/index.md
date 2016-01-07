@@ -101,7 +101,7 @@ HTMLの文法はWebの *デファクト* 言語であり、ユーザインター
 
 
 ### お気に入りのツールと一緒に
-- タグファイルは、CoffeeScriptやJade、Typescript、LiveScript、ES6や、その他の好きな[プリプロセッサ](/ja/guide/compiler/#%E3%83%97%E3%83%AA%E3%83%97%E3%83%AD%E3%82%BB%E3%83%83%E3%82%B5)でOK
+- タグファイルは、ES6、Typescript、CoffeeScript、Jade、LiveScriptや、その他の好きな[プリプロセッサ](/ja/guide/compiler/#%E3%83%97%E3%83%AA%E3%83%97%E3%83%AD%E3%82%BB%E3%83%83%E3%82%B5)でOK
 - NPMやCommonJS、AMD、Bower、Componentが使えます
 - [Gulp](https://github.com/e-jigsaw/gulp-riot)や[Grunt](https://github.com/ariesjia/grunt-riot)、[Browserify](https://github.com/jhthorsen/riotify)のプラグインでコンパイル
 
@@ -117,7 +117,7 @@ HTMLの文法はWebの *デファクト* 言語であり、ユーザインター
 デザインのゴールの一つは、できる限り最小の"boilerplate"で使える、強力な文法を導入することです。
 
 - 強力なショートカット: `class={ enabled: is_enabled, hidden: hasErrors() }`
-- 余計なことを考えなくてOK・`render`とか`state`、`constructor`、`shouldComponentUpdate`などなど
+- 余計なことを考えなくてOK：`render`とか`state`、`constructor`、`shouldComponentUpdate`などなど
 - インターポレーション: `Add #{ items.length + 1 }` あるいは `class="item { selected: flag }"`
 - ロジック部分を`<script>`タグで囲むのはオプション
 - コンパクトなES6のメソッドの書き方
@@ -127,26 +127,26 @@ HTMLの文法はWebの *デファクト* 言語であり、ユーザインター
 
 Riotは他のUIライブラリと比較して、APIの数が10分の1か、100分の1。
 
-1. 覚えることが少ない / 見なきゃいけない本もチュートリアルも少ない
-2. 独自形式なものが少なく、標準的なものが多い
+- 覚えることが少ない / 見なきゃいけない本もチュートリアルも少ない
+- 独自形式なものが少なく、標準的なものが多い
 
 
 ### 3. サイズが小さい
 
-<small><em>react.min.js</em> – 127KB</small>
+<small><em>polymer.min.js</em> – {{ site.polymer.size }}KB</small>
 <span class="bar red"></span>
 
-<small><em>polymer.min.js</em> – 120KB</small>
-<span class="bar red" style="width: 94%"></span>
+<small><em>react.min.js</em> – {{ site.react.size }}KB</small>
+<span class="bar red" style="width: {{ site.react.size | divided_by: site.polymer.size | times: 100 }}%"></span>
 
-<small><em>riot.min.js</em> – 6.7KB</small>
-<span class="bar blue" style="width: 4.8%"></span>
+<small><em>riot.min.js</em> – {{ site.size_min }}KB</small>
+<span class="bar blue" style="width: {{ site.size_min | divided_by: site.polymer.size | times: 100 }}%"></span>
 
 
-1. 少ないバグ
-4. パースが早く、ダウンロードも容易
-3. エンベッダブル(組込可能): ライブラリはアプリケーション本体より小さくあるべき
-4. メンテナンスの手間が少ない: Riotのメンテナンスのために大きなチームを必要としない
+- 少ないバグ
+- パースが早く、ダウンロードも容易
+- エンベッダブル(組込可能): ライブラリはアプリケーション本体より小さくあるべき
+- メンテナンスの手間が少ない: Riotのメンテナンスのために大きなチームを必要としない
 
 ### 4. 小さくて、必要十分
 
@@ -175,9 +175,9 @@ Riotは「オープンスタック」です。つまり、フレームワーク�
 
 ## まとめ
 
-Riotはサイズは小さいままに、React + Polymer + モデル + ルーティング を実現するライブラリです。今日から使えます。とにかくシンプルで、すごく軽い。車輪の再発明をするのではなく、これらのツールの良いとこ取りで、可能な限りシンプルにしました。
+Riotは誰でも使えるWeb Componentsです。React + Polymerから無駄を省いたものを想像してください。ごく自然に使用でき、すごく軽い。それを今日から使えます。車輪の再発明をするのではなく、これらのツールの良いとこ取りで、可能な限りシンプルにしました。
 
-僕たちは、テンプレートではなく、再利用可能なコンポーネントにフォーカスするべきです。Reactの開発者曰く:
+私たちは、テンプレートではなく、再利用可能なコンポーネントにフォーカスするべきです。Reactの開発者曰く:
 
 > 「テンプレートは、問題ではなく、技術を分けるだけだ」
 
