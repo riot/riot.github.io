@@ -203,7 +203,7 @@ Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.vers
 Web Componentsは[Polyfill挑戦の王様](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/)と呼ばれ、Polymerがこんなにも巨大なコードを必要とする所以です。
 
 
-# Web components
+## Web components
 
 最終的には、業界標準としてのWeb Componentsに辿り着くべきです。それは[長い年月](http://caniuse.com/#search=web%20components)を必要としますが、いずれは標準コンポーネントがウェブを満たすことになります。
 
