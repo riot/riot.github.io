@@ -355,8 +355,7 @@ this.on('unmount', function() {
 
 ## 予約語
 
-上記のメソッドとプロパティの名前は、Riotタグの予約語です。次のいずれもインスタンス変数やメソッドの名前として使ってはいけません:  `opts`, `parent`, `root`, `update`, `unmount`, `on`, `off`, `one`, `trigger`
-ローカル変数については、自由に名前付けできます:
+上記のメソッドとプロパティの名前は、Riotタグの予約語です。次のいずれもインスタンス変数やメソッドの名前として使ってはいけません: `opts`, `parent`, `root`, `update`, `unmount`, `on`, `off`, `one`, `trigger`。またアンダースコアから始まる変数名(`this._item`など)も予約されています。ローカル変数については、自由に名前付けできます:
 
 ``` javascript
 <my-tag>
