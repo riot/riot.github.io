@@ -495,7 +495,7 @@ riot.tag('tag-name', my_tmpl.innerHTML, function(opts) {
 
 <span class="tag red">experimental</span>
 
-In riot 2.3 we have give you the access to the internal Tag instance in order to let you creating your custom tags in more creative ways.
+In riot 2.3 we have give you the access to the internal Tag instance in order to let you create your custom tags in more creative ways.
 
 - `impl`
   - `tmpl` tag template
