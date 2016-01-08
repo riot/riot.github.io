@@ -70,12 +70,6 @@ class: download
 
 `git clone git@github.com:riot/riot.git`
 
-
-## 既知の問題
-
-- IE9において、テーブルの行(`tr`)または、セル(`td`, `th`)を、`each`属性でループさせることができない。
-
-
 ## ロゴ
 
 ![](/img/logo/riot480x.png)

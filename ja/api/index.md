@@ -29,6 +29,17 @@ var tags = riot.mount('account', api)
 
 @returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列を返します。
 
+メモ: [ブラウザ内のコンパイル](/ja/guide/compiler/#ブラウザ)を使用している場合は`riot.mount`を`riot.compile`で囲み、コンパイル後のタグを取得する必要があります。そうしなければ`riot.mount`は`undefined`を返します。
+
+```javascript
+<script>
+riot.compile(function() {
+  // タグがコンパイルされた後にriot.mountを呼ぶ
+  var tags = riot.mount('*')
+})
+</script>
+```
+
 ### <a name="mount-star"></a> riot.mount('*', [opts])
 
 ページ上のすべてのカスタムタグをマウントするのに、Riot特有のセレクタとして"*"が使えます。
@@ -52,24 +63,6 @@ var tags = riot.mount('div#main', 'my-tag', api)
 ```
 
 @returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列を返します。
-
-### <a name="mount-dom"></a> riot.mount(domNode, tagName, [opts])
-
-与えられた`domNode`に、`opts`(省略可)で渡されたデータとともに、`tagName`で指定されたカスタムタグをマウントします。例:
-
-```
-// "my-tag"を、与えられたDOMノードにマウント
-riot.mount(document.getElementById('slide'), 'my-tag', api)
-```
-
-@returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列を返します。
-
-### <a name="mount-to"></a> riot.mountTo(domNode, tagName, [opts])
-
-このメソッドは *v2.0.11* から非推奨になりました。`riot.mount(domNode, tagName, [opts])`と同じ動作をします。
-
-
-
 
 ## レンダリング
 
@@ -269,6 +262,54 @@ mytag.unmount(true)
 </my-post>
 ```
 
+#### 複数のyield
+
+<span class="tag red">&gt;= v2.3.12</span>
+
+複数の`<yield>`タグを使い、任意の場所にHTMLを挿入する機能もあります。以下の例では`my-other-post`タグに、二カ所で`yield`が指定されています。
+
+``` html
+<my-other-post>
+  <h1>{ opts.title }</h1>
+  <p id="my-content-{ id }"><yield from="summary"/></p>
+  <div if={ contentVisible }>
+    <yield from="content"/>
+  </div>
+  <button onclick={ toggleContent }>+ more</button>
+  <h2>again!?</h2>
+  <p><yield from="summary"/></p>
+  this.id = 666
+</my-other-post>
+```
+
+このタグをアプリケーションで使用します。
+
+``` html
+<my-other-post title="What a great title">
+  <yield to="summary">My beautiful post is just awesome</yield>
+  <yield to="content">
+    <p>And the next paragraph describes just how awesome it is</p>
+    <p>Very</p>
+  </yield>
+</my-other-post>
+```
+
+`riot.mount('my-other-post')`でマウントされた後、以下の結果となります。
+
+``` html
+<my-other-post>
+  <h1>What a great title</h1>
+  <p id="my-content-666">My beautiful post is just awesome</p>
+  <div if={ contentVisible }>
+  <p>And the next paragraph describes just how awesome it is</p>
+  <p>Very</p>
+  </div>
+  <button onclick={ toggleContent }>+ more</button>
+  <h2>again!?</h2>
+  <p>My beautiful post is just awesome</p>
+</my-other-post>
+```
+
 #### Yieldとループ
 
 `<yield />`タグはループや子タグの中で使うことができますが、 __常に子タグのコンテキストでパースされる__ ことに注意してください。
@@ -355,8 +396,7 @@ this.on('unmount', function() {
 
 ## 予約語
 
-上記のメソッドとプロパティの名前は、Riotタグの予約語です。次のいずれもインスタンス変数やメソッドの名前として使ってはいけません:  `opts`, `parent`, `root`, `update`, `unmount`, `on`, `off`, `one`, `trigger`
-ローカル変数については、自由に名前付けできます:
+上記のメソッドとプロパティの名前は、Riotタグの予約語です。次のいずれもインスタンス変数やメソッドの名前として使ってはいけません: `opts`, `parent`, `root`, `update`, `unmount`, `on`, `off`, `one`, `trigger`。またアンダースコアから始まる変数名(`this._item`など)も予約されています。ローカル変数については、自由に名前付けできます:
 
 ``` javascript
 <my-tag>
@@ -423,7 +463,7 @@ riot.tag('timer',
 4. ES6のメソッドの省略記法
 5. `<img src={ src }>`は`<img riot-src={ src }>`と書かなくてはならない: 不正なサーバリクエストを防止するため
 6. `style="color: { color }"`は`riot-style="color: { color }"`のように書かなくてはならない: スタイル属性がIEでも動作するように
-
+7. [Scoped CSS](/ja/guide/#scoped-css)のプリコンパイル
 
 次のように書くことで`<template>`や`<script>`タグの利点を生かすことはできます:
 
@@ -439,3 +479,44 @@ riot.tag('tag-name', my_tmpl.innerHTML, function(opts) {
 })
 </script>
 ```
+
+### riot.Tag(impl, conf, innerHTML)
+
+<span class="tag red">実験的</span>
+
+Riot 2.3では、内部で使用されているTag関数を利用して、より自由にカスタムタグを作ることができます。
+
+- `impl`
+  - `tmpl` タグのテンプレート
+  - `fn(opts)` マウントされたときのコールバック関数
+  - `attrs` ルートタグのHTML属性（key => value 形式のオブジェクト）
+- `conf`
+  - `root` タグをマウントするDOMノード
+  - `opts` タグに渡すオプション
+  - `isLoop` ループに使われているか (true/false)
+  - `hasImpl` すでにriot.tagで登録されているか
+  - `item` このインスタンスに指定されたループのアイテム
+- `innerHTML` 入れ子ループでの`yield`を置き換えるHTML
+
+
+ES2015を使った例:
+
+```js
+
+class MyTag extends riot.Tag {
+  constructor(el) {
+    super({ tmpl: MyTag.template() }, { root: el })
+    this.msg = 'hello'
+  }
+  bye() {
+    this.msg = 'goodbye'
+  }
+  static template() {
+    return `<p onclick="{ bye }">{ msg }</p>`
+  }
+}
+
+new MyTag(document.getElementById('my-div')).mount()
+```
+
+`riot.Tag`の使用は非推奨となっています。従来の方法では足りない特別な場合以外は、使わないほうがいいです。

@@ -14,20 +14,20 @@ class: apidoc
 ``` js
 function Car() {
 
-  // Make Car instances observable
+  // Carインスタンスを監視できるようにする
   riot.observable(this)
 
-  // listen to 'start' event
+  // 'start'イベントの監視を始める
   this.on('start', function() {
-    // engine started
+    // エンジン、スタート
   })
 
 }
 
-// make a new Car instance
+// 新しいCarインスタンスを作る
 var car = new Car()
 
-// trigger 'start' event
+// 'start'イベントを発火
 car.trigger('start')
 ```
 
@@ -50,16 +50,38 @@ el.on('start stop', function(type) {
   // typeは'start'か'stop'のどちらか
 
 })
+
+// すべてのイベントを監視
+el.on('all', function(event, param1, param2) {
+  // eventはイベントの名前
+  // パラメータによってここで何かをする
+})
+```
+
+`callbacks`内でエラーがあった場合、observableインスタンスは`error`イベントを呼びます:
+
+``` js
+
+el.on('error', function(e) {
+  // ここでエラー対処ができる
+})
+
+el.on('event', function() {
+  throw 'oops'
+})
+
+el.trigger('event')
+
 ```
 
 @returns `el`
 
-### <a name="one"></a> el.one(event, callback)
+### <a name="one"></a> el.one(events, callback)
 
-一度だけ、与えられた`event`を監視し、`callback`を実行します。
+一度だけ、与えられた`events`を監視し、`callback`を実行します。`events`はスペースで区切って複数指定可能。
 
 ``` js
-// run the function once, even if 'start' is triggered multiple times
+// 'start'が何回発火されても、一度だけ実行する
 el.one('start', function() {
 
 })
@@ -69,7 +91,7 @@ el.one('start', function() {
 
 ### <a name="off"></a> el.off(events)
 
-指定されたイベントのリスナ(コールバック)を削除します。`events`はスペースで区切って複数指定可能。
+指定されたイベントのリスナ(コールバック)を削除します。
 
 ``` js
 el.off('start stop')
@@ -101,12 +123,13 @@ el.off('start end', doIt)
 @returns `el`
 
 
-### <a name="trigger"></a> el.trigger(event)
+### <a name="trigger"></a> el.trigger(events)
 
-`event`を監視しているすべてのコールバック関数を実行します。
+`events`を監視しているすべてのコールバック関数を実行します。
 
 ``` js
 el.trigger('start')
+el.trigger('render update')
 ```
 
 @returns `el`
