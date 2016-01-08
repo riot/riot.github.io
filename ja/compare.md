@@ -14,11 +14,11 @@ Riotは、Reactとその「まとめ方(cohesion)」のアイデアからイン�
 > 「テンプレートは、問題ではなく、技術を分けるだけだ」
 > "Templates separate technologies, not concerns."
 
-僕たちは、この直感に敬意を表します。ゴールは、再利用可能なテンプレートを作ることではなく、コンポーネントを作ることです。ロジックをテンプレートから分離することは(例えば、jQueryセレクタを使って)、本来一緒にしておくべきものを追い出してしまっているのです。
+私たちは、この直感に敬意を表します。ゴールは、再利用可能なテンプレートを作ることではなく、コンポーネントを作ることです。ロジックをテンプレートから分離することは(例えば、jQueryセレクタを使って)、本来一緒にしておくべきものを追い出してしまっているのです。
 
 関連するこれらの技術をコンポーネント内にまとめることで、システムはよりクリーンになります。この重要な直感において、Reactは偉大でした。
 
-Reactはよく機能し、まだ使っているプロジェクトもありますが、Reactのサイズと文法 (**特に** 文法!) には不満もありました。僕たちは、ユーザにとっても、実装としても、もっと単純にできないものか考え始めたのです。
+Reactはよく機能し、まだ使っているプロジェクトもありますが、Reactのサイズと文法 (**特に** 文法!) には不満もありました。私たちは、ユーザにとっても、実装としても、もっと単純にできないものか考え始めたのです。
 
 
 ### Reactの文法
@@ -27,42 +27,46 @@ Reactはよく機能し、まだ使っているプロジェクトもあります
 
 
 ``` javascript
-var TodoList = React.createClass({
-  render: function() {
-    var createItem = function(itemText) {
-      return <li>{itemText}</li>;
-    };
-    return <ul>{this.props.items.map(createItem)}</ul>;
-  }
-});
-var TodoApp = React.createClass({
-  getInitialState: function() {
-    return {items: [], text: ''};
-  },
-  onChange: function(e) {
-    this.setState({text: e.target.value});
-  },
-  handleSubmit: function(e) {
-    e.preventDefault();
-    var nextItems = this.state.items.concat([this.state.text]);
-    var nextText = '';
-    this.setState({items: nextItems, text: nextText});
-  },
-  render: function() {
-    return (
-      <div>
-        <h3>TODO</h3>
-        <TodoList items={this.state.items} />
-        <form onSubmit={this.handleSubmit}>
-          <input onChange={this.onChange} value={this.state.text} />
-          <button>{'Add #' + (this.state.items.length + 1)}</button>
-        </form>
-      </div>
-    );
-  }
-});
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-React.render(<TodoApp />, mountNode);
+class Todo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {items: [], text: ''};
+    }
+
+    render() {
+        const {items, text} = this.state;
+        return (
+            <div>
+                <h3>TODO</h3>
+                <ul>
+                    <li>{items.map((item, i)=> <li key={i}>{item}</li>)}</li>
+                </ul>
+                <form onSubmit={this._onSubmit}>
+                    <input onChange={this._onChange} value={text}/>
+                    <button>Add #{items.length + 1}</button>
+                </form>
+            </div>
+        );
+    }
+
+    _onChange(e) {
+        this.setState({text: e.target.value});
+    }
+
+    _onSubmit(e) {
+        e.preventDefault();
+        const {items, text} = this.state;
+        this.setState({
+            items: items.concat(text),
+            text: ''
+        });
+    }
+}
+
+ReactDOM.render(<Todo/>, mountNode);
 ```
 
 JSXはHTMLとJavaScriptのミックスです。HTMLをコンポーネントの好きなところに含めることができます。メソッドの中でも、プロパティの値としても。
@@ -111,7 +115,7 @@ Riotでは、HTMLとJavaScriptはより見慣れた形であらわれます。�
 
 少ないボイラープレート、少ない括弧にカンマ、システムプロパティやメソッド名に気がつくでしょう。文字列には、変数を挿入することができます: `"Hello " + this.state.world`の代わりに、`"Hello {world}"`でOK。そして、メソッドはES6のコンパクトな文法で定義できます。
 
-再利用可能なコンポーネントとして分離しつつも、レイアウトとロジックを分けるのに、Riotの文法は一番すっきりした方法だと、僕たちは考えています。
+再利用可能なコンポーネントとして分離しつつも、レイアウトとロジックを分けるのに、Riotの文法は一番すっきりした方法だと、私たちは考えています。
 
 
 ### 文字列ベースかDOMベースか
@@ -124,7 +128,7 @@ Riotはテンプレート変数をそのツリーから取得し、配列に保�
 
 Reactの場合、更新後にHTMLレイアウトがランダムに変更されうるため、同期アルゴリズムはもっと複雑怪奇です。この計り知れない挑戦に、Facebookの開発者たちは素晴らしい仕事をしました。
 
-でも、この複雑な変更検知(diffing)を避けられることを、僕たちはすでに見てきました。
+でも、この複雑な変更検知(diffing)を避けられることを、私たちはすでに見てきました。
 
 RiotではHTMLの構造は固定です。ループと条件文だけが、要素の追加と削除を行います。ですが、例えば`div`が`label`に変換されるようなことは起きえません。Riotは複雑な部分木(DOMツリー)の置き換えなしに、テンプレート変数だけを更新します。
 
@@ -142,28 +146,28 @@ Riotはカスタムタグとともに、イベントエミッタ(オブザーバ
 RiotのオブザーバブルとルータでFluxライクなシステムを構築することも可能です。実際、そういった試みも[すでにあります](https://github.com/jimsparkman/RiotControl)。
 
 
-### 10〜128倍大きい
+### {{ site.compare.react }}倍大きい
 
-Reactは、Riotの10倍のサイズです。
+React(v{{ site.react.version }})は、Riotの{{ site.compare.react }}倍のサイズです。
 
-<small><em>react.min.js</em> – 119KB</small>
+<small><em>react.min.js</em> – {{ site.react.size }}KB</small>
 <span class="bar red"></span>
 
 <small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
-<span class="bar blue" style="width: {{ site.size_min / 119 * 100 }}%"></span>
+<span class="bar blue" style="width: {{ site.size_min | divided_by: site.react.size | times: 100 }}%"></span>
 
 <br>
 
-Reactの推奨ルータは、Riotのルータの128倍巨大です。
+Reactの推奨ルータ(v{{ site.react_router.version }})は、Riotのルータの{{ site.compare.react_router_vs_riot_router }}倍。
 
-<small><em>react-router.min.js</em> – 54.9KB</small>
+<small><em>react-router.min.js</em> – {{ site.react_router.size }}KB</small>
 <span class="bar red"></span>
 
-<small><em>react-mini-router.min.js</em> – 8.6KB</small>
-<span class="bar red" style="width: 15.6%"></span>
+<small><em>react-mini-router.min.js</em> – {{ site.react_mini_router.size }}KB</small>
+<span class="bar red" style="width: {{ site.react_mini_router.size | divided_by: site.react_router.size | times: 100 }}%"></span>
 
-<small><em>riot.router.min.js</em> – 0.43KB</small>
-<span class="bar blue" style="width: 0.7%"></span>
+<small><em>riot.router.min.js</em> – {{ site.riot_route_size_min }}KB</small>
+<span class="bar blue" style="width: {{ site.riot_route_size_min | divided_by: site.react_router.size | times:100 }}%"></span>
 
 
 確かに、このルータ比較はちょっと不公平です。[react-router](https://github.com/rackt/react-router)はより多くの機能を持っています。ですが、この図はRiotのゴール、つまり「最もミニマリスティックなAPIを提供すること」を明確に示すものです。
@@ -171,36 +175,40 @@ Reactの推奨ルータは、Riotのルータの128倍巨大です。
 Reactのエコシステムは、よりフレームワーク的で、APIの肥大化の気配がします。実際、小さな実装の[react-mini-router](https://github.com/larrymyers/react-mini-router)よりも、この大きな選択肢がReactコミュニティでは人気です。
 
 
-# Polymer
+## Polymer
 
 PolymerはWeb Component標準に則り、最新ブラウザで利用可能にします。これは、カスタムタグを標準的な方法で書けるということです。
 
 コンセプトとしてはRiotも同じなのですが、いくつかの違いがあります:
 
-1. Riotは変更のあった要素だけを更新するため、少ないDOM操作で済みます。
+1. Web Componentsの文法は、実験的で複雑です。
 
-2. Polymerの文法はもっと複雑で、本を何冊か読まなくてはいけません。
+2. Riotは変更のあった要素だけを更新するため、少ないDOM操作で済みます。
 
 3. それぞれのコンポーネントはHTMLの`link rel="import"`で読み込まれます。PolyfillsはXHRsに頼る必要があり、専用の[vulcanize](https://github.com/polymer/vulcanize)ツールを使わない限り、耐えられない遅さです。Riotのタグは`script src`で読み込まれ、一般的なツールで複数のタグを結合することができます。
 
 4. サーバサイドレンダリングができません。
 
 
-### 11倍大きい
+### {{ site.compare.polymer_and_webcomponents }}倍大きい
 
-Polymer(v1.0.6) + WebComponents(v0.7.7)はRiotの11倍のサイズです。
+Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.version }})はRiotの{{ site.compare.polymer_and_webcomponents }}倍のサイズです。
 
-<small><em>polymer.min.js</em> – 138KB</small>
+<small><em>polymer.min.js</em> – {{ site.polymer.size }}KB</small>
 <span class="bar red"></span>
 
 <small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
-<span class="bar blue" style="width: {{ site.size_min / 138 * 100 }}%"></span>
+<span class="bar blue" style="width: {{ site.size_min | divided_by: site.polymer.size | times: 100 }}%"></span>
 
 Web Componentsは[Polyfill挑戦の王様](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/)と呼ばれ、Polymerがこんなにも巨大なコードを必要とする所以です。
 
 
-### 実験的
+## Web components
 
-Polymerは実験的な技術の上に成り立っています。ネイティブのWeb Componentsサポートは、まだSafariやIEにありません。いまだ、IEのステータスは「検討中」中であり、Safariのプランは不透明です。いくつかのWebKitへの[コミット](https://lists.webkit.org/pipermail/webkit-dev/2013-May/024894.html)からは彼らにその気がまったくないことが伺えます。そして、Polymerが唯一、「新鮮な」最新版ブラウザたち(IE 10+)に対応するPolyfillです。
+最終的には、業界標準としてのWeb Componentsに辿り着くべきです。それは[長い年月](http://caniuse.com/#search=web%20components)を必要としますが、いずれは標準コンポーネントがウェブを満たすことになります。
 
-Polymerは[2年以上経過した](https://github.com/Polymer/polymer/commit/0452ada044a6fc5818902e685fb07bb4678b2bc2)プロジェクトですが、いまだ目立った普及を見せていません。今後、Web Componentsがネイティブサポートされるかどうかは、不透明です。
+これらのコンポーネントは複雑であるため、直接に使われない可能性が大きいです。今日多くの人が、直接DOMを操作せずjQueryを使うように、Web Componentsの上にもさらなる層が作られるでしょう。
+
+Riotはそういった抽象化の一層です。それはアプリケーションが頼りにできる簡単なAPIを提供します。Web Componentsの仕様が発達するにつれ、パフォーマンス向上など実際のメリットがあるのであれば、Riotは内部でそれらを導入することができます。
+
+Riotの目的はUI開発を可能な限り簡単にすることです。現在のAPIは、ウェブテクノロジーの日進月歩の流転に耐えうるよう設計されています。Web ComponentsのjQueryと見てもいいでしょう。より簡潔な文法で同じ目的を果たすからです。それは再利用可能なコンポーネントの作成をシンプルな体験にします。
