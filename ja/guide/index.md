@@ -53,10 +53,9 @@ Riotのカスタムタグは、ユーザインターフェースの構成要素�
 <todo>
 ```
 
-カスタムタグはJavaScriptに[コンパイルされます](/riotjs/compiler.html)。
+カスタムタグはJavaScriptに[コンパイルされます](/ja/guide/compiler/)。
 
-[ライブデモ](http://muut.github.io/riotjs/demo/)を見て、その[ソース](https://github.com/riot/riot/tree/gh-pages/demo)を開くか、[ZIP](https://github.com/riot/riot/archive/gh-pages.zip)ファイルをダウンロードします。
-
+[ライブデモ](http://riotjs.com/examples/plunker/?app=todo-app)を見て、その[ソース](https://github.com/riot/examples/tree/gh-pages/todo-app)を開くか、[ZIP](https://github.com/riot/examples/archive/gh-pages.zip)ファイルをダウンロードします。
 
 
 ## タグの構文
@@ -127,7 +126,7 @@ Riotのタグは、レイアウト(HTML)とロジック(JavaScript)の組み合�
 
 現在のところ、"coffee"と"typescript"、"es6"、"none"を使うことができます。言語指定で"text/"を接頭辞としてつけて、"text/coffee"言語指定に"text/"を接頭辞としてつけ、"text/coffee"のようにしても構いません。
 
-詳細については [プリプロセッサ](/riotjs/compiler.ja-JP.html#pre-processors)を参照してください。
+詳細については [プリプロセッサ](/ja/guide/#プリプロセッサ)を参照してください。
 
 
 ## タグのスタイリング
@@ -458,7 +457,7 @@ riot.mixin('mixinName', mixinObject)
 <todo>
 ```
 
-ひとつのイベントに複数のリスナーを登録することも可能です。イベントの詳細については、[observable](/riotjs/api/#observable)を参照してください。
+ひとつのイベントに複数のリスナーを登録することも可能です。イベントの詳細については、[observable](/ja/api/observable/)を参照してください。
 
 
 ## テンプレート変数 (expressions)
@@ -550,7 +549,7 @@ riot.settings.brackets = '\{\{ }}'
 
 開始と終了はスペースで区切られています。
 
-[プリコンパイラ](/riotjs/compiler.html#pre-compilation)0 使う際は、同じく括弧オプションを設定する必要があります。
+[プリコンパイラ](/ja/guide/compiler/#pre-compilation)を使う際は、同じく括弧オプションを設定する必要があります。
 
 
 
