@@ -30,39 +30,39 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Todo extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {items: [], text: ''};
-    }
+  constructor(props) {
+    super(props);
+    this.state = {items: [], text: ''};
+  }
 
-    render() {
-        const {items, text} = this.state;
-        return (
-            <div>
-                <h3>TODO</h3>
-                <ul>
-                    <li>{items.map((item, i)=> <li key={i}>{item}</li>)}</li>
-                </ul>
-                <form onSubmit={this._onSubmit}>
-                    <input onChange={this._onChange} value={text}/>
-                    <button>Add #{items.length + 1}</button>
-                </form>
-            </div>
-        );
-    }
+  render() {
+    const {items, text} = this.state;
+    return (
+      <div>
+        <h3>TODO</h3>
+        <ul>
+          <li>{items.map((item, i)=> <li key={i}>{item}</li>)}</li>
+        </ul>
+        <form onSubmit={this._onSubmit}>
+          <input onChange={this._onChange} value={text}/>
+          <button>Add #{items.length + 1}</button>
+        </form>
+      </div>
+    );
+  }
 
-    _onChange(e) {
-        this.setState({text: e.target.value});
-    }
+  _onChange(e) {
+    this.setState({text: e.target.value});
+  }
 
-    _onSubmit(e) {
-        e.preventDefault();
-        const {items, text} = this.state;
-        this.setState({
-            items: items.concat(text),
-            text: ''
-        });
-    }
+  _onSubmit(e) {
+    e.preventDefault();
+    const {items, text} = this.state;
+    this.setState({
+      items: items.concat(text),
+      text: ''
+    });
+  }
 }
 
 ReactDOM.render(<Todo/>, mountNode);
