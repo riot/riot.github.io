@@ -53,8 +53,8 @@ polymer:
   version: 1.2.1
 
 webcomponents:
-  size:    118.00
-  version: 0.7.19
+  size:    119.00
+  version: 0.7.20
 
 polymer_and_webcomponents_size: 301 # 183 + 118
 
@@ -63,18 +63,18 @@ react:
   version: 0.14.3
 
 react_router:
-  size:    48.00
-  version: 1.0.2
+  size:    44.00
+  version: 1.0.3
 
 react_mini_router:
-  size:    9.91
+  size:    10
   version: 2.0.0
 
 
 # precalculated round values because of {{round}} liquid filter bug
 compare:
   react: 7 # react.size / size_min
-  react_router_vs_riot_router: 14 # react_router.size / riot_route_size_min
+  react_router_vs_riot_router: 13 # react_router.size / riot_route_size_min
   react_mini_router_vs_riot_router: 3 # react_router.size / riot_route_size_min
   polymer_and_webcomponents: 15 # polymer_and_webcomponents_size / size_min
 
