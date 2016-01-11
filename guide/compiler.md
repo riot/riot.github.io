@@ -174,13 +174,13 @@ export default {
   style: 'bar',
   parsers: {
     html: {
-      foo: ( html, opts, url ) => require( 'foo' ).compile( html ),
+      foo: (html, opts, url) => require('foo').compile(html),
     },
     css: {
-      bar: ( tagName, css, opts, url ) => require( 'bar' ).compile( css ),
+      bar: (tagName, css, opts, url) => require('bar').compile(css),
     },
     js: {
-      baz: ( js, opts, url ) => require( 'baz' ).compile( js ),
+      baz: (js, opts, url) => require('baz').compile(js),
     },
   },
 };
