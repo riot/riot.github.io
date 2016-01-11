@@ -6,6 +6,30 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.3.13 *January 11, 2016*
+
+- __riot__
+  - Fix serverside rendering issue using the value attribute on the `textarea, option` tags [more info](https://github.com/riot/riot/issues/1455)
+  - Fix nested `yield` slot issue [more info](https://github.com/riot/riot/issues/1458)
+  - Add support for `yield` slots serverside
+  - Add better strategy for css injection [more info](https://github.com/riot/riot/issues/1439)
+- __observable__
+  - Fix the issue with the errors swallowed in the callbacks [more details](https://github.com/riot/riot/issues/1483), you no longer need `tag.on('error', cb)` to catch them
+- __compiler__
+  - Fix [riot#1495](https://github.com/riot/riot/issues/1495) : Warning of input tag value - Avoids warnings for date/datetime/time/month/email/color types with expression in its value.
+  - Fix [riot#1488](https://github.com/riot/riot/issues/1488) : Cannot read property 'replace' of undefined when compiling in Node a tag with an import in its less stylesheet -- Thanks to @jrx-jsj
+  - Fix [riot#1448](https://github.com/riot/riot/issues/1448) : Riot compiler parses and removes content from string declaration. This is partial fix, you need to write `<\/script>` for closing script tags within quoted strings.
+  - Revised regex that matches `<pre>` tags.
+- __tmpl__
+  - Fix issues with double quotes.
+- __cli__
+  - Fix for the `watch` task in case of errors, it will keep running re-starting a new subprocess forever on any error
+  - Add better `version` output showing only the `riot-compiler` and the `riot-cli` version currently in use
+- __route__
+  - Add server side support [more details](https://github.com/riot/route/issues/18)
+  - Add replaceState support [more details](/api/route/#riot-route-to-title-shouldreplace)
+
+
 ## 2.3.12 *December 15, 2015*
 
 - __compiler__

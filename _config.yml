@@ -35,18 +35,18 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-major_version:       12
+major_version:       13
 minor_version:       2.3
 
-version:             2.3.12
-release_date:        December 15
-version_slurp:       Multi transclusion and external config file to compile your tags
+version:             2.3.13
+release_date:        January 11
+version_slurp:       Better error reporting - enhanced router, compiler and cli
 repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page
 
 size_min:            20.00
-riot_route_size_min: 3.32
+riot_route_size_min: 3.44
 
 polymer:
   size:    183.00 # 118 + 48 + 17
