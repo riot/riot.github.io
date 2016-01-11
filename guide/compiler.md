@@ -165,25 +165,25 @@ export default {
   from: 'tags/src',
   to: 'tags/dist',
   // files extension
-  ext: 'foo'
+  ext: 'foo',
   // html parser
   template: 'foo',
   // js parser
   type: 'baz',
   // css parser
-  style: 'bar'
+  style: 'bar',
   parsers: {
     html: {
-      foo: (html, opts, url) => require('foo').compile(html)
+      foo: (html, opts, url) => require('foo').compile(html),
     },
     css: {
-      bar: (tagName, css, opts, url) => require('bar').compile(css)
+      bar: (tagName, css, opts, url) => require('bar').compile(css),
     },
     js: {
-      baz: (js, opts, url) => require('baz').compile(js)
-    }
-  }
-}
+      baz: (js, opts, url) => require('baz').compile(js),
+    },
+  },
+};
 ```
 
 
