@@ -52,26 +52,10 @@ el.on('start stop', function(type) {
 })
 
 // listen all the events of this observable
-el.on('all', function(event, param1, param2) {
+el.on('*', function(event, param1, param2) {
   // event will be the name of any event triggered
   // do something with the parameters
 })
-
-```
-
-In case of errors in your `callbacks` the observable instance will emit the `error` event:
-
-``` js
-
-el.on('error', function(e) {
-  // the errors can be caught here
-})
-
-el.on('event', function() {
-  throw 'oops'
-})
-
-el.trigger('event')
 
 ```
 
@@ -123,6 +107,11 @@ Removes all listeners from all event types.
 
 @returns `el`
 
+### <a name="off-all-fn"></a> el.off('*', fn)
+
+Removes the specific callback function called on all the events
+
+@returns `el`
 
 ### <a name="trigger"></a> el.trigger(events)
 

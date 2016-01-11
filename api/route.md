@@ -11,8 +11,9 @@ The Riot Router is the minimal router implementation with such technologies:
 - pushState and history API
 - multiple routing groups
 - replacable parser
+- isomorphic
 - use a [polyfill](https://github.com/devote/HTML5-History-API) for ie9 support and earlier.  Because ie.
- 
+
 ## Setup routing
 
 ### riot.route(callback)
@@ -110,11 +111,11 @@ var subRoute = riot.route.create()
 subRoute('/fruit/apple', function() { /* */ })
 ```
 
-See also [Routing group](#routing-group) and [Routing priority](#routing-priority) section, for detail.
+See also [Routing group](#routing-groups) and [Routing priority](#routing-priority) section, for detail.
 
 ## Use router
 
-### riot.route(to[, title])
+### riot.route(to[, title, shouldReplace])
 
 Changes the browser URL and notifies all the listeners assigned with `riot.route(callback)`. For example:
 
@@ -126,6 +127,17 @@ From v2.3, you can set the title, too:
 ```javascript
 riot.route('customers/267393/edit', 'Editing customer page')
 ```
+
+With the third argument, you can replace the current history. It's useful when the app needs redirect to another page.
+
+```javascript
+riot.route('not-found', 'Not found', true)
+```
+
+Internally...
+
+- without `shouldReplace`, `history.pushState()` will be used.
+- with `shouldReplace`, `history.replaceState()` will be used.
 
 ### riot.route.start()
 
@@ -154,6 +166,11 @@ This is a shorthand for:
 riot.route.start()
 riot.route.exec()
 ```
+
+<span class="tag red">&gt;= v2.3</span>
+
+Riot doesn't `start` its router automatically. DON'T FORGET TO START IT BY YOURSELF. This also means that you can choose your favorite router.
+(Note: before v2.3 Riot started the router automatically. The behavior was changed)
 
 ### riot.route.stop()
 
@@ -184,7 +201,7 @@ subRoute.stop()
 
 ### riot.route.exec()
 
-Study the current path "in place" emit routing without waiting for it to change. For example:
+Study the current browser path "in place" and emit routing without waiting for it to change.
 
 ```javascript
 riot.route(function() { /* define routing */ })
