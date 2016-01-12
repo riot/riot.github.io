@@ -15,6 +15,7 @@ id: release-notes
   - Add better strategy for css injection [more info](https://github.com/riot/riot/issues/1439)
 - __observable__
   - Fix the issue with the errors swallowed in the callbacks [more details](https://github.com/riot/riot/issues/1483), you no longer need `tag.on('error', cb)` to catch them
+  - Change the `all` method replaced with `*` to provide a more consistent api [more info](http://riotjs.com/api/observable/#on)
 - __compiler__
   - Fix [riot#1495](https://github.com/riot/riot/issues/1495) : Warning of input tag value - Avoids warnings for date/datetime/time/month/email/color types with expression in its value.
   - Fix [riot#1488](https://github.com/riot/riot/issues/1488) : Cannot read property 'replace' of undefined when compiling in Node a tag with an import in its less stylesheet -- Thanks to @jrx-jsj
