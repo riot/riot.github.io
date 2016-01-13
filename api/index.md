@@ -123,6 +123,20 @@ You can freely set any data to the instance (aka "context") and they are availab
 </my-tag>
 ```
 
+Note: if you have some globals, you can also use these references in both the HTML and JavaScript code:
+
+```js
+window.someGlobalVariable = 'Hello!'
+```
+
+``` html
+<my-tag>
+  <h3>{ someGlobalVariable }</h3>
+
+  var message = someGlobalVariable
+</my-tag>
+```
+
 
 ## Updating
 
