@@ -11,7 +11,8 @@ Riot 路由器是一个最小化的路由器实现，实现了以下技术：
 - pushState 和 history api
 - 多个路由组
 - 可替换的解析器
-- 使用 [polyfill](https://github.com/devote/HTML5-History-API) 可兼容IE 9及以下版本 
+- 同构
+- 使用 [polyfill](https://github.com/devote/HTML5-History-API) 可兼容IE 9及以下版本
 
 ## 配置路由
 
@@ -115,7 +116,7 @@ subRoute('/fruit/apple', function() { /* */ })
 
 ## 使用路由器
 
-### riot.route(to[, title])
+### riot.route(to[, title, shouldReplace])
 
 修改浏览器 url 并通知所有用 `riot.route(callback)` 注册的监听者。例如：
 
@@ -128,6 +129,16 @@ riot.route('customers/267393/edit')
 riot.route('customers/267393/edit', 'Editing customer page')
 ```
 
+可以利用第3个参数来替换当前的历史。当应用需要重定向到另一个页面时很有用。
+
+```javascript
+riot.route('not-found', 'Not found', true)
+```
+
+在内部实现中...
+
+- 如果没有 `shouldReplace`, 将使用 `history.pushState()`.
+- 如果有 `shouldReplace`, 将使用`history.replaceState()`.
 
 ### riot.route.start()
 
@@ -157,6 +168,10 @@ riot.route.start()
 riot.route.exec()
 ```
 
+<span class="tag red">&gt;= v2.3</span>
+
+Riot 不会自动 `start` 路由器. 不要忘了手动启动它。这也意味着你可以选择自己喜欢的路由器实现
+(注意：在 v2.3 之前 Riot 会自动启动路由器. )
 
 ### riot.route.stop()
 
@@ -187,7 +202,7 @@ subRoute.stop()
 
 ### riot.route.exec()
 
-针对当前的url立即执行路由，而不是等url发生变化。例如:
+针对当前的浏览器url立即执行路由，而不是等url发生变化。例如:
 
 ```javascript
 riot.route(function() { /* 定义路由 */ })

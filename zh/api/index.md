@@ -30,6 +30,17 @@ var tags = riot.mount('account', api)
 
 @返回值: 加载成功的[标签实例](#标签实例)的数组
 
+注意：使用 [浏览器内编译](/zh/guide/compiler/#in-browser-compilation) 的用户需要将 `riot.mount` 调用放在 `riot.compile` 中才能获得返回的 [标签实例](#标签实例). 不这么做的话 `riot.mount` 将返回 `undefined`
+
+```javascript
+<script>
+riot.compile(function() {
+  // here tags are compiled and riot.mount works synchronously
+  var tags = riot.mount('*')
+})
+</script>
+```
+
 ### <a name="mount-star"></a> riot.mount('*', [opts])
 
 Riot使用特殊选择器 "*" 来加载页面上所有自定义标签:

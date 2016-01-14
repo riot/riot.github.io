@@ -52,28 +52,14 @@ el.on('start stop', function(type) {
 })
 
 // 监听此 observable 上的所有事件
-el.on('all', function(event, param1, param2) {
+el.on('*', function(event, param1, param2) {
   // event will be the name of any event triggered
   // do something with the parameters
 })
 
 ```
 
-如果你的 `callback` 中出现了错误，observable 实例将触发 `error` 事件：
 
-```js
-
-el.on('error', function(e) {
-  // the errors can be caught here
-})
-
-el.on('event', function() {
-  throw 'oops'
-})
-
-el.trigger('event')
-
-```
 @返回值 `el`
 
 ### <a name="one"></a> el.one(events, callback)
@@ -122,6 +108,11 @@ el.off('start end', doIt)
 
 @返回值 `el`
 
+### <a name="off-all-fn"></a> el.off('*', fn)
+
+对所有的事件删除指定的回调函数
+
+@返回值 `el`
 
 ### <a name="trigger"></a> el.trigger(events)
 
