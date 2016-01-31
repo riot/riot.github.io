@@ -6,6 +6,29 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.3.15 *January 31, 2016*
+
+- __riot__
+  - Fix `<virtual>` tag update [1512](https://github.com/riot/riot/issues/1512)
+  - Fix the `riot.update` method [1353]https://github.com/riot/riot/issues/1353
+
+- __compiler__
+  - Fix use the `defer` attribute on the `<script>` tags to load them in runtime [1492](https://github.com/riot/riot/issues/1492)
+  - Fix [riot#1511](https://github.com/riot/riot/issues/1511) : Escape Quotes - They may be some issues to fix
+  - Regression of logic to parse style and script tags, due to loss of performance and other issues
+  - Removed the "compress" option of the `less` parser, which is deprecated and generates warnings in the console
+  - Removed the useless CSS parser `stylus` from the browser version
+  - Refactorization of all the code, with more comments in preparation for the automatic documentation of the API
+  - Various tweaks to increase performance and reduce (~55%) memory consumption
+  - Files to preprocess are moved from "lib" to the "src" directory, now "lib" has the required node.js files only
+
+- __tmpl__
+  - Refactorization, now `tmpl` and `brackets` are ~5% faster
+  - Removed unused `tmpl.isRaw` function (internal)
+  - Changes to comments
+  - Files to preprocess are moved from the "lib" to the "src" directory, "lib" was removed
+
+
 ## 2.3.13 *January 11, 2016*
 
 - __riot__

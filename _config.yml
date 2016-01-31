@@ -35,12 +35,12 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-major_version:       13
+major_version:       15
 minor_version:       2.3
 
-version:             2.3.13
-release_date:        January 11
-version_slurp:       Better error reporting - enhanced router, compiler and cli
+version:             2.3.15
+release_date:        January 31
+version_slurp:       Bug fix and performance improvements
 repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page
