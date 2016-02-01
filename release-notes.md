@@ -10,7 +10,7 @@ id: release-notes
 
 - __riot__
   - Fix `<virtual>` tag update [1512](https://github.com/riot/riot/issues/1512)
-  - Fix the `riot.update` method [1353]https://github.com/riot/riot/issues/1353
+  - Fix the `riot.update` method [1353](https://github.com/riot/riot/issues/1353)
 
 - __compiler__
   - Fix use the `defer` attribute on the `<script>` tags to load them in runtime [1492](https://github.com/riot/riot/issues/1492)
