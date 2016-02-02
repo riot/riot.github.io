@@ -26,7 +26,7 @@ Custom tags need to be transformed to JavaScript before the browser can execute 
 <script src="path/to/javascript/with-tags.js" type="riot/tag"></script>
 
 <!-- include riot.js and the compiler -->
-<script src="//cdn.rawgit.com/riot/riot/master/riot+compiler.min.js"></script>
+<script src="https://cdn.jsdelivr.net/riot/2.3/riot+compiler.min.js"></script>
 
 
 <!-- mount normally -->

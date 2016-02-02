@@ -26,7 +26,7 @@ title: コンパイラ
 <script src="path/to/javascript/with-tags.js" type="riot/tag"></script>
 
 <!-- riot.jsとコンパイラを読み込む -->
-<script src="//cdn.rawgit.com/riot/riot/master/riot+compiler.min.js"></script>
+<script src="https://cdn.jsdelivr.net/riot/2.3/riot+compiler.min.js"></script>
 
 
 <!-- 通常のマウント -->

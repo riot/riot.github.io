@@ -25,7 +25,7 @@ title: Компилятор
 <script src="path/to/javascript/with-tags.js" type="riot/tag"></script>
 
 <!-- подключение riot.js с компилятором  -->
-<script src="//cdn.rawgit.com/riot/riot/master/riot+compiler.min.js"></script>
+<script src="https://cdn.jsdelivr.net/riot/2.3/riot+compiler.min.js"></script>
 
 
 <!-- монтирование -->

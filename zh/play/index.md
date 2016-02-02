@@ -25,7 +25,7 @@ description: 一系列用来展示采用 Riot 的好处的示例 Riot.
     <!-- 包含标签定义 -->
     <script type="riot/tag" src="sample.tag"></script>
     <!-- 包含 riot.js -->
-    <script src="https://cdn.rawgit.com/riot/riot/master/riot+compiler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/riot/2.3/riot+compiler.min.js"></script>
     <!-- 加载标签实例 -->
     <script>riot.mount('sample')</script>
   </body>
