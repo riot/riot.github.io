@@ -26,7 +26,7 @@ Les tags personnalisés doivent être transformés en JavaScript avant que le na
 <script src="chemin/vers/javascript/avec-tags.js" type="riot/tag"></script>
 
 <!-- inclusion de riot.js et du compilateur -->
-<script src="//cdn.jsdelivr.net/g/riot@2.3(riot.min.js+compiler.min.js)"></script>
+<script src="https://cdn.jsdelivr.net/riot/2.3/riot+compiler.min.js"></script>
 
 
 <!-- montage normal -->
