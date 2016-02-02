@@ -25,7 +25,7 @@ title: 编译器
 <script src="path/to/javascript/with-tags.js" type="riot/tag"></script>
 
 <!-- 包含 riot.js 和编译器 -->
-<script src="//cdn.jsdelivr.net/g/riot@2.3(riot.min.js+compiler.min.js)"></script>
+<script src="//cdn.rawgit.com/riot/riot/master/riot+compiler.min.js"></script>
 
 <!-- 正常加载 -->
 <script>
