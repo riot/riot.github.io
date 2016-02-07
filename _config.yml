@@ -50,7 +50,7 @@ riot_route_size_min: 3.44
 
 polymer:
   size:    160.00 # according to https://github.com/riot/riot/issues/1575#issuecomment-180869792
-  version: 1.2.1
+  version: 1.2.4
 
 webcomponents:
   size:    119.00
