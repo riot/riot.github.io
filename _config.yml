@@ -49,14 +49,14 @@ size_min:            20.00
 riot_route_size_min: 3.44
 
 polymer:
-  size:    183.00 # 118 + 48 + 17
+  size:    160.00 # according to https://github.com/riot/riot/issues/1575#issuecomment-180869792
   version: 1.2.1
 
 webcomponents:
   size:    119.00
   version: 0.7.20
 
-polymer_and_webcomponents_size: 301 # 183 + 118
+polymer_and_webcomponents_size: 199 # 160 + 39 (polymer + webcomponents-lite.min.js )
 
 react:
   size:    136.00
@@ -76,7 +76,7 @@ compare:
   react: 7 # react.size / size_min
   react_router_vs_riot_router: 13 # react_router.size / riot_route_size_min
   react_mini_router_vs_riot_router: 3 # react_router.size / riot_route_size_min
-  polymer_and_webcomponents: 15 # polymer_and_webcomponents_size / size_min
+  polymer_and_webcomponents: 10 # polymer_and_webcomponents_size / size_min
 
 # Languages
 translations:
