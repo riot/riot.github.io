@@ -9,7 +9,7 @@ url:                 http://riotjs.com
 baseurl:             ""
 
 # Markdown
-markdown:           redcarpet
+markdown:           kramdown
 extensions:         [fenced_code_blocks]
 redcarpet:
   extensions:       [with_toc_data,autolink,smart]
