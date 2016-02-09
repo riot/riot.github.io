@@ -403,7 +403,7 @@ will be compiled in this way:
 
 ### <a name="mixin"></a> this.mixin(mixinObject)
 
-Extends the current tag with the features available on mixinObject. For example:
+Extends the current tag with functionality available on mixinObject. For example:
 
 ```js
 var OptsMixin = {
