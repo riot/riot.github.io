@@ -408,7 +408,7 @@ var OptsMixin = {
 </my-tag>
 ```
 
-In this example you are giving any instance of the `my-tag` Tag the `OptsMixin` which provides `getOpts` and `setOpts` methods. `init` method is special one which can initialize the mixin when it's loaded to the tag. (`init` method is not accessible from the tag its mixed in)
+In this example you are giving any instance of the `my-tag` Tag the `OptsMixin` which provides `getOpts` and `setOpts` methods. `init` method is a special one which can initialize the mixin when it's loaded to the tag. (`init` method is not accessible from the tag its mixed in)
 
 ```js
 var my_tag_instance = riot.mount('my-tag')[0]

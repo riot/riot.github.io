@@ -399,6 +399,46 @@ will be compiled in this way:
 </blog>
 ```
 
+## Mixins
+
+### <a name="mixin"></a> this.mixin(mixinObject)
+
+Extends the current tag with the features available on mixinObject. For example:
+
+```js
+var OptsMixin = {
+  // init method is a special one which can initialize
+  // the mixin when it's loaded to the tag and is not
+  // accessible from the tag its mixed in
+  init: function() {
+    this.on('updated', function() { console.log('Updated!') })
+  },
+
+  getOpts: function() {
+    return this.opts
+  },
+
+  setOpts: function(opts, update) {
+    this.opts = opts
+    if (!update) this.update()
+    return this
+  }
+}
+
+<my-tag>
+  <h1>{ opts.title }</h1>
+
+  this.mixin(OptsMixin)
+</my-tag>
+```
+
+### <a name="mixin-shared"></a> riot.mixin(mixinName, mixinObject)
+
+Register a shared mixin, globally available to be used in any tag: `this.mixin(mixinName)`.
+
+### <a name="mixin-global"></a> riot.mixin(mixinObject)
+
+Register a global mixin, and automatically adds it to all tag instances.
 
 ## Events
 
