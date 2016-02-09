@@ -277,7 +277,7 @@ A sample tag written in ES6:
 All ECMAScript 6 [features](https://github.com/lukehoban/es6features) can be used. [Babel 5](https://babeljs.io/) is used for the transformation:
 
 ``` sh
-npm install babel@5.8
+npm install babel@5.8 -g
 ```
 
 Here is a [bigger example](https://github.com/txchen/feplay/tree/gh-pages/riot_babel) on using Babel 5 with Riot.
@@ -287,7 +287,7 @@ Here is a [bigger example](https://github.com/txchen/feplay/tree/gh-pages/riot_b
 Babel 6 introduced many breaking changes so if you want to use it you should configure your environment first:
 
  1. install our [babel-preset-es2015-riot](https://github.com/riot/babel-preset-es2015-riot)<br /> `npm install babel-preset-es2015-riot --save-dev`
- 2. install `babel-core` as well <br /> `npm install babel-core --save-dev`
+ 2. install `babel-core` as well <br /> `npm install babel-core -g`
  3. create a `.babelrc` file containing the preset id<br /> `{ "presets": ["es2015-riot"] }`
 
 Once your have configured your environment you can use:
@@ -400,7 +400,7 @@ sample
 As you notice, you can define the script type on the template as well. Above we use coffee. [jade](https://github.com/jadejs/jade) is used for the transformation:
 
 ``` sh
-npm install jade
+npm install jade -g
 ```
 
 
