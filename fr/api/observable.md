@@ -59,7 +59,7 @@ el.on('all', function(event, param1, param2) {
 })
 ```
 
-En cas d'erreurs dans vos `callbacks`, l'instance observable émettra l'événement `error`:
+En cas d'erreur dans vos `callbacks`, l'instance observable émettra l'événement `error`:
 
 ``` js
 
@@ -136,7 +136,7 @@ el.trigger('start')
 
 ### <a name="trigger-args"></a> el.trigger(event, arg1 ... argN)
 
-Déclenche l'événement `event` sur l'élément `el` et appelle toutes les fonctions associées avec certains paramètres. N'importe quel nombre de paramètres supplémentaires peuvent être fournis aux fonctions de callback.
+Déclenche l'événement `event` sur l'élément `el` et appelle toutes les fonctions associées avec certains paramètres. N'importe quelle quantité de paramètres supplémentaires peut être fournie aux fonctions de callback.
 
 ``` js
 // écoute l'événement 'start' et attend des arguments supplémentaires

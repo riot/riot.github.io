@@ -8,7 +8,7 @@ class: apidoc
 
 ## Sur le navigateur
 
-Les méthodes suivantes s'appliquent uniquement aux navigateurs. Allez en [section serveur](#sur-le-serveur) si vous voulez compilez avec node ou io.js.
+Les méthodes suivantes s'appliquent uniquement aux navigateurs. Allez en [section serveur](#sur-le-serveur) si vous voulez compiler avec node ou io.js.
 
 ### <a name="compile"></a> riot.compile(callback)
 
@@ -20,7 +20,7 @@ riot.compile(function() {
 })
 ```
 
-Vous pouvez écartez l'appel à `riot.compile` et juste écrire:
+Vous pouvez écarter l'appel à `riot.compile` et juste écrire:
 
 ``` javascript
 var tags = riot.mount('*')
@@ -62,7 +62,7 @@ Une définition de tag est repérée si le premier caractère non vide est `<`, 
 
 ### <a name="compile-to-str"></a> riot.compile(tag, true)
 
-Compile le `tag` et le retourne sous forme de chaîne de caractères. Seule la transformation du tag en JavaScript est effectuée, le tag n'est pas exécuté sur le navigateur. Vous pouvez utiliser cette méthode pour par exemple mesurer la performance du compilateur.
+Compile le `tag` et le retourne sous forme de chaîne de caractères. Seule la transformation du tag en JavaScript est effectuée, le tag n'est pas exécuté sur le navigateur. Vous pouvez utiliser cette méthode pour mesurer la performance du compilateur par exemple.
 
 ``` js
 var js = riot.compile(my_tag.innerHTML, true)
@@ -165,5 +165,5 @@ Les parseurs prédéfinis sont:
 
 ## Changements dans la v2.3.0
 
-Dans les versions précédentes, les parenthèses échappées étaient conservées, en générant du code HTML et JavaScript parfois invalide. La version actuelle les supprime à une étape antérieure, après avoir passé le tag au parseur HTML et avant que le code JavaScript et les expressions soient envoyées au parseur JavaScript.
+Dans les versions précédentes, les parenthèses protégées étaient conservées, en générant du code HTML et JavaScript parfois invalide. La version actuelle les supprime à une étape antérieure, après avoir passé le tag au parseur HTML et avant que le code JavaScript et les expressions soient envoyées au parseur JavaScript.
 
