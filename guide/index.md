@@ -317,84 +317,6 @@ Inside the tag the options can be referenced with the `opts` variable as follows
 </my-tag>
 ```
 
-
-### Mixins
-
-Mixins provide an easy way to share functionality across tags. When a tag is compiled by riot, any defined mixins are added and available to use in the tag.
-
-```js
-var OptsMixin = {
-  init: function() {
-    this.on('updated', function() { console.log('Updated!') })
-  },
-
-  getOpts: function() {
-    return this.opts
-  },
-
-  setOpts: function(opts, update) {
-    this.opts = opts
-    if (!update) this.update()
-    return this
-  }
-}
-
-<my-tag>
-  <h1>{ opts.title }</h1>
-
-  this.mixin(OptsMixin)
-</my-tag>
-```
-
-In this example you are giving any instance of the `my-tag` Tag the `OptsMixin` which provides `getOpts` and `setOpts` methods. `init` method is special one which can initialize the mixin when it's loaded to the tag. (`init` method is not accessible from the tag its mixed in)
-
-```js
-var my_tag_instance = riot.mount('my-tag')[0]
-
-console.log(my_tag_instance.getOpts()) // will log out any opts that the tag has
-```
-
-Tags will accept any object -- `{'key': 'val'}` `var mix = new function(...)` -- and will error out when any other type is passed to it.
-
-The `my-tag` definition now has a `getId` method added to it along with anything defined in the `OptsMixin` except for the `init` function.
-
-```js
-function IdMixin() {
-  this.getId = function() {
-    return this._id
-  }
-}
-
-var id_mixin_instance = new IdMixin()
-
-<my-tag>
-  <h1>{ opts.title }</h1>
-
-  this.mixin(OptsMixin, id_mixin_instance)
-</my-tag>
-```
-
-By being defined on the tag level, mixins not only extend the functionality of your tag, but also allows for a repeatable interface. Every time a tag is mounted, even sub-tags, the instance will have the mixed-in code.
-
-### Sharing mixin
-
-To share the mixins over files or projects, `riot.mixin` API is provided. You can register your mixin globally like this:
-
-```js
-riot.mixin('mixinName', mixinObject)
-```
-
-To load the mixin to the tag, use `mixin()` method with the key.
-
-```html
-<my-tag>
-  <h1>{ opts.title }</h1>
-
-  this.mixin('mixinName')
-</my-tag>
-```
-
-
 ### Tag lifecycle
 
 A tag is created in following sequence:
@@ -457,6 +379,93 @@ You can listen to various lifecyle events inside the tag as follows:
 ```
 
 You can have multiple event listeners for the same event. See [observable](/api/observable/) for more details about events.
+
+## Mixins
+
+Mixins provide an easy way to share functionality across tags. When a tag is compiled by riot, any defined mixins are added and available to use in the tag.
+
+```js
+var OptsMixin = {
+  init: function() {
+    this.on('updated', function() { console.log('Updated!') })
+  },
+
+  getOpts: function() {
+    return this.opts
+  },
+
+  setOpts: function(opts, update) {
+    this.opts = opts
+    if (!update) this.update()
+    return this
+  }
+}
+
+<my-tag>
+  <h1>{ opts.title }</h1>
+
+  this.mixin(OptsMixin)
+</my-tag>
+```
+
+In this example you are giving any instance of the `my-tag` Tag the `OptsMixin` which provides `getOpts` and `setOpts` methods. `init` method is special one which can initialize the mixin when it's loaded to the tag. (`init` method is not accessible from the tag its mixed in)
+
+```js
+var my_tag_instance = riot.mount('my-tag')[0]
+
+console.log(my_tag_instance.getOpts()) // will log out any opts that the tag has
+```
+
+Tags will accept any object -- `{'key': 'val'}` `var mix = new function(...)` -- and will error out when any other type is passed to it.
+
+The `my-tag` definition now has a `getId` method added to it along with anything defined in the `OptsMixin` except for the `init` function.
+
+```js
+function IdMixin() {
+  this.getId = function() {
+    return this._id
+  }
+}
+
+var id_mixin_instance = new IdMixin()
+
+<my-tag>
+  <h1>{ opts.title }</h1>
+
+  this.mixin(OptsMixin, id_mixin_instance)
+</my-tag>
+```
+
+By being defined on the tag level, mixins not only extend the functionality of your tag, but also allows for a repeatable interface. Every time a tag is mounted, even sub-tags, the instance will have the mixed-in code.
+
+### Shared mixins
+
+To share the mixins over files or projects, `riot.mixin` API is provided. You can register your mixin globally like this:
+
+```js
+riot.mixin('mixinName', mixinObject)
+```
+
+To load the mixin to the tag, use `mixin()` method with the key.
+
+```html
+<my-tag>
+  <h1>{ opts.title }</h1>
+
+  this.mixin('mixinName')
+</my-tag>
+```
+
+### Global mixins
+
+If you need to add any functionality to *all* your tags, you can register a global mixin like this:
+
+```js
+// Must be registered before mounting tags
+riot.mixin(mixinObject)
+```
+
+Unlike the shared mixins, the global ones are loaded automatically to all the mounted tags. So, use it carefully!
 
 
 ## Expressions
