@@ -69,7 +69,7 @@ Un tag personnalisé colle ensemble le HTML correspondant et le JavaScript pour 
 
 ### Lisible par les humains
 
-Les tags personnalisés permettent de concevoir des vues complexes avec HTML. Votre application ressemblera peut-être à quelque-chose comme ça:
+Les tags personnalisés permettent de concevoir des vues complexes avec HTML. Votre application ressemblera peut-être à quelque chose comme ça:
 
 ``` html
 <body>
@@ -91,7 +91,7 @@ Les tags personnalisés permettent de concevoir des vues complexes avec HTML. Vo
 
 La syntaxe HTML est le langage *de facto* du Web et a été conçu pour faire des interfaces utilisateur. La syntaxe est explicite, l'imbrication des éléments est inhérente au langage, et les attributs offrent un moyen propre pour fournir des options aux tags personnalisés.
 
-Les tags Riot sont [compilés](/guide/compiler/) en JavaScript pur avant que les navigateurs puissent les exécuter..
+Les tags Riot sont [compilés](/guide/compiler/) en JavaScript pur avant que les navigateurs puissent les exécuter.
 
 
 ### DOM virtuel

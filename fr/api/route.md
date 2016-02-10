@@ -110,7 +110,7 @@ var subRoute = riot.route.create()
 subRoute('/fruit/apple', function() { /* */ })
 ```
 
-Consulez les sections [Groupe de routage](#routing-group) et [Priorité de routage](#routing-priority) pour plus de détails.
+Consultez les sections [Groupe de routage](#routing-group) et [Priorité de routage](#routing-priority) pour plus de détails.
 
 ## Utilisation du routeur
 

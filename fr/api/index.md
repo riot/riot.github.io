@@ -208,13 +208,13 @@ Vous pouvez également utiliser l'attribut `name` pour donner un autre nom au ta
 
   <child name="mon_tag_imbrique"></child>
 
-  // accèès au tag enfant
+  // accès au tag enfant
   var child = this.tags.mon_tag_imbrique
 
 </my-tag>
 ```
 
-Les tags enfant initialisés après que le tag parent afin que les méthodes et propriétés soient disponible lors de l'événement "mount".
+Les tags enfant sont initialisés après le tag parent afin que les méthodes et propriétés soient disponible lors de l'événement "mount".
 
 ``` html
 <my-tag>
@@ -243,7 +243,7 @@ Par exemple, en utilisant le tag suivant `my-post`
 </my-post>
 ```
 
-chaque fois que vous voulez inclure le tag `<my-post>` dand votre application
+chaque fois que vous voulez inclure le tag `<my-post>` dans votre application
 
 ``` html
 <my-post title="Quel superbe titre">
@@ -453,7 +453,7 @@ riot.tag('timer',
 Voir la [démo timer](http://jsfiddle.net/gnumanth/h9kuozp5/) et la doc API de [riot.tag](/api/#tag-instance) pour plus de détails sur les *limitations*.
 
 
-<span class="tag red">Attention</span> en utilisant `riot.tag` vous ne profiterez pas des avantages du compilateur et les fonctionnalités suivantes ne seront pas supportées:
+<span class="tag red">Attention</span> en utilisant `riot.tag` vous ne profiterez pas des avantages du compilateur et les fonctionnalités suivantes ne seront pas disponibles:
 
 1. Balises auto-fermantes
 2. Expressions sans guillemets. Ecrivez `value="{ val }"` au lieu de `value={ val }`

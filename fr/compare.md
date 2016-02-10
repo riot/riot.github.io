@@ -121,7 +121,7 @@ Nous pensons que la syntaxe de Riot est le moyen le plus propre de séparer la m
 
 Quand un composant est initialisé, React interprète une chaîne de caractères tandis que Riot traverse un arbre DOM.
 
-Riot récupères les expressions depuis l'arbre et les stockes dans une liste. Chaque expression a un pointeur sur son noeud DOM. A chaque exécution, ces expressions sont évaluées et comparées avec leurs valeurs dans le DOM. Si une valeur a changé, le noeud correspondant est mis à jour dans le DOM. Dans un sens, Riot a aussi un DOM virtuel, juste beaucoup plus simple.
+Riot récupère les expressions depuis l'arbre et les stocke dans une liste. Chaque expression a un pointeur sur son noeud DOM. A chaque exécution, ces expressions sont évaluées et comparées avec leurs valeurs dans le DOM. Si une valeur a changé, le noeud correspondant est mis à jour dans le DOM. Dans un sens, Riot a aussi un DOM virtuel, juste beaucoup plus simple.
 
 Comme les expressions peuvent être mises en cache et que le cycle de mise à jour est très rapide, passer à travers 100 ou 1000 expressions prend généralement 1 milliseconde ou moins.
 
@@ -168,7 +168,7 @@ Le routeur recommandé pour React (v{{ site.react_router.version }}) est {{ site
 <small><em>riot.route.min.js</em> – {{ site.riot_route_size_min }}Ko</small>
 <span class="bar blue" style="width:{{ site.riot_route_size_min | divided_by: site.react_router.size | times:100 }}%"></span>
 
-Nous admettons que la comparaison de ces routeurs n'est pas très juste car [react-router](https://github.com/rackt/react-router) a bien plus de fonctionnalités. Mais le graphique ci-dessus montre clairement l'objectif de Riot: fournir l'API le plus minimaliste pour faire le boulot.
+Nous admettons que la comparaison de ces routeurs n'est pas très juste car [react-router](https://github.com/rackt/react-router) a bien plus de fonctionnalités. Mais le graphique ci-dessus montre clairement l'objectif de Riot: fournir l'API la plus minimaliste pour faire le boulot.
 
 L'écosystème React ressemble plus à un framework et privilégie les API plus vastes. L'alternative plus grosse est davantage populaire que [react-mini-router](https://github.com/larrymyers/react-mini-router) dans la communauté React.
 
@@ -207,7 +207,7 @@ Parce que les Web Components sont un standard, il s'agit de la direction finale 
 
 A cause de la complexité sous-jacente, il y a de fortes chances pour que ces composants ne soient pas utilisés directement. Il y aura des couches par-dessus les Web Components. Tout comme il y a jQuery aujourd'hui. La plupart des gens n'utilisent pas directement le DOM.
 
-Riot est une de ces abstractions. Il fournir une API facile à utiliser sur laquelle nos applications peuvent se reposer. Une fois que la spécification des Web Components aura évolué, Riot pourra l'utiliser *en interne* s'il y a de vrais bénéfices, tels que des gains de performance.
+Riot est une de ces abstractions. Il fournit une API facile à utiliser sur laquelle nos applications peuvent se reposer. Une fois que la spécification des Web Components aura évolué, Riot pourra l'utiliser *en interne* s'il y a de vrais bénéfices, tels que des gains de performance.
 
 Le but de Riot est de rendre le développement d'interfaces utilisateur aussi facile que possible. L'API actuelle est conçue pour résister au flux constant des technologies Web. Vous pouvez le comparer à un "jQuery pour les Web Components" - il prend des raccourcis syntaxiques pour parvenir au même but. Il simplifie l'expérience globale de l'écriture de composants réutilisables.
 

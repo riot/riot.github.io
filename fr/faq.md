@@ -43,7 +43,7 @@ Cela affiche `0` et `false` mais `null` et `undefined` sont affichées comme une
 
 
 ## Puis-je utiliser des balises `style` dans un fichier .tag ?
-Oui. Vous pouvez utiliser du CSS normalement à l'intérieur d'une tag personnalisé. Le standard Web Components a aussi un mécanisme pour encapsuler du CSS. Cependant, il est peu probable que cela améliore la gestion globale de votre CSS.
+Oui. Vous pouvez utiliser du CSS normalement à l'intérieur d'un tag personnalisé. Le standard Web Components a aussi un mécanisme pour encapsuler du CSS. Cependant, il est peu probable que cela améliore la gestion globale de votre CSS.
 
 
 ## Quel est le rôle de jQuery?
