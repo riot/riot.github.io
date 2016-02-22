@@ -45,8 +45,8 @@ repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page
 
-size_min:            20.00
-riot_route_size_min: 3.44
+size_min:            8.27
+riot_route_size_min: 1.65
 
 polymer:
   size:    53.00 # according to https://github.com/riot/riot/issues/1575#issuecomment-180869792
@@ -59,24 +59,24 @@ webcomponents:
 polymer_and_webcomponents_size: 65 # 53 + 12 (polymer + webcomponents-lite.min.js )
 
 react:
-  size:    134.00
-  version: 0.14.3
+  size:    38.56
+  version: 0.14.7
 
 react_router:
-  size:    44.00
-  version: 1.0.3
+  size:    12.63
+  version: 2.0.0
 
 react_mini_router:
-  size:    10
+  size:    3.93
   version: 2.0.0
 
 
 # precalculated round values because of {{round}} liquid filter bug
 compare:
-  react: 7 # react.size / size_min
-  react_router_vs_riot_router: 13 # react_router.size / riot_route_size_min
-  react_mini_router_vs_riot_router: 3 # react_router.size / riot_route_size_min
-  polymer_and_webcomponents: 3 # polymer_and_webcomponents_size / size_min
+  react: 5 # react.size / size_min
+  react_router_vs_riot_router: 8 # react_router.size / riot_route_size_min
+  react_mini_router_vs_riot_router: 2 # react_router.size / riot_route_size_min
+  polymer_and_webcomponents: 8 # polymer_and_webcomponents_size / size_min
 
 # Languages
 translations:

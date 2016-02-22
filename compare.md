@@ -149,23 +149,23 @@ You can build a Flux-like system by using Riot's observable and router. In fact 
 
 React (v{{ site.react.version }}) is {{ site.compare.react }}x bigger than Riot.
 
-<small><em>react.min.js</em> – {{ site.react.size }}KB</small>
+<small><em>react.min.js</em> – {{ site.react.size }}KB (gzip)</small>
 <span class="bar red"></span>
 
-<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
+<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB (gzip)</span></small>
 <span class="bar blue" style="width: {{ site.size_min | divided_by: site.react.size | times: 100 }}%"></span>
 
 <br>
 
 The recommended React router (v{{ site.react_router.version }}) is {{ site.compare.react_router_vs_riot_router }}x larger than Riot router.
 
-<small><em>react-router.min.js</em> – {{ site.react_router.size }}KB</small>
+<small><em>react-router.min.js</em> – {{ site.react_router.size }}KB (gzip)</small>
 <span class="bar red"></span>
 
-<small><em>react-mini-router.min.js</em> – {{ site.react_mini_router.size }}KB</small>
+<small><em>react-mini-router.min.js</em> – {{ site.react_mini_router.size }}KB (gzip)</small>
 <span class="bar red" style="width: {{ site.react_mini_router.size | divided_by: site.react_router.size | times: 100 }}%"></span>
 
-<small><em>riot.route.min.js</em> – {{ site.riot_route_size_min }}KB</small>
+<small><em>riot.route.min.js</em> – {{ site.riot_route_size_min }}KB (gzip)</small>
 <span class="bar blue" style="width:{{ site.riot_route_size_min | divided_by: site.react_router.size | times:100 }}%"></span>
 
 Admittedly this router comparison is a bit unfair because [react-router](https://github.com/rackt/react-router) has a lot more features. But the above chart clearly highlights the goal of Riot: to provide the most minimalistic API for the job.
@@ -192,10 +192,10 @@ Conceptually Riot is the same thing but there are differences:
 
 Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.version }}) is {{ site.compare.polymer_and_webcomponents }}x bigger than Riot
 
-<small><em>polymer.min.js</em> – {{ site.polymer.size }}KB</small>
+<small><em>polymer.min.js</em> – {{ site.polymer.size }}KB (gzip)</small>
 <span class="bar red"></span>
 
-<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
+<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB (gzip)</span></small>
 <span class="bar blue" style="width: {{ site.size_min | divided_by: site.polymer.size | times: 100 }}%"></span>
 
 Web components are said to be the [king of all polyfilling challenges](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/) and this is why Polymer requires such a large amount of code.
