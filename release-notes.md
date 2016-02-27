@@ -10,7 +10,7 @@ id: release-notes
 
 - __riot__
   - Update project copyright [more info](https://github.com/riot/riot/pull/1584) see also [riot#1545](https://github.com/riot/riot/issues/1545)
-  - Add global mixins feature [more info](api/#mixin-global)
+  - Add global mixins feature [more info](/api/#mixin-global)
   - Fix server side each bug on using the tables [riot#1628](https://github.com/riot/riot/issues/1628)
   - Fix override of the `root` protected property in loops [riot#1627](https://github.com/riot/riot/issues/1627)
   - Fix textarea bug on IE11 [riot#1625](https://github.com/riot/riot/issues/1625)
