@@ -70,12 +70,6 @@ Vea nuestro [historial de versiones](/es/release-notes). Todos los archivos son 
 
 `git clone git@github.com:riot/riot.git`
 
-
-## Problemas conocidos
-
-- Los bucles sobre filas o celdas de una tabla con el atributo `each` no están trabajando en IE8 e IE9.
-
-
 ## Logotipo
 
 ![](/img/logo/riot480x.png)
