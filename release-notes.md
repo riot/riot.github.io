@@ -11,12 +11,12 @@ id: release-notes
 - __riot__
   - Update project copyright [more info](https://github.com/riot/riot/pull/1584) see also [riot#1545](https://github.com/riot/riot/issues/1545)
   - Add global mixins feature [more info](api/#mixin-global)
-  - Fix server side each bug on using the tables[riot#1628](https://github.com/riot/riot/issues/1628)
-  - Fix override of the `root` protected tag property in loops [riot#1627](https://github.com/riot/riot/issues/1627)
+  - Fix server side each bug on using the tables [riot#1628](https://github.com/riot/riot/issues/1628)
+  - Fix override of the `root` protected property in loops [riot#1627](https://github.com/riot/riot/issues/1627)
   - Fix textarea bug on IE11 [riot#1625](https://github.com/riot/riot/issues/1625)
   - Fix wrong input behavior on update [riot#1612](https://github.com/riot/riot/issues/1612)
   - Fix IE loop performances issues [riot#1599](https://github.com/riot/riot/issues/1599)
-  - Fix a weird loop bug [riot#1581](https://github.com/riot/riot/issues/1581)
+  - Fix weird loop bug [riot#1581](https://github.com/riot/riot/issues/1581)
 
 - __riot-cli__
   - Fix path issue on Windows [riot#1605](https://github.com/riot/riot/issues/1605)
