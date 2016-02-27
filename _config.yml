@@ -35,17 +35,17 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-major_version:       15
+major_version:       16
 minor_version:       2.3
 
-version:             2.3.15
-release_date:        January 31
-version_slurp:       Bug fix and performance improvements
+version:             2.3.16
+release_date:        February 27
+version_slurp:       Add global mixins, bug fix and better performances
 repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page
 
-size_min:            8.27
+size_min:            8.56
 riot_route_size_min: 1.65
 
 polymer:
