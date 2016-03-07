@@ -63,8 +63,8 @@ riot.compile(function() {
 
 ### デモ
 
-- [インブラウザ・コンパイル版](http://riotjs.com/examples/plunker/?app=todo-app) ([ソース](https://github.com/riot/examples/blob/master/todo-app))
-- [プリコンパイル版](http://riotjs.com/examples/todo-app-precompiled/) ([ソース](https://github.com/riot/examples/blob/master/todo-app-precompiled))
+- [インブラウザ・コンパイル版](http://riotjs.com/examples/todo-app/) ([ソース](https://github.com/riot/examples/tree/gh-pages/todo-app))
+- [プリコンパイル版](http://riotjs.com/examples/todo-app-precompiled/) ([ソース](https://github.com/riot/examples/tree/gh-pages/todo-app-precompiled))
 
 
 
@@ -72,7 +72,7 @@ riot.compile(function() {
 
 プリ(事前の)コンパイルには次のようなメリットがあります:
 
-- あなたの好きな[プリプロセッサ](#プリプロセッサ)と合わせてコンパイル可能。
+- あなたの好きな[プリプロセッサ](#pre-processors)と合わせてコンパイル可能。
 - 若干のパフォーマンス向上。コンパイラを読み込む/実行する必要がありません。
 - ユニバーサル(アイソモーフィック)アプリケーション。サーバで事前にタグを描画しておくことが可能。(近日公開)
 
