@@ -924,7 +924,7 @@ Since riot 2.3.17 we have introduce also the use of the `data-is` attribute to b
 <ul riot-tag="my-tag"></ul>
 ```
 
-<span class="tag red">important</span> The use of the `riot-tag` attribute will be deprecated in the future riot major release
+<span class="tag red">important</span> The use of the `riot-tag` attribute will be deprecated in the future riot major release in favor of `data-is`
 
 This provides users with an alternative that can provide greater compatibility with css frameworks.  The tags are treated like any other custom tag.
 
