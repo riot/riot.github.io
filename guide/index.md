@@ -918,10 +918,13 @@ In some cases you may need to loop some html without having a particular wrapper
 ## HTML elements as tags
 
 Standard HTML elements can be used as riot tags in the page body with the addition of the `riot-tag` attribute.
+Since riot 2.3.17 we have introduce also the use of the `data-is` attribute to bind the riot tags to DOM elements.
 
 ```html
 <ul riot-tag="my-tag"></ul>
 ```
+
+<span class="tag red">important</span> The use of the `riot-tag` attribute will be deprecated in the future riot major release
 
 This provides users with an alternative that can provide greater compatibility with css frameworks.  The tags are treated like any other custom tag.
 

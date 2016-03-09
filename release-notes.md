@@ -6,6 +6,15 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.3.17 *March 9, 2016*
+
+- __riot__
+  - Add support for `data-is` (together with `riot-tag`) attribute to bind riot tags to existing DOM elements [more info](http://riotjs.com/guide/#html-elements-as-tags)
+  - Fix regression of the input values update patch introduced to fix [riot#1612](https://github.com/riot/riot/issues/1612). This fix is a breaking change and we are [discussing](https://github.com/riot/riot/issues/1642) whether to introduce it in riot 3.0.0
+  - Fix checkbox update issue [riot#1647](https://github.com/riot/riot/issues/1647)
+  - Fix problem with looped <option> [riot#1374](https://github.com/riot/riot/issues/1374)
+  - Fix all the tags will be lowercase [riot#1622](https://github.com/riot/riot/issues/1622)
+
 ## 2.3.16 *February 27, 2016*
 
 - __riot__

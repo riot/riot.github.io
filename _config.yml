@@ -28,6 +28,9 @@ sass:
   sass_dir:         style
   style:            :compressed
 
+gems:
+  - jemoji
+
 # About/contact
 author:
   name:              Riot
@@ -35,12 +38,12 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-major_version:       16
+major_version:       17
 minor_version:       2.3
 
-version:             2.3.16
-release_date:        February 27
-version_slurp:       Add global mixins, bug fix and better performances
+version:             2.3.17
+release_date:        March 9
+version_slurp:       Valid W3C markup with the `data-is` attribute
 repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page
