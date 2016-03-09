@@ -7,7 +7,7 @@
   background-color: #454545;
   padding: 2em 0;
 
-  img {
+  img.logo {
     width: 80px;
     display: block;
   }
@@ -22,6 +22,7 @@
       margin-bottom: .3em;
       font-size: 85%;
       color: #ccc;
+      white-space: nowrap;
 
       span {
         background-color: #ccc;
