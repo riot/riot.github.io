@@ -6,6 +6,77 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.3.17 *9 mars 2016*
+
+- __riot__
+  - Support de l'attribut `data-is` (avec `riot-tag`) pour associer des tags riot à des éléments existants du DOM [plus d'infos](http://riotjs.com/guide/#html-elements-as-tags)
+  - Correction d'une régression à la mise à jour des valeurs des tags input, suite au patch [riot#1612](https://github.com/riot/riot/issues/1612). Ce fix est un breaking change sur lequel nous sommes [en train de discuter](https://github.com/riot/riot/issues/1642) whether to introduce it in riot 3.0.0
+  - Correction d'un problème de mise à jour de checkbox [riot#1647](https://github.com/riot/riot/issues/1647)
+  - Correction d'un problème de boucle sur les tags `<option>` [riot#1374](https://github.com/riot/riot/issues/1374)
+  - Tous les tags seront en minuscules [riot#1622](https://github.com/riot/riot/issues/1622)
+
+## 2.3.16 *27 février 2016*
+
+- __riot__
+  - Mise à jour du copyright [plus d'infos](https://github.com/riot/riot/pull/1584), consultez aussi [riot#1545](https://github.com/riot/riot/issues/1545)
+  - Ajout de la fonctionnalité de mixin global [plus d'infos](/fr/api/#mixin-global)
+  - Correction d'un bug côté serveur à l'utilisation des tables [riot#1628](https://github.com/riot/riot/issues/1628)
+  - Correction de la propriété protégée `root` écrasée dans les boucles [riot#1627](https://github.com/riot/riot/issues/1627)
+  - Correction d'un bug avec textarea sur IE11 [riot#1625](https://github.com/riot/riot/issues/1625)
+  - Correction du mauvais comportement de input à la mise à jour [riot#1612](https://github.com/riot/riot/issues/1612)
+  - Correction des problèmes de performance des boucles sur IE [riot#1599](https://github.com/riot/riot/issues/1599)
+  - Correction d'un bug étrange avec les boucles [riot#1581](https://github.com/riot/riot/issues/1581)
+
+- __riot-cli__
+  - Correction de problèmes de path sur Windows [riot#1605](https://github.com/riot/riot/issues/1605)
+
+## 2.3.15 *31 janvier 2016*
+
+- __riot__
+  - Correction de la mise à jour du tag `<virtual>` [1512](https://github.com/riot/riot/issues/1512)
+  - Correction de la méthode `riot.update` [1353](https://github.com/riot/riot/issues/1353)
+
+- __compiler__
+  - Correction de l'attribut `defer` sur les tags `<script>` pour les charger au runtime [1492](https://github.com/riot/riot/issues/1492)
+  - Fix [riot#1511](https://github.com/riot/riot/issues/1511) : guillemets d'échappements - il peut rester des bugs à corriger
+  - Régression de la logique pour analyser les styles et les tags script, à cause de pertes de performances et d'autres soucis
+  - Suppression de la commande "compress" pour le parseur `less` , qui est depréciée et génère des avertissements en console
+  - Suppression du parseur CSS `stylus` inutile pour la version navigateur
+  - Refactorisation de tout le code, avec plus de commentaires en préparation de la documentation automatique de l'API
+  - Diverses améliorations de performances et réduction de la mémoire consommée (~55%)
+  - Les fichiers à préprocesser sont déplacés du dossier "lib" vers "src", maintenant "lib" contient uniquement les fichiers node.js requis
+
+- __tmpl__
+  - Refactorisation, maintenant `tmpl` et `brackets` sont ~5% plus rapides
+  - Suppression de la fonction `tmpl.isRaw` inutilisée en interne
+  - Changements dans les commentaires
+  - Les fichiers à préprocesser sont déplacés du dossier "lib" vers "src", "lib" a été supprimé
+
+
+## 2.3.13 *11 janvier 2016*
+
+- __riot__
+  - Correction d'un problème de rendu côté serveur utilisant l'attribut value sur les tags `textarea, option` [plus d'infos](https://github.com/riot/riot/issues/1455)
+  - Correction d'un problème avec les slots `yield` imbriqués [plus d'infos](https://github.com/riot/riot/issues/1458)
+  - Ajout du support des slots pour `yield` côté serveur
+  - Meilleure stratégie pour l'injection CSS [plus d'infos](https://github.com/riot/riot/issues/1439)
+- __observable__
+  - Correction du problème avec les erreurs englouties dans les callbacks [plus d'infos](https://github.com/riot/riot/issues/1483), vous n'avez plus besoin de `tag.on('error', cb)` pour les intercepter
+  - Remplace la méthode `all` par `*` pour une API plus cohérente [plus d'infos](/fr/api/observable/#on)
+- __compiler__
+  - Fix [riot#1495](https://github.com/riot/riot/issues/1495) : Avertissement sur la valeur du tag input - Evite les avertissements avec les types date/datetime/time/month/email/color avec une expression dans leur valeur.
+  - Fix [riot#1488](https://github.com/riot/riot/issues/1488) : Cannot read property 'replace' of undefined ; à la compilation d'un tag avec Node comportant un import dans le style Less -- merci à @jrx-jsj
+  - Fix [riot#1448](https://github.com/riot/riot/issues/1448) : Le compilateur Riot supprime le contenu des déclarations de chaînes. C'est un fix partiel, vous devez écrire  `<\/script>` pour clôre les tags scripts avec des déclarations de chaînes.
+  - Revue des regex détectant les tags `<pre>`.
+- __tmpl__
+  - Correction de problèmes avec les guillemets doubles.
+- __cli__
+  - Correction pour la tâche `watch` en cas d'erreurs, elle continuera toujours à tourner en relancant un nouveau sous-processus
+  - Meilleure affichage pour la commande `version` affichant uniquement la version de `riot-compiler` et `riot-cli` utilisée actuellement
+- __route__
+  - Ajout du support côté serveur [plus d'infos](https://github.com/riot/route/issues/18)
+  - Support de replaceState [plus d'infos](/fr/api/route/#riotrouteto-title-shouldreplace)
+
 ## 2.3.12 *15 décembre 2015*
 
 - __compilateur__
@@ -22,7 +93,7 @@ id: release-notes
   - Ajout de la transclusion multiple [plus de détails](/fr/api/#multi-transclusion)
   - Correction des boucles contenant des éléments `null`
 
-## 2.3.11 *22 november 2015*
+## 2.3.11 *22 novembre 2015*
 
 - __compilateur__
   - Suppression des restrictions sur l'indentation nulle pour les tags personnalisés, maintenant vous pouvez indenter ces tags, mais le tag d'ouverture et de fermeture doivent être au même niveau d'indentation (en longueur et en type). Toute l'indentation du tag sera retranchée de cette quantité.
@@ -69,7 +140,7 @@ Riot a été divisé en 6 modules différents:
 
 Voici la liste des plus gros changements:
 
-- Ajout de l'API History de HTML5 au routeur, veuillez consulter la [documentation](/api/route/)
+- Ajout de l'API History de HTML5 au routeur, veuillez consulter la [documentation](/fr/api/route/)
 - Versions réécrites du compilateur, du moteur de templates et de l'interface en ligne de commandes
 - Dépréciation de `riot.mountTo`
 - Changement de `tag._id` en `tag._riot_id` **vous ne devriez pas utiliser les propriétés internes de Riot de toute façon**
@@ -154,7 +225,7 @@ La liste des correctifs de bugs et les détails peuvent être trouvés [ici](htt
 ## 2.0.12 *2 mars 2015*
 
 - Support des [Scopes CSS](/guide/#scoped-css)
-- Accès direct aux [tags imbriqués](/api/#nested-tags) et à leur API via la variable `tags`. Par exemple: `tags.my_timer.clear()`
+- Accès direct aux [tags imbriqués](/fr/api/#nested-tags) et à leur API via la variable `tags`. Par exemple: `tags.my_timer.clear()`
 - Les tags personnalisés sont maintenant construites pendant la phase de lecture et initialisées pendant la phase de montage. Ceci est un travail préliminaire pour le prochain [système de plugins](https://github.com/riot/riot/issues/416) et permet aux plugins de faire leur boulot avant l'initialisation.
 - L'option `--whitespace` du compilateur préserve les nouvelles lignes et espaces blancs dans le code généré. Bien pour les éléments imbriqués `pre` et `textarea`.
 - Utilisation de [Karma](http://karma-runner.github.io/0.12/index.html) pour le test multi-navigateurs.
@@ -193,13 +264,13 @@ La liste des correctifs de bugs et les détails peuvent être trouvés [ici](htt
 
 ## 2.0.8 *9 février 2015*
 
-- Nouvelle méthode `unmount()` et nouvelle propriété `children[]` pour les [instances de tags](/api/#tag-instance)
+- Nouvelle méthode `unmount()` et nouvelle propriété `children[]` pour les [instances de tags](/fr/api/#tag-instance)
 - Flux de données mono-directionnel: les mises à jour et démontages se propagent toujours vers le bas du parent aux enfants
 - L'attribut `if` fonctionne maintenant comme prévu en ajoutant ou supprimant le noeud racine du DOM
-- [L'API du compilateur](/api/compiler/) est désormais exposée au public
+- [L'API du compilateur](/fr/api/compiler/) est désormais exposée au public
 - Les variables globales sont supportées dans les expressions, i.e. `{ location }`
 - Extension `.tag` personnalisable, i.e. `riot --ext html`
-- [Notation crochets](/api/misc/#brackets) personnalisable, i.e. `riot.settings.brackets = '${ }'`
+- [Notation crochets](/fr/api/misc/#brackets) personnalisable, i.e. `riot.settings.brackets = '${ }'`
 - Possibilité d'afficher la version actuelle avec: `riot --version`
 - La fonction à moitié cachée `riot._tmpl()` est désormais complètement cachée et ne fait plus partie de l'objet global `riot`
 - Code source réorganisé. L'ancien gros `view.js` est désormais divisé en [multiples fichiers](https://github.com/riot/riot/tree/master/lib/browser/tag)
@@ -211,7 +282,7 @@ La liste des correctifs de bugs et les détails peuvent être trouvés [ici](htt
 - [Support natif de Typescript](/guide/compiler/#typescript)
 - Possibilité de brancher un préprocesseur HTML (aux côtés d'un préprocesseur JS)
 - Support natif de [Jade](/guide/compiler/#jade)
-- Possibilité de définir des [interpréteurs personnalisés](/api/#route-parser) pour le routeur
+- Possibilité de définir des [interpréteurs personnalisés](/fr/api/#route-parser) pour le routeur
 - Les balises peuvent être du XML valide et les balises vides HTML5 ne sont pas auto-fermantes
 - Autorise la définition de tags vides pour réserver un espace. Bien pour la phase de développement.
 - `riot.observable()` retourne maintenant un nouvel observable quand il est appelé sans argument

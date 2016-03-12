@@ -53,26 +53,10 @@ el.on('start stop', function(type) {
 
 
 // écoute tous les événements observés
-el.on('all', function(event, param1, param2) {
+el.on('*', function(event, param1, param2) {
   // event est le nom de l'événement déclenché
   // faites quelque-chose avec les paramètres passés en arguments
 })
-```
-
-En cas d'erreur dans vos `callbacks`, l'instance observable émettra l'événement `error`:
-
-``` js
-
-el.on('error', function(e) {
-  // les erreurs sont récupérées ici
-})
-
-el.on('event', function() {
-  throw 'oops'
-})
-
-el.trigger('event')
-
 ```
 
 @returns - retourne `el`
@@ -123,6 +107,11 @@ Supprime tous les écouteurs de tous les événements sur cet élément.
 
 @returns - retourne `el`
 
+### <a name="off-all-fn"></a> el.off('*', fn)
+
+Arrête d'appeler la fonction `fn` pour tous les événements sur cet élément.
+
+@returns `el`
 
 ### <a name="trigger"></a> el.trigger(events)
 

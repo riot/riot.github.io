@@ -57,7 +57,7 @@ La phase de compilation est quasiment négligeable et ne prend presque pas de te
 
 Le compilateur pèse seulement 3.2KB (1.7K gzippé) donc vous pouvez sans soucis effectuer la compilation côté client même en production sans impact sur les performances ou le temps de chargement.
 
-Lisez l'[API du compilateur](/api/compiler/) pour plus de details.
+Lisez l'[API du compilateur](/fr/api/compiler/) pour plus de details.
 
 
 ### Demos
@@ -165,13 +165,13 @@ export default {
   from: 'tags/src',
   to: 'tags/dist',
   // extensions de fichiers
-  ext: 'foo'
+  ext: 'foo',
   // parseur HTML
   template: 'foo',
   // parseur JavaScript
   type: 'baz',
   // parseur CSS
-  style: 'bar'
+  style: 'bar',
   parsers: {
     html: {
       foo: (html, opts, url) => require('foo').compile(html)
@@ -277,7 +277,7 @@ Un exemple de tag écrit en ES6:
 Toutes les [fonctionnalités ECMAScript 6](https://github.com/lukehoban/es6features) peuvent être utilisées. [Babel 5](https://babeljs.io/) est utilisé pour la transpilation:
 
 ``` sh
-npm install babel@5.8
+npm install babel@5.8 -g
 ```
 
 Voici un [exemple plus complet](https://github.com/txchen/feplay/tree/gh-pages/riot_babel) utilisant Babel 5 avec Riot.
@@ -287,7 +287,7 @@ Voici un [exemple plus complet](https://github.com/txchen/feplay/tree/gh-pages/r
 Babel 6 a introduit plusieurs changements majeurs donc si vous voulez l'utiliser, vous devriez d'abord configurer votre environnement:
 
  1. installez notre preset [babel-preset-es2015-riot](https://github.com/riot/babel-preset-es2015-riot)<br /> `npm install babel-preset-es2015-riot --save-dev`
- 2. installez aussi `babel-core` <br /> `npm install babel-core --save-dev`
+ 2. installez aussi `babel-core` <br /> `npm install babel-core -g`
  3. créez un fichier `.babelrc` indiquant le preset<br /> `{ "presets": ["es2015-riot"] }`
 
 Une fois votre environnement configuré, vous pouvez utiliser:
@@ -401,7 +401,7 @@ sample
 Comme vous le remarquez, vous pouvez définir le type de script sur le template également. Ici nous avons utilisé CoffeeScript. [jade](https://github.com/jadejs/jade) est utilisé pour la transpilation:
 
 ``` sh
-npm install jade
+npm install jade -g
 ```
 
 

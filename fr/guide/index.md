@@ -315,6 +315,68 @@ A l'intérieur du tag, les options sont référencées avec la variable `opts` c
 </my-tag>
 ```
 
+### Cycle de vie du tag
+
+Un tag est créé en suivant la séquence suivante:
+
+1. Le tag est construit
+2. La logique JavaScript du tag est exécutée
+3. Les expressions HTML sont calculées et l'événement "update" est déclenché
+4. Le tag est monté sur la page et l'événement "mount" est déclenché
+
+Une fois le tag monté, les expressions sont mises à jour comme ceci:
+
+1. Automatiquement après qu'un callback d'événement soit appelé. (à moins que vous ayez appliqué `event.preventUpdate = true` dans le callback de cet événement).
+2. Lorsque `this.update()` est appelé sur l'instance courante du tag
+3. Lorsque `this.update()` est appelé sur le tag parent, ou un parent du parent. Les mises à jour se propagent unilatéralement du parent au tag enfant.
+4. Lorsque `riot.update()` est appelé, ce qui met à jour toutes les expressions sur la page.
+
+L'événement `update` est déclenché à chaque fois que le tag est mis à jour.
+
+Puisque les valeurs sont calculées avant montage, il n'y a pas de problèmes inattendus au montage tels que des appels en échec avec `<img src={ src }>`.
+
+### Ecouter les évènements du cycle de vie
+
+Vous pouvez réagir à divers évènements du cycle de vie à l'intérieur du tag comme ceci:
+
+
+```js
+<todo>
+
+  this.on('before-mount', function() {
+    // avant que le tag soit monté
+  })
+
+  this.on('mount', function() {
+    // juste après que le tag soit monté sur la page
+  })
+
+  this.on('update', function() {
+    // permet de recalculer les données de contexte avant la mise à jour
+  })
+
+  this.on('updated', function() {
+    // juste après que le tag soit mis à jour
+  })
+
+  this.on('before-unmount', function() {
+    // avant que le tag soit supprimé
+  })
+
+  this.on('unmount', function() {
+    // lorsque le tag est supprimé de la page
+  })
+
+  // curieux de connaître tous les évènements ?
+  this.on('*', function(eventName) {
+    console.info(eventName)
+  })
+
+</todo>
+```
+
+Vous pouvez avoir plusieurs gestionnaires d'évènements pour le même évènement. Consultez la section [Observable](/fr/api/observable/) pour plus de détails sur les évènements.
+
 
 ### Mixins
 
@@ -374,7 +436,7 @@ var id_mixin_instance = new IdMixin()
 
 En étant définis au niveau du tag, les mixins n'étendent pas seulement les fonctionnalités de votre tag, mais permettent également d'obtenir une interface réutilisable. Chaque fois qu'un tag est monté, même un sous-tag, l'instance disposera du code du mixin.
 
-### Partager un mixin
+### Mixins partagés
 
 Pour partager les mixins entre des fichiers ou des projets, l'API `riot.mixin` est fournie. Vous pouvez inscrire votre mixin globalement comme ceci:
 
@@ -392,69 +454,16 @@ Pour ensuite charger ce mixin dans le tag, utilisez la méthode `mixin()` avec l
 </my-tag>
 ```
 
+### Mixins globaux
 
-### Cycle de Vie du Tag
-
-Un tag est créé en suivant la séquence suivante:
-
-1. Le Tag est construit
-2. La logique JavaScript du Tag est exécutée
-3. Les expressions HTML sont calculées et l'événement "update" est déclenché
-4. Le Tag est monté sur la page et l'événement "mount" est déclenché
-
-Une fois le tag monté, les expressions sont mises à jour comme ceci:
-
-1. Automatiquement après qu'un callback d'événement soit appelé. (à moins que vous ayez appliqué `event.preventUpdate = true` dans le callback de cet événement). Prenez par exemple la méthode `toggle` ci-dessous.
-2. Lorsque `this.update()` est appelé sur l'instance courante du tag
-3. Lorsque `this.update()` est appelé sur le tag parent, ou un parent du parent. Les mises à jour se propagent unilatéralement du parent au tag enfant.
-4. Lorsque `riot.update()` est appelé, ce qui met à jour toutes les expressions sur la page.
-
-L'événement `update` est déclenché à chaque fois que le tag est mis à jour.
-
-Puisque les valeurs sont calculées avant montage, il n'y a pas de problèmes inattendus au montage tels que des appels en échec avec `<img src={ src }>`.
-
-
-### Ecouter les événements du cycle de vie
-
-Vous pouvez écouter et réagir aux divers événements du cycle de vie du tag comme ceci:
-
+Si vous avez besoin d'ajouter une fonctionnalité à *tous* vos tags, vous pouvez enregistrer un mixin global comme ceci:
 
 ```js
-<todo>
-
-  this.on('before-mount', function() {
-    // déclenché avant que le tag soit monté
-  })
-
-  this.on('mount', function() {
-    // déclenché une fois le tag monté sur la page
-  })
-
-  this.on('update', function() {
-    // permet de recalculer les données de contexte avant la mise à jour
-  })
-  
-  this.on('updated', function() {
-    // déclenché une fois le tag mis à jour
-  })
-  
-  this.on('before-unmount', function() {
-    // déclenché avant le tag soit retiré de la page
-  })
-
-  this.on('unmount', function() {
-    // déclenché après que le tag soit retiré de la page
-  })
-
-  // curieux sur tous les événements ?
-  this.on('mount update unmount', function(eventName) {
-    console.info(eventName)
-  })
-
-</todo>
+// Doit être inscrit avant de monter les tags
+riot.mixin(mixinObject)
 ```
 
-Vous pouvez avoir de multiples gestionnaires pour le même événement. Consultez l'API [Observable](/api/observable/) pour plus de détails sur les événements.
+Contrairement aux mixins partagés, les globaux sont automatiquement chargés pour tous les tags montés. Utilisez donc avec prudence !
 
 
 ## Expressions
@@ -655,7 +664,7 @@ Le tag personnalisé dans la page avec du HTML imbriqué à l'intérieur
 </my-tag>
 ```
 
-Voir la [documentation API](/api/#yield) pour en savoir plus sur `yield`.
+Voir la [documentation API](/fr/api/#yield) pour en savoir plus sur `yield`.
 
 ## Elements nommés
 
@@ -776,7 +785,7 @@ L'élément avec l'attribut `each` sera répété pour chacun des éléments de 
 
 ### Contexte
 
-Un nouveau contexte est créé pour chaque élément de la boucle. Ce sont des [instances de tag](/api/#tag-instance). Quand des boucles sont imbriquées, les tags enfants dans la boucle héritent de toutes les propriétés et méthodes de la boucle parenet, si elles ne sont pas déjà définies. En ce sens, Riot évite de surcharger ce qui ne doit pas l'être par le tag parent.
+Un nouveau contexte est créé pour chaque élément de la boucle. Ce sont des [instances de tag](/fr/api/#tag-instance). Quand des boucles sont imbriquées, les tags enfants dans la boucle héritent de toutes les propriétés et méthodes de la boucle parenet, si elles ne sont pas déjà définies. En ce sens, Riot évite de surcharger ce qui ne doit pas l'être par le tag parent.
 
 On peut accéder au parent explicitement via la variable`parent`. Par exemple:
 
@@ -798,7 +807,7 @@ On peut accéder au parent explicitement via la variable`parent`. Par exemple:
 
 Dans l'élément bouclé, tout appartient au contexte enfant sauf l'attribut `each`, donc on peut accéder directement à `title` et `remove` doit être préfixé avec `parent.` puisque la méthode n'est pas une propriété de l'élément bouclé.
 
-Les éléments bouclés sont des [instances de tag](/api/#tag-instance). Riot ne touche pas aux éléments originaux donc aucune nouvelle propriété ne leur est ajoutée.
+Les éléments bouclés sont des [instances de tag](/fr/api/#tag-instance). Riot ne touche pas aux éléments originaux donc aucune nouvelle propriété ne leur est ajoutée.
 
 
 ### Gestionnaire d'événements sur les éléments d'une boucle
@@ -907,10 +916,13 @@ Dans certains cas, vous pouvez avoir besoin de répéter un code HTML sans avoir
 ## Elements HTML en guise de tags Riot
 
 Les éléments standard HTML peuvent être utilisés comme des tags Riot dans le corps de la page en ajoutant l'attribut `riot-tag`.
+Depuis riot 2.3.17, nous avons aussi introduit l'attribut `data-is` pour associer des tags Riot à des éléments du DOM.
 
 ```html
 <ul riot-tag="my-tag"></ul>
 ```
+
+<span class="tag red">important</span> L'utilisation de l'attribut `riot-tag` est dépréciée en faveur de `data-is`, en prévision de la prochaine release majeure de riot.
 
 Cela fournit aux utilisateurs une alternative pour une plus grande compatibilité avec les frameworks CSS. Ces tags sont traités comme les autres.
 

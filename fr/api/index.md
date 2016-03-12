@@ -28,6 +28,17 @@ var tags = riot.mount('account', api)
 
 @returns - retourne la liste des [instances de tags](#tag-instance) montées
 
+Note: les utilisateurs de la [compilation sur navigateur](/fr/guide/compiler/#in-browser-compilation) auront à insérer les appels à `riot.mount` dans le callback de `riot.compile` afin d'obtenir les [instances de tag](#tag-instance) retournées. Sans cela, les appels à `riot.mount` retourneront `undefined`.
+
+```javascript
+<script>
+riot.compile(function() {
+  // here tags are compiled and riot.mount works synchronously
+  var tags = riot.mount('*')
+})
+</script>
+```
+
 ### <a name="mount-star"></a> riot.mount('*', [opts])
 
 Un sélecteur spécifique à Riot pouvant être utilisé pour monter tous les tags personnalisés de la page:
@@ -108,6 +119,20 @@ Vous pouvez librement assigner n'importe quelles données à l'instance (aussi a
   <h3>{ title }</h3>
 
   this.title = opts.title
+</my-tag>
+```
+
+Note: si vous avez des variables globales, vous pouvez aussi utiliser ces références dans le code HTML ou JavaScript de vos tags:
+
+```js
+window.someGlobalVariable = 'Hello!'
+```
+
+``` html
+<my-tag>
+  <h3>{ someGlobalVariable }</h3>
+
+  var message = someGlobalVariable
 </my-tag>
 ```
 
@@ -373,6 +398,46 @@ sera compilé comme ceci:
 </blog>
 ```
 
+## Mixins
+
+### <a name="mixin"></a> this.mixin(mixinObject)
+
+Étend le tag actuel avec les fonctionnalités de l'objet `mixinObject`. Par exemple:
+
+```js
+var OptsMixin = {
+  // la méthode init est une méthode spéciale invoquée 
+  // automatiquement quand un tag est étendu avec ce mixin
+  // elle n'est pas accessible ensuite depuis le tag étendu  
+  init: function() {
+    this.on('updated', function() { console.log('Updated!') })
+  },
+
+  getOpts: function() {
+    return this.opts
+  },
+
+  setOpts: function(opts, update) {
+    this.opts = opts
+    if (!update) this.update()
+    return this
+  }
+}
+
+<my-tag>
+  <h1>{ opts.title }</h1>
+
+  this.mixin(OptsMixin)
+</my-tag>
+```
+
+### <a name="mixin-shared"></a> riot.mixin(mixinName, mixinObject)
+
+Enregistre un mixin partagé, accessible globalement pour être utilisé sur n'importe quel tag: `this.mixin(mixinName)`.
+
+### <a name="mixin-global"></a> riot.mixin(mixinObject)
+
+Enregistre un mixin global, ajouté automatiquement à toutes les instances de tag.
 
 ## Evénements
 
@@ -381,7 +446,9 @@ Chaque instance de tag est [observable](./observable) donc vous pouvez utiliser 
 
 - "update" – déclenché juste avant que le tag soit mis à jour. permet de recalculer les données de contexte avant que les expressions soient mises à jour.
 - "updated" – déclenché juste après que le tag soit mis à jour. permet de travailler sur le noeud DOM mis à jour
+- "before-mount" – déclenché juste avant que le tag soit monté sur la page
 - "mount" – déclenché juste après que le tag soit monté sur la page
+- "before-unmount" – déclenché avant que le taf soit supprimé de la page
 - "unmount" – déclenché après que le taf soit supprimé de la page
 
 Par exemple:
@@ -450,7 +517,7 @@ riot.tag('timer',
   })
 ```
 
-Voir la [démo timer](http://jsfiddle.net/gnumanth/h9kuozp5/) et la doc API de [riot.tag](/api/#tag-instance) pour plus de détails sur les *limitations*.
+Voir la [démo timer](http://jsfiddle.net/gnumanth/h9kuozp5/) et la doc API de [riot.tag](/fr/api/#tag-instance) pour plus de détails sur les *limitations*.
 
 
 <span class="tag red">Attention</span> en utilisant `riot.tag` vous ne profiterez pas des avantages du compilateur et les fonctionnalités suivantes ne seront pas disponibles:
