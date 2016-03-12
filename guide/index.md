@@ -371,7 +371,7 @@ You can listen to various lifecyle events inside the tag as follows:
   })
 
   // curious about all events ?
-  this.on('all', function(eventName) {
+  this.on('*', function(eventName) {
     console.info(eventName)
   })
 
