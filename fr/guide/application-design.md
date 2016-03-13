@@ -30,7 +30,7 @@ Ces extensions peuvent être des tags personnalisés (modules UI) ou des modules
 
 Une fois que le noyau et les événements ont été soigneusement conçus, les membres de l'équipe peuvent développer leur système sans se déranger l'un l'autre.
 
-[API Observable](/api/observable/)
+[API Observable](/fr/api/observable/)
 
 
 ## Routage
@@ -45,7 +45,7 @@ Vous pouvez placer la logique de routage n'importe où; dans les tags personnali
 
 Chaque application sur navigateur a besoin d'un routage puisqu'il y a toujours une URL à gérer dans la barre d'adresse.
 
-[API du Routeur](/api/route/)
+[API du Routeur](/fr/api/route/)
 
 
 ## Modularité

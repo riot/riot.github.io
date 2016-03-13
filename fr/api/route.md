@@ -11,6 +11,7 @@ Le Routeur Riot est l'implémentation la plus minimale de routeur avec ces fonct
 - pushState et API History
 - multiple groupes de routage
 - parseur d'URL remplaçable
+- isomorphique
 - utilisation d'un [polyfill](https://github.com/devote/HTML5-History-API) pour le support IE9 et antérieur. Parce que IE.
 
 ## Mise en place du routage
@@ -110,11 +111,11 @@ var subRoute = riot.route.create()
 subRoute('/fruit/apple', function() { /* */ })
 ```
 
-Consultez les sections [Groupe de routage](#routing-group) et [Priorité de routage](#routing-priority) pour plus de détails.
+Consultez les sections [Groupe de routage](#routing-groups) et [Priorité de routage](#routing-priority) pour plus de détails.
 
 ## Utilisation du routeur
 
-### riot.route(to[, title])
+### riot.route(to[, title, shouldReplace])
 
 Change l'URL du navigateur et appelle tous les callbacks déclarés avec `riot.route(callback)`. Par exemple:
 
@@ -127,6 +128,16 @@ A partir de la v2.3, vous pouvez aussi changer le titre de la page:
 riot.route('customers/267393/edit', 'Modifier la page du client')
 ```
 
+En passant le troisième argument à `true`, vous pouvez remplacer l'entrée actuelle dans l'historique du navigateur. C'est utile quand l'application doit effectuer une redirection vers une autre page.
+
+```javascript
+riot.route('not-found', 'Not found', true)
+```
+
+En interne...
+
+- sans `shouldReplace`, `history.pushState()` sera utilisé.
+- avec `shouldReplace`, `history.replaceState()` sera utilisé.
 
 ### riot.route.start()
 
@@ -156,6 +167,10 @@ riot.route.start()
 riot.route.exec()
 ```
 
+<span class="tag red">&gt;= v2.3</span>
+
+Riot ne démarre plus automatiquement son routeur. N'OUBLIEZ PAS DE LE DEMARRER MANUELLEMENT. Cela signifie également que vous pouvez choisir votre routeur favori.
+(Note: avant la v2.3, Riot démarrait le routeur automatiquement. Ce comportement a été changé)
 
 ### riot.route.stop()
 
@@ -186,7 +201,7 @@ subRoute.stop()
 
 ### riot.route.exec()
 
-Etudie l'URL actuelle et déclenche les appels associées à cette route sans attendre que l'URL change. Par exemple:
+Etudie l'URL actuelle du navigateur et déclenche les appels associés à cette route sans attendre que l'URL change.
 
 ```javascript
 riot.route(function() { /* definit une route */ })

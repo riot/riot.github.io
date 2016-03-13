@@ -30,39 +30,39 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Todo extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {items: [], text: ''};
-    }
+  constructor(props) {
+    super(props);
+    this.state = {items: [], text: ''};
+  }
 
-    render() {
-        const {items, text} = this.state;
-        return (
-            <div>
-                <h3>TODO</h3>
-                <ul>
-                    <li>{items.map((item, i)=> <li key={i}>{item}</li>)}</li>
-                </ul>
-                <form onSubmit={this._onSubmit}>
-                    <input onChange={this._onChange} value={text}/>
-                    <button>Add #{items.length + 1}</button>
-                </form>
-            </div>
-        );
-    }
+  render() {
+    const {items, text} = this.state;
+    return (
+      <div>
+        <h3>TODO</h3>
+        <ul>
+          <li>{items.map((item, i)=> <li key={i}>{item}</li>)}</li>
+        </ul>
+        <form onSubmit={this._onSubmit}>
+          <input onChange={this._onChange} value={text}/>
+          <button>Add #{items.length + 1}</button>
+        </form>
+      </div>
+    );
+  }
 
-    _onChange(e) {
-        this.setState({text: e.target.value});
-    }
+  _onChange(e) {
+    this.setState({text: e.target.value});
+  }
 
-    _onSubmit(e) {
-        e.preventDefault();
-        const {items, text} = this.state;
-        this.setState({
-            items: items.concat(text),
-            text: ''
-        });
-    }
+  _onSubmit(e) {
+    e.preventDefault();
+    const {items, text} = this.state;
+    this.setState({
+      items: items.concat(text),
+      text: ''
+    });
+  }
 }
 
 ReactDOM.render(<Todo/>, mountNode);
@@ -149,23 +149,23 @@ Vous pouvez concevoir un système comme Flux en utilisant les observables et le 
     
 React (v{{ site.react.version }}) est {{ site.compare.react }} fois plus gros que Riot.
     
-<small><em>react.min.js</em> – {{ site.react.size }}Ko</small>
+<small><em>react.min.js</em> – {{ site.react.size }}Ko (gzip)</small>
 <span class="bar red"></span>
     
-<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}Ko</span></small>
+<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}Ko (gzip)</span></small>
 <span class="bar blue" style="width: {{ site.size_min | divided_by: site.react.size | times: 100 }}%"></span>
     
 <br>
 
 Le routeur recommandé pour React (v{{ site.react_router.version }}) est {{ site.compare.react_router_vs_riot_router }} fois plus gros que le routeur de Riot.
 
-<small><em>react-router.min.js</em> – {{ site.react_router.size }}Ko</small>
+<small><em>react-router.min.js</em> – {{ site.react_router.size }}Ko (gzip)</small>
 <span class="bar red"></span>
 
-<small><em>react-mini-router.min.js</em> – {{ site.react_mini_router.size }}Ko</small>
+<small><em>react-mini-router.min.js</em> – {{ site.react_mini_router.size }}Ko (gzip)</small>
 <span class="bar red" style="width: {{ site.react_mini_router.size | divided_by: site.react_router.size | times: 100 }}%"></span>
 
-<small><em>riot.route.min.js</em> – {{ site.riot_route_size_min }}Ko</small>
+<small><em>riot.route.min.js</em> – {{ site.riot_route_size_min }}Ko (gzip)</small>
 <span class="bar blue" style="width:{{ site.riot_route_size_min | divided_by: site.react_router.size | times:100 }}%"></span>
 
 Nous admettons que la comparaison de ces routeurs n'est pas très juste car [react-router](https://github.com/rackt/react-router) a bien plus de fonctionnalités. Mais le graphique ci-dessus montre clairement l'objectif de Riot: fournir l'API la plus minimaliste pour faire le boulot.
@@ -173,7 +173,7 @@ Nous admettons que la comparaison de ces routeurs n'est pas très juste car [rea
 L'écosystème React ressemble plus à un framework et privilégie les API plus vastes. L'alternative plus grosse est davantage populaire que [react-mini-router](https://github.com/larrymyers/react-mini-router) dans la communauté React.
 
 
-# Polymer
+## Polymer
 
 Polymer prend le standard des Web Components et le rend disponible sur les derniers navigateurs. Cela permet d'écrire des tags personnalisés en suivant le standard.
 
@@ -192,10 +192,10 @@ Conceptuellement, Riot fait la même chose mais il y a des différences:
 
 Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.version }}) est {{ site.compare.polymer_and_webcomponents }} fois plus gros que Riot
 
-<small><em>polymer.min.js</em> – {{ site.polymer.size }}Ko</small>
+<small><em>polymer.min.js</em> – {{ site.polymer.size }}Ko (gzip)</small>
 <span class="bar red"></span>
 
-<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}Ko</span></small>
+<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}Ko (gzip)</span></small>
 <span class="bar blue" style="width: {{ site.size_min | divided_by: site.polymer.size | times: 100 }}%"></span>
 
 On parle des Web components comme le [roi de tous les défis du polyfilling](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/) et c'est pourquoi Polymer requiert une telle quantité de code.
