@@ -133,7 +133,7 @@ See [pre processors](/guide/compiler/#pre-processors) for more details.
 
 ## Tag styling
 
-You can put a `style` tag inside. Riot.js automatically takes it out and injects it into `<head>`.
+You can put a `style` tag inside. Riot.js automatically takes it out and injects it into `<head>`. This happens once, no matter how many times the tag is initialized.
 
 ```html
 <todo>
@@ -168,8 +168,6 @@ You can put a `style` tag inside. Riot.js automatically takes it out and injects
 
 </todo>
 ```
-
-This happens once, no matter how many times the tag is initialized.
 
 To make it easier to override the CSS you can specify where in the `<head>` Riot should inject tag styles:
 
