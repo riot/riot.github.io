@@ -30,7 +30,7 @@ Observableを使うことで、エクステンションはイベントを検知�
 
 一度コアとイベントを注意深くデザインしてしまえば、開発チームのメンバーは他の部分に煩わされずにシステムの開発を進めることができます。
 
-[Observable API](/riotjs/api/#observable)
+[Observable API](/ja/api/#observable)
 
 
 ## ルーティング
@@ -45,7 +45,7 @@ Observableを使うことで、エクステンションはイベントを検知�
 
 ロケーションバーには常にURLが表示されているわけですから、どんなブラウザアプリケーションにもルーティングは必要です。
 
-[ルーターAPI](/riotjs/api/#router)
+[ルーターAPI](/ja/api/#router)
 
 
 ## モジュール性
