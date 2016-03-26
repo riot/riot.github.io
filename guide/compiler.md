@@ -345,6 +345,7 @@ A sample tag written in TypeScript:
 ``` sh
 npm install typescript-simple
 ```
+
 ### LiveScript
 
 Check out [LiveScript](http://livescript.net) for language features and documentation.
