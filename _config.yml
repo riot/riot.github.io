@@ -38,17 +38,17 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-major_version:       17
+major_version:       18
 minor_version:       2.3
 
-version:             2.3.17
-release_date:        March 9
-version_slurp:       Valid W3C markup with the `data-is` attribute
+version:             2.3.18
+release_date:        April 2
+version_slurp:       Simple bug fix release
 repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page
 
-size_min:            8.56
+size_min:            8.61
 riot_route_size_min: 1.65
 
 polymer:
