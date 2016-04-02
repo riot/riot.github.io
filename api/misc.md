@@ -32,3 +32,15 @@ riot.util.tmpl.errorHandler = function (err) {
   console.error(err.message + ' in ' + err.riotData.tagName) // your error logic here
 }
 ```
+
+### <a name="vdom"></a> riot.vdom
+
+Expose the internal riot tags cache in order to query, debug, filter.. all the tags instances created
+
+```js
+  riot.tag('foo', '<p>{ msg }</p>', function() {
+    this.msg = 'hi'
+  })
+  riot.mount('foo')
+  console.log(riot.vdom[0].msg) // 'foo'
+```
