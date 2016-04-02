@@ -9,11 +9,11 @@ id: release-notes
 ## 2.3.18 *April 2, 2016*
 
 - __riot__
-  - Add possibility to debug the internal tags cache exposed in `riot.vdom`
+  - Add the possibility to debug the internal tags cache exposed in `riot.vdom`
   - Fix nested virtual tag unmount issue [riot#1652](https://github.com/riot/riot/issues/1652)
   - Fix select reset on the onchange event [riot#1667](https://github.com/riot/riot/issues/1667)
   - Fix using the new `data-is` attribute the custom tag css are not applied [riot#1666](https://github.com/riot/riot/issues/1666)
-  - Update enable the override of the riot internal methods [riot#1616](https://github.com/riot/riot/issues/1616)
+  - Update enable the overriding of the riot internal methods [riot#1616](https://github.com/riot/riot/issues/1616)
 
 - __riot-route__
 
