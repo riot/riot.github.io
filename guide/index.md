@@ -74,6 +74,7 @@ A Riot tag is a combination of layout (HTML) and logic (JavaScript). Here are th
 * Self-closing tags are supported: `<div/>` equals `<div></div>`. Well known "open tags" such as `<br>`, `<hr>`, `<img>` or `<input>` are never closed after the compilation.
 * Custom tags always need to be closed (normally or self-closed).
 * Standard HTML tags (`label`, `table`, `a` etc..) can also be customized, but not necessarily a wise thing to do.
+* Tag definition **root** may also have attributes: `<foo onclick={ click } class={ active: active }>`.
 
 
 Tag definition in tag files always starts on the beginning of the line:
