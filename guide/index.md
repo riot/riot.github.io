@@ -437,7 +437,7 @@ By being defined on the tag level, mixins not only extend the functionality of y
 
 ### Shared mixins
 
-To share the mixins over files or projects, `riot.mixin` API is provided. You can register your mixin globally like this:
+To share the mixins over files or projects, `riot.mixin` API is provided. You can register your shared mixin like this:
 
 ```js
 riot.mixin('mixinName', mixinObject)
@@ -464,6 +464,12 @@ riot.mixin(mixinObject)
 
 Unlike the shared mixins, the global ones are loaded automatically to all the mounted tags. So, use it carefully!
 
+```js
+riot.mixin('globalMixinOne', mixinObjectOne, true)
+console.log(riot.mixin('globalMixinOne') === mixinObjectOne) // true
+```
+
+Sometimes you may need to retrieve the mixin object so alternatively you may set your global mixin object by name. In the case the third _boolean_ parameter indicates this mixin is not a shared but a global mixin.
 
 ## Expressions
 
