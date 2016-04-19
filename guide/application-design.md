@@ -52,7 +52,7 @@ Every browser application needs routing since there is always an URL in the loca
 
 Custom tags make the view part of your application. In modular application these tags should not be aware of each other and they should be isolated. Ideally you can use the same tag across projects regardless of the outer HTML layout.
 
-If two tags know about each other they become depdendent and a "tight coupling" is introduced. These tags cannot be freely moved around without breaking the system.
+If two tags know about each other they become dependent and a "tight coupling" is introduced. These tags cannot be freely moved around without breaking the system.
 
 To reduce coupling, have the tags listen for events rather than call each other directly. What you need is a publish/subscribe system built with `riot.observable` or similar.
 
