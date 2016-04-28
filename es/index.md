@@ -67,7 +67,7 @@ Riot brinda etiquetas personalizadas para todos los navegadores.
 Una etiqueta personalizada fusiona texto HTML y código JavaScript en un componente reutilizable. Piense en React + Polymer, pero con una sintaxis agradable y una mínima curva de aprendizaje.
 
 
-### Lejible a humanos
+### Legible a humanos
 
 Las etiquetas personalizadas le permiten construir vistas complejas con HTML. Su aplicación podría verse como algo así:
 
