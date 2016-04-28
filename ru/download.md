@@ -41,9 +41,6 @@ class: download
 
 #### [cdnjs](https://cdnjs.com/libraries/riot)
 
-**Внимание** последняя версия v{{ site.version }} была опубликована **{{ site.release_date }}** и обновление на CDNJS занимает около 30 часов.
-
-
 `{{ page.cdnjs }}/{{ site.version }}/riot+compiler.min.js`
 
 `{{ page.cdnjs }}/{{ site.version }}/riot.min.js`
