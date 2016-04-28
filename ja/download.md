@@ -41,9 +41,6 @@ class: download
 
 #### [cdnjs](https://cdnjs.com/libraries/riot)
 
-**NOTE** v{{ site.version }}は **{{ site.release_date }}** に公開されました。CDNJSが更新されるまで、30時間程度かかる場合があります。
-
-
 `{{ page.cdnjs }}/{{ site.version }}/riot+compiler.min.js`
 
 `{{ page.cdnjs }}/{{ site.version }}/riot.min.js`

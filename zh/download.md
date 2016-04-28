@@ -41,9 +41,6 @@ class: download
 
 #### [cdnjs](https://cdnjs.com/libraries/riot)
 
-**NOTE** v{{ site.version }} 发布于 **{{ site.release_date }}** CDNJS 可能有约 30 小时的更新延迟.
-
-
 `{{ page.cdnjs }}/{{ site.version }}/riot+compiler.min.js`
 
 `{{ page.cdnjs }}/{{ site.version }}/riot.min.js`

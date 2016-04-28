@@ -41,9 +41,6 @@ Vea nuestro [historial de versiones](/es/release-notes). Todos los archivos son 
 
 #### [cdnjs](https://cdnjs.com/libraries/riot)
 
-**NOTA** La versión {{ site.version }} fue liberada en **{{ site.release_date }}** y CDNJS toma alrededor de 30 horas en actualizarla.
-
-
 `{{ page.cdnjs }}/{{ site.version }}/riot+compiler.min.js`
 
 `{{ page.cdnjs }}/{{ site.version }}/riot.min.js`
