@@ -1,29 +1,41 @@
-
-// fork me
-#fork {
-  background-color: #32709D;
-  position: absolute;
-  right: -45px;
-  top: 45px;
-  color: #fff;
-  font-size: 80%;
-  padding: .3em 3em;
-  text-decoration: none;
-
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-
-  &:hover {
-    background-color: darken(#32709D, 5);
-  }
-  @media (max-width: 900px) {
-    display: none
-  }
-
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
 }
 
+.github-corner {
+  svg {
+    fill:#fc0e49;
+    color:#fff;
+    position: absolute;
+    top: 0;
+    border: 0;
+    right: 0;
+  }
+}
+
+@keyframes octocat-wave {
+  0%,100% {
+    transform: rotate(0);
+  }
+
+  20%,60% {
+    transform: rotate(-25deg);
+  }
+
+  40%,80% {
+    transform: rotate(10deg);
+  }
+}
+
+@media (max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none;
+  }
+
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
+}
 
 // hero
 #hero {
@@ -59,7 +71,6 @@
     margin-left: 0;
     margin-right: 0;
   }
-
 }
 
 // on home page
@@ -107,12 +118,12 @@
       margin-bottom: .8em;
     }
   }
-
 }
 
 // table of contents
 #toc {
   font-size: 90%;
+
   p {
     margin: 0 0 .3em;
   }
@@ -127,7 +138,6 @@
   font-size: 100%;
   margin-bottom: 1em;
 }
-
 
 // permlinking
 h2, .apidoc h3 {
@@ -162,7 +172,6 @@ h2, .apidoc h3 {
 a.blue:hover {
   background-color: #32709D;
   text-decoration: none;
-
 }
 
 #release-notes h2 em {
@@ -172,15 +181,29 @@ a.blue:hover {
   font-weight: normal;
 
   &:before {
-    content: " — "
+    content: " — ";
   }
 }
 
 // forums
 #forum-page {
-  .muut { display: block }
-  .m-header { height: 2.4em }
-  .m-subnavi { background-color: #fff }
-  .m-login, .m-myname { color: #333 }
-  .m-navi { display: none }
+  .muut {
+    display: block;
+  }
+
+  .m-header {
+    height: 2.4em;
+  }
+
+  .m-subnavi {
+    background-color: #fff;
+  }
+
+  .m-login, .m-myname {
+    color: #333;
+  }
+
+  .m-navi {
+    display: none;
+  }
 }
