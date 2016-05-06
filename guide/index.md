@@ -28,8 +28,6 @@ Riot custom tags are the building blocks for user interfaces. They make the "vie
   </form>
 
   <script>
-    this.disabled = true
-
     this.items = opts.items
 
     edit(e) {
