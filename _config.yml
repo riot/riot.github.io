@@ -79,7 +79,7 @@ compare:
   react: 5 # react.size / size_min
   react_router_vs_riot_router: 8 # react_router.size / riot_route_size_min
   react_mini_router_vs_riot_router: 2 # react_router.size / riot_route_size_min
-  polymer_and_webcomponents: 8 # polymer_and_webcomponents_size / size_min
+  polymer_and_webcomponents: 6 # polymer_and_webcomponents_size / size_min
 
 # Languages
 translations:
