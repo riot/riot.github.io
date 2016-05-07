@@ -26,7 +26,7 @@ Custom tags need to be transformed to JavaScript before the browser can execute 
 <script src="path/to/javascript/with-tags.js" type="riot/tag"></script>
 
 <!-- include riot.js and the compiler -->
-<script src="https://cdn.jsdelivr.net/riot/2.3/riot+compiler.min.js"></script>
+<script src="https://cdn.jsdelivr.net/riot/{{ site.minor_version }}/riot+compiler.min.js"></script>
 
 
 <!-- mount normally -->
@@ -93,7 +93,7 @@ With pre-compilation your HTML is something like this:
 <my-tag></my-tag>
 
 <!-- include riot.js only -->
-<script src="//cdn.jsdelivr.net/riot/2.3/riot.min.js"></script>
+<script src="//cdn.jsdelivr.net/riot/{{ site.minor_version }}/riot.min.js"></script>
 
 <!-- include pre-compiled tags (normal javascript) -->
 <script src="path/to/javascript/with-tags.js"></script>
@@ -183,9 +183,15 @@ export default {
       baz: (js, opts, url) => require('baz').compile(js),
     },
   },
+  // special options that may be used to extend
+  // the default riot parsers options
+  parserOptions: {
+    js: {},
+    template: {},
+    style: {}
+  }
 };
 ```
-
 
 ### Node module
 

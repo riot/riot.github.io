@@ -38,32 +38,32 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-major_version:       18
-minor_version:       2.3
+major_version:       0
+minor_version:       2.4
 
-version:             2.3.18
-release_date:        April 2
-version_slurp:       Simple bug fix release
+version:             2.4.0
+release_date:        May 7
+version_slurp:       Better SVGs support and fix the Chrome Content Security Policy issues
 repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page
 
-size_min:            8.61
+size_min:            9.18
 riot_route_size_min: 1.65
 
 polymer:
-  size:    53.00 # according to https://github.com/riot/riot/issues/1575#issuecomment-180869792
-  version: 1.2.4
+  size:    42.09 # according to https://github.com/riot/riot/issues/1575#issuecomment-180869792
+  version: 1.4.0
 
 webcomponents:
-  size:    12.00
-  version: 0.7.20
+  size:    12.39
+  version: 0.7.22
 
-polymer_and_webcomponents_size: 65 # 53 + 12 (polymer + webcomponents-lite.min.js )
+polymer_and_webcomponents_size: 54.48 # 42.09 + 12.39 (polymer + webcomponents-lite.min.js )
 
 react:
-  size:    38.56
-  version: 0.14.7
+  size:    43.62
+  version: 15.0.2
 
 react_router:
   size:    12.63

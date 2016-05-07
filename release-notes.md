@@ -6,6 +6,26 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.4.0 *May 7, 2016*
+
+- __riot__
+  - Fix Chrome Content Security Policy issues [riot#1076](https://github.com/riot/riot/issues/1076), special riot build are provided to solve this problem (`riot.csp`)
+  - Fix multiple global mixin [riot#1699](https://github.com/riot/riot/issues/1699) - thanks to [@wintercounter](https://github.com/wintercounter)
+  - Add better support for the svg tags [riot#1199](https://github.com/riot/riot/issues/1199)
+
+- __observable__
+  - Now 30% faster [observable#18]https://github.com/riot/observable/pull/18 - thanks to [@Ke-](https://github.com/Ke-)
+  - Add events namespace support [observable#15](https://github.com/riot/observable/pull/15) - thanks again to [@Ke-](https://github.com/Ke-)
+
+- __cli__
+  - Add the `--new` option to easily create new riot components
+  - Fix symlinks issues thanks to the `shelljs@0.7.0` upgrade [cli#14](https://github.com/riot/cli/issues/14)
+
+- __compiler__
+  - Add the `pug` parser, `jade` will be deprecated in the next riot major release
+  - Add the possibility to pass custom parsers options directly via the `compiler.compile` method through the `parserOptions: {js: {}, template: {}, style: {}}` key [compiler#64](https://github.com/riot/compiler/issues/64)
+  - Fix un-escape parser options in html [compiler#63](https://github.com/riot/compiler/issues/63)
+
 ## 2.3.18 *April 2, 2016*
 
 - __riot__
@@ -15,8 +35,7 @@ id: release-notes
   - Fix using the new `data-is` attribute the custom tag css are not applied [riot#1666](https://github.com/riot/riot/issues/1666)
   - Update enable the overriding of the riot internal methods [riot#1616](https://github.com/riot/riot/issues/1616)
 
-- __riot-route__
-
+- __route__
   - Fix subroute context [riot-route#52](https://github.com/riot/route/pull/52)
 
 ## 2.3.17 *March 9, 2016*
@@ -40,7 +59,7 @@ id: release-notes
   - Fix IE loop performances issues [riot#1599](https://github.com/riot/riot/issues/1599)
   - Fix weird loop bug [riot#1581](https://github.com/riot/riot/issues/1581)
 
-- __riot-cli__
+- __cli__
   - Fix path issue on Windows [riot#1605](https://github.com/riot/riot/issues/1605)
 
 ## 2.3.15 *January 31, 2016*
@@ -100,7 +119,7 @@ id: release-notes
 - __route__
   - Fix important issues on IE and safari
   - Fix a [regression api bug](https://github.com/riot/route/issues/30)
-- __riot-cli__
+- __cli__
   - Add the `--config` option to load your cli options and parsers from an external es6 config file [more details](/guide/compiler/#es6-config-file)
   - Add better support for `babel 6` if combined with our [babel-preset-es2015-riot](https://github.com/riot/babel-preset-es2015-riot)
 - __riot__
@@ -126,7 +145,7 @@ id: release-notes
   - Fix `riot.route` will not block not registered links with `event.preventDefault`
   - Add `error` event on all the `riot.observable` instances to catch all the possible errors thrown in the callbacks
 
-- __riot-cli__
+- __cli__
   - Add better error messages if a parser is not locally installed
   - Add the `export` option to extract singularly just portions of your tags like `css`, `js` or `html`
   - Add the `style` option to chose the default preprocessor for your tags style

@@ -17,6 +17,18 @@
     width: 6em;
     float: left;
 
+    @media (max-width: 600px) {
+      margin-top: 1.2rem;
+      width: 50%;
+    }
+
+    &.extra {
+      float: right;
+      @media (max-width: 600px) {
+        float: left;
+      }
+    }
+
     a {
       display: block;
       margin-bottom: .3em;
