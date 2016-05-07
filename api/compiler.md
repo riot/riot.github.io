@@ -149,7 +149,8 @@ Custom parsers that could be used to compile your tags HTML.
 The predefined parsers are:
 
 #### html
-- `jade`
+- `jade` (deprecated)
+- `pug`
 
 #### css
 - `less`
