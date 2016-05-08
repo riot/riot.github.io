@@ -9,7 +9,7 @@ id: release-notes
 ## 2.4.0 *May 7, 2016*
 
 - __riot__
-  - Fix Chrome Content Security Policy issues [riot#1076](https://github.com/riot/riot/issues/1076), special riot build are provided to solve this problem (`riot.csp`)
+  - Fix Chrome Content Security Policy issues [riot#1076](https://github.com/riot/riot/issues/1076), we provide special riot builds (`riot.csp`) to solve this problem
   - Fix multiple global mixin [riot#1699](https://github.com/riot/riot/issues/1699) - thanks to [@wintercounter](https://github.com/wintercounter)
   - Add better support for the svg tags [riot#1199](https://github.com/riot/riot/issues/1199)
 
