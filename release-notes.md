@@ -14,7 +14,7 @@ id: release-notes
   - Add better support for the svg tags [riot#1199](https://github.com/riot/riot/issues/1199)
 
 - __observable__
-  - Now 30% faster [observable#18]https://github.com/riot/observable/pull/18 - thanks to [@Ke-](https://github.com/Ke-)
+  - Now 30% faster [observable#18](https://github.com/riot/observable/pull/18) - thanks to [@Ke-](https://github.com/Ke-)
   - Add events namespace support [observable#15](https://github.com/riot/observable/pull/15) - thanks again to [@Ke-](https://github.com/Ke-)
 
 - __cli__
