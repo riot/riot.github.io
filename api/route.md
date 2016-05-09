@@ -244,6 +244,11 @@ The default `base` value is "#". If you'd like to use hashbang, change it to `#!
 ```javascript
 riot.route.base('#!')
 ```
+<span class="tag red">Warning</span>
+
+If you remove the `#` from the base, your web server needs to deliver your app no matter what url comes in, because your app, in the browser, is manipulating the url. The web server doesn't know how to handle the URL.
+
+
 
 ### riot.route.parser(parser[, secondParser])
 
