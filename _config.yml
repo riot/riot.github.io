@@ -41,14 +41,14 @@ author:
 major_version:       0
 minor_version:       2.4
 
-version:             2.4.0
+version:             2.4.1
 release_date:        May 7
 version_slurp:       Better SVGs support and fix the Chrome Content Security Policy issues
 repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page
 
-size_min:            9.18
+size_min:            9.23
 riot_route_size_min: 1.65
 
 polymer:
