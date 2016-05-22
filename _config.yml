@@ -42,7 +42,7 @@ major_version:       0
 minor_version:       2.4
 
 version:             2.4.1
-release_date:        May 7
+release_date:        May 22
 version_slurp:       Better SVGs support and fix the Chrome Content Security Policy issues
 repo:                https://github.com/riot/riot
 
