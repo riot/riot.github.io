@@ -6,6 +6,17 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.4.1 *May 22, 2016*
+
+- __riot__
+  - Fix unable to render server-side SVG [riot#1780](https://github.com/riot/riot/issues/1780)
+  - Fix object detection in the loops [riot#1790](https://github.com/riot/riot/issues/1790)
+  - Add throw errors in case of unregistered mixins initialization [riot#1796](https://github.com/riot/riot/pull/1796) thanks to [@juodumas](https://github.com/juodumas)
+  - Add support for class (function) mixins [riot#1800](https://github.com/riot/riot/pull/1800) thanks to [@ashleybrener](https://github.com/ashleybrener)
+  - Fix `yield` replacing issue [riot#1786](https://github.com/riot/riot/issues/1786)
+  - Fix protect the internal "tags" attribute from being externally overridden [riot#1803](https://github.com/riot/riot/issues/1803)
+  - Removed useless `riot+compiler.csp.js` bundle [riot#1799](https://github.com/riot/riot/issues/1799)
+
 ## 2.4.0 *May 7, 2016*
 
 - __riot__

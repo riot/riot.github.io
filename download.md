@@ -60,6 +60,14 @@ View our [version history](/release-notes). All Files are Open Source with [MIT 
 
 `npm install riot`
 
+### Chrome apps
+
+If you want to use riot in your Chrome apps you must inlcude a special riot version due to [Chrome due to Content Security Policy](https://github.com/riot/riot/issues/1076)
+
+[riot.csp.js]({{ page.base }}/riot.csp.js)
+[riot.csp.min.js]({{ page.base }}/riot.csp.min.js)
+
+In your Chrome apps you must [precompile your tags](guide/compiler/#pre-compilation) because they can not compiled in runtime
 
 ### GitHub
 
