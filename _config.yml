@@ -43,7 +43,7 @@ minor_version:       2.4
 
 version:             2.4.1
 release_date:        May 22
-version_slurp:       Better SVGs support and fix the Chrome Content Security Policy issues
+version_slurp:       Bug fix and better errors for the unregistered mixins
 repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page
