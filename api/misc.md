@@ -42,5 +42,5 @@ Expose the internal riot tags cache in order to query, debug, filter.. all the t
     this.msg = 'hi'
   })
   riot.mount('foo')
-  console.log(riot.vdom[0].msg) // 'foo'
+  console.log(riot.vdom[0].msg) // 'hi'
 ```
