@@ -6,6 +6,19 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.5.0 *July 3, 2016*
+
+- __riot__
+  - Fix mixins using child class functions (`class Child extends Parent {}`) [riot#1857](https://github.com/riot/riot/pull/1857)
+  - Fix bug select option order [riot#1815](https://github.com/riot/riot/issues/1815)
+  - Fix `riot.csp` previously bundled with the wrong `riot-tmpl` version [riot#1076](https://github.com/riot/riot/issues/1076#issuecomment-225211502)
+
+- __riot-compiler__
+  - Add support for es6 "import" inside tags [compiler#71](https://github.com/riot/compiler/pull/71)
+
+- __riot-cli__
+  - Add better error messages in case of missing dependencies
+
 ## 2.4.1 *May 22, 2016*
 
 - __riot__

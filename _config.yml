@@ -39,20 +39,20 @@ author:
 
 # Custom vars
 major_version:       0
-minor_version:       2.4
+minor_version:       2.5
 
-version:             2.4.1
-release_date:        May 22
-version_slurp:       Bug fix and better errors for the unregistered mixins
+version:             2.5.0
+release_date:        July 3
+version_slurp:       Allow es6 imports also inside tags
 repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page
 
-size_min:            9.23
-riot_route_size_min: 1.65
+size_min:            9.25
+riot_route_size_min: 1.68
 
 polymer:
-  size:    42.09 # according to https://github.com/riot/riot/issues/1575#issuecomment-180869792
+  size: 42.09 # according to https://github.com/riot/riot/issues/1575#issuecomment-180869792
   version: 1.4.0
 
 webcomponents:
@@ -62,12 +62,12 @@ webcomponents:
 polymer_and_webcomponents_size: 54.48 # 42.09 + 12.39 (polymer + webcomponents-lite.min.js )
 
 react:
-  size:    43.62
-  version: 15.0.2
+  size:    45.49
+  version: 15.2.0
 
 react_router:
-  size:    12.63
-  version: 2.0.0
+  size:    13.95
+  version: 2.5.2
 
 react_mini_router:
   size:    3.93
@@ -78,8 +78,7 @@ react_mini_router:
 compare:
   react: 5 # react.size / size_min
   react_router_vs_riot_router: 8 # react_router.size / riot_route_size_min
-  react_mini_router_vs_riot_router: 2 # react_router.size / riot_route_size_min
-  polymer_and_webcomponents: 6 # polymer_and_webcomponents_size / size_min
+  polymer_and_webcomponents: 8 # polymer_and_webcomponents_size / size_min
 
 # Languages
 translations:

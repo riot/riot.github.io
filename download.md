@@ -62,7 +62,7 @@ View our [version history](/release-notes). All Files are Open Source with [MIT 
 
 ### Chrome apps
 
-If you want to use riot in your Chrome apps you must inlcude a special riot version due to [Chrome due to Content Security Policy](https://github.com/riot/riot/issues/1076)
+If you want to use riot in your Chrome apps you must include a special riot version due to [Chrome due to Content Security Policy](https://github.com/riot/riot/issues/1076)
 
 [riot.csp.js]({{ page.base }}/riot.csp.js)
 
