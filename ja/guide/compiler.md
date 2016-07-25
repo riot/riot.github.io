@@ -272,6 +272,7 @@ TypeScriptで書かれたタグのサンプルです:
 ``` sh
 npm install typescript-simple
 ```
+
 ### LiveScript
 
 言語の特徴やドキュメントについては、[LiveScript](http://livescript.net)を確認してください。
