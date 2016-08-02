@@ -462,7 +462,7 @@ this.on('unmount', function() {
 
 ## Mots réservés
 
-La liste suivante de noms de méthodes et de propriétés sont réservés par les tags Riot. Ne les utilisez pas comme variables ou noms de méthodes: `opts`, `parent`, `root`, `update`, `unmount`, `on`, `off`, `one` et `trigger`. Les variables commençant par un underscore (comme ```this._item```) sont également réservés pour l'usage interne. Les variables locales peuvent être librement nommées. Par exemple:
+La liste suivante de noms de méthodes et de propriétés sont réservés par les tags Riot. Ne les utilisez pas comme variables ou noms de méthodes: `opts`, `parent`, `tags`, `root`, `update`, `unmount`, `on`, `off`, `one` et `trigger`. Les variables commençant par un underscore (comme ```this._item```) sont également réservés pour l'usage interne. Les variables locales peuvent être librement nommées. Par exemple:
 
 ``` javascript
 <my-tag>

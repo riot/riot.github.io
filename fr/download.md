@@ -26,6 +26,7 @@ Voir notre [historique des versions](/fr/release-notes). Tous les fichiers sont 
 
 #### [jsdelivr](http://www.jsdelivr.com/#!riot)
 
+
 `https://cdn.jsdelivr.net/riot/{{ site.minor_version }}/riot+compiler.min.js` <small>(dernière version {{ site.minor_version }}.X)</small>
 
 `https://cdn.jsdelivr.net/riot/{{ site.minor_version }}/riot.min.js` <small>(dernière version {{ site.minor_version }}.X)</small>
@@ -36,6 +37,9 @@ Voir notre [historique des versions](/fr/release-notes). Tous les fichiers sont 
 
 
 #### [cdnjs](https://cdnjs.com/libraries/riot)
+
+**NOTE** La v{{ site.version }} a été publiée le **{{ site.release_date }}** et CDNJS met environ 30 heures à se mettre à jour.
+
 
 `{{ page.cdnjs }}/{{ site.version }}/riot+compiler.min.js`
 
@@ -56,6 +60,15 @@ Voir notre [historique des versions](/fr/release-notes). Tous les fichiers sont 
 
 `npm install riot`
 
+### Applications Chrome
+
+Si vous voulez utilisez riot dans vos applications Chrome, vous devez inclure une version spécifique de riot à cause de la politique de sécurité [Chrome Content Security Policy](https://github.com/riot/riot/issues/1076)
+
+[riot.csp.js]({{ page.base }}/riot.csp.js)
+
+[riot.csp.min.js]({{ page.base }}/riot.csp.min.js)
+
+Dans vos applications Chrome, vous devez [précompiler vos tags](/guide/compiler/#pre-compilation) car ils ne peuvent pas être compilés à l'exécution.
 
 ### GitHub
 

@@ -142,12 +142,11 @@ Riot a entre 10 et 100 fois moins de méthodes dans son API que les autres bibli
 
 ### 3. Taille très légère
 
+<small><em>react.min.js</em> – {{ site.react.size }}KB (gzip)</small>
+<span class="bar red" ></span>
 
-<small><em>polymer.html</em> – {{ site.polymer.size }}Ko (gzip)</small>
-<span class="bar red"></span>
-
-<small><em>react.min.js</em> – {{ site.react.size }}Ko (gzip)</small>
-<span class="bar red" style="width: {{ site.react.size | divided_by: site.polymer.size | times: 100 }}%"></span>
+<small><em>polymer.html</em> – {{ site.polymer.size }}KB (gzip)</small>
+<span class="bar red" style="width: {{ site.polymer.size | divided_by: site.react.size | times: 100 }}%"></span>
 
 <small><em>riot.min.js</em> – {{ site.size_min }}Ko (gzip)</small>
 <span class="bar blue" style="width: {{ site.size_min | divided_by: site.react.size | times: 100 }}%"></span>

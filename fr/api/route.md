@@ -224,7 +224,6 @@ riot.route('/search..', function() {
   console.log('Paramètre limit: ' + q.limit)
 })
 ```
-```
 
 ## Personnaliser le routeur
 
@@ -245,6 +244,12 @@ Le chemin de base par défaut est "#". Si vous voulez utiliser un hashbang, chan
 ```javascript
 riot.route.base('#!')
 ```
+
+<span class="tag red">Avertissement</span>
+
+Si vous supprimez le `#` du chemin de base, votre serveur web doit être capable de desservir l'application peu importe l'URL relative qui lui parvient, car le navigateur manipulera l'URL complète et non plus le hash uniquement. Par défaut, les serveurs web ne savent pas comment gérer ces URL.
+
+
 
 ### riot.route.parser(parser[, secondParser])
 

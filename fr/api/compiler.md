@@ -147,7 +147,8 @@ Des parseurs personnalisés pouvant être utilisés pour compiler le HTML de vos
 Les parseurs prédéfinis sont:
 
 #### html
-- `jade`
+- `jade` (déprécié)
+- `pug`
 
 #### css
 - `less`

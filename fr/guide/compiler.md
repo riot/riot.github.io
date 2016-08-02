@@ -26,7 +26,7 @@ Les tags personnalisés doivent être transformés en JavaScript avant que le na
 <script src="chemin/vers/javascript/avec-tags.js" type="riot/tag"></script>
 
 <!-- inclusion de riot.js et du compilateur -->
-<script src="https://cdn.jsdelivr.net/riot/2.3/riot+compiler.min.js"></script>
+<script src="https://cdn.jsdelivr.net/riot/{{ site.minor_version }}/riot+compiler.min.js"></script>
 
 
 <!-- montage normal -->
@@ -93,7 +93,7 @@ Avec la précompilation, votre HTML est quelque-chose comme ça:
 <my-tag></my-tag>
 
 <!-- inclusion de riot.js uniquement -->
-<script src="//cdn.jsdelivr.net/riot/2.3/riot.min.js"></script>
+<script src="//cdn.jsdelivr.net/riot/{{ site.minor_version }}/riot.min.js"></script>
 
 <!-- inclusion des tags précompilés (JavaScript normal) -->
 <script src="chemin/vers/javascript/avec-tags.js"></script>
@@ -182,6 +182,13 @@ export default {
     js: {
       baz: (js, opts, url) => require('baz').compile(js)
     }
+  },
+  // options spéciales pouvant être utilisées pour surcharger
+  // les options par défaut du parseur riot
+  parserOptions: {
+    js: {},
+    template: {},
+    style: {}
   }
 }
 ```
@@ -346,6 +353,7 @@ Un exemple de tag écrit en TypeScript:
 ``` sh
 npm install typescript-simple
 ```
+
 ### LiveScript
 
 Consultez le site de [LiveScript](http://livescript.net) pour la documentation et la liste des fonctionnalités de ce langage.

@@ -33,7 +33,6 @@ car.trigger('start')
 
 @returns - retourne l'objet `el` ou une nouvelle instance observable
 
-
 ### <a name="on"></a> el.on(events, callback)
 
 Ecoute une liste d'événements `events` (séparés par des espaces) et appelle la fonction `callback` chaque fois qu'un de ces événements est déclenché.
@@ -119,6 +118,7 @@ Déclenche la liste d'événements `events` (séparés par des espaces) sur l'é
 
 ``` js
 el.trigger('start')
+el.trigger('render update')
 ```
 
 @returns - retourne `el`
@@ -139,3 +139,25 @@ el.trigger('start', { fuel: 89 }, true)
 ```
 
 @returns - retourne `el`
+
+### <a name="namespacing"></a> Espaces de noms (namespaces)
+
+Les évènements peuvent être classés dans des espaces de noms sur un seul niveau en utilisant `.` comme délimiteur. Les évènements dans les espaces de noms écoutent l'évènement de base et peuvent être spécifiquement déclenchés ou supprimés.
+
+``` js
+// écoute les évènements start et start.honda
+el.on('start.honda', function() {
+})
+
+// déclenche tous les évènements start (y-compris start.honda)
+el.trigger('start')
+
+// déclenche uniquement l'évènement start.honda
+el.trigger('start.honda')
+
+// supprime uniquement l'écouteur d'évènement start.honda
+el.off('start.honda')
+
+// supprime tous les écouteurs d'évènements start (y-compris start.honda)
+el.off('start')
+```

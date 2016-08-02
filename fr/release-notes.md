@@ -6,6 +6,62 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.5.0 *3 juin 2016*
+
+- __riot__
+  - Correction des mixins utilisant des classes enfant (`class Child extends Parent {}`) [riot#1857](https://github.com/riot/riot/pull/1857)
+  - Correction d'un bug d'ordre d'option de select [riot#1815](https://github.com/riot/riot/issues/1815)
+  - Correction de `riot.csp` compressé avec la mauvaise version de `riot-tmpl` [riot#1076](https://github.com/riot/riot/issues/1076#issuecomment-225211502)
+
+- __riot-compiler__
+  - Ajout du support des imports ES6 à l'intérieur des tags [compiler#71](https://github.com/riot/compiler/pull/71)
+
+- __riot-cli__
+  - Amélioration des messages d'erreur en cas de dépendances manquantes
+
+## 2.4.1 *22 mai 2016*
+
+- __riot__
+  - Correction d'un bug empêchant le rendu côté serveur de SVG [riot#1780](https://github.com/riot/riot/issues/1780)
+  - Correction de la détection d'objet dans les boucles [riot#1790](https://github.com/riot/riot/issues/1790)
+  - Ajout d'exceptions à l'initialisation de mixins non déclarées [riot#1796](https://github.com/riot/riot/pull/1796) merci à [@juodumas](https://github.com/juodumas)
+  - Ajout du support des classes (fonctions) pour les mixins [riot#1800](https://github.com/riot/riot/pull/1800) merci à [@ashleybrener](https://github.com/ashleybrener)
+  - Correction avec `yield` [riot#1786](https://github.com/riot/riot/issues/1786)
+  - Correction: empêche les attributs internes des tags d'être surchargés depuis l'extérieur [riot#1803](https://github.com/riot/riot/issues/1803)
+  - Suppression du bundle inutile `riot+compiler.csp.js` [riot#1799](https://github.com/riot/riot/issues/1799)
+
+## 2.4.0 *7 mai 2016*
+
+- __riot__
+  - Correction des problèmes liés à la Chrome Content Security Policy [riot#1076](https://github.com/riot/riot/issues/1076), nous fournissons maintenant un build spécial de riot (`riot.csp`) pour les applications Chrome
+  - Correction sur les multiples mixins globales [riot#1699](https://github.com/riot/riot/issues/1699) - merci à [@wintercounter](https://github.com/wintercounter)
+  - Amélioration du support des tags SVG [riot#1199](https://github.com/riot/riot/issues/1199)
+
+- __observable__
+  - 30% plus rapide [observable#18](https://github.com/riot/observable/pull/18) - merci à [@Ke-](https://github.com/Ke-)
+  - Ajout du support des espaces de noms [observable#15](https://github.com/riot/observable/pull/15) - merci encore à [@Ke-](https://github.com/Ke-)
+
+- __cli__
+  - Nouvelle option `--new` pour créer facilement de nouveaux composants riot
+  - Correction de problèmes liés aux liens symboliques grâce à la mise à jour `shelljs@0.7.0` [cli#14](https://github.com/riot/cli/issues/14)
+
+- __compilateur__
+  - Ajout du parseur `pug`, `jade` sera déprécié à la prochaine version majeure de riot
+  - Ajout d'options aux parseurs directement via la méthode `compiler.compile` avec `parserOptions: {js: {}, template: {}, style: {}}` [compiler#64](https://github.com/riot/compiler/issues/64)
+  - Correction des options du parseur un-escape en HTML [compiler#63](https://github.com/riot/compiler/issues/63)
+
+## 2.3.18 *2 avril 2016*
+
+- __riot__
+  - Ajoute la possibilité de déboguer le cache interne des tags exposé dans `riot.vdom`
+  - Correction d'un bug au démontage de tags virtuels imbriqués [riot#1652](https://github.com/riot/riot/issues/1652)
+  - Correction du reset des select à l'évènement onchange [riot#1667](https://github.com/riot/riot/issues/1667)
+  - Correction: en utilisant la nouvel attribut `data-is`, le CSS du tag n'était pas appliqué [riot#1666](https://github.com/riot/riot/issues/1666)
+  - Les méthodes internes de riot peuvent maintenant être surchargées [riot#1616](https://github.com/riot/riot/issues/1616)
+
+- __route__
+  - Correction du contexte des sous-routes [riot-route#52](https://github.com/riot/route/pull/52)
+
 ## 2.3.17 *9 mars 2016*
 
 - __riot__
@@ -36,7 +92,7 @@ id: release-notes
   - Correction de la mise à jour du tag `<virtual>` [1512](https://github.com/riot/riot/issues/1512)
   - Correction de la méthode `riot.update` [1353](https://github.com/riot/riot/issues/1353)
 
-- __compiler__
+- __compilateur__
   - Correction de l'attribut `defer` sur les tags `<script>` pour les charger au runtime [1492](https://github.com/riot/riot/issues/1492)
   - Fix [riot#1511](https://github.com/riot/riot/issues/1511) : guillemets d'échappements - il peut rester des bugs à corriger
   - Régression de la logique pour analyser les styles et les tags script, à cause de pertes de performances et d'autres soucis
