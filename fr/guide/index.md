@@ -28,8 +28,6 @@ Les tags personnalisés de Riot sont les blocs de construction des interfaces ut
   </form>
 
   <script>
-    this.disabled = true
-
     this.items = opts.items
 
     edit(e) {
@@ -74,6 +72,7 @@ Un tag Riot est une combinaison d'éléments HTML et de logique JavaScript. Voil
 * Les balises auto-fermantes sont supportées: `<div/>` est transformé en `<div></div>`. Les balises ouvertes connues telles que `<br>`, `<hr>`, `<img>` ou `<input>` ne sont jamais fermées après compilation.
 * Les tags personnalisés doivent être fermés (normalement ou auto-fermés).
 * Les balises standard HTML (`label`, `table`, `a` etc..) peuvent également être personnalisées, mais ce n'est pas forcément un choix très sage.
+* La **racine** de la définition d'un tag peut aussi avoir des attributs: `<foo onclick={ click } class={ active: active }>`.
 
 
 La définition de tag dans les fichiers tag commence toujours en début de ligne:
@@ -438,7 +437,7 @@ En étant définis au niveau du tag, les mixins n'étendent pas seulement les fo
 
 ### Mixins partagés
 
-Pour partager les mixins entre des fichiers ou des projets, l'API `riot.mixin` est fournie. Vous pouvez inscrire votre mixin globalement comme ceci:
+Pour partager les mixins entre des fichiers ou des projets, l'API `riot.mixin` est fournie. Vous pouvez inscrire votre mixin partagé comme ceci:
 
 ```js
 riot.mixin('nomDuMixin', objetMixin)
@@ -465,6 +464,12 @@ riot.mixin(mixinObject)
 
 Contrairement aux mixins partagés, les globaux sont automatiquement chargés pour tous les tags montés. Utilisez donc avec prudence !
 
+```js
+riot.mixin('globalMixinOne', mixinObjectOne, true)
+console.log(riot.mixin('globalMixinOne') === mixinObjectOne) // true
+```
+
+Parfois vous pouvez avoir besoin de récupérer l'objet mixin afin de l'assigner globalement juste par son nom. Dans ce cas, le troisième paramètre booléen indique que la mixin n'est pas partagée mais est une mixin globale.
 
 ## Expressions
 
