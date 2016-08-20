@@ -169,16 +169,18 @@ Riot has all the essential building blocks for modern client-side applications:
 Riot is an "open stack". It's meant for developers who want to avoid framework specific idioms. The generic tools let you mix and match design patterns. Systems like Facebook Flux can be [self-made](https://github.com/jimsparkman/RiotControl).
 
 
+> @riotjs_ Thanks for creating a library that allows me to make a simple SPA in plain JS without needing to download 13k NPM packages.[@coussej](https://twitter.com/coussej/status/763659990250946561)
+
+> Switched my site from #BackboneJS to #RiotJS. Other than compile/mount not blocking for DOM render, it's great! #JavaScript @riotjs_
+ [@richardtallent](https://twitter.com/richardtallent/status/766696802066194432)
+
+> Like all people fed up with the status quo and the development of the world, I'm voting RiotJS <3 Love you baby [@plumpNation](https://twitter.com/plumpNation/status/760803974660390912)
+
 > I looked at the riot.js example, and it feels so clean, it's scary. [@paulbjensen](https://twitter.com/paulbjensen/status/558378720403419137)
-
-> Just messed around with #RiotJS for an hour. Got it setup with Gulp, Browsesify, and Babel in no time. I like it a lot so far! [@AndrewDelPrete](https://twitter.com/AndrewDelPrete/status/630976295011127296)
-
-> Today I have used #riotjs 2.0 for the first time and I could admit that It will be a long term relationship #js highly recommended. [@gianlucaguarini](https://twitter.com/gianlucaguarini/status/559756081862574080)
 
 > I liked the idea of #reactjs with #flux but I like #riotjs with #riotcontrol even better!
 [@tscok](https://twitter.com/tscok/status/580509124598829056)
 
-> looking at RiotJS https://muut.com/riotjs/ — blown away by its simplicity. [@defeated](https://twitter.com/defeated/status/559215403541757952)
 
 > Played with riot.js and like it so much more than React. Minimalistic, fast and a comprehensible API. [@juriansluiman](https://twitter.com/juriansluiman/status/560399379035865088)
 
