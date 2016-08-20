@@ -6,6 +6,26 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.6.0 *August 20, 2016*
+
+- __riot__
+  - Fix bug in nested loops templates [riot#1646](https://github.com/riot/riot/issues/1649)
+  - Fix server rendering issues [riot#1850](https://github.com/riot/riot/issues/1850) [riot#1839](https://github.com/riot/riot/issues/1839)
+  - Fix inherit problem in loops [riot#1897](https://github.com/riot/riot/issues/1897) thanks to [@5angel](https://github.com/5angel)
+  - Fix options correctly passed to the compiler [riot#1801](https://github.com/riot/riot/issues/1801)
+  - Fix svg xlink attributes [riot#1922](https://github.com/riot/riot/issues/1922)
+  - Add support for getters setters in mixins [riot#1888](https://github.com/riot/riot/pull/1888) thanks to [@5angel](https://github.com/5angel)
+
+- __riot-observable__
+  - __BREAKING CHANGE__: riot observable will no longer support events namespaces, this feature brings performance drawback and router issues [more info](https://github.com/riot/route/issues/63)
+
+- __riot-tmpl__
+  - Fix wrong context bug [riot#1916](https://github.com/riot/riot/issues/1916)
+
+- __riot-route__
+  - Fix relative links issues [riot#1916](https://github.com/riot/route/issues/64)
+
+
 ## 2.5.0 *July 3, 2016*
 
 - __riot__
