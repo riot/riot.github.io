@@ -6,6 +6,12 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.6.1 *August 25, 2016*
+
+- __riot__
+ - Fix textarea inconsistent updates on IE [riot#1959](https://github.com/riot/riot/issues/1959)
+ - Fix input type="number" bug on IE [riot#1957](https://github.com/riot/riot/issues/1957)
+
 ## 2.6.0 *August 20, 2016*
 
 - __riot__

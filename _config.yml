@@ -38,17 +38,16 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-major_version:       0
 minor_version:       2.6
 
-version:             2.6.0
-release_date:        August 20
-version_slurp:       Bug fix and update the router
+version:             2.6.1
+release_date:        August 25
+version_slurp:       Bug fix for a more consistent input behavior
 repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page
 
-size_min:            9.32
+size_min:            9.38
 riot_route_size_min: 1.77
 
 polymer:
