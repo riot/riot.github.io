@@ -40,9 +40,9 @@ author:
 # Custom vars
 minor_version:       2.6
 
-version:             2.6.1
-release_date:        August 25
-version_slurp:       Bug fix for a more consistent input behavior
+version:             2.6.2
+release_date:        September 18
+version_slurp:       Bug fix children parent inheritance
 repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page

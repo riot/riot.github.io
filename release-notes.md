@@ -6,6 +6,11 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.6.2 *September 18, 2016*
+
+- __riot__
+  - Child tags always inheriting functions and properties from parent tags outside of loop [riot#1982](https://github.com/riot/riot/issues/1982)
+
 ## 2.6.1 *August 25, 2016*
 
 - __riot__
