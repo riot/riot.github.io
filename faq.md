@@ -22,7 +22,7 @@ Because it's crazy to waste developer time for a dying browser. According to [W3
 
 ![](/img/ie8-trend.png)
 
-Statcounter [says 2.5%](http://gs.statcounter.com/#browser_version_partially_combined-ww-monthly-201408-201507).
+Statcounter [says less than 1%](http://gs.statcounter.com/#browser_version_partially_combined-ww-monthly-201509-201608).
 
 This low-quality browser can safely be ignored. Riot 2.0 was launched with IE8 support but since then the use has dropped more than 50%.
 
