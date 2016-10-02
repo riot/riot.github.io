@@ -13,7 +13,7 @@ class: apidoc
 
 `customTagSelector` selects elements from the page and mounts them with a custom tag. The selected elements' name must match the custom tag name.
 
-`opts` optional object is passed for the tags to consume. This can be anything, ranging from a simple object to a full application API. Or it can be a Flux- store. Really depends on how you want to structure your client-side applications. Read more about [modular Riot applications](/guide/application-design/#modularity).
+`opts` optional object is passed for the tags to consume. This can be anything, ranging from a simple object to a full application API. Or it can be a Flux- store. Really depends on how you want to structure your client-side applications. Read more about [modular Riot applications](/guide/application-design/#modularity). *Also note* that attributes you set on your tags as options will take precedence over ones specified with same names via `opts` argument.
 
 
 ``` js
