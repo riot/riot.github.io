@@ -19,7 +19,7 @@ description: Riot le permite construir interfaces de usuario con _etiquetas_ per
 
 # ¿Porqué necesitamos otra biblioteca para IU?
 
-El espacio de los frentes para aplicaciones está repleto pero, honestamente, sentimos que la solución aun está "allá afuera". Creemos que Riot ofrece el balance correcto para resolver el gran rompecabezas. Mientras React parece hacerlo, tiene serios puntos débiles que Riot resuelve.
+El frontend está lleno de librerías pero, honestamente, sentimos que la solución está aún "ahí fuera". Creemos que Riot ofrece el balance correcto para resolver el gran rompecabezas. Mientras React parece hacerlo, tiene serios puntos débiles que Riot resuelve.
 
 Así que — He aquí porqué necesitamos esta nueva biblioteca:
 
