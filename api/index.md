@@ -81,7 +81,8 @@ riot.mount(document.getElementById('slide'), 'users', api)
 
 ### <a name="render"></a> riot.render(tagName, [opts])
 
-Rendering a tag to html. This method is only available on *server-side* (Node/io.js). For example:
+Rendering a tag to html.<br/>
+__Only available on *server-side*__. For example:
 
 ```
 // render "my-tag" to html
@@ -90,6 +91,45 @@ riot.render(mytag, { foo: 'bar' })
 ```
 
 @returns: tags render as html
+
+
+### <a name="renderasync"></a> riot.renderAsync(tagName, [opts])
+<span class="tag red">&gt;= v2.6.3</span>
+
+Rendering asynchronously a tag to html.<br/>
+__Only available on *server-side*__.<br/>
+This method returns a promise that will be resolved only when a "ready" event will be triggered by your tags during the mounting process. For example:
+
+#### On the server:
+```js
+riot.renderAsync(tagName, opts)
+  .then(function(html) {
+    // do something with your html
+  })
+  .catch(function(e) {
+    // it took too much time!
+  })
+```
+
+#### In your tag:
+```html
+<async-rendering>
+  <p>{ message }</p>
+
+  this.message = 'hi'
+
+  setTimeout(function() {
+    // triggering the "ready" event will resolve the promise
+    this.trigger('ready')
+  }.bind(this), 500)
+
+</async-rendering>
+```
+
+It's important to notice that if the "ready" event will not be triggered, the promise will be rejected after 1 second.
+You can configure the internal riot promises timeout via `riot.settings.asyncRenderTimeout` (default 1000ms)
+
+@returns: Promise
 
 
 ## Tag instance

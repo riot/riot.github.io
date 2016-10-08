@@ -23,6 +23,14 @@ riot.settings.brackets = '[% %]'
 
 let's you write expressions `<p>[% like_this %]</p>`. The start and end is separated with a space character.
 
+### <a name="asyncrendertimeout"></a> riot.settings.asyncRenderTimeout
+
+It allows you to change the `riot.renderAsync` timeout (default 1000ms)
+
+```js
+riot.settings.asyncRenderTimeout = 2000 // ms
+```
+
 ### <a name="tmpl-errors"></a> riot.util.tmpl.errorHandler
 
 Utility hook function to catch all the errors swallowed by the riot template engine
