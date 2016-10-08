@@ -38,9 +38,6 @@ View our [version history](/release-notes). All Files are Open Source with [MIT 
 
 #### [cdnjs](https://cdnjs.com/libraries/riot)
 
-**NOTE** v{{ site.version }} was released on **{{ site.release_date }}** and CDNJS takes around 30 hours to update.
-
-
 `{{ page.cdnjs }}/{{ site.version }}/riot+compiler.min.js`
 
 `{{ page.cdnjs }}/{{ site.version }}/riot.min.js`
