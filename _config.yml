@@ -40,14 +40,14 @@ author:
 # Custom vars
 minor_version:       2.6
 
-version:             2.6.2
-release_date:        September 18
-version_slurp:       Bug fix children parent inheritance
+version:             2.6.3
+release_date:        October 9
+version_slurp:       Add async server side rendering support
 repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page
 
-size_min:            9.38
+size_min:            9.35
 riot_route_size_min: 1.77
 
 polymer:

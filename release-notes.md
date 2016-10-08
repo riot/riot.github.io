@@ -6,6 +6,12 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.6.3 *October 9, 2016*
+
+- __riot__
+  - Fix serverside nested tags import issue [riot#1998](https://github.com/riot/riot/issues/1998)
+  - Add `riot.renderAsync` method for async server side rendering [more info](api/#renderasync)
+
 ## 2.6.2 *September 18, 2016*
 
 - __riot__
