@@ -69,7 +69,6 @@ var tags = riot.mount('div#main', 'my-tag', api)
 ### <a name="render"></a> riot.render(tagName, [opts])
 
 タグをHTMLとしてレンダリング。このメソッドは *サーバサイド* (Node/io.js) でのみ利用できます。例:
-Rendering a tag to html. This method is only available on *server-side* (Node/io.js). For example:
 
 ```
 // "my-tag"をHTMLにレンダリング
@@ -143,7 +142,6 @@ riot.render(mytag, { foo: 'bar' })
 ### <a name="tag-update-data"></a> this.update(data)
 
 現在のインスタンスに値をセットして、テンプレート変数を更新します。これは、`this.update()`と同様ですが、呼び出しと同時にコンテキストデータをセットできます。つまり、このように書く代わりに:
-Set values of the current instance and update the expressions. This is same as `this.update()` but allows you to set context data at the same time. So instead of this:
 
 ``` js
 self.error = error_message
