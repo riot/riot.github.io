@@ -6,6 +6,12 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.6.4 *October 15, 2016*
+
+- __riot-tmpl__
+  - Fix [riot#2002](https://github.com/riot/riot/issues/2002)
+  - Fix [riot#1588](https://github.com/riot/riot/issues/1588)
+
 ## 2.6.3 *October 9, 2016*
 
 - __riot__
