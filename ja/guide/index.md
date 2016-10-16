@@ -468,7 +468,7 @@ HTMLには、括弧で囲まれたテンプレート変数を挿入すること�
 { /* my_expression goes here */ }
 ```
 
-Expressions can set attributes or nested text nodes:
+テンプレート変数は属性かネストされたテキストに使えます。
 
 ```html
 <h3 id={ /* attribute_expression */ }>
