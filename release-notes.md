@@ -6,6 +6,14 @@ id: release-notes
 
 # {{ page.title }}
 
+
+## 2.6.5 *October 31, 2016*
+
+- __riot__
+  - Fix [riot#2046](https://github.com/riot/riot/pull/2046)
+  - Fix [riot#2038](https://github.com/riot/riot/issues/2038)
+  - Fix unnecessary loop reordering [ropt#2040](https://github.com/riot/riot/issues/2040)
+
 ## 2.6.4 *October 15, 2016*
 
 - __riot-tmpl__

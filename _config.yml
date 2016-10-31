@@ -40,14 +40,14 @@ author:
 # Custom vars
 minor_version:       2.6
 
-version:             2.6.4
-release_date:        October 15
-version_slurp:       Small patches for the riot-tmpl
+version:             2.6.5
+release_date:        October 31
+version_slurp:       Fix server side rendering and loop reordering issues
 repo:                https://github.com/riot/riot
 
 # Vars needed for the compare.md page
 
-size_min:            9.35
+size_min:            9.36
 riot_route_size_min: 1.77
 
 polymer:
