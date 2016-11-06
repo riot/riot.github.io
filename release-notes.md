@@ -6,6 +6,11 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.6.7 *November 6, 2016*
+
+- __riot__
+  - Fix rendering of tags containing SVGs [riot#2023](https://github.com/riot/riot/issues/2023)
+  - Fix exception errors thrown updating looped conditional tags [riot#2054](https://github.com/riot/riot/issues/2054)
 
 ## 2.6.5 *October 31, 2016*
 
