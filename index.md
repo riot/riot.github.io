@@ -6,8 +6,8 @@ description: Riot lets you build user interfaces with custom tags using simple a
 
 <div id="hero">
   <img src="/img/logo/riot240x.png">
-  <h1>A React-like user interface micro-library</h1>
-  <h4>Custom tags • Enjoyable syntax • Virtual DOM • Tiny size</h4>
+  <h1>Simple and elegant component-based UI library</h1>
+  <h4>Custom tags • Enjoyable syntax • Elegant API • Tiny size</h4>
 
   <div id="version-slurp">
     <a href="/download/" class="tag blue">v{{ site.version }}</a> &mdash;
@@ -196,10 +196,5 @@ We should focus on reusable components instead of templates. According to the de
 > "Templates separate technologies, not concerns."
 
 By having related layout and logic together under the same component the overall system becomes cleaner. We respect React for this important insight.
-
-
-## The initial blog entry
-
-[From React to Riot 2.0](https://muut.com/blog/technology/riot-2.0/)
 
 

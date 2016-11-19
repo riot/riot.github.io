@@ -1,12 +1,12 @@
 <!doctype html>
 
 {% capture nav %}
-<a href="/fr/compare/">Comparer</a>
-<a href="/fr/faq/">FAQ</a>
-<a href="/fr/guide/">Guide</a>
-<a href="/fr/api/">API</a>
-<a href="/fr/download/">Télécharger</a>
-<a href="/fr/forum/">Forum</a>
+<a href="/v2/fr/compare/">Comparer</a>
+<a href="/v2/fr/faq/">FAQ</a>
+<a href="/v2/fr/guide/">Guide</a>
+<a href="/v2/fr/api/">API</a>
+<a href="/v2/fr/download/">Télécharger</a>
+<a href="/v2/fr/forum/">Forum</a>
 {% endcapture %}
 
 <html lang="fr">
@@ -45,13 +45,11 @@
 
 <div class="wrap">
 
-	<a id="fork" href="{{ site.repo }}">Fork me on GitHub</a>
+	{% include fork-on-github.html %}
 
 	<header id="header">
     <span id="logo">
-      <a href="/fr/"><img id="riot-logo" src="/img/logo/riot120x.png"></a>
-      <strong>by</strong>
-      <a href="https://muut.com/"><img id="muut-logo" src="/img/logo/muut.png"></a>
+      <a href="/v2/fr/"><img id="riot-logo" src="/img/logo/riot120x.png"></a>
     </span>
 
 		<nav id="nav">
@@ -76,7 +74,7 @@
 
 <footer id="footer">
 	<div class="wrap">
-		<a href="/fr/"><img src="/img/logo/riot120x.png"></a>
+		<a href="/v2/fr/"><img src="/img/logo/riot120x.png"></a>
 		<nav>
 			<a href="/"><span>en</span> latest</a>
 			{% for lang in site.translations %}

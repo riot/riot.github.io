@@ -3,15 +3,33 @@
 // Super small header above the content for site name and short description.
 
 #header {
-  padding: .6rem 0 2em;
+  padding: .6rem 0 4em;
   position: relative;
   z-index: 1;
+
+  @media (max-width: $small-break-point) {
+    padding-bottom: 2rem;
+  }
 }
 
-#riot-logo {
-  width: 50px;
-  float: left
+#logo {
+
+  @media (max-width: $small-break-point) {
+    width: 100%;
+    display: inline-block;
+  }
+
+  #riot-logo {
+    width: 80px;
+    float: left;
+
+    @media (max-width: $small-break-point) {
+      float: none;
+    }
+  }
 }
+
+
 
 #logo strong {
   font-weight: normal;
@@ -27,9 +45,9 @@
 }
 
 #nav {
+  font-size: 80%;
+  line-height: 3;
   float: right;
-  font-size: 68%;
-  line-height: 2;
 
   a {
     margin-left: 1em;
@@ -44,15 +62,19 @@
     cursor: default;
   }
 
-  @media (max-width: 600px) {
-    margin: 1.5em 2.4em 0;
-    text-align: center;
+  @media (max-width: $small-break-point) {
+    margin: 0.5rem 0 1.5rem;
     line-height: 2.4;
     font-size: 80%;
-    float: none;
+    float: left;
+    width: 100%;
 
     a {
-      margin: 0 .6em;
+      display: inline-block;
+      box-sizing: border-box;
+      float: left;
+      clear: both;
+      margin: 0.2rem 0;
     }
   }
 }
@@ -108,7 +130,7 @@
     margin-right: .5em;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: $small-break-point) {
     width: 100%;
     font-size: 90%;
     position: relative;
