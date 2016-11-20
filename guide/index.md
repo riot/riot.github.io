@@ -19,7 +19,7 @@ Riot custom tags are the building blocks for user interfaces. They make the "vie
       <label class={ completed: done }>
         <input type="checkbox" checked={ done } onclick={ parent.toggle }> { title }
       </label>
-    </li>
+    </li>f
   </ul>
 
   <form onsubmit={ add }>
@@ -879,6 +879,29 @@ riot.mount('my-list')
 ```
 
 will mount the `ul` element shown above as if it were `<my-list></my-list>`
+
+Note that you can use also an expression in the `data-is` attribute and riot will be able to
+render dynamically also different tags on the same DOM node
+
+```html
+<my-tag>
+  <!-- dynamic component -->
+  <div data-is={ component }></div>
+  <button onclick={ switchComponent }>
+    Switch
+  </button>
+
+  <script>
+    this.component = 'foo'
+
+    switchComponent() {
+      // riot will render the <bar> component
+      // replacing <foo>
+      this.component = 'bar'
+    }
+  </script>
+</my-tag>
+```
 
 ## Server-side rendering
 
