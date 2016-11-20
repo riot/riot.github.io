@@ -39,12 +39,12 @@ Riot brings custom tags to all browsers.
   </ul>
 
   <form onsubmit={ add }>
-    <input>
+    <input ref="input">
     <button>Add #{ items.length + 1 }</button>
   </form>
 
   <!-- style -->
-  <style scoped>
+  <style>
     h3 {
       font-size: 14px;
     }
@@ -55,7 +55,8 @@ Riot brings custom tags to all browsers.
     this.items = []
 
     add(e) {
-      var input = e.target[0]
+      e.preventDefault()
+      var input = this.refs.input
       this.items.push(input.value)
       input.value = ''
     }
@@ -78,10 +79,10 @@ Custom tags let you build complex views with HTML. Your application might look s
 
   <forum-header/>
 
-  <forum-content>
+  <div class="content">
     <forum-threads/>
     <forum-sidebar/>
-  </forum-content>
+  </div>
 
   <forum-footer/>
 
@@ -94,7 +95,7 @@ HTML syntax is the *de facto* language of the web and it's designed for building
 Riot tags are [converted](/guide/compiler/) to pure JavaScript before browsers can execute them.
 
 
-### Virtual DOM
+### DOM Expressions binding
 - Absolutely the smallest possible amount of DOM updates and reflows
 - One way data flow: updates and unmounts are propagated downwards from parent to children
 - Expressions are pre-compiled and cached for high performance
@@ -104,6 +105,7 @@ Riot tags are [converted](/guide/compiler/) to pure JavaScript before browsers c
 
 ### Close to standards
 - No proprietary event system
+- No need for external polyfills or additional libraries
 - The rendered DOM can be freely manipulated with other tools
 - No extra HTML root elements or `data-` attributes
 - Plays well with jQuery
@@ -126,7 +128,7 @@ Minimalism sets Riot apart from others:
 One of the design goals was to introduce a powerful tag syntax with as little boilerplate as possible:
 
 - Power shortcuts: `class={ enabled: is_enabled, hidden: hasErrors() }`
-- No extra brain load such as `render`, `state`, `constructor` or `shouldComponentUpdate`
+- No extra brain load such as `render`, `state`, `constructor`
 - Interpolation: `Add #{ items.length + 1 }` or `class="item { selected: flag }"`
 - The `<script>` tag to enclose the logic is optional
 - Compact ES6 method syntax
@@ -164,7 +166,7 @@ Riot has all the essential building blocks for modern client-side applications:
 
 - "Reactive" views for building user interfaces
 - Event library for building APIs with isolated modules
-- Router for taking care of URL and the back button
+- Optional Router for taking care of URL and the back button
 
 Riot is an "open stack". It's meant for developers who want to avoid framework specific idioms. The generic tools let you mix and match design patterns. Systems like Facebook Flux can be [self-made](https://github.com/jimsparkman/RiotControl).
 

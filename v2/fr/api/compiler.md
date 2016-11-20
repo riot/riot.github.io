@@ -28,7 +28,7 @@ var tags = riot.mount('*')
 
 mais vous ignorez quand toutes les ressources externes sont chargées et compilées. La valeur de retour sera une Array vide si vous avez des scripts externes. Si tous les scripts sont définis sur la page, alors l'appel à riot.compile peut être omis.
 
-Pour plus de détails, lisez l'[introduction au compilateur](/guide/compiler/).
+Pour plus de détails, lisez l'[introduction au compilateur](/v2/guide/compiler/).
 
 ### <a name="compile-fn"></a> riot.compile(url, callback)
 

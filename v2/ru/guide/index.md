@@ -53,7 +53,7 @@ title: Пользовательские теги
 </todo>
 ```
 
-Пользовательские теги [компилируются](/guide/compiler/) в JavaScript.
+Пользовательские теги [компилируются](/v2/guide/compiler/) в JavaScript.
 
 Вы увидеть [пример](http://riotjs.com/examples/plunker/?app=todo-app), изучить [исходный код](https://github.com/riot/examples/tree/gh-pages/todo-app), или скачать [zip-архив]]](https://github.com/riot/examples/archive/gh-pages.zip).
 
@@ -447,7 +447,7 @@ riot.mixin('mixinName', mixinObject)
 </todo>
 ```
 
-Вы можете использовать множество обработчиков для одного и того же события. Смотри API [наблюдателя](/api/observable/) для более подробной информации.
+Вы можете использовать множество обработчиков для одного и того же события. Смотри API [наблюдателя](/v2/api/observable/) для более подробной информации.
 
 
 ## <a name="expressions"></a> Выражения
@@ -538,7 +538,7 @@ riot.settings.brackets = '\{\{ }}'
 
 Они должны разделяться пробелом.
 
-При использовании [пре-компилятора](/guide/compiler/#pre-compilation) вам стоит настроить `brackets`.
+При использовании [пре-компилятора](/v2/guide/compiler/#pre-compilation) вам стоит настроить `brackets`.
 
 
 ### Остальное

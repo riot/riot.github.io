@@ -203,7 +203,7 @@ Voici la liste des plus gros changements:
 - Correction de `yield` côté serveur
 - Correction d'une fuite mémoire dans `riot.render`
 - Correction des attributs dynamiques tels que `name` `id`
-- Nouveau comportement pour les boucles, elles sont un peu plus lentes mais plus fiables ; vous pouvez utiliser l'option `no-reorder` si vous voulez utiliser l'algorithme précédent plus rapide ([plus de détails ici](/guide/#loops-advanced-tips))
+- Nouveau comportement pour les boucles, elles sont un peu plus lentes mais plus fiables ; vous pouvez utiliser l'option `no-reorder` si vous voulez utiliser l'algorithme précédent plus rapide ([plus de détails ici](/v2/guide/#loops-advanced-tips))
 
 
 ## 2.2.4 *12 août 2015*
@@ -242,13 +242,13 @@ Voici la liste des plus gros changements:
 - Inconsistances réglées lorsque l'on utilisait des boucles avec des listes vides ou nulles
 - Correction de `mount` dans les éléments enfants des boucles
 - Couverture de code augmentée
-- Ajout de la possibilité de spécifier où riot doit injecter le [CSS des tags personnalisés](/guide/#scoped-css) dans le DOM
+- Ajout de la possibilité de spécifier où riot doit injecter le [CSS des tags personnalisés](/v2/guide/#scoped-css) dans le DOM
 
 La liste des correctifs de bugs et les détails peuvent être trouvés [ici](https://github.com/riot/riot/issues/773)
 
 ## 2.1.0 *20 mai 2015*
 
-- [Mixins](/guide/#mixins)
+- [Mixins](/v2/guide/#mixins)
 - Possibilité de définir des attributs sur l'élément racine de la définition du tag
 - Séparation du compilateur node et du compilateur sur navigateur
 - Script de build simplifié avec [smash](https://github.com/mbostock/smash)
@@ -259,8 +259,8 @@ La liste des correctifs de bugs et les détails peuvent être trouvés [ici](htt
 
 ## 2.0.15 *23 avril 2015*
 
-- Le nouveau tag central `<yield>` permet la [transclusion HTML](/guide/#nested-html)
-- Un nouvel attribut [riot-tag](/guide/#html-elements-as-tags) pour utiliser des éléments HTML standards comme points de montage
+- Le nouveau tag central `<yield>` permet la [transclusion HTML](/v2/guide/#nested-html)
+- Un nouvel attribut [riot-tag](/v2/guide/#html-elements-as-tags) pour utiliser des éléments HTML standards comme points de montage
 - Ajout de `tag.unmount(flag)` pour décider si le parent doit être supprimé ou non du DOM
 - Ajout des méthodes `riot.route.start()` et `riot.route.stop()` pour démarrer et arrêter le routeur Riot. Ces méthodes vous permettent d'utiliser un routeur différent pour votre application.
 - Le compilateur côté serveur supporte maintenant les modules AMD et CommonJS avec l'option de ligne de commande `--modular` ou `-m`
@@ -270,7 +270,7 @@ La liste des correctifs de bugs et les détails peuvent être trouvés [ici](htt
 
 ## 2.0.14 *8 avril 2015*
 
-- [Rendu côté serveur](/guide/#server-side-rendering)
+- [Rendu côté serveur](/v2/guide/#server-side-rendering)
 - [Corrections de bugs](https://github.com/riot/riot/compare/v2.0.13...v2.0.14)
 
 ## 2.0.13 *11 mars 2015*
@@ -280,7 +280,7 @@ La liste des correctifs de bugs et les détails peuvent être trouvés [ici](htt
 
 ## 2.0.12 *2 mars 2015*
 
-- Support des [Scopes CSS](/guide/#scoped-css)
+- Support des [Scopes CSS](/v2/guide/#scoped-css)
 - Accès direct aux [tags imbriqués](/fr/api/#nested-tags) et à leur API via la variable `tags`. Par exemple: `tags.my_timer.clear()`
 - Les tags personnalisés sont maintenant construites pendant la phase de lecture et initialisées pendant la phase de montage. Ceci est un travail préliminaire pour le prochain [système de plugins](https://github.com/riot/riot/issues/416) et permet aux plugins de faire leur boulot avant l'initialisation.
 - L'option `--whitespace` du compilateur préserve les nouvelles lignes et espaces blancs dans le code généré. Bien pour les éléments imbriqués `pre` et `textarea`.
@@ -334,10 +334,10 @@ La liste des correctifs de bugs et les détails peuvent être trouvés [ici](htt
 
 ## 2.0.7 *29 janvier 2015*
 
-- [Compilation dans le navigateur](/guide/compile/) super rapide pour: `<script type="riot/tag">`
-- [Support natif de Typescript](/guide/compiler/#typescript)
+- [Compilation dans le navigateur](/v2/guide/compile/) super rapide pour: `<script type="riot/tag">`
+- [Support natif de Typescript](/v2/guide/compiler/#typescript)
 - Possibilité de brancher un préprocesseur HTML (aux côtés d'un préprocesseur JS)
-- Support natif de [Jade](/guide/compiler/#jade)
+- Support natif de [Jade](/v2/guide/compiler/#jade)
 - Possibilité de définir des [interpréteurs personnalisés](/fr/api/#route-parser) pour le routeur
 - Les balises peuvent être du XML valide et les balises vides HTML5 ne sont pas auto-fermantes
 - Autorise la définition de tags vides pour réserver un espace. Bien pour la phase de développement.

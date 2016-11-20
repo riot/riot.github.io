@@ -91,7 +91,7 @@ Las etiquetas personalizadas le permiten construir vistas complejas con HTML. Su
 
 La sintaxis HTML es el idioma *de facto* de la web y está diseñado para construir interfaces de usuario. La sintaxis es explícita, la anidación es inherente al lenguaje, y los atributos ofrecen una manera limpia de proporcionar opciones a las etiquetas personalizadas.
 
-Las etiquetas Riot son [convertidas](/guide/compiler/) a JavaScript "puro" antes de que los navegadores las ejecuten.
+Las etiquetas Riot son [convertidas](/v2/guide/compiler/) a JavaScript "puro" antes de que los navegadores las ejecuten.
 
 
 ### DOM virtual
@@ -112,7 +112,7 @@ Las etiquetas Riot son [convertidas](/guide/compiler/) a JavaScript "puro" antes
 
 ### Amigable a las herramientas
 
-- Cree etiquetas con ES6, Typescript, CoffeeScript, Jade, LiveScript o [cualquier pre-procesador](/guide/compiler/#pre-processors) que desee
+- Cree etiquetas con ES6, Typescript, CoffeeScript, Jade, LiveScript o [cualquier pre-procesador](/v2/guide/compiler/#pre-processors) que desee
 - Intégrelo con NPM, CommonJS, AMD, Bower o Component
 - Utilícelo con conectores para [Gulp](https://github.com/e-jigsaw/gulp-riot), [Grunt](https://github.com/ariesjia/grunt-riot) o [Browserify](https://github.com/jhthorsen/riotify)
 

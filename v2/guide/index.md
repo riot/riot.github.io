@@ -51,7 +51,7 @@ Riot custom tags are the building blocks for user interfaces. They make the "vie
 </todo>
 ```
 
-Custom tags are [compiled](/guide/compiler/) to JavaScript.
+Custom tags are [compiled](/v2/guide/compiler/) to JavaScript.
 
 See the [live demo](http://riotjs.com/examples/plunker/?app=todo-app), browse the [sources](https://github.com/riot/examples/tree/gh-pages/todo-app), or download the [zip](https://github.com/riot/examples/archive/gh-pages.zip).
 
@@ -127,7 +127,7 @@ You can specify a pre-processor with `type` attribute. For example:
 
 Currently available options are "coffee", "typescript", "es6" and "none". You can also prefix the language with "text/", such as "text/coffee".
 
-See [pre processors](/guide/compiler/#pre-processors) for more details.
+See [pre processors](/v2/guide/compiler/#pre-processors) for more details.
 
 
 ## Tag styling
@@ -375,7 +375,7 @@ You can listen to various lifecyle events inside the tag as follows:
 </todo>
 ```
 
-You can have multiple event listeners for the same event. See [observable](/api/observable/) for more details about events.
+You can have multiple event listeners for the same event. See [observable](/v2/api/observable/) for more details about events.
 
 ## Mixins
 
@@ -560,7 +560,7 @@ riot.settings.brackets = '\{\{ }}'
 
 The start and end is separated with a space character.
 
-When using [pre-compiler](/guide/compiler/#pre-compilation) you'll have to set `brackets` option there as well.
+When using [pre-compiler](/v2/guide/compiler/#pre-compilation) you'll have to set `brackets` option there as well.
 
 
 
@@ -669,7 +669,7 @@ Custom tag is placed on a page with nested HTML
 </my-tag>
 ```
 
-See [API docs](/api/#yield) for `yield`.
+See [API docs](/v2/api/#yield) for `yield`.
 
 ## Named elements
 
@@ -790,7 +790,7 @@ The element with the `each` attribute will be repeated for all items in the arra
 
 ### Context
 
-A new context is created for each item. These are [tag instances](/api/#tag-instance). When loops are nested, all the children tags in the loop inherit any of their parent loop's properties and methods they themselves have `undefined`. In this way, Riot avoids overriding things that should not be overridden by the parent tag.
+A new context is created for each item. These are [tag instances](/v2/api/#tag-instance). When loops are nested, all the children tags in the loop inherit any of their parent loop's properties and methods they themselves have `undefined`. In this way, Riot avoids overriding things that should not be overridden by the parent tag.
 
 The parent can be explicitly accessed through the `parent` variable. For example:
 
@@ -812,7 +812,7 @@ The parent can be explicitly accessed through the `parent` variable. For example
 
 In the looped element everything but the `each` attribute belongs to the child context, so the `title` can be accessed directly and `remove` needs to be prefixed with `parent.` since the method is not a property of the looped item.
 
-The looped items are [tag instances](/api/#tag-instance). Riot does not touch the original items so no new properties are added to them.
+The looped items are [tag instances](/v2/api/#tag-instance). Riot does not touch the original items so no new properties are added to them.
 
 
 ### Event handlers with looped items

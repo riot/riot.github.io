@@ -75,7 +75,7 @@ Pre- compilation on the server gives you following benefits:
 
 - Ability to compile tags with your [favorite pre-processor](#pre-processors).
 - Small performance benefit. No need to load and execute the compiler on browser.
-- Universal (isomorphic) apps and the ability to pre- render tags on the server (released soon).
+- Universal (isomorphic) apps and the ability to pre- render tags on the server.
 
 
 Pre-compilation happens with a `riot` executable, which can be installed with NPM as follows:
@@ -260,12 +260,8 @@ npm install coffee-script -g
 
 ### EcmaScript 6
 
-ECMAScript 6 is enabled with a type "es6":
+ECMAScript 6 (babeljs) is enabled with a type "es6":
 
-``` sh
-# use ES6 pre-processor
-riot --type es6 source.tag
-```
 
 A sample tag written in ES6:
 
@@ -280,37 +276,17 @@ A sample tag written in ES6:
 </test>
 ```
 
-All ECMAScript 6 [features](https://github.com/lukehoban/es6features) can be used. [Babel 5](https://babeljs.io/) is used for the transformation:
-
-``` sh
-npm install babel@5.8 -g
-```
-
-Here is a [bigger example](https://github.com/txchen/feplay/tree/gh-pages/riot_babel) on using Babel 5 with Riot.
-
-### Babel 6
-
-Babel 6 introduced many breaking changes so if you want to use it you should configure your environment first:
+Before using the es6 compiler you should properly configure your project following the steps below:
 
  1. install our [babel-preset-es2015-riot](https://github.com/riot/babel-preset-es2015-riot)<br /> `npm install babel-preset-es2015-riot --save-dev`
  2. install `babel-core` as well <br /> `npm install babel-core -g`
  3. create a `.babelrc` file containing the preset id<br /> `{ "presets": ["es2015-riot"] }`
 
-Once your have configured your environment you can use:
+Once your have configured your environment you can compile your tags:
 
 ``` sh
-# use Babel pre-processor
-riot --type babel source.tag
-```
-
-Riot can be used with any Babel preset as long as the following option will be properly set:
-
-```json
-{
-  "plugins": [
-    ["transform-es2015-modules-commonjs", { "allowTopLevelThis": true }]
-  ]
-}
+# use ES6 pre-processor
+riot --type es6 source.tag
 ```
 
 <span class="tag red">note</span> Babel generates a lot of extra code in your output so you may consider compiling your tags in 2 separate steps using the `babel-plugin-external-helpers-2` as well for example:
@@ -385,29 +361,29 @@ Note that `each` attribute is LiveScript as well. LiveScript must be present on 
 npm install LiveScript -g
 ```
 
-### Jade
+### Pug (Jade)
 
-HTML layout can be processed with `template` configuration option. Here's an example with Jade – a "clean, whitespace sensitive syntax for writing html"
+HTML layout can be processed with `template` configuration option. Here's an example with pug – a "clean, whitespace sensitive syntax for writing html"
 
 
 ``` sh
-# use Jade HTML pre-processor
-riot --template jade source.tag
+# use Pug HTML pre-processor
+riot --template pug source.tag
 ```
 
-A Jade sample:
+A Pug sample:
 
-``` jade
+``` pug
 sample
   p test { value }
   script(type='text/coffee').
     @value = 'sample'
 ```
 
-As you notice, you can define the script type on the template as well. Above we use coffee. [jade](https://github.com/jadejs/jade) is used for the transformation:
+As you notice, you can define the script type on the template as well. Above we use coffee. [pug](https://github.com/pugjs/pug) is used for the transformation:
 
 ``` sh
-npm install jade -g
+npm install pug -g
 ```
 
 
@@ -502,4 +478,4 @@ riot.mount('*')
 ```
 
 
-If you make something great, please [share it](https://github.com/riot/riot/issues/58) !
+If you make something great, please [share it](https://github.com/riot/made-with-riot) !

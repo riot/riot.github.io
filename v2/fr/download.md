@@ -65,7 +65,7 @@ Si vous voulez utilisez riot dans vos applications Chrome, vous devez inclure un
 
 [riot.csp.min.js]({{ page.base }}/riot.csp.min.js)
 
-Dans vos applications Chrome, vous devez [précompiler vos tags](/guide/compiler/#pre-compilation) car ils ne peuvent pas être compilés à l'exécution.
+Dans vos applications Chrome, vous devez [précompiler vos tags](/v2/guide/compiler/#pre-compilation) car ils ne peuvent pas être compilés à l'exécution.
 
 ### GitHub
 

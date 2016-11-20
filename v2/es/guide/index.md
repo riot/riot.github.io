@@ -53,7 +53,7 @@ Las etiquetas personalizadas (<dfn lang="en">custom tags</dfn>) de Riot son los 
 </todo>
 ```
 
-Las etiquetas personalizadas son [compiladas](/guide/compiler/) a JavaScript.
+Las etiquetas personalizadas son [compiladas](/v2/guide/compiler/) a JavaScript.
 
 Vea el [demo en vivo](http://muut.github.io/riotjs/demo/), examine el [código fuente](https://github.com/riot/riot/tree/gh-pages/demo), o descargue el [archivo zip](https://github.com/riot/riot/archive/gh-pages.zip).
 
@@ -127,7 +127,7 @@ Usted puede especificar un preprocesador con el atributo `type`. Por ejemplo:
 
 Las opciones disponibles actualmente son "coffee", "typescript", "es6" y "none". También se puede prefijar el lenguaje con "text/", como en "text/coffee".
 
-Vea [preprocesadores](/guide/compiler/#Preprocesadores) para mayores detalles.
+Vea [preprocesadores](/v2/guide/compiler/#Preprocesadores) para mayores detalles.
 
 
 ## Estilado de las etiquetas
@@ -442,7 +442,7 @@ Puede escuchar varios eventos del ciclo de vida dentro de la etiqueta de la sigu
 </todo>
 ```
 
-Puede tener varios escuchas de eventos para el mismo evento. Ver [observable](/api/observable/) para más detalles sobre los eventos.
+Puede tener varios escuchas de eventos para el mismo evento. Ver [observable](/v2/api/observable/) para más detalles sobre los eventos.
 
 
 ## Expresiones
@@ -536,7 +536,7 @@ riot.settings.brackets = '\{\{ }}'
 
 El inicio y el final se separan con un carácter de espacio.
 
-Cuando se utiliza la [compilación previa](/guide/compiler/#compilación-previa) se deberá configurar la opción `brackets` allí también.
+Cuando se utiliza la [compilación previa](/v2/guide/compiler/#compilación-previa) se deberá configurar la opción `brackets` allí también.
 
 
 
@@ -647,7 +647,7 @@ La etiqueta personalizada se coloca en una página con HTML anidado
 </my-tag>
 ```
 
-Var la documentación del [API](/api/#yield) para más detalles sobre `yield`.
+Var la documentación del [API](/v2/api/#yield) para más detalles sobre `yield`.
 
 ## Elementos con nombre
 
@@ -764,7 +764,7 @@ El elemento con el atributo `each` se repite para todos los elementos de la matr
 
 ### El contexto
 
-Se crea un nuevo contexto para cada elemento. Este contexto es una [instancia de etiqueta](/api/#tag-instance). Cuando se anidan bucles, todas las etiquetas del bucle anidado heredan las propiedades y métodos del bucle donde anidan, y cuyo contenido (en las etiquetas anidadas) no sea `undefined`. De esta manera, riot evita que la etiqueta principal sobrescriba lo que se desea conservar.
+Se crea un nuevo contexto para cada elemento. Este contexto es una [instancia de etiqueta](/v2/api/#tag-instance). Cuando se anidan bucles, todas las etiquetas del bucle anidado heredan las propiedades y métodos del bucle donde anidan, y cuyo contenido (en las etiquetas anidadas) no sea `undefined`. De esta manera, riot evita que la etiqueta principal sobrescriba lo que se desea conservar.
 
 Se puede acceder explícitamente a la etiqueta principal a través de la variable `parent`. Por ejemplo:
 
@@ -786,7 +786,7 @@ Se puede acceder explícitamente a la etiqueta principal a través de la variabl
 
 En cada elemento de `items` en el bucle todo, excepto el atributo `each`, pertenece al contexto anidado, por lo que `title` se puede acceder directamente pero `remove` necesita el prefijo `parent.`, ya que el método no es una propiedad del elemento en el bucle.
 
-Los elementos en el bucle son [instancias de etiquetas](/api/#tag-instance). Riot no toca los elementos originales, así que no hay nuevas propiedades se agreguen a ellos.
+Los elementos en el bucle son [instancias de etiquetas](/v2/api/#tag-instance). Riot no toca los elementos originales, así que no hay nuevas propiedades se agreguen a ellos.
 
 
 ### Controladores de eventos con elementos en bucle

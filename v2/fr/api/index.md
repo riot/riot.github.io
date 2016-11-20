@@ -13,7 +13,7 @@ class: apidoc
 
 Le sélecteur `customTagSelector` sélectionne les éléments correspondants dans la page et vient les monter avec un tag personnalisé. Le nom des éléments sélectionnés doit correspondre au nom du tag personnalisé.
 
-L'objet optionnel `opts` est passé en paramètre aux tags. Il peut s'agir de n'importe quoi, d'un simple objet à l'API de toute une application. Ou encore d'un store Flux. Cela dépend vraiment de la manière dont vous voulez structurer votre application côté client. Plus d'infos sur les [applications Rito modulaires ici](/guide/application-design/#modularity).
+L'objet optionnel `opts` est passé en paramètre aux tags. Il peut s'agir de n'importe quoi, d'un simple objet à l'API de toute une application. Ou encore d'un store Flux. Cela dépend vraiment de la manière dont vous voulez structurer votre application côté client. Plus d'infos sur les [applications Rito modulaires ici](/v2/guide/application-design/#modularity).
 
 ``` js
 // selectionne et monte tous les tags <pricing> sur la page
@@ -406,9 +406,9 @@ sera compilé comme ceci:
 
 ```js
 var OptsMixin = {
-  // la méthode init est une méthode spéciale invoquée 
+  // la méthode init est une méthode spéciale invoquée
   // automatiquement quand un tag est étendu avec ce mixin
-  // elle n'est pas accessible ensuite depuis le tag étendu  
+  // elle n'est pas accessible ensuite depuis le tag étendu
   init: function() {
     this.on('updated', function() { console.log('Updated!') })
   },
@@ -488,7 +488,7 @@ La liste suivante de noms de méthodes et de propriétés sont réservés par le
 Crée un nouveau tag personnalisé "manuellement" sans le compilateur.
 
 - `tagName` est le nom du tag
-- `html` est le code HTML avec les [expressions](/guide/#expressions)
+- `html` est le code HTML avec les [expressions](/v2/guide/#expressions)
 - `css` est le style du tag (facultatif)
 - `attrs` est une String listant les attributs du tag (facultatif)
 - `constructor` est la fonction d'initialisation appelée avant que les expressions du tag soient calculées et que le tag soit monté

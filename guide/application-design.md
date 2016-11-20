@@ -7,7 +7,7 @@ title: Application design
 
 ## Tools, not policy
 
-Riot comes bundled with custom tags, an event emitter (observable) and router. We believe that these are the fundamental building blocks for client-side applications:
+Riot comes bundled with custom tags, an event emitter (observable) and an optional router. We believe that these are the fundamental building blocks for client-side applications:
 
 1. Custom tags for the user interface,
 2. Events for modularity, and
@@ -56,7 +56,7 @@ If two tags know about each other they become dependent and a "tight coupling" i
 
 To reduce coupling, have the tags listen for events rather than call each other directly. What you need is a publish/subscribe system built with `riot.observable` or similar.
 
-This event emitting system can range from a simple API to a larger architectural choice like Facebook Flux.
+This event emitting system can range from a simple API to a larger architectural choice like Facebook Flux or Redux.
 
 ### Example Riot application design
 
@@ -76,14 +76,14 @@ auth.login = function(params) {
 <!-- login view -->
 <login>
   <form onsubmit="{ login }">
-    <input name="username" type="text" placeholder="username">
-    <input name="password" type="password" placeholder="password">
+    <input ref="username" name="username" type="text" placeholder="username">
+    <input ref="password" name="password" type="password" placeholder="password">
   </form>
 
   login() {
     opts.login({
-      username: this.username.value,
-      password: this.password.value
+      username: this.refs.username.value,
+      password: this.refs.password.value
     })
   }
 

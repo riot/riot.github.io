@@ -13,7 +13,7 @@ class: apidoc
 
 `customTagSelector` selects elements from the page and mounts them with a custom tag. The selected elements' name must match the custom tag name.
 
-`opts` optional object is passed for the tags to consume. This can be anything, ranging from a simple object to a full application API. Or it can be a Flux- store. Really depends on how you want to structure your client-side applications. Read more about [modular Riot applications](/guide/application-design/#modularity). *Also note* that attributes you set on your tags as options will take precedence over ones specified with same names via `opts` argument.
+`opts` optional object is passed for the tags to consume. This can be anything, ranging from a simple object to a full application API. Or it can be a Flux- store. Really depends on how you want to structure your client-side applications. Read more about [modular Riot applications](/v2/guide/application-design/#modularity). *Also note* that attributes you set on your tags as options will take precedence over ones specified with same names via `opts` argument.
 
 
 ``` js
@@ -29,7 +29,7 @@ var tags = riot.mount('account', api)
 
 @returns: an array of the mounted [tag instances](#tag-instance)
 
-Note: users of [In-browser compilation](/guide/compiler/#in-browser-compilation) will need to wrap calls to `riot.mount` in `riot.compile` in order to get returned [tag instances](#tag-instance). Without this, calls to `riot.mount` will return `undefined`.
+Note: users of [In-browser compilation](/v2/guide/compiler/#in-browser-compilation) will need to wrap calls to `riot.mount` in `riot.compile` in order to get returned [tag instances](#tag-instance). Without this, calls to `riot.mount` will return `undefined`.
 
 ```javascript
 <script>
@@ -529,7 +529,7 @@ The above method and property names are reserved words for Riot tags. Don't use 
 Creates a new custom tag "manually" without the compiler.
 
 - `tagName` the tag name
-- `html` is the layout with [expressions](/guide/#expressions)
+- `html` is the layout with [expressions](/v2/guide/#expressions)
 - `css` is the style for the tag (optional)
 - `attrs` string of attributes for the tag (optional).
 - `constructor` is the initialization function being called before the tag expressions are calculated and before the tag is mounted
@@ -558,7 +558,7 @@ riot.tag('timer',
   })
 ```
 
-See [timer demo](http://jsfiddle.net/gnumanth/h9kuozp5/) and [riot.tag](/api/#tag-instance) API docs for more details and *limitations*.
+See [timer demo](http://jsfiddle.net/gnumanth/h9kuozp5/) and [riot.tag](/v2/api/#tag-instance) API docs for more details and *limitations*.
 
 
 <span class="tag red">Warning</span> by using `riot.tag` you cannot enjoy the advantages of the compiler and the following features are not supported:

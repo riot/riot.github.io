@@ -91,7 +91,7 @@ Les tags personnalisés permettent de concevoir des vues complexes avec HTML. Vo
 
 La syntaxe HTML est le langage *de facto* du Web et a été conçu pour faire des interfaces utilisateur. La syntaxe est explicite, l'imbrication des éléments est inhérente au langage, et les attributs offrent un moyen propre pour fournir des options aux tags personnalisés.
 
-Les tags Riot sont [compilés](/guide/compiler/) en JavaScript pur avant que les navigateurs puissent les exécuter.
+Les tags Riot sont [compilés](/v2/guide/compiler/) en JavaScript pur avant que les navigateurs puissent les exécuter.
 
 
 ### DOM virtuel
@@ -110,7 +110,7 @@ Les tags Riot sont [compilés](/guide/compiler/) en JavaScript pur avant que les
 
 
 ### Prêt pour l'outillage
-- Créez des tags en ES6, TypeScript, CoffeeScript, Jade, LiveScript ou [n'importe quel préprocesseur](/guide/compiler/#pre-processors) de votre choix
+- Créez des tags en ES6, TypeScript, CoffeeScript, Jade, LiveScript ou [n'importe quel préprocesseur](/v2/guide/compiler/#pre-processors) de votre choix
 - Integrez avec NPM, CommonJS, AMD, Bower ou Component
 - Développez avec des plugins [Gulp](https://github.com/e-jigsaw/gulp-riot), [Grunt](https://github.com/ariesjia/grunt-riot) ou [Browserify](https://github.com/jhthorsen/riotify)
 

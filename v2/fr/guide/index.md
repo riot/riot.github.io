@@ -51,7 +51,7 @@ Les tags personnalisés de Riot sont les blocs de construction des interfaces ut
 </todo>
 ```
 
-Les tags personnalisés sont [compilés](/guide/compiler/) en JavaScript.
+Les tags personnalisés sont [compilés](/v2/guide/compiler/) en JavaScript.
 
 Regardez la [démo en ligne](http://riotjs.com/examples/plunker/?app=todo-app), consultez les [sources](https://github.com/riot/examples/tree/gh-pages/todo-app), ou téléchargez le [zip](https://github.com/riot/examples/archive/gh-pages.zip).
 
@@ -127,7 +127,7 @@ Vous pouvez spécifier un préprocesseur avec l'attribut `type`. Par exemple:
 
 Les options actuellement disponibles sont "coffee", "typescript", "es6" et "none". Vous pouvez également préfixer le langage avec "text/", par exemple "text/coffee".
 
-Voir la section [Préprocesseurs](/guide/compiler/#pre-processors) pour plus de détails.
+Voir la section [Préprocesseurs](/v2/guide/compiler/#pre-processors) pour plus de détails.
 
 
 ## Style du tag
@@ -560,7 +560,7 @@ riot.settings.brackets = '\{\{ }}'
 
 Les notations de début et de fin d'expression sont séparées par un caractère espace.
 
-Si vous utilisez le [précompilateur](/guide/compiler/#pre-compilation), vous devrez également configurer l'option `brackets`.
+Si vous utilisez le [précompilateur](/v2/guide/compiler/#pre-compilation), vous devrez également configurer l'option `brackets`.
 
 
 

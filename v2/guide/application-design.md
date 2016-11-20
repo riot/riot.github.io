@@ -30,7 +30,7 @@ These extensions can be custom tags (UI components) or non-UI modules.
 
 Once the core and events are carefully designed the team members are enabled to develop the system on their own without disturbing others.
 
-[Observable API](/api/observable/)
+[Observable API](/v2/api/observable/)
 
 
 ## Routing
@@ -45,7 +45,7 @@ You can place routing logic everywhere; in custom tags or non-UI modules. Some a
 
 Every browser application needs routing since there is always an URL in the location bar.
 
-[Router API](/api/route/)
+[Router API](/v2/api/route/)
 
 
 ## Modularity

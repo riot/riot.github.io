@@ -91,7 +91,7 @@ Custom tags let you build complex views with HTML. Your application might look s
 
 HTML syntax is the *de facto* language of the web and it's designed for building user interfaces. The syntax is explicit, nesting is inherent to the language, and attributes offer a clean way to provide options for custom tags.
 
-Riot tags are [converted](/guide/compiler/) to pure JavaScript before browsers can execute them.
+Riot tags are [converted](/v2/guide/compiler/) to pure JavaScript before browsers can execute them.
 
 
 ### Virtual DOM
@@ -110,7 +110,7 @@ Riot tags are [converted](/guide/compiler/) to pure JavaScript before browsers c
 
 
 ### Tooling friendly
-- Create tags with ES6, Typescript, CoffeeScript, Jade, LiveScript or [any pre-processor](/guide/compiler/#pre-processors) you want
+- Create tags with ES6, Typescript, CoffeeScript, Jade, LiveScript or [any pre-processor](/v2/guide/compiler/#pre-processors) you want
 - Integrate with NPM, CommonJS, AMD, Bower or Component
 - Develop with [Gulp](https://github.com/e-jigsaw/gulp-riot), [Grunt](https://github.com/ariesjia/grunt-riot) or [Browserify](https://github.com/jhthorsen/riotify) plugins
 
