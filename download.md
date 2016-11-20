@@ -73,6 +73,10 @@ In your Chrome apps you must [precompile your tags](/guide/compiler/#pre-compila
 
 `git clone git@github.com:riot/riot.git`
 
+### Riot router
+
+[riot-route](https://github.com/riot/route)
+
 ## Logo
 
 ![](/img/logo/riot480x.png)

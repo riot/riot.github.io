@@ -8,7 +8,7 @@ class: download
 
 # Riot v**{{ site.v2_version }}**
 
-View our [version history](/release-notes). All Files are Open Source with [MIT License](/license/).
+View our [version history](/v2/release-notes). All Files are Open Source with [MIT License](/license/).
 
 ## Direct downloads
 

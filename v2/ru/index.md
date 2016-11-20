@@ -11,7 +11,7 @@ description: Riot позволяет создавать интерфейсы с 
 
   <div id="version-slurp">
     <a href="/v2/ru/download/" class="tag blue">v{{ site.v2_version }}</a> &mdash;
-    <a href="/release-notes/">{{ site.v2_version_slurp }}&hellip;</a>
+    <a href="/v2/release-notes/">{{ site.v2_version_slurp }}&hellip;</a>
   </div>
 
 </div>

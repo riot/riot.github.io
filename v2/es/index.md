@@ -11,7 +11,7 @@ description: Riot le permite construir interfaces de usuario con _etiquetas_ per
 
   <div id="version-slurp">
     <a href="/v2/es/download/" class="tag blue">v{{ site.v2_version }}</a> &mdash;
-    <a href="/v2/es/release-notes/">{{ site.v2_version_slurp }}&hellip;</a>
+    <a href="/v2/es/v2/release-notes/">{{ site.v2_version_slurp }}&hellip;</a>
   </div>
 
 </div>

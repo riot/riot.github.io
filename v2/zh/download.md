@@ -8,7 +8,7 @@ class: download
 
 # Riot v**{{ site.v2_version }}**
 
-查看 [版本历史](/release-notes). 所有的文件以 [MIT License](/license/) 开源.
+查看 [版本历史](/v2/release-notes). 所有的文件以 [MIT License](/license/) 开源.
 
 ## 直接下载
 

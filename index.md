@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Riot.js — A React-like user interface micro-library
+title: Riot.js — Simple and elegant component-based UI library
 description: Riot lets you build user interfaces with custom tags using simple and enjoyable syntax. It uses a virtual DOM similar to React but faster. Riot is very tiny compared to industry standards. We think there is a clear need for another UI library.
 ---
 

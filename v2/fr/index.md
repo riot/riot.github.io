@@ -11,7 +11,7 @@ description: Riot vous permet de concevoir des interfaces utilisateur avec des t
 
   <div id="version-slurp">
     <a href="/v2/fr/download/" class="tag blue">v{{ site.v2_version }}</a> &mdash;
-    <a href="/v2/fr/release-notes/">{{ site.v2_version_slurp }}&hellip;</a>
+    <a href="/v2/fr/v2/release-notes/">{{ site.v2_version_slurp }}&hellip;</a>
   </div>
 
 </div>

@@ -11,7 +11,7 @@ description: Riot lets you build user interfaces with custom tags using simple a
 
   <div id="version-slurp">
     <a href="/v2/download/" class="tag blue">v{{ site.v2_version }}</a> &mdash;
-    <a href="/release-notes/">{{ site.v2_version_slurp }}&hellip;</a>
+    <a href="/v2/release-notes/">{{ site.v2_version_slurp }}&hellip;</a>
   </div>
 
 </div>
