@@ -124,7 +124,7 @@ Riotのタグは、レイアウト(HTML)とロジック(JavaScript)の組み合�
 </script>
 ````
 
-現在のところ、"coffee"と"typescript"、"es6"、"none"を使うことができます。言語指定で"text/"を接頭辞としてつけて、"text/coffee"言語指定に"text/"を接頭辞としてつけ、"text/coffee"のようにしても構いません。
+現在のところ、"coffee"と"typescript"、"es6"、"none"を使うことができます。言語指定に"text/"を接頭辞としてつけ、"text/coffee"のようにしても構いません。
 
 詳細については [プリプロセッサ](/ja/guide/#プリプロセッサ)を参照してください。
 
