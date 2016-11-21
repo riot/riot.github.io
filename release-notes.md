@@ -16,7 +16,7 @@ List of improvements and breaking changes
 __riot__:
 
   - _Change:_ build riot using rollup+babel instead of smash using only es6 modules syntax
-  - _Change:_ clean up the tests splitting them into several files, now our unit test was rewritten using chai.js and es6 syntax
+  - _Change:_ clean up the tests splitting them into several files, now our tests use chai.js and es6 syntax
   - _Change:_ improve the loop performances, now the update method is much faster than before.
   - _Change:_ use the `ref` attribute instead of `name` and `id` [riot/1185](https://github.com/riot/riot/issues/1185) (__breaking change__)
   - _Change:_ remove riot-route from the core making it optional [riot/1485](https://github.com/riot/riot/issues/1485) (__breaking change__)
