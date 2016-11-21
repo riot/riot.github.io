@@ -8,7 +8,7 @@ id: release-notes
 
 ## 3.0.0 *November @, 2016*
 
-It has been a long road but in the end we made it and riot@3.0.0 is finally out and it represents a
+It has been a long journey but in the end we made it and riot@3.0.0 is finally out and it represents a
 step forward compared to riot 2 for stability, performance and flexibility.
 
 List of improvements and breaking changes
@@ -16,8 +16,9 @@ List of improvements and breaking changes
 __riot__:
 
   - _Change:_ build riot using rollup+babel instead of smash using only es6 modules syntax
-  - _Change:_ clean up the tests splitting them into several files, now our tests use chai.js and es6 syntax
+  - _Change:_ clean up the tests (we use 371 tests!) splitting them into several files written in es6 and we switched to chai.js replacing expect.js
   - _Change:_ improve the loop performances, now the update method is much faster than before.
+  - _Change:_ deprecate `riot-tag` in favor of `data-is`
   - _Change:_ use the `ref` attribute instead of `name` and `id` [riot/1185](https://github.com/riot/riot/issues/1185) (__breaking change__)
   - _Change:_ remove riot-route from the core making it optional [riot/1485](https://github.com/riot/riot/issues/1485) (__breaking change__)
   - _Change:_ avoid that the update and the updated events get triggered before any tag has been mounted [riot/1661](https://github.com/riot/riot/issues/1661) (__breaking change__)
@@ -62,7 +63,7 @@ __riot-observable__:
 
 __riot-tmpl__:
 
-  - _Change:_ template errors will be always output in the via `console.error` if the console api is available
+  - _Change:_ template errors will be always output in the via `console.error` if the console api is available (__breaking change__)
 
 __riot-compiler__:
 
@@ -71,6 +72,9 @@ __riot-compiler__:
   - _Change:_ css generated via riot-compiler will be always scoped (__breaking change__)
   - _Deprecate:_ old `babel` support, now the `es6` parser will use Babel 6 by default (__breaking change__)
 
+### What comes next?
 
+[@tipiirai](https://github.com/tipiirai) is working on a brand new riot release experimenting new rendering strategies and big core improvements that will be part of riot@4.0.0
 
+For the next releases we will mainly focus on improving the initial rendering performances [riot/2034](https://github.com/riot/riot/issues/2034). We will try to bring the compiler sourcemaps and a better support for hot modules replacement stay tuned!
 
