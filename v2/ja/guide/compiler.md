@@ -63,8 +63,8 @@ riot.compile(function() {
 
 ### デモ
 
-- [インブラウザ・コンパイル版](http://riotjs.com/examples/plunker/?app=todo-app) ([ソース](https://github.com/riot/examples/blob/master/todo-app))
-- [プリコンパイル版](http://riotjs.com/examples/todo-app-precompiled/) ([ソース](https://github.com/riot/examples/blob/master/todo-app-precompiled))
+- [インブラウザ・コンパイル版](http://riotjs.com/examples/todo-app/) ([ソース](https://github.com/riot/examples/tree/gh-pages/todo-app))
+- [プリコンパイル版](http://riotjs.com/examples/todo-app-precompiled/) ([ソース](https://github.com/riot/examples/tree/gh-pages/todo-app-precompiled))
 
 
 
