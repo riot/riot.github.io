@@ -72,6 +72,13 @@ __riot-compiler__:
   - _Change:_ css generated via riot-compiler will be always scoped (__breaking change__)
   - _Deprecate:_ old `babel` support, now the `es6` parser will use Babel 6 by default (__breaking change__)
 
+
+### Thank you all!
+
+Many thanks to all the riot community and to all our users that have really helped us making the best decision to improve this framework.
+Special thanks go to [@rogueg](https://github.com/rogueg) for his great work on the riot source code and he is now part of the riot core team.
+Thanks also to the other core contributors and collaborators for the hard work on this project you are awesome.
+
 ### What comes next?
 
 [@tipiirai](https://github.com/tipiirai) is working on a brand new riot release experimenting new rendering strategies and big core improvements that will be part of riot@4.0.0

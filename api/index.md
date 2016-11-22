@@ -117,7 +117,7 @@ riot.render(mytag, { foo: 'bar' })
 ### <a name="mount-dom"></a> riot.require(tagPath, [opts])
 Requiring and compiling riot tags in runtime<br/>
 __Only available on *server-side*__.<br/>
-It works like `require('./my-tag.tag')` but it gives you the possibility to compile your tags using any of the given [riot-compiler options](/apic/ompiler/#on-server). For example you can require and use a preprocessor at same time.
+It works like `require('./my-tag.tag')` but it gives you the possibility to compile your tags using any of the given [riot-compiler options](/api/compiler/#on-server). For example you can require and use a preprocessor at same time.
 
 ```js
 var tag = riot.require('./my-tag.jade', { template: 'jade' })

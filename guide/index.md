@@ -74,7 +74,7 @@ A Riot tag is a combination of layout (HTML) and logic (JavaScript). Here are th
 * Standard HTML tags (`label`, `table`, `a` etc..) can also be customized, but not necessarily a wise thing to do.
 * Tag definition **root** may also have attributes: `<foo onclick={ click } class={ active: active }>`.
 
-Inline tag definitions(in document body) should be properly indented, with all custom tags equally indented at the lowest indent level, mixing of tabs and spaces is discouraged.
+Inline tag definitions (in document body) should be properly indented, with all custom tags equally indented at the lowest indent level, mixing of tabs and spaces is discouraged.
 
 ### No script tag
 
@@ -207,7 +207,7 @@ Riot gives you access to elements that have `ref` attributes under the `this.ref
 
 ### How to use jQuery, Zepto, querySelector, etc...
 
-If you need to access the DOM inside Riot, you'll want to take a look at the [Tag Lifecycle](#tag-lifecycle) and notice that the DOM elements aren't instantiated until the `mount` event first fires, meaning any attempt to select an element before then will fail.
+If you need to access the DOM inside Riot, you'll want to take a look at the [Tag Lifecycle](#tag-lifecycle). Notice that the DOM elements aren't instantiated until the `mount` event first fires, meaning any attempt to select an element before then will fail.
 
 ```html
 <example-tag>

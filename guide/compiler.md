@@ -282,7 +282,7 @@ Before using the es6 compiler you should properly configure your project followi
  2. install `babel-core` as well <br /> `npm install babel-core -g`
  3. create a `.babelrc` file containing the preset id<br /> `{ "presets": ["es2015-riot"] }`
 
-Once your have configured your environment you can compile your tags:
+Once you have configured your environment you can compile your tags:
 
 ``` sh
 # use ES6 pre-processor
