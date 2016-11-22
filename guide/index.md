@@ -864,6 +864,13 @@ In some cases you may need to loop some html without having a particular wrapper
 </dl>
 ```
 
+`virtual` however is not exclusive to looping and can be used in conjuction with `if` or `data-is`
+
+```html
+<virtual if={condition}>
+  <p>Show me with no wrapper on condition</p>
+</virtual>
+```
 ## HTML elements as tags
 
 Standard HTML elements can be used as riot tags in the page body with the addition of the `data-is` attribute.
