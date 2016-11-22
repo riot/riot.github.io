@@ -75,7 +75,7 @@ __riot-compiler__:
 
 ### Thank you all!
 
-Many thanks to all the riot community and to all our users that have really helped us making the best decision to improve this framework.
+Many thanks to all the riot community and to all our users who have really helped us making the best decisions to improve this framework.
 Special thanks go to [@rogueg](https://github.com/rogueg) for his great work on the riot source code and he is now part of the riot core team.
 Thanks also to the other core contributors and collaborators for the hard work on this project you are awesome.
 
