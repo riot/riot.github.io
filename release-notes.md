@@ -6,7 +6,7 @@ id: release-notes
 
 # {{ page.title }}
 
-## 3.0.0 *November @, 2016*
+## 3.0.0 *November 22, 2016*
 
 It has been a long journey but in the end we made it and riot@3.0.0 is finally out and it represents a
 step forward compared to riot 2 for stability, performance and flexibility.
