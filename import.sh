@@ -14,14 +14,17 @@ function _update {
   # print the doc/README.md of each submodule after the files headers
   tail -n +2 tmp/$1/doc/README.md >> $tmp_file
 
-  # prefix the submodule api methods using riot (observable => riot.observable)
-  if [ $1 != 'compiler' ]
-    then
-    sed -i '' "s/$1\([(|.]\)/riot.$1\1/g" $tmp_file
   # for the compiler api we just need to change
   # the prefix of the methods(compiler.compile => riot.compile)
-  else
+  if [ $1 == 'compiler' ]
+    then
     sed -i '' "s/$1\([(|.]\)/riot\1/g" $tmp_file
+  # prefix the submodule api methods using riot (observable => riot.observable)
+  else
+    if [ $1 == 'observable' ]
+      then
+      sed -i '' "s/$1\([(|.]\)/riot.$1\1/g" $tmp_file
+    fi
   fi
 
 

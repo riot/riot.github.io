@@ -4,7 +4,7 @@ permalink:           pretty
 
 # Setup
 title:               Riot.js
-tagline:             A React-like, user interface microlibrary
+tagline:             Simple and elegant component-based UI library
 url:                 http://riotjs.com
 baseurl:             ""
 
@@ -38,13 +38,17 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-minor_version:       2.6
+minor_version:       3.0
+v2_minor_version:    2.6
 
-version:             2.6.7
+version:             3.0.0
+v2_version:          2.6.7
 release_date:        November 6
-version_slurp:       Fix rendering of tags containing SVGs
+version_slurp:       More stable than ever before
+v2_version_slurp:    Fix rendering of tags containing SVGs
 repo:                https://github.com/riot/riot
-
+twitter_account:     https://twitter.com/riotjs_
+gitter:              https://gitter.im/riot/riot
 # Vars needed for the compare.md page
 
 size_min:            9.39

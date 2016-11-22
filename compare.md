@@ -17,9 +17,6 @@ We respect this insight. The goal is to build reusable components instead of tem
 
 By combining these related technologies together under the same component the system becomes cleaner. We respect React because of this important insight.
 
-React worked well for us, and we still use it in our [Disqus Importer](/importer/) but we were bothered by the size and syntax of React (*especially* the syntax). We started thinking it could be simpler; both internally and for the user.
-
-
 ### React syntax
 
 The following example was taken directly from the React home page:
@@ -29,43 +26,57 @@ The following example was taken directly from the React home page:
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Todo extends React.Component {
+class TodoApp extends React.Component {
   constructor(props) {
     super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {items: [], text: ''};
   }
 
   render() {
-    const {items, text} = this.state;
     return (
       <div>
         <h3>TODO</h3>
-        <ul>
-          <li>{items.map((item, i)=> <li key={i}>{item}</li>)}</li>
-        </ul>
-        <form onSubmit={this._onSubmit}>
-          <input onChange={this._onChange} value={text}/>
-          <button>Add #{items.length + 1}</button>
+        <TodoList items={this.state.items} />
+        <form onSubmit={this.handleSubmit}>
+          <input onChange={this.handleChange} value={this.state.text} />
+          <button>{'Add #' + (this.state.items.length + 1)}</button>
         </form>
       </div>
     );
   }
 
-  _onChange(e) {
+  handleChange(e) {
     this.setState({text: e.target.value});
   }
 
-  _onSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
-    const {items, text} = this.state;
-    this.setState({
-      items: items.concat(text),
+    var newItem = {
+      text: this.state.text,
+      id: Date.now()
+    };
+    this.setState((prevState) => ({
+      items: prevState.items.concat(newItem),
       text: ''
-    });
+    }));
   }
 }
 
-ReactDOM.render(<Todo/>, mountNode);
+class TodoList extends React.Component {
+  render() {
+    return (
+      <ul>
+        {this.props.items.map(item => (
+          <li key={item.id}>{item.text}</li>
+        ))}
+      </ul>
+    );
+  }
+}
+
+ReactDOM.render(<TodoApp />, mountNode);
 ```
 
 JSX is mixture of HTML and JavaScript. You can include HTML anywhere on the component; inside methods and in property assignments.
@@ -84,14 +95,15 @@ Here is the above thing with Riot:
   </ul>
 
   <form onsubmit={ handleSubmit }>
-    <input>
+    <input ref="input">
     <button>Add #{ items.length + 1 }</button>
   </form>
 
   this.items = []
 
   handleSubmit(e) {
-    var input = e.target[0]
+    e.preventDefault()
+    var input = this.refs.input
     this.items.push(input.value)
     input.value = ''
   }
@@ -117,11 +129,11 @@ You see less boilerplate. Less brackets, commas, system properties and method na
 We think Riot syntax is the cleanest way to separate layout and logic while enjoying the benefits of isolated reusable components.
 
 
-### String based vs DOM based
+### Virtual DOM vs expressions binding
 
-When a component is initialized React parses a string and Riot traverses a DOM tree.
+When a component is initialized React creates its Virtual DOM, Riot on the other hand traverses just a DOM tree.
 
-Riot takes the expressions from the tree and stores them in an array. Each expression has a pointer to a DOM node. On each run these expressions are evaluated and compared to the values in the DOM. When a value has changed the corresponding DOM node is updated. In a way Riot also has a virtual DOM, just a much simpler one.
+Riot takes the expressions from the tree and stores them in an array. Each expression has a pointer to a DOM node. On each run these expressions are evaluated and compared to the values in the DOM. When a value has changed the corresponding DOM node is updated.
 
 Since these expressions can be cached an update cycle is very fast. Going through 100 or 1000 expressions usually takes 1ms or less.
 
@@ -138,7 +150,7 @@ React deals with the UI only, which is a good thing. All great software projects
 
 Facebook recommends to use [Flux](http://facebook.github.io/flux/docs/overview.html) to structure the client-side code. It's more of a pattern than a framework and is packed with great ideas.
 
-Riot comes bundled with custom tags, an event emitter (observable) and router. We believe that these are the fundamental building blocks of client side applications. Events bring modularity, a router takes care of the URL and the back button and custom tags take care of the user interface.
+Riot comes bundled with custom tags, an event emitter (observable) and an optional router. We believe that these are the fundamental building blocks of client side applications. Events bring modularity, a router takes care of the URL and the back button and custom tags take care of the user interface.
 
 Just like Flux, Riot is flexible and leaves the bigger architectural decisions for the developer. It's just a library to help you achieve the goal.
 

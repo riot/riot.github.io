@@ -77,6 +77,27 @@ riot.mount(document.getElementById('slide'), 'users', api)
 
 @returns: an array of the mounted [tag instances](#tag-instance)
 
+### <a name="unregister"></a> riot.unregister(tagName)
+
+Unregistering a tag previously tag created via compiler or via `riot.tag()`
+This method could be handy in case you need to test your app and you want to create multiple
+tags using the same name for example
+
+```js
+// create a test tag
+riot.tag('test-tag', '<p>{ message }</p>')
+
+// mount it
+var tag = riot.mount(document.createElement('div'), 'test-tag')[0]
+expect(tag.root.querySelector('p')).to.be.ok
+
+// unregister the tag
+riot.unregister('test-tag')
+
+// recreate the same tag using a different template
+riot.tag('test-tag', '<div>{ message }</div>')
+```
+
 ## Rendering
 
 ### <a name="render"></a> riot.render(tagName, [opts])
@@ -93,8 +114,18 @@ riot.render(mytag, { foo: 'bar' })
 @returns: tags render as html
 
 
+### <a name="mount-dom"></a> riot.require(tagPath, [opts])
+Requiring and compiling riot tags in runtime<br/>
+__Only available on *server-side*__.<br/>
+It works like `require('./my-tag.tag')` but it gives you the possibility to compile your tags using any of the given [riot-compiler options](/api/compiler/#on-server). For example you can require and use a preprocessor at same time.
+
+```js
+var tag = riot.require('./my-tag.jade', { template: 'jade' })
+```
+
+@returns: the tag name
+
 ### <a name="renderasync"></a> riot.renderAsync(tagName, [opts])
-<span class="tag red">&gt;= v2.6.3</span>
 
 Rendering asynchronously a tag to html.<br/>
 __Only available on *server-side*__.<br/>
@@ -137,6 +168,7 @@ You can configure the internal riot promises timeout via `riot.settings.asyncRen
 Following properties are set for each tag instance:
 
 - `opts` - the options object
+- `refs` - named DOM nodes to cache
 - `parent` - the parent tag if any
 - `root` - root DOM node
 - `tags` - nested custom tags
@@ -184,6 +216,21 @@ window.someGlobalVariable = 'Hello!'
 
 Updates all the expressions on the current tag instance as well as on all the children. This method is automatically called every time an event handler is called when user interacts with the application.
 
+You can skip the riot automatic updates by setting the `preventUpdate = true` property to your event object for example:
+
+``` html
+<my-tag>
+  <button onclick={ click }>{ message }</span>
+
+  this.message = 'hi'
+
+  click(e) {
+    e.preventUpdate = true // your tag will not update automatically
+    this.message = 'goodbye'
+  }
+</my-tag>
+```
+
 Other than that riot does not update the UI automatically so you need to call this method manually. This typically happens after some non-UI related event: after `setTimeout`, AJAX call or on some server event. For example:
 
 ``` html
@@ -205,6 +252,28 @@ Other than that riot does not update the UI automatically so you need to call th
 ```
 
 On above example the error message is displayed on the UI after the `update()` method has been called. We assign `this` variable to `self` since inside the AJAX callback `this` variable points to the response object and not to the tag instance.
+
+If you want to have more control over your tags DOM updates you can set a custom `shouldUpdate` function, and your tag will update only if that function will return `true`
+
+``` html
+<my-tag>
+  <button onclick={ click }>{ message }</span>
+
+  this.message = 'hi'
+
+  click(e) {
+    this.message = 'goodbye'
+  }
+  // data here is what you have passed to your update method
+  // in case of this.update() it will be undefined
+  shouldUpdate(data) {
+    // do not update
+    if (this.message === 'goodbye') return false
+    // if this.message is different from 'goodbye' we could update the tag
+    return true
+  }
+</my-tag>
+```
 
 ### <a name="tag-update-data"></a> this.update(data)
 
@@ -267,15 +336,15 @@ You have access to nested tag instances via `tags` variable:
 
 If more than one of the same child tag is used, it is accessed as an array `this.tags.child[n]`
 
-You can also use the `name` attribute to give another name for the nested tag.
+You can also use the `ref` attribute to give another name for the nested tag.
 
 ``` html
 <my-tag>
 
-  <child name="my_nested_tag"></child>
+  <child ref="my_nested_tag"></child>
 
   // access to child tag
-  var child = this.tags.my_nested_tag
+  var child = this.refs.my_nested_tag
 
 </my-tag>
 ```
@@ -285,11 +354,12 @@ The child tags are initialized after the parent tag so the methods and propertie
 ``` html
 <my-tag>
 
-  <child name="my_nested_tag"></child>
+  <child ref="my_nested_tag"></child>
 
   // access to child tag methods
   this.on('mount', function() {
-    this.tags.my_nested_tag.someMethod()
+    this.refs.my_nested_tag.someMethod()
+    // this.tags.child.someMethod() is also valid
   })
 
 </my-tag>
@@ -503,7 +573,7 @@ this.on('unmount', function() {
 
 ## Reserved words
 
-The above method and property names are reserved words for Riot tags. Don't use any of following as your instance variable or method name: `opts`, `parent`, `tags`, `root`, `update`, `unmount`, `on`, `off`, `one` and `trigger`. Variables beginning with an underscore (e.g.: ```this._item```) are reserved for internal use too. Local variables can be freely named. For example:
+The above method and property names are reserved words for Riot tags. Don't use any of following as your instance variable or method name: `opts`, `parent`, `tags`, `root`, `refs`, `update`, `unmount`, `on`, `off`, `one` and `trigger`. Variables beginning with an underscore (e.g.: ```this._item```) are reserved for internal use too. Local variables can be freely named. For example:
 
 ``` javascript
 <my-tag>
@@ -564,12 +634,12 @@ See [timer demo](http://jsfiddle.net/gnumanth/h9kuozp5/) and [riot.tag](/api/#ta
 <span class="tag red">Warning</span> by using `riot.tag` you cannot enjoy the advantages of the compiler and the following features are not supported:
 
 1. Self-closing tags
-2. Unquoted expressions. Write `value="{ val }"` instead of `value={ val }`
-3. Boolean attributes. Write `__checked="{ flag }"` instead of `checked={ flag }`
-4. Shorthand ES6 method signatures
-5. `<img src={ src }>` must be written as `<img riot-src={ src }>` in order to avoid illegal server requests
-6. `style="color: { color }"` must be written as `riot-style="color: { color }"` so that style attribute expressions work in IE
-7. Scoped CSS precompilation.
+2. Unquoted expressions. Write `attr="{ val }"` instead of `attr={ val }`
+3. Shorthand ES6 method signatures
+4. `<img src={ src }>` must be written as `<img riot-src={ src }>` in order to avoid illegal server requests
+5. `<input value={ val }>` must be written as `<img riot-value={ val }>` in order to avoid unexpected IE issues
+5. `style="color: { color }"` must be written as `riot-style="color: { color }"` so that style attribute expressions work in IE
+6. Scoped CSS precompilation.
 
 
 You can take advantage of `<template>` or `<script>` tags as follows:
@@ -587,43 +657,77 @@ riot.tag('tag-name', my_tmpl.innerHTML, function(opts) {
 </script>
 ```
 
-### riot.Tag(impl, conf, innerHTML)
+### riot.Tag(el, [opts])
 
-<span class="tag red">experimental</span>
-
-In riot 2.3 we gave you the access to the internal Tag instance in order to let you create your custom tags in more creative ways.
-
-- `impl`
-  - `tmpl` tag template
-  - `fn(opts)` the callback function called on the mount event
-  - `attrs` root tag html attributes as object (key => value)
-- `conf`
-  - `root` DOM node where you will mount the tag template
-  - `opts` tag options
-  - `isLoop` is it used in as loop tag?
-  - `hasImpl` was already registered using riot.tag?
-  - `item` loop item in the loop assigned to this instance
-- `innerHTML` html that can be used replacing a nested `yield` tag in its template
-
-
-For example using ES2015:
+The riot.Tag constructor will allow you to create and extend your tags using `es6` classes.
+If you want to create your riot tag you need to extend the `riot.Tag` constructor:
 
 ```js
-
 class MyTag extends riot.Tag {
-  constructor(el) {
-    super({ tmpl: MyTag.template() }, { root: el })
-    this.msg = 'hello'
+  // mandatory in order to use and identify this component
+  get name() {
+    return 'my-tag'
   }
-  bye() {
-    this.msg = 'goodbye'
+  get tmpl() {
+    return `<p onclick="{ click }">{ message }, Dear user</p>`
   }
-  static template() {
-    return `<p onclick="{ bye }">{ msg }</p>`
+  get attrs() {
+    return 'class="{ className }"'
+  }
+  get css() {
+    return 'my-tag p{ color: blue; }'
+  }
+  onCreate(opts) {
+    this.message = opts.message
+  }
+  click() {
+    this.message = 'goodbye'
   }
 }
 
-new MyTag(document.getElementById('my-div')).mount()
+new MyTag(
+  document.getElementById('my-div'),
+  { message: 'hi' }
+).mount()
 ```
 
-The `riot.Tag` method is not recommended. You should use it only if you need to achieve special features not available with the previous riot methods
+You can also combine your riot tags extending them starting from a common ancestor
+
+```js
+class Logger extends riot.Tag {
+  get name() {
+    return 'logger'
+  }
+  get tmpl() {
+    return `<div>{ opts.log }</div>`
+  }
+}
+
+class ErrorLogger extends Logger {
+  get name() {
+    return 'error-logger'
+  }
+  get css() {
+    return 'error-logger div { color: red; }'
+  }
+}
+
+class SuccessLogger extends Logger {
+  get name() {
+    return 'success-logger'
+  }
+  get css() {
+    return 'success-logger div { color: green; }'
+  }
+}
+
+new ErrorLogger(
+  document.querySelector('.error'),
+  { log: 'oups!!!' }
+).mount()
+
+new SuccessLogger(
+  document.querySelector('.success'),
+  { log: 'well done!!!' }
+).mount()
+```

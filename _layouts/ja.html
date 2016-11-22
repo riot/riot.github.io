@@ -1,12 +1,12 @@
 <!doctype html>
 
 {% capture nav %}
-  <a href="/ja/compare/">比べてみる</a>
-  <a href="/ja/faq/">FAQ</a>
-  <a href="/ja/guide/">ガイド</a>
-  <a href="/ja/api/">API</a>
-  <a href="/ja/download/">ダウンロード</a>
-  <a href="/ja/forum/">フォーラム</a>
+  <a href="/v2/js/compare/">比べてみる</a>
+  <a href="/v2/js/faq/">FAQ</a>
+  <a href="/v2/js/guide/">ガイド</a>
+  <a href="/v2/js/api/">API</a>
+  <a href="/v2/js/download/">ダウンロード</a>
+  <a href="/v2/js/forum/">フォーラム</a>
 {% endcapture %}
 
 <html lang="ja">
@@ -45,13 +45,11 @@
 
   <div class="wrap">
 
-    <a id="fork" href="{{ site.repo }}">Fork me on GitHub</a>
+    {% include fork-on-github.html %}
 
     <header id="header">
       <span id="logo">
-        <a href="/ja/"><img id="riot-logo" src="/img/logo/riot120x.png"></a>
-        <strong>by</strong>
-        <a href="https://muut.com/"><img id="muut-logo" src="/img/logo/muut.png"></a>
+        <a href="/v2/js/"><img id="riot-logo" src="/img/logo/riot120x.png"></a>
       </span>
 
       <nav id="nav">
@@ -76,7 +74,7 @@
 
   <footer id="footer">
     <div class="wrap">
-      <a href="/ja/"><img src="/img/logo/riot120x.png"></a>
+      <a href="/v2/js/"><img src="/img/logo/riot120x.png"></a>
       <nav>
         <a href="/"><span>en</span> latest</a>
         {% for lang in site.translations %}

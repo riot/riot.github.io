@@ -4,7 +4,7 @@
 
 #footer {
   margin-top: 5em;
-  background-color: #454545;
+  background-color: $footer-background;
   padding: 2em 0;
 
   img.logo {
@@ -17,15 +17,27 @@
     width: 6em;
     float: left;
 
-    @media (max-width: 600px) {
+    @media (max-width: $small-break-point) {
       margin-top: 1.2rem;
-      width: 50%;
+      width: 100%;
     }
 
     &.extra {
+      width: 8rem;
+      margin: .6em 0 0 .3em;
       float: right;
-      @media (max-width: 600px) {
+
+      a {
+        text-align: right;
+      }
+
+      @media (max-width: $small-break-point) {
         float: left;
+        width: auto;
+
+        a {
+          text-align: left;
+        }
       }
     }
 
@@ -33,11 +45,11 @@
       display: block;
       margin-bottom: .3em;
       font-size: 85%;
-      color: #ccc;
+      color: $footer-color;
       white-space: nowrap;
 
       span {
-        background-color: #ccc;
+        background-color: $footer-color;
         color: #454545;
         border-radius: 2px;
         display: inline-block;
@@ -49,9 +61,8 @@
   }
 
   .current {
-    text-decoration: none;
+    text-decoration: underline;
     cursor: default;
-    color: #777;
   }
 
   &:after {
@@ -64,7 +75,7 @@
 // slogan of the day
 #slogan {
   float: right;
-  color: #ccc;
+  color: $footer-color;
   font-size: 300%;
   font-family: garamond;
   margin-top: -1rem;

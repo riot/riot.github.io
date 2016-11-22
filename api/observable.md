@@ -35,18 +35,11 @@ car.trigger('start')
 
 ### <a name="on"></a> el.on(events, callback)
 
-Listen to the given space separated list of `events` and execute the `callback` each time an event is triggered.
+Listen to the given `event` and execute the `callback` each time an event is triggered.
 
 ``` js
 // listen to single event
-el.on('start', function() {
-
-})
-
-// listen to multiple events, the event type is given as the argument
-el.on('start stop', function(type) {
-
-  // type is either 'start' or 'stop'
+el.on('start', function(args) {
 
 })
 
@@ -62,7 +55,7 @@ el.on('*', function(event, param1, param2) {
 
 ### <a name="one"></a> el.one(event, callback)
 
-Listen to the given space separated list of `events` and execute the `callback` at most once
+Listen to the given `event` and execute the `callback` at most once
 
 ``` js
 // run the function once, even if 'start' is triggered multiple times
@@ -75,27 +68,27 @@ el.one('start', function() {
 
 ### <a name="off"></a> el.off(events)
 
-Removes the given space separated list of `events` listeners.
+Removes the given `event` listeners.
 
 ``` js
-el.off('start stop')
+el.off('start')
 ```
 
 @returns `el`
 
 ### <a name="off-fn"></a> el.off(events, fn)
 
-Removes the given callback from the list of events
+Removes the given callback listening to the `event`
 
 ``` js
 function doIt() {
   console.log('starting or ending')
 }
 
-el.on('start middle end', doIt)
+el.on('start', doIt)
 
-// remove a specific listener from start and end events
-el.off('start end', doIt)
+// remove a specific listener
+el.off('start', doIt)
 ```
 
 @returns `el`
@@ -114,11 +107,11 @@ Removes the specific callback function called on all the events
 
 ### <a name="trigger"></a> el.trigger(events)
 
-Execute all callback functions that listen to the given space separated list of `events`.
+Execute all callback functions that listen to the given `event`.
 
 ``` js
 el.trigger('start')
-el.trigger('render update')
+el.trigger('render')
 ```
 
 @returns `el`

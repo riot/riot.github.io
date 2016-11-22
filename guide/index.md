@@ -19,11 +19,11 @@ Riot custom tags are the building blocks for user interfaces. They make the "vie
       <label class={ completed: done }>
         <input type="checkbox" checked={ done } onclick={ parent.toggle }> { title }
       </label>
-    </li>
+    </li>f
   </ul>
 
   <form onsubmit={ add }>
-    <input name="input" onkeyup={ edit }>
+    <input ref="input" onkeyup={ edit }>
     <button disabled={ !text }>Add #{ items.length + 1 }</button>
   </form>
 
@@ -35,16 +35,16 @@ Riot custom tags are the building blocks for user interfaces. They make the "vie
     }
 
     add(e) {
+      e.preventDefault()
       if (this.text) {
         this.items.push({ title: this.text })
-        this.text = this.input.value = ''
+        this.text = this.refs.input.value = ''
       }
     }
 
     toggle(e) {
       var item = e.item
       item.done = !item.done
-      return true
     }
   </script>
 
@@ -74,25 +74,7 @@ A Riot tag is a combination of layout (HTML) and logic (JavaScript). Here are th
 * Standard HTML tags (`label`, `table`, `a` etc..) can also be customized, but not necessarily a wise thing to do.
 * Tag definition **root** may also have attributes: `<foo onclick={ click } class={ active: active }>`.
 
-
-Tag definition in tag files always starts on the beginning of the line:
-
-```html
-<!-- works -->
-<my-tag>
-
-</my-tag>
-
-<!-- also works -->
-<my-tag></my-tag>
-
-  <!-- this fails, because of indentation -->
-  <my-tag>
-
-  </my-tag>
-```
-
-Inline tag definitions(in document body) must be properly indented, with all custom tags equally indented at the lowest indent level, mixing of tabs and spaces is discouraged.
+Inline tag definitions (in document body) should be properly indented, with all custom tags equally indented at the lowest indent level, mixing of tabs and spaces is discouraged.
 
 ### No script tag
 
@@ -151,7 +133,7 @@ You can put a `style` tag inside. Riot.js automatically takes it out and injects
 
 ### Scoped CSS
 
-[Scoped attribute and pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) is also available for all browsers. Riot.js has its own custom implementation in JS which does not relies or fallbacks to the browser implementation. The example below is equivalent to the first one. Notice that the example below uses the `:scope` `pseudo-class` instead of relying in the tag name to scope the styles.
+[Scoped css and :scope pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) is also available for all browsers. Riot.js has its own custom implementation in JS which does not relies or fallbacks to the browser implementation. The example below is equivalent to the first one. Notice that the example below uses the `:scope` `pseudo-class` instead of relying in the tag name to scope the styles.
 
 ```html
 <todo>
@@ -159,7 +141,7 @@ You can put a `style` tag inside. Riot.js automatically takes it out and injects
   <!-- layout -->
   <h3>{ opts.title }</h3>
 
-  <style scoped>
+  <style>
     :scope { display: block }
     h3 { font-size: 120% }
     /** other tag specific styles **/
@@ -220,30 +202,12 @@ A document can contain multiple instances of the same tag.
 
 ### Accessing DOM elements
 
-Riot gives you access to elements that have `name` attributes directly under the `this` keyword, and plenty of shorthand property-methods like the `if="{...}"` attribute, but occasionally you need to reference and touch pieces of HTML which don't really fit inside those prebaked functions.
+Riot gives you access to elements that have `ref` attributes under the `this.refs` object, and plenty of shorthand property-methods like the `if="{...}"` attribute, but occasionally you need to reference and touch pieces of HTML which don't really fit inside those prebaked functions.
 
 
 ### How to use jQuery, Zepto, querySelector, etc...
 
-If you need to access the DOM inside Riot, you'll want to take a look at the [Tag Lifecycle](#tag-lifecycle) and notice that the DOM elements aren't instantiated until the `update()` event first fires, meaning any attempt to select an element before then will fail.
-
-```html
-<example-tag>
-  <p id="findMe">Do I even Exist?</p>
-
-  <script>
-  var test1 = document.getElementById('findMe')
-  console.log('test1', test1)  // Fails
-
-  this.on('update', function(){
-    var test2 = document.getElementById('findMe')
-    console.log('test2', test2) // Succeeds
-  })
-  </script>
-</example-tag>
-```
-
-You probably don't want to run whatever you're attempting to retrieve on every update. Instead you'll most likely want to run on the `mount` event.
+If you need to access the DOM inside Riot, you'll want to take a look at the [Tag Lifecycle](#tag-lifecycle). Notice that the DOM elements aren't instantiated until the `mount` event first fires, meaning any attempt to select an element before then will fail.
 
 ```html
 <example-tag>
@@ -320,7 +284,7 @@ A tag is created in following sequence:
 
 1. Tag is constructed
 2. Tag's JavaScript logic is executed
-3. HTML expressions are calculated and "update" event is fired
+3. HTML expressions are calculated
 4. Tag is mounted on the page and "mount" event is fired
 
 After the tag is mounted the expressions are updated as follows:
@@ -356,7 +320,7 @@ You can listen to various lifecyle events inside the tag as follows:
   })
 
   this.on('updated', function() {
-    // right after the tag template is updated
+    // right after the tag template is updated after an update call
   })
 
   this.on('before-unmount', function() {
@@ -673,26 +637,26 @@ See [API docs](/api/#yield) for `yield`.
 
 ## Named elements
 
-Elements with `name` or `id` attribute are automatically bound to the context so you'll have an easy access to them with JavaScript:
+Elements with `ref` attribute are automatically linked to the context under `this.refs` so you'll have an easy access to them with JavaScript:
 
 ```html
 <login>
-  <form id="login" onsubmit={ submit }>
-    <input name="username">
-    <input name="password">
-    <button name="submit">
+  <form ref="login" onsubmit={ submit }>
+    <input ref="username">
+    <input ref="password">
+    <button ref="submit">
   </form>
 
   // grab above HTML elements
-  var form = this.login,
-    username = this.username.value,
-    password = this.password.value,
-    button = this.submit
+  var form = this.refs.login,
+    username = this.refs.username.value,
+    password = this.refs.password.value,
+    button = this.refs.submit
 
 </login>
 ```
 
-Of course these named elements can be referred to in HTML as well: `<div>{ username.value }</div>`
+Of course these named elements can be referred to in HTML as well: `<div>{ refs.username.value }</div>`
 
 
 ## Event handlers
@@ -719,19 +683,7 @@ Attributes beginning with "on" (`onclick`, `onsubmit`, `oninput` etc...) accept 
 <form onsubmit={ condition ? method_a : method_b }>
 ```
 
-In the function `this` refers to the current tag instance. After the handler is called `this.update()` is automatically called reflecting all the possible changes to the UI (unless you set `e.preventUpdate` in the handler).
-
-The default event handler behavior is *automatically cancelled* unless the element is a checkbox or radio button. This means that `e.preventDefault()` is already called for you, because this is what you usually want (or forget to do). You can let the browser do the default thing by returning `true` on the handler.
-
-For example, this submit handler will actually submit the form to the server:
-
-```js
-submit() {
-  return true
-}
-```
-
-
+In the function `this` refers to the current tag instance. After the handler is called `this.update()` is automatically called reflecting all the possible changes to the UI (unless you set `event.preventUpdate` in the handler).
 
 ### Event object
 
@@ -760,10 +712,6 @@ Again, the expression can be just a simple property or a full JavaScript express
 - `if` – add (true value) or remove (false value) the element from the document
 
 The equality operator is `==` and not `===`. For example: `'a string' == true`.
-
-<span class="tag red">important</span>
-Using conditionals attributes on custom nested tags does not stop riot from evaluating the hidden expressions - we are working on a patch to solve [this issue](https://github.com/riot/riot/pull/1256)
-
 
 ## Loops
 
@@ -905,8 +853,6 @@ In riot v2.3 to make the loops rendering more reliable the DOM nodes will be mov
 
 #### The `virtual` tag
 
-<span class="tag red">experimental</span>
-
 In some cases you may need to loop some html without having a particular wrapper tag. In that case you can use the `<virtual>` tag that will be removed rendering just the html tags wrapped in it. For example:
 
 ```html
@@ -918,24 +864,51 @@ In some cases you may need to loop some html without having a particular wrapper
 </dl>
 ```
 
-## HTML elements as tags
-
-Standard HTML elements can be used as riot tags in the page body with the addition of the `riot-tag` attribute.
-Since riot 2.3.17 we have introduce also the use of the `data-is` attribute to bind the riot tags to DOM elements.
+`virtual` however is not exclusive to looping and can be used in conjuction with `if` or `data-is`
 
 ```html
-<ul riot-tag="my-tag"></ul>
+<virtual if={condition}>
+  <p>Show me with no wrapper on condition</p>
+</virtual>
 ```
+## HTML elements as tags
 
-<span class="tag red">important</span> The use of the `riot-tag` attribute will be deprecated in the future riot major release in favor of `data-is`
+Standard HTML elements can be used as riot tags in the page body with the addition of the `data-is` attribute.
+
+```html
+<ul data-is="my-list"></ul>
+```
 
 This provides users with an alternative that can provide greater compatibility with css frameworks.  The tags are treated like any other custom tag.
 
 ```js
-riot.mount('my-tag')
+riot.mount('my-list')
 ```
 
-will mount the `ul` element shown above as if it were `<my-tag></my-tag>`
+will mount the `ul` element shown above as if it were `<my-list></my-list>`
+
+Note that you can use also an expression in the `data-is` attribute and riot will be able to
+render dynamically also different tags on the same DOM node
+
+```html
+<my-tag>
+  <!-- dynamic component -->
+  <div data-is={ component }></div>
+  <button onclick={ switchComponent }>
+    Switch
+  </button>
+
+  <script>
+    this.component = 'foo'
+
+    switchComponent() {
+      // riot will render the <bar> component
+      // replacing <foo>
+      this.component = 'bar'
+    }
+  </script>
+</my-tag>
+```
 
 ## Server-side rendering
 
