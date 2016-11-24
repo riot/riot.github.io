@@ -648,13 +648,17 @@ Elements with `ref` attribute are automatically linked to the context under `thi
   </form>
 
   // grab above HTML elements
-  var form = this.refs.login,
-    username = this.refs.username.value,
-    password = this.refs.password.value,
-    button = this.refs.submit
+  submit(e) {
+    var form = this.refs.login,
+        username = this.refs.username.value,
+        password = this.refs.password.value,
+        button = this.refs.submit
+  }
 
 </login>
 ```
+
+The refs attribute will be set when the mount event gets fired, so you can access to the `this.refs` collection into 'mount' (`this.on('mount', function() {...}) `) or other event handlers.
 
 Of course these named elements can be referred to in HTML as well: `<div>{ refs.username.value }</div>`
 
