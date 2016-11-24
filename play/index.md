@@ -8,10 +8,6 @@ description: This is a series of examples designed to showcase the benefits of a
 
 Change the code of tag definition (left side) freely, then you'll see the result.
 
-## Important
-
-__We have just released riot 3.0.0 and we are in the process of updating all our examples, so please come back soon.__
-
 <iframe src="http://riotjs.com/examples/live-editor"></iframe>
 
 ## How to use this tag?
