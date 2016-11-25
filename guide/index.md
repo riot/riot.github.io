@@ -19,7 +19,7 @@ Riot custom tags are the building blocks for user interfaces. They make the "vie
       <label class={ completed: done }>
         <input type="checkbox" checked={ done } onclick={ parent.toggle }> { title }
       </label>
-    </li>f
+    </li>
   </ul>
 
   <form onsubmit={ add }>
