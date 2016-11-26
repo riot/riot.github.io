@@ -6,6 +6,17 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.0.1 *November 26, 2016*
+
+__riot__:
+  - _Fix:_ riot@3.0.0 should export default [riot/2084](https://github.com/riot/riot/issues/2084)
+  - _Fix:_ class does not remove when value becomes false [riot/2082](https://github.com/riot/riot/issues/2082)
+  - _Fix:_ auto update input values after edited it with User [riot/2096](https://github.com/riot/riot/issues/2096)
+  - _Fix:_ error when unmount tag that contains ref element [riot/2083](https://github.com/riot/riot/issues/2083)
+  - _Fix:_ error toggling child with multiple mixins[riot/2100](https://github.com/riot/riot/issues/2100)
+  - _Fix:_ toggling 'if' of 'data-is' tag creates new reference in parents 'tags' object [riot/2089](https://github.com/riot/riot/issues/2089)
+
+
 ## 3.0.0 *November 22, 2016*
 
 It has been a long journey but in the end we made it and riot@3.0.0 is finally out and it represents a

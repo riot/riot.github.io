@@ -41,9 +41,9 @@ author:
 minor_version:       3.0
 v2_minor_version:    2.6
 
-version:             3.0.0
+version:             3.0.1
 v2_version:          2.6.7
-release_date:        November 22
+release_date:        November 26
 version_slurp:       More stable than ever before
 v2_version_slurp:    Fix rendering of tags containing SVGs
 repo:                https://github.com/riot/riot
@@ -51,7 +51,7 @@ twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot
 # Vars needed for the compare.md page
 
-size_min:            9.73
+size_min:            9.75
 riot_route_size_min: 1.77
 
 polymer:
