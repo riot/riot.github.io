@@ -830,7 +830,7 @@ Plain objects can also be looped. For example:
 
 ```html
 <my-tag>
-  <p each="{ name, value in obj }">{ name } = { value }</p>
+  <p each="{ value, name  in obj }">{ name } = { value }</p>
 
   this.obj = {
     key1: 'value1',

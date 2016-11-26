@@ -22,6 +22,7 @@ __riot__:
   - _Change:_ use the `ref` attribute instead of `name` and `id` [riot/1185](https://github.com/riot/riot/issues/1185) (__breaking change__)
   - _Change:_ remove riot-route from the core making it optional [riot/1485](https://github.com/riot/riot/issues/1485) (__breaking change__)
   - _Change:_ avoid that the update and the updated events get triggered before any tag has been mounted [riot/1661](https://github.com/riot/riot/issues/1661) (__breaking change__)
+  - _Change:_ different approaches in iterable objects in different contexts of "each - in" [riot/1420](https://github.com/riot/riot/issues/1420) (__breaking change__)
   - _Add:_ support for es6 classes to create tags [more info](/api/#riottagel-opts)
   - _Add:_ the `shouldUpdate` method to the tags to emulate componentShouldUpdate in react
   - _Remove:_ the __ prefix for the "boolean" html attributes [riot/276](https://github.com/riot/riot/issues/276)
@@ -63,7 +64,7 @@ __riot-observable__:
 
 __riot-tmpl__:
 
-  - _Change:_ template errors will be always output in the via `console.error` if the console api is available (__breaking change__)
+  - _Change:_ template errors will be always output via `console.error` if the console api is available (__breaking change__)
 
 __riot-compiler__:
 

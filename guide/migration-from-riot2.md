@@ -52,6 +52,11 @@ Use the `ref` attribute instead
 </my-tag>
 ```
 
+### Object loops
+
+Object loops now will use a different syntax, before we used `key, value in object`, and now we switched to `value, key in object`
+[related issue](https://github.com/riot/riot/issues/1420)
+
 ### Remove `riot.route`
 
 The `riot.route` was removed from the riot core so you will be able to use any routing library that fits better to your needs.
