@@ -9,6 +9,7 @@ id: release-notes
 ## 3.0.1 *November 26, 2016*
 
 __riot__:
+
   - _Fix:_ riot@3.0.0 should export default [riot/2084](https://github.com/riot/riot/issues/2084)
   - _Fix:_ class does not remove when value becomes false [riot/2082](https://github.com/riot/riot/issues/2082)
   - _Fix:_ auto update input values after edited it with User [riot/2096](https://github.com/riot/riot/issues/2096)
