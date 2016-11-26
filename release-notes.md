@@ -14,7 +14,7 @@ __riot__:
   - _Fix:_ class does not remove when value becomes false [riot/2082](https://github.com/riot/riot/issues/2082)
   - _Fix:_ auto update input values after edited it with User [riot/2096](https://github.com/riot/riot/issues/2096)
   - _Fix:_ error when unmount tag that contains ref element [riot/2083](https://github.com/riot/riot/issues/2083)
-  - _Fix:_ error toggling child with multiple mixins[riot/2100](https://github.com/riot/riot/issues/2100)
+  - _Fix:_ error toggling child with multiple mixins [riot/2100](https://github.com/riot/riot/issues/2100)
   - _Fix:_ toggling 'if' of 'data-is' tag creates new reference in parents 'tags' object [riot/2089](https://github.com/riot/riot/issues/2089)
 
 
