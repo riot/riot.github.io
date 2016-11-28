@@ -2,6 +2,7 @@
 title: ルータ
 layout: ja
 class: apidoc
+redirect_from: "/ja/api/route"
 ---
 
 {% include ja/api-tabs.html %}

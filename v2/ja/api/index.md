@@ -2,6 +2,7 @@
 title: カスタムタグ
 layout: ja
 class: apidoc
+redirect_from: "/ja/api"
 ---
 
 {% include ja/api-tabs.html %}

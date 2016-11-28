@@ -1,6 +1,7 @@
 ---
 layout: ja
 title: アプリケーション設計
+redirect_from: "/ja/guide/application-design"
 ---
 
 {% include ja/guide-tabs.html %}

@@ -30,6 +30,7 @@ sass:
 
 gems:
   - jemoji
+  - jekyll-redirect-from
 
 # About/contact
 author:

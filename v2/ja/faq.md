@@ -2,6 +2,7 @@
 layout: ja
 title: よくある質問と答え
 description: UIライブラリ「Riot」についての、よくある質問と答え
+redirect_from: "/ja/faq"
 ---
 
 # よくある質問と答え

@@ -2,6 +2,7 @@
 title: コンパイラ
 layout: ja
 class: apidoc
+redirect_from: "/ja/api/compiler"
 ---
 
 {% include ja/api-tabs.html %}

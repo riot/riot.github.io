@@ -2,6 +2,7 @@
 title: その他
 layout: ja
 class: apidoc
+redirect_from: "/ja/api/misc"
 ---
 
 {% include ja/api-tabs.html %}
