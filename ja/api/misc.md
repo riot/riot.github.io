@@ -1,6 +1,6 @@
 ---
-title: Miscellaneous
-layout: default
+title: その他
+layout: ja
 class: apidoc
 ---
 
@@ -9,19 +9,18 @@ class: apidoc
 
 ### <a name="version"></a> riot.version
 
-The current version number as String: `'{{ site.version }}'`
-
+現在のバージョン番号を文字列として: `'{{ site.v2_version }}'`
 
 ### <a name="brackets"></a> riot.settings.brackets
 
-A global Riot setting to customize the start and end tokens of the expressions. For example
+テンプレート変数の開始/終了トークンをカスタマイズするための、Riotのグローバル設定。例:
 
 
 ``` js
 riot.settings.brackets = '[% %]'
 ```
 
-let's you write expressions `<p>[% like_this %]</p>`. The start and end is separated with a space character.
+`<p>[% like_this %]</p>`のように書けます。開始と終了はスペースで区切られています。
 
 ### <a name="asyncrendertimeout"></a> riot.settings.asyncRenderTimeout
 
