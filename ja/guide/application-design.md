@@ -76,14 +76,14 @@ auth.login = function(params) {
 <!-- login view -->
 <login>
   <form onsubmit="{ login }">
-    <input name="username" type="text" placeholder="username">
-    <input name="password" type="password" placeholder="password">
+    <input ref="username" type="text" placeholder="username">
+    <input ref="password" type="password" placeholder="password">
   </form>
 
   login() {
     opts.login({
-      username: this.username.value,
-      password: this.password.value
+      username: this.refs.username.value,
+      password: this.refs.password.value
     })
   }
 
