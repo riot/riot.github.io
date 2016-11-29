@@ -7,7 +7,7 @@ title: アプリケーション設計
 
 ## ポリシーではなく、ツール
 
-Riotには、カスタムタグとイベントシステム(observable)、ルータがバンドルされています。これらが、クライアントサイドアプリケーションを構築するために必要な、最も基本的な要素だと考えています。
+Riotには、カスタムタグとイベントシステム(observable)、そして、オプションとして、ルータがバンドルされています。これらが、クライアントサイドアプリケーションを構築するために必要な、最も基本的な要素だと考えています。
 
 1. カスタムタグ: ユーザインターフェースのため
 2. イベントシステム: モジュール性のために
@@ -56,7 +56,7 @@ Observableを使うことで、エクステンションはイベントを検知�
 
 結合を避けるには、互いを直接呼び出すよりもイベントに登録するようにします。必要なのは、`riot.observable`かそれと同等のpub/subシステムです。
 
-このイベントシステムは、シンプルにAPIから、Facebook Fluxのようなより大きな設計にまで対応できます。
+このイベントシステムは、シンプルにAPIから、Facebook Fluxや、Reduxのようなより大きな設計にまで対応できます。
 
 ### Riotアプリケーションの設計例
 
@@ -76,14 +76,14 @@ auth.login = function(params) {
 <!-- login view -->
 <login>
   <form onsubmit="{ login }">
-    <input name="username" type="text" placeholder="username">
-    <input name="password" type="password" placeholder="password">
+    <input ref="username" type="text" placeholder="username">
+    <input ref="password" type="password" placeholder="password">
   </form>
 
   login() {
     opts.login({
-      username: this.username.value,
-      password: this.password.value
+      username: this.refs.username.value,
+      password: this.refs.password.value
     })
   }
 
