@@ -20,7 +20,7 @@ class: apidoc
 riot.settings.brackets = '[% %]'
 ```
 
-`<p>[% like_this %]</p>`のように書けます。開始と終了はスペースで区切られています。
+`<p>[% like_this %]</p>`のように書けます。開始と終了はスペースで区切られています。
 
 ### <a name="asyncrendertimeout"></a> riot.settings.asyncRenderTimeout
 
