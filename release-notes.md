@@ -6,6 +6,30 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.0.2 *December 4, 2016*
+
+__riot__:
+
+  - _Fix:_ when using riot-viewBox inside an svg tag it is replaced by viewbox.  [riot/2086](https://github.com/riot/riot/issues/2086)
+  - _Fix:_ tag mounted with data-is="{some expression}" is not updating [riot/2102](https://github.com/riot/riot/issues/2102)
+  - _Fix:_ attributes are not removed when other tag without attributes is mounted on an element [riot/2098](https://github.com/riot/riot/issues/2098)
+  - _Remove:_ removes SPM support [riot/2124](https://github.com/riot/riot/pull/2124)
+
+__riot-tmpl__:
+
+  - _Change:_ avoid to use `console.error` if a user has defined already a custom error function [riot/2108](https://github.com/riot/riot/issues/2108)
+  - _Change:_  prefer lowercase to debug tags names
+
+__riot-compiler__:
+
+  - _Change:_ internal regex to support the `@apply rule` provided by css preprocessors
+
+__riot-route__:
+
+  - _Fix:_ router with query param not working [riot-route/74](https://github.com/riot/route/issues/74)
+  - _Fix:_ remplate literals break IE [riot-route/77](https://github.com/riot/route/issues/77)
+
+
 ## 3.0.1 *November 26, 2016*
 
 __riot__:
