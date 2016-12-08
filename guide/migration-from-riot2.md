@@ -50,8 +50,8 @@ This does not rename them in the `this.tags` object anymore, but adds them as ta
   <p ref="paragraph">Hello</p>
   <sub-tag ref="childtag"></sub-tag>
   <script>
-    console.log(this.refs.childtag) // => sub-tag tag
     console.log(this.refs.paragraph) // => p node
+    console.log(this.refs.childtag) // => sub-tag tag
   </script>
 </my-tag>
 ```
