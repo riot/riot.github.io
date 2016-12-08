@@ -10,7 +10,7 @@ title: Migration from riot 2
 Riot 3 is a big improvement to the issues we found in the previous release, please check in detail all the [release notes](/release-notes).
 
 We have resolved many problems and they required a major release bump because they couldn't be fixed with the previous codebase.
-However migrating from Riot 2 shouldn't be such a big deal and below we have listed all the main breaking changes that might be worth to know.
+However migrating from Riot 2 shouldn't be such a big deal and below we have listed all the main breaking changes that might be worth knowing.
 
 ## Breaking changes
 
@@ -42,8 +42,7 @@ Notice that now `data-is` could be used also in nested tags and it supports dyna
 
 The attributes `name` and `id` will be no longer used by riot to cache DOM references to the tag context.
 Use the `ref` attribute instead.
-children tags are now targeted via `ref` too.
-This does not rename them in the `this.tags` object anymore, but adds them as tag instance to `this.refs`.
+You will get the references to DOMs or custom tags through `this.refs`. On the other hand, note that `this.tags` will have no named tags anymore now.
 
 ```html
 <my-tag>
