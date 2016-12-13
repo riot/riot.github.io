@@ -6,6 +6,15 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.0.3 *December 13, 2016*
+
+__riot__:
+
+  - _Fix:_ mount and unmount css injection performances [riot/2152](https://github.com/riot/riot/issues/2152)
+  - _Fix:_ different scope between `show`, `hide` and `if` [riot/2152](https://github.com/riot/riot/issues/2152)
+  - _Add:_ `data-src` to fetch riot tags avoiding browsers prefetching [riot/2132](https://github.com/riot/riot/issues/2132)
+  - _Remove:_ support for SPM [riot/2124](https://github.com/riot/riot/pull/2124)
+
 ## 3.0.2 *December 4, 2016*
 
 __riot__:
