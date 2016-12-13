@@ -173,7 +173,7 @@ Once a tag is created you can mount it on the page as follows:
   <script src="riot.min.js"></script>
 
   <!-- include the tag -->
-  <script src="todo.js" type="riot/tag"></script>
+  <script src="todo.js"></script>
 
   <!-- mount the tag -->
   <script>riot.mount('todo')</script>

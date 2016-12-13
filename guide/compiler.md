@@ -23,7 +23,7 @@ Custom tags need to be transformed to JavaScript before the browser can execute 
 </script>
 
 <!-- <inner-tag/> is specified on external file -->
-<script src="path/to/javascript/with-tags.js" type="riot/tag"></script>
+<script src="path/to/javascript/with-tags.tag" type="riot/tag"></script>
 
 <!-- include riot.js and the compiler -->
 <script src="https://cdn.jsdelivr.net/riot/{{ site.minor_version }}/riot+compiler.min.js"></script>
@@ -38,6 +38,8 @@ riot.mount('*')
 The script tag and the external file can contain multiple tags definitions combined with regular javascript.
 
 Riot automatically takes inlined and external tags and compiles them before the tags are rendered with the `riot.mount()` call.
+
+You might prefer using `data-src` instead of `src` on your `<script>` tags stop your browser prefetching automatically any riot script tag in order to avoid to load the same resources twice. Riot will automatically fetch and compile your tags via ajax.
 
 ### Access tag instances
 If you are loading tags with `script src` and want to get access to the mounted tags you need to wrap the call with `riot.compile` as follows:

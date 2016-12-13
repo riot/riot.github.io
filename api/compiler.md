@@ -12,7 +12,7 @@ Following methods apply to browsers only. Jump to [server section](#compile-on-s
 
 ### <a name="compile"></a> riot.compile(callback)
 
-Compile all tags defined with `<script type="riot/tag">` to JavaScript. These can be inlined script definitions or external resources that load scripts defined with `src` attribute. After all scripts are compiled the given `callback` method is called. For example:
+Compile all tags defined with `<script type="riot/tag">` to JavaScript. These can be inlined script definitions or external resources that load scripts defined with `src` attribute (or `data-src` if you want to [avoid the scripts prefetch](https://github.com/riot/riot/issues/2132) in some browsers). After all scripts are compiled the given `callback` method is called. For example:
 
 ``` javascript
 riot.compile(function() {
