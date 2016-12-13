@@ -43,14 +43,17 @@ Notice that now `data-is` could be used also in nested tags and it supports dyna
 The attributes `name` and `id` will be no longer used by riot to cache DOM references to the tag context.
 Use the `ref` attribute instead.
 You will get the references to DOMs or custom tags through `this.refs`. On the other hand, note that `this.tags` will have no named tags anymore now.
+__IMPORTANT__: the `refs` object will be populated __only__ after the `mount` event
 
 ```html
 <my-tag>
   <p ref="paragraph">Hello</p>
   <sub-tag ref="childtag"></sub-tag>
   <script>
-    console.log(this.refs.paragraph) // => p node
-    console.log(this.refs.childtag) // => sub-tag tag
+    this.on('mount', function() {
+      console.log(this.refs.paragraph) // => p node
+      console.log(this.refs.childtag) // => sub-tag tag
+    })
   </script>
 </my-tag>
 ```

@@ -660,9 +660,6 @@ Elements with `ref` attribute are automatically linked to the context under `thi
 
 The refs attribute will be set when the mount event gets fired, so you can access to the `this.refs` collection into 'mount' (`this.on('mount', function() {...}) `) or other event handlers.
 
-Of course these named elements can be referred to in HTML as well: `<div>{ refs.username.value }</div>`
-
-
 ## Event handlers
 
 A function that deals with DOM events is called an "event handler". Event handlers are defined as follows:
