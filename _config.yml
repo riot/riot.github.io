@@ -42,9 +42,9 @@ author:
 minor_version:       3.0
 v2_minor_version:    2.6
 
-version:             3.0.3
+version:             3.0.4
 v2_version:          2.6.7
-release_date:        December 13
+release_date:        December 14
 version_slurp:       More stable than ever before
 v2_version_slurp:    Fix rendering of tags containing SVGs
 repo:                https://github.com/riot/riot

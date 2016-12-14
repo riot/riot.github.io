@@ -6,6 +6,12 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.0.4 *December 14, 2016*
+
+__riot__:
+
+  - _Fix:_ restore the `show/hide` behavior [riot/2156](https://github.com/riot/riot/issues/2156)
+
 ## 3.0.3 *December 13, 2016*
 
 __riot__:
