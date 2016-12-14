@@ -6,19 +6,15 @@ cdnjs: https://cdnjs.cloudflare.com/ajax/libs/riot
 class: download
 ---
 
-# Riot v**{{ site.v2_version }}**
+# Riot v**{{ site.version }}**
 
-詳しくは[バージョン履歴](/v2/release-notes)をどうぞ。すべてのファイルは、[MIT License](/license/)のもとオープンソースとして公開されています。
+詳しくは[バージョン履歴](/release-notes)をどうぞ。すべてのファイルは、[MIT License](/license/)のもとオープンソースとして公開されています。
 
 ## ダウンロード
 
 [riot.min.js]({{ page.base }}/riot.min.js)
 
 [riot.js]({{ page.base }}/riot.js)
-
-[compiler.min.js]({{ page.base }}/compiler.min.js)
-
-[compiler.js]({{ page.base }}/compiler.js)
 
 [riot+compiler.min.js]({{ page.base }}/riot+compiler.min.js)
 
@@ -30,20 +26,20 @@ class: download
 
 #### [jsdelivr](http://www.jsdelivr.com/#!riot)
 
-`https://cdn.jsdelivr.net/g/riot@{{ site.v2_minor_version }}(riot.min.js+compiler.min.js)` <small>(latest {{ site.v2_minor_version }}.X)</small>
+`https://cdn.jsdelivr.net/g/riot@{{ site.minor_version }}(riot.min.js+compiler.min.js)` <small>(latest {{ site.minor_version }}.X)</small>
 
-`https://cdn.jsdelivr.net/riot/{{ site.v2_minor_version }}/riot.min.js` <small>(latest {{ site.v2_minor_version }}.X)</small>
+`https://cdn.jsdelivr.net/riot/{{ site.minor_version }}/riot.min.js` <small>(latest {{ site.minor_version }}.X)</small>
 
-`https://cdn.jsdelivr.net/g/riot@{{ site.v2_version }}(riot.min.js+compiler.min.js)`
+`https://cdn.jsdelivr.net/g/riot@{{ site.version }}(riot.min.js+compiler.min.js)`
 
-`https://cdn.jsdelivr.net/riot/{{ site.v2_version }}/riot.min.js`
+`https://cdn.jsdelivr.net/riot/{{ site.version }}/riot.min.js`
 
 
 #### [cdnjs](https://cdnjs.com/libraries/riot)
 
-`{{ page.cdnjs }}/{{ site.v2_version }}/riot+compiler.min.js`
+`{{ page.cdnjs }}/{{ site.version }}/riot+compiler.min.js`
 
-`{{ page.cdnjs }}/{{ site.v2_version }}/riot.min.js`
+`{{ page.cdnjs }}/{{ site.version }}/riot.min.js`
 
 
 ## パッケージマネージャ
@@ -61,11 +57,25 @@ class: download
 `npm install riot`
 
 
+### Chrome apps
+
+もし、RiotをChrome拡張の中で使いたいのであれば、[Content Security Policy対応が必要なため](https://github.com/riot/riot/issues/1076)特別版のRiotを使わなくてはなりません。
+
+[riot.csp.js]({{ page.base }}/riot.csp.js)
+
+[riot.csp.min.js]({{ page.base }}/riot.csp.min.js)
+
+Chrome拡張の中で使う場合、ランタイムの中ではコンパイルできないため、[タグをプリコンパイル](/guide/compiler/#pre-compilation)しておく必要があります。
+
 ### GitHub
 
 #### [riot/riot](https://github.com/riot/riot)
 
 `git clone git@github.com:riot/riot.git`
+
+### Riot router
+
+[riot-route](https://github.com/riot/route)
 
 ## ロゴ
 
