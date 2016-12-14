@@ -33,21 +33,13 @@ car.trigger('start')
 
 @returns 与えられた`el`オブジェクト、または新しいobservableインスタンス
 
-
 ### <a name="on"></a> el.on(events, callback)
 
-与えられたイベントを監視して、イベントがトリガーされるごとに`callback`を実行します。`events`はスペースで区切って複数指定可能。
+与えられたイベントを監視して、イベントがトリガーされるごとに`callback`を実行します。
 
 ``` js
 // ひとつのイベントを監視
-el.on('start', function() {
-
-})
-
-// 複数のイベントを監視。type引数にはどのイベントが発火したかが渡される
-el.on('start stop', function(type) {
-
-  // typeは'start'か'stop'のどちらか
+el.on('start', function(args) {
 
 })
 
@@ -56,21 +48,6 @@ el.on('all', function(event, param1, param2) {
   // eventはイベントの名前
   // パラメータによってここで何かをする
 })
-```
-
-`callbacks`内でエラーがあった場合、observableインスタンスは`error`イベントを呼びます:
-
-``` js
-
-el.on('error', function(e) {
-  // ここでエラー対処ができる
-})
-
-el.on('event', function() {
-  throw 'oops'
-})
-
-el.trigger('event')
 
 ```
 
@@ -78,7 +55,7 @@ el.trigger('event')
 
 ### <a name="one"></a> el.one(events, callback)
 
-一度だけ、与えられた`events`を監視し、`callback`を実行します。`events`はスペースで区切って複数指定可能。
+一度だけ、与えられた`events`を監視し、`callback`を実行します。
 
 ``` js
 // 'start'が何回発火されても、一度だけ実行する
@@ -94,7 +71,7 @@ el.one('start', function() {
 指定されたイベントのリスナ(コールバック)を削除します。
 
 ``` js
-el.off('start stop')
+el.off('start')
 ```
 
 @returns `el`
@@ -108,10 +85,10 @@ function doIt() {
   console.log('starting or ending')
 }
 
-el.on('start middle end', doIt)
+el.on('start', doIt)
 
-// startとendイベントから特定のリスナだけを削除
-el.off('start end', doIt)
+// 特定のリスナを削除
+el.off('start', doIt)
 ```
 
 @returns `el`
@@ -122,6 +99,11 @@ el.off('start end', doIt)
 
 @returns `el`
 
+### <a name="off-all-fn"></a> el.off('*', fn)
+
+すべてのイベントの特定のコールバック関数を削除します。
+
+@returns `el`
 
 ### <a name="trigger"></a> el.trigger(events)
 
@@ -129,7 +111,7 @@ el.off('start end', doIt)
 
 ``` js
 el.trigger('start')
-el.trigger('render update')
+el.trigger('render')
 ```
 
 @returns `el`
