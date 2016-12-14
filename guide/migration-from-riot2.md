@@ -133,3 +133,24 @@ Notice that we support also `bublé` as alternative to babel
 
 In riot 2 you had to configure manually functions to catch the errors in your tags templates. In riot 3 all the templates errors
 will be output using `console.error` whenever the `console` api is available
+
+### All `value` attributes using expressions will be output as `riot-value` ([riot/1957](https://github.com/riot/riot/issues/1957))
+
+```html
+<my-tag>
+  <!-- The value attribute will be compiled to riot-value in riot 3. -->
+  <input-wrapper value={total} />
+  <script>
+    this.total = '$11'
+  </script>
+</my-tag>
+
+<input-wrapper>
+  <script>
+    // riot3
+    console.log(opts.riotValue)
+    // riot2
+    console.log(opts.value)
+  </script>
+</input-wrapper>
+```
