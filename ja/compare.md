@@ -18,55 +18,65 @@ Riotは、Reactとその「まとめ方(cohesion)」のアイデアからイン�
 
 関連するこれらの技術をコンポーネント内にまとめることで、システムはよりクリーンになります。この重要な直感において、Reactは偉大でした。
 
-Reactはよく機能し、まだ使っているプロジェクトもありますが、Reactのサイズと文法 (**特に** 文法!) には不満もありました。私たちは、ユーザにとっても、実装としても、もっと単純にできないものか考え始めたのです。
-
-
 ### Reactの文法
 
 次の例は、Reactのホームページから直接持ってきたものです。
-
 
 ``` javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Todo extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {items: [], text: ''};
-    }
+class TodoApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {items: [], text: ''};
+  }
 
-    render() {
-        const {items, text} = this.state;
-        return (
-            <div>
-                <h3>TODO</h3>
-                <ul>
-                    <li>{items.map((item, i)=> <li key={i}>{item}</li>)}</li>
-                </ul>
-                <form onSubmit={this._onSubmit}>
-                    <input onChange={this._onChange} value={text}/>
-                    <button>Add #{items.length + 1}</button>
-                </form>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <h3>TODO</h3>
+        <TodoList items={this.state.items} />
+        <form onSubmit={this.handleSubmit}>
+          <input onChange={this.handleChange} value={this.state.text} />
+          <button>{'Add #' + (this.state.items.length + 1)}</button>
+        </form>
+      </div>
+    );
+  }
 
-    _onChange(e) {
-        this.setState({text: e.target.value});
-    }
+  handleChange(e) {
+    this.setState({text: e.target.value});
+  }
 
-    _onSubmit(e) {
-        e.preventDefault();
-        const {items, text} = this.state;
-        this.setState({
-            items: items.concat(text),
-            text: ''
-        });
-    }
+  handleSubmit(e) {
+    e.preventDefault();
+    var newItem = {
+      text: this.state.text,
+      id: Date.now()
+    };
+    this.setState((prevState) => ({
+      items: prevState.items.concat(newItem),
+      text: ''
+    }));
+  }
 }
 
-ReactDOM.render(<Todo/>, mountNode);
+class TodoList extends React.Component {
+  render() {
+    return (
+      <ul>
+        {this.props.items.map(item => (
+          <li key={item.id}>{item.text}</li>
+        ))}
+      </ul>
+    );
+  }
+}
+
+ReactDOM.render(<TodoApp />, mountNode);
 ```
 
 JSXはHTMLとJavaScriptのミックスです。HTMLをコンポーネントの好きなところに含めることができます。メソッドの中でも、プロパティの値としても。
@@ -85,14 +95,15 @@ JSXはHTMLとJavaScriptのミックスです。HTMLをコンポーネントの�
   </ul>
 
   <form onsubmit={ handleSubmit }>
-    <input>
+    <input ref="input">
     <button>Add #{ items.length + 1 }</button>
   </form>
 
   this.items = []
 
   handleSubmit(e) {
-    var input = e.target[0]
+    e.preventDefault()
+    var input = this.refs.input
     this.items.push(input.value)
     input.value = ''
   }
@@ -118,11 +129,11 @@ Riotでは、HTMLとJavaScriptはより見慣れた形であらわれます。�
 再利用可能なコンポーネントとして分離しつつも、レイアウトとロジックを分けるのに、Riotの文法は一番すっきりした方法だと、私たちは考えています。
 
 
-### 文字列ベースかDOMベースか
+### 仮想DOM vs テンプレート変数バインディング (expressions binding)
 
-コンポーネントが初期化される際、Reactは文字列をパースし、RiotはDOMツリーをトラバースします。
+コンポーネントが初期化される際、Reactは仮想DOMを作り、一方でRiotはDOMツリーをトラバースするのみです。
 
-Riotはテンプレート変数をそのツリーから取得し、配列に保持します。それぞれのテンプレート変数は、DOMノードへのポインターを持っています。それぞれでテンプレート変数は評価され、DOMの値と比較されます。もし、値が変更されていれば、該当するDOMノードが更新されます。その過程で、Riotは仮想DOM(と言ってもよりシンプルなものですが)を持ちます。
+Riotはテンプレート変数をそのツリーから取得し、配列に保持します。それぞれのテンプレート変数は、DOMノードへのポインターを持っています。それぞれでテンプレート変数は評価され、DOMの値と比較されます。もし、値が変更されていれば、該当するDOMノードが更新されます。
 
 これらのテンプレート変数はキャッシュされ、更新は非常に高速です。100か1000のテンプレート変数があっても通常1ミリ秒かそれ以下です。
 
@@ -139,7 +150,7 @@ ReactはUIのみを扱います。それ自体は良いことです。偉大な�
 
 Facebookは、クライアントサイドのコードを構造化するのに、[Flux](http://facebook.github.io/flux/docs/overview.html)の利用を推奨しています。これはフレームワークというよりも素晴らしいアイデアを詰め込んだ、ひとつのパターンです。
 
-Riotはカスタムタグとともに、イベントエミッタ(オブザーバブル)とルータがついて来ます。これらがクライアントサイドアプリケーション構築の基礎的なブロックだと信じているからです。イベントはモジュール性をもたらし、ルータはURLと「戻る」ボタンをハンドリングし、カスタムタグがユーザインターフェースを担います。
+Riotはカスタムタグとともに、イベントエミッタ(オブザーバブル)とオプショナルなルータがついて来ます。これらがクライアントサイドアプリケーション構築の基礎的なブロックだと信じているからです。イベントはモジュール性をもたらし、ルータはURLと「戻る」ボタンをハンドリングし、カスタムタグがユーザインターフェースを担います。
 
 ちょうどFluxのように、Riotは柔軟で、開発者に設計上の大きな決定権を残しています。これは、ゴールに到達するのを助けるライブラリにすぎません。
 
