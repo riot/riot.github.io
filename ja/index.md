@@ -1,13 +1,14 @@
 ---
 layout: ja
-title: Riot.js — A React-like user interface micro-library
+title: Riot.js — Simple and elegant component-based UI library
 description: Riot lets you build user interfaces with custom tags using simple and enjoyable syntax. It uses a virtual DOM similar to React but faster. Riot is very tiny compared to industry standards. We think there is a clear need for another UI library.
 ---
 
 <div id="hero">
   <img src="/img/logo/riot240x.png">
-  <h1>A React-like user interface micro-library</h1>
-  <h4>カスタムタグ • 楽しい文法 • 仮想DOM • コンパクトな実装</h4>
+  <h1>Simple and elegant component-based UI library</h1>
+  <h4>Custom tags • Enjoyable syntax • Elegant API • Tiny size</h4>
+  <h4>カスタムタグ • 楽しい文法 • 明解なAPI • コンパクトな実装</h4>
 
   <div id="version-slurp">
     <a href="/v2/download/" class="tag blue">v{{ site.v2_version }}</a> &mdash;
@@ -38,16 +39,24 @@ Riotは全てのブラウザで、カスタムタグを実現します。
   </ul>
 
   <form onsubmit={ add }>
-    <input>
+    <input ref="input">
     <button>Add #{ items.length + 1 }</button>
   </form>
+
+  <!-- style -->
+  <style>
+    h3 {
+      font-size: 14px;
+    }
+  </style>
 
   <!-- logic -->
   <script>
     this.items = []
 
     add(e) {
-      var input = e.target[0]
+      e.preventDefault()
+      var input = this.refs.input
       this.items.push(input.value)
       input.value = ''
     }
@@ -55,6 +64,7 @@ Riotは全てのブラウザで、カスタムタグを実現します。
 
 </todo>
 ```
+
 カスタムタグは、関連するHTMLとJavaScriptをくっつけて再利用可能なコンポーネントとしてまとめます。React + Polymerに、"楽しい"文法と小さな学習曲線が一緒になった、とイメージしてください。
 
 
@@ -69,10 +79,10 @@ Riotは全てのブラウザで、カスタムタグを実現します。
 
   <forum-header/>
 
-  <forum-content>
+  <div class="content">
     <forum-threads/>
     <forum-sidebar/>
-  </forum-content>
+  </div>
 
   <forum-footer/>
 
@@ -85,7 +95,7 @@ HTMLの文法はWebの *デファクト* 言語であり、ユーザインター
 <span class="tag">メモ</span> Riotタグは、ブラウザで実行する前に、純粋なJavaScriptに [変換されます](/ja/guide/compiler/)。
 
 
-### 仮想DOM
+### テンプレート変数バインディング (DOM Expressions biding)
 - 最小のDOMの更新とリフロー
 - データは一方通行: 更新とアンマウントは親から子へ伝播します
 - テンプレートは高いパフォーマンスを得るため、プリコンパイルされキャッシュされます
@@ -95,6 +105,7 @@ HTMLの文法はWebの *デファクト* 言語であり、ユーザインター
 
 ### 標準に近い
 - 独自形式のイベントシステムはなし
+- 外部ポリフィルや追加ライブラリ不要
 - レンダリングされたDOMは、自由に他のツールから操作可能
 - 余計なHTMLのルート要素や`data-`属性を使う必要なし
 - jQueryとの親和性が高い
@@ -117,7 +128,7 @@ HTMLの文法はWebの *デファクト* 言語であり、ユーザインター
 デザインのゴールの一つは、できる限り最小の"boilerplate"で使える、強力な文法を導入することです。
 
 - 強力なショートカット: `class={ enabled: is_enabled, hidden: hasErrors() }`
-- 余計なことを考えなくてOK: `render`とか`state`、`constructor`、`shouldComponentUpdate`などなど
+- 余計なことを考えなくてOK: `render`とか`state`、`constructor`など
 - インターポレーション: `Add #{ items.length + 1 }` あるいは `class="item { selected: flag }"`
 - ロジック部分を`<script>`タグで囲むのはオプション
 - コンパクトなES6のメソッドの書き方
@@ -155,21 +166,25 @@ Riotはモダンなクライアントサイドのアプリケーションを作�
 
 - ユーザインターフェースを構築するための"Reactive"なビュー
 - 分離されたモジュールのAPIを作るためのイベントライブラリ
-- URLと「戻る」ボタンを処理するルータ
+- URLと「戻る」ボタンを処理するルータ (オプション)
 
 Riotは「オープンスタック」です。つまり、フレームワーク特有のイディオムを避けたい開発者向けです。一般的であることで、好きなデザインパターンを適用したり、混ぜたりすることができます。Facebook Fluxのようなシステムを[つくることも可能です](https://github.com/jimsparkman/RiotControl)。
 
 
-> I looked at the riot.js example, and it feels so clean, it's scary. [@paulbjensen](https://twitter.com/paulbjensen/status/558378720403419137)
+> [@riotjs_](https://twitter.com/riotjs_) Thanks for creating a library that allows me to make a simple SPA in plain JS without needing to download 13k NPM packages.
+[@coussej](https://twitter.com/coussej/status/763659990250946561)
 
-> Just messed around with #RiotJS for an hour. Got it setup with Gulp, Browsesify, and Babel in no time. I like it a lot so far! [@AndrewDelPrete](https://twitter.com/AndrewDelPrete/status/630976295011127296)
+> Switched my site from #BackboneJS to #RiotJS. Other than compile/mount not blocking for DOM render, it's great! #JavaScript [@riotjs_](https://twitter.com/riotjs_)
+[@richardtallent](https://twitter.com/richardtallent/status/766696802066194432)
 
-> Today I have used #riotjs 2.0 for the first time and I could admit that It will be a long term relationship #js highly recommended. [@gianlucaguarini](https://twitter.com/gianlucaguarini/status/559756081862574080)
+> Like all people fed up with the status quo and the development of the world, I'm voting RiotJS <3 Love you baby [@plumpNation](https://twitter.com/plumpNation/status/760803974660390912)
+
+> I looked at the riot.js example, and it feels so clean, it's scary.
+[@paulbjensen](https://twitter.com/paulbjensen/status/558378720403419137)
 
 > I liked the idea of #reactjs with #flux but I like #riotjs with #riotcontrol even better!
 [@tscok](https://twitter.com/tscok/status/580509124598829056)
 
-> looking at RiotJS https://muut.com/riotjs/ — blown away by its simplicity. [@defeated](https://twitter.com/defeated/status/559215403541757952)
 
 > Played with riot.js and like it so much more than React. Minimalistic, fast and a comprehensible API. [@juriansluiman](https://twitter.com/juriansluiman/status/560399379035865088)
 
@@ -183,8 +198,3 @@ Riotは誰でも使えるWeb Componentsです。React + Polymerから無駄を�
 > 「テンプレートは、問題ではなく、技術を分けるだけだ」
 
 同じコンポーネントの中で、レイアウトとロジックを一緒に持てば、全体のシステムはより簡潔になります。この重要な洞察について、Reactに敬意を示したいと思います。
-
-
-## 最初のブログエントリー
-
-[From React to Riot 2.0](https://muut.com/blog/technology/riot-2.0/)
