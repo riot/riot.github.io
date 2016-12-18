@@ -17,7 +17,7 @@ __riot__:
 __riot__:
 
   - _Fix:_ mount and unmount css injection performances [riot/2152](https://github.com/riot/riot/issues/2152)
-  - _Fix:_ different scope between `show`, `hide` and `if` [riot/2152](https://github.com/riot/riot/issues/2152)
+  - _Fix:_ different scope between `show`, `hide` and `if` [riot/2125](https://github.com/riot/riot/issues/2125)
   - _Add:_ `data-src` to fetch riot tags avoiding browsers prefetching [riot/2132](https://github.com/riot/riot/issues/2132)
   - _Remove:_ support for SPM [riot/2124](https://github.com/riot/riot/pull/2124)
 
