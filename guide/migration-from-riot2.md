@@ -126,3 +126,24 @@ Now the `es6` parser will use the latest `babel` version [more info](/guide/comp
 
 In riot 2 a handler function had to be manually configured to catch errors in tag templates. In riot 3 all template errors
 are output using `console.error` if the `console` api is available. This is not really a breaking change, because a custom `riot.util.tmpl.errorHandler` will still work.
+
+### All `value` attributes using expressions will be output as `riot-value` ([riot/1957](https://github.com/riot/riot/issues/1957))
+
+```html
+<my-tag>
+  <!-- The value attribute will be compiled to riot-value in riot 3. -->
+  <input-wrapper value={total} />
+  <script>
+    this.total = '$11'
+  </script>
+</my-tag>
+
+<input-wrapper>
+  <script>
+    // riot3
+    console.log(opts.riotValue)
+    // riot2
+    console.log(opts.value)
+  </script>
+</input-wrapper>
+```
