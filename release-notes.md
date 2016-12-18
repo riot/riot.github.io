@@ -12,7 +12,7 @@ id: release-notes
 __riot__:
 
   - _Fix:_ Internal `parent` attribute should be protected from external override [riot/2154](https://github.com/riot/riot/issues/2154)
-  - _Fix:_ selected on <select><option> doesn't seem to work right on riot 3 [riot/2164](https://github.com/riot/riot/issues/2164)
+  - _Fix:_ selected on `<select><option>` doesn't seem to work right on riot 3 [riot/2164](https://github.com/riot/riot/issues/2164)
 
 ## 3.0.4 *December 14, 2016*
 
