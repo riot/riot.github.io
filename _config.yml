@@ -42,7 +42,7 @@ author:
 minor_version:       3.0
 v2_minor_version:    2.6
 
-version:             3.0.4
+version:             3.0.5
 v2_version:          2.6.7
 release_date:        December 14
 version_slurp:       More stable than ever before
@@ -52,7 +52,7 @@ twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot
 # Vars needed for the compare.md page
 
-size_min:            9.84
+size_min:            9.81
 riot_route_size_min: 1.77
 
 polymer:
