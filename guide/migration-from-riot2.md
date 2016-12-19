@@ -14,7 +14,7 @@ Migration from Riot 2 shouldn't be very difficult. Refer to the list of breaking
 
 ## Breaking changes
 
-### `riot-tag` attrbibute renamed to `data-is`
+### `riot-tag` attribute renamed to `data-is`
 
 ```html
 <!-- not supported -->
