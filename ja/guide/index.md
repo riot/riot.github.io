@@ -71,7 +71,7 @@ Riotのタグは、レイアウト(HTML)とロジック(JavaScript)の組み合�
 * 自己終了タグがサポートされています: `<div/>` は `<div></div>` と等しくなります。 いわゆる「オープンタグ」 `<br>`や`<hr>`、`<img>`、`<input>`はコンパイルの後に閉じられることはありません。
 * カスタムタグは常に閉じられている必要があります。(通常通り、あるいは自己終了タグとして)
 * 標準のHTMLタグ(`label`、`table`、`a`など)もカスタムタグ化することができますが、あまり良い手ではありません。
-* タグ定義**root**には以下の属性も含まれます: `<foo onclick={ click } class={ active: active }>`.
+* タグ定義のルートにも属性を持たせることができます: `<foo onclick={ click } class={ active: active }>`.
 
 インラインのタグ定義(ドキュメントのbody内)は正しくインデントされているべきです。すべてのカスタムタグは一番インデントの小さい行に揃える必要があります。タブとスペースも混ぜるべきではありません。
 
@@ -130,7 +130,7 @@ Riotのタグは、レイアウト(HTML)とロジック(JavaScript)の組み合�
 
 ### Scoped CSS
 
-[Scoped css and :scope pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) もすべてのブラウザで利用可能です。Riot.jsにはJSによる独自のカスタム実装があり、ブラウザの実装に依存しないか、またはフォールバックしません。  
+[Scoped css and :scope 擬似クラス](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) もすべてのブラウザで利用可能です。Riot.jsにはJSによる独自のカスタム実装があり、ブラウザの実装には依存せず、フォールバックもしません。  
 次の例は最初のものと等価です。以下の例では、スタイルをスコープ化するためにタグの名前を使うのではなく、 `：scope` `pseudo-class`を使用しています。
 
 ```html
