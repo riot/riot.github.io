@@ -23,13 +23,11 @@ Riotのカスタムタグは、ユーザインターフェースの構成要素�
   </ul>
 
   <form onsubmit={ add }>
-    <input name="input" onkeyup={ edit }>
+    <input ref="input" onkeyup={ edit }>
     <button disabled={ !text }>Add #{ items.length + 1 }</button>
   </form>
 
   <script>
-    this.disabled = true
-
     this.items = opts.items
 
     edit(e) {
@@ -37,16 +35,16 @@ Riotのカスタムタグは、ユーザインターフェースの構成要素�
     }
 
     add(e) {
+      e.preventDefault()
       if (this.text) {
         this.items.push({ title: this.text })
-        this.text = this.input.value = ''
+        this.text = this.refs.input.value = ''
       }
     }
 
     toggle(e) {
       var item = e.item
       item.done = !item.done
-      return true
     }
   </script>
 
@@ -73,27 +71,9 @@ Riotのタグは、レイアウト(HTML)とロジック(JavaScript)の組み合�
 * 自己終了タグがサポートされています: `<div/>` は `<div></div>` と等しくなります。 いわゆる「オープンタグ」 `<br>`や`<hr>`、`<img>`、`<input>`はコンパイルの後に閉じられることはありません。
 * カスタムタグは常に閉じられている必要があります。(通常通り、あるいは自己終了タグとして)
 * 標準のHTMLタグ(`label`、`table`、`a`など)もカスタムタグ化することができますが、あまり良い手ではありません。
+* タグ定義のルートにも属性を持たせることができます: `<foo onclick={ click } class={ active: active }>`.
 
-
-
-タグファイル内のタグ定義は常に行の先頭から書き始めます。
-
-```html
-<!-- works -->
-<my-tag>
-
-</my-tag>
-
-<!-- also works -->
-<my-tag></my-tag>
-
-  <!-- this fails, because of indentation -->
-  <my-tag>
-
-  </my-tag>
-```
-
-インラインのタグ定義(ドキュメントのbody内)は正しくインデントされていなくてはなりません。すべてのカスタムタグは一番インデントの小さい行に揃える必要があります。タブとスペースも混ぜるべきではありません。
+インラインのタグ定義(ドキュメントのbody内)は正しくインデントされているべきです。すべてのカスタムタグは一番インデントの小さい行に揃える必要があります。タブとスペースも混ぜるべきではありません。
 
 ### scriptタグの省略
 
@@ -131,7 +111,7 @@ Riotのタグは、レイアウト(HTML)とロジック(JavaScript)の組み合�
 
 ## タグのスタイリング
 
-`style`タグを含めることができます。Riot.jsは自動的にその内容を`<head>`の最後に挿入します。
+`style`タグを含めることができます。Riot.jsは自動的にその内容を`<head>`の最後に挿入します。これは、タグが何回使用されても、挿入は1度だけ行われます。
 
 ```html
 <todo>
@@ -150,7 +130,8 @@ Riotのタグは、レイアウト(HTML)とロジック(JavaScript)の組み合�
 
 ### Scoped CSS
 
-[Scoped CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) も利用可能です。次の例は最初のものと等価です。
+[Scoped css と :scope 擬似クラス](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) もすべてのブラウザで利用可能です。Riot.jsにはJSによる独自のカスタム実装があり、ブラウザの実装には依存せず、フォールバックもしません。  
+次の例は最初のものと等価です。以下の例では、スタイルをスコープ化するためにタグの名前を使うのではなく、 `：scope` 擬似クラスを使用しています。
 
 ```html
 <todo>
@@ -158,7 +139,7 @@ Riotのタグは、レイアウト(HTML)とロジック(JavaScript)の組み合�
   <!-- layout -->
   <h3>{ opts.title }</h3>
 
-  <style scoped>
+  <style>
     :scope { display: block }
     h3 { font-size: 120% }
     /** other tag specific styles **/
@@ -166,8 +147,6 @@ Riotのタグは、レイアウト(HTML)とロジック(JavaScript)の組み合�
 
 <todo>
 ```
-
-スタイルの挿入は一度だけ行われます。タグが何度使われたかは関係ありません。
 
 Riotが挿入したCSSを上書きしたい場合、`<head>`の中でCSSの挿入位置を指定することが可能です。
 
@@ -220,30 +199,12 @@ riot.mount('todo, forum, comments')
 
 ### DOM要素へのアクセス
 
-Riotは、thisキーワードに続くname属性を持つ要素へのアクセスと、豊富なショートハンドとしてif="{...}"属性のようなプロパティメソッドを提供します。
+Riotは、`this.refs`オブジェクトに続く`ref`属性を持つ要素へのアクセスと、豊富なショートハンドとして`if="{...}"`属性のようなプロパティメソッドを提供します。
 しかし、時によっては、あなたはこれらの組み込みの機能とは相性の良くないHTMLの要素を参照したり、操作したりする必要に迫られるでしょう。
 
 ### jQueryやZepto、querySelectorなどをどのように使うべきか
 
-もし、Riotの中でDOMにアクセスする必要が生じたならば、 あなたは[タグのライフサイクル](#タグのライフサイクル) を見てみたいと思うでしょう。そして、 `update()`イベントが最初に発火するまで、DOM要素が生成されないことに気づくかもしれません。つまり、それより前の、要素を選択しようとするあらゆる試みが失敗することを意味します。
-
-```html
-<example-tag>
-  <p id="findMe">Do I even Exist?</p>
-
-  <script>
-  var test1 = document.getElementById('findMe')
-  console.log('test1', test1)  // Fails
-
-  this.on('update', function(){
-    var test2 = document.getElementById('findMe')
-    console.log('test2', test2) // Succeeds
-  })
-  </script>
-</example-tag>
-```
-
-あなたはおそらく、update毎に何かを取得するようなことは望まないでしょう。その代わりに、あなたは十中八九、 `mount`イベントでそれを実行しようと思うはずです。
+もし、Riotの中でDOMにアクセスする必要が生じたならば、 あなたは[タグのライフサイクル](#タグのライフサイクル) を見てみたいと思うでしょう。そして、 `mount`イベントが最初に発火するまで、DOM要素が生成されないことに気づくかもしれません。これはつまり、それより前の、要素を選択しようとするあらゆる試みが失敗することを意味します。
 
 ```html
 <example-tag>
@@ -314,6 +275,66 @@ riot.mount('todo', { title: 'My TODO app', items: [ ... ] })
 </my-tag>
 ```
 
+### タグのライフサイクル
+
+タグは次の一連の流れで作成されます。
+
+1. タグが構成される
+2. タグのJavaScriptロジックが実行される
+3. テンプレート変数が計算される
+4. ページ上でタグがマウントされ、"mount"イベントが発火
+
+タグがマウントされた後、テンプレート変数は次のように更新されます。
+
+1. イベントハンドラが呼び出された際に自動的に(イベントハンドラ内で、`e.preventUpdate`を`true`にセットしない場合)。例えば、最初の例の`toggle`メソッド。
+2. `this.update()`が現在のタグインスタンス上で呼ばれたとき
+3. `this.update()`が親タグあるいは、さらに上流のタグで呼ばれたとき。更新は親から子への一方通行で流れる。
+4. `riot.update()`が呼ばれたとき。ページ上のすべてのテンプレート変数を更新。
+
+タグが更新されるたびに、"update"イベントが発火します。
+
+値はマウント以前に計算されるため、`<img src={ src }>`という呼び出しが失敗するような心配はありません。
+
+### ライフサイクルイベント
+
+次のような手順で、様々なライフサイクルイベントについてタグの中からリスナー登録することができます。
+
+```javascript
+<todo>
+
+  this.on('before-mount', function() {
+    // before the tag is mounted
+  })
+
+  this.on('mount', function() {
+    // right after the tag is mounted on the page
+  })
+
+  this.on('update', function() {
+    // allows recalculation of context data before the update
+  })
+
+  this.on('updated', function() {
+    // right after the tag template is updated after an update call
+  })
+
+  this.on('before-unmount', function() {
+    // before the tag is removed
+  })
+
+  this.on('unmount', function() {
+    // when the tag is removed from the page
+  })
+
+  // curious about all events ?
+  this.on('*', function(eventName) {
+    console.info(eventName)
+  })
+
+<todo>
+```
+
+ひとつのイベントに複数のリスナーを登録することも可能です。イベントの詳細については、[observable](/ja/api/observable/)を参照してください。
 
 ### ミックスイン
 
@@ -379,7 +400,7 @@ var id_mixin_instance = new IdMixin()
 
 ### ミックスインの共有
 
-ミックスインをファイルやプロジェクトを超えて共有するために、`riot.mixin` APIが用意されています。あなたのミックスインをグローバルに登録するには次のようにします。
+ミックスインを共有するために、`riot.mixin` APIが用意されています。あなたのミックスインをグローバルに登録するには次のようにします。
 
 ```javascript
 riot.mixin('mixinName', mixinObject)
@@ -395,70 +416,23 @@ riot.mixin('mixinName', mixinObject)
 </my-tag>
 ```
 
+### グローバルなミックスイン
 
-### タグのライフサイクル
-
-タグは次の一連の流れで作成されます。
-
-1. タグが構成される
-2. タグのJavaScriptロジックが実行される
-3. テンプレート変数が計算され、"update"イベントが発火
-4. ページ上でタグがマウントされ、"mount"イベントが発火
-
-タグがマウントされた後、テンプレート変数は次のように更新されます。
-
-1. イベントハンドラが呼び出された際に自動的に(イベントハンドラ内で、`e.preventUpdate`を`true`にセットしない場合)。例えば、最初の例の`toggle`メソッド。
-2. `this.update()`が現在のタグインスタンス上で呼ばれたとき
-3. `this.update()`が親タグあるいは、さらに上流のタグで呼ばれたとき。更新は親から子への一方通行で流れる。
-4. `riot.update()`が呼ばれたとき。ページ上のすべてのテンプレート変数を更新。
-
-タグが更新されるたびに、"update"イベントが発火します。
-
-値はマウント以前に計算されるため、`<img src={ src }>`という呼び出しが失敗するような心配はありません。
-
-
-### ライフサイクルイベント
-
-次のような手順で、様々なライフサイクルイベントについてタグの中からリスナー登録することができます。
-
+もし*すべて*のタグに機能を追加する必要がある場合は、次のようにグローバルなミックスインを登録することができます
 
 ```javascript
-<todo>
-
-  this.on('before-mount', function() {
-    // before the tag is mounted
-  })
-
-  this.on('mount', function() {
-    // right after the tag is mounted on the page
-  })
-
-  this.on('update', function() {
-    // allows recalculation of context data before the update
-  })
-
-  this.on('updated', function() {
-    // right after the tag template is updated
-  })
-
-  this.on('before-unmount', function() {
-    // before the tag is removed
-  })
-
-  this.on('unmount', function() {
-    // when the tag is removed from the page
-  })
-
-  // curious about all events ?
-  this.on('all', function(eventName) {
-    console.info(eventName)
-  })
-
-<todo>
+// Must be registered before mounting tags
+riot.mixin(mixinObject)
 ```
 
-ひとつのイベントに複数のリスナーを登録することも可能です。イベントの詳細については、[observable](/ja/api/observable/)を参照してください。
+共有されたミックスインとは異なり、グローバルのミックスインは自動的にすべてのマウントされたタグから呼び出されます。注意して使ってください！
 
+```javascript
+riot.mixin('globalMixinOne', mixinObjectOne, true)
+console.log(riot.mixin('globalMixinOne') === mixinObjectOne) // true
+```
+
+ミックスインのオブジェクトを取得する必要が出てきた場合、代わりにグローバルなミックスインオブジェクトを名前で設定することもできます。その場合、3番目の_boolean_パラメータは、このミックスインが共有されたものではなく、グローバルなミックスインであることを示します。
 
 ## テンプレート変数 (expressions)
 
@@ -662,26 +636,29 @@ riot.mount('account', { plan: { name: 'small', term: 'monthly' } })
 
 ## 名前付き要素
 
-`name`または`id`属性のある要素は、JavaScriptから簡単にアクセスできるよう、自動的にコンテキストに追加されます。
+`ref`属性を持つ要素は `this.refs` の配下のコンテキストに自動的にリンクされるので、JavaScriptで簡単にアクセスできます
 
 ```html
 <login>
-  <form id="login" onsubmit={ submit }>
-    <input name="username">
-    <input name="password">
-    <button name="submit">
+  <form ref="login" onsubmit={ submit }>
+    <input ref="username">
+    <input ref="password">
+    <button ref="submit">
   </form>
 
   // grab above HTML elements
-  var form = this.login,
-    username = this.username.value,
-    password = this.password.value,
-    button = this.submit
-
+  submit(e) {
+    var form = this.refs.login,
+        username = this.refs.username.value,
+        password = this.refs.password.value,
+        button = this.refs.submit
+  }
 </login>
 ```
 
-もちろん、これらの名前付き要素はHTMLの中のテンプレート変数からも参照できます: `<div>{ username.value }</div>`
+マウントイベントが発火するとrefs属性が設定され、'mount'(`this.on（ 'mount'、function（）{...}）`）または他のイベントハンドラ内の `this.refs`コレクションにアクセスできます。
+
+もちろん、これらの名前付き要素はHTMLの中のテンプレート変数からも参照できます: `<div>{ refs.username.value }</div>`
 
 
 ## イベントハンドラ
@@ -708,19 +685,7 @@ DOMイベントを扱う関数は「イベントハンドラ」と呼ばれま�
 <form onsubmit={ condition ? method_a : method_b }>
 ```
 
-この関数の中で`this`は現在のタグのインスタンスを参照しています。ハンドラが呼ばれた後、`this.update()`が自動的に呼ばれ、加えられた変更がUIに反映されます。
-
-デフォルトのイベントハンドラの挙動は、チェックボックスかラジオボタンでなければ、*自動的にキャンセル* です。つまり、あなたのために`e.preventDefault()`は実行済みです。これはキャンセルすることがほとんどだからです(しかも、忘れがち)。もし、ブラウザのデフォルトの挙動のままにしたい場合は、ハンドラで`true`を返してください。
-
-例えば、この`submit`ハンドラは、実際にサーバへフォームを送信します。
-
-```javascript
-submit() {
-  return true
-}
-```
-
-
+関数 `this`は、現在のタグインスタンスを参照します。ハンドラが呼び出された後、`this.update()`が自動的に呼び出され、加えられたすべての変更がUIに反映されます。
 
 ### イベントオブジェクト
 
@@ -862,7 +827,7 @@ submit() {
 
 ```html
 <my-tag>
-  <p each="{ name, value in obj }">{ name } = { value }</p>
+  <p each="{ value, name in obj }">{ name } = { value }</p>
 
   this.obj = {
     key1: 'value1',
@@ -888,8 +853,6 @@ Riot v2.3では、ループのレンダリングを安定するため、デー�
 
 #### `virtual`タグ
 
-<span class="tag red">実験的</span>
-
 特定のタグに囲まれないループをしたい場合は`<virtual>`タグが使えます。ループ後に消滅し、内部のHTMLのみがレンダリングされます。
 
 ```html
@@ -901,21 +864,51 @@ Riot v2.3では、ループのレンダリングを安定するため、デー�
 </dl>
 ```
 
-## 標準のHTML要素にレンダリング
-
-標準HTMLも、`riot-tag`属性を付けることでページ内のカスタムタグとして利用できます。
+しかし、 `virtual`はループに対して排他的ではなく、`if` や `data-is` と組み合わせて使うことができます
 
 ```html
-<ul riot-tag="my-tag"></ul>
+<virtual if={condition}>
+  <p>Show me with no wrapper on condition</p>
+</virtual>
+```
+
+## 標準のHTML要素にレンダリング
+
+標準HTMLも、`data-is`属性を付けることでページ内のカスタムタグとして利用できます。
+
+```html
+<ul data-is="my-list"></ul>
 ```
 
 このことは、CSSフレームワークとの互換性を持つ代替手段をユーザに提供しています。タグはほかのカスタムタグと同様に扱われます。
 
 ```javascript
-riot.mount('my-tag')
+riot.mount('my-list')
 ```
 
-は、上に示した`ul`要素を、あたかも`<my-tag></my-tag>`かのようにマウントします。
+これは、上に示した`ul`要素を、あたかも`<my-list></my-list>`かのようにマウントします。
+
+メモ: `data-is`属性の式も使うことができ、riotは同じDOMノード上の異なるタグを動的にレンダリングできることに注意してください
+
+```html
+<my-tag>
+  <!-- dynamic component -->
+  <div data-is={ component }></div>
+  <button onclick={ switchComponent }>
+    Switch
+  </button>
+
+  <script>
+    this.component = 'foo'
+
+    switchComponent() {
+      // riot will render the <bar> component
+      // replacing <foo>
+      this.component = 'bar'
+    }
+  </script>
+</my-tag>
+```
 
 ## サーバサイドレンダリング
 
