@@ -130,8 +130,8 @@ Riotのタグは、レイアウト(HTML)とロジック(JavaScript)の組み合�
 
 ### Scoped CSS
 
-[Scoped css and :scope 擬似クラス](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) もすべてのブラウザで利用可能です。Riot.jsにはJSによる独自のカスタム実装があり、ブラウザの実装には依存せず、フォールバックもしません。  
-次の例は最初のものと等価です。以下の例では、スタイルをスコープ化するためにタグの名前を使うのではなく、 `：scope` `pseudo-class`を使用しています。
+[Scoped css と :scope 擬似クラス](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) もすべてのブラウザで利用可能です。Riot.jsにはJSによる独自のカスタム実装があり、ブラウザの実装には依存せず、フォールバックもしません。  
+次の例は最初のものと等価です。以下の例では、スタイルをスコープ化するためにタグの名前を使うのではなく、 `：scope` 擬似クラスを使用しています。
 
 ```html
 <todo>
