@@ -101,7 +101,7 @@ __riot__:
   - _修正:_ 'before-mount' won't work as expected in riot#render [riot/1851](https://github.com/riot/riot/issues/1851)
   - _修正:_ the logic is not work with if and class together [riot/1769](https://github.com/riot/riot/issues/1769)
   - _修正:_ should we add a updateSelf() API? [riot/1748](https://github.com/riot/riot/issues/1748)
-  - _修正:_ virtua要素がタグ更新後に消える [riot/1659](https://github.com/riot/riot/issues/1659)
+  - _修正:_ virtual要素がタグ更新後に消える [riot/1659](https://github.com/riot/riot/issues/1659)
   - _修正:_ can I use the bool attribute with the custom tag? (like "disabled") [riot/1618](https://github.com/riot/riot/issues/1618)
   - _修正:_ extra expression evaluation when using attributes [riot/1590](https://github.com/riot/riot/issues/1590)
   - _修正:_ eS6 class syntax with child tags [riot/1451](https://github.com/riot/riot/issues/1451)
