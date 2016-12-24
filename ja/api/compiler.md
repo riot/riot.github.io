@@ -160,8 +160,8 @@ riot.parsers.js.myparser = function(js) {
 - `none` または `javascript`
 - `livescript`
 - `typescript`
-- `es6` - (`babel-core`または`babel`を使用)
-- `babel` - (`babel-core` v6.x または`es2015`プリセットを使用)
+- `es6` - (`babel-core` v6.x と`es2015`プリセットを使用)
+- `buble`
 - `coffee` または `coffeescript`
 
 ## v2.3.0における変更
