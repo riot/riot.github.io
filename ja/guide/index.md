@@ -48,7 +48,7 @@ Riotのカスタムタグは、ユーザインターフェースの構成要素�
     }
   </script>
 
-<todo>
+</todo>
 ```
 
 カスタムタグはJavaScriptに[コンパイルされます](/ja/guide/compiler/)。
@@ -88,7 +88,7 @@ Riotのタグは、レイアウト(HTML)とロジック(JavaScript)の組み合�
   // logic comes here
   this.items = [1, 2, 3]
 
-<todo>
+</todo>
 ```
 
 その場合、ロジックは最後のHTMLタグの後に開始されます。 この「オープン構文」は、Webサイト上での例示でよく使われます。
@@ -125,7 +125,7 @@ Riotのタグは、レイアウト(HTML)とロジック(JavaScript)の組み合�
     /** other tag specific styles **/
   </style>
 
-<todo>
+</todo>
 ```
 
 ### Scoped CSS
@@ -145,7 +145,7 @@ Riotのタグは、レイアウト(HTML)とロジック(JavaScript)の組み合�
     /** other tag specific styles **/
   </style>
 
-<todo>
+</todo>
 ```
 
 Riotが挿入したCSSを上書きしたい場合、`<head>`の中でCSSの挿入位置を指定することが可能です。
@@ -331,7 +331,7 @@ riot.mount('todo', { title: 'My TODO app', items: [ ... ] })
     console.info(eventName)
   })
 
-<todo>
+</todo>
 ```
 
 ひとつのイベントに複数のリスナーを登録することも可能です。イベントの詳細については、[observable](/ja/api/observable/)を参照してください。
@@ -733,7 +733,7 @@ DOMイベントを扱う関数は「イベントハンドラ」と呼ばれま�
     { title: 'Second item' },
     { title: 'Third item' }
   ]
-<todo>
+</todo>
 ```
 
 `each`属性を持った要素は配列の要素の数だけ繰り返されます。例えば、配列が`push()`、`slice()`あるいは`splice`メソッドで操作された場合、自動的に新しい要素が追加/生成されます。
@@ -756,7 +756,7 @@ DOMイベントを扱う関数は「イベントハンドラ」と呼ばれま�
   remove(event) {
 
   }
-<todo>
+</todo>
 ```
 
 ループ要素では、`each`属性以外のすべては子コンテキストに紐付きます。そのため、上の例では`title`には直接アクセスできるのに対して、`remove`はループ要素のプロパティではないため、`parent.`がないとアクセスできません。
@@ -788,7 +788,7 @@ DOMイベントを扱う関数は「イベントハンドラ」と呼ばれま�
     // 配列から削除
     this.items.splice(index, 1)
   }
-<todo>
+</todo>
 ```
 
 イベントハンドラが実行された後、対象のタグインスタンスは`this.update()`を使って更新されます。(イベントハンドラの中で、`e.preventUpdate`を`true`にセットしない限り)親要素は、配列から要素が削除されたことを検知して、該当するDOM要素をドキュメントから削除します。
