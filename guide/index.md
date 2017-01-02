@@ -865,10 +865,10 @@ In some cases you may need to loop some html without having a particular wrapper
 </dl>
 ```
 
-`virtual` however is not exclusive to looping and can be used in conjuction with `if` or `data-is`
+`virtual` however is not exclusive to looping and can be used in conjuction with `if` and `data-is` for any tag
 
 ```html
-<virtual if={condition}>
+<virtual data-is="my-tag" if={condition}>
   <p>Show me with no wrapper on condition</p>
 </virtual>
 ```
