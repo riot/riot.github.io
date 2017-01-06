@@ -26,7 +26,7 @@ title: コンパイラ
 <script src="path/to/javascript/with-tags.js" type="riot/tag"></script>
 
 <!-- riot.jsとコンパイラを読み込む -->
-<script src="https://cdn.jsdelivr.net/riot/2.3/riot+compiler.min.js"></script>
+<script src="https://cdn.jsdelivr.net/riot/{{ site.minor_version }}/riot+compiler.min.js"></script>
 
 
 <!-- 通常のマウント -->
@@ -74,7 +74,7 @@ riot.compile(function() {
 
 - あなたの好きな[プリプロセッサ](#プリプロセッサ)と合わせてコンパイル可能。
 - 若干のパフォーマンス向上。コンパイラを読み込む/実行する必要がありません。
-- ユニバーサル(アイソモーフィック)アプリケーション。サーバで事前にタグを描画しておくことが可能。(近日公開)
+- ユニバーサル(アイソモーフィック)アプリケーション。サーバで事前にタグを描画しておくことが可能。
 
 
 プリコンパイルは`riot`コマンドで実行します。NPMから次のようにインストールできます:
@@ -92,7 +92,7 @@ npm install riot -g
 <my-tag></my-tag>
 
 <!-- riot.jsのみ読み込み -->
-<script src="//cdn.jsdelivr.net/riot/2.3/riot.min.js"></script>
+<script src="//cdn.jsdelivr.net/riot/{{ site.minor_version }}/riot.min.js"></script>
 
 <!-- プリコンパイルされたタグを読み込み (通常のJavaScriptです) -->
 <script src="path/to/javascript/with-tags.js"></script>
@@ -143,12 +143,53 @@ riot -w src dist
 ### カスタム拡張子
 
 タグファイルを好きな拡張子にすることができます(デフォルトの`.tag`の代わりに):
-You're free to use any file extension for your tags (instead of default `.tag`):
 
 ``` sh
 riot --ext html
 ```
 
+### ES6設定ファイル
+
+設定ファイルを使用して、すべてのriot-cliオプションを簡単に保存および設定することができ、カスタムパーサーを作成することもできます。
+
+``` sh
+riot --config riot.config
+```
+
+riotの`riot.config.js`ファイル:
+
+```js
+export default {
+  from: 'tags/src',
+  to: 'tags/dist',
+  // files extension
+  ext: 'foo',
+  // html parser
+  template: 'foo',
+  // js parser
+  type: 'baz',
+  // css parser
+  style: 'bar',
+  parsers: {
+    html: {
+      foo: (html, opts, url) => require('foo').compile(html),
+    },
+    css: {
+      bar: (tagName, css, opts, url) => require('bar').compile(css),
+    },
+    js: {
+      baz: (js, opts, url) => require('baz').compile(js),
+    },
+  },
+  // special options that may be used to extend
+  // the default riot parsers options
+  parserOptions: {
+    js: {},
+    template: {},
+    style: {}
+  }
+};
+```
 
 ### Nodeモジュールとして
 
@@ -217,12 +258,7 @@ npm install coffee-script -g
 
 ### EcmaScript 6
 
-ECMAScript 6は、"es6"を指定することで有効になります:
-
-``` sh
-# ES6プリプロセッサを使う
-riot --type es6 source.tag
-```
+ECMAScript 6(babeljs)は、"es6"を指定することで有効になります:
 
 ES6で書かれたタグの例:
 
@@ -237,13 +273,30 @@ ES6で書かれたタグの例:
 </test>
 ```
 
-すべてのECMAScript 6の[機能](https://github.com/lukehoban/es6features)を使うことができます。変換には[Babel](https://babeljs.io/)が使われています:
+es6コンパイラを使用する前に、以下の手順に従ってプロジェクトを適切に構成する必要があります。
+
+ 1. [babel-preset-es2015-riot](https://github.com/riot/babel-preset-es2015-riot)をインストール<br /> `npm install babel-preset-es2015-riot --save-dev`
+ 2. `babel-core`もインストール<br /> `npm install babel-core -g`
+ 3. プリセットというidを含む`.babelrc`ファイルの作成<br /> `{ "presets": ["es2015-riot"] }`
+
+環境を設定したらタグをコンパイルすることができます:
 
 ``` sh
-npm install babel
+#  ES6プリプロセッサを使う
+riot --type es6 source.tag
 ```
 
-ここに、BabelをRiotと使ったより[大きなサンプル](https://github.com/txchen/feplay/tree/gh-pages/riot_babel)があります。
+<span class="tag red">note</span> Babelは出力にたくさんの余分なコードを生成するので、例えば`babel-plugin-external-helpers-2`を使って2つの別々なステップでタグをコンパイルすることも考えられます:
+
+``` sh
+# 純粋なes6のコードを使ってタグをコンパイル
+riot tags/folder dist/es6.tags.js
+# es6のコードを有効なes5のコードに変換
+babel es6.tags.js --out-file tags.js
+```
+
+ここに、BabelをRiotと使った[簡単なサンプル](https://github.com/GianlucaGuarini/riot-preset-babel-test)があります。
+
 
 ### TypeScript
 
@@ -306,31 +359,30 @@ this.kids =
 npm install LiveScript -g
 ```
 
-### Jade
+### Pug (Jade)
 
-HTMLレイアウトは`template`設定オプションで、処理することができます。これは、「クリーンでホワイトスペース・センシティブなHTMLを書くための文法」Jadeを使った例です。
+HTMLレイアウトは`template`設定オプションで、処理することができます。これは、「クリーンでホワイトスペース・センシティブなHTMLを書くための文法」pugを使った例です。
 
 
 ``` sh
-# Jade HTMLプリプロセッサを使う
-riot --template jade source.tag
+# Pug HTMLプリプロセッサを使う
+riot --template pug source.tag
 ```
 
-Jadeの例:
+Pugの例:
 
-``` jade
+``` pug
 sample
   p test { value }
   script(type='text/coffee').
     @value = 'sample'
 ```
 
-As you notice, you can define the script type on the template as well. Above we use coffee. [jade](https://github.com/jadejs/jade) is used for the transformation:
+周知の通り、テンプレートにもスクリプトの種類を定義することができます。上記はcoffeeを使っています。 [pug](https://github.com/pugjs/pug)が変換に使われます:
 
 ``` sh
-npm install jade
+npm install pug -g
 ```
-
 
 
 ### どんな言語でも
@@ -422,4 +474,4 @@ var tags = require('tags')
 riot.mount('*')
 ```
 
-もし、何かすごいものを作ったら、ぜひ[こちらでシェア](https://github.com/riot/riot/issues/58)してくださいね!
+もし、何かすごいものを作ったら、ぜひ[こちらでシェア](https://github.com/riot/made-with-riot)してくださいね!
