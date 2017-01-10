@@ -6,12 +6,23 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.0.6 *January 10, 2017*
+
+__riot__:
+
+  - _Fix:_ inconsistencies between the `show`, `hide` and `if` directives [riot/2158](https://github.com/riot/riot/issues/2158)
+  - _Fix:_ `import riot from 'riot'` using webpack and babel [riot/2091](https://github.com/riot/riot/pull/2091)
+  - _Fix:_ loop sorting issue [riot/2205](https://github.com/riot/riot/issues/2205)
+  - _Fix:_ issue using dynamic `data-is` attributes [riot/2175](https://github.com/riot/riot/issues/2175)
+  - _Fix:_ `if` directive in object loops [riot/2133](https://github.com/riot/riot/issues/2133)
+  - _Fix:_ serverside rendering on Windows machines [riot/2131](https://github.com/riot/riot/pull/2131)
+
 
 ## 3.0.5 *December 18, 2016*
 
 __riot__:
 
-  - _Fix:_ Internal `parent` attribute should be protected from external override [riot/2154](https://github.com/riot/riot/issues/2154)
+  - _Fix:_ internal `parent` attribute should be protected from external override [riot/2154](https://github.com/riot/riot/issues/2154)
   - _Fix:_ selected on `<select><option>` doesn't seem to work right on riot 3 [riot/2164](https://github.com/riot/riot/issues/2164)
 
 ## 3.0.4 *December 14, 2016*
