@@ -6,6 +6,13 @@ id: release-notes
 
 # {{ page.title }}
 
+
+## 3.0.7 *January 10, 2017*
+
+__riot__:
+
+  - _Fix:_ hot fix Broke if/each combination [riot/2207](https://github.com/riot/riot/issues/2207)
+
 ## 3.0.6 *January 10, 2017*
 
 __riot__:
