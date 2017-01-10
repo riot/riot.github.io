@@ -114,6 +114,10 @@ el
   .trigger('stop')
 ```
 
+### jQuery DOM events
+
+Previously you could trigger riot event handlers via jQuery using `$('.my-element').trigger('click')`. Riot 2 was using the [old DOM events model ( level 2 )](https://www.w3.org/TR/DOM-Level-2-Events/), with riot 3 we have upgraded the riot internal events handlers to the more standard [new DOM events model level 3](https://www.w3.org/TR/DOM-Level-3-Events/) that is not supported by the jQuery DOM events API. This means that if you need alternative solutions to the simulate fake events [more info](https://github.com/riot/riot/issues/2150#issuecomment-271334951).
+
 ### Scoped css by default
 
 In riot 3 all css rules declared inside a tag's `<style>` element are scoped by default and you will no longer need the `scoped` attribute. There is no option to disable this behavior at the moment.
