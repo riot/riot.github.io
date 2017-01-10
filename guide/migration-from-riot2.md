@@ -116,7 +116,7 @@ el
 
 ### jQuery DOM events
 
-Previously you could trigger riot event handlers via jQuery using `$('.my-element').trigger('click')`. Riot 2 was using the [old DOM events model ( level 2 )](https://www.w3.org/TR/DOM-Level-2-Events/), with riot 3 we have upgraded the riot internal events handlers to the more standard [new DOM events model level 3](https://www.w3.org/TR/DOM-Level-3-Events/) that is not supported by the jQuery DOM events API. This means that if you need alternative solutions to the simulate fake events [more info](https://github.com/riot/riot/issues/2150#issuecomment-271334951).
+Previously you could trigger riot event handlers via jQuery using `$('.my-element').trigger('click')`. This was possible because riot 2 was using the [old DOM events model ( level 2 )](https://www.w3.org/TR/DOM-Level-2-Events/) fully compatible with the jQuery events API. With riot 3 we have upgraded the riot internal events handlers to the more standard [new DOM events model level 3](https://www.w3.org/TR/DOM-Level-3-Events/) that is not supported by the jQuery DOM events API. This means that you need alternative solutions to the simulate fake events [more info](https://github.com/riot/riot/issues/2150#issuecomment-271334951).
 
 ### Scoped css by default
 
