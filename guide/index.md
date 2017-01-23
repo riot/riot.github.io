@@ -133,7 +133,7 @@ You can put a `style` tag inside. Riot.js automatically takes it out and injects
 
 ### Scoped CSS
 
-[Scoped css and :scope pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) is also available for all browsers. Riot.js has its own custom implementation in JS which does not relies or fallbacks to the browser implementation. The example below is equivalent to the first one. Notice that the example below uses the `:scope` `pseudo-class` instead of relying in the tag name to scope the styles.
+[Scoped css and :scope pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) is also available for all browsers. Riot.js has its own custom implementation in JS which does not rely on or fallback to the browser implementation. The example below is equivalent to the first one. Notice that the example below uses the `:scope` `pseudo-class` instead of relying in the tag name to scope the styles.
 
 ```html
 <todo>
