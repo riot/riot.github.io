@@ -79,7 +79,7 @@ riot.mount(document.getElementById('slide'), 'users', api)
 
 ### <a name="unregister"></a> riot.unregister(tagName)
 
-Unregistering a tag previously tag created via compiler or via `riot.tag()`
+Unregistering a tag previously created via compiler or via `riot.tag()`
 This method could be handy in case you need to test your app and you want to create multiple
 tags using the same name for example
 
