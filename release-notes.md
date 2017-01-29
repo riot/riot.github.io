@@ -6,7 +6,7 @@ id: release-notes
 
 # {{ page.title }}
 
-## 3.1.7 *January 29, 2017*
+## 3.1.0 *January 29, 2017*
 
 __riot__:
 
