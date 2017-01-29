@@ -6,6 +6,27 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.1.7 *January 29, 2017*
+
+__riot__:
+
+  - _Fix:_ virtual tag is rendered when use a dynamic data-is [riot/2208](https://github.com/riot/riot/issues/2208)
+  - _Fix:_ data-is attribute get removed from parent dynamic tag if child tag has yield [riot/2211](https://github.com/riot/riot/issues/2211)
+  - _Fix:_ rollup server side (cjs) transpilation [riot/2216](https://github.com/riot/riot/issues/2216) [riot/2225](https://github.com/riot/riot/issues/2225) and [riot/2224](https://github.com/riot/riot/issues/2224)
+  - _Fix:_ sorted list not displayed correctly [riot/2228](https://github.com/riot/riot/issues/2228) [riot/2205](https://github.com/riot/riot/issues/2205)
+  - _Fix:_ conditional `if` does not work as expected with select tag and dynamic options [riot/2229](https://github.com/riot/riot/issues/2229)
+  - _Change:_ renamed the `_internal` tag property to `__`, you shouldn't use them anyway
+  - _Change:_ avoid to expose the `_parent` property, it's now included in the `__` key
+  - _Change:_ make the `isMounted` property not iterable and writable
+  - _Add:_ the experimental `riot.reload` API to handle hot module reload via webpack [more info](https://github.com/riot/tag-loader)
+
+__riot-compiler__:
+
+  - _Fix:_  style tag get stripped from riot tag even if it's in a javascript string. [riot/2210](https://github.com/riot/riot/issues/2210)
+
+__riot-route__:
+
+  - _Add:_ tag based router [riot-route/80](https://github.com/riot/route/pull/80) [more-info](/api/route#tag-based-routing)
 
 ## 3.0.7 *January 10, 2017*
 
