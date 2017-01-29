@@ -39,20 +39,20 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-minor_version:       3.0
+minor_version:       3.1
 v2_minor_version:    2.6
 
-version:             3.0.7
+version:             3.1.0
 v2_version:          2.6.7
-release_date:        January 10
-version_slurp:       Fix show/hide/if directives
+release_date:        January 29
+version_slurp:       Experimental hmr and new route tag
 v2_version_slurp:    Fix rendering of tags containing SVGs
 repo:                https://github.com/riot/riot
 twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot
 # Vars needed for the compare.md page
 
-size_min:            9.92
+size_min:            10.20
 riot_route_size_min: 1.77
 
 polymer:
@@ -70,18 +70,18 @@ react:
   version: 15.4.2
 
 react_router:
-  size:    14.13
-  version: 2.6.1
+  size:    15.51
+  version: 4.0.0-0
 
 react_mini_router:
-  size:    3.93
+  size:    4.52
   version: 2.0.0
 
 
 # precalculated round values because of {{round}} liquid filter bug
 compare:
-  react: 5 # react.size / size_min
-  react_router_vs_riot_router: 8 # react_router.size / riot_route_size_min
+  react: 4 # react.size / size_min
+  react_router_vs_riot_router: 9 # react_router.size / riot_route_size_min
   polymer_and_webcomponents: 6 # polymer_and_webcomponents_size / size_min
 
 # Languages
