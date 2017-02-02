@@ -1,9 +1,6 @@
 ---
 layout: ja
 title: カスタムタグ
-redirect_from:
-  - "/ja/guide"
-  - "/ja/guide/"
 ---
 
 {% include ja/guide-tabs.html %}

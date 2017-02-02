@@ -2,7 +2,6 @@
 title: オブザーバブル
 layout: ja
 class: apidoc
-redirect_from: "/ja/api/observable"
 ---
 
 {% include ja/api-tabs.html %}

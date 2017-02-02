@@ -1,7 +1,6 @@
 ---
 layout: ja
 title: コンパイラ
-redirect_from: "/ja/guide/compiler"
 ---
 
 {% include ja/guide-tabs.html %}

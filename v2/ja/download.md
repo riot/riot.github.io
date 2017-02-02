@@ -4,7 +4,6 @@ title: Riotを手に入れよう!
 base: https://raw.githubusercontent.com/riot/riot/master
 cdnjs: https://cdnjs.cloudflare.com/ajax/libs/riot
 class: download
-redirect_from: "/ja/download"
 ---
 
 # Riot v**{{ site.v2_version }}**

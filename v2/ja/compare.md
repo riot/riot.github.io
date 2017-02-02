@@ -1,7 +1,6 @@
 ---
 layout: ja
 title: RiotをReact・Polymerと比較する
-redirect_from: "/ja/compare"
 ---
 
 # **Riot** vs **React** & **Polymer**
