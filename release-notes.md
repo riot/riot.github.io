@@ -12,7 +12,7 @@ __riot__:
 
   - _Fix:_ issue removing tags in a loop [riot/2240](https://github.com/riot/riot/issues/2240)
   - _Fix:_ tag root is not always in body when its mount event fires [riot/1938](https://github.com/riot/riot/issues/1938)
-  - _Change:_ improve the rendering performances of the anonymous looped tags
+  - _Change:_ improve the rendering performance of the anonymous looped tags
 
 __riot-compiler__:
 
