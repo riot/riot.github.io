@@ -6,6 +6,19 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.1.1 *February 4, 2017*
+
+__riot__:
+
+  - _Fix:_ issue removing tags in a loop [riot/2240](https://github.com/riot/riot/issues/2240)
+  - _Fix:_ tag root is not always in body when its mount event fires [riot/1938](https://github.com/riot/riot/issues/1938)
+  - _Change:_ improve the rendering performances of the anonymous looped tags
+
+__riot-compiler__:
+
+  - _Fix:_ restore the support for the es6 in browser compilation using babel [examples/51](https://github.com/riot/examples/issues/51)
+
+
 ## 3.1.0 *January 29, 2017*
 
 __riot__:
