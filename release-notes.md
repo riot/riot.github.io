@@ -6,6 +6,16 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.2.0 *February 6, 2017*
+
+__riot__:
+
+  - _Fix:_ disable the global mixins for the anonymous tags [riot/2056](https://github.com/riot/riot/issues/2056)
+  - _Fix:_ setting selected attribute of multiple `<option>` tags in a multi select does not work properly [riot/2247](https://github.com/riot/riot/issues/2247)
+  - _Fix:_ mount event not fired due to listener for wrong event [riot/2249](https://github.com/riot/riot/issues/2249)
+  - _Add:_ the `riot.settings.skipAnonymousTags` flag [more info](/api/misc/#skipanonymoustags)
+  - _Improve:_ the looped tags rendering is ~30% faster than before mainly for the `anonymous` tags
+
 ## 3.1.1 *February 4, 2017*
 
 __riot__:

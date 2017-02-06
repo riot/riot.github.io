@@ -11,8 +11,19 @@ class: apidoc
 
 The current version number as String: `'{{ site.version }}'`
 
+### <a name="skipanonymoustags"></a> riot.settings.skipAnonymousTags (default `true`)
 
-### <a name="brackets"></a> riot.settings.brackets
+<span class="tag red">&gt;= v3.2</span>
+
+In riot any new tag in a loop will create new riot tag instance. This will happen for custom tags and also for `anonymous` tags like `<li each={ item in items }>{ item }</li>`. In the last case we riot will create lighter tag instances since the `anonymous` tags should not be observable and neither passed to the riot mixins to massively speed up the rendering process.
+However the riot versions lower than 3.2 used to create all the `anonymous` tags in the same way as they were custom tags being heavier in memory and having poor rendering performance.  With the `skipAnonymousTags = false` the `anonymous` tags will be no longer created as light tag instances and your app might be ~30% slower.
+
+``` js
+riot.settings.skipAnonymousTags = false
+```
+
+
+### <a name="brackets"></a> riot.settings.brackets (default `{ }`)
 
 A global Riot setting to customize the start and end tokens of the expressions. For example
 
@@ -25,7 +36,7 @@ let's you write expressions `<p>[% like_this %]</p>`. The start and end is separ
 
 ### <a name="asyncrendertimeout"></a> riot.settings.asyncRenderTimeout
 
-It allows you to change the `riot.renderAsync` timeout (default 1000ms)
+It allows you to change the `riot.renderAsync` timeout (default `1000`)
 
 ```js
 riot.settings.asyncRenderTimeout = 2000 // ms

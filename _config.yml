@@ -39,13 +39,13 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-minor_version:       3.1
+minor_version:       3.2
 v2_minor_version:    2.6
 
-version:             3.1.1
+version:             3.2.0
 v2_version:          2.6.7
-release_date:        February 4
-version_slurp:       Faster loops and fix babel in browser support
+release_date:        February 6
+version_slurp:       Faster than ever before
 v2_version_slurp:    Fix rendering of tags containing SVGs
 repo:                https://github.com/riot/riot
 twitter_account:     https://twitter.com/riotjs_
