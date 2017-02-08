@@ -49,10 +49,6 @@ View our [version history](/release-notes). All Files are Open Source with [MIT 
 
 `bower install riot`
 
-#### [Component](http://component.github.io/?q=riot)
-
-`component install riot/riot`
-
 #### [NPM](https://www.npmjs.com/package/riot)
 
 `npm install riot`
