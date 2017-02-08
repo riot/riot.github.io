@@ -75,6 +75,8 @@ In your Chrome apps you must [precompile your tags](/guide/compiler/#pre-compila
 
 ## Logo
 
+[riot logo repository](https://github.com/riot/logo)
+
 ![](/img/logo/riot480x.png)
 
 [60x30](/img/logo/riot60x.png) &middot;
