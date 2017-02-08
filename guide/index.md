@@ -923,5 +923,3 @@ var html = riot.render(timer, { start: 42 })
 
 console.log(html) // <timer><p>Seconds Elapsed: 42</p></timer>
 ```
-
-Loops and conditionals *are* supported.
