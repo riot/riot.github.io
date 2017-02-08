@@ -93,7 +93,7 @@ Avec la précompilation, votre HTML est quelque-chose comme ça:
 <my-tag></my-tag>
 
 <!-- inclusion de riot.js uniquement -->
-<script src="//cdn.jsdelivr.net/riot/{{ site.v2_minor_version }}/riot.min.js"></script>
+<script src="https://cdn.jsdelivr.net/riot/{{ site.v2_minor_version }}/riot.min.js"></script>
 
 <!-- inclusion des tags précompilés (JavaScript normal) -->
 <script src="chemin/vers/javascript/avec-tags.js"></script>

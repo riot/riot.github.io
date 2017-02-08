@@ -93,7 +93,7 @@ npm install riot -g
 <my-tag></my-tag>
 
 <!-- 包含 riot.js -->
-<script src="//cdn.jsdelivr.net/riot/2.3/riot.min.js"></script>
+<script src="https://cdn.jsdelivr.net/riot/2.3/riot.min.js"></script>
 
 <!-- 包含预编译的自定义标签 (正常 javascript) -->
 <script src="path/to/javascript/with-tags.js"></script>

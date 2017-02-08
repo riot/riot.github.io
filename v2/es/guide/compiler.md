@@ -25,7 +25,7 @@ Las etiquetas personalizadas[<sup>(1)</sup>](#note1) necesitan ser transformadas
 <script src="path/to/javascript/with-tags.js" type="riot/tag"></script>
 
 <!-- incluya riot.js y el compilador -->
-<script src="//cdn.jsdelivr.net/g/riot@2.2(riot.min.js+compiler.min.js)"></script>
+<script src="https://cdn.jsdelivr.net/g/riot@2.2(riot.min.js+compiler.min.js)"></script>
 
 <!-- montar normalmente -->
 <script>
@@ -94,7 +94,7 @@ Con la compilación previa, su HTML será algo así:
 <my-tag></my-tag>
 
 <!-- incluya riot.js solamente -->
-<script src="//cdn.jsdelivr.net/riot/2.2/riot.min.js"></script>
+<script src="https://cdn.jsdelivr.net/riot/2.2/riot.min.js"></script>
 
 <!-- incluya las etiquetas precompiladas (JavaScript normal) -->
 <script src="path/to/javascript/with-tags.js"></script>

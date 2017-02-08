@@ -95,7 +95,7 @@ With pre-compilation your HTML is something like this:
 <my-tag></my-tag>
 
 <!-- include riot.js only -->
-<script src="//cdn.jsdelivr.net/riot/{{ site.minor_version }}/riot.min.js"></script>
+<script src="https://cdn.jsdelivr.net/riot/{{ site.minor_version }}/riot.min.js"></script>
 
 <!-- include pre-compiled tags (normal javascript) -->
 <script src="path/to/javascript/with-tags.js"></script>
