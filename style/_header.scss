@@ -6,6 +6,9 @@
   padding: .6rem 0 4em;
   position: relative;
   z-index: 1;
+  float: left;
+  clear: both;
+  width: 100%;
 
   @media (max-width: $small-break-point) {
     padding-bottom: 2rem;
@@ -47,7 +50,7 @@
 #nav {
   font-size: 80%;
   line-height: 3;
-  float: right;
+  float: left;
 
   a {
     margin-left: 1em;
@@ -91,6 +94,39 @@
   &:hover {
     background-color: #eee;
     text-decoration: none;
+  }
+}
+
+#search {
+  float: right;
+  padding: 4px 0;
+
+  @media (max-width: $small-break-point) {
+    float: left;
+  }
+
+  > label {
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 80%;
+    color: #999;
+  }
+
+  > .input-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+
+    input {
+      padding: 10px;
+      border: none;
+      box-sizing: border-box;
+      background: $seach-background;
+
+      &:focus {
+        box-shadow: 0 0 0 1px darken($seach-background, 10%) inset;
+        background: white;
+      }
+    }
   }
 }
 

@@ -20,6 +20,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="theme-color" content="#FF0044">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
   <title>
     {{ page.title }}{% if page.path != "index.md" %} &middot; {{ site.title }} {% endif %}
@@ -57,6 +58,14 @@
       <nav id="nav">
         {{ nav }}
       </nav>
+      <div id="search">
+        <label for="label">
+          Search on this site:
+        </label>
+        <div class="input-wrapper">
+          <input placeholder="e.g. riot.compile..." type="search" id="doc-search" class="doc-search"/>
+        </div>
+      </div>
     </header>
 
     <main id="main">
@@ -87,6 +96,7 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
   <script src="/script.js"></script>
 
 </body>

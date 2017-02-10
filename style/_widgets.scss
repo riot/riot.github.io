@@ -212,3 +212,17 @@ a.blue:hover {
     display: none;
   }
 }
+
+
+// docsearch
+
+.ds-dropdown-menu {
+  /* Main category headers */
+  .algolia-docsearch-suggestion--category-header {
+    background-color: $seach-background;
+  }
+  /* Highlighted search terms */
+  .algolia-docsearch-suggestion--highlight {
+    color: $brand-color;
+  }
+}

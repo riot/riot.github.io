@@ -1,5 +1,5 @@
-
-(function(doc) {
+/* global docsearch */
+(function(doc, win) {
 
   var $ = function(q, ctx) {
     return (ctx || doc).querySelectorAll(q)
@@ -38,7 +38,7 @@
 
 
   // table of contents
-  if (window.toc) {
+  if (win.toc) {
     each($('#main h2'), function(el) {
       toc.innerHTML += '<p><a href="#' + el.id + '">' + (el.innerText || el.textContent) + '</a></p>'
     })
@@ -73,4 +73,13 @@
       else mOpen()
     })
   }
-})(document)
+
+
+  docsearch({
+    apiKey: '7bd0a67ac7a1cccd05d0722dba941498',
+    indexName: 'riotjs',
+    inputSelector: '.doc-search',
+    debug: false // Set debug to true if you want to inspect the dropdown
+  })
+
+})(document, window)
