@@ -6,6 +6,13 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.2.1 *February 10, 2017*
+
+__riot__:
+
+  - _Fix:_ error when using virtual and update handler [riot/2251](https://github.com/riot/riot/issues/2251)
+  - _Change:_ switch from plegie to opencollective as donation platform [riot/2239](https://github.com/riot/riot/pull/2239)
+
 ## 3.2.0 *February 6, 2017*
 
 __riot__:
