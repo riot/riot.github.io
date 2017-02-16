@@ -262,6 +262,11 @@ The default `base` value is "#". If you'd like to use hashbang, change it to `#!
 ```javascript
 route.base('#!')
 ```
+<span class="tag red">Warning</span>
+
+If you remove the `#` from the base, your web server needs to deliver your app no matter what url comes in, because your app, in the browser, is manipulating the url. The web server doesn't know how to handle the URL.
+
+
 
 <span class="tag red">Warning</span>
 
