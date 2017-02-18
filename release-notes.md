@@ -6,6 +6,17 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.3.0 *February 18, 2017*
+
+__riot__:
+
+  - _Add:_ fine grain control over tag updates by passing nextOpts to `shouldUpdate` [riot/2238](https://github.com/riot/riot/issues/2238)
+
+__riot-compiler__:
+
+  - _Fix:_ es6 `import` regex compatibility issues [riot/2263](https://github.com/riot/riot/issues/2263)
+  - _Add:_ support for `async` shortcut methods [riot/2195](https://github.com/riot/riot/issues/2195)
+
 ## 3.2.1 *February 10, 2017*
 
 __riot__:

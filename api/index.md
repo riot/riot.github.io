@@ -220,7 +220,7 @@ You can skip the riot automatic updates by setting the `preventUpdate = true` pr
 
 ``` html
 <my-tag>
-  <button onclick={ click }>{ message }</span>
+  <button onclick={ click }>{ message }</button>
 
   this.message = 'hi'
 
@@ -257,7 +257,7 @@ If you want to have more control over your tags DOM updates you can set a custom
 
 ``` html
 <my-tag>
-  <button onclick={ click }>{ message }</span>
+  <button onclick={ click }>{ message }</button>
 
   this.message = 'hi'
 
@@ -266,7 +266,7 @@ If you want to have more control over your tags DOM updates you can set a custom
   }
   // data here is what you have passed to your update method
   // in case of this.update() it will be undefined
-  shouldUpdate(data) {
+  shouldUpdate(data, nextOpts) {
     // do not update
     if (this.message === 'goodbye') return false
     // if this.message is different from 'goodbye' we could update the tag
@@ -274,6 +274,31 @@ If you want to have more control over your tags DOM updates you can set a custom
   }
 </my-tag>
 ```
+
+The `shouldUpdate` method will always receive 2 arguments: the first one contains the values you want to update via the `tag.update` method and the second argument will be the new options received via tag attributes and normally sored in the `opts` object.
+
+``` html
+<my-tag>
+  <child-tag message={ message }></child-tag>
+  <button onclick={ click }>Say goodbye</button>
+
+  this.message = 'hi'
+
+  click(e) {
+    this.message = 'goodbye'
+  }
+</my-tag>
+
+<child-tag>
+  <p>{ opts.message }</p>
+
+  shouldUpdate(data, nextOpts) {
+    // update the DOM depending on the new options received
+    return nextOpts.message !== 'goodbye'
+  }
+</child-tag>
+```
+
 
 ### <a name="tag-update-data"></a> this.update(data)
 
