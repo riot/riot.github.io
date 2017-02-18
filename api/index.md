@@ -32,12 +32,10 @@ var tags = riot.mount('account', api)
 Note: users of [In-browser compilation](/guide/compiler/#in-browser-compilation) will need to wrap calls to `riot.mount` in `riot.compile` in order to get returned [tag instances](#tag-instance). Without this, calls to `riot.mount` will return `undefined`.
 
 ```javascript
-<script>
 riot.compile(function() {
   // here tags are compiled and riot.mount works synchronously
   var tags = riot.mount('*')
 })
-</script>
 ```
 
 ### <a name="mount-star"></a> riot.mount('*', [opts])
@@ -222,12 +220,14 @@ You can skip the riot automatic updates by setting the `preventUpdate = true` pr
 <my-tag>
   <button onclick={ click }>{ message }</button>
 
-  this.message = 'hi'
+  <script>
+    this.message = 'hi'
 
-  click(e) {
-    e.preventUpdate = true // your tag will not update automatically
-    this.message = 'goodbye'
-  }
+    click(e) {
+      e.preventUpdate = true // your tag will not update automatically
+      this.message = 'goodbye'
+    }
+  </script>
 </my-tag>
 ```
 
@@ -239,15 +239,15 @@ Other than that riot does not update the UI automatically so you need to call th
   <input name="username" onblur={ validate }>
   <span class="tooltip" show={ error }>{ error }</span>
 
-  var self = this
-
-  validate() {
-    $.get('/validate/username/' + this.username.value)
-      .fail(function(error_message) {
-        self.error = error_message
-        self.update()
-      })
-  }
+  <script>
+    validate() {
+      $.get('/validate/username/' + this.username.value)
+        .fail(function(error_message) {
+          this.error = error_message
+          this.update()
+        }.bind(this))
+    }
+  </script>
 </my-tag>
 ```
 
@@ -259,19 +259,21 @@ If you want to have more control over your tags DOM updates you can set a custom
 <my-tag>
   <button onclick={ click }>{ message }</button>
 
-  this.message = 'hi'
+  <script>
+    this.message = 'hi'
 
-  click(e) {
-    this.message = 'goodbye'
-  }
-  // data here is what you have passed to your update method
-  // in case of this.update() it will be undefined
-  shouldUpdate(data, nextOpts) {
-    // do not update
-    if (this.message === 'goodbye') return false
-    // if this.message is different from 'goodbye' we could update the tag
-    return true
-  }
+    click(e) {
+      this.message = 'goodbye'
+    }
+    // data here is what you have passed to your update method
+    // in case of this.update() it will be undefined
+    shouldUpdate(data, nextOpts) {
+      // do not update
+      if (this.message === 'goodbye') return false
+      // if this.message is different from 'goodbye' we could update the tag
+      return true
+    }
+  </script>
 </my-tag>
 ```
 
@@ -282,20 +284,24 @@ The `shouldUpdate` method will always receive 2 arguments: the first one contain
   <child-tag message={ message }></child-tag>
   <button onclick={ click }>Say goodbye</button>
 
-  this.message = 'hi'
+  <script>
+    this.message = 'hi'
 
-  click(e) {
-    this.message = 'goodbye'
-  }
+    click(e) {
+      this.message = 'goodbye'
+    }
+  </script>
 </my-tag>
 
 <child-tag>
   <p>{ opts.message }</p>
 
-  shouldUpdate(data, nextOpts) {
-    // update the DOM depending on the new options received
-    return nextOpts.message !== 'goodbye'
-  }
+  <script>
+    shouldUpdate(data, nextOpts) {
+      // update the DOM depending on the new options received
+      return nextOpts.message !== 'goodbye'
+    }
+  </script>
 </child-tag>
 ```
 
@@ -381,12 +387,13 @@ The child tags are initialized after the parent tag so the methods and propertie
 
   <child ref="my_nested_tag"></child>
 
-  // access to child tag methods
-  this.on('mount', function() {
-    this.refs.my_nested_tag.someMethod()
-    // this.tags.child.someMethod() is also valid
-  })
-
+  <script>
+    // access to child tag methods
+    this.on('mount', function() {
+      this.refs.my_nested_tag.someMethod()
+      // this.tags.child.someMethod() is also valid
+    })
+  </script>
 </my-tag>
 ```
 
@@ -401,7 +408,10 @@ For example using the following riot tag `my-post`
 <my-post>
   <h1>{ opts.title }</h1>
   <yield/>
-  this.id = 666
+
+  <script>
+    this.id = 666
+  </script>
 </my-post>
 ```
 
@@ -486,25 +496,26 @@ The following `blog.tag` riot component
     <div onclick={ this.parent.deleteAllPosts }>Delete all the posts</div>
   </my-post>
 
-  this.backToHome = '/homepage'
-  this.title = 'my blog title'
+  <script>
+    this.backToHome = '/homepage'
+    this.title = 'my blog title'
 
-  this.posts = [
-    { title: "post 1", description: 'my post description' },
-    { title: "post 2", description: 'my post description' }
-  ]
+    this.posts = [
+      { title: "post 1", description: 'my post description' },
+      { title: "post 2", description: 'my post description' }
+    ]
 
-  // the bind is needed in this case to keep the parent context
-  // also in the child tags
-  deleteAllPosts() {
-    this.posts = []
+    // the bind is needed in this case to keep the parent context
+    // also in the child tags
+    deleteAllPosts() {
+      this.posts = []
 
-    // we need to trigger manually the update function
-    // because this function gets triggered from a child tag
-    // and it does not bubble up automatically
-    this.update()
-  }.bind(this)
-
+      // we need to trigger manually the update function
+      // because this function gets triggered from a child tag
+      // and it does not bubble up automatically
+      this.update()
+    }
+  </script>
 </blog>
 
 <my-post>
