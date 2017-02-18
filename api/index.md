@@ -275,7 +275,7 @@ If you want to have more control over your tags DOM updates you can set a custom
 </my-tag>
 ```
 
-The `shouldUpdate` method will always receive 2 arguments: the first one contains the values you want to update via the `tag.update` method and the second argument will be the new options received via tag attributes and normally sored in the `opts` object.
+The `shouldUpdate` method will always receive 2 arguments: the first one contains the values you want to update via the `tag.update` method and the second argument will be the new options received via tag attributes and normally stored in the `opts` object.
 
 ``` html
 <my-tag>
