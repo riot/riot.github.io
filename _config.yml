@@ -42,9 +42,9 @@ author:
 minor_version:       3.2
 v2_minor_version:    2.6
 
-version:             3.3.0
+version:             3.3.1
 v2_version:          2.6.7
-release_date:        February 18
+release_date:        February 19
 version_slurp:       Async shortcut functions and enhanced `shouldUpdate` method
 v2_version_slurp:    Fix rendering of tags containing SVGs
 repo:                https://github.com/riot/riot

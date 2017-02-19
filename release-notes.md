@@ -6,6 +6,17 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.3.1 *February 19, 2017*
+
+__riot__:
+
+  - _Fix:_ shouldUpdate prevents every update  [riot/2118](https://github.com/riot/riot/issues/2118)
+
+__riot-compiler__:
+
+  - _Fix:_ es6 template strings issue  [riot/2167](https://github.com/riot/riot/issues/2167)
+  - _Add:_ support for shortcut generator functions `* foo()`
+
 ## 3.3.0 *February 18, 2017*
 
 __riot__:
