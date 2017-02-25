@@ -76,22 +76,22 @@ console.log(riot.vdom[0].msg) // 'hi'
 
 Series of utility functions to update DOM nodes like `$` to query nodes or `addAttr` to add attributes to a node
 
-[source code](https://github.com/riot/riot/blob/next/lib/browser/common/util/dom.js)
+[source code](https://github.com/riot/riot/blob/master/lib/browser/common/util/dom.js)
 
 ### <a name="util"></a> riot.util.check
 
 Series of helper functions needed for type checking
 
-[source code](https://github.com/riot/riot/blob/next/lib/browser/common/util/check.js)
+[source code](https://github.com/riot/riot/blob/master/lib/browser/common/util/check.js)
 
 ### <a name="util"></a> riot.util.misc
 
 Helper functions like `extend` to extend objects or `each` to loop arrays
 
-[source code](https://github.com/riot/riot/blob/next/lib/browser/common/util/misc.js)
+[source code](https://github.com/riot/riot/blob/master/lib/browser/common/util/misc.js)
 
 ### <a name="util"></a> riot.util.tags
 
 Methods needed to manage internally all the riot tags instances
 
-[source code](https://github.com/riot/riot/blob/next/lib/browser/common/util/tags.js)
+[source code](https://github.com/riot/riot/blob/master/lib/browser/common/util/tags.js)
