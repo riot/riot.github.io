@@ -359,9 +359,10 @@ You have access to nested tag instances via `tags` variable:
 
   <child></child>
 
-  // access to child tag
-  var child = this.tags.child
-
+  this.on('mount', function() {
+    // access to child tag
+    var child = this.tags.child
+  })
 </my-tag>
 ```
 
@@ -374,9 +375,10 @@ You can also use the `ref` attribute to give another name for the nested tag.
 
   <child ref="my_nested_tag"></child>
 
-  // access to child tag
-  var child = this.refs.my_nested_tag
-
+  this.on('mount', function() {
+    // access to child tag
+    var child = this.refs.my_nested_tag
+  })
 </my-tag>
 ```
 

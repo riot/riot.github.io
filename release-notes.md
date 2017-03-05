@@ -6,6 +6,19 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.3.2 *March 5, 2017*
+
+__riot__:
+
+  - _Fix:_ tag root attributes out of sync [riot/2280](https://github.com/riot/riot/issues/2280)
+  - _Fix:_ virtual tag doesn't work with each in server side rendering [riot/2220](https://github.com/riot/riot/issues/2220)
+  - _Fix:_ using es6 classes mixins, some functions are lost [riot/2219](https://github.com/riot/riot/issues/2219)
+  - _Fix:_ rendering issue with tag iteration/re-ordering [riot/2271](https://github.com/riot/riot/issues/2271)
+  - _Fix:_ ES6 template literals forward slashes issue [riot/2167](https://github.com/riot/riot/issues/2167)
+  - _Fix:_ re add the `riot.version` attribute
+  - _Improve:_ remove dead code
+  - _Improve:_ increase code coverage to 100% :tada:
+
 ## 3.3.1 *February 19, 2017*
 
 __riot__:
