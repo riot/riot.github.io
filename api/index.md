@@ -145,13 +145,14 @@ riot.renderAsync(tagName, opts)
 <async-rendering>
   <p>{ message }</p>
 
-  this.message = 'hi'
+  <script>
+    this.message = 'hi'
 
-  setTimeout(function() {
-    // triggering the "ready" event will resolve the promise
-    this.trigger('ready')
-  }.bind(this), 500)
-
+    setTimeout(function() {
+      // triggering the "ready" event will resolve the promise
+      this.trigger('ready')
+    }.bind(this), 500)
+  </script>
 </async-rendering>
 ```
 
@@ -358,11 +359,12 @@ You have access to nested tag instances via `tags` variable:
 <my-tag>
 
   <child></child>
-
-  this.on('mount', function() {
-    // access to child tag
-    var child = this.tags.child
-  })
+  <script>
+    this.on('mount', function() {
+      // access to child tag
+      var child = this.tags.child
+    })
+  </script>
 </my-tag>
 ```
 
@@ -375,10 +377,12 @@ You can also use the `ref` attribute to give another name for the nested tag.
 
   <child ref="my_nested_tag"></child>
 
-  this.on('mount', function() {
-    // access to child tag
-    var child = this.refs.my_nested_tag
-  })
+  <script>
+    this.on('mount', function() {
+      // access to child tag
+      var child = this.refs.my_nested_tag
+    })
+  </script>
 </my-tag>
 ```
 
