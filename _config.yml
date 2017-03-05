@@ -42,17 +42,17 @@ author:
 minor_version:       3.2
 v2_minor_version:    2.6
 
-version:             3.3.1
+version:             3.3.2
 v2_version:          2.6.7
-release_date:        February 19
-version_slurp:       Async shortcut functions and enhanced `shouldUpdate` method
+release_date:        March 5
+version_slurp:       100% Code Coverage
 v2_version_slurp:    Fix rendering of tags containing SVGs
 repo:                https://github.com/riot/riot
 twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot
 # Vars needed for the compare.md page
 
-size_min:            10.20
+size_min:            9.73
 riot_route_size_min: 1.77
 
 polymer:
