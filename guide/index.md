@@ -503,8 +503,58 @@ Riot has a special syntax for CSS class names. For example:
 <p class={ foo: true, bar: 0, baz: new Date(), zorro: 'a value' }></p>
 ```
 
-evaluates to "foo baz zorro". Property names whose value is truthful are appended to the list of class names. Of course you can use this notation in other places than class names if you find a suitable use case.
+evaluates to `foo baz zorro`. Property names whose value is truthful are appended to the list of class names. Of course you can use this notation in other places than class names if you find a suitable use case.
 
+
+### Class object expressions
+
+<span class="tag red">&gt;=3.4.0</span>
+
+You can also use an object to define your elements classes. For example:
+
+```html
+<my-tag>
+  <p class={ classes }></p>
+  <script>
+    hasAnimation() {
+      return true
+    }
+
+    this.randomNumber = 5
+
+    this.classes = {
+      foo: true,
+      bar: false,
+      number: '3 > randomNumber',
+      animated: 'hasAnimation()', // watch out, methods should be set as strings
+      baz: new Date(),
+      zorro: 'a value'
+    }
+  </script>
+</my-tag>
+```
+
+evaluates to `foo number animated baz zorro`. Riot will stringify the object and render all the keys having truthful values
+
+### Style object expressions
+
+<span class="tag red">&gt;=3.4.0</span>
+
+Inline `style` attributes can be provided as object and riot will automatically convert them to strings. For example:
+
+```html
+<my-tag>
+  <p style={ styles }></p>
+  <script>
+    this.styles = {
+      color: 'red',
+      height: '10rem'
+    }
+  </script>
+</my-tag>
+```
+
+evaluates to `<p style="color: red; height: 10rem"></p>`
 
 ### Printing brackets
 
