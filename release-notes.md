@@ -6,6 +6,15 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.4.1 *April 9, 2017*
+
+__riot__:
+
+  - _Fix_: parent tag data-is is reset when disabling a nested tag with `if="...` [riot/2311](https://github.com/riot/riot/issues/2311)
+  - _Fix_: object is not valid in "show" anymore [riot/2300](https://github.com/riot/riot/issues/2300)
+  - _Fix_: undefined not handled as empty string (in tags)  [riot/2297](https://github.com/riot/riot/issues/2297)
+  - _Fix_: `<div if="...">` containing `<div data-is="...">` does not unmount tag properly [riot/2307](https://github.com/riot/riot/issues/2307)
+
 ## 3.4.0 *March 26, 2017*
 
 __riot__:
@@ -13,6 +22,7 @@ __riot__:
   - _Fix_: `riot-` prefixed attributes will be no longer prefixed in the `opts` object [riot/2103](https://github.com/riot/riot/issues/2103)
   - _Fix_: `Null` and `undefined` expressions will be no longer converted into empty strings for the tag attributes [riot/2080](https://github.com/riot/riot/issues/2080)
   - _Fix_: style attribute with expressions makes show directive invalid at the beginning [riot/2178](https://github.com/riot/riot/issues/2178)
+  - _Fix_: riot will not force all the expressions evaluating them as strings [riot/2310](https://github.com/riot/riot/issues/2310)
   - _Add_: add support for `style` and `class` object expressions more info [here](/guide/#class-object-expressions) and [here](/guide/#style-object-expressions)
 
 ## 3.3.2 *March 5, 2017*
