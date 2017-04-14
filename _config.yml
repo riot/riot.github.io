@@ -42,11 +42,11 @@ author:
 minor_version:       3.2
 v2_minor_version:    2.6
 
-version:             3.4.1
-v2_version:          2.6.7
-release_date:        April 9
+version:             3.4.2
+v2_version:          2.6.8
+release_date:        April 14
 version_slurp:       Add support for class/style object expressions
-v2_version_slurp:    Fix rendering of tags containing SVGs
+v2_version_slurp:    Security patch agains XSS injections
 repo:                https://github.com/riot/riot
 twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot

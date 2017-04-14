@@ -6,6 +6,13 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.4.1 *April 14, 2017*
+
+__riot__:
+
+  - _Fix_: "data-is" attribute is being removed if you mount on the same element [riot/2317](https://github.com/riot/riot/issues/2317)
+  - _Fix_: riot attributes remain in output [riot/2316](https://github.com/riot/riot/issues/2316)
+
 ## 3.4.1 *April 9, 2017*
 
 __riot__:

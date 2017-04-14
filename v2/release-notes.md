@@ -6,6 +6,11 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.6.8 *April 14, 2017*
+
+- __riot__
+  - Fix security patch agains XSS injections [riot#2315](https://github.com/riot/riot/issues/2315)
+
 ## 2.6.7 *November 6, 2016*
 
 - __riot__
