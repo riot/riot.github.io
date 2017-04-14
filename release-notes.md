@@ -6,7 +6,7 @@ id: release-notes
 
 # {{ page.title }}
 
-## 3.4.1 *April 14, 2017*
+## 3.4.2 *April 14, 2017*
 
 __riot__:
 
