@@ -375,7 +375,7 @@ riot --template pug source.tag
 
 A Pug sample:
 
-``` pug
+``` html
 sample
   p test { value }
   script(type='text/coffee').
