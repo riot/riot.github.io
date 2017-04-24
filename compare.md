@@ -34,7 +34,7 @@ class Todo extends React.Component {
       <div>
         <h3>TODO</h3>
         <ul>
-          {this.state.items.map(item => <li>{item}</li>)}
+          {this.state.items.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
         <form onSubmit={this.handleSubmit}>
           <input value={this.state.value} onChange={this.handleChange} />
