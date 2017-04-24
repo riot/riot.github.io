@@ -19,64 +19,33 @@ By combining these related technologies together under the same component the sy
 
 ### React syntax
 
-The following example was taken directly from the React home page:
-
-
 ``` javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import { render } from 'react-dom'
 
-class TodoApp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {items: [], text: ''};
-  }
-
-  render() {
-    return (
-      <div>
-        <h3>TODO</h3>
-        <TodoList items={this.state.items} />
-        <form onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange} value={this.state.text} />
-          <button>{'Add #' + (this.state.items.length + 1)}</button>
-        </form>
-      </div>
-    );
-  }
-
-  handleChange(e) {
-    this.setState({text: e.target.value});
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    var newItem = {
-      text: this.state.text,
-      id: Date.now()
-    };
-    this.setState((prevState) => ({
-      items: prevState.items.concat(newItem),
-      text: ''
-    }));
-  }
+class Todo extends React.Component {
+    state = { items: [], value: '' }
+    handleSubmit = e =>
+        e.preventDefault() || this.setState({ items: [...this.state.items, this.state.value], value: '' })
+    handleChange = e =>
+        this.setState({ value: e.target.value })
+    render() {
+        return (
+            <div>
+                <h3>TODO</h3>
+                <ul>
+                    {this.state.items.map(item => <li>{item}</li>)}
+                </ul>
+                <form onSubmit={this.handleSubmit}>
+                    <input value={this.state.value} onChange={this.handleChange} />
+                    <button>Add #{this.state.items.length + 1}</button>
+                </form>
+            </div>
+        )
+    }
 }
 
-class TodoList extends React.Component {
-  render() {
-    return (
-      <ul>
-        {this.props.items.map(item => (
-          <li key={item.id}>{item.text}</li>
-        ))}
-      </ul>
-    );
-  }
-}
-
-ReactDOM.render(<TodoApp />, mountNode);
+render(<Todo />, mountNode)
 ```
 
 JSX is mixture of HTML and JavaScript. You can include HTML anywhere on the component; inside methods and in property assignments.
@@ -222,13 +191,3 @@ Because of the complexity involved there is a high chance that these components 
 Riot is one such abstraction. It provides an easy to use API that our applications can stick to. Once the web component specs evolve Riot can start using them *internally* if there are any true benefits, such as performance gains.
 
 The goal of Riot is to make UI development as easy as possible. The current API is designed to withstand the constant flux of web technologies. Think of it as the "jQuery for web components" - it takes syntaxical shortcuts to achieve the same goal. It simplifies the overall experience of writing reusable components.
-
-
-
-
-
-
-
-
-
-
