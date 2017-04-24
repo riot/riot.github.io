@@ -24,25 +24,25 @@ import React from 'react'
 import { render } from 'react-dom'
 
 class Todo extends React.Component {
-    state = { items: [], value: '' }
-    handleSubmit = e =>
-        e.preventDefault() || this.setState({ items: [...this.state.items, this.state.value], value: '' })
-    handleChange = e =>
-        this.setState({ value: e.target.value })
-    render() {
-        return (
-            <div>
-                <h3>TODO</h3>
-                <ul>
-                    {this.state.items.map(item => <li>{item}</li>)}
-                </ul>
-                <form onSubmit={this.handleSubmit}>
-                    <input value={this.state.value} onChange={this.handleChange} />
-                    <button>Add #{this.state.items.length + 1}</button>
-                </form>
-            </div>
-        )
-    }
+  state = { items: [], value: '' }
+  handleSubmit = e =>
+    e.preventDefault() || this.setState({ items: [...this.state.items, this.state.value], value: '' })
+  handleChange = e =>
+    this.setState({ value: e.target.value });
+  render() {
+    return (
+      <div>
+        <h3>TODO</h3>
+        <ul>
+          {this.state.items.map(item => <li>{item}</li>)}
+        </ul>
+        <form onSubmit={this.handleSubmit}>
+          <input value={this.state.value} onChange={this.handleChange} />
+          <button>Add #{this.state.items.length + 1}</button>
+        </form>
+      </div>
+    )
+  }
 }
 
 render(<Todo />, mountNode)
