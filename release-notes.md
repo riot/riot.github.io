@@ -6,6 +6,18 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.4.3 *April 24, 2017*
+
+__riot__:
+
+  - _Fix_: fair angular library size comparison [riot/2325](https://github.com/riot/riot/issues/2325)
+  - _Fix_: data-is works differently as expression to hard-coded attribute [riot/2321](https://github.com/riot/riot/issues/2321)
+  - _Fix_: scope differs between `if` and `show` [riot/2125](https://github.com/riot/riot/issues/2125)
+
+__riot-cli__:
+
+  - _Fix_: error exception reporting [cli/26](https://github.com/riot/cli/issues/26)
+
 ## 3.4.2 *April 14, 2017*
 
 __riot__:
