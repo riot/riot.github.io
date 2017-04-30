@@ -42,17 +42,17 @@ author:
 minor_version:       3.2
 v2_minor_version:    2.6
 
-version:             3.4.3
+version:             3.4.4
 v2_version:          2.6.8
-release_date:        April 24
-version_slurp:       Add support for class/style object expressions
+release_date:        April 30
+version_slurp:       Hot fix IE11 events handling
 v2_version_slurp:    Security patch agains XSS injections
 repo:                https://github.com/riot/riot
 twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot
 # Vars needed for the compare.md page
 
-size_min:            9.88
+size_min:            9.90
 riot_route_size_min: 1.77
 
 polymer:

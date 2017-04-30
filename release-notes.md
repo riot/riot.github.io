@@ -6,6 +6,15 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.4.4 *April 30, 2017*
+
+__riot__:
+
+  - _Fix_: remove `ref` attributes avoiding to parse them twice [riot/2329](https://github.com/riot/riot/issues/2329)
+  - _Fix_: avoid to remove attributes for truthy properties [riot/2331](https://github.com/riot/riot/issues/2331)
+  - _Fix_: support for IE11 events handling [riot/2332](https://github.com/riot/riot/issues/2332)
+
+
 ## 3.4.3 *April 24, 2017*
 
 __riot__:
