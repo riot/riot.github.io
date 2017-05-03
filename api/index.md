@@ -252,7 +252,7 @@ Other than that riot does not update the UI automatically so you need to call th
 </my-tag>
 ```
 
-On above example the error message is displayed on the UI after the `update()` method has been called. We assign `this` variable to `self` since inside the AJAX callback `this` variable points to the response object and not to the tag instance.
+On above example the error message is displayed on the UI after the `update()` method has been called. (We are able to keep using `this` in reference to our tag instance because we `.bind(this)` in our network call's `fail` handler.)
 
 If you want to have more control over your tags DOM updates you can set a custom `shouldUpdate` function, and your tag will update only if that function will return `true`
 
