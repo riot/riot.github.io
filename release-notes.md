@@ -6,6 +6,22 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.5.0 *May 13, 2017*
+
+__riot__:
+
+  - _Add_: enable the use of DOM inline templates [more info](/api/#tags-without-template) [riot/2296](https://github.com/riot/riot/issues/2296)
+  - _Add_: easier svg sub tags support [riot/2290](https://github.com/riot/riot/issues/2290)
+  - _Fix_: better error message [riot/2335](https://github.com/riot/riot/issues/2335)
+  - _Fix_: show on nested tags prefers parent's context [riot/2333](https://github.com/riot/riot/issues/2333)
+  - _Fix_: attributes not updating in v.3.4.4 [riot/2343](https://github.com/riot/riot/issues/2343)
+  - _Fix_: bring back data-ref and ref [riot/2348](https://github.com/riot/riot/issues/2348)
+
+
+__riot-cli__:
+  - _Fix_: fix rollup false positive warnings [rollup-plugin-riot/89](https://github.com/riot/rollup-plugin-riot/issues/89)
+
+
 ## 3.4.4 *April 30, 2017*
 
 __riot__:

@@ -126,9 +126,9 @@ Just like Flux, Riot is flexible and leaves the bigger architectural decisions f
 You can build a Flux-like system by using Riot's observable and router. In fact such thing [already exists](https://github.com/jimsparkman/RiotControl).
 
 
-### {{ site.compare.react }}x bigger
+### {{ site.react.size | divided_by:site.size_min | round }}x bigger
 
-React (v{{ site.react.version }}) is {{ site.compare.react }}x bigger than Riot.
+React (v{{ site.react.version }}) is {{ site.react.size | divided_by:site.size_min | round }}x bigger than Riot.
 
 <small><em>react.min.js</em> – {{ site.react.size }}KB (gzip)</small>
 <span class="bar red"></span>
@@ -138,7 +138,7 @@ React (v{{ site.react.version }}) is {{ site.compare.react }}x bigger than Riot.
 
 <br>
 
-The recommended React router (v{{ site.react_router.version }}) is {{ site.compare.react_router_vs_riot_router }}x larger than Riot router.
+The recommended React router (v{{ site.react_router.version }}) is {{ site.react_router.size | divided_by:site.riot_route_size_min | round  }}x larger than Riot router.
 
 <small><em>react-router.min.js</em> – {{ site.react_router.size }}KB (gzip)</small>
 <span class="bar red"></span>
@@ -169,9 +169,9 @@ Conceptually Riot is the same thing but there are differences:
 4. No ability to perform server side rendering.
 
 
-### {{ site.compare.polymer_and_webcomponents }}x bigger
+### {{ site.polymer_and_webcomponents_size | divided_by:site.size_min | round }}x bigger
 
-Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.version }}) is {{ site.compare.polymer_and_webcomponents }}x bigger than Riot
+Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.version }}) is {{ site.polymer_and_webcomponents_size | divided_by:site.size_min | round }}x bigger than Riot
 
 <small><em>polymer.min.js</em> – {{ site.polymer.size }}KB (gzip)</small>
 <span class="bar red"></span>

@@ -922,6 +922,7 @@ In some cases you may need to loop some html without having a particular wrapper
   <p>Show me with no wrapper on condition</p>
 </virtual>
 ```
+
 ## HTML elements as tags
 
 Standard HTML elements can be used as riot tags in the page body with the addition of the `data-is` attribute.
@@ -973,3 +974,33 @@ var html = riot.render(timer, { start: 42 })
 
 console.log(html) // <timer><p>Seconds Elapsed: 42</p></timer>
 ```
+
+## Riot DOM Caveats
+
+Riot tags rely on browsers rendering so you must be aware of certain situations where your components might not render properly their template.
+
+Consider the following tag:
+
+``` html
+
+<my-fancy-options>
+  <option>foo</option>
+  <option>bar</option>
+</my-fancy-options>
+```
+
+This markup is not valid if not injected in a `<select>` tag:
+
+``` html
+
+<!-- not valid, a select tag allows only <option> children -->
+<select>
+  <my-fancy-options />
+</select>
+
+<!-- valid because we will render the <option> tags using <select> as root node -->
+<select data-is='my-fancy-options'></select>
+
+```
+
+Tags like `table, select, svg...` don't allow custom children tags so the use of custom riot tags (`<virtual>` included) is forbidden. Use `data-is` instead like demonstrated above. [more info](https://github.com/riot/riot/issues/2206)

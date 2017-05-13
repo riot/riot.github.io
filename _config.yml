@@ -42,17 +42,17 @@ author:
 minor_version:       3.2
 v2_minor_version:    2.6
 
-version:             3.4.4
+version:             3.5.0
 v2_version:          2.6.8
-release_date:        April 30
-version_slurp:       Hot fix IE11 events handling
+release_date:        May 13
+version_slurp:       Inline DOM templates, better expessions errors reporting
 v2_version_slurp:    Security patch agains XSS injections
 repo:                https://github.com/riot/riot
 twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot
 # Vars needed for the compare.md page
 
-size_min:            9.90
+size_min:            10.02
 riot_route_size_min: 1.77
 
 polymer:
@@ -70,19 +70,12 @@ react:
   version: 15.5.4
 
 react_router:
-  size:    15.51
-  version: 4.0.0-0
+  size:    10.95
+  version: 4.1.1
 
 react_mini_router:
   size:    4.52
   version: 2.0.0
-
-
-# precalculated round values because of {{round}} liquid filter bug
-compare:
-  react: 4 # react.size / size_min
-  react_router_vs_riot_router: 9 # react_router.size / riot_route_size_min
-  polymer_and_webcomponents: 7 # polymer_and_webcomponents_size / size_min
 
 # Languages
 translations:

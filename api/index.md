@@ -405,9 +405,7 @@ The child tags are initialized after the parent tag so the methods and propertie
 
 ## <a name="yield"></a> Yielding nested HTML
 
-The `<yield>` tag is a special riot core feature that allows you to inject and compile the content of any custom tag inside its template in runtime
-This technique allows you to extend your tags templates with html contents rendered eventually from the server
-
+The `<yield>` tag is a special riot core feature that allows you to inject and compile the content of any custom tag inside its template in runtime.
 For example using the following riot tag `my-post`
 
 ``` html
@@ -438,9 +436,25 @@ once mounted `riot.mount('my-post')` it will be rendered in this way:
 </my-post>
 ```
 
-#### Multi-Transclusion
+<span class="tag red">Warning</span> The yielded expressions **will be always evaluated from the context where they will be included** for example
 
-<span class="tag red">&gt;=2.3.12</span>
+``` html
+<!-- This tag just inherits the yielded DOM -->
+<child-tag><yield/></child-tag>
+
+<my-tag>
+  <child-tag>
+    <p>{ parent.message }</p>
+  </child-tag>
+  <script>
+    // notice that the yielded markup points to the parent.message
+    // { message } is wrong here because it's evaluated under the <child-tag> context
+    this.message = 'hi'
+  </script>
+</my-tag>
+```
+
+#### Multi-Transclusion
 
 The `<yield>` tag also provides a slot mechanism that allows you to inject html contents on specific slots in the template
 
@@ -697,6 +711,44 @@ riot.tag('tag-name', my_tmpl.innerHTML, function(opts) {
 
 })
 </script>
+```
+
+
+#### Tags without template
+
+<span class="tag red">&gt;=3.5.0</span>
+
+Starting from riot 3.5 you can also create "wrapper tags" without any template as follows:
+
+``` js
+riot.tag.('tag-name', false, function(opts) {
+  this.message = 'hi'
+})
+
+```
+
+In this case anytime you will mount a tag named `tag-name` riot will leave the tag markup untouched parsing and rendering only the expressions contained in it:
+
+```html
+<html>
+<body>
+  <tag-name>
+    <p>I want to say { message }</p>
+  </tag-name>
+</body>
+</html>
+```
+
+This technique might be used to enhance serverside rendered templates.
+It will allow you also creating new tags composition patterns wrapping logic agnostic children components communicating with wrapper tags where you can handle your application logic:
+
+
+```html
+<form-validator>
+  <date-picker onchange={ updateDate } />
+  <color-picker onchange={ pickAColor } />
+  <errors-reporter if={ errors.length } errors={ errors }/>
+</form-validator>
 ```
 
 ### riot.Tag(el, [opts])
