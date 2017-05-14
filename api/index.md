@@ -721,7 +721,7 @@ riot.tag('tag-name', my_tmpl.innerHTML, function(opts) {
 Starting from riot 3.5 you can also create "wrapper tags" without any template as follows:
 
 ``` js
-riot.tag.('tag-name', false, function(opts) {
+riot.tag('tag-name', false, function(opts) {
   this.message = 'hi'
 })
 
