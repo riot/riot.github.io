@@ -13,7 +13,7 @@ Riot is inspired by React and from the idea of "cohesion". According to Facebook
 
 > "Templates separate technologies, not concerns."
 
-We respect this insight. The goal is to build reusable components instead of templates. By separating logic from the templates (by using jQuery selectors for example) we are actually keeping out things that should be together.
+We respect this insight. The goal is to build reusable components instead of templates. By separating logic from the templates we are actually keeping out things that should be together.
 
 By combining these related technologies together under the same component the system becomes cleaner. We respect React because of this important insight.
 
@@ -27,8 +27,7 @@ class Todo extends React.Component {
   state = { items: [], value: '' }
   handleSubmit = e =>
     e.preventDefault() || this.setState({ items: [...this.state.items, this.state.value], value: '' })
-  handleChange = e =>
-    this.setState({ value: e.target.value });
+  handleChange = e => this.setState({ value: e.target.value })
   render() {
     return (
       <div>

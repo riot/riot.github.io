@@ -26,13 +26,14 @@ class: download
 
 #### [jsdelivr](http://www.jsdelivr.com/#!riot)
 
-`https://cdn.jsdelivr.net/g/riot@{{ site.minor_version }}(riot.min.js+compiler.min.js)` <small>(latest {{ site.minor_version }}.X)</small>
 
-`https://cdn.jsdelivr.net/riot/{{ site.minor_version }}/riot.min.js` <small>(latest {{ site.minor_version }}.X)</small>
+`https://cdn.jsdelivr.net/npm/riot@{{ site.minor_version }}/riot+compiler.min.js` <small>(latest {{ site.minor_version }}.X)</small>
 
-`https://cdn.jsdelivr.net/g/riot@{{ site.version }}(riot.min.js+compiler.min.js)`
+`https://cdn.jsdelivr.net/npm/riot@{{ site.minor_version }}/riot.min.js` <small>(latest {{ site.minor_version }}.X)</small>
 
-`https://cdn.jsdelivr.net/riot/{{ site.version }}/riot.min.js`
+`https://cdn.jsdelivr.net/npm/riot@{{ site.version }}/riot+compiler.min.js`
+
+`https://cdn.jsdelivr.net/npm/riot@{{ site.version }}/riot.min.js`
 
 
 #### [cdnjs](https://cdnjs.com/libraries/riot)

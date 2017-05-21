@@ -6,6 +6,18 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.5.1 *May 21, 2017*
+
+__riot-tmpl__:
+
+  - _Fix_: `}` in output when expression contains `)/` [riot/2361](https://github.com/riot/riot/issues/2361)
+
+__riot__:
+
+  - _Fix_: inline DOM templates only work on top level tags [riot/2359](https://github.com/riot/riot/issues/2359)
+  - _Fix_: the result of `riot.version` is displayed as WIP [riot/2352](https://github.com/riot/riot/issues/2352)
+
+
 ## 3.5.0 *May 13, 2017*
 
 __riot__:

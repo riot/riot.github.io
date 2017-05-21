@@ -123,8 +123,8 @@ You can put a `style` tag inside. Riot.js automatically takes it out and injects
   <h3>{ opts.title }</h3>
 
   <style>
-    todo { display: block }
-    todo h3 { font-size: 120% }
+   /** other tag specific styles **/
+    h3 { font-size: 120% }
     /** other tag specific styles **/
   </style>
 
