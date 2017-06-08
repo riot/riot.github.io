@@ -26,7 +26,7 @@ riot.settings.skipAnonymousTags = false
 
 <span class="tag red">&gt;= v3.6</span>
 
-The update events will be automatically triggered in riot tags containing DOM handlers (like `onclick`) when a user will dispatch any of them. Setting the `autoUpdate` option to false you will disable this behavior and you will need to manually trigger your tags updates.
+The update events will be automatically triggered in riot tags containing DOM handlers (like `onclick`) when an user will dispatch any of them. Setting the `autoUpdate` option to false you will disable this behavior and will need to manually trigger your tags updates.
 
 ``` js
 riot.settings.autoUpdate = false
