@@ -22,6 +22,15 @@ However the riot versions lower than 3.2 used to create all the `anonymous` tags
 riot.settings.skipAnonymousTags = false
 ```
 
+### <a name="autoupdate"></a> riot.settings.autoUpdate (default `true`)
+
+<span class="tag red">&gt;= v3.6</span>
+
+The update events will be automatically triggered in riot tags containing DOM handlers (like `onclick`) when a user will dispatch any of them. Setting the `autoUpdate` option to false you will disable this behavior and you will need to manually trigger your tags updates.
+
+``` js
+riot.settings.autoUpdate = false
+```
 
 ### <a name="brackets"></a> riot.settings.brackets (default `{ }`)
 
@@ -33,6 +42,7 @@ riot.settings.brackets = '[% %]'
 ```
 
 let's you write expressions `<p>[% like_this %]</p>`. The start and end is separated with a space character.
+
 
 ### <a name="asyncrendertimeout"></a> riot.settings.asyncRenderTimeout
 
