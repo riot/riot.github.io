@@ -6,6 +6,22 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.6.0 *June 8, 2017*
+
+__riot__:
+
+  - _Add_: the option to block the riot automatic updates via `riot.settings.autoUpdate` [more info](/api/misc/#autoupdate) [riot/2377](https://github.com/riot/riot/issues/2377)
+  - _Fix_: regex in <script> function breaks compiler [riot/2369](https://github.com/riot/riot/issues/2369)
+
+__riot-tmpl__:
+
+  - _Fix_: incorrect regex that matches literal regexes
+  - _Fix_: use shared regex parser for browser and server versions
+
+__riot-compiler__:
+
+  - _Fix_: various issues with literal regexes
+
 ## 3.5.1 *May 21, 2017*
 
 __riot-tmpl__:
