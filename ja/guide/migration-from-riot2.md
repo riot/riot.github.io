@@ -3,7 +3,7 @@ layout: ja
 title: Riot 2 からのマイグレーション
 ---
 
-{% include guide-tabs.html %}
+{% include ja/guide-tabs.html %}
 
 ## はじめに
 
