@@ -10,7 +10,7 @@ id: release-notes
 
 __riot__:
 
-  - _Remove_: delete `riot.csp.min.js` because it's useless in Chrome Extensions since it can be locally loaded use `riot.csp.js` instead
+  - _Remove_: `riot.csp.min.js` because it's useless in Chrome Extensions since it can be locally loaded. Use `riot.csp.js` instead
 
 __riot-compiler__:
   - _Fix_: possible bug involving compilation of tags containing regex. [riot/2369](https://github.com/riot/riot/issues/2369)
