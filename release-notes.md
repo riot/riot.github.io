@@ -6,6 +6,18 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.6.1 *June 25, 2017*
+
+__riot__:
+
+  - _Remove_: delete `riot.csp.min.js` because it's useless in Chrome Extensions since it can be locally loaded use `riot.csp.js` instead
+
+__riot-compiler__:
+  - _Fix_: possible bug involving compilation of tags containing regex. [riot/2369](https://github.com/riot/riot/issues/2369)
+  - _Update_: using the skip-regex function from npm for sharing bwteen modules (at future).
+  - _Update_: the jsSplitter function for safer replacement of JS code, part of the next compiler.
+
+
 ## 3.6.0 *June 8, 2017*
 
 __riot__:
