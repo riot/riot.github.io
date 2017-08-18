@@ -44,7 +44,7 @@ v2_minor_version:    2.6
 
 version:             3.6.2
 v2_version:          2.6.8
-version_slurp:       Improve loop performances
+version_slurp:       Improve loop performance
 v2_version_slurp:    Security patch agains XSS injections
 repo:                https://github.com/riot/riot
 twitter_account:     https://twitter.com/riotjs_
