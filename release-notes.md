@@ -10,9 +10,9 @@ id: release-notes
 
 __riot__:
 
-  - _Fix_: Unmount event triggered without mount event [riot/2409](https://github.com/riot/riot/issues/2409)
-  - _Improve_: Loops performance removed old legacy code
-  - _Improve_: Refactor partially the source code preferring more ES2016 syntax goodies
+  - _Fix_: unmount event triggered without mount event [riot/2409](https://github.com/riot/riot/issues/2409)
+  - _Improve_: loops performance by removing old legacy code
+  - _Improve_: refactor partially the source code preferring more ES2016 syntax goodies
 
 ## 3.6.1 *June 25, 2017*
 
