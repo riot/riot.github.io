@@ -10,7 +10,7 @@ id: release-notes
 
 __riot__:
 
-  - _Fix_: another attempt to fix a bit differently [riot/2409](https://github.com/riot/riot/issues/2409)
+  - _Fix_: another attempt to fix [riot/2409](https://github.com/riot/riot/issues/2409)
   - _Fix_: [riot/2428](https://github.com/riot/riot/issues/2428) [riot/2424](https://github.com/riot/riot/issues/2424)
   - _Fix_: package-lock.json out of date [riot/2425](https://github.com/riot/riot/issues/2425)
 
