@@ -42,7 +42,7 @@ author:
 minor_version:       3.6
 v2_minor_version:    2.6
 
-version:             3.6.2
+version:             3.6.3
 v2_version:          2.6.8
 version_slurp:       Improve loop performance
 v2_version_slurp:    Security patch agains XSS injections
@@ -51,7 +51,7 @@ twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot
 # Vars needed for the compare.md page
 
-size_min:            10.28
+size_min:            10.31
 riot_route_size_min: 1.77
 
 polymer:
