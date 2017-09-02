@@ -929,7 +929,7 @@ Adding the `key` attribute to the looped tags you will provide a more precise st
     this.users = [
       { name: 'Gian', id: 0 },
       { name: 'Dan', id: 1 },
-      { name: 'Teo', id: 2 },
+      { name: 'Teo', id: 2 }
     ]
   </script>
 </loop>
@@ -946,7 +946,7 @@ The `key` attribute can be generated also via expressions
     this.users = [
       { name: 'Gian', id() { return 0 } },
       { name: 'Dan', id() { return 1 } },
-      { name: 'Teo', id() { return 2 } },
+      { name: 'Teo', id() { return 2 } }
     ]
   </script>
 </loop>
