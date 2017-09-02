@@ -347,7 +347,8 @@ Mixins provide an easy way to share functionality across tags. When a tag is com
 
 ```js
 var OptsMixin = {
-  init: function() {
+  // the `opts` argument is the option object received by the tag as well
+  init: function(opts) {
     this.on('updated', function() { console.log('Updated!') })
   },
 
@@ -786,7 +787,6 @@ Loops are implemented with `each` attribute as follows:
 
 The element with the `each` attribute will be repeated for all items in the array. New elements are automatically added / created when the items array is manipulated using `push()`, `slice()` or `splice` methods for example.
 
-
 ### Context
 
 A new context is created for each item. These are [tag instances](/api/#tag-instance). When loops are nested, all the children tags in the loop inherit any of their parent loop's properties and methods they themselves have `undefined`. In this way, Riot avoids overriding things that should not be overridden by the parent tag.
@@ -894,11 +894,61 @@ Object loops are not recommended since internally Riot detects changes on the ob
 
 #### Performances
 
-In riot v2.3 to make the loops rendering more reliable the DOM nodes will be moved, inserted and removed always in sync with your data collections: this strategy will make the rendering slower compared to the previous 2.2 releases. To enable a faster rendering algorithm you can add the attribute `no-reorder` to the loop nodes. For example
+The default `each` directive algorithm will sync the position of the looped DOM nodes together with the items in your collection via `indexOf` lookup. This strategy might be not efficient in case you are dealing with big collections of data. In that case if your looped tags don't need to be reordered but just update their templates you can add the `no-reorder` options to them.
 
 ```html
 <loop>
-  <div each="{ item in items }" no-reorder>{ item }</div>
+  <!-- `items` here might be a huge collection of data... -->
+  <table>
+    <tr each="{ item in items }" no-reorder>
+      <td>
+        { item.name }
+      </td>
+      <td>
+        { item.surname }
+      </td>
+    </tr>
+  </table>
+</loop>
+```
+
+The table rows in the above example will be added/removed/updated without being reordered following the item position initially bound to them.
+
+#### Key
+
+<span class="tag red">&gt;= v3.7</span>
+
+Adding the `key` attribute to the looped tags you will provide a more precise strategy to track your items position. This will improve massively the loop performance in case your collections are immutable.
+
+```html
+<loop>
+  <ul>
+    <li each={ user in users } key="id">{ user.name }</li>
+  </ul>
+  <script>
+    this.users = [
+      { name: 'Gian', id: 0 },
+      { name: 'Dan', id: 1 },
+      { name: 'Teo', id: 2 },
+    ]
+  </script>
+</loop>
+```
+
+The `key` attribute can be generated also via expressions
+
+```html
+<loop>
+  <ul>
+    <li each={ user in users } key={ user.id() }>{ user.name }</li>
+  </ul>
+  <script>
+    this.users = [
+      { name: 'Gian', id() { return 0 } },
+      { name: 'Dan', id() { return 1 } },
+      { name: 'Teo', id() { return 2 } },
+    ]
+  </script>
 </loop>
 ```
 

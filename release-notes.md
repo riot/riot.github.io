@@ -6,6 +6,16 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.7.0 *September 2, 2017*
+
+__riot__:
+
+  - _Add_: improve loops performances via `key` attribute [more info](/api/#key) [riot/2418](https://github.com/riot/riot/issues/2418)
+  - _Add_: tag options will be passed to the mixins `init` function [riot/2434](https://github.com/riot/riot/issues/2434)
+  - _Fix_: `isMounted` returns false inside .on("mount") event [riot/2436](https://github.com/riot/riot/issues/2436)
+  - _Fix_: yield with ref attribute fails to load contents [riot/2433](https://github.com/riot/riot/issues/2433)
+  - _Fix_: "value" attribute is not removed if previously set and then set again to falsy value [riot/2427](https://github.com/riot/riot/issues/2427)
+
 ## 3.6.3 *August 23, 2017*
 
 __riot__:

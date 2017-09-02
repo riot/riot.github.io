@@ -576,7 +576,8 @@ var OptsMixin = {
   // init method is a special one which can initialize
   // the mixin when it's loaded to the tag and is not
   // accessible from the tag its mixed in
-  init: function() {
+  // `opts` here is the option object received by the tag as well
+  init: function(opts) {
     this.on('updated', function() { console.log('Updated!') })
   },
 
