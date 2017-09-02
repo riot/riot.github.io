@@ -10,7 +10,7 @@ id: release-notes
 
 __riot__:
 
-  - _Add_: improve loops performances via `key` attribute [more info](/api/#key) [riot/2418](https://github.com/riot/riot/issues/2418)
+  - _Add_: improve loops performance via `key` attribute [more info](/api/#key) [riot/2418](https://github.com/riot/riot/issues/2418)
   - _Add_: tag options will be passed to the mixins `init` function [riot/2434](https://github.com/riot/riot/issues/2434)
   - _Fix_: `isMounted` returns false inside .on("mount") event [riot/2436](https://github.com/riot/riot/issues/2436)
   - _Fix_: yield with ref attribute fails to load contents [riot/2433](https://github.com/riot/riot/issues/2433)
