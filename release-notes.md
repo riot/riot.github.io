@@ -6,6 +6,21 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.7.2 *September 23, 2017*
+
+__riot__:
+
+  - _Fix_: svg dynamic preserveAspectRatio don't work [riot/2445](https://github.com/riot/riot/issues/2445)
+  - _Fix_: scoping of `show` in Yielded Content [riot/2448](https://github.com/riot/riot/issues/2448)
+  - _Improve_: loops performance
+  - _Improve_: new tags creation preferring objects instead of function instances
+  - _Improve_: simplify parent -> children tags inheritance
+
+__riot-compiler__:
+
+  - _Update_: dependencies and refactor some internal code avoiding bitwise operators
+  - _Fix_: coffeescript parser require [riot-compiler/102](https://github.com/riot/compiler/pull/102)
+
 ## 3.7.0 *September 2, 2017*
 
 __riot__:
