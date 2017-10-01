@@ -6,6 +6,13 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.7.3 *October 1, 2017*
+
+__riot__:
+
+  - _Fix_: ternary if does not behave as expected [riot/2454](https://github.com/riot/riot/issues/2454)
+  - _Add_: feature request about riot.compile [riot/2451](https://github.com/riot/riot/issues/2451)
+
 ## 3.7.2 *September 23, 2017*
 
 __riot__:

@@ -42,16 +42,16 @@ author:
 minor_version:       3.7
 v2_minor_version:    2.6
 
-version:             3.7.2
+version:             3.7.3
 v2_version:          2.6.8
-version_slurp:       Improve loops performance via `key` attribute
+version_slurp:       Easier debugging for runtime compilation
 v2_version_slurp:    Security patch agains XSS injections
 repo:                https://github.com/riot/riot
 twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot
 # Vars needed for the compare.md page
 
-size_min:            10.37
+size_min:            10.38
 riot_route_size_min: 1.77
 
 polymer:
@@ -65,8 +65,8 @@ webcomponents:
 polymer_and_webcomponents_size: 66.3 # 45.69 + 12.39 (polymer + webcomponents-lite.min.js )
 
 react:
-  size:    47.60
-  version: 15.6.1
+  size:    34.89
+  version: 16.0.0
 
 react_router:
   size:    10.95
