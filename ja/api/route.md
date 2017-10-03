@@ -6,8 +6,6 @@ class: apidoc
 
 {% include ja/api-tabs.html %}
 
-# はじめに
-
 デフォルトの状態でRiot.jsにルータはバンドルされていません。これはニーズに合わせて好きなルータライブラリを選べるようにするためです。
 
 私たちが開発した`riot-route`についても、今後引き続きメンテナンスを続けていきます。この小さなルータライブラリは、独立のモジュールとして使うことができ、またRiotのミニマルな哲学に非常にフィットしています。
@@ -355,3 +353,100 @@ route(function() { /* */ }) // routing-X (3)
 route('/fruit/*', function() { /* */ }) // routing-Y (1)
 route('/sweet/*', function() { /* */ }) // routing-Z (2)
 ```
+
+## タグベースルーティング
+
+<span class="tag red">&gt;= v3.1</span>
+
+この機能は__ルートを宣言タグとして記述__することを可能にします。
+
+```html
+<app>
+  <router>
+    <route path="apple"><p>Apple</p></route>
+    <route path="banana"><p>Banana</p></route>
+    <route path="coffee"><p>Coffee</p></route>
+  </router>
+</app>
+```
+
+この機能を使用するには、 `route.js`の代わりに` route+tag.js`を読み込む必要があります。
+
+```html
+<script src="path/to/dist/route+tag.js"></script>
+```
+
+ES6の場合
+
+```javascript
+import route from 'riot-route/lib/tag' // パスはcjsとは少し異なることに注意してください
+```
+
+CommonJSの場合
+
+```javascript
+const route = require('riot-route/tag')
+```
+
+### 利用可能なタグ
+
+- `<router>`
+    - 複数のルートを含むことができます
+    - `const r = route.create()`と等価ですので、サブルータを作成します
+- `<route>`
+    - `path`属性を持っています
+    - `<route path="fruit/apple">`は`r('fruit/apple', () => { ... })`と等価です
+    - ルートが選択されると、**route**イベントがその子ノードでトリガーされ、引数が渡されます（詳細は下記参照）
+
+### ワイルドカード引数のキャプチャ
+
+ルーティングでワイルドカード `*`を使うことができることを忘れないでください。もちろん、*tag-based routing*でも同様のことができます。
+
+```html
+<app>
+  <router>
+    <route path="fruit/apple"><p>Apple</p></route>
+    <route path="fruit/*"><inner-tag /></route>
+  </router>
+</app>
+
+<inner-tag>
+  <p>{ name } is not found</p>
+  <script>
+    this.on('route', name => this.name = name)
+  </script>
+</inner-tag>
+```
+
+上記の例を見てください。 `fruit/pineapple`を取得したとき、`route`イベントが`<inner-tag>`で発火し、 `'pineapple'`という引数が一つ渡されます。
+
+### 実際の例
+
+通常は、ルーティング処理中に外部APIを呼び出してデータを取得します。このような目的のために `route`イベントをフックするのは上手いやり方です。 例えば：
+
+```html
+<app>
+  <router>
+    <route path="user/*"><app-user /></route>
+  </router>
+</app>
+
+<app-user>
+  <p>{ message }!</p>
+  <script>
+    this.on('route', id => {
+      this.message = 'now loading...'
+      getUserById(id).then(user => {
+        this.update({
+          message: `Hello ${ user.name }!`
+        })
+      })
+    })
+  </script>
+</app-user>
+```
+
+### いくつかの注意点
+
+- ルータは最初の `<router>`タグがマウントされた後で自動的に起動します。自分で`router.start(true`を呼び出す必要はありません。
+- ルーティングの`base`を変更するには、`route.base('/path/to/base/')`を使用してください。
