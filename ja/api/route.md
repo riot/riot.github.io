@@ -148,7 +148,7 @@ route('customers/267393/edit', 'Editing customer page')
 
 内部では...
 
--  `shouldReplace`がなければ、`history.pushState()`が使われます。
+- `shouldReplace`がなければ、`history.pushState()`が使われます。
 - `shouldReplace`があれば、`history.replaceState()`が使われます。
 
 ### route.start()
