@@ -6,8 +6,6 @@ class: apidoc
 
 {% include ja/api-tabs.html %}
 
-# はじめに
-
 デフォルトの状態でRiot.jsにルータはバンドルされていません。これはニーズに合わせて好きなルータライブラリを選べるようにするためです。
 
 私たちが開発した`riot-route`についても、今後引き続きメンテナンスを続けていきます。この小さなルータライブラリは、独立のモジュールとして使うことができ、またRiotのミニマルな哲学に非常にフィットしています。
@@ -28,10 +26,11 @@ import route from 'riot-route' // var route = require('riot-route') is also ok
 
 Riotルータは最もミニマルなルータの実装であり、​​以下の機能を含みます。
 
-- ブラウザ・ヒストリAPI と pushState
+- pushStateとヒストリAPI
 - 複数のルーティンググループ
 - 交換可能パーサ
-- IE9以降との互換性
+- isomorphic
+- IE9以降をサポートする場合は[polyfill](https://github.com/devote/HTML5-History-API) を使用してください。なぜならIEだからです。
 
 ## ルーティングの設定
 
@@ -54,18 +53,18 @@ id = '987987'
 action = 'edit'
 ```
 
-URLは次のような方法で変更することが可能です。
+URLは以下のような方法で変更することが可能です。
 
-1.新しいURLが、ロケーションバーに入力された
-2.戻る/進むボタンが押されたとき
-3.`route(to)`が呼び出されたとき
-4.アンカータグ`<a>`がクリックされたとき
+1. 新しいハッシュがロケーションバーに入力されたとき
+2. 戻る/進むボタンが押されたとき
+3. `route(to)`が呼び出されたとき
+4. アンカータグがクリックされたとき
 
 ### route(filter, callback)
 
 <span class="tag red">&gt;= v2.3</span>
 
-URLが変更された際、`filter`に一致すれば、与えられた`callback`を実行する。
+URLが変更された際、`filter`に一致すれば、与えられた`callback`を実行されます。
 
 ```javascript
 // `/fruit`のみに一致
@@ -74,7 +73,7 @@ route('/fruit', function(name) {
 })
 ```
 
-ワイルドカード(`*`)を`filter`内に使用し、パラメータとして渡すことができます:
+ワイルドカード(`*`)を`filter`内に使用すると、それらを引数として渡すことができます:
 
 ```javascript
 // URLが`/fruit/apple`に変更した場合
@@ -90,7 +89,7 @@ route('/blog/*-*/*', function(year, month, date) {
 })
 ```
 
-`/old`と`/old/and/anything`の両方に一致させたいときは`..`と書きます:
+`/old`と`/old/and/anything`の両方に一致させたいときは、`..`と書きます:
 
 ```javascript
 route('/old..', function() {
@@ -98,7 +97,7 @@ route('/old..', function() {
 })
 ```
 
-URLが検索キーワードを含む場合に便利です。
+これはURLが検索キーワードを含む場合に便利です。
 
 ```javascript
 // URLが`/search?keyword=Apple`に変更したとき一致する
@@ -123,18 +122,18 @@ route('/search?keyword=*', function(keyword) {
 
 <span class="tag red">&gt;= v2.3</span>
 
-新しいサブ・ルータを返します。
+新しいサブ・ルータを返します。例:
 
 ```javascript
 var subRoute = route.create()
 subRoute('/fruit/apple', function() { /* */ })
 ```
 
-詳しくは[ルーティング・グループ](#ルーティング・グループ)と[ルーティングの優先度](#ルーティングの優先度)を参照。
+詳しくは[ルーティング・グループ](#ルーティング・グループ)と[ルーティングの優先度](#ルーティングの優先度)を参照してください。
 
 ## ルータの使用
 
-### route(to[, title])
+### route(to[, title, shouldReplace])
 
 ブラウザのURLを変更して、`route(callback)`で登録されたすべてのリスナに通知します。例:
 
@@ -147,30 +146,64 @@ route('customers/267393/edit')
 route('customers/267393/edit', 'Editing customer page')
 ```
 
+内部では...
+
+- `shouldReplace`がなければ、`history.pushState()`が使われます。
+- `shouldReplace`があれば、`history.replaceState()`が使われます。
+
 ### route.start()
 
-URL変更の検知を開始します。これは、Riotが読み込まれた際に自動的に呼び出されます。[route.stop](#riot-route-stop)と合わせて使うのが典型的です。次はその例です。
+URL変更の検知を開始します。
+
+```javascript
+route.start()
+```
+
+<span class="tag red">&gt;= v2.3</span>
+
+Riotはルータを自動的に起動しません。**あなた自身で始めることを忘れないでください。**これはまた、お気に入りのルータを選択できることを意味します。
+（メモ: v2.3より前はRiotが自動的にルータを起動しました。動作が変更されました）
+
+### route.start(autoExec)
+
+urlの変更を検知し、現在のurlでルーティングを実行します。
+
+```js
+route.start(true)
+```
+
+これは以下を省略したものです。
+
+```js
+route.start()
+route.exec()
+```
+
+<span class="tag red">&gt;= v2.3</span>
+
+Riotはルータを自動的に起動しません。**あなた自身で始めることを忘れないでください。**これはまた、お気に入りのルータを選択できることを意味します。
+（メモ: v2.3より前はRiotが自動的にルータを起動しました。動作が変更されました）
+
+### route.stop()
+
+全てのローティングを停止します。リスナーを削除し、全てのコールバックをクリアします。
+
+```javascript
+route.stop()
+```
+
+この方法は[route.start](#route-start)と一緒に使用します。例:
 
 ```javascript
 route.stop() // 古いコールバックを解除
 route.start() // 再起動
 ```
 
-### route.stop()
-
-URL変更検知を停止。全てのコールバックをクリアします。
-
-```javascript
-route.stop()
-```
-
-デフォルトルータを停止しておけば、アプリケーションで別のルータを使うことも可能です。
-
 ### subRoute.stop()
 
 <span class="tag red">&gt;= v2.3</span>
 
-サブ・ルータを停止して、全てのコールバックをクリア。
+サブルータのルーティングのみ停止します。リスナーを削除し、全てのコールバックをクリアします。
 
 ```javascript
 var subRoute = route.create()
@@ -178,9 +211,9 @@ subRoute('/fruit/apple', function() { /* */ })
 subRoute.stop()
 ```
 
-### route.exec(callback)
+### route.exec()
 
-現在のURLを調べて、与えられた`callback`をURL変更なしに「その場で」実行します。こんな感じです。
+現在のブラウザのパスを"定位置で"記憶し、変更を待つことなくルーティングを実行します。
 
 ```javascript
 route.exec(function(collection, id, action) {
@@ -194,7 +227,7 @@ route.exec(function(collection, id, action) {
 
 <span class="tag red">&gt;= v2.3</span>
 
-URLからパラメータを取り出すときに便利な関数です。
+URLからクエリを抽出するときに有効な関数です。
 
 ```javascript
 // URLが`/search?keyword=Apple&limit=30`に変更されたとき
@@ -213,21 +246,26 @@ route('/search..', function() {
 
 `http://riotexample.com/app/fruit/apple`
 
-ベースパスを`/app`に変更すれば、`/fruit/apple`の部分だけをルーティングに指定できます。
+ベースパスを`/app`に変更すると、`/fruit/apple`部分のみを気にすれば良くなります。
 
 ```javascript
 route.base('/app')
 ```
 
-デフォルトの`base`は"#"です。ハッシュバングを使いたい場合は`#!`に変更してください。
+デフォルトの`base`の値は"#"です。ハッシュバンを使いたい場合は、`#!`に変更してください。
 
 ```javascript
 route.base('#!')
 ```
 
-### route.parser(parser)
+<span class="tag red">Warning</span>
 
-デフォルトパーサーを独自のものに変更します。これは、こんなパスを解析するための例です。
+ベースから`#`を削除したとしても、webサーバーはURLが何であってもアプリケーションを実行する必要があります。なぜなら、ブラウザ上のアプリケーションがURLを操作しているからとなります。WebサーバーはURLの処理方法を知りません。
+
+
+### route.parser(parser[, secondParser])
+
+デフォルトパーサーを独自のものに変更します。これはパスを解析する例です。
 
 `!/user/activation?token=xyz`
 
@@ -268,7 +306,7 @@ route(function(target, action, params) {
 
 <span class="tag red">&gt;= v2.3</span>
 
-`secondParser`を指定すれば二つめのパーサも変更できます。このパーサはURLフィルターで使われています:
+`secondParser`を指定すれば、二つめのパーサも変更できます。この二つめのパーサはURLフィルターで使われています:
 
 ```javascript
 // デフォルトの第二パーサ
@@ -284,7 +322,7 @@ route.parser(first, second)
 
 ## ルーティング・グループ
 
-サーバ上で使われる従来のルータは高度に一元管理されていますが、最近はクライアント側において、いたるところにルータが使われるようになってきています。以下の例をとってみましょう。
+サーバサイドの従来のルータは高度に一元管理されていますが、最近は画面のいたるところにルータが使われるようになってきています。以下の例をとってみましょう。
 
 ```html
 <first-tag>
@@ -306,15 +344,15 @@ route.parser(first, second)
 </second-tag>
 ```
 
-二つのタグが重なったルーティングを指定しています。見かけはいいのですが、一つのルータを共用しているため、どちらか一つのルーティングしか呼ばれません。そこで、それぞれのタグに、別のルーティング・グループを与えることが必要となります。以下のように書くと、両方のルーティングが呼ばれるようになります。
+二つのタグにルーティングが指定されていますが、良さそうに見えますか？いいえ、これは動作しません。片方のルータのみが起動するため、次はどちらにルーティングするか判断がつきません。そこで、それぞれのタグ定義ごとに分離したルーティング・グループを作成する必要となります。例:
 
 ```html
 <first-tag>
   <p>First tag</p>
   <script>
-    var subRoute = route.create() // 新しいサブ・ルータを作る
+    var subRoute = route.create() // create another routing context
     subRoute('/fruit/*', function(name) {
-      /* 共通するアクション */
+      /* do something common */
     })
   </script>
 </first-tag>
@@ -322,9 +360,9 @@ route.parser(first, second)
 <second-tag>
   <p>Second tag</p>
   <script>
-    var subRoute = route.create() // 新しいサブ・ルータを作る
+    var subRoute = route.create() // create another routing context
     subRoute('/fruit/apple', function(name) {
-      /* 特別なアクション */
+      /* do something SPECIAL */
     })
   </script>
 </second-tag>
@@ -332,7 +370,7 @@ route.parser(first, second)
 
 ## ルーティングの優先度
 
-ルータは最初に一致するルーティングを探します。以下の例では、最初のルーティングが常に一致するため、routing-Bと-Cは呼ばれることがありません。
+ルータは最初に一致するルーティングを実行しようとします。したがって次の例では、routing-Bと-Cは呼ばれることがありません。
 
 ```javascript
 route('/fruit/*', function(name) { /* */ }) // routing-A (1)
@@ -340,7 +378,7 @@ route('/fruit/apple', function() { /* */ }) // routing-B (2)
 route('/fruit/orange', function() { /* */ }) // routing-C (3)
 ```
 
-次のように置き換えると、上から下まで一致するルーティングを順番に探していきます。
+これは正常に動作します。
 
 ```javascript
 route('/fruit/apple', function() { /* */ }) // routing-B (1)
@@ -348,10 +386,107 @@ route('/fruit/orange', function() { /* */ }) // routing-C (2)
 route('/fruit/*', function(name) { /* */ }) // routing-A (3)
 ```
 
-フィルターを指定したルーティングは、フィルターなしのルーティングよりも優先されます。次の例では、routing-Xは最初に定義されていますが、最後に呼ばれます。
+そして*フィルターを指定した*ルーティングは、*フィルターなしの*ルーティングよりも優先されます。次の例では、routing-Xは最初に定義されていますが、最後に呼ばれます。
 
 ```javascript
 route(function() { /* */ }) // routing-X (3)
 route('/fruit/*', function() { /* */ }) // routing-Y (1)
 route('/sweet/*', function() { /* */ }) // routing-Z (2)
 ```
+
+## タグベースルーティング
+
+<span class="tag red">&gt;= v3.1</span>
+
+この機能は__ルートを宣言タグとして記述__することを可能にします。
+
+```html
+<app>
+  <router>
+    <route path="apple"><p>Apple</p></route>
+    <route path="banana"><p>Banana</p></route>
+    <route path="coffee"><p>Coffee</p></route>
+  </router>
+</app>
+```
+
+この機能を使用するには、 `route.js`の代わりに` route+tag.js`を読み込む必要があります。
+
+```html
+<script src="path/to/dist/route+tag.js"></script>
+```
+
+ES6の場合
+
+```javascript
+import route from 'riot-route/lib/tag' // パスはcjsとは少し異なることに注意してください
+```
+
+CommonJSの場合
+
+```javascript
+const route = require('riot-route/tag')
+```
+
+### 利用可能なタグ
+
+- `<router>`
+    - 複数のルートを含むことができます
+    - `const r = route.create()`と等価ですので、サブルータを作成します
+- `<route>`
+    - `path`属性を持っています
+    - `<route path="fruit/apple">`は`r('fruit/apple', () => { ... })`と等価です
+    - ルートが選択されると、**route**イベントがその子ノードでトリガーされ、引数が渡されます（詳細は下記参照）
+
+### ワイルドカード引数のキャプチャ
+
+ルーティングでワイルドカード `*`を使うことができることを忘れないでください。もちろん、*tag-based routing*でも同様のことができます。
+
+```html
+<app>
+  <router>
+    <route path="fruit/apple"><p>Apple</p></route>
+    <route path="fruit/*"><inner-tag /></route>
+  </router>
+</app>
+
+<inner-tag>
+  <p>{ name } is not found</p>
+  <script>
+    this.on('route', name => this.name = name)
+  </script>
+</inner-tag>
+```
+
+上記の例を見てください。 `fruit/pineapple`を取得したとき、`route`イベントが`<inner-tag>`で発火し、 `'pineapple'`という引数が一つ渡されます。
+
+### 実際の例
+
+通常は、ルーティング処理中に外部APIを呼び出してデータを取得します。このような目的のために `route`イベントをフックするのは上手いやり方です。 例えば：
+
+```html
+<app>
+  <router>
+    <route path="user/*"><app-user /></route>
+  </router>
+</app>
+
+<app-user>
+  <p>{ message }!</p>
+  <script>
+    this.on('route', id => {
+      this.message = 'now loading...'
+      getUserById(id).then(user => {
+        this.update({
+          message: `Hello ${ user.name }!`
+        })
+      })
+    })
+  </script>
+</app-user>
+```
+
+### いくつかの注意点
+
+- ルータは最初の `<router>`タグがマウントされた後で自動的に起動します。自分で`router.start(true`を呼び出す必要はありません。
+- ルーティングの`base`を変更するには、`route.base('/path/to/base/')`を使用してください。
