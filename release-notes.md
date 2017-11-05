@@ -6,6 +6,16 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.7.4 *November 5, 2017*
+
+__riot__:
+
+  - _Fix_: fail to display nested custom tag in loop into SVG [riot/2464](https://github.com/riot/riot/issues/2464)
+  - _Fix_: function passed as undefined when on a tag with an `each` loop [riot/2474](https://github.com/riot/riot/issues/2474)
+  - _Fix_: `before-unmount` is called after destroying the DOM on child tags [riot/2480](https://github.com/riot/riot/issues/2480)
+  - _Fix_: fix the `uid` internal function [riot/2481](https://github.com/riot/riot/issues/2481)
+  - _Add_: jsDelivr hits badge [riot/2467](https://github.com/riot/riot/issues/2467)
+
 ## 3.7.3 *October 1, 2017*
 
 __riot__:

@@ -42,9 +42,9 @@ author:
 minor_version:       3.7
 v2_minor_version:    2.6
 
-version:             3.7.3
+version:             3.7.4
 v2_version:          2.6.8
-version_slurp:       Easier debugging for runtime compilation
+version_slurp:       Improve svg support
 v2_version_slurp:    Security patch agains XSS injections
 repo:                https://github.com/riot/riot
 twitter_account:     https://twitter.com/riotjs_
