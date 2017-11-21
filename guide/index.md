@@ -619,7 +619,7 @@ since there is no expression to update in the template (`<span></span>`).
 
   this.innerHTML.root = opts.content
   this.on('update', function(){ this.root.innerHTML = opts.content }.bind(this));
-<raw>
+</raw>
 ```
 
 [demo on jsfiddle](http://jsfiddle.net/y8kwdcm9/)
