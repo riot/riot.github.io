@@ -618,11 +618,11 @@ since there is no expression to update in the template (`<span></span>`).
   <span></span>
 
   this.innerHTML.root = opts.content
-  this.on('update', function(){ this.root.innerHTML = opts.content }.bind(this));
+  this.on('update', function(){ this.root.innerHTML = opts.content });
 </raw>
 ```
 
-[demo on jsfiddle](http://jsfiddle.net/y8kwdcm9/)
+[demo on jsfiddle](http://jsfiddle.net/7m3bvy1d/)
 
 ## Nested tags
 
