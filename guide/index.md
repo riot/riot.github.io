@@ -610,6 +610,20 @@ After the tag is defined you can use it inside other tags. For example
 
 <span class="tag red">warning</span> this could expose the user to XSS attacks so make sure you never load data from an untrusted source.
 
+Note that in more practical situation, you will need to specify `update` event manually as follows
+since there is no expression to update in the template (`<span></span>`).
+
+```html
+<raw>
+  <span></span>
+
+  this.innerHTML.root = opts.content
+  this.on('update', function(){ this.root.innerHTML = opts.content }.bind(this));
+<raw>
+```
+
+[demo on jsfiddle](http://jsfiddle.net/y8kwdcm9/)
+
 ## Nested tags
 
 Let's define a parent tag `<account>` and with a nested tag `<subscription>`:
