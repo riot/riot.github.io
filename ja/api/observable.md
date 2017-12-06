@@ -9,7 +9,7 @@ class: apidoc
 
 ### <a name="constructor"></a> riot.observable(el)
 
-与えられたオブジェクト`el`に[Observer](https://ja.wikipedia.org/wiki/Observer_パターン)機能を付加するか、引数をとらない場合は新しいオブジェクトを生成して返します。この後、オブジェクトはイベントのトリガーおよび監視ができるようになります。例:
+与えられたオブジェクト`el`に[Observer](https://ja.wikipedia.org/wiki/Observer_パターン)機能を付加するか、引数をとらない場合は新しいオブザーバブルインスタンスを生成して返します。その後、このオブジェクトはイベントのトリガーおよび監視ができるようになります。例:
 
 ``` js
 function Car() {
@@ -27,7 +27,7 @@ function Car() {
 // 新しいCarインスタンスを作る
 var car = new Car()
 
-// 'start'イベントを発火
+// 'start'イベントをトリガー
 car.trigger('start')
 ```
 
@@ -35,7 +35,7 @@ car.trigger('start')
 
 ### <a name="on"></a> el.on(events, callback)
 
-与えられたイベントを監視して、イベントがトリガーされるごとに`callback`を実行します。
+指定されたイベントを監視して、イベントがトリガーされるごとに`callback`を実行します。
 
 ``` js
 // ひとつのイベントを監視
@@ -45,20 +45,20 @@ el.on('start', function(args) {
 
 // すべてのイベントを監視
 el.on('all', function(event, param1, param2) {
-  // eventはイベントの名前
-  // パラメータによってここで何かをする
+  // eventはトリガーされたイベントの名前
+  // パラメータで何かをする
 })
 
 ```
 
 @returns `el`
 
-### <a name="one"></a> el.one(events, callback)
+### <a name="one"></a> el.one(event, callback)
 
-一度だけ、与えられた`events`を監視し、`callback`を実行します。
+与えられた`event`を監視し、`callback`を一度だけ実行します。
 
 ``` js
-// 'start'が何回発火されても、一度だけ実行する
+// 'start'が何回トリガーされても、この関数を一度だけ実行する
 el.one('start', function() {
 
 })
@@ -68,7 +68,7 @@ el.one('start', function() {
 
 ### <a name="off"></a> el.off(events)
 
-指定されたイベントのリスナ(コールバック)を削除します。
+指定された`event`のリスナを削除します。
 
 ``` js
 el.off('start')
@@ -78,7 +78,7 @@ el.off('start')
 
 ### <a name="off-fn"></a> el.off(events, fn)
 
-指定されたイベントについて、特定のリスナ`fn`を削除します。
+監視中の`event`について、指定されたコールバックを削除します。
 
 ``` js
 function doIt() {
@@ -101,13 +101,13 @@ el.off('start', doIt)
 
 ### <a name="off-all-fn"></a> el.off('*', fn)
 
-すべてのイベントの特定のコールバック関数を削除します。
+すべてのイベントで呼ばれた特定のコールバック関数を削除します。
 
 @returns `el`
 
-### <a name="trigger"></a> el.trigger(events)
+### <a name="trigger"></a> el.trigger(event)
 
-`events`を監視しているすべてのコールバック関数を実行します。
+`event`を監視しているすべてのコールバック関数を実行します。
 
 ``` js
 el.trigger('start')
@@ -118,15 +118,15 @@ el.trigger('render')
 
 ### <a name="trigger-args"></a> el.trigger(event, arg1 ... argN)
 
-`event`を監視しているすべてのコールバック関数を実行します。任意の数の引数をリスナに渡すことができます。
+指定された`event`を監視しているすべてのコールバック関数を実行します。任意の数の引数をリスナに渡すことができます。
 
 ``` js
-// startイベントを監視して、引数を待ち受け
+// 'start'イベントを監視して、引数を待ち受ける
 el.on('start', function(engine_details, is_rainy_day) {
 
 })
 
-// 引数とともに、startイベントをトリガー
+// 引数とともに、'start'イベントをトリガー
 el.trigger('start', { fuel: 89 }, true)
 
 ```
