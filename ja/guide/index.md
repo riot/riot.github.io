@@ -584,7 +584,18 @@ Riotのテンプレート変数は、HTML形式を含まないテキストのみ
 
 <span class="tag red">警告</span> これはユーザをXSS攻撃の危険にさらす場合があります。信用できないソースからのデータを、絶対にロードしないようにしなくてはなりません。
 
+メモ: テンプレート(`<span></span>`)では更新に対応できないのでより実践的な状況では、`update`イベントを指定する必要があります。
 
+```html
+<raw>
+  <span></span>
+
+  this.innerHTML.root = opts.content
+  this.on('update', function(){ this.root.innerHTML = opts.content });
+</raw>
+```
+
+[jsfiddle上のデモ](http://jsfiddle.net/7m3bvy1d/)
 
 ## 入れ子のタグ
 
