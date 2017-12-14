@@ -22,7 +22,7 @@ React worked well for us, and we still use it in our [Disqus Importer](/importer
 
 ### React syntax
 
-The following example was taken directly from the React home page:
+The following example was taken directly from React's home page:
 
 
 ``` javascript
@@ -73,7 +73,7 @@ JSX is mixture of HTML and JavaScript. You can include HTML anywhere on the comp
 
 ### Riot syntax
 
-Here is the above thing with Riot:
+The above React example written in Riot:
 
 ``` html
 <todo>
@@ -98,7 +98,7 @@ Here is the above thing with Riot:
 </todo>
 ```
 
-And this is how the above tag is mounted on a page:
+And this is how the component is mounted on a page:
 
 ``` html
 <todo></todo>
@@ -108,13 +108,13 @@ And this is how the above tag is mounted on a page:
 
 ### Same, same — but different
 
-In Riot HTML and JavaScript appear much more familiar. Both are under the same component, but neatly separated from each other. The HTML can be mixed with JavaScript expressions.
+In Riot, HTML and JavaScript are recognizable when compared to JSX, but with Riot they are distinct areas within the component rather than blended together and therefore challenging to read, however Riot does allow that HTML and JavaScript can be mixed within expressions.
 
-No proprietary stuff, except the notation of enclosing expressions inside curly braces.
+No proprietary code, except the notation of enclosing expressions inside curly braces.
 
-You see less boilerplate. Less brackets, commas, system properties and method names. Strings can be interpolated: `"Hello {world}"` instead of `"Hello " + this.state.world` and methods can be defined with compact ES6 syntax. Just less everything.
+You see less boilerplate. Less brackets, commas, system properties and method names. Strings can be interpolated: `"Hello {world}"` instead of `"Hello " + this.state.world` and methods can be defined with compact ES6 syntax. Just less of everything with Riot
 
-We think Riot syntax is the cleanest way to separate layout and logic while enjoying the benefits of isolated reusable components.
+We believe Riot syntax is the cleanest way to separate layout and logic while enjoying the benefits of isolated reusable components.
 
 
 ### String based vs DOM based
@@ -125,24 +125,22 @@ Riot takes the expressions from the tree and stores them in an array. Each expre
 
 Since these expressions can be cached an update cycle is very fast. Going through 100 or 1000 expressions usually takes 1ms or less.
 
-The React sync algorithm is much more complex since the HTML layout can change randomly after each update. Given the enormous challenge, Facebook developers did an impressive job with it.
+The React sync algorithm is more complex because the HTML can change randomly after each update. Given the enormous challenge, Facebook developers did an impressive job with it.
 
-We saw that the complex diffing can be avoided.
+We saw that the complex diff'ing can be avoided.
 
-In Riot the HTML structure is fixed. Only loops and conditionals can add and remove elements. But a `div` cannot be converted to a `label` for example. Riot only updates the expressions without complex subtree replacements.
+In Riot the HTML structure is fixed; a `div` cannot be converted to a `label` for example. Only loops and conditionals can add and remove elements. Riot only updates the expressions without complex subtree replacements.
 
 
 ### Flux and routing
 
-React deals with the UI only, which is a good thing. All great software projects have a sharp focus.
+React deals with the UI only, which is why Facebook recommends the use of [Flux](http://facebook.github.io/flux/docs/overview.html) to structure client-side code. It's more of a pattern than a framework and is packed with great ideas.
 
-Facebook recommends to use [Flux](http://facebook.github.io/flux/docs/overview.html) to structure the client-side code. It's more of a pattern than a framework and is packed with great ideas.
+Riot also comes bundled with custom tags, an event emitter (observable) and router. We believe that these are the fundamental building blocks of client side applications. Events bring modularity, a router takes care of the URL and the back button and custom tags take care of the user interface.
 
-Riot comes bundled with custom tags, an event emitter (observable) and router. We believe that these are the fundamental building blocks of client side applications. Events bring modularity, a router takes care of the URL and the back button and custom tags take care of the user interface.
+Like Flux+React, Riot is flexible and leaves the bigger architectural decisions for the developer. It's just a library to help you achieve the goal.
 
-Just like Flux, Riot is flexible and leaves the bigger architectural decisions for the developer. It's just a library to help you achieve the goal.
-
-You can build a Flux-like system by using Riot's observable and router. In fact such thing [already exists](https://github.com/jimsparkman/RiotControl).
+You can build a Flux-like system by using Riot's event emitter and router. In fact such thing [already exists](https://github.com/jimsparkman/RiotControl).
 
 
 ### {{ site.compare.react }}x bigger
@@ -170,14 +168,14 @@ The recommended React router (v{{ site.react_router.version }}) is {{ site.compa
 
 Admittedly this router comparison is a bit unfair because [react-router](https://github.com/rackt/react-router) has a lot more features. But the above chart clearly highlights the goal of Riot: to provide the most minimalistic API for the job.
 
-The React ecosystem is more frameworky and favors larger API surfaces. The bigger alternative is more popular than [react-mini-router](https://github.com/larrymyers/react-mini-router) in the React community.
+The React ecosystem is more of a framework and favors larger API surfaces. The bigger alternative is more popular than [react-mini-router](https://github.com/larrymyers/react-mini-router) in the React community.
 
 
 ## Polymer
 
-Polymer takes the Web Component standard and makes it available for the latest browsers. This allows you to write custom tags in a standard manner.
+Polymer takes the Web Component standard and enables it for the latest browsers. This allows you to write custom tags in a standard manner.
 
-Conceptually Riot is the same thing but there are differences:
+Conceptually Riot is the similar, but there are differences:
 
 1. The Web Components syntax is experimental and complex.
 
@@ -203,19 +201,11 @@ Web components are said to be the [king of all polyfilling challenges](http://de
 
 ## Web components
 
-Because web components is a standard it is ultimately the way to go. It will take [years](http://caniuse.com/#search=web%20components), but eventually the web will be full of these standard components.
+While web components is an accepted standard it will take [years](http://caniuse.com/#search=web%20components) before it is  fully adopted, but eventually the web will be built using web components, yet due to their complexity there is a significant chance that web components never be used directly by developers, but through a UI library like Riot. Just like developers continue to use jQuery today.
 
-Because of the complexity involved there is a high chance that these components are not used directly. There will be layers on top of web components. Just like we have jQuery today. Most people are not using the DOM directly.
+The goal of Riot is to make UI development as easy as possible, by providing an easy to use, stable API that applications can rely upon to build web components today for tomorrow, while web components continue to evolve. Far into the future, once web component specs have fully evolved and reached market saturation Riot may start to use them *internally* (within the library) if there is any benefit to doing so, such as performance improvements.
 
-Riot is one such abstraction. It provides an easy to use API that our applications can stick to. Once the web component specs evolve Riot can start using them *internally* if there are any true benefits, such as performance gains.
-
-The goal of Riot is to make UI development as easy as possible. The current API is designed to withstand the constant flux of web technologies. Think of it as the "jQuery for web components" - it takes syntaxical shortcuts to achieve the same goal. It simplifies the overall experience of writing reusable components.
-
-
-
-
-
-
+We like to think of Riot as the "jQuery for web components" and we hope you will too.
 
 
 
