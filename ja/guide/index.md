@@ -505,6 +505,58 @@ RiotはCSSクラス名について特別な文法をもっています。例え�
 は、"foo baz zorro"として評価されます。その値が真になるプロパティ名は、クラス名のリストに追加されます。もちろん、この表記法はクラス名以外の場所で使うこともできます。もしふさわしい使い場所があれば。
 
 
+### クラスのオブジェクト記法
+
+<span class="tag red">&gt;=3.4.0</span>
+
+DOMエレメントのCSSクラス名指定に、オブジェクトを使うこともできます。例えば:
+
+```html
+<my-tag>
+  <p class={ classes }></p>
+  <script>
+    hasAnimation() {
+      return true
+    }
+
+    this.randomNumber = 5
+
+    this.classes = {
+      foo: true,
+      bar: false,
+      number: '3 > randomNumber',
+      animated: 'hasAnimation()', // 注意！メソッドは文字列で指定すること
+      baz: new Date(),
+      zorro: 'a value'
+    }
+  </script>
+</my-tag>
+```
+
+とすれば、`foo number animated baz zorro`と評価されます。Riotは与えられたオブジェクトのうち、値がtruthfulな（真として評価される）キー名を、すべて（CSSクラス名の）文字列として出力します。
+
+
+### インラインスタイルのオブジェクト記法
+
+<span class="tag red">&gt;=3.4.0</span>
+
+インラインの `style` 属性をオブジェクトの形で与えることができ、Riotはそれを自動的に（インラインスタイル指定の）文字列に変換します。例えば:
+
+```html
+<my-tag>
+  <p style={ styles }></p>
+  <script>
+    this.styles = {
+      color: 'red',
+      height: '10rem'
+    }
+  </script>
+</my-tag>
+```
+
+とすれば、`<p style="color: red; height: 10rem"></p>`と評価されます。
+
+
 ### 括弧の表示
 
 開始括弧をエスケープすれば、評価せずにテンプレート変数をすのまま表示することができます:
