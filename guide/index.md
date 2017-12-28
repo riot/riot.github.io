@@ -979,7 +979,7 @@ In some cases you may need to loop some html without having a particular wrapper
 </dl>
 ```
 
-`virtual` however is not exclusive to looping and can be used in conjuction with `if` and `data-is` for any tag
+`virtual` however is not exclusive to looping and can be used in conjuction with `if` for any tag
 
 ```html
 <virtual data-is="my-tag" if={condition}>
