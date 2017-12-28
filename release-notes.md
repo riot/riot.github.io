@@ -6,6 +6,26 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.8.0 *December 28, 2017*
+
+__riot__:
+
+  - _Fix_: misleading use of `virtual` tags together with `data-is` attribute [riot/2511](https://github.com/riot/riot/issues/2511)
+  - _Update_: project contributors list [riot/2512](https://github.com/riot/riot/issues/2512)
+
+__riot-compiler__:
+
+  - _Add_: experimental sourcemaps support
+
+If you will compile using the `sourcemap=true` option the compiler will return an object
+containing `code` and `sourcemap`. **The current riot compiler doesn't use a "real parser" so the generated sourcemaps might be inaccurate**
+We will generate better sourcemap results in the next riot major release.
+
+__riot-cli__:
+
+  - _Add_: the `sourcemap` option to generate inline sourcemap
+  - _Change_: all its API methods will return always promises if used in node
+
 ## 3.7.4 *November 5, 2017*
 
 __riot__:

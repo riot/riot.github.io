@@ -42,16 +42,16 @@ author:
 minor_version:       3.7
 v2_minor_version:    2.6
 
-version:             3.7.4
+version:             3.8.0
 v2_version:          2.6.8
-version_slurp:       Improve svg support
+version_slurp:       Add experimental sourcemaps support
 v2_version_slurp:    Security patch agains XSS injections
 repo:                https://github.com/riot/riot
 twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot
 # Vars needed for the compare.md page
 
-size_min:            10.38
+size_min:            10.36
 riot_route_size_min: 1.77
 
 polymer:
