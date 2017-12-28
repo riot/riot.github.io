@@ -6,6 +6,10 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.8.1 *December 28, 2017*
+
+ - _Fix_: prefer `console.warn` to hard `Exception Errors` to avoid breaking changes [riot/2511](https://github.com/riot/riot/issues/2511)
+
 ## 3.8.0 *December 28, 2017*
 
 __riot__:

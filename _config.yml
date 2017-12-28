@@ -42,7 +42,7 @@ author:
 minor_version:       3.7
 v2_minor_version:    2.6
 
-version:             3.8.0
+version:             3.8.1
 v2_version:          2.6.8
 version_slurp:       Add experimental sourcemaps support
 v2_version_slurp:    Security patch agains XSS injections
