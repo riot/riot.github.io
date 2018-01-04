@@ -555,17 +555,17 @@ var OptsMixin = {
 それぞれのタグインスタンスは[オブザーバブル](#observable)なので、`on`と`one`メソッドをタグで起きるイベント監視のために使えます。サポートされているイベントは次のとおり:
 
 
-- "update" – タグの更新直前。UIが更新される前にコンテキストデータを再計算できる。
-- "updated" – タグの更新完了の直後。更新されたDOMに対して処理ができる。
-- "before-mount" – ページにタグがマウントされる直前。
-- "mount" – ページにタグがマウントされた直後。
-- "before-unmount" – ページからタグのマウントが解除される直前。
-- "unmount" – ページからタグのマウントが解除された直後。
+- "update" – タグの更新直前。UIが更新される前にコンテキストデータを再計算できる
+- "updated" – タグの更新完了の直後。更新されたDOMに対して処理ができる
+- "before-mount" – ページにタグがマウントされる直前
+- "mount" – ページにタグがマウントされた直後
+- "before-unmount" – ページからタグのマウントが解除される前
+- "unmount" – ページからタグのマウントが解除された後
 
 例:
 
 ``` js
-// cleanup resources after tag is no longer part of DOM
+// タグ以降のクリーンアップされたりそーすはもはやDOMの一部ではありません
 this.on('unmount', function() {
   clearTimeout(timer)
 })
@@ -573,13 +573,13 @@ this.on('unmount', function() {
 
 ## 予約語
 
-上記のメソッドとプロパティの名前は、Riotタグの予約語です。次のいずれもインスタンス変数やメソッドの名前として使ってはいけません: `opts`, `parent`, `tags`, `root`, `refs`, `update`, `unmount`, `on`, `off`, `one`, `trigger`。またアンダースコアから始まる変数名(`this._item`など)も予約されています。ローカル変数については、自由に名前付けできます:
+上記のメソッド名とプロパティ名は、Riotタグの予約語です。次のいずれもインスタンス変数やメソッド名として使ってはいけません: `opts`, `parent`, `tags`, `root`, `refs`, `update`, `unmount`, `on`, `off`, `one`, `trigger`。またアンダースコアから始まる変数名(```this._item```など)も予約されています。ローカル変数については、自由に名前付けできます。例:
 
 ``` javascript
 <my-tag>
 
   // OK
-  function update() { } 
+  function update() { }
 
   // ダメ
   this.update = function() { }
@@ -602,8 +602,7 @@ this.on('unmount', function() {
 - `html` [テンプレート変数](/ja/guide/#テンプレート変数)を含むレイアウト
 - `css` タグのスタイル (省略可)
 - `attrs` タグの属性値 (省略可)
-- `constructor` タグのマウントやテンプレート変数が計算されるより前に呼ばれる、初期化関数
-
+- `constructor` タグの式が計算される前、およびタグがマウントされる前に呼ばれる初期化関数
 
 #### 例
 
@@ -632,14 +631,14 @@ riot.tag('timer',
 詳細と *制約* については、[タイマーのデモ](http://jsfiddle.net/gnumanth/h9kuozp5/)と[riot.tag](#タグのインスタンス)のAPIドキュメントを参照してください。
 
 
-<span class="tag red">警告</span> `riot.tag`を使うと、コンパイラの長所や次のような機能が使えなくなります:
+<span class="tag red">警告</span> `riot.tag`を使うことで、コンパイラの長所や以下のような機能が使えなくなります:
 
 1. 自己閉じタグ
-2. コーテーションなしのテンプレート変数: `attr={ val }`の代わりに、`attr="{ val }"`と書くこと
+2. コーテーションなしのテンプレート変数。`attr={ val }`の代わりに、`attr="{ val }"`と書くこと
 3. ES6のメソッドの省略記法
-4. `<img src={ src }>`は`<img riot-src={ src }>`と書かなくてはならない: 不正なサーバリクエストを防止するため
-5. `<input value={ val }>`は`<img riot-value={ val }>`と書かなくてはならない: IEの予期しない問題を避けるため
-6. `style="color: { color }"`は`riot-style="color: { color }"`のように書かなくてはならない: スタイル属性がIEでも動作するように
+4. 不正なサーバリクエストを防止するために、`<img src={ src }>`は`<img riot-src={ src }>`と書かなくてはならない
+5. IEの予期しない問題を避けるために、`<input value={ val }>`は`<img riot-value={ val }>`と書かなくてはならない
+6. スタイル属性式がIEでも動作するように、`style="color: { color }"`は`riot-style="color: { color }"`のように書かなくてはならない
 7. Scoped CSSのプリコンパイル
 
 次のように書くことで`<template>`や`<script>`タグの利点を生かすことはできます:
@@ -657,9 +656,46 @@ riot.tag('tag-name', my_tmpl.innerHTML, function(opts) {
 </script>
 ```
 
+
+#### Tags without template
+
+<span class="tag red">&gt;=3.5.0</span>
+
+Riot 3.5からは、次のようなテンプレートを使用せずに"ラッパータグ"を作成することができます:
+
+``` js
+riot.tag('tag-name', false, function(opts) {
+  this.message = 'hi'
+})
+
+```
+
+この場合、いつでも`tag-name`という名前のタグをマウントします。Riotは手付かずのタグマークアップを解析し、そのタグに含まれている式だけをレンダリングします。
+
+```html
+<html>
+<body>
+  <tag-name>
+    <p>I want to say { message }</p>
+  </tag-name>
+</body>
+</html>
+```
+
+このテクニックは、サーバーサイドレンダリングされたテンプレートを強化するために使用されるでしょう。
+また、アプリケーションロジックを処理できるラッパータグと通信する、ロジックに依存しない子コンポーネントをラップするような新しいタグの構成パターンを作成することも可能になります。
+
+```html
+<form-validator>
+  <date-picker onchange={ updateDate } />
+  <color-picker onchange={ pickAColor } />
+  <errors-reporter if={ errors.length } errors={ errors }/>
+</form-validator>
+```
+
 ### riot.Tag(el, [opts])
 
-riot.Tagコンストラクタを使うと、`es6`クラス記法でタグを拡張して作成することが可能になります。
+riot.Tagコンストラクタを使うと、`es6`クラス記法でタグを作成・拡張することが可能になります。
 Riotタグを作るには、`riot.Tag`コンストラクタを拡張する必要があります:
 
 ```js
