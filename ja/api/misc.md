@@ -15,9 +15,9 @@ class: apidoc
 
 <span class="tag red">&gt;= v3.2</span>
 
-riotでは、ループ内の全ての新しいタグは新しいriotタグインスタンスを生成します。これはカスタムタグや、`<li each={ item in items }>{ item }</li>`のような`anonymous`タグに対しても発生します。ループの終わりでは、`anonymous`タグは目に見えるべきではなく、かつレンダリングプロセスを大幅に高速化するためにriot mixinsに渡されるべきではないため、私たちriotは新しいタグインスタンスを生成します。
+Riotでは、ループ内の全ての新しいタグは新しいrRiotタグインスタンスを生成します。これはカスタムタグや、`<li each={ item in items }>{ item }</li>`のような`anonymous`タグに対しても発生します。ループの終わりでは、`anonymous`タグは目に見えるべきではなく、かつレンダリングプロセスを大幅に高速化するためにriot mixinsに渡されるべきではないため、私たちRiotは新しいタグインスタンスを生成します。
 
-しかし、バージョンが3.2以下のriotは、メモリが重くなったり、レンダリング性能が低下するカスタムタグと同じ方法で、全ての`anonymous`タグを生成するために使われました。`skipAnonymousTags = false`の場合、`anonymous`タグはもはや軽いタグとして生成されなくなり、あなたのアプリケーションは〜30%遅くなります。
+しかし、バージョンが3.2以下のRiotは、メモリが重くなったり、レンダリング性能が低下するカスタムタグと同じ方法で、全ての`anonymous`タグを生成するために使われました。`skipAnonymousTags = false`の場合、`anonymous`タグはもはや軽いタグとして生成されなくなり、あなたのアプリケーションは〜30%遅くなります。
 
 ``` js
 riot.settings.skipAnonymousTags = false
@@ -27,7 +27,7 @@ riot.settings.skipAnonymousTags = false
 
 <span class="tag red">&gt;= v3.6</span>
 
-アップデートイベントは、ユーザーがriotタグのいずれかをディスパッチする際に、DOMハンドラ（`onclick`など）を含むriotタグ内で自動的にトリガーされます。`autoUpdate`オプションをfalseに設定すると、この動作が無効になり、手動でタグのアップデートをトリガーする必要があります。
+アップデートイベントは、ユーザーがRiotタグのいずれかをディスパッチする際に、DOMハンドラ（`onclick`など）を含むRiotタグ内で自動的にトリガーされます。`autoUpdate`オプションをfalseに設定すると、この動作が無効になり、手動でタグのアップデートをトリガーする必要があります。
 
 ``` js
 riot.settings.autoUpdate = false
