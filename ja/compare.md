@@ -5,7 +5,7 @@ title: RiotをReact・Polymerと比較する
 
 # **Riot** vs **React** & **Polymer**
 
-Riotは何が違うの?
+Riotとその他近しいライブラリは何が違うの?
 
 ## React
 
@@ -14,77 +14,46 @@ Riotは、Reactとその「まとめ方(cohesion)」のアイデアからイン�
 > 「テンプレートは、問題ではなく、技術を分けるだけだ」
 > "Templates separate technologies, not concerns."
 
-私たちは、この直感に敬意を表します。ゴールは、再利用可能なテンプレートを作ることではなく、コンポーネントを作ることです。ロジックをテンプレートから分離することは(例えば、jQueryセレクタを使って)、本来一緒にしておくべきものを追い出してしまっているのです。
+私たちは、この直感に敬意を表します。ゴールはテンプレートを作ることではなく、再利用可能なコンポーネントを作ることです。ロジックをテンプレートから分離することで、本来一緒にしておくべきものを追い出してしまっているのです。
 
-関連するこれらの技術をコンポーネント内にまとめることで、システムはよりクリーンになります。この重要な直感において、Reactは偉大でした。
+これらの関連技術をコンポーネント内にまとめることで、システムはよりクリーンになります。この重要な直感において、Reactは偉大です。
 
 ### Reactの文法
 
-次の例は、Reactのホームページから直接持ってきたものです。
-
 ``` javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import { render } from 'react-dom'
 
-class TodoApp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {items: [], text: ''};
-  }
-
+class Todo extends React.Component {
+  state = { items: [], value: '' }
+  handleSubmit = e =>
+    e.preventDefault() || this.setState({ items: [...this.state.items, this.state.value], value: '' })
+  handleChange = e => this.setState({ value: e.target.value })
   render() {
     return (
       <div>
         <h3>TODO</h3>
-        <TodoList items={this.state.items} />
+        <ul>
+          {this.state.items.map((item, i) => <li key={i}>{item}</li>)}
+        </ul>
         <form onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange} value={this.state.text} />
-          <button>{'Add #' + (this.state.items.length + 1)}</button>
+          <input value={this.state.value} onChange={this.handleChange} />
+          <button>Add #{this.state.items.length + 1}</button>
         </form>
       </div>
-    );
-  }
-
-  handleChange(e) {
-    this.setState({text: e.target.value});
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    var newItem = {
-      text: this.state.text,
-      id: Date.now()
-    };
-    this.setState((prevState) => ({
-      items: prevState.items.concat(newItem),
-      text: ''
-    }));
+    )
   }
 }
 
-class TodoList extends React.Component {
-  render() {
-    return (
-      <ul>
-        {this.props.items.map(item => (
-          <li key={item.id}>{item.text}</li>
-        ))}
-      </ul>
-    );
-  }
-}
-
-ReactDOM.render(<TodoApp />, mountNode);
+render(<Todo />, mountNode)
 ```
 
-JSXはHTMLとJavaScriptのミックスです。HTMLをコンポーネントの好きなところに含めることができます。メソッドの中でも、プロパティの値としても。
+JSXはHTMLとJavaScriptが混在しています。HTMLをコンポーネントの好きなところに含めることができます。メソッド内でも、プロパティの値としても。
 
 
 ### Riotの文法
 
-そして、こちらは上と同じ内容をRiotで書いた場合です。
+こちらは上と同じ内容をRiotで書いた場合です:
 
 ``` html
 <todo>
@@ -110,7 +79,7 @@ JSXはHTMLとJavaScriptのミックスです。HTMLをコンポーネントの�
 </todo>
 ```
 
-このタグはこのページに次のようにマウントされます。
+そして、これは上記のタグがどのようにページ上にマウントされるかを表しています:
 
 ``` html
 <todo></todo>
@@ -120,26 +89,26 @@ JSXはHTMLとJavaScriptのミックスです。HTMLをコンポーネントの�
 
 ### 同じ、だけど全然違う
 
-Riotでは、HTMLとJavaScriptはより見慣れた形であらわれます。どちらも、同じコンポーネントのもとにありますが、きちんとそれぞれが分けられています。HTMLはJavaScriptのテンプレート変数(expressions)と混ぜることができます。
+Riotでは、HTMLとJavaScriptはより見慣れた形であらわれます。どちらも、同じコンポーネント下にありますが、きちんとそれぞれが分けられています。HTMLはJavaScriptのテンプレート変数(expressions)と混ぜることができます。
 
 テンプレート変数を波括弧で囲むこと以外、独自路線は一切なしです。
 
-少ないボイラープレート、少ない括弧にカンマ、システムプロパティやメソッド名に気がつくでしょう。文字列には、変数を挿入することができます: `"Hello " + this.state.world`の代わりに、`"Hello {world}"`でOK。そして、メソッドはES6のコンパクトな文法で定義できます。
+少ないボイラープレート、少ない括弧、カンマ、システムプロパティやメソッド名に気がつくでしょう。文字列には、変数を挿入することができます: `"Hello " + this.state.world`の代わりに`"Hello {world}"`、そしてメソッドはES6のコンパクトな文法で定義できます。ほんの少しだけです。
 
-再利用可能なコンポーネントとして分離しつつも、レイアウトとロジックを分けるのに、Riotの文法は一番すっきりした方法だと、私たちは考えています。
+Riotの文法は、再利用可能なコンポーネントとして分離する利点を体感しつつ、レイアウトとロジックを分ける一番すっきりした方法だと、私たちは考えています。
 
 
 ### 仮想DOM vs テンプレート変数バインディング (expressions binding)
 
-コンポーネントが初期化される際、Reactは仮想DOMを作り、一方でRiotはDOMツリーをトラバースするのみです。
+コンポーネントが初期化される際、Reactは仮想DOMを作りますが、一方でRiotはDOMツリーをトラバースするのみです。
 
-Riotはテンプレート変数をそのツリーから取得し、配列に保持します。それぞれのテンプレート変数は、DOMノードへのポインターを持っています。それぞれでテンプレート変数は評価され、DOMの値と比較されます。もし、値が変更されていれば、該当するDOMノードが更新されます。
+Riotはテンプレート変数をそのツリーから取得し、配列に保持します。それぞれのテンプレート変数は、DOMノードへのポインターを持っています。実行ごとにこれらのテンプレート変数は評価され、DOMの値と比較されます。値が変更されていれば、該当するDOMノードが更新されます。
 
-これらのテンプレート変数はキャッシュされ、更新は非常に高速です。100か1000のテンプレート変数があっても通常1ミリ秒かそれ以下です。
+これらのテンプレート変数はキャッシュされるため、更新は非常に高速です。100または1000の式を実行するには、通常1ミリ秒かそれ以下です。
 
-Reactの場合、更新後にHTMLレイアウトがランダムに変更されうるため、同期アルゴリズムはもっと複雑怪奇です。この計り知れない挑戦に、Facebookの開発者たちは素晴らしい仕事をしました。
+Reactの場合、更新ごとにHTMLレイアウトがランダムに変更されうるため、同期アルゴリズムはもっと複雑です。この計り知れない挑戦に、Facebookの開発者たちは素晴らしい仕事をしました。
 
-でも、この複雑な変更検知(diffing)を避けられることを、私たちはすでに見てきました。
+しかし、この複雑な変更検知(diffing)を避けられることを、私たちはすでに見てきました。
 
 RiotではHTMLの構造は固定です。ループと条件文だけが、要素の追加と削除を行います。ですが、例えば`div`が`label`に変換されるようなことは起きえません。Riotは複雑な部分木(DOMツリー)の置き換えなしに、テンプレート変数だけを更新します。
 
