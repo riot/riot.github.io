@@ -13,7 +13,7 @@ class: apidoc
 
 `customTagSelector` ページから要素を選択し、カスタムタグをそこにマウントします。選択された要素の名前は、カスタムタグの名前と一致していなければなりません。
 
-`opts` タグに渡すオブジェクトを指定できます (省略可)。ただのシンプルなオブシェクトから、アプリケーションAPIまで、なんでもOKです。あるいは、Fluxストアというのもありです。これは、あなたのクライアントサイドアプリケーションをどのように構築したいかにかかっています。さらに詳しくは、[Riot アプリケーションのモジュール性](/ja/guide/application-design/#モジュール性)を参照してください。 *Also note* that attributes you set on your tags as options will take precedence over ones specified with same names via `opts` argument.
+`opts` タグに渡すオブジェクトを指定できます (省略可)。ただのシンプルなオブシェクトから、アプリケーションAPIまで、なんでもOKです。あるいは、Fluxストアというのもありです。これは、あなたのクライアントサイドアプリケーションをどのように構築したいかにかかっています。さらに詳しくは、[Riot アプリケーションのモジュール性](/ja/guide/application-design/#モジュール性)を参照してください。 *追加メモ* `opts`引数を介して同じ名前で指定されたものよりも、オプションとしてタグに設定された属性が優先されます。
 
 
 ``` js
@@ -27,17 +27,15 @@ var tags = riot.mount('.customer')
 var tags = riot.mount('account', api)
 ```
 
-@returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列を返します。
+@returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列
 
-メモ: [ブラウザ内のコンパイル](/ja/guide/compiler/#ブラウザ)を使用している場合は`riot.mount`を`riot.compile`で囲み、コンパイル後のタグを取得する必要があります。そうしなければ`riot.mount`は`undefined`を返します。
+メモ: [ブラウザ内のコンパイル](/ja/guide/compiler/#ブラウザ)を使用している場合は、返された[タグのインスタンス](#タグのインスタンス)を取得するために、`riot.mount`を`riot.compile`で囲む必要があります。そうしないと、`riot.mount`は`undefined`を返します。
 
 ```javascript
-<script>
 riot.compile(function() {
-  // タグがコンパイルされた後にriot.mountを呼ぶ
+  // タグがコンパイルされ、同期的にriot.mountが動作
   var tags = riot.mount('*')
 })
-</script>
 ```
 
 ### <a name="mount-star"></a> riot.mount('*', [opts])
@@ -48,7 +46,7 @@ riot.compile(function() {
 riot.mount('*')
 ```
 
-@returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列を返します。
+@returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列
 
 ### <a name="mount-tag"></a> riot.mount(selector, tagName, [opts])
 
@@ -64,24 +62,23 @@ riot.mount('*')
 var tags = riot.mount('div#main', 'my-tag', api)
 ```
 
-@returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列を返します。
+@returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列
 
 ### <a name="mount-dom"></a> riot.mount(domNode, tagName, [opts])
 
-tagNamedで指定する名称のカスタムタグを、与えられたdomNodeに対して、optsでデータを渡しつつ(任意)、マウントします。例:
+tagNamedで指定する名称のカスタムタグを、与えられたdomNodeに対して、任意のデータをoptsで渡しつつマウントします。例:
 
 ```
-// mounts "users" tag to #slide node and pass api as options
+// #slideノードに"users"タグをマウントし、オプションとしてapiを渡す
 riot.mount(document.getElementById('slide'), 'users', api)
 ```
 
-@returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列を返します。
+@returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列
 
 ### <a name="unregister"></a> riot.unregister(tagName)
 
 事前にコンパイラーあるいは`riot.tag()`から作成されたタグを登録解除します。
-このメソッドはアプリケーションをテストする際、同じ名称を使って複数回タグを作る必要があるときに、便利です。
-例:
+このメソッドはアプリケーションをテストする際、同じ名称を使って複数回タグを作る必要があるときに、便利です。例:
 
 ```js
 // テストタグを作る
@@ -94,7 +91,7 @@ expect(tag.root.querySelector('p')).to.be.ok
 // マウントを解除する
 riot.unregister('test-tag')
 
-// 異なるテンプレートでタグを改めて作成する
+// 異なるテンプレートで同じタグを再作成
 riot.tag('test-tag', '<div>{ message }</div>')
 ```
 
@@ -103,7 +100,7 @@ riot.tag('test-tag', '<div>{ message }</div>')
 ### <a name="render"></a> riot.render(tagName, [opts])
 
 タグをHTMLとしてレンダリング。
-__このメソッドは *サーバサイド* でのみ利用できます。__ 例:
+__このメソッドは *サーバサイド* でのみ利用可。__ 例:
 
 ```
 // "my-tag"をHTMLにレンダリング
@@ -116,19 +113,19 @@ riot.render(mytag, { foo: 'bar' })
 
 ### <a name="mount-dom"></a> riot.require(tagPath, [opts])
 実行時にRiotタグを読み込んでコンパイルします。
-__このメソッドは *サーバサイド* でのみ利用できます。__
+__このメソッドは *サーバサイド* でのみ利用可。__
 基本的には`require('./my-tag.tag')`のような形になりますが、[riot-compilerのオプション](/api/compiler/#on-server)を指定してコンパイルすることもできます。例えば、同時にプリプロセッサを使って読み込むことができます。
 
 ```js
 var tag = riot.require('./my-tag.jade', { template: 'jade' })
 ```
 
-@returns: タグの名称
+@returns: タグの名前
 
 ### <a name="renderasync"></a> riot.renderAsync(tagName, [opts])
 
 タグを非同期にHTMLにレンダリング。
-__このメソッドは *サーバサイド* でのみ利用できます。__
+__このメソッドは *サーバサイド* でのみ利用可。__
 このメソッドはプロミスを返します。マウントするプロセスの中で、"ready"イベントがトリガーされた時だけ解決されます。例:
 
 #### サーバ上で:
@@ -147,13 +144,14 @@ riot.renderAsync(tagName, opts)
 <async-rendering>
   <p>{ message }</p>
 
-  this.message = 'hi'
+  <script>
+    this.message = 'hi'
 
-  setTimeout(function() {
-    // "ready"イベントをトリガーし、プロミスを解決させる
-    this.trigger('ready')
-  }.bind(this), 500)
-
+    setTimeout(function() {
+      // "ready"イベントをトリガーし、プロミスを解決させる
+      this.trigger('ready')
+    }.bind(this), 500)
+  </script>
 </async-rendering>
 ```
 
@@ -165,11 +163,11 @@ riot.renderAsync(tagName, opts)
 
 ## タグのインスタンス
 
-次のプロパティが、それぞれのタグのインスタンスにはセットされます:
+次のプロパティが、それぞれのタグのインスタンスにセットされます:
 
-- `opts` - タグに渡されたオプション
+- `opts` - タグに渡されたオプションオブジェクト
 - `refs` - 名前のつけられたDOMノード(のキャッシュ)
-- `parent` - 親タグ (もしあれば)
+- `parent` - 親タグ(もしあれば)
 - `root` - ルートになるDOMノード
 - `tags` - 入れ子になっているカスタムタグ
 
@@ -195,7 +193,7 @@ riot.renderAsync(tagName, opts)
 </my-tag>
 ```
 
-メモ: もしグローバル変数があれば、HTMLとJavaScriptのコードからそれらの参照を使用することもできます:
+メモ: もしグローバル変数があれば、HTMLとJavaScriptのコードの両方でこれらの参照を使用することもできます:
 
 ```js
 window.someGlobalVariable = 'Hello!'
@@ -214,20 +212,22 @@ window.someGlobalVariable = 'Hello!'
 
 ### <a name="tag-update"></a> this.update()
 
-現在のタグインスタンス上のすべてのテンプレート変数と、子要素すべても同様に更新します。ユーザがアプリケーションとインタラクションした際にイベントハンドラが呼ばれると、毎回このメソッドが呼ばれます。
+現在のタグインスタンス上のすべてのテンプレート変数と、子要素もすべて同様に更新します。ユーザがアプリケーションとインタラクションした際にイベントハンドラが呼ばれると、毎回このメソッドが呼ばれます。
 
 イベントオブジェクトに`preventUpdate = true`をセットすると、Riotによる自動更新を省略することができます。例:
 
 ``` html
 <my-tag>
-  <button onclick={ click }>{ message }</span>
+  <button onclick={ click }>{ message }</button>
 
-  this.message = 'hi'
+  <script>
+    this.message = 'hi'
 
-  click(e) {
-    e.preventUpdate = true // your tag will not update automatically
-    this.message = 'goodbye'
-  }
+    click(e) {
+      e.preventUpdate = true // タグは自動では更新されない
+      this.message = 'goodbye'
+    }
+  </script>
 </my-tag>
 ```
 
@@ -239,45 +239,76 @@ window.someGlobalVariable = 'Hello!'
   <input name="username" onblur={ validate }>
   <span class="tooltip" show={ error }>{ error }</span>
 
-  var self = this
-
-  validate() {
-    $.get('/validate/username/' + this.username.value)
-      .fail(function(error_message) {
-        self.error = error_message
-        self.update()
-      })
-  }
+  <script>
+    validate() {
+      $.get('/validate/username/' + this.username.value)
+        .fail(function(error_message) {
+          this.error = error_message
+          this.update()
+        }.bind(this))
+    }
+  </script>
 </my-tag>
 ```
 
-上の例では、`update()`が呼ばれた後、エラーメッセージがUIに表示されます。`this`変数を`self`にアサインしているのは、AJAX呼び出しの中では`this`変数が、タグインスタンスではなくレスポンスオブジェクトを参照しているためです。
+上の例では、`update()`が呼ばれた後、エラーメッセージがUIに表示されます。（我々のネットワークコールの`fail`ハンドラで`.bind(this)`が使われているため、タグインスタンスを参照して`this`を使い続けることができます。）
 
-より細かくタグのDOMの更新をコントロールしたい場合は、カスタムの`shouldUpdate`関数を用意することができます。この関数が`true`を返した場合だけ、タグが更新されます。
+より細かくタグのDOMの更新をコントロールしたい場合は、カスタムの`shouldUpdate`関数を用意することができます。この関数が`true`を返した場合のみ、タグが更新されます。
 
 ``` html
 <my-tag>
-  <button onclick={ click }>{ message }</span>
+  <button onclick={ click }>{ message }</button>
 
-  this.message = 'hi'
+  <script>
+    this.message = 'hi'
 
-  click(e) {
-    this.message = 'goodbye'
-  }
-  // data here is what you have passed to your update method
-  // in case of this.update() it will be undefined
-  shouldUpdate(data) {
-    // do not update
-    if (this.message === 'goodbye') return false
-    // if this.message is different from 'goodbye' we could update the tag
-    return true
-  }
+    click(e) {
+      this.message = 'goodbye'
+    }
+    // ここのデータはupdateメソッドに渡したもの
+    // この場合、this.updateはundefined
+    shouldUpdate(data, nextOpts) {
+      // 更新しない
+      if (this.message === 'goodbye') return false
+      // this.messageが'goodbye'ならば、タグを更新可能
+      return true
+    }
+  </script>
 </my-tag>
 ```
 
+`shouldUpdate`メソッドは常に2つの引数を受け取ります: 1つ目は`tag.update`メソッドで更新したい値を含み、2つ目の引数はタグ属性を通して受け取った新しいオプションです。通常は`opts`オブジェクトに格納されます。
+
+``` html
+<my-tag>
+  <child-tag message={ message }></child-tag>
+  <button onclick={ click }>Say goodbye</button>
+
+  <script>
+    this.message = 'hi'
+
+    click(e) {
+      this.message = 'goodbye'
+    }
+  </script>
+</my-tag>
+
+<child-tag>
+  <p>{ opts.message }</p>
+
+  <script>
+    shouldUpdate(data, nextOpts) {
+      // 受け取った新しいオプションに応じてDOMを更新
+      return nextOpts.message !== 'goodbye'
+    }
+  </script>
+</child-tag>
+```
+
+
 ### <a name="tag-update-data"></a> this.update(data)
 
-現在のインスタンスに値をセットして、テンプレート変数を更新します。これは、`this.update()`と同様ですが、呼び出しと同時にコンテキストデータをセットできます。つまり、このように書く代わりに:
+現在のインスタンスに値をセットして、テンプレート変数を更新します。これは`this.update()`と同様ですが、呼び出しと同時にコンテキストデータをセットすることを可能にします。つまり、このように書く代わりに:
 
 ``` js
 self.error = error_message
@@ -296,7 +327,7 @@ self.update({ error: error_message })
 
 ページ上のすべてのタグとそのテンプレート変数を更新します。
 
-@returns: マウントされた[タグのインスタンス](#タグのインスタンス)の配列を返します。
+@returns: ページにマウントされた[タグのインスタンス](#タグのインスタンス)の配列。
 
 
 
@@ -307,13 +338,13 @@ self.update({ error: error_message })
 タグとその子孫をページから取り除きます。"unmount"イベントが発火します。
 もし、親タグを削除せずにマウント解除したい場合は、`unmount`メソッドに`true`を渡す必要があります。
 
-DOMからタグを取り除く:
+DOMからタグを取り除きます:
 
 ``` js
 mytag.unmount()
 ```
 
-タグの子孫を取り除き、親タグだけ残す:
+タグの子孫を取り除き、親タグだけ残します:
 
 ``` js
 mytag.unmount(true)
@@ -321,66 +352,73 @@ mytag.unmount(true)
 
 ## 入れ子のタグ
 
-入れ子になった(ネストされた)タグのインスタンスは、`tags`変数からアクセスできます:
+入れ子になった(ネストされた)タグのインスタンスには、`tags`変数からアクセスできます:
 
 ``` html
 <my-tag>
 
   <child></child>
-
-  // 子タグにアクセス
-  var child = this.tags.child
-
+  <script>
+    this.on('mount', function() {
+      // 子タグにアクセス
+      var child = this.tags.child
+    })
+  </script>
 </my-tag>
 ```
 
 もし、ひとつ以上の同じ子タグが使われた場合は、配列`this.tags.child[n]`としてアクセスされます。
 
-入れ子のタグに、`ref`属性で別名を与えてアクセスすることもできます。
+入れ子のタグに`ref`属性で別名を与えてアクセスすることもできます。
 
 ``` html
 <my-tag>
 
   <child ref="my_nested_tag"></child>
 
-  // access to child tag
-  var child = this.refs.my_nested_tag
-
+  <script>
+    this.on('mount', function() {
+      // 子タグにアクセス
+      var child = this.refs.my_nested_tag
+    })
+  </script>
 </my-tag>
 ```
 
-子タグは、親タグの後に初期化されます。つまり、(子タグの)メソッドやプロパティには`mount`イベントでアクセスする必要があります。(訳注: コンストラクタではなく)
+子タグは親タグの後に初期化されるので、メソッドとプロパティは"mount"イベントで利用できます。
 
 ``` html
 <my-tag>
 
   <child ref="my_nested_tag"></child>
 
-  // access to child tag methods
-  this.on('mount', function() {
-    this.refs.my_nested_tag.someMethod()
-    // this.tags.child.someMethod() is also valid
-  })
-
+  <script>
+    // 子タグのメソッドにアクセス
+    this.on('mount', function() {
+      this.refs.my_nested_tag.someMethod()
+      // this.tags.child.someMethod() も有効
+    })
+  </script>
 </my-tag>
 ```
 
 ## <a name="yield"></a> YieldによるHTMLの入れ子
 
-`<yield />`タグは、Riotの特別なコア機能で、実行時に、カスタムタグで囲まれた部分をテンプレート内に挿入してコンパイルすることを可能にします。
-この技術によって、独自タグに、サーバでレンダリングされたHTMLコンテンツを入れて表示するといったことができます。
-
-例として、次のRiotタグ`my-post`を使います。
+`<yield>`タグは、実行時にそのテンプレートの中にカスタムタグの内容を注入し、コンパイルすることを可能にする、特別なRiotのコア機能です。
+例として、以下のRiotタグ`my-post`を使います
 
 ``` html
 <my-post>
   <h1>{ opts.title }</h1>
   <yield/>
-  this.id = 666
+
+  <script>
+    this.id = 666
+  </script>
 </my-post>
 ```
 
-`<my-post>`はアプリケーションの好きな場所に含めることができます。
+`<my-post>`はアプリケーションの好きな場所に含めることができます
 
 ``` html
 <my-post title="What a great title">
@@ -388,7 +426,7 @@ mytag.unmount(true)
 </my-post>
 ```
 
-`riot.mount('my-post')`でマウントされると、次のようにレンダリングされます:
+一度`riot.mount('my-post')`でマウントされると、次のようにレンダリングされます:
 
 ``` html
 <my-post>
@@ -397,33 +435,49 @@ mytag.unmount(true)
 </my-post>
 ```
 
-#### 複数のyield
+<span class="tag red">注意</span> 生成された式は**それらが含まれるコンテキストから常に評価されます**。例えば
 
-<span class="tag red">&gt;= v2.3.12</span>
+``` html
+<!-- このタグは生成されたDOMを継承します -->
+<child-tag><yield/></child-tag>
 
-複数の`<yield>`タグを使い、任意の場所にHTMLを挿入する機能もあります。以下の例では`my-other-post`タグに、二カ所で`yield`が指定されています。
+<my-tag>
+  <child-tag>
+    <p>{ parent.message }</p>
+  </child-tag>
+  <script>
+    // 生成されたマークアップがparent.messageを指すことに注意してください
+    // { message }は<child-tag>コンテキストの下で評価されるため、ここでは間違いです
+    this.message = 'hi'
+  </script>
+</my-tag>
+```
 
-例えば、次のRiotタグ、`my-other-post`を使うとすると、
+#### マルチトランスレーション
+
+`<yield>`タグは、テンプレートの特定のスロットにhtmlコンテンツを挿入するためのスロット機構も提供します。
+
+例えば、次のRiotタグ`my-other-post`を使うとすると、
 
 ``` html
 <my-other-post>
-  <h1>{ opts.title }</h1>
-  <p id="my-content-{ id }"><yield from="summary"/></p>
-  <div if={ contentVisible }>
-    <yield from="content"/>
-  </div>
-  <button onclick={ toggleContent }>+ more</button>
-  <h2>again!?</h2>
-  <p><yield from="summary"/></p>
-  this.id = 666
+  <article>
+    <h1>{ opts.title }</h1>
+    <h2><yield from="summary"/></h2>
+    <div>
+      <yield from="content"/>
+    </div>
+  </article>
 </my-other-post>
 ```
 
-このタグをアプリケーションで使用します。
+`<my-other-post>`タグはアプリケーションの好きな場所に含めることができます
 
 ``` html
 <my-other-post title="What a great title">
-  <yield to="summary">My beautiful post is just awesome</yield>
+  <yield to="summary">
+    My beautiful post is just awesome
+  </yield>
   <yield to="content">
     <p>And the next paragraph describes just how awesome it is</p>
     <p>Very</p>
@@ -431,27 +485,27 @@ mytag.unmount(true)
 </my-other-post>
 ```
 
-`riot.mount('my-other-post')`でマウントされた後、以下の結果となります。
+一度`riot.mount('my-other-post')`でマウントすると、以下のようにレンダリングされます:
 
 ``` html
 <my-other-post>
-  <h1>What a great title</h1>
-  <p id="my-content-666">My beautiful post is just awesome</p>
-  <div if={ contentVisible }>
-  <p>And the next paragraph describes just how awesome it is</p>
-  <p>Very</p>
-  </div>
-  <button onclick={ toggleContent }>+ more</button>
-  <h2>again!?</h2>
-  <p>My beautiful post is just awesome</p>
+  <article>
+    <h1>What a great title</h1>
+    <h2>My beautiful post is just awesome</h2>
+    <div>
+      <p>And the next paragraph describes just how awesome it is</p>
+      <p>Very</p>
+    </div>
+  </article>
 </my-other-post>
 ```
 
+
 #### Yieldとループ
 
-`<yield />`タグはループや子タグの中で使うことができますが、 __常に子タグのコンテキストでパースされる__ ことに注意してください。
+`<yield />`タグはループや子タグの中で使うことができますが、 __常に子タグのコンテキストでパースされ、コンパイルされる__ ことに注意してください。
 
-次のRiotコンポーネント、`blog.tag`は、
+以下のRiotコンポーネント`blog.tag`は、
 
 ``` html
 <blog>
@@ -461,25 +515,26 @@ mytag.unmount(true)
     <div onclick={ this.parent.deleteAllPosts }>Delete all the posts</div>
   </my-post>
 
-  this.backToHome = '/homepage'
-  this.title = 'my blog title'
+  <script>
+    this.backToHome = '/homepage'
+    this.title = 'my blog title'
 
-  this.posts = [
-    { title: "post 1", description: 'my post description' },
-    { title: "post 2", description: 'my post description' }
-  ]
+    this.posts = [
+      { title: "post 1", description: 'my post description' },
+      { title: "post 2", description: 'my post description' }
+    ]
 
-  // the bind is needed in this case to keep the parent context
-  // also in the child tags
-  deleteAllPosts() {
-    this.posts = []
+    // この場合、バインドは親コンテキストを
+    // 子タグ内にも保持するために必要です
+    deleteAllPosts() {
+      this.posts = []
 
-    // we need to trigger manually the update function
-    // because this function gets triggered from a child tag
-    // and it does not bubble up automatically
-    this.update()
-  }.bind(this)
-
+      // update関数を手動でトリガーする必要があります
+      // なぜなら、この関数は子タグからトリガーされ、
+      // 自動でバブルアップしないからです
+      this.update()
+    }
+  </script>
 </blog>
 
 <my-post>
@@ -517,10 +572,10 @@ mytag.unmount(true)
 
 ```js
 var OptsMixin = {
-  // init method is a special one which can initialize
-  // the mixin when it's loaded to the tag and is not
-  // accessible from the tag its mixed in
-  init: function() {
+  // initメソッドは、タグにロードされ、かつミックスインしたタグから
+  // アクセスできないときにミックスインを初期化できる特別なものです
+  // ここでは、`opts`はタグで受け取ったオプションオブジェクトです
+  init: function(opts) {
     this.on('updated', function() { console.log('Updated!') })
   },
 
@@ -544,7 +599,7 @@ var OptsMixin = {
 
 ### <a name="mixin-shared"></a> riot.mixin(mixinName, mixinObject)
 
-共有ミックスインを登録します。どのタグからもグローバルに利用可能になります: `this.mixin(mixinName)`.
+共有ミックスインを登録します。どのタグからもグローバルに利用可能になります: `this.mixin(mixinName)`。
 
 ### <a name="mixin-global"></a> riot.mixin(mixinObject)
 
