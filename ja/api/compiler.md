@@ -8,11 +8,11 @@ class: apidoc
 
 ## ブラウザ
 
-ここに紹介するメソッドはブラウザのみに対応しています。Nodeかio.jsでコンパイルしたい場合は、[サーバの節](#サーバ)に進んでください。
+ここに紹介するメソッドはブラウザのみ対応しています。Nodeかio.jsでコンパイルしたい場合は、[サーバの節](#サーバ)に進んでください。
 
 ### <a name="compile"></a> riot.compile(callback)
 
-`<script type="riot/tag">`で定義されたすべてのタグをコンパイルします。インラインのスクリプト定義、あるいは`src`属性で指定された外部リソース、どちらでも大丈夫です。すべてのスクリプトがコンパイルされると、 `callback`メソッドが呼び出されます。例:
+`<script type="riot/tag">`で定義されたすべてのタグをJavaScriptにコンパイルします。タグはインラインのスクリプト定義、あるいは`src`属性で指定された外部リソース、どちらでも可能です。すべてのスクリプトがコンパイルされると、指定された`callback`メソッドが呼び出されます。例:
 
 ``` javascript
 riot.compile(function() {
@@ -20,19 +20,19 @@ riot.compile(function() {
 })
 ```
 
-`riot.compile`呼び出しを省略して、ただ次のように書くのでもOKです:
+`riot.compile`呼び出しを省略して、ただ次のように書くことも可能です:
 
 ``` javascript
 var tags = riot.mount('*')
 ```
 
-ただし、外部リソースのロードとコンパイルが完了するタイミングを知ることはできなくなります。戻り値も、外部スクリプトを含む場合は空の配列となります。つまり、すべてのスクリプトがページ上で定義されているのであれば、`riot.compile`のステップは外してしまって構わないでしょう。
+ただし、外部リソースのロードとコンパイルが完了するタイミングを知ることはできません。また、外部スクリプトを含む場合は戻り値も空の配列となります。つまり、すべてのスクリプトがページ上で定義されているのであれば、`riot.compile`のステップは省略できます。
 
 詳しくは、[一般的な説明](/ja/guide/compiler/)を参照してください。
 
 ### <a name="compile-fn"></a> riot.compile(url, callback)
 
-指定のURLを読み込んで、すべてのタグをコンパイルし、その後`callback`が呼び出されます。例:
+指定のURLを読み込んで、すべてのタグをコンパイルした後`callback`が呼び出されます。例:
 
 ``` javascript
 riot.compile('my/tags.tag', function() {
@@ -47,7 +47,8 @@ riot.compile('my/tags.tag', function() {
 ```html
 <template id="my_tag">
   <my-tag>
-    <p>Hello, World!</p>
+    <p>{greeting}, World!</p>
+    this.greeting = 'Hello'
   </my-tag>
 </template>
 
@@ -58,13 +59,15 @@ riot.compile(my_tag.innerHTML)
 
 呼び出し後、`my-tag`を普通に使うことができます。
 
-タグ定義の最初の非空白文字が`<`だと仮定しています。そうでなければ、引数はURLとして解釈されます。
+タグ定義の最初の非空白文字が`<`だと仮定します。そうでなければ、引数はURLとして解釈されます。
 
-@returns コンパイルされたJavaScript文字列
+<span class="tag red">Note:</span>ブラウザ内のtagのコンパイルでは、スクリプトタグは使用できません。最後の終了タグは、タグのスクリプト部分の開始を定義します。
+
+@returns コンパイルされた文字列としてのJavaScript
 
 ### <a name="compile-to-str"></a> riot.compile(tag, true)
 
-`tag`をコンパイルし、文字列として返します。タグからJavaScriptへの変換のみで、ブラウザ上でその変換結果が実行されることはありません。このメソッドは、例えば、コンパイラのパフォーマンスについてのベンチマークなどの目的で使えます。
+`tag`をコンパイルし、文字列として返します。タグからJavaScriptへの変換のみで、ブラウザ上でその変換結果が実行されることはありません。このメソッドは、例えばコンパイラのパフォーマンスについてのベンチマークなどで使えます。
 
 ``` js
 var js = riot.compile(my_tag.innerHTML, true)
@@ -80,7 +83,7 @@ var riot = require('riot')
 var js = riot.compile(tag)
 ```
 
-コンパイル関数は、タグ定義(文字列)をとって、JavaScript(文字列)を返します。
+コンパイル関数は、タグ定義（文字列）をとって、JavaScript（文字列）を返します。
 
 ### <a name="css-parser"></a> riot.parsers.css [tagName, css]
 
@@ -147,6 +150,7 @@ riot.parsers.js.myparser = function(js) {
 タグ内のHTMLをコンパイルするのに使われる、独自パーサ。
 
 あらかじめ定義されたパーサは以下です。
+
 #### html
 - `jade`
 
@@ -155,6 +159,8 @@ riot.parsers.js.myparser = function(js) {
 - `sass`
 - `scss`
 - `stylus`
+
+\* `less`のみブラウザ上で利用可能です。
 
 #### js
 - `none` または `javascript`
