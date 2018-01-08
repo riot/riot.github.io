@@ -110,25 +110,25 @@ Reactの場合、更新ごとにHTMLレイアウトがランダムに変更さ�
 
 しかし、この複雑な変更検知(diffing)を避けられることを、私たちはすでに見てきました。
 
-RiotではHTMLの構造は固定です。ループと条件文だけが、要素の追加と削除を行います。ですが、例えば`div`が`label`に変換されるようなことは起きえません。Riotは複雑な部分木(DOMツリー)の置き換えなしに、テンプレート変数だけを更新します。
+RiotではHTMLの構造は固定されています。ループと条件文だけが、要素の追加と削除を行います。ですが、例えば`div`が`label`に変換されるようなことは起きえません。Riotは複雑な部分木(DOMツリー)の置き換えなしに、テンプレート変数だけを更新します。
 
 
 ### Fluxとルーティング
 
-ReactはUIのみを扱います。それ自体は良いことです。偉大なソフトウェアプロジェクトは必ず鋭いフォーカスを持っています。
+ReactはUIのみを扱いますが、それ自体は良いことです。偉大なソフトウェアプロジェクトは必ず鋭いフォーカスを持っています。
 
-Facebookは、クライアントサイドのコードを構造化するのに、[Flux](http://facebook.github.io/flux/docs/overview.html)の利用を推奨しています。これはフレームワークというよりも素晴らしいアイデアを詰め込んだ、ひとつのパターンです。
+Facebookはクライアントサイドのコードを構造化するのに、[Flux](http://facebook.github.io/flux/docs/overview.html)の利用を推奨しています。これはフレームワークというよりも素晴らしいアイデアを詰め込んだ、ひとつのパターンです。
 
-Riotはカスタムタグとともに、イベントエミッタ(オブザーバブル)とオプショナルなルータがついて来ます。これらがクライアントサイドアプリケーション構築の基礎的なブロックだと信じているからです。イベントはモジュール性をもたらし、ルータはURLと「戻る」ボタンをハンドリングし、カスタムタグがユーザインターフェースを担います。
+Riotはカスタムタグとともに、イベントエミッタ（オブザーバブル）とオプショナルなルータがついて来ます。我々は、これらがクライアントサイドアプリケーション構築の基礎的なブロックだと信じています。イベントはモジュール性をもたらし、ルータはURLと「戻る」ボタンをハンドリングし、カスタムタグがユーザインターフェースを担います。
 
-ちょうどFluxのように、Riotは柔軟で、開発者に設計上の大きな決定権を残しています。これは、ゴールに到達するのを助けるライブラリにすぎません。
+まさにFluxのように、Riotは柔軟で、開発者に設計上の大きな決定権を残しています。これは、ゴールに到達するのを助けるライブラリにすぎません。
 
 RiotのオブザーバブルとルータでFluxライクなシステムを構築することも可能です。実際、そういった試みも[すでにあります](https://github.com/jimsparkman/RiotControl)。
 
 
-### {{ site.compare.react }}倍大きい
+### {{ site.react.size | divided_by:site.size_min | round }}倍大きい
 
-React(v{{ site.react.version }})は、Riotの{{ site.compare.react }}倍のサイズです。
+React(v{{ site.react.version }})は、Riotの{{ site.react.size | divided_by:site.size_min | round }}倍のサイズです。
 
 <small><em>react.min.js</em> – {{ site.react.size }}KB</small>
 <span class="bar red"></span>
@@ -138,7 +138,7 @@ React(v{{ site.react.version }})は、Riotの{{ site.compare.react }}倍のサ�
 
 <br>
 
-Reactの推奨ルータ(v{{ site.react_router.version }})は、Riotのルータの{{ site.compare.react_router_vs_riot_router }}倍。
+Reactの推奨ルータ(v{{ site.react_router.version }})は、Riotのルータの{{ site.react_router.size | divided_by:site.riot_route_size_min | round  }}倍です。
 
 <small><em>react-router.min.js</em> – {{ site.react_router.size }}KB</small>
 <span class="bar red"></span>
@@ -149,15 +149,14 @@ Reactの推奨ルータ(v{{ site.react_router.version }})は、Riotのルータ�
 <small><em>riot.router.min.js</em> – {{ site.riot_route_size_min }}KB</small>
 <span class="bar blue" style="width: {{ site.riot_route_size_min | divided_by: site.react_router.size | times:100 }}%"></span>
 
+確かに、このルータ比較はちょっと不公平です。なぜなら、[react-router](https://github.com/rackt/react-router)はより多くの機能を持っています。ですが、この図はRiotのゴール、つまり「最もミニマリスティックなAPIを提供すること」を明確に示すものです。
 
-確かに、このルータ比較はちょっと不公平です。[react-router](https://github.com/rackt/react-router)はより多くの機能を持っています。ですが、この図はRiotのゴール、つまり「最もミニマリスティックなAPIを提供すること」を明確に示すものです。
-
-Reactのエコシステムは、よりフレームワーク的で、APIの肥大化の気配がします。実際、小さな実装の[react-mini-router](https://github.com/larrymyers/react-mini-router)よりも、この大きな選択肢がReactコミュニティでは人気です。
+Reactのエコシステムは、よりフレームワーク的で、APIの肥大化の気配がします。実際、[react-mini-router](https://github.com/larrymyers/react-mini-router)よりも、この大きな選択肢の方がReactコミュニティでは人気です。
 
 
 ## Polymer
 
-PolymerはWeb Component標準に則り、最新ブラウザで利用可能にします。これは、カスタムタグを標準的な方法で書けるということです。
+PolymerはWeb Component標準に則っており、最新ブラウザで利用可能にします。これは、カスタムタグを標準的な方法で書けるということです。
 
 コンセプトとしてはRiotも同じなのですが、いくつかの違いがあります:
 
@@ -170,9 +169,9 @@ PolymerはWeb Component標準に則り、最新ブラウザで利用可能にし
 4. サーバサイドレンダリングができません。
 
 
-### {{ site.compare.polymer_and_webcomponents }}倍大きい
+### {{ site.polymer_and_webcomponents_size | divided_by:site.size_min | round }}倍大きい
 
-Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.version }})はRiotの{{ site.compare.polymer_and_webcomponents }}倍のサイズです。
+Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.version }})はRiotの{{ site.polymer_and_webcomponents_size | divided_by:site.size_min | round }}倍のサイズです。
 
 <small><em>polymer.min.js</em> – {{ site.polymer.size }}KB</small>
 <span class="bar red"></span>
@@ -180,14 +179,14 @@ Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.vers
 <small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
 <span class="bar blue" style="width: {{ site.size_min | divided_by: site.polymer.size | times: 100 }}%"></span>
 
-Web Componentsは[Polyfill挑戦の王様](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/)と呼ばれ、Polymerがこんなにも巨大なコードを必要とする所以です。
+Web Componentsは[Polyfillの課題の王様](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/)と呼ばれ、Polymerがこんなにも巨大なコードを必要とする所以です。
 
 
 ## Web components
 
-最終的には、業界標準としてのWeb Componentsに辿り着くべきです。それは[長い年月](http://caniuse.com/#search=web%20components)を必要としますが、いずれは標準コンポーネントがウェブを満たすことになります。
+Web Componentsが標準であるため、最終的にはここに辿り着くべきです。それには[年月](http://caniuse.com/#search=web%20components)を必要としますが、いずれは標準コンポーネントがwebを満たすことになるでしょう。
 
-これらのコンポーネントは複雑であるため、直接に使われない可能性が大きいです。今日多くの人が、直接DOMを操作せずjQueryを使うように、Web Componentsの上にもさらなる層が作られるでしょう。
+複雑さを伴うため、これらのコンポーネントが直接使われない可能性が高くなります。今日多くの人が、直接DOMを操作せずjQueryを使うように、Web Componentsの上にもレイヤーが存在するようになるでしょう。
 
 Riotはそういった抽象化の一層です。それはアプリケーションが頼りにできる簡単なAPIを提供します。Web Componentsの仕様が発達するにつれ、パフォーマンス向上など実際のメリットがあるのであれば、Riotは内部でそれらを導入することができます。
 
