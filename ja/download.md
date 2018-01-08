@@ -49,10 +49,6 @@ class: download
 
 `bower install riot`
 
-#### [Component](http://component.github.io/?q=riot)
-
-`component install riot/riot`
-
 #### [NPM](https://www.npmjs.com/package/riot)
 
 `npm install riot`
@@ -60,11 +56,9 @@ class: download
 
 ### Chrome apps
 
-もし、RiotをChrome拡張の中で使いたいのであれば、[Content Security Policy対応が必要なため](https://github.com/riot/riot/issues/1076)特別版のRiotを使わなくてはなりません。
+もし、RiotをChrome拡張の中で使いたいのであれば、[Content Security Policy対応が必要](https://github.com/riot/riot/issues/1076)なため、特別版のRiotを使わなくてはなりません。
 
 [riot.csp.js]({{ page.base }}/riot.csp.js)
-
-[riot.csp.min.js]({{ page.base }}/riot.csp.min.js)
 
 Chrome拡張の中で使う場合、ランタイムの中ではコンパイルできないため、[タグをプリコンパイル](/guide/compiler/#pre-compilation)しておく必要があります。
 
@@ -79,6 +73,8 @@ Chrome拡張の中で使う場合、ランタイムの中ではコンパイル�
 [riot-route](https://github.com/riot/route)
 
 ## ロゴ
+
+[riotのロゴのrepository](https://github.com/riot/logo)
 
 ![](/img/logo/riot480x.png)
 
