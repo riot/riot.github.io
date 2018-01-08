@@ -39,7 +39,7 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-minor_version:       3.7
+minor_version:       3.8
 v2_minor_version:    2.6
 
 version:             3.8.1
