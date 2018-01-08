@@ -6,13 +6,13 @@ description: これはRiotを採用するためのメリットを示すための
 
 {% include ja/example-tabs.html %}
 
-左側のコードを変更すると結果が反映されます。
+タグ定義（左側）のコードを自由に変更すると、その結果が反映されます。
 
 <iframe src="http://riotjs.com/examples/live-editor"></iframe>
 
 ## どのように使うの?
 
-あなたは簡単にHTMLにこのタグを貼り付けることができます。 以下のソースを `sample.tag`として保存し、` index.html`を作成してください:
+簡単にHTMLにこのタグをマウントすることができます。以下のソースを`sample.tag`として保存し、`index.html`を作成してください:
 
 ```html
 <html>
@@ -32,7 +32,7 @@ description: これはRiotを採用するためのメリットを示すための
 </html>
 ```
 
-ね、簡単でしょ?
+ね、簡単でしょ？
 
 ## 参考文献
 
