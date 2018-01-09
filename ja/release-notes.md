@@ -49,7 +49,7 @@ __riot-compiler__:
 
 __riot-route__:
 
-  - _修正:_ クエリパラメーター付きルーターが動作していない [riot-route/74](https://github.com/riot/route/issues/74)
+  - _修正:_ クエリパラメータ付きルータが動作していない [riot-route/74](https://github.com/riot/route/issues/74)
   - _修正:_ テンプレートリテラルでIEが止まる [riot-route/77](https://github.com/riot/route/issues/77)
 
 
