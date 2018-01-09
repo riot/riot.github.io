@@ -1,6 +1,6 @@
 ---
-layout: default
-title: Release notes
+layout: ja
+title: リリースノート
 id: release-notes
 ---
 
