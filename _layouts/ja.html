@@ -79,7 +79,11 @@
       <nav>
         <a href="/"><span>en</span> latest</a>
         {% for lang in site.translations %}
-          <a href="/{{ lang[0] }}/"><span>{{ lang[0] }}</span> {{ lang[1] }}</a>
+          {% if lang[0] == 'ja' %}
+            <a href="/{{ lang[0] }}/"><span>{{ lang[0] }}</span> {{ lang[1] }}</a>
+          {% else %}
+            <a href="/v2/{{ lang[0] }}/"><span>{{ lang[0] }}</span> {{ lang[1] }}</a>
+          {% endif %}
         {% endfor %}
       </nav>
       <nav>{{ nav }}</nav>
