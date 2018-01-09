@@ -7,20 +7,20 @@ id: release-notes
 # {{ page.title }}
 
 
-## 3.0.5 *12月 18, 2016*
+## 3.0.5 *2016年12月18日*
 
 __riot__:
 
   - _修正:_ 内部の`parent`属性は外部のオーバーライドから保護する必要がある [riot/2154](https://github.com/riot/riot/issues/2154)
   - _修正:_ `<select><option>`で選択されたものが、riot3で正しく動作していない [riot/2164](https://github.com/riot/riot/issues/2164)
 
-## 3.0.4 *12月 14, 2016*
+## 3.0.4 *2016年12月14日*
 
 __riot__:
 
   - _修正:_ `show/hide`の動作を復元 [riot/2156](https://github.com/riot/riot/issues/2156)
 
-## 3.0.3 *12月 13, 2016*
+## 3.0.3 *2016年12月13日*
 
 __riot__:
 
@@ -29,7 +29,7 @@ __riot__:
   - _追加:_ `data-src`を使用し、ブラウザの事前読込を回避してriotタグを取得する [riot/2132](https://github.com/riot/riot/issues/2132)
   - _削除:_ SPMのサポート [riot/2124](https://github.com/riot/riot/pull/2124)
 
-## 3.0.2 *12月 4, 2016*
+## 3.0.2 *2016年12月4日*
 
 __riot__:
 
@@ -53,7 +53,7 @@ __riot-route__:
   - _修正:_ テンプレートリテラルでIEが止まる [riot-route/77](https://github.com/riot/route/issues/77)
 
 
-## 3.0.1 *11月 26, 2016*
+## 3.0.1 *2016年11月26日*
 
 __riot__:
 
@@ -65,7 +65,7 @@ __riot__:
   - _修正:_ 'data-is'タグの'if'を切り替えると、'親'タグのオブジェクトに新しい参照が作成される [riot/2089](https://github.com/riot/riot/issues/2089)
 
 
-## 3.0.0 *11月 22, 2016*
+## 3.0.0 *2016年11月22日*
 
 長い道のりでしたが、最終的にriot@3.0.0をリリースすることができました。riot2と比較して安定性、パフォーマンス、柔軟性が向上しています。
 
@@ -73,9 +73,9 @@ __riot__:
 
 __riot__:
 
-  - _変更:_ build riot using rollup+babel instead of smash using only es6 modules syntax
-  - _変更:_ clean up the tests (we use 371 tests!) splitting them into several files written in es6 and we switched to chai.js replacing expect.js
-  - _変更:_ ループのパフォーマンスを向上。更新が以前よりもはるかに高速に。
+  - _変更:_ smashの代わりにrollup+babelを使用してriotをビルド。es6モジュールの文法のみを使用
+  - _変更:_ テストをクリーンアップ (私たちは371個のテストを使用) して、それらをes6で書かれたいくつかのファイルに分割。また、expect.jsの代わりにchai.jsに切り替えた
+  - _変更:_ ループのパフォーマンスを向上。更新が以前よりもはるかに高速に
   - _変更:_ riot-tagは非推奨でdata-isを使用する
   - _変更:_ `name`と`id`の代わりに`ref`属性を使用する [riot/1185](https://github.com/riot/riot/issues/1185) (__互換性のない変更__)
   - _変更:_ コアからriot-routeを削除してオプションにする [riot/1485](https://github.com/riot/riot/issues/1485) (__互換性のない変更__)
@@ -88,11 +88,12 @@ __riot__:
   - _修正:_ if属性に関連するすべての問題 [riot/1477](https://github.com/riot/riot/issues/1477) [riot/1658](https://github.com/riot/riot/issues/1658)
   - _修正:_ 子タグのループ内では親タグからプロパティを継承しないようにする [riot/1697](https://github.com/riot/riot/issues/1697)
   - _修正:_ 子タグで発生したイベントでは親タグを更新しないようにする [riot/1319](https://github.com/riot/riot/issues/1319) (__互換性のない変更__)
-  - _修正:_ arrays with multiple tags of the same name don’t contain actual tag elements [riot/2061](https://github.com/riot/riot/issues/2061)
+  - _修正:_ 同じ名前の複数のタグを持つ配列には、実際のタグ要素は含まれていない [riot/2061](https://github.com/riot/riot/issues/2061)
   - _修正:_ 動的タグの場合にdata-is属性が更新されない  [riot/2037](https://github.com/riot/riot/issues/2037)
-  - _修正:_ virtual with each doesn't remove tag references from parent tag  [riot/2029](https://github.com/riot/riot/issues/2029)
-  - _修正:_ each and switching between object and array [riot/2027](https://github.com/riot/riot/issues/2027)
-  - _修正:_ properties set in looped custom tag element event seem to be cleared by parent update [riot/2019](https://github.com/riot/riot/issues/2019)
+  - _修正:_ eachメソッドを指定したvirtualタグは、親タグからのタグ参照を削除しない
+  [riot/2029](https://github.com/riot/riot/issues/2029)
+  - _修正:_ eachメソッドと、オブジェクトと配列の切り替え [riot/2027](https://github.com/riot/riot/issues/2027)
+  - _修正:_ ループされたカスタムタグ要素のイベントで設定されたプロパティは、親の更新によってクリアされるようだ [riot/2019](https://github.com/riot/riot/issues/2019)
   - _修正:_ riot+compiler.js:1245 Uncaught NotFoundError: Failed to execute 'insertBefore' on 'Node': The node before which the new node is to be inserted is not a child of this node - when adding to an 'each' structure from a recursively created element onlick [riot/1962](https://github.com/riot/riot/issues/1962)
   - _修正:_ input numbers leave unprocessed expressions after upgrade to 2.6.0 [riot/1957](https://github.com/riot/riot/issues/1957)
   - _修正:_ メモリリーク [riot/1955](https://github.com/riot/riot/issues/1955)
@@ -108,7 +109,7 @@ __riot__:
   - _修正:_ different approaches in iterable objects in different contexts of "each - in" [riot/1420](https://github.com/riot/riot/issues/1420)
   - _修正:_ support conditions with virtual tag [riot/139](https://github.com/riot/riot/issues/139)
   - _修正:_ ループ内でのriot-tagの動作 [riot/1368](https://github.com/riot/riot/issues/1368)
-  - _修正:_ all treeitem tag have children [riot/1361](https://github.com/riot/riot/issues/1361)
+  - _修正:_ すべてのtreeitemタグには子が存在する [riot/1361](https://github.com/riot/riot/issues/1361)
   - _修正:_ コンパイラの状態をクリアするメソッド [riot/1236](https://github.com/riot/riot/issues/1236)
   - _修正:_ dynamically loaded child tags don't get into the parents tags object [riot/1174](https://github.com/riot/riot/issues/1174)
   - _修正:_ [Q] Child tags counts not matched? [riot/1088](https://github.com/riot/riot/issues/1088)
