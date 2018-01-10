@@ -987,3 +987,37 @@ console.log(html) // <timer><p>Seconds Elapsed: 42</p></timer>
 ```
 
 ループと、条件属性がサポートされています。
+
+
+
+## RiotのDOMの取り扱いにおける注意事項
+
+Riotタグはブラウザのレンダリング処理に依存しているため、特定の状況では、作成したコンポーネント（訳注: Riotタグのこと）のテンプレート記述が正しくレンダリングされないことに注意しましょう。
+
+
+次のRiotタグを考えてみましょう:
+
+``` html
+
+<my-fancy-options>
+  <option>foo</option>
+  <option>bar</option>
+</my-fancy-options>
+```
+
+このマークアップは、`<select>`タグに差し込まれなければ正しいHTMLにはなりませんが、その際に気を付けなければならないことがあります:
+
+``` html
+
+<!-- こちらは間違った記述。selectタグの子要素には<option>しか認められていないためです。 -->
+<select>
+  <my-fancy-options />
+</select>
+
+<!-- こちらが正しい記述。こうすることでRiotは、<select>を<my-fancy-options>の「ルート」ノード とみなし、<option>タグを出力します -->
+<select data-is='my-fancy-options'></select>
+
+```
+
+`table, select, svg...`といったタグは、カスタムタグを子要素にすることを認めていません。そのため、Riotのカスタムタグ（`<virtual>`であっても）の使用も禁止です。代わりに、上の例のように`data-is`を使いましょう。[この件の詳細は、こちらのイシューをご確認ください（英語）](https://github.com/riot/riot/issues/2206)。
+
