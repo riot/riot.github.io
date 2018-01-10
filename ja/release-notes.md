@@ -69,7 +69,7 @@ __riot__:
 
 長い道のりでしたが、最終的にriot@3.0.0をリリースすることができました。riot2と比較して安定性、パフォーマンス、柔軟性が向上しています。
 
-改善点と互換性のない変更点の一覧
+改善点と破壊的変更点の一覧
 
 __riot__:
 
@@ -77,17 +77,17 @@ __riot__:
   - _変更:_ テストをクリーンアップ (私たちは371個のテストを使用) して、それらをes6で書かれたいくつかのファイルに分割。また、expect.jsの代わりにchai.jsに切り替えた
   - _変更:_ ループのパフォーマンスを向上。更新が以前よりもはるかに高速に
   - _変更:_ riot-tagは非推奨でdata-isを使用する
-  - _変更:_ `name`と`id`の代わりに`ref`属性を使用する [riot/1185](https://github.com/riot/riot/issues/1185) (__互換性のない変更__)
-  - _変更:_ コアからriot-routeを削除してオプションにする [riot/1485](https://github.com/riot/riot/issues/1485) (__互換性のない変更__)
-  - _変更:_ タグがマウントされる前にupdateおよびupdatedイベントがトリガーされるのをやめる [riot/1661](https://github.com/riot/riot/issues/1661) (__互換性のない変更__)
-  - _変更:_ "each - in"はコンテキストの違いで、繰り返しオブジェクトへのアプローチが変わる [riot/1420](https://github.com/riot/riot/issues/1420) (__互換性のない変更__)
+  - _変更:_ `name`と`id`の代わりに`ref`属性を使用する [riot/1185](https://github.com/riot/riot/issues/1185) (__破壊的変更__)
+  - _変更:_ コアからriot-routeを削除してオプションにする [riot/1485](https://github.com/riot/riot/issues/1485) (__破壊的変更__)
+  - _変更:_ タグがマウントされる前にupdateおよびupdatedイベントがトリガーされるのをやめる [riot/1661](https://github.com/riot/riot/issues/1661) (__破壊的変更__)
+  - _変更:_ "each - in"はコンテキストの違いで、繰り返しオブジェクトへのアプローチが変わる [riot/1420](https://github.com/riot/riot/issues/1420) (__破壊的変更__)
   - _追加:_ ES6のclassを使用したタグの作成をサポート [more info](/api/#riottagel-opts)
   - _追加:_ タグにreactのcomponentShouldUpdateを真似た`shouldUpdate`メソッドを追加
   - _削除:_ 真偽属性のための __ 接頭辞 [riot/276](https://github.com/riot/riot/issues/276)
-  - _削除:_ riot DOMイベントでの自動的なpreventDefault [riot/1770](https://github.com/riot/riot/issues/1770) [riot/1718](https://github.com/riot/riot/issues/1718) [riot/526](https://github.com/riot/riot/issues/526) (__互換性のない変更__)
+  - _削除:_ riot DOMイベントでの自動的なpreventDefault [riot/1770](https://github.com/riot/riot/issues/1770) [riot/1718](https://github.com/riot/riot/issues/1718) [riot/526](https://github.com/riot/riot/issues/526) (__破壊的変更__)
   - _修正:_ if属性に関連するすべての問題 [riot/1477](https://github.com/riot/riot/issues/1477) [riot/1658](https://github.com/riot/riot/issues/1658)
   - _修正:_ 子タグのループ内では親タグからプロパティを継承しないようにする [riot/1697](https://github.com/riot/riot/issues/1697)
-  - _修正:_ 子タグで発生したイベントでは親タグを更新しないようにする [riot/1319](https://github.com/riot/riot/issues/1319) (__互換性のない変更__)
+  - _修正:_ 子タグで発生したイベントでは親タグを更新しないようにする [riot/1319](https://github.com/riot/riot/issues/1319) (__破壊的変更__)
   - _修正:_ 同じ名前の複数のタグを持つ配列には、実際のタグ要素は含まれていない [riot/2061](https://github.com/riot/riot/issues/2061)
   - _修正:_ 動的タグの場合にdata-is属性が更新されない  [riot/2037](https://github.com/riot/riot/issues/2037)
   - _修正:_ eachメソッドを指定したvirtualタグは、親タグからのタグ参照を削除しない
@@ -111,26 +111,26 @@ __riot__:
   - _修正:_ ループ内でのriot-tagの動作 [riot/1368](https://github.com/riot/riot/issues/1368)
   - _修正:_ すべてのtreeitemタグには子が存在する [riot/1361](https://github.com/riot/riot/issues/1361)
   - _修正:_ コンパイラの状態をクリアするメソッド [riot/1236](https://github.com/riot/riot/issues/1236)
-  - _修正:_ dynamically loaded child tags don't get into the parents tags object [riot/1174](https://github.com/riot/riot/issues/1174)
-  - _修正:_ [Q] Child tags counts not matched? [riot/1088](https://github.com/riot/riot/issues/1088)
-  - _修正:_ inconsistent tags behaviour with 1 item vs many  [riot/936](https://github.com/riot/riot/issues/936)
-  - _修正:_ no way to override name attribute on e.g. &lt;input&gt;s to prevent overriding existing properties on `this` [riot/715](https://github.com/riot/riot/issues/715)
+  - _修正:_ 動的にロードされた子タグは親タグのオブジェクトに含まれない [riot/1174](https://github.com/riot/riot/issues/1174)
+  - _修正:_ [Q]子タグの数の合計が一致しない？ [riot/1088](https://github.com/riot/riot/issues/1088)
+  - _修正:_ 1つのアイテムと多くのアイテムでタグの動作が矛盾する  [riot/936](https://github.com/riot/riot/issues/936)
+  - _修正:_ name属性を上書きする方法はない。例えば&lt;input&gt;について、`this`の既存のプロパティを上書きしないようにする [riot/715](https://github.com/riot/riot/issues/715)
 
 __riot-observable__:
 
-  - _削除:_ スペース区切りのサポート、 `el.on('foo bar')` は `el.on('foo').on('bar')`になります (__互換性のない変更__)
+  - _削除:_ スペース区切りのサポート、 `el.on('foo bar')` は `el.on('foo').on('bar')`になります (__破壊的変更__)
   - _修正:_ 以前より速さを6倍に最適化
 
 __riot-tmpl__:
 
-  - _変更:_ テンプレートのエラーがコンソールAPIが使用可能ならば常に`console.error`として出力されるようになりました (__互換性のない変更__)
+  - _変更:_ テンプレートのエラーがコンソールAPIが使用可能ならば常に`console.error`として出力されるようになりました (__破壊的変更__)
 
 __riot-compiler__:
 
   - _修正:_ タグ内でes6のインポートを許可 [compiler/69](https://github.com/riot/compiler/issues/69)
-  - _修正:_ all the `value` attributes using expressions will be output as `riot-value` to [riot#1957](https://github.com/riot/riot/issues/1957)
-  - _変更:_ riot-compiler経由で生成されたcssは常にスコープとなります (__互換性のない変更__)
-  - _廃止:_ 古い`babel`のサポート、`es6`パーサーはデフォルトでBabel6を使用するようになりました (__互換性のない変更__)
+  - _修正:_ テンプレート変数を用いた全て`value`属性は`riot-value`として出力 [riot#1957](https://github.com/riot/riot/issues/1957)
+  - _変更:_ riot-compiler経由で生成されたcssは常にスコープとなります (__破壊的変更__)
+  - _廃止:_ 古い`babel`のサポート、`es6`パーサーはデフォルトでBabel6を使用するようになる (__破壊的変更__)
 
 
 ### 皆さん、ありがとうございます!
