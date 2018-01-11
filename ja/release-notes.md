@@ -69,7 +69,7 @@ __riot__:
 
 長い道のりでしたが、最終的にriot@3.0.0をリリースすることができました。riot2と比較して安定性、パフォーマンス、柔軟性が向上しています。
 
-改善点と互換性のない変更点の一覧
+改善点と破壊的変更点の一覧
 
 __riot__:
 
@@ -77,60 +77,59 @@ __riot__:
   - _変更:_ テストをクリーンアップ (私たちは371個のテストを使用) して、それらをes6で書かれたいくつかのファイルに分割。また、expect.jsの代わりにchai.jsに切り替えた
   - _変更:_ ループのパフォーマンスを向上。更新が以前よりもはるかに高速に
   - _変更:_ riot-tagは非推奨でdata-isを使用する
-  - _変更:_ `name`と`id`の代わりに`ref`属性を使用する [riot/1185](https://github.com/riot/riot/issues/1185) (__互換性のない変更__)
-  - _変更:_ コアからriot-routeを削除してオプションにする [riot/1485](https://github.com/riot/riot/issues/1485) (__互換性のない変更__)
-  - _変更:_ タグがマウントされる前にupdateおよびupdatedイベントがトリガーされるのをやめる [riot/1661](https://github.com/riot/riot/issues/1661) (__互換性のない変更__)
-  - _変更:_ "each - in"はコンテキストの違いで、繰り返しオブジェクトへのアプローチが変わる [riot/1420](https://github.com/riot/riot/issues/1420) (__互換性のない変更__)
+  - _変更:_ `name`と`id`の代わりに`ref`属性を使用する [riot/1185](https://github.com/riot/riot/issues/1185) (__破壊的変更__)
+  - _変更:_ コアからriot-routeを削除してオプションにする [riot/1485](https://github.com/riot/riot/issues/1485) (__破壊的変更__)
+  - _変更:_ タグがマウントされる前にupdateおよびupdatedイベントがトリガーされるのをやめる [riot/1661](https://github.com/riot/riot/issues/1661) (__破壊的変更__)
+  - _変更:_ "each - in"はコンテキストの違いで、繰り返しオブジェクトへのアプローチが変わる [riot/1420](https://github.com/riot/riot/issues/1420) (__破壊的変更__)
   - _追加:_ ES6のclassを使用したタグの作成をサポート [more info](/api/#riottagel-opts)
   - _追加:_ タグにreactのcomponentShouldUpdateを真似た`shouldUpdate`メソッドを追加
   - _削除:_ 真偽属性のための __ 接頭辞 [riot/276](https://github.com/riot/riot/issues/276)
-  - _削除:_ riot DOMイベントでの自動的なpreventDefault [riot/1770](https://github.com/riot/riot/issues/1770) [riot/1718](https://github.com/riot/riot/issues/1718) [riot/526](https://github.com/riot/riot/issues/526) (__互換性のない変更__)
+  - _削除:_ riot DOMイベントでの自動的なpreventDefault [riot/1770](https://github.com/riot/riot/issues/1770) [riot/1718](https://github.com/riot/riot/issues/1718) [riot/526](https://github.com/riot/riot/issues/526) (__破壊的変更__)
   - _修正:_ if属性に関連するすべての問題 [riot/1477](https://github.com/riot/riot/issues/1477) [riot/1658](https://github.com/riot/riot/issues/1658)
   - _修正:_ 子タグのループ内では親タグからプロパティを継承しないようにする [riot/1697](https://github.com/riot/riot/issues/1697)
-  - _修正:_ 子タグで発生したイベントでは親タグを更新しないようにする [riot/1319](https://github.com/riot/riot/issues/1319) (__互換性のない変更__)
+  - _修正:_ 子タグで発生したイベントでは親タグを更新しないようにする [riot/1319](https://github.com/riot/riot/issues/1319) (__破壊的変更__)
   - _修正:_ 同じ名前の複数のタグを持つ配列には、実際のタグ要素は含まれていない [riot/2061](https://github.com/riot/riot/issues/2061)
   - _修正:_ 動的タグの場合にdata-is属性が更新されない  [riot/2037](https://github.com/riot/riot/issues/2037)
-  - _修正:_ eachメソッドを指定したvirtualタグは、親タグからのタグ参照を削除しない
-  [riot/2029](https://github.com/riot/riot/issues/2029)
+  - _修正:_ eachメソッドを指定したvirtualタグは、親タグからのタグ参照を削除しない [riot/2029](https://github.com/riot/riot/issues/2029)
   - _修正:_ eachメソッドと、オブジェクトと配列の切り替え [riot/2027](https://github.com/riot/riot/issues/2027)
   - _修正:_ ループされたカスタムタグ要素のイベントで設定されたプロパティは、親の更新によってクリアされるようだ [riot/2019](https://github.com/riot/riot/issues/2019)
-  - _修正:_ riot+compiler.js:1245 Uncaught NotFoundError: Failed to execute 'insertBefore' on 'Node': The node before which the new node is to be inserted is not a child of this node - when adding to an 'each' structure from a recursively created element onlick [riot/1962](https://github.com/riot/riot/issues/1962)
-  - _修正:_ input numbers leave unprocessed expressions after upgrade to 2.6.0 [riot/1957](https://github.com/riot/riot/issues/1957)
+  - _修正:_ 再帰的に作成された要素から'each'構造にonclickを追加するとき - riot+compiler.js:1245 Uncaught NotFoundError: Failed to execute 'insertBefore' on 'Node': The node before which the new node is to be inserted is not a child of this node [riot/1962](https://github.com/riot/riot/issues/1962)
+  - _修正:_ 2.6.0へアップグレードすると、inputタグ（属性はnumber）では未処理の式が残ってしまう [riot/1957](https://github.com/riot/riot/issues/1957)
   - _修正:_ メモリリーク [riot/1955](https://github.com/riot/riot/issues/1955)
-  - _修正:_ `require(*tag-name*)` does not allow `parserOptions` [riot/1935](https://github.com/riot/riot/issues/1935)
-  - _修正:_ clear riot tag cache to aid with testing [riot/1875](https://github.com/riot/riot/issues/1875)
-  - _修正:_ 'before-mount' won't work as expected in riot#render [riot/1851](https://github.com/riot/riot/issues/1851)
-  - _修正:_ the logic is not work with if and class together [riot/1769](https://github.com/riot/riot/issues/1769)
-  - _修正:_ should we add a updateSelf() API? [riot/1748](https://github.com/riot/riot/issues/1748)
+  - _修正:_ `require(*tag-name*)`は`parserOptions`を許可しない [riot/1935](https://github.com/riot/riot/issues/1935)
+  - _修正:_ テストを補助するためにriotタグのキャッシュをクリア[riot/1875](https://github.com/riot/riot/issues/1875)
+  - _修正:_ riot＃renderで'before-mount'が期待どおりに動作しない [riot/1851](https://github.com/riot/riot/issues/1851)
+  - _修正:_ ifとclassを同時に使うとロジックが動作しない [riot/1769](https://github.com/riot/riot/issues/1769)
+  - _修正:_ updateSelf（） APIを追加する必要はある？ [riot/1748](https://github.com/riot/riot/issues/1748)
   - _修正:_ virtual要素がタグ更新後に消える [riot/1659](https://github.com/riot/riot/issues/1659)
-  - _修正:_ can I use the bool attribute with the custom tag? (like "disabled") [riot/1618](https://github.com/riot/riot/issues/1618)
-  - _修正:_ extra expression evaluation when using attributes [riot/1590](https://github.com/riot/riot/issues/1590)
-  - _修正:_ eS6 class syntax with child tags [riot/1451](https://github.com/riot/riot/issues/1451)
-  - _修正:_ different approaches in iterable objects in different contexts of "each - in" [riot/1420](https://github.com/riot/riot/issues/1420)
-  - _修正:_ support conditions with virtual tag [riot/139](https://github.com/riot/riot/issues/139)
+  - _修正:_ カスタムタグでbool属性は使用可能？ （"disabled"など） [riot/1618](https://github.com/riot/riot/issues/1618)
+  - _修正:_ 属性を使用している時の余計な式の評価　[riot/1590](https://github.com/riot/riot/issues/1590)
+  - _修正:_ 子タグ付きes6クラス構文 [riot/1451](https://github.com/riot/riot/issues/1451)
+  - _修正:_ `each - in`の異なるコンテキストにおける反復可能なオブジェクトについて、個別のアプローチ [riot/1420](https://github.com/riot/riot/issues/1420)
+  - _修正:_ `virtual`タグで条件をサポートする [riot/139](https://github.com/riot/riot/issues/139)
   - _修正:_ ループ内でのriot-tagの動作 [riot/1368](https://github.com/riot/riot/issues/1368)
   - _修正:_ すべてのtreeitemタグには子が存在する [riot/1361](https://github.com/riot/riot/issues/1361)
   - _修正:_ コンパイラの状態をクリアするメソッド [riot/1236](https://github.com/riot/riot/issues/1236)
-  - _修正:_ dynamically loaded child tags don't get into the parents tags object [riot/1174](https://github.com/riot/riot/issues/1174)
-  - _修正:_ [Q] Child tags counts not matched? [riot/1088](https://github.com/riot/riot/issues/1088)
-  - _修正:_ inconsistent tags behaviour with 1 item vs many  [riot/936](https://github.com/riot/riot/issues/936)
-  - _修正:_ no way to override name attribute on e.g. &lt;input&gt;s to prevent overriding existing properties on `this` [riot/715](https://github.com/riot/riot/issues/715)
+  - _修正:_ 動的にロードされた子タグは親タグのオブジェクトに含まれない [riot/1174](https://github.com/riot/riot/issues/1174)
+  - _修正:_ [Q]子タグの数の合計が一致しない？ [riot/1088](https://github.com/riot/riot/issues/1088)
+  - _修正:_ 1つのアイテムと多くのアイテムでタグの動作が矛盾する  [riot/936](https://github.com/riot/riot/issues/936)
+  - _修正:_ name属性を上書きする方法はない。例えば&lt;input&gt;について、`this`の既存のプロパティを上書きしないようにする [riot/715](https://github.com/riot/riot/issues/715)
 
 __riot-observable__:
 
-  - _削除:_ スペース区切りのサポート、 `el.on('foo bar')` は `el.on('foo').on('bar')`になります (__互換性のない変更__)
+  - _削除:_ スペース区切りのサポート、 `el.on('foo bar')` は `el.on('foo').on('bar')`になります (__破壊的変更__)
   - _修正:_ 以前より速さを6倍に最適化
 
 __riot-tmpl__:
 
-  - _変更:_ テンプレートのエラーがコンソールAPIが使用可能ならば常に`console.error`として出力されるようになりました (__互換性のない変更__)
+  - _変更:_ テンプレートのエラーがコンソールAPIが使用可能ならば常に`console.error`として出力されるようになりました (__破壊的変更__)
 
 __riot-compiler__:
 
   - _修正:_ タグ内でes6のインポートを許可 [compiler/69](https://github.com/riot/compiler/issues/69)
-  - _修正:_ all the `value` attributes using expressions will be output as `riot-value` to [riot#1957](https://github.com/riot/riot/issues/1957)
-  - _変更:_ riot-compiler経由で生成されたcssは常にスコープとなります (__互換性のない変更__)
-  - _廃止:_ 古い`babel`のサポート、`es6`パーサーはデフォルトでBabel6を使用するようになりました (__互換性のない変更__)
+  - _修正:_ テンプレート変数を用いた全て`value`属性は`riot-value`として出力 [riot#1957](https://github.com/riot/riot/issues/1957)
+  - _変更:_ riot-compiler経由で生成されたcssは常にスコープとなります (__破壊的変更__)
+  - _廃止:_ 古い`babel`のサポート、`es6`パーサーはデフォルトでBabel6を使用するようになる (__破壊的変更__)
 
 
 ### 皆さん、ありがとうございます!
