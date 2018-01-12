@@ -62,42 +62,42 @@ __riot-compiler__:
   - _更新_: ビット演算子を回避する、依存関係とリファクタリングいくつかの内部コード
   - _修正_: coffeescriptパーサーが必要 [riot-compiler/102](https://github.com/riot/compiler/pull/102)
 
-## 3.7.0 *September 2, 2017*
+## 3.7.0 *2017年9月2日*
 
 __riot__:
 
-  - _追加_: improve loops performance via `key` attribute [more info](/guide/#key) [riot/2418](https://github.com/riot/riot/issues/2418)
-  - _追加_: tag options will be passed to the mixins `init` function [riot/2434](https://github.com/riot/riot/issues/2434)
-  - _修正_: `isMounted` returns false inside .on("mount") event [riot/2436](https://github.com/riot/riot/issues/2436)
-  - _修正_: yield with ref attribute fails to load contents [riot/2433](https://github.com/riot/riot/issues/2433)
-  - _修正_: "value" attribute is not removed if previously set and then set again to falsy value [riot/2427](https://github.com/riot/riot/issues/2427)
+  - _追加_: `key`属性を用いてループのパフォーマンス改善 [more info](/guide/#key) [riot/2418](https://github.com/riot/riot/issues/2418)
+  - _追加_: タグのオプションはmixinの`init`関数に渡される [riot/2434](https://github.com/riot/riot/issues/2434)
+  - _修正_: `isMounted`は.on("mount")イベント内ではfalseを返す [riot/2436](https://github.com/riot/riot/issues/2436)
+  - _修正_: ref属性を持つyieldがコンテンツのロードに失敗する [riot/2433](https://github.com/riot/riot/issues/2433)
+  - _修正_: もし以前に"value"属性が設定されていれば、それは削除されず、また再び偽値に設定される [riot/2427](https://github.com/riot/riot/issues/2427)
 
-## 3.6.3 *August 23, 2017*
+## 3.6.3 *2017年8月23日*
 
 __riot__:
 
-  - _修正_: another attempt to fix [riot/2409](https://github.com/riot/riot/issues/2409)
+  - _修正_: 修正しようとする別の試み [riot/2409](https://github.com/riot/riot/issues/2409)
   - _修正_: [riot/2428](https://github.com/riot/riot/issues/2428) [riot/2424](https://github.com/riot/riot/issues/2424)
-  - _修正_: package-lock.json out of date [riot/2425](https://github.com/riot/riot/issues/2425)
+  - _修正_: 古いpackage-lock.json [riot/2425](https://github.com/riot/riot/issues/2425)
 
-## 3.6.2 *August 18, 2017*
-
-__riot__:
-
-  - _修正_: unmount event triggered without mount event [riot/2409](https://github.com/riot/riot/issues/2409)
-  - _改善_: loops performance by removing old legacy code
-  - _改善_: refactor partially the source code preferring more ES2016 syntax goodies
-
-## 3.6.1 *June 25, 2017*
+## 3.6.2 *2017年8月18日*
 
 __riot__:
 
-  - _削除_: `riot.csp.min.js` because it's useless in Chrome Extensions since it can be locally loaded. Use `riot.csp.js` instead
+  - _修正_: マウントイベントなしでトリガされたアンマウントイベント [riot/2409](https://github.com/riot/riot/issues/2409)
+  - _改善_: 古いレガシーコードを削除してループのパフォーマンスを上げる
+  - _改善_: ソースコードの部分的なリファクタリングにはES2016の構文がより良い
+
+## 3.6.1 *2017年6月25日*
+
+__riot__:
+
+  - _削除_: `riot.csp.min.js`はChrome拡張機能では役に立たないがローカルに読み込むことはできる。代わりに`riot.csp.js`を使用する
 
 __riot-compiler__:
-  - _修正_: possible bug involving compilation of tags containing regex. [riot/2369](https://github.com/riot/riot/issues/2369)
-  - _更新_: using the skip-regex function from npm for sharing bwteen modules (at future).
-  - _更新_: the jsSplitter function for safer replacement of JS code, part of the next compiler.
+  - _修正_: 正規表現を含むタグのコンパイルに関連する可能性のあるバグ [riot/2369](https://github.com/riot/riot/issues/2369)
+  - _更新_: 複数のモジュールを共有するためにnpmのskip-regex関数を使用（将来的に）
+  - _更新_: JSコードの安全な置き換えのためのjsSplitter関数。次のコンパイラの一部
 
 
 ## 3.6.0 *June 8, 2017*
