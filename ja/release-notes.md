@@ -8,18 +8,18 @@ id: release-notes
 
 ## 3.8.1 *2017年12月28日*
 
- - _修正_: 破壊的変更を避けるために、硬めの`Exception Errors`よりも`console.warn`を推奨 [riot/2511](https://github.com/riot/riot/issues/2511)
+ - _修正:_ 破壊的変更を避けるために、硬めの`Exception Errors`よりも`console.warn`を推奨 [riot/2511](https://github.com/riot/riot/issues/2511)
 
 ## 3.8.0 *2017年12月28日*
 
 __riot__:
 
-  - _修正_: 紛らわしい`virtual`タグの`data-is`属性との使い方 [riot/2511](https://github.com/riot/riot/issues/2511)
-  - _更新_: プロジェクト貢献者リスト [riot/2512](https://github.com/riot/riot/issues/2512)
+  - _修正:_ 紛らわしい`virtual`タグの`data-is`属性との使い方 [riot/2511](https://github.com/riot/riot/issues/2511)
+  - _更新:_ プロジェクト貢献者リスト [riot/2512](https://github.com/riot/riot/issues/2512)
 
 __riot-compiler__:
 
-  - _追加_: 実験的なソースマップのサポート
+  - _追加:_ 実験的なソースマップのサポート
 
 `sourcemap = true`オプションを使用してコンパイルすると、コンパイラは` code`と `sourcemap`を含むオブジェクトを返します。
 **現在のriotコンパイラは "実際のパーサ"を使用しないので、生成されたソースマップは間違っているかもしれません**。
@@ -27,236 +27,236 @@ __riot-compiler__:
 
 __riot-cli__:
 
-  - _追加_: インラインソースマップを生成する`sourcemap`オプション
-  - _変更_: すべてのAPIメソッドは、ノードで使用されている場合、常にプロミスを返す
+  - _追加:_ インラインソースマップを生成する`sourcemap`オプション
+  - _変更:_ すべてのAPIメソッドは、ノードで使用されている場合、常にプロミスを返す
 
 ## 3.7.4 *2017年11月5日*
 
 __riot__:
 
-  - _修正_: SVG内に、ループでのネストされたカスタムタグの表示に失敗する [riot/2464](https://github.com/riot/riot/issues/2464)
-  - _修正_: `each`ループを持つタグ上で未定義として渡される関数 [riot/2474](https://github.com/riot/riot/issues/2474)
-  - _修正_: `before-unmount`は、子タグのDOMを破棄した後に呼ばれる [riot/2480](https://github.com/riot/riot/issues/2480)
-  - _修正_: `uid`の内部関数を修正 [riot/2481](https://github.com/riot/riot/issues/2481)
-  - _追加_: jsDelivrのhitsバッジ [riot/2467](https://github.com/riot/riot/issues/2467)
+  - _修正:_ SVG内に、ループでのネストされたカスタムタグの表示に失敗する [riot/2464](https://github.com/riot/riot/issues/2464)
+  - _修正:_ `each`ループを持つタグ上で未定義として渡される関数 [riot/2474](https://github.com/riot/riot/issues/2474)
+  - _修正:_ `before-unmount`は、子タグのDOMを破棄した後に呼ばれる [riot/2480](https://github.com/riot/riot/issues/2480)
+  - _修正:_ `uid`の内部関数を修正 [riot/2481](https://github.com/riot/riot/issues/2481)
+  - _追加:_ jsDelivrのhitsバッジ [riot/2467](https://github.com/riot/riot/issues/2467)
 
 ## 3.7.3 *2017年10月1日*
 
 __riot__:
 
-  - _修正_: 三項演算子が期待通りに動作しない [riot/2454](https://github.com/riot/riot/issues/2454)
-  - _追加_: riot.compileに関する機能のリクエスト [riot/2451](https://github.com/riot/riot/issues/2451)
+  - _修正:_ 三項演算子が期待通りに動作しない [riot/2454](https://github.com/riot/riot/issues/2454)
+  - _追加:_ riot.compileに関する機能のリクエスト [riot/2451](https://github.com/riot/riot/issues/2451)
 
 ## 3.7.2 *2017年9月23日*
 
 __riot__:
 
-  - _修正_: SVGにて動的なpreserveAspectRatioが動作しない [riot/2445](https://github.com/riot/riot/issues/2445)
-  - _修正_: Yieldのコンテンツ内における`show`のスコープ [riot/2448](https://github.com/riot/riot/issues/2448)
-  - _改善_: ループのパフォーマンス
-  - _改善_: 新しいタグの作成では、関数インスタンスの代わりにオブジェクトが優先
-  - _改善_: 親 -> 子タグへの継承を単純化
+  - _修正:_ SVGにて動的なpreserveAspectRatioが動作しない [riot/2445](https://github.com/riot/riot/issues/2445)
+  - _修正:_ Yieldのコンテンツ内における`show`のスコープ [riot/2448](https://github.com/riot/riot/issues/2448)
+  - _改善:_ ループのパフォーマンス
+  - _改善:_ 新しいタグの作成では、関数インスタンスの代わりにオブジェクトが優先
+  - _改善:_ 親 -> 子タグへの継承を単純化
 
 __riot-compiler__:
 
-  - _更新_: ビット演算子を回避する、依存関係とリファクタリングいくつかの内部コード
-  - _修正_: coffeescriptパーサーが必要 [riot-compiler/102](https://github.com/riot/compiler/pull/102)
+  - _更新:_ ビット演算子を回避する、依存関係とリファクタリングいくつかの内部コード
+  - _修正:_ coffeescriptパーサーが必要 [riot-compiler/102](https://github.com/riot/compiler/pull/102)
 
 ## 3.7.0 *2017年9月2日*
 
 __riot__:
 
-  - _追加_: `key`属性を用いてループのパフォーマンス改善 [more info](/guide/#key) [riot/2418](https://github.com/riot/riot/issues/2418)
-  - _追加_: タグのオプションはmixinの`init`関数に渡される [riot/2434](https://github.com/riot/riot/issues/2434)
-  - _修正_: `isMounted`は.on("mount")イベント内ではfalseを返す [riot/2436](https://github.com/riot/riot/issues/2436)
-  - _修正_: ref属性を持つyieldがコンテンツのロードに失敗する [riot/2433](https://github.com/riot/riot/issues/2433)
-  - _修正_: もし以前に"value"属性が設定されていれば、それは削除されず、また再び偽値に設定される [riot/2427](https://github.com/riot/riot/issues/2427)
+  - _追加:_ `key`属性を用いてループのパフォーマンス改善 [詳細情報](/ja/guide/#key) [riot/2418](https://github.com/riot/riot/issues/2418)
+  - _追加:_ タグのオプションはmixinの`init`関数に渡される [riot/2434](https://github.com/riot/riot/issues/2434)
+  - _修正:_ `isMounted`は.on("mount")イベント内ではfalseを返す [riot/2436](https://github.com/riot/riot/issues/2436)
+  - _修正:_ ref属性を持つyieldがコンテンツのロードに失敗する [riot/2433](https://github.com/riot/riot/issues/2433)
+  - _修正:_ もし以前に"value"属性が設定されていれば、それは削除されず、また再び偽値に設定される [riot/2427](https://github.com/riot/riot/issues/2427)
 
 ## 3.6.3 *2017年8月23日*
 
 __riot__:
 
-  - _修正_: 修正しようとする別の試み [riot/2409](https://github.com/riot/riot/issues/2409)
-  - _修正_: [riot/2428](https://github.com/riot/riot/issues/2428) [riot/2424](https://github.com/riot/riot/issues/2424)
-  - _修正_: 古いpackage-lock.json [riot/2425](https://github.com/riot/riot/issues/2425)
+  - _修正:_ 修正しようとする別の試み [riot/2409](https://github.com/riot/riot/issues/2409)
+  - _修正:_ [riot/2428](https://github.com/riot/riot/issues/2428) [riot/2424](https://github.com/riot/riot/issues/2424)
+  - _修正:_ 古いpackage-lock.json [riot/2425](https://github.com/riot/riot/issues/2425)
 
 ## 3.6.2 *2017年8月18日*
 
 __riot__:
 
-  - _修正_: マウントイベントなしでトリガされたアンマウントイベント [riot/2409](https://github.com/riot/riot/issues/2409)
-  - _改善_: 古いレガシーコードを削除してループのパフォーマンスを上げる
-  - _改善_: ソースコードの部分的なリファクタリングにはES2016の構文がより良い
+  - _修正:_ マウントイベントなしでトリガされたアンマウントイベント [riot/2409](https://github.com/riot/riot/issues/2409)
+  - _改善:_ 古いレガシーコードを削除してループのパフォーマンスを上げる
+  - _改善:_ ソースコードの部分的なリファクタリングにはES2016の構文がより良い
 
 ## 3.6.1 *2017年6月25日*
 
 __riot__:
 
-  - _削除_: `riot.csp.min.js`はChrome拡張機能では役に立たないがローカルに読み込むことはできる。代わりに`riot.csp.js`を使用する
+  - _削除:_ `riot.csp.min.js`はChrome拡張機能では役に立たないがローカルに読み込むことはできる。代わりに`riot.csp.js`を使用する
 
 __riot-compiler__:
-  - _修正_: 正規表現を含むタグのコンパイルに関連する可能性のあるバグ [riot/2369](https://github.com/riot/riot/issues/2369)
-  - _更新_: 複数のモジュールを共有するためにnpmのskip-regex関数を使用（将来的に）
-  - _更新_: JSコードの安全な置き換えのためのjsSplitter関数。次のコンパイラの一部
+  - _修正:_ 正規表現を含むタグのコンパイルに関連する可能性のあるバグ [riot/2369](https://github.com/riot/riot/issues/2369)
+  - _更新:_ 複数のモジュールを共有するためにnpmのskip-regex関数を使用（将来的に）
+  - _更新:_ JSコードの安全な置き換えのためのjsSplitter関数。次のコンパイラの一部
 
 
-## 3.6.0 *June 8, 2017*
+## 3.6.0 *2017年6月8日*
 
 __riot__:
 
-  - _追加_: the option to block the riot automatic updates via `riot.settings.autoUpdate` [more info](/api/misc/#autoupdate) [riot/2377](https://github.com/riot/riot/issues/2377)
-  - _修正_: regex in <script> function breaks compiler [riot/2369](https://github.com/riot/riot/issues/2369)
+  - _追加:_ `riot.settings.autoUpdate`を介したriotの自動アップデートをブロックするオプション [詳細情報](/ja/api/misc/#autoupdate) [riot/2377](https://github.com/riot/riot/issues/2377)
+  - _修正:_ \<script\>内の正規表現の関数でコンパイラが壊れる [riot/2369](https://github.com/riot/riot/issues/2369)
 
 __riot-tmpl__:
 
-  - _修正_: incorrect regex that matches literal regexes
-  - _修正_: use shared regex parser for browser and server versions
+  - _修正:_ リテラル正規表現にマッチする不正な正規表現
+  - _修正:_ ブラウザとサーバーのバージョンに共用の正規表現パーサーを使用する
 
 __riot-compiler__:
 
-  - _修正_: various issues with literal regexes
+  - _修正:_ 正規表現リテラルのさまざまな問題
 
-## 3.5.1 *May 21, 2017*
+## 3.5.1 *2017年5月21日*
 
 __riot-tmpl__:
 
-  - _修正_: `}` in output when expression contains `)/` [riot/2361](https://github.com/riot/riot/issues/2361)
+  - _修正:_ テンプレート変数に`)/`が含まれている時、`}`が出力される [riot/2361](https://github.com/riot/riot/issues/2361)
 
 __riot__:
 
-  - _修正_: inline DOM templates only work on top level tags [riot/2359](https://github.com/riot/riot/issues/2359)
-  - _修正_: the result of `riot.version` is displayed as WIP [riot/2352](https://github.com/riot/riot/issues/2352)
+  - _修正:_ インラインDOMテンプレートはトップレベルのタグでのみ動作する [riot/2359](https://github.com/riot/riot/issues/2359)
+  - _修正:_ `riot.version`の結果はWIPとして表示される [riot/2352](https://github.com/riot/riot/issues/2352)
 
 
-## 3.5.0 *May 13, 2017*
+## 3.5.0 *2017年5月13日*
 
 __riot__:
 
-  - _追加_: enable the use of DOM inline templates [more info](/api/#tags-without-template) [riot/2296](https://github.com/riot/riot/issues/2296)
-  - _追加_: easier svg sub tags support [riot/2290](https://github.com/riot/riot/issues/2290)
-  - _修正_: better error message [riot/2335](https://github.com/riot/riot/issues/2335)
-  - _修正_: show on nested tags prefers parent's context [riot/2333](https://github.com/riot/riot/issues/2333)
-  - _修正_: attributes not updating in v.3.4.4 [riot/2343](https://github.com/riot/riot/issues/2343)
-  - _修正_: bring back data-ref and ref [riot/2348](https://github.com/riot/riot/issues/2348)
+  - _追加:_ DOMインラインテンプレートの使用を有効化 [詳細情報](/ja/api/#tags-without-template) [riot/2296](https://github.com/riot/riot/issues/2296)
+  - _追加:_ より簡単なSVGのサブタグのサポート [riot/2290](https://github.com/riot/riot/issues/2290)
+  - _修正:_ より良いエラーメッセージ [riot/2335](https://github.com/riot/riot/issues/2335)
+  - _修正:_ ネストされたタグの表示は、親のコンテキストを好む [riot/2333](https://github.com/riot/riot/issues/2333)
+  - _修正:_ v3.4.4では属性が更新されない [riot/2343](https://github.com/riot/riot/issues/2343)
+  - _修正:_ data-refとrefを戻す [riot/2348](https://github.com/riot/riot/issues/2348)
 
 
 __riot-cli__:
-  - _修正_: fix rollup false positive warnings [rollup-plugin-riot/89](https://github.com/riot/rollup-plugin-riot/issues/89)
+  - _修正:_ rollupの失敗による明らかな警告を修正 [rollup-plugin-riot/89](https://github.com/riot/rollup-plugin-riot/issues/89)
 
 
-## 3.4.4 *April 30, 2017*
-
-__riot__:
-
-  - _修正_: remove `ref` attributes avoiding to parse them twice [riot/2329](https://github.com/riot/riot/issues/2329)
-  - _修正_: avoid to remove attributes for truthy properties [riot/2331](https://github.com/riot/riot/issues/2331)
-  - _修正_: support for IE11 events handling [riot/2332](https://github.com/riot/riot/issues/2332)
-
-
-## 3.4.3 *April 24, 2017*
+## 3.4.4 *2017年4月30日*
 
 __riot__:
 
-  - _修正_: fair angular library size comparison [riot/2325](https://github.com/riot/riot/issues/2325)
-  - _修正_: data-is works differently as expression to hard-coded attribute [riot/2321](https://github.com/riot/riot/issues/2321)
-  - _修正_: scope differs between `if` and `show` [riot/2125](https://github.com/riot/riot/issues/2125)
+  - _修正:_ `ref`属性を削除して、それらを2回パースしないようにする [riot/2329](https://github.com/riot/riot/issues/2329)
+  - _修正:_ 真であるプロパティの属性が削除されるのを避ける [riot/2331](https://github.com/riot/riot/issues/2331)
+  - _修正:_ IE11のイベント処理のサポート [riot/2332](https://github.com/riot/riot/issues/2332)
+
+
+## 3.4.3 *2017年4月24日*
+
+__riot__:
+
+  - _修正:_ fair angular library size comparison [riot/2325](https://github.com/riot/riot/issues/2325)
+  - _修正:_ "data-is"は、テンプレート変数にハードコーディングされた属性と異なる動作をする [riot/2321](https://github.com/riot/riot/issues/2321)
+  - _修正:_ `if`と`show`のスコープは異なる [riot/2125](https://github.com/riot/riot/issues/2125)
 
 __riot-cli__:
 
-  - _修正_: error exception reporting [cli/26](https://github.com/riot/cli/issues/26)
+  - _修正:_ エラー例外レポート [cli/26](https://github.com/riot/cli/issues/26)
 
-## 3.4.2 *April 14, 2017*
-
-__riot__:
-
-  - _修正_: "data-is" attribute is being removed if you mount on the same element [riot/2317](https://github.com/riot/riot/issues/2317)
-  - _修正_: riot attributes remain in output [riot/2316](https://github.com/riot/riot/issues/2316)
-
-## 3.4.1 *April 9, 2017*
+## 3.4.2 *2017年4月14日*
 
 __riot__:
 
-  - _修正_: parent tag data-is is reset when disabling a nested tag with `if="...` [riot/2311](https://github.com/riot/riot/issues/2311)
-  - _修正_: object is not valid in "show" anymore [riot/2300](https://github.com/riot/riot/issues/2300)
-  - _修正_: undefined not handled as empty string (in tags)  [riot/2297](https://github.com/riot/riot/issues/2297)
-  - _修正_: `<div if="...">` containing `<div data-is="...">` does not unmount tag properly [riot/2307](https://github.com/riot/riot/issues/2307)
+  - _修正:_ 同じ要素にマウントすると、"data-is"属性が削除される [riot/2317](https://github.com/riot/riot/issues/2317)
+  - _修正:_ riotの属性は出力に残る [riot/2316](https://github.com/riot/riot/issues/2316)
 
-## 3.4.0 *March 26, 2017*
+## 3.4.1 *2017年4月9日*
 
 __riot__:
 
-  - _修正_: `riot-` prefixed attributes will be no longer prefixed in the `opts` object [riot/2103](https://github.com/riot/riot/issues/2103)
-  - _修正_: `Null` and `undefined` expressions will be no longer converted into empty strings for the tag attributes [riot/2080](https://github.com/riot/riot/issues/2080)
-  - _修正_: style attribute with expressions makes show directive invalid at the beginning [riot/2178](https://github.com/riot/riot/issues/2178)
-  - _修正_: riot will not force all the expressions evaluating them as strings [riot/2310](https://github.com/riot/riot/issues/2310)
-  - _追加_: add support for `style` and `class` object expressions more info [here](/guide/#class-object-expressions) and [here](/guide/#style-object-expressions)
+  - _修正:_ 親タグのdata-isは、`if="...`でネストされたタグを無効にするとリセットされる [riot/2311](https://github.com/riot/riot/issues/2311)
+  - _修正:_ オブジェクトは"show"ではもう有効ではない [riot/2300](https://github.com/riot/riot/issues/2300)
+  - _修正:_ undefinedは空の文字列として扱われない（タグ内） [riot/2297](https://github.com/riot/riot/issues/2297)
+  - _修正:_ `<div data-is="...">`を含む`<div if="...">`はタグを適切にアンマウントしない [riot/2307](https://github.com/riot/riot/issues/2307)
 
-## 3.3.2 *March 5, 2017*
-
-__riot__:
-
-  - _Fix:_ tag root attributes out of sync [riot/2280](https://github.com/riot/riot/issues/2280)
-  - _Fix:_ virtual tag doesn't work with each in server side rendering [riot/2220](https://github.com/riot/riot/issues/2220)
-  - _Fix:_ using es6 classes mixins, some functions are lost [riot/2219](https://github.com/riot/riot/issues/2219)
-  - _Fix:_ rendering issue with tag iteration/re-ordering [riot/2271](https://github.com/riot/riot/issues/2271)
-  - _Fix:_ ES6 template literals forward slashes issue [riot/2167](https://github.com/riot/riot/issues/2167)
-  - _Fix:_ re add the `riot.version` attribute
-  - _Improve:_ remove dead code
-  - _Improve:_ increase code coverage to 100% :tada:
-
-## 3.3.1 *February 19, 2017*
+## 3.4.0 *2017年3月26日*
 
 __riot__:
 
-  - _Fix:_ shouldUpdate prevents every update  [riot/2118](https://github.com/riot/riot/issues/2118)
+  - _修正:_ `riot-`接頭辞付きの属性は、もはや`opts`オブジェクトでは接頭辞にならない [riot/2103](https://github.com/riot/riot/issues/2103)
+  - _修正:_ `Null`と`undefined`式は、タグ属性の空文字列に変換されなくなる [riot/2080](https://github.com/riot/riot/issues/2080)
+  - _修正:_ スタイル属性でテンプレートを変数使用すると、最初にshowディレクティブが無効になる [riot/2178](https://github.com/riot/riot/issues/2178)
+  - _修正:_ riotはすべてのテンプレート変数の評価を文字列として強制しない [riot/2310](https://github.com/riot/riot/issues/2310)
+  - _追加:_ `style`と` class`オブジェクト式のサポートを追加。より詳しくは[こちら](/ja/guide/#クラスのオブジェクト記法) と [こちら](/ja/guide/#インラインスタイルのオブジェクト記法)
+
+## 3.3.2 *2017年3月5日*
+
+__riot__:
+
+  - _修正:_ タグのroot属性が同期していない [riot/2280](https://github.com/riot/riot/issues/2280)
+  - _修正:_ eachを用いたサーバーサイドレンダリングでvirtualタグが動作しない [riot/2220](https://github.com/riot/riot/issues/2220)
+  - _修正:_ es6クラスを用いたmixinsでは、いくつかの関数が失われる [riot/2219](https://github.com/riot/riot/issues/2219)
+  - _修正:_ タグの繰り返し/並べ替えに関するレンダリングの問題 [riot/2271](https://github.com/riot/riot/issues/2271)
+  - _修正:_ ES6テンプレートリテラルのスラッシュ問題 [riot/2167](https://github.com/riot/riot/issues/2167)
+  - _修正:_ `riot.version`属性の再追加
+  - _改善:_ 死んだコードの削除
+  - _改善:_ コードカバレッジを100%に増やす :tada:
+
+## 3.3.1 *2017年2月19日*
+
+__riot__:
+
+  - _修正:_ shouldUpdateはすべての更新を防ぐ [riot/2118](https://github.com/riot/riot/issues/2118)
 
 __riot-compiler__:
 
-  - _Fix:_ es6 template strings issue  [riot/2167](https://github.com/riot/riot/issues/2167)
-  - _Add:_ support for shortcut generator functions `* foo()`
+  - _修正:_ es6テンプレート文字列の問題 [riot/2167](https://github.com/riot/riot/issues/2167)
+  - _追加:_ ショートカットジェネレータ関数`* foo()`のサポート
 
-## 3.3.0 *February 18, 2017*
+## 3.3.0 *2017年2月18日*
 
 __riot__:
 
-  - _Add:_ fine grain control over tag updates by passing nextOpts to `shouldUpdate` [riot/2238](https://github.com/riot/riot/issues/2238)
+  - _追加:_ nextOptsを`shouldUpdate`に渡すことで、タグ更新のより微細な制御 [riot/2238](https://github.com/riot/riot/issues/2238)
 
 __riot-compiler__:
 
-  - _Fix:_ es6 `import` regex compatibility issues [riot/2263](https://github.com/riot/riot/issues/2263)
-  - _Add:_ support for `async` shortcut methods [riot/2195](https://github.com/riot/riot/issues/2195)
+  - _修正:_ es6の`import`正規表現の互換性の問題 [riot/2263](https://github.com/riot/riot/issues/2263)
+  - _追加:_ `async`ショートカットメソッドのサポート [riot/2195](https://github.com/riot/riot/issues/2195)
 
-## 3.2.1 *February 10, 2017*
-
-__riot__:
-
-  - _Fix:_ error when using virtual and update handler [riot/2251](https://github.com/riot/riot/issues/2251)
-  - _Change:_ switch from plegie to opencollective as donation platform [riot/2239](https://github.com/riot/riot/pull/2239)
-
-## 3.2.0 *February 6, 2017*
+## 3.2.1 *2017年2月10日*
 
 __riot__:
 
-  - _Fix:_ disable the global mixins for the anonymous tags [riot/2056](https://github.com/riot/riot/issues/2056)
-  - _Fix:_ setting selected attribute of multiple `<option>` tags in a multi select does not work properly [riot/2247](https://github.com/riot/riot/issues/2247)
-  - _Fix:_ mount event not fired due to listener for wrong event [riot/2249](https://github.com/riot/riot/issues/2249)
-  - _Add:_ the `riot.settings.skipAnonymousTags` flag [more info](/api/misc/#skipanonymoustags)
-  - _Improve:_ the looped tags rendering is ~30% faster than before mainly for the `anonymous` tags
+  - _修正:_ virtualハンドラとupdateハンドラを使用するとエラーが発生 [riot/2251](https://github.com/riot/riot/issues/2251)
+  - _変更:_ 寄付のプラットフォームとしてplegieからopencollectiveに切り替える [riot/2239](https://github.com/riot/riot/pull/2239)
 
-## 3.1.1 *February 4, 2017*
+## 3.2.0 *2017年2月6日*
 
 __riot__:
 
-  - _Fix:_ issue removing tags in a loop [riot/2240](https://github.com/riot/riot/issues/2240)
-  - _Fix:_ tag root is not always in body when its mount event fires [riot/1938](https://github.com/riot/riot/issues/1938)
-  - _Change:_ improve the rendering performance of the anonymous looped tags
+  - _修正:_ 匿名タグのグローバルミックスインを無効にする [riot/2056](https://github.com/riot/riot/issues/2056)
+  - _修正:_ 複数選択のselectタグで、選択された複数の`<option>`タグに対し属性を設定しても正しく動作しない [riot/2247](https://github.com/riot/riot/issues/2247)
+  - _修正:_ 誤ったイベントへのリスナーのため、マウントイベントが発火しない [riot/2249](https://github.com/riot/riot/issues/2249)
+  - _追加:_ `riot.settings.skipAnonymousTags`フラグ [詳細情報](/ja/api/misc/#skipanonymoustags)
+  - _改善:_ ループされたタグのレンダリングが、主に`anonymous`タグの場合よりも30％高速化
+
+## 3.1.1 *2017年2月4日*
+
+__riot__:
+
+  - _修正:_ ループ内でタグを削除する問題 [riot/2240](https://github.com/riot/riot/issues/2240)
+  - _修正:_ マウントイベントが発火したときにタグルートが常にボディにあるとは限らない [riot/1938](https://github.com/riot/riot/issues/1938)
+  - _変更:_ 匿名のループされたタグのレンダリングパフォーマンスを改善
 
 __riot-compiler__:
 
-  - _Fix:_ restore the support for the es6 in browser compilation using babel [examples/51](https://github.com/riot/examples/issues/51)
+  - _修正:_ babelを用いてブラウザ内でのコンパイルについてes6のサポートを復元する [examples/51](https://github.com/riot/examples/issues/51)
 
 
-## 3.1.0 *January 29, 2017*
+## 3.1.0 *2017年1月29日*
 
 __riot__:
 
@@ -268,7 +268,7 @@ __riot__:
   - _変更:_ `_internal`タグのプロパティを` __`に改名しましたが、とにかくこれは使用するべきではない
   - _変更:_ `_parent`プロパティを公開しないようにした。現在これは` __`キーに含まれる
   - _変更:_ `isMounted`プロパティを反復不可能、書き込み不可能にする
-  - _追加:_ webpack経由のホットモジュールリロードを処理するための実験的な`riot.reload` API [more info](https://github.com/riot/tag-loader)
+  - _追加:_ webpack経由のホットモジュールリロードを処理するための実験的な`riot.reload` API [詳細情報](https://github.com/riot/tag-loader)
 
 __riot-compiler__:
 
@@ -276,7 +276,7 @@ __riot-compiler__:
 
 __riot-route__:
 
-  - _追加:_ タグベースのルータ [riot-route/80](https://github.com/riot/route/pull/80) [more-info](/api/route#tag-based-routing)
+  - _追加:_ タグベースのルータ [riot-route/80](https://github.com/riot/route/pull/80) [詳細情報](/ja/api/route#タグベースルーティング)
 
 ## 3.0.7 *2017年1月10日*
 
@@ -369,7 +369,7 @@ __riot__:
   - _変更:_ コアからriot-routeを削除してオプションにする [riot/1485](https://github.com/riot/riot/issues/1485) (__破壊的変更__)
   - _変更:_ タグがマウントされる前にupdateおよびupdatedイベントがトリガーされるのをやめる [riot/1661](https://github.com/riot/riot/issues/1661) (__破壊的変更__)
   - _変更:_ "each - in"はコンテキストの違いで、繰り返しオブジェクトへのアプローチが変わる [riot/1420](https://github.com/riot/riot/issues/1420) (__破壊的変更__)
-  - _追加:_ ES6のclassを使用したタグの作成をサポート [more info](/api/#riottagel-opts)
+  - _追加:_ ES6のclassを使用したタグの作成をサポート [詳細情報](/ja/api/#riottagel-opts)
   - _追加:_ タグにreactのcomponentShouldUpdateを真似た`shouldUpdate`メソッドを追加
   - _削除:_ 真偽属性のための __ 接頭辞 [riot/276](https://github.com/riot/riot/issues/276)
   - _削除:_ riot DOMイベントでの自動的なpreventDefault [riot/1770](https://github.com/riot/riot/issues/1770) [riot/1718](https://github.com/riot/riot/issues/1718) [riot/526](https://github.com/riot/riot/issues/526) (__破壊的変更__)
@@ -388,7 +388,7 @@ __riot__:
   - _修正:_ テストを補助するためにriotタグのキャッシュをクリア[riot/1875](https://github.com/riot/riot/issues/1875)
   - _修正:_ riot＃renderで'before-mount'が期待どおりに動作しない [riot/1851](https://github.com/riot/riot/issues/1851)
   - _修正:_ ifとclassを同時に使うとロジックが動作しない [riot/1769](https://github.com/riot/riot/issues/1769)
-  - _修正:_ updateSelf（） APIを追加する必要はある？ [riot/1748](https://github.com/riot/riot/issues/1748)
+  - _修正:_ updateSelf() APIを追加する必要はある？ [riot/1748](https://github.com/riot/riot/issues/1748)
   - _修正:_ virtual要素がタグ更新後に消える [riot/1659](https://github.com/riot/riot/issues/1659)
   - _修正:_ カスタムタグでbool属性は使用可能？ （"disabled"など） [riot/1618](https://github.com/riot/riot/issues/1618)
   - _修正:_ 属性を使用している時の余計な式の評価　[riot/1590](https://github.com/riot/riot/issues/1590)

@@ -398,7 +398,7 @@ route('/sweet/*', function() { /* */ }) // routing-Z (2)
 
 <span class="tag red">&gt;= v3.1</span>
 
-この機能は__ルートを宣言タグとして記述__することを可能にします。
+この機能は**ルートを宣言タグとして記述**することを可能にします。
 
 ```html
 <app>
