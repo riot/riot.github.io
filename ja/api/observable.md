@@ -44,7 +44,7 @@ el.on('start', function(args) {
 })
 
 // すべてのイベントを監視
-el.on('all', function(event, param1, param2) {
+el.on('*', function(event, param1, param2) {
   // eventはトリガーされたイベントの名前
   // パラメータで何かをする
 })
