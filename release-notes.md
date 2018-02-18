@@ -6,7 +6,7 @@ id: release-notes
 
 # {{ page.title }}
 
-## 3.8.1 *Februar 18, 2018*
+## 3.9.0 *Februar 18, 2018*
 
 - _Add_: support for JSPM [riot/2540](https://github.com/riot/riot/pull/2540)
 - _Update_: improve memory usage
