@@ -39,19 +39,19 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-minor_version:       3.8
+minor_version:       3.9
 v2_minor_version:    2.6
 
-version:             3.8.1
+version:             3.9.0
 v2_version:          2.6.8
-version_slurp:       Add experimental sourcemaps support
+version_slurp:       Improve memory usage and code base
 v2_version_slurp:    Security patch agains XSS injections
 repo:                https://github.com/riot/riot
 twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot
 # Vars needed for the compare.md page
 
-size_min:            10.36
+size_min:            10.74
 riot_route_size_min: 1.77
 
 polymer:
