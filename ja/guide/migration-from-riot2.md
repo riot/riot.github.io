@@ -42,6 +42,8 @@ Riot 3は以前のリリースで見つかったイシューについての大�
 もう、`name`と`id`属性から、自動的にDOMへの参照を作成することはありません。
 代わりに`ref`属性を使用してください。
 
+<span class="tag red">Warning:</span> `refs` オブジェクトは `mount` イベント __の発火後でなければ設定されません__ 。
+
 ```html
 <my-tag>
   <p ref="paragraph">Hello</p>
@@ -110,6 +112,10 @@ el
   .trigger('start')
   .trigger('stop')
 ```
+
+### jQueryのDOMイベントとは非互換に
+
+Riot 2では、jQueryを使い`$('.my-element').trigger('click')`といった方法で、Riotのイベントハンドラをトリガできました。Riot 2は[古い形式のDOMイベントモデル（レベル２）](https://www.w3.org/TR/DOM-Level-2-Events/)を採用しており、これがjQueryのイベントAPIと完全互換だったため、こうしたことが可能だったのです。しかし、Riot 3ではを内部イベントハンドラを今後の標準となる（そしてjQueryのDOMイベントAPIがサポートしていない）[新しい形式のDOMイベントモデル（レベル３）](https://www.w3.org/TR/DOM-Level-3-Events/)へと刷新しました。これによって、ダミーのイベントのシミュレートには（今までのやり方ではなく）別の方法を使わなければならなくなりました。[この件については、こちらのイシュー（英語）をご確認ください](https://github.com/riot/riot/issues/2150#issuecomment-271334951)。
 
 ### Scoped CSSがデフォルトに
 
