@@ -113,11 +113,9 @@ el
   .trigger('stop')
 ```
 
-### jQueryのDOMイベント
+### jQueryのDOMイベントとは非互換に
 
-Previously you could trigger riot event handlers via jQuery using `$('.my-element').trigger('click')`. This was possible because riot 2 was using the [old DOM events model ( level 2 )](https://www.w3.org/TR/DOM-Level-2-Events/) fully compatible with the jQuery events API. With riot 3 we have upgraded the riot internal events handlers to the more standard [new DOM events model level 3](https://www.w3.org/TR/DOM-Level-3-Events/) that is not supported by the jQuery DOM events API. This means that you need alternative solutions to the simulate fake events [more info](https://github.com/riot/riot/issues/2150#issuecomment-271334951).
-
-Riot 2では、jQueryから`$('.my-element').trigger('click')`といった方法で、Riotのイベントハンドラをトリガできました。Riot 2は[古い形式のDOMイベントモデル（レベル２）](https://www.w3.org/TR/DOM-Level-2-Events/)を採用しており、これがjQueryのイベントAPIと完全互換だったため、こうしたことが可能だったのです。しかし、Riot 3ではを内部イベントハンドラを今後の標準となる（そしてjQueryのDOMイベントAPIがサポートしていない）[新しい形式のDOMイベントモデル（レベル３）](https://www.w3.org/TR/DOM-Level-3-Events/)へと刷新しました。つまり、ダミーイベントのシミュレートに今までのやり方は使えなくなってしまったというわけです。[この件については、こちらのイシュー（英語）をご確認ください](https://github.com/riot/riot/issues/2150#issuecomment-271334951)。
+Riot 2では、jQueryを使い`$('.my-element').trigger('click')`といった方法で、Riotのイベントハンドラをトリガできました。Riot 2は[古い形式のDOMイベントモデル（レベル２）](https://www.w3.org/TR/DOM-Level-2-Events/)を採用しており、これがjQueryのイベントAPIと完全互換だったため、こうしたことが可能だったのです。しかし、Riot 3ではを内部イベントハンドラを今後の標準となる（そしてjQueryのDOMイベントAPIがサポートしていない）[新しい形式のDOMイベントモデル（レベル３）](https://www.w3.org/TR/DOM-Level-3-Events/)へと刷新しました。これによって、ダミーのイベントのシミュレートには（今までのやり方ではなく）別の方法を使わなければならなくなりました。[この件については、こちらのイシュー（英語）をご確認ください](https://github.com/riot/riot/issues/2150#issuecomment-271334951)。
 
 ### Scoped CSSがデフォルトに
 
