@@ -4,7 +4,7 @@ layout: zh
 class: apidoc
 ---
 
-{% include zh/api-tabs.html %}
+{% include v2/zh/api-tabs.html %}
 
 Riot 路由器是一个最小化的路由器实现，实现了以下技术：
 
@@ -181,7 +181,7 @@ Riot 不会自动 `start` 路由器. 不要忘了手动启动它。这也意味�
 riot.route.stop()
 ```
 
-通常这个方法会与 [riot.route.start](#route-start) 联合使用。例如：
+通常这个方法会与 [riot.route.start](#riotroutestart) 联合使用。例如：
 
 ```javascript
 riot.route.stop() // clear all the old router callbacks
@@ -376,9 +376,4 @@ riot.route(function() { /* */ }) // 路由-X (3)
 riot.route('/fruit/*', function() { /* */ }) // 路由-Y (1)
 riot.route('/sweet/*', function() { /* */ }) // 路由-Z (2)
 ```
-
-
-
-
-
 

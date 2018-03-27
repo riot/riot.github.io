@@ -4,7 +4,7 @@ layout: zh
 class: apidoc
 ---
 
-{% include zh/api-tabs.html %}
+{% include v2/zh/api-tabs.html %}
 
 
 ## 加载
@@ -14,7 +14,7 @@ class: apidoc
 其中
 
 - `customTagSelector` 选择器，从页面上选择元素，将自定义标签加载上去。选中的元素的标签名必须与自定义标签名相同;
-- `opts` 可选。构造自定义标签实例的参数。可以任何数据，从简单的对象到完整的应用API。或者是一个Flux数据仓库。完全取决于你想要如何构造你的客户端应用。参阅[模块化Rio应用](../guide/application-design/#模块化).
+- `opts` 可选。构造自定义标签实例的参数。可以任何数据，从简单的对象到完整的应用API。或者是一个Flux数据仓库。完全取决于你想要如何构造你的客户端应用。参阅[模块化Riot应用](/v2/zh/guide/application-design/#模块化).
 
 
 ``` js
@@ -30,7 +30,7 @@ var tags = riot.mount('account', api)
 
 @返回值: 加载成功的[标签实例](#标签实例)的数组
 
-注意：使用 [浏览器内编译](/zh/guide/compiler/#in-browser-compilation) 的用户需要将 `riot.mount` 调用放在 `riot.compile` 中才能获得返回的 [标签实例](#标签实例). 不这么做的话 `riot.mount` 将返回 `undefined`
+注意：使用 [浏览器内编译](/v2/zh/guide/compiler/#in-browser-compilation) 的用户需要将 `riot.mount` 调用放在 `riot.compile` 中才能获得返回的 [标签实例](#标签实例). 不这么做的话 `riot.mount` 将返回 `undefined`
 
 ```javascript
 <script>
@@ -386,7 +386,7 @@ mytag.unmount(true)
 
 ## 事件
 
-每个标签实例都是一个 [observable](./observable) 所以你可以使用 `on` 和 `one` 方法来监听发生在标签实例上的事件. 以下是内置支持的事件:
+每个标签实例都是一个 [可观察](./observable/) 所以你可以使用 `on` 和 `one` 方法来监听发生在标签实例上的事件. 以下是内置支持的事件:
 
 
 - "update" – 标签实例被更新之前触发. 使得在UI表达式被更新之前重新计算上下文数据。
@@ -431,7 +431,7 @@ this.on('unmount', function() {
 不使用编译器“手动”定义一个新的自定义标签.
 
 - `tagName` 标签名
-- `html` 带 [表达式](/riotjs/guide/#expressions) 的页面布局
+- `html` 带 [表达式](/v2/zh/guide/#表达式) 的页面布局
 - `css` 标签css (可选)
 - `attrs` 标签属性字符串（可选）
 - `constructor` 在标签表达式被计算前，标签被加载前调用的初始化函数
@@ -461,7 +461,7 @@ riot.tag('timer',
   })
 ```
 
-参阅 [timer demo](http://jsfiddle.net/gnumanth/h9kuozp5/) 和 [riot.tag](/riotjs/api/#tag) API 文档了解更多细节和 *限制*.
+参阅 [timer demo](http://jsfiddle.net/gnumanth/h9kuozp5/) 和 [riot.tag](/v2/zh/api/#标签实例) API 文档了解更多细节和 *限制*.
 
 
 **警告** 使用 `riot.tag` 就无法利用编译器带来的好处，以下功能不支持:

@@ -1,10 +1,10 @@
 ---
-title: Observable
+title: 可观察
 layout: zh
 class: apidoc
 ---
 
-{% include zh/api-tabs.html %}
+{% include v2/zh/api-tabs.html %}
 
 
 ### <a name="constructor"></a> riot.observable(el)

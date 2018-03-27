@@ -4,7 +4,7 @@ layout: zh
 class: apidoc
 ---
 
-{% include zh/api-tabs.html %}
+{% include v2/zh/api-tabs.html %}
 
 ## 浏览器内编译
 
@@ -28,7 +28,7 @@ var tags = riot.mount('*')
 
 但我们无法确定外部资源何时被加载和编译完成，所以如果有外部脚本，riot.mount的返回值可能是空数组。所以只有当所有的脚本定义在当前页面上时才能省略掉 `riot.compile` 。
 
-了解更多细节，请阅读[编译器指南](../../guide/compiler).
+了解更多细节，请阅读[编译器指南](/v2/zh/guide/compiler).
 
 ### <a name="compile-fn"></a> riot.compile(url, callback)
 

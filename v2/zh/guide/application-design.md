@@ -3,7 +3,7 @@ layout: zh
 title: 应用的整体设计
 ---
 
-{% include zh/guide-tabs.html %}
+{% include v2/zh/guide-tabs.html %}
 
 ## 提供工具，而不是策略
 
@@ -30,7 +30,7 @@ Observable 是发送和接收消息的一般化工具。它是区分不同模块
 
 只要慎重设计好核心部分和事件接口，团队成员就可以各自独立开发，而互相不打扰。
 
-[Observable API](/zh/api/observable/)
+[Observable API](/v2/zh/api/observable/)
 
 
 ## Routing
@@ -45,7 +45,7 @@ Observable 是发送和接收消息的一般化工具。它是区分不同模块
 
 任何浏览器应用都需要路由akce因为在地址栏里总是有一个URL的。
 
-[路由器 API](/zh/api/route/)
+[路由器 API](/v2/zh/api/route/)
 
 
 ## 模块化

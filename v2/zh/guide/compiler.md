@@ -3,7 +3,7 @@ layout: zh
 title: 编译器
 ---
 
-{% include zh/guide-tabs.html %}
+{% include v2/zh/guide-tabs.html %}
 
 ## 浏览器内编译
 
@@ -56,7 +56,7 @@ riot.compile(function() {
 
 编译器的大小只有 3.2KB (gzip压缩后仅 1.7K) 所以在生产环境中进行客户端编译不会有下载和性能方面的问题。
 
-参考 [编译器API](/zh/api/compiler/) 以了解更多。
+参考 [编译器API](/v2/zh/api/compiler/) 以了解更多。
 
 ### 示例
 

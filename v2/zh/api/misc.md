@@ -4,7 +4,7 @@ layout: zh
 class: apidoc
 ---
 
-{% include zh/api-tabs.html %}
+{% include v2/zh/api-tabs.html %}
 
 
 ### <a name="version"></a> riot.version
