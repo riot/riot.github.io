@@ -153,8 +153,7 @@ riot --ext html
 
 ### ES6 Config file
 
-You can use a config file to store and configure easily all your riot-cli options
-and create your custom parsers
+You can use a config file to store and configure easily all your riot-cli options and create your custom parsers
 
 ``` sh
 riot --config riot.config
@@ -263,7 +262,6 @@ npm install coffee-script -g
 ### EcmaScript 6
 
 ECMAScript 6 (babeljs) is enabled with a type "es6":
-
 
 A sample tag written in ES6:
 
@@ -387,7 +385,6 @@ As you notice, you can define the script type on the template as well. Above we 
 ``` sh
 npm install pug -g
 ```
-
 
 
 ### Any language

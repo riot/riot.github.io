@@ -35,18 +35,19 @@ riot.mount('*')
 </script>
 ```
 
-scriptタグや外部ファイルには、複数のタグ定義と、通常のJavaScriptを含めることができます。
+scriptタグや外部ファイルには、通常のJavaScriptを結びつけた複数のタグ定義を含めることができます。
 
 Riotは、`riot.mount()`が呼び出される前に、インラインまたは外部のタグを自動的にコンパイルします。
 
-### タグインスタンスにアクセスする
+自分の`<script>`タグで`src`の代わりに`data-src`を使うことを好むかもしれませんが、同じリソースを2回読み込むことを避けるために、ブラウザは自動的にすべてのriotタグを事前に取得(prefetch)することを止めます。Riotは自動的にajax経由でタグを取得し、コンパイルします。
 
+### タグインスタンスにアクセスする
 もし`script src`でタグを読み込もうとしていて、マウントされたタグにアクセスする必要があるなら、次のように`riot.compile`で囲む必要があります:
 
 ``` html
 <script>
 riot.compile(function() {
-  // here tags are compiled and riot.mount works synchronously
+  // ここでタグはコンパイルされ、riot.mountは非同期に動作する
   var tags = riot.mount('*')
 })
 </script>
@@ -63,8 +64,10 @@ riot.compile(function() {
 
 ### デモ
 
-- [インブラウザ・コンパイル版](http://riotjs.com/examples/todo-app/) ([ソース](https://github.com/riot/examples/tree/gh-pages/todo-app))
-- [プリコンパイル版](http://riotjs.com/examples/todo-app-precompiled/) ([ソース](https://github.com/riot/examples/tree/gh-pages/todo-app-precompiled))
+- [インブラウザ・コンパイル版](http://riotjs.com/examples/todo-app/)
+- [プリコンパイル版](http://riotjs.com/examples/todo-app-precompiled/)
+- [ソースコード](https://github.com/riot/examples/tree/gh-pages/todo-app)
+- このデモを[zipファイル](https://github.com/riot/examples/archive/gh-pages.zip)としてダウンロード
 
 
 
@@ -162,13 +165,13 @@ riotの`riot.config.js`ファイル:
 export default {
   from: 'tags/src',
   to: 'tags/dist',
-  // files extension
+  // ファイル拡張子
   ext: 'foo',
-  // html parser
+  // htmlパーサ
   template: 'foo',
-  // js parser
+  // jsパーサ
   type: 'baz',
-  // css parser
+  // cssパーサ
   style: 'bar',
   parsers: {
     html: {
@@ -181,8 +184,8 @@ export default {
       baz: (js, opts, url) => require('baz').compile(js),
     },
   },
-  // special options that may be used to extend
-  // the default riot parsers options
+  // デフォルトのriot parsersオプションを拡張するために
+  // 使用できる特別なオプション
   parserOptions: {
     js: {},
     template: {},
@@ -232,7 +235,7 @@ compile関数は文字列を受け取って、文字列を返します。
 riot --type coffee --expr source.tag
 ```
 
-`--expr`引数は、テンプレート変数(expression)の中でもプリプロセッサを使うことを指定します。"coffee"のエイリアスとして、"cs"を使うこともできます。CoffeeScriptで書かれたタグの例です:
+`--expr`引数は、テンプレート変数(expression)の中でもプリプロセッサを使うことを指定します。"coffee"のエイリアスとして、"cs"を使うこともできます。これはCoffeeScriptで書かれたタグの例です:
 
 ``` javascript
 <kids>
@@ -249,7 +252,7 @@ riot --type coffee --expr source.tag
 </kids>
 ```
 
-`each`属性もCoffeeScriptになっていますね。なお、CoffeeScriptがあなたのマシンにインストールされていることが必要です:
+`each`属性もCoffeeScriptになっていますね。なお、CoffeeScriptがあなたのマシンにインストールされている必要があります:
 
 ``` sh
 npm install coffee-script -g
@@ -273,7 +276,7 @@ ES6で書かれたタグの例:
 </test>
 ```
 
-es6コンパイラを使用する前に、以下の手順に従ってプロジェクトを適切に構成する必要があります。
+es6コンパイラを使用する前に、以下の手順に従ってプロジェクトを適切に構成する必要があります:
 
  1. [babel-preset-es2015-riot](https://github.com/riot/babel-preset-es2015-riot)をインストール<br /> `npm install babel-preset-es2015-riot --save-dev`
  2. `babel-core`もインストール<br /> `npm install babel-core -g`
@@ -282,7 +285,7 @@ es6コンパイラを使用する前に、以下の手順に従ってプロジ�
 環境を設定したらタグをコンパイルすることができます:
 
 ``` sh
-#  ES6プリプロセッサを使う
+# ES6プリプロセッサを使う
 riot --type es6 source.tag
 ```
 
@@ -297,7 +300,6 @@ babel es6.tags.js --out-file tags.js
 
 ここに、BabelをRiotと使った[簡単なサンプル](https://github.com/GianlucaGuarini/riot-preset-babel-test)があります。
 
-
 ### TypeScript
 
 TypeScriptは静的型付けをJavaScriptに追加します。`--type typescript`を使って有効にします:
@@ -307,7 +309,7 @@ TypeScriptは静的型付けをJavaScriptに追加します。`--type typescript
 riot --type typescript source.tag
 ```
 
-TypeScriptで書かれたタグのサンプルです:
+TypeScriptで書かれたタグの例:
 
 ``` html
 <test>
@@ -473,5 +475,6 @@ var tags = require('tags')
 
 riot.mount('*')
 ```
+
 
 もし、何かすごいものを作ったら、ぜひ[こちらでシェア](https://github.com/riot/made-with-riot)してくださいね!
