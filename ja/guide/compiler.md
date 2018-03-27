@@ -373,7 +373,7 @@ riot --template pug source.tag
 
 Pugの例:
 
-``` pug
+``` js
 sample
   p test { value }
   script(type='text/coffee').

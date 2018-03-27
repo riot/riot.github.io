@@ -3,7 +3,7 @@ layout: ja
 title: カスタムタグ
 ---
 
-{% include ja/guide-tabs.html %}
+{% include v2/ja/guide-tabs.html %}
 
 ## カスタムタグの例
 

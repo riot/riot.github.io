@@ -318,7 +318,7 @@ riot --template jade source.tag
 
 Un ejemplo con Jade:
 
-```jade
+``` js
 sample
   p test { value }
   script(type='text/coffee').
