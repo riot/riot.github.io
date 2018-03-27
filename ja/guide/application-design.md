@@ -87,7 +87,7 @@ auth.login = function(params) {
     })
   }
 
-  // any tag on the system can listen to login event
+  // システム上の任意のタグはloginイベントを検知可能
   opts.on('login', function() {
     $(body).addClass('logged')
   })
