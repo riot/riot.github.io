@@ -131,28 +131,28 @@ RiotのオブザーバブルとルータでFluxライクなシステムを構築
 
 React(v{{ site.react.version }})は、Riotの{{ site.react.size | divided_by:site.size_min | round }}倍のサイズです。
 
-<small><em>react.min.js</em> – {{ site.react.size }}KB</small>
+<small><em>react.min.js</em> – {{ site.react.size }}KB (gzip)</small>
 <span class="bar red"></span>
 
-<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
+<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB (gzip)</span></small>
 <span class="bar blue" style="width: {{ site.size_min | divided_by: site.react.size | times: 100 }}%"></span>
 
 <br>
 
 Reactの推奨ルータ(v{{ site.react_router.version }})は、Riotのルータの{{ site.react_router.size | divided_by:site.riot_route_size_min | round  }}倍です。
 
-<small><em>react-router.min.js</em> – {{ site.react_router.size }}KB</small>
+<small><em>react-router.min.js</em> – {{ site.react_router.size }}KB (gzip)</small>
 <span class="bar red"></span>
 
-<small><em>react-mini-router.min.js</em> – {{ site.react_mini_router.size }}KB</small>
+<small><em>react-mini-router.min.js</em> – {{ site.react_mini_router.size }}KB (gzip)</small>
 <span class="bar red" style="width: {{ site.react_mini_router.size | divided_by: site.react_router.size | times: 100 }}%"></span>
 
-<small><em>riot.router.min.js</em> – {{ site.riot_route_size_min }}KB</small>
+<small><em>riot.router.min.js</em> – {{ site.riot_route_size_min }}KB (gzip)</small>
 <span class="bar blue" style="width: {{ site.riot_route_size_min | divided_by: site.react_router.size | times:100 }}%"></span>
 
-確かに、このルータ比較はちょっと不公平です。なぜなら、[react-router](https://github.com/rackt/react-router)はより多くの機能を持っています。ですが、この図はRiotのゴール、つまり「最もミニマリスティックなAPIを提供すること」を明確に示すものです。
+確かに、このルータ比較はちょっと不公平です。なぜなら、[react-router](https://github.com/rackt/react-router)はより多くの機能を持っています。ですが、この図はRiotのゴール、つまり「最もミニマリスティックなAPIを提供すること」を明確に示しています。
 
-Reactのエコシステムは、よりフレームワーク的で、APIの肥大化の気配がします。実際、[react-mini-router](https://github.com/larrymyers/react-mini-router)よりも、この大きな選択肢の方がReactコミュニティでは人気です。
+Reactのエコシステムはよりフレームワーク的で、APIの肥大化の気配がします。実際、[react-mini-router](https://github.com/larrymyers/react-mini-router)よりも、この大きな選択肢の方がReactコミュニティでは人気です。
 
 
 ## Polymer
@@ -174,10 +174,10 @@ PolymerはWeb Component標準に則っており、最新ブラウザで利用可
 
 Polymer(v{{ site.polymer.version }}) + WebComponents(v{{ site.webcomponents.version }})はRiotの{{ site.polymer_and_webcomponents_size | divided_by:site.size_min | round }}倍のサイズです。
 
-<small><em>polymer.min.js</em> – {{ site.polymer.size }}KB</small>
+<small><em>polymer.min.js</em> – {{ site.polymer.size }}KB (gzip)</small>
 <span class="bar red"></span>
 
-<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB</span></small>
+<small><em>riot.min.js</em> – <span class="riot-size">{{ site.size_min }}KB (gzip)</span></small>
 <span class="bar blue" style="width: {{ site.size_min | divided_by: site.polymer.size | times: 100 }}%"></span>
 
 Web Componentsは[Polyfillの課題の王様](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/)と呼ばれ、Polymerがこんなにも巨大なコードを必要とする所以です。
