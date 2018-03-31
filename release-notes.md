@@ -6,6 +6,10 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.9.1 *March 31, 2018*
+
+ - _Fix_: keep the backward compatibility for the misleading use of the `<virtual data-is>` tags [riot/2564](https://github.com/riot/riot/issues/2564)
+
 ## 3.9.0 *February 18, 2018*
 
 - _Add_: support for JSPM [riot/2540](https://github.com/riot/riot/pull/2540)

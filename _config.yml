@@ -42,7 +42,7 @@ author:
 minor_version:       3.9
 v2_minor_version:    2.6
 
-version:             3.9.0
+version:             3.9.1
 v2_version:          2.6.8
 version_slurp:       Improve memory usage and code base
 v2_version_slurp:    Security patch agains XSS injections
@@ -51,7 +51,7 @@ twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot
 # Vars needed for the compare.md page
 
-size_min:            10.74
+size_min:            10.71
 riot_route_size_min: 1.77
 
 polymer:
@@ -65,8 +65,8 @@ webcomponents:
 polymer_and_webcomponents_size: 66.3 # 45.69 + 12.39 (polymer + webcomponents-lite.min.js )
 
 react:
-  size:    34.89
-  version: 16.0.0
+  size:    35.01
+  version: 16.3.0
 
 react_router:
   size:    10.95
