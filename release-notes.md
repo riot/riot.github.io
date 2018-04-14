@@ -6,6 +6,10 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.9.2 *April 14, 2018*
+
+ - _Fix_: the `riot.unregister` fails together with `riot.mount('*')` [riot/2573](https://github.com/riot/riot/issues/2573)
+
 ## 3.9.1 *March 31, 2018*
 
  - _Fix_: keep the backward compatibility for the misleading use of the `<virtual data-is>` tags [riot/2564](https://github.com/riot/riot/issues/2564)
