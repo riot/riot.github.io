@@ -6,21 +6,35 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.9.3 *April 16, 2018*
+
+__riot__:
+
+ - _Fix_: filter failure when looping on a string [riot/2574](https://github.com/riot/riot/issues/2574)
+
 ## 3.9.2 *April 14, 2018*
+
+__riot__:
 
  - _Fix_: the `riot.unregister` fails together with `riot.mount('*')` [riot/2573](https://github.com/riot/riot/issues/2573)
 
 ## 3.9.1 *March 31, 2018*
 
+__riot__:
+
  - _Fix_: keep the backward compatibility for the misleading use of the `<virtual data-is>` tags [riot/2564](https://github.com/riot/riot/issues/2564)
 
 ## 3.9.0 *February 18, 2018*
+
+__riot__:
 
 - _Add_: support for JSPM [riot/2540](https://github.com/riot/riot/pull/2540)
 - _Update_: improve memory usage
 - _Update_: partial refactoring improving the code base maintainability
 
 ## 3.8.1 *December 28, 2017*
+
+__riot__:
 
  - _Fix_: prefer `console.warn` to hard `Exception Errors` to avoid breaking changes [riot/2511](https://github.com/riot/riot/issues/2511)
 
