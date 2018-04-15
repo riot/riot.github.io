@@ -409,7 +409,7 @@ todo
     }
 ```
 
-周知の通り、テンプレートにもスクリプトの種類を定義することができます。上記はcoffeeを使っています。 [pug](https://github.com/pugjs/pug)が変換に使われます:
+周知の通り、テンプレートにもスクリプトの種類を定義することができます。 [pug](https://github.com/pugjs/pug)が変換に使われます:
 
 ``` sh
 npm install pug -g

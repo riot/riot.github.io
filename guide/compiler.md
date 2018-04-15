@@ -409,7 +409,7 @@ todo
     }
 ```
 
-As you notice, you can define the script type on the template as well. Above we use coffee. [pug](https://github.com/pugjs/pug) is used for the transformation:
+As you notice, you can define the script type on the template as well. [pug](https://github.com/pugjs/pug) is used for the transformation:
 
 ``` sh
 npm install pug -g
