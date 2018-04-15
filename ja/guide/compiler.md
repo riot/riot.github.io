@@ -374,13 +374,42 @@ riot --template pug source.tag
 Pugの例:
 
 ``` js
-sample
-  p test { value }
-  script(type='text/coffee').
-    @value = 'sample'
+todo
+  h3 Todo
+  ul
+    li(each="{ items }")
+      label(class="{ completed:done }")
+        input(type="checkbox", checked="{ done }", onclick="{ parent.toggle }")
+        = "{ title }"
+
+  form(onsubmit="{add}")
+    input(name="input", onkeyup="{edit}")
+    button(disabled="{!text}")= "Add { items.length + 1 }"
+
+  script.
+    var self = this
+    self.items = []
+    self.disabled = true
+
+    edit(e) {
+      self.text = e.target.value
+    }
+
+    add(e) {
+      if (this.text) {
+        self.items.push({ title: this.text })
+        this.text = this.input.value = ''
+      }
+    }
+
+    toggle(e) {
+      var item = e.item
+      item.done = !item.done
+      return true
+    }
 ```
 
-周知の通り、テンプレートにもスクリプトの種類を定義することができます。上記はcoffeeを使っています。 [pug](https://github.com/pugjs/pug)が変換に使われます:
+周知の通り、テンプレートにもスクリプトの種類を定義することができます。 [pug](https://github.com/pugjs/pug)が変換に使われます:
 
 ``` sh
 npm install pug -g

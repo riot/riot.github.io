@@ -374,13 +374,42 @@ riot --template pug source.tag
 A Pug sample:
 
 ``` html
-sample
-  p test { value }
-  script(type='text/coffee').
-    @value = 'sample'
+todo
+  h3 Todo
+  ul
+    li(each="{ items }")
+      label(class="{ completed:done }")
+        input(type="checkbox", checked="{ done }", onclick="{ parent.toggle }")
+        = "{ title }"
+
+  form(onsubmit="{add}")
+    input(name="input", onkeyup="{edit}")
+    button(disabled="{!text}")= "Add { items.length + 1 }"
+
+  script.
+    var self = this
+    self.items = []
+    self.disabled = true
+
+    edit(e) {
+      self.text = e.target.value
+    }
+
+    add(e) {
+      if (this.text) {
+        self.items.push({ title: this.text })
+        this.text = this.input.value = ''
+      }
+    }
+
+    toggle(e) {
+      var item = e.item
+      item.done = !item.done
+      return true
+    }
 ```
 
-As you notice, you can define the script type on the template as well. Above we use coffee. [pug](https://github.com/pugjs/pug) is used for the transformation:
+As you notice, you can define the script type on the template as well. [pug](https://github.com/pugjs/pug) is used for the transformation:
 
 ``` sh
 npm install pug -g
