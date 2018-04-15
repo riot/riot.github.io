@@ -6,11 +6,19 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.9.2 *2018年4月14日*
+
+- _修正:_ `riot.unregister` は `riot.mount('*')` と一緒だと失敗する [riot/2573](https://github.com/riot/riot/issues/2573)
+
+## 3.9.1 *2018年3月31日*
+
+- _修正:_ `<virtual data-is>`タグの誤解を招く使い方に対して下位互換性をたもつ [riot/2564](https://github.com/riot/riot/issues/2564)
+
 ## 3.9.0 *2018年2月18日*
 
-- _追加_: JSPMのサポート [riot/2540](https://github.com/riot/riot/pull/2540)
-- _更新_: メモリ使用量の改善
-- _更新_: コードベースのメンテナンス性を改善する部分的なリファクタリング
+- _追加:_ JSPMのサポート [riot/2540](https://github.com/riot/riot/pull/2540)
+- _更新:_ メモリ使用量の改善
+- _更新:_ コードベースのメンテナンス性を改善する部分的なリファクタリング
 
 ## 3.8.1 *2017年12月28日*
 
