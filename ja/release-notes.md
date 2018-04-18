@@ -6,9 +6,13 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.9.3 *2018年4月16日*
+
+- _修正:_ 文字列でループするときのフィルターの障害 [riot/2574](https://github.com/riot/riot/issues/2574)
+
 ## 3.9.2 *2018年4月14日*
 
-- _修正:_ `riot.unregister` は `riot.mount('*')` と一緒だと失敗する [riot/2573](https://github.com/riot/riot/issues/2573)
+- _修正:_ `riot.mount('*')` が `riot.unregister` 後に失敗する [riot/2573](https://github.com/riot/riot/issues/2573)
 
 ## 3.9.1 *2018年3月31日*
 
