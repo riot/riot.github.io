@@ -8,25 +8,35 @@ id: release-notes
 
 ## 3.9.3 *2018年4月16日*
 
-- _修正:_ 文字列でループするときのフィルターの障害 [riot/2574](https://github.com/riot/riot/issues/2574)
+__riot__:
+
+  - _修正:_ 文字列でループするときのフィルターの障害 [riot/2574](https://github.com/riot/riot/issues/2574)
 
 ## 3.9.2 *2018年4月14日*
 
-- _修正:_ `riot.mount('*')` が `riot.unregister` 後に失敗する [riot/2573](https://github.com/riot/riot/issues/2573)
+__riot__:
+
+  - _修正:_ `riot.mount('*')` が `riot.unregister` 後に失敗する [riot/2573](https://github.com/riot/riot/issues/2573)
 
 ## 3.9.1 *2018年3月31日*
 
-- _修正:_ `<virtual data-is>`タグの誤解を招く使い方に対して下位互換性をたもつ [riot/2564](https://github.com/riot/riot/issues/2564)
+__riot__:
+
+  - _修正:_ `<virtual data-is>`タグの誤解を招く使い方に対して下位互換性をたもつ [riot/2564](https://github.com/riot/riot/issues/2564)
 
 ## 3.9.0 *2018年2月18日*
 
-- _追加:_ JSPMのサポート [riot/2540](https://github.com/riot/riot/pull/2540)
-- _更新:_ メモリ使用量の改善
-- _更新:_ コードベースのメンテナンス性を改善する部分的なリファクタリング
+__riot__:
+
+  - _追加:_ JSPMのサポート [riot/2540](https://github.com/riot/riot/pull/2540)
+  - _更新:_ メモリ使用量の改善
+  - _更新:_ コードベースのメンテナンス性を改善する部分的なリファクタリング
 
 ## 3.8.1 *2017年12月28日*
 
- - _修正:_ 破壊的変更を避けるために、硬めの`Exception Errors`よりも`console.warn`を推奨 [riot/2511](https://github.com/riot/riot/issues/2511)
+__riot__:
+
+  - _修正:_ 破壊的変更を避けるために、硬めの`Exception Errors`よりも`console.warn`を推奨 [riot/2511](https://github.com/riot/riot/issues/2511)
 
 ## 3.8.0 *2017年12月28日*
 
