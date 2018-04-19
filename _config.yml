@@ -42,7 +42,7 @@ author:
 minor_version:       3.9
 v2_minor_version:    2.6
 
-version:             3.9.3
+version:             3.9.4
 v2_version:          2.6.8
 version_slurp:       Improve memory usage and code base
 v2_version_slurp:    Security patch agains XSS injections

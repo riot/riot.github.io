@@ -6,6 +6,12 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.9.4 *April 19, 2018*
+
+__riot__:
+
+  - _Fix_: Styles are left after unregister() [riot/2576](https://github.com/riot/riot/issues/2576)
+
 ## 3.9.3 *April 16, 2018*
 
 __riot__:
