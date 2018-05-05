@@ -6,6 +6,14 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.9.5 *May 5, 2018*
+
+__riot__:
+
+  - _Improve_: 100% Coverage!
+  - _Fix_: Components in each loop have their properties overwritten [riot/2580](https://github.com/riot/riot/issues/2580)
+  - _Fix_: Elements are unintentionally left with nested conditional tags [riot/2575](https://github.com/riot/riot/issues/2575)
+
 ## 3.9.4 *April 19, 2018*
 
 __riot__:
