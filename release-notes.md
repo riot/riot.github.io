@@ -6,6 +6,14 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.10.0 *May 10, 2018*
+
+__riot__:
+
+  - _Update_: [Remove the React](https://github.com/riot/riot/commit/9eb8d615d4f50ce78f30dc1952500f6591d65924#diff-0a08a7565aba4405282251491979bb6bR4) from the project description
+  - _Fix_: Observable passed as mount 'opt' parameter looses on/off/etc methods [riot/2581](https://github.com/riot/riot/issues/2581)
+
+
 ## 3.9.5 *May 5, 2018*
 
 __riot__:
