@@ -53,7 +53,7 @@ Riot custom tags are the building blocks for user interfaces. They make the "vie
 
 Custom tags are [compiled](/guide/compiler/) to JavaScript.
 
-See the [live demo](http://riotjs.com/examples/plunker/?app=todo-app), browse the [sources](https://github.com/riot/examples/tree/gh-pages/todo-app), or download the [zip](https://github.com/riot/examples/archive/gh-pages.zip).
+See the [live demo](http://riot.js.org/examples/plunker/?app=todo-app), browse the [sources](https://github.com/riot/examples/tree/gh-pages/todo-app), or download the [zip](https://github.com/riot/examples/archive/gh-pages.zip).
 
 
 

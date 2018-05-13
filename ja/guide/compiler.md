@@ -64,8 +64,8 @@ riot.compile(function() {
 
 ### デモ
 
-- [インブラウザ・コンパイル版](http://riotjs.com/examples/todo-app/)
-- [プリコンパイル版](http://riotjs.com/examples/todo-app-precompiled/)
+- [インブラウザ・コンパイル版](http://riot.js.org/examples/todo-app/)
+- [プリコンパイル版](http://riot.js.org/examples/todo-app-precompiled/)
 - [ソースコード](https://github.com/riot/examples/tree/gh-pages/todo-app)
 - このデモを[zipファイル](https://github.com/riot/examples/archive/gh-pages.zip)としてダウンロード
 

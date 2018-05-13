@@ -65,7 +65,7 @@ id: release-notes
 ## 2.3.17 *9 mars 2016*
 
 - __riot__
-  - Support de l'attribut `data-is` (avec `riot-tag`) pour associer des tags riot à des éléments existants du DOM [plus d'infos](http://riotjs.com/guide/#html-elements-as-tags)
+  - Support de l'attribut `data-is` (avec `riot-tag`) pour associer des tags riot à des éléments existants du DOM [plus d'infos](http://riot.js.org/guide/#html-elements-as-tags)
   - Correction d'une régression à la mise à jour des valeurs des tags input, suite au patch [riot#1612](https://github.com/riot/riot/issues/1612). Ce fix est un breaking change sur lequel nous sommes [en train de discuter](https://github.com/riot/riot/issues/1642) whether to introduce it in riot 3.0.0
   - Correction d'un problème de mise à jour de checkbox [riot#1647](https://github.com/riot/riot/issues/1647)
   - Correction d'un problème de boucle sur les tags `<option>` [riot#1374](https://github.com/riot/riot/issues/1374)

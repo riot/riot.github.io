@@ -1,6 +1,6 @@
-# Contributing to riotjs.com
+# Contributing to riot.js.org
 
-[riotjs.com](http://riotjs.com/) is our documents site for Riot.js.
+[riot.js.org](http://riot.js.org/) is our documents site for Riot.js.
 
 If you’d like to contribute to improve or translate the docs, you can fork this repo, commit your changes, & send a pull request.
 

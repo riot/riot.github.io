@@ -8,7 +8,7 @@ description: これはRiotを採用するためのメリットを示すための
 
 タグ定義（左側）のコードを自由に変更すると、その結果が反映されます。
 
-<iframe src="http://riotjs.com/examples/live-editor"></iframe>
+<iframe src="http://riot.js.org/examples/live-editor"></iframe>
 
 ## どのように使うの?
 

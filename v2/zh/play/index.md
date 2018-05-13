@@ -8,7 +8,7 @@ description: 一系列用来展示采用 Riot 的好处的示例 Riot.
 
 随意修改标签的定义代码（左侧），可实时看到渲染结果。
 
-<iframe src="http://riotjs.com/examples/live-editor"></iframe>
+<iframe src="http://riot.js.org/examples/live-editor"></iframe>
 
 ## 如何使用这个标签？
 

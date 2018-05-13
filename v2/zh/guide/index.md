@@ -55,7 +55,7 @@ Riot 自定义标签是构建用户界面的单元。它们构成了应用的"�
 
 自定义标签会被 [编译](compiler) 成 JavaScript.
 
-参阅 [在线示例](http://riotjs.com/examples/plunker/?app=todo-app), 也可以浏览 [代码](https://github.com/riot/examples/tree/gh-pages/todo-app), 或下载[zip包](https://github.com/riot/examples/archive/gh-pages.zip).
+参阅 [在线示例](http://riot.js.org/examples/plunker/?app=todo-app), 也可以浏览 [代码](https://github.com/riot/examples/tree/gh-pages/todo-app), 或下载[zip包](https://github.com/riot/examples/archive/gh-pages.zip).
 
 
 

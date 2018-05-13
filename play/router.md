@@ -6,15 +6,15 @@ description: A simple routing example.
 
 {% include example-tabs.html %}
 
-[Open this example on Plunker](http://riotjs.com/examples/plunker/?app=router-complex) and check the source code.
+[Open this example on Plunker](http://riot.js.org/examples/plunker/?app=router-complex) and check the source code.
 
-<iframe src="http://riotjs.com/examples/router-complex"></iframe>
+<iframe src="http://riot.js.org/examples/router-complex"></iframe>
 
 ## Simpler example
 
-[Open this example on Plunker](http://riotjs.com/examples/plunker/?app=router-page-switcher) and check the source code.
+[Open this example on Plunker](http://riot.js.org/examples/plunker/?app=router-page-switcher) and check the source code.
 
-<iframe src="http://riotjs.com/examples/router-page-switcher"></iframe>
+<iframe src="http://riot.js.org/examples/router-page-switcher"></iframe>
 
 ## Further reading
 

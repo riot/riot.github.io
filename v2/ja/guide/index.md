@@ -55,7 +55,7 @@ Riotのカスタムタグは、ユーザインターフェースの構成要素�
 
 カスタムタグはJavaScriptに[コンパイルされます](/ja/guide/compiler/)。
 
-[ライブデモ](http://riotjs.com/examples/plunker/?app=todo-app)を見て、その[ソース](https://github.com/riot/examples/tree/gh-pages/todo-app)を開くか、[ZIP](https://github.com/riot/examples/archive/gh-pages.zip)ファイルをダウンロードします。
+[ライブデモ](http://riot.js.org/examples/plunker/?app=todo-app)を見て、その[ソース](https://github.com/riot/examples/tree/gh-pages/todo-app)を開くか、[ZIP](https://github.com/riot/examples/archive/gh-pages.zip)ファイルをダウンロードします。
 
 
 ## タグの構文

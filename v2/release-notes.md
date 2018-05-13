@@ -126,7 +126,7 @@ id: release-notes
 ## 2.3.17 *March 9, 2016*
 
 - __riot__
-  - Add support for `data-is` (together with `riot-tag`) attribute to bind riot tags to existing DOM elements [more info](http://riotjs.com/guide/#html-elements-as-tags)
+  - Add support for `data-is` (together with `riot-tag`) attribute to bind riot tags to existing DOM elements [more info](http://riot.js.org/guide/#html-elements-as-tags)
   - Fix regression of the input values update patch introduced to fix [riot#1612](https://github.com/riot/riot/issues/1612). This fix is a breaking change and we are [discussing](https://github.com/riot/riot/issues/1642) whether to introduce it in riot 3.0.0
   - Fix checkbox update issue [riot#1647](https://github.com/riot/riot/issues/1647)
   - Fix problem with looped `<option>` [riot#1374](https://github.com/riot/riot/issues/1374)
@@ -179,7 +179,7 @@ id: release-notes
   - Add better strategy for css injection [more info](https://github.com/riot/riot/issues/1439)
 - __observable__
   - Fix the issue with the errors swallowed in the callbacks [more details](https://github.com/riot/riot/issues/1483), you no longer need `tag.on('error', cb)` to catch them
-  - Change the `all` method replaced with `*` to provide a more consistent api [more info](http://riotjs.com/api/observable/#on)
+  - Change the `all` method replaced with `*` to provide a more consistent api [more info](http://riot.js.org/api/observable/#on)
 - __compiler__
   - Fix [riot#1495](https://github.com/riot/riot/issues/1495) : Warning of input tag value - Avoids warnings for date/datetime/time/month/email/color types with expression in its value.
   - Fix [riot#1488](https://github.com/riot/riot/issues/1488) : Cannot read property 'replace' of undefined when compiling in Node a tag with an import in its less stylesheet -- Thanks to @jrx-jsj

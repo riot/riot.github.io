@@ -6,9 +6,9 @@ description: 簡単なTodoアプリの例
 
 {% include ja/example-tabs.html %}
 
-[この例はPlunkerで開いて](http://riotjs.com/examples/plunker/?app=todo-app)ソースコードを確認してください。
+[この例はPlunkerで開いて](http://riot.js.org/examples/plunker/?app=todo-app)ソースコードを確認してください。
 
-<iframe src="http://riotjs.com/examples/todo-app"></iframe>
+<iframe src="http://riot.js.org/examples/todo-app"></iframe>
 
 ## 参考文献
 

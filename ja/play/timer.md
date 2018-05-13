@@ -6,9 +6,9 @@ description: 簡単なタイマーアプリの例
 
 {% include ja/example-tabs.html %}
 
-[この例はPlunkerで開いて](http://riotjs.com/examples/plunker/?app=timer)ソースコードを確認してください。
+[この例はPlunkerで開いて](http://riot.js.org/examples/plunker/?app=timer)ソースコードを確認してください。
 
-<iframe src="http://riotjs.com/examples/timer"></iframe>
+<iframe src="http://riot.js.org/examples/timer"></iframe>
 
 ## 参考文献
 

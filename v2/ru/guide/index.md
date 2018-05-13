@@ -55,7 +55,7 @@ title: Пользовательские теги
 
 Пользовательские теги [компилируются](/v2/guide/compiler/) в JavaScript.
 
-Вы увидеть [пример](http://riotjs.com/examples/plunker/?app=todo-app), изучить [исходный код](https://github.com/riot/examples/tree/gh-pages/todo-app), или скачать [zip-архив]]](https://github.com/riot/examples/archive/gh-pages.zip).
+Вы увидеть [пример](http://riot.js.org/examples/plunker/?app=todo-app), изучить [исходный код](https://github.com/riot/examples/tree/gh-pages/todo-app), или скачать [zip-архив]]](https://github.com/riot/examples/archive/gh-pages.zip).
 
 
 

@@ -6,15 +6,15 @@ description: 簡単なルーティングの例
 
 {% include ja/example-tabs.html %}
 
-[この例をPlunkerで開いて](http://riotjs.com/examples/plunker/?app=router-complex)ソースコードを確認してください。
+[この例をPlunkerで開いて](http://riot.js.org/examples/plunker/?app=router-complex)ソースコードを確認してください。
 
-<iframe src="http://riotjs.com/examples/router-complex"></iframe>
+<iframe src="http://riot.js.org/examples/router-complex"></iframe>
 
 ## 簡単な例
 
-[この例をPlunkerで開いて](http://riotjs.com/examples/plunker/?app=router-page-switcher)ソースコードを確認してください。
+[この例をPlunkerで開いて](http://riot.js.org/examples/plunker/?app=router-page-switcher)ソースコードを確認してください。
 
-<iframe src="http://riotjs.com/examples/router-page-switcher"></iframe>
+<iframe src="http://riot.js.org/examples/router-page-switcher"></iframe>
 
 ## 参考文献
 

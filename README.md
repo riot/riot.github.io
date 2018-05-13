@@ -1,7 +1,7 @@
 
 ## Riot website
 
-http://riotjs.com
+http://riot.js.org
 
 Pull requests are welcome!
 

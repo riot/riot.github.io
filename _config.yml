@@ -5,7 +5,7 @@ permalink:           pretty
 # Setup
 title:               Riot.js
 tagline:             Simple and elegant component-based UI library
-url:                 http://riotjs.com
+url:                 http://riot.js.org
 baseurl:             ""
 
 # Markdown
@@ -35,7 +35,7 @@ gems:
 # About/contact
 author:
   name:              Riot
-  url:               http://riotjs.com
+  url:               http://riot.js.org
   email:             hello.riotjs@gmail.com
 
 # Custom vars
