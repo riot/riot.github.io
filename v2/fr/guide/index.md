@@ -53,7 +53,7 @@ Les tags personnalisés de Riot sont les blocs de construction des interfaces ut
 
 Les tags personnalisés sont [compilés](/v2/guide/compiler/) en JavaScript.
 
-Regardez la [démo en ligne](http://riot.js.org/examples/plunker/?app=todo-app), consultez les [sources](https://github.com/riot/examples/tree/gh-pages/todo-app), ou téléchargez le [zip](https://github.com/riot/examples/archive/gh-pages.zip).
+Regardez la [démo en ligne](https://riot.js.org/examples/plunker/?app=todo-app), consultez les [sources](https://github.com/riot/examples/tree/gh-pages/todo-app), ou téléchargez le [zip](https://github.com/riot/examples/archive/gh-pages.zip).
 
 
 

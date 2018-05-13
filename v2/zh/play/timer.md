@@ -6,7 +6,7 @@ description: 简单的定时器示例
 
 {% include zh/example-tabs.html %}
 
-[在 Plunker 中打开](http://riot.js.org/examples/plunker/?app=timer) 并阅读源码.
+[在 Plunker 中打开](https://riot.js.org/examples/plunker/?app=timer) 并阅读源码.
 
 <iframe src="http://riot.js.org/examples/timer"></iframe>
 
