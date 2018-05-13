@@ -8,7 +8,7 @@ description: This is a series of examples designed to showcase the benefits of a
 
 Change the code of tag definition (left side) freely, then you'll see the result.
 
-<iframe src="http://riot.js.org/examples/live-editor"></iframe>
+<iframe src="https://riot.js.org/examples/live-editor"></iframe>
 
 ## How to use this tag?
 
