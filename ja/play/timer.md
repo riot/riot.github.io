@@ -8,7 +8,7 @@ description: 簡単なタイマーアプリの例
 
 [この例はPlunkerで開いて](https://riot.js.org/examples/plunker/?app=timer)ソースコードを確認してください。
 
-<iframe src="http://riot.js.org/examples/timer"></iframe>
+<iframe src="https://riot.js.org/examples/timer"></iframe>
 
 ## 参考文献
 

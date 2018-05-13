@@ -8,7 +8,7 @@ description: 簡単なTodoアプリの例
 
 [この例はPlunkerで開いて](https://riot.js.org/examples/plunker/?app=todo-app)ソースコードを確認してください。
 
-<iframe src="http://riot.js.org/examples/todo-app"></iframe>
+<iframe src="https://riot.js.org/examples/todo-app"></iframe>
 
 ## 参考文献
 
