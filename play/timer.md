@@ -8,7 +8,7 @@ description: This is a simplest timer example.
 
 [Open this example on Plunker](https://riot.js.org/examples/plunker/?app=timer) and check the source code.
 
-<iframe src="https://riot.js.org/examples/timer"></iframe>
+<iframe src="https://riot.js.org/examples/timer/"></iframe>
 
 ## Further reading
 

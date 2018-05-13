@@ -8,13 +8,13 @@ description: A simple routing example.
 
 [Open this example on Plunker](https://riot.js.org/examples/plunker/?app=router-complex) and check the source code.
 
-<iframe src="https://riot.js.org/examples/router-complex"></iframe>
+<iframe src="https://riot.js.org/examples/router-complex/"></iframe>
 
 ## Simpler example
 
 [Open this example on Plunker](https://riot.js.org/examples/plunker/?app=router-page-switcher) and check the source code.
 
-<iframe src="https://riot.js.org/examples/router-page-switcher"></iframe>
+<iframe src="https://riot.js.org/examples/router-page-switcher/"></iframe>
 
 ## Further reading
 
