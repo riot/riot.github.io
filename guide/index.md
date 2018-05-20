@@ -172,7 +172,7 @@ Once a tag is created you can mount it on the page as follows:
   <!-- include riot.js -->
   <script src="riot.min.js"></script>
 
-  <!-- include the tag -->
+  <!-- include the tag javascript output generated with the riot compiler -->
   <script src="todo.js"></script>
 
   <!-- mount the tag -->
