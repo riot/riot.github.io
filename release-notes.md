@@ -6,6 +6,14 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.10.1 *May 20, 2018*
+
+__riot__:
+
+  - _Fix_: Any element attributes that are functions are added as event handlers [riot/2592](https://github.com/riot/riot/issues/2592)
+  - _Fix_: Full unnecessary rerender with lost focus after state update [riot/2585](https://github.com/riot/riot/issues/2585)
+
+
 ## 3.10.0 *May 10, 2018*
 
 __riot__:

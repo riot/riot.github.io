@@ -42,7 +42,7 @@ author:
 minor_version:       3.10
 v2_minor_version:    2.6
 
-version:             3.10.0
+version:             3.10.1
 v2_version:          2.6.8
 version_slurp:       Remove React from the project description
 v2_version_slurp:    Security patch against XSS injections
@@ -51,7 +51,7 @@ twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot
 # Vars needed for the compare.md page
 
-size_min:            10.72
+size_min:            10.76
 riot_route_size_min: 1.77
 
 polymer:
@@ -65,8 +65,8 @@ webcomponents:
 polymer_and_webcomponents_size: 66.3 # 45.69 + 12.39 (polymer + webcomponents-lite.min.js )
 
 react:
-  size:    35.01
-  version: 16.3.0
+  size:    35.13
+  version: 16.3.2
 
 react_router:
   size:    10.95
