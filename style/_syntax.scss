@@ -1,35 +1,35 @@
 $comment:           #667;
-$comment-multi:     #09f;
+$comment-multi:     #3F7E3E;
 $comment-preproc:   #099;
-$error:             #53A0CD;
-$error-generic:     #f00;
+$error:             #2f6f9f;
+$error-generic:     #c00;
 $header-generic:    #030;
 $keyword:           #069;
 $keyword-type:      #078;
-$name-attr:         #4f9fcf;
+$name-attr:         #0184BC;
 $name-builtin:      #366;
-$name-class:        #0a8;
+$name-class:        #986801;
 $name-const:        #360;
 $name-exception:    #c00;
 $name-function:     #c0f;
-$name-label:        #99f;
-$name-namespace:    #0cf;
-$name-tag:          #2f6f9f;
+$name-label:        #46c;
+$name-namespace:    #0184BC;
+$name-tag:          #A626A4;
 $name-variable:     #033;
 $num-lit:           #f60;
 $operator:          #555;
 $operator-word:     #000;
-$output-generic:    #aaa;
+$output-generic:    #353535;
 $prompt:            #009;
 $str-lit:           #c30;
 $str-lit-interp:    #a00;
 $str-regex:         #3aa;
 $str-symbol:        #fc3;
-$text-whitespace:   #bbb;
+$text-whitespace:   #777;
 $traceback:         #9c6;
 
-.highlight *::-moz-selection { background: rgba(200, 200, 250, .3);  }
-.highlight *::selection { background: rgba(200, 200, 250, .3);  }
+.highlight *::-moz-selection { background: rgba(220, 220, 255, .5);  }
+.highlight *::selection { background: rgba(220, 220, 255, .5);  }
 
 .highlight .hll { background-color: #ffc; }
 .highlight .c { color: $comment; } /* Comment */
