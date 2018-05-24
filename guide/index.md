@@ -559,13 +559,11 @@ evaluates to `<p style="color: red; height: 10rem"></p>`
 
 ### Printing brackets
 
-You can output an expression without evaluation by escaping the opening bracket, escaping the closing bracket is optional but encouraged::
+You can output an expression without evaluation by escaping the opening bracket:
 
-`\{ this is not evaluated \}` outputs `{ this is not evaluated }`
+`\{ this is not evaluated }` outputs `{ this is not evaluated }`
 
-`\{ this is also not evaluated }` outputs `{ this is also not evaluated  }`
-
-Brackets must be escaped in any context where they should not be evaluated. For example, the Regex pattern below will fail to validate the intended input (any two numeric characters) and instead only accept a single numeric character followed by the number "2":
+Be sure to escape brackets in any situation where they should not be evaluated. For example, the Regex pattern below will fail to validate the intended input (any two numeric characters) and instead only accept a single numeric character followed by the number "2":
 
 ```html
 <my-tag>
@@ -577,7 +575,7 @@ The correct implementation would be:
 
 ```HTML
 <my-tag>
-  <input type='text' pattern="\d\{2\}">
+  <input type='text' pattern="\d\{2}">
 </my-tag>
 ```
 
