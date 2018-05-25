@@ -740,6 +740,41 @@ Elements with `ref` attribute are automatically linked to the context under `thi
 
 The refs attribute will be set when the mount event gets fired, so you can access to the `this.refs` collection into 'mount' (`this.on('mount', function() {...}) `) or other event handlers.
 
+<span class="tag red">&gt;=3.0</span>
+
+If the `ref` attribute is applied to a Riot tag, it will reference a [tag instance](/api/#tag-instance), and not the DOM element, as in the case above. For Example:
+
+
+```html
+<my-tag>
+  <my-nested-tag data-ref="one"></my-nested-tag>
+  <div data-ref="two"></div>  
+
+  this.on('mount', function() {
+    console.log(this.refs.one); // Riot tag object
+    console.log(this.refs.two); // HTML DOM element
+  });
+</my-tag>
+
+```
+
+In cases where the same `ref` value is used on multiple elements, the refs property will return an array of the respective elements / tags.
+
+
+```html
+<my-tag>
+  <div data-ref="items" id="alpha"></div>
+  <div data-ref="items" id="beta"></div>
+
+  this.on('mount', function() {
+    console.log(this.refs.items); // [div#alpha, div#beta]
+  });
+</my-tag>
+
+```
+
+
+
 ## Event handlers
 
 A function that deals with DOM events is called an "event handler". Event handlers are defined as follows:
