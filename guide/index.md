@@ -742,7 +742,7 @@ The refs attribute will be set when the mount event gets fired, so you can acces
 
 <span class="tag red">&gt;=3.0</span>
 
-If the `ref` attribute is applied to a Riot tag, it will reference a [tag instance](/api/#tag-instance), and not the DOM element, as in the case above. For Example:
+If the `ref` attribute is applied to a Riot tag, it will reference a [tag instance](/api/#tag-instance), and not the DOM element, as in the case above. For example:
 
 
 ```html
@@ -758,7 +758,7 @@ If the `ref` attribute is applied to a Riot tag, it will reference a [tag instan
 
 ```
 
-In cases where the same `ref` value is used on multiple elements, the refs property will return an array of the respective elements / tags.
+In cases where the same `ref` value is used on multiple elements, the refs property will return an array of the respective elements / tags. For example:
 
 
 ```html
