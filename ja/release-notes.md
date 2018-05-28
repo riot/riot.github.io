@@ -6,6 +6,38 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.10.1 *2018年5月20日*
+
+__riot__:
+
+  - _修正:_ 関数である任意の要素の属性はイベントハンドラとして追加される [riot/2592](https://github.com/riot/riot/issues/2592)
+  - _修正:_ フォーカスが外れると状態が更新されるとともに、不必要に全てが再レンダリングされる [riot/2585](https://github.com/riot/riot/issues/2585)
+
+
+## 3.10.0 *2018年3月10日*
+
+__riot__:
+
+  - _更新:_ プロジェクトの説明から[Reactの記述を削除](https://github.com/riot/riot/commit/9eb8d615d4f50ce78f30dc1952500f6591d65924#diff-0a08a7565aba4405282251491979bb6bR4)
+  - _修正_: オブザーバブルがmount時に`opt`パラメータとして渡されるとき、on/off などのメソッドを失う [riot/2581](https://github.com/riot/riot/issues/2581)
+
+
+## 3.9.5 *2018年5月5日*
+
+__riot__:
+
+  - _改善:_ カバレッジ100%！
+  - _修正:_ `each`ループ内のコンポーネントは自身のプロパティを上書きしてしまう [riot/2580](https://github.com/riot/riot/issues/2580)
+  - _修正:_ ネストした条件付きのタグだと要素が意図せず残ってしまう [riot/2575](https://github.com/riot/riot/issues/2575)
+
+
+## 3.9.4 *2018年4月19日*
+
+__riot__:
+
+  - _修正:_ `unregister()` 実行後でもスタイルが残ってしまう [riot/2576](https://github.com/riot/riot/issues/2576)
+
+
 ## 3.9.3 *2018年4月16日*
 
 __riot__:
@@ -95,7 +127,7 @@ __riot-compiler__:
 __riot__:
 
   - _追加:_ `key`属性を用いてループのパフォーマンス改善 [詳細情報](/ja/guide/#key) [riot/2418](https://github.com/riot/riot/issues/2418)
-  - _追加:_ タグのオプションはmixinの`init`関数に渡される [riot/2434](https://github.com/riot/riot/issues/2434)
+  - _追加:_ タグのオプションはミックスインの`init`関数に渡される [riot/2434](https://github.com/riot/riot/issues/2434)
   - _修正:_ `isMounted`は.on("mount")イベント内ではfalseを返す [riot/2436](https://github.com/riot/riot/issues/2436)
   - _修正:_ ref属性を持つyieldがコンテンツのロードに失敗する [riot/2433](https://github.com/riot/riot/issues/2433)
   - _修正:_ もし以前に"value"属性が設定されていれば、それは削除されず、また再び偽値に設定される [riot/2427](https://github.com/riot/riot/issues/2427)
@@ -225,7 +257,7 @@ __riot__:
 
   - _修正:_ タグのroot属性が同期していない [riot/2280](https://github.com/riot/riot/issues/2280)
   - _修正:_ eachを用いたサーバーサイドレンダリングでvirtualタグが動作しない [riot/2220](https://github.com/riot/riot/issues/2220)
-  - _修正:_ es6クラスを用いたmixinsでは、いくつかの関数が失われる [riot/2219](https://github.com/riot/riot/issues/2219)
+  - _修正:_ es6クラスを用いたミックスインでは、いくつかの関数が失われる [riot/2219](https://github.com/riot/riot/issues/2219)
   - _修正:_ タグの繰り返し/並べ替えに関するレンダリングの問題 [riot/2271](https://github.com/riot/riot/issues/2271)
   - _修正:_ ES6テンプレートリテラルのスラッシュ問題 [riot/2167](https://github.com/riot/riot/issues/2167)
   - _修正:_ `riot.version`属性の再追加
