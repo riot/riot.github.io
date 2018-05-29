@@ -1076,6 +1076,18 @@ render dynamically also different tags on the same DOM node
 </my-tag>
 ```
 
+Note that when using the `data-is` attribute, the tag name should be rendered in all lowercase, regardless of how it's defined.
+
+```html
+  <MyTag></MyTag> <!-- Correct -->
+  <div data-is="mytag"></div> <!-- Also Correct -->
+  <div data-is="MyTag"></div> <!-- Incorrect -->
+  <script type="text/javascript">
+    riot.mount('MyTag');
+  </script>
+```
+
+
 ## Server-side rendering
 
 Riot supports server-side rendering with Node/io.js. You can `require` tags and render them:
