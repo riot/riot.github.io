@@ -6,6 +6,15 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.10.2 *June 16, 2018*
+
+__riot__:
+
+  - _Fix_: If you reuse the declared object in the tag, an error will occur [riot/2600](https://github.com/riot/riot/issues/2600)
+  - _Update_: Avoid the use of alpha dependencies, freeze `simple-dom@1.3.0`
+  - _Fix_: `npm audit` dev dependencies vulnerabilities
+
+
 ## 3.10.1 *May 20, 2018*
 
 __riot__:
