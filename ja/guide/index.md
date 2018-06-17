@@ -563,6 +563,22 @@ DOMエレメントのCSSクラス名指定に、オブジェクトを使うこ�
 
 `\\{ this is not evaluated \\}`は`{ this is not evaluated }`と出力されます
 
+評価されるべきではない場合、常にカッコはエスケープしてください。例えば、以下のような正規表現パターンは意図した入力（任意の2つの数字）を検証するのに失敗し、代わりにそれに続くただ1つの数字「2」のみ受け入れます。
+
+```html
+<my-tag>
+  <input type='text' pattern="\d{2}">
+</my-tag>
+```
+
+正しい実装はこのようになるでしょう:
+
+```html
+<my-tag>
+  <input type='text' pattern="\d\{2}">
+</my-tag>
+```
+
 ### 括弧のカスタマイズ
 
 括弧を好きなものにカスタマイズするのは自由です。たとえば、このようにできます。
@@ -722,7 +738,38 @@ riot.mount('account', { plan: { name: 'small', term: 'monthly' } })
 </login>
 ```
 
-マウントイベントが発火するとrefs属性が設定され、'mount'(`this.on（ 'mount'、function（）{...}）`）または他のイベントハンドラ内の `this.refs`コレクションにアクセスできます。
+マウントイベントが発火するとrefs属性が設定され、'mount'（`this.on('mount', function(){...})`）または他のイベントハンドラ内の `this.refs` コレクションにアクセスできます。
+
+<span class="tag red">&gt;=3.0</span>
+
+もし `ref` 属性がRiotタグに適用されているならば、上記の場合と同様に、DOM要素ではなく[タグのインスタンス](/ja/api/#タグのインスタンス)が参照されます。例:
+
+
+```html
+<my-tag>
+  <my-nested-tag data-ref="one"></my-nested-tag>
+  <div data-ref="two"></div>  
+
+  this.on('mount', function() {
+    console.log(this.refs.one); // Riotタグオブジェクト
+    console.log(this.refs.two); // HTMLのDOM要素
+  });
+</my-tag>
+```
+
+同じ `ref` の値が複数の要素に使われているような場合、refs プロパティはそれぞれの要素 / タグの配列を返します。例:
+
+```html
+<my-tag>
+  <div data-ref="items" id="alpha"></div>
+  <div data-ref="items" id="beta"></div>
+
+  this.on('mount', function() {
+    console.log(this.refs.items); // [div#alpha, div#beta]
+  });
+</my-tag>
+```
+
 
 ## イベントハンドラ
 
@@ -734,7 +781,7 @@ DOMイベントを扱う関数は「イベントハンドラ」と呼ばれま�
 
   </form>
 
-  // this method is called when above form is submitted
+  // このメソッドは上記のフォームがサブミットされたときに呼ばれる
   submit(e) {
 
   }
@@ -996,7 +1043,7 @@ DOMイベントを扱う関数は「イベントハンドラ」と呼ばれま�
 
 このことは、CSSフレームワークとの互換性を持つ代替手段をユーザに提供しています。タグはほかのカスタムタグと同様に扱われます。
 
-```javascript
+```js
 riot.mount('my-list')
 ```
 
@@ -1023,6 +1070,18 @@ riot.mount('my-list')
   </script>
 </my-tag>
 ```
+
+メモ: `data-is` 属性を使うならば、タグがどのように定義されていかにかかわらず、タグ名は全て小文字にすべきです。
+
+```html
+<MyTag></MyTag> <!-- 正しい -->
+<div data-is="mytag"></div> <!-- これも正しい -->
+<div data-is="MyTag"></div> <!-- 正しくない -->
+<script type="text/javascript">
+  riot.mount('MyTag');
+</script>
+```
+
 
 ## サーバサイドレンダリング
 
