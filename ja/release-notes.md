@@ -6,6 +6,15 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.10.2 *2018年6月16日*
+
+__riot__:
+
+  - _修正:_ タグ内で宣言されたオブジェクトを再利用した場合、エラーが発生する [riot/2600](https://github.com/riot/riot/issues/2600)
+  - _更新:_ 使用するモジュールのアルファ版の依存を避ける, `simple-dom@1.3.0` を固定
+  - _修正:_ `npm audit` dev dependenciesの脆弱性 
+
+
 ## 3.10.1 *2018年5月20日*
 
 __riot__:
