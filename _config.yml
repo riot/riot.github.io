@@ -42,7 +42,7 @@ author:
 minor_version:       3.10
 v2_minor_version:    2.6
 
-version:             3.10.2
+version:             3.10.3
 v2_version:          2.6.8
 version_slurp:       Small patch for edge case issues
 v2_version_slurp:    Security patch against XSS injections

@@ -6,6 +6,12 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.10.3 *June 20, 2018*
+
+__riot__:
+
+  - _Fix_: Loops - index value dose not change in "if" statement during iteration [riot/2603](https://github.com/riot/riot/issues/2603)
+
 ## 3.10.2 *June 16, 2018*
 
 __riot__:
