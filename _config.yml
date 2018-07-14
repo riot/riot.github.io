@@ -42,7 +42,7 @@ author:
 minor_version:       3.11
 v2_minor_version:    2.6
 
-version:             3.11.0
+version:             3.11.1
 v2_version:          2.6.8
 version_slurp:       Add support for pnpm users
 v2_version_slurp:    Security patch against XSS injections

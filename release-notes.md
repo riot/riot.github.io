@@ -6,6 +6,11 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.11.1 *July 14, 2018*
+
+__riot__:
+  - _Fix_: Upload the new `bin` folder [to npm](https://github.com/riot/riot/commit/f4b6a76ff28cfed19f944c67e2d0d86832183f62)
+
 ## 3.11.0 *July 14, 2018*
 
 __riot__:
