@@ -39,12 +39,12 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-minor_version:       3.10
+minor_version:       3.11
 v2_minor_version:    2.6
 
-version:             3.10.3
+version:             3.11.0
 v2_version:          2.6.8
-version_slurp:       Small patch for edge case issues
+version_slurp:       Add support for pnpm users
 v2_version_slurp:    Security patch against XSS injections
 repo:                https://github.com/riot/riot
 twitter_account:     https://twitter.com/riotjs_
@@ -65,8 +65,8 @@ webcomponents:
 polymer_and_webcomponents_size: 66.3 # 45.69 + 12.39 (polymer + webcomponents-lite.min.js )
 
 react:
-  size:    35.13
-  version: 16.3.2
+  size:    33.27
+  version: 16.4.0
 
 react_router:
   size:    10.95

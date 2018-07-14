@@ -6,6 +6,12 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.11.0 *July 14, 2018*
+
+__riot__:
+  - _Add_: Support for [pnpm](https://github.com/pnpm/pnpm) users [riot/2610](https://github.com/riot/riot/issues/2610)
+  - _Fix_: Race condition issue with the `if` directive [riot/2609](https://github.com/riot/riot/issues/2609)
+
 ## 3.10.3 *June 20, 2018*
 
 __riot__:
