@@ -82,9 +82,12 @@
   }
 }
 
-#current-lang {
+a#current-lang {
   border-radius: 3px;
-  padding: 4px;
+  padding: 0 4px;
+  position: absolute;
+  top: 0.6rem;
+  right: 0;
 
   &::after {
     margin-left: 2px;
@@ -94,6 +97,11 @@
   &:hover {
     background-color: #eee;
     text-decoration: none;
+  }
+  
+  @media (max-width: 660px) {
+    position: static;
+    margin-left: -4px;
   }
 }
 
@@ -144,6 +152,7 @@
   font-size: 70%;
   position: absolute;
   right: 0;
+  top: 3rem;
 
   a {
     display: block;
@@ -170,6 +179,7 @@
     width: 100%;
     font-size: 90%;
     position: relative;
+    top: -1.5rem;
   }
 
   &.open {
