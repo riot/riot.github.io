@@ -6,6 +6,17 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.11.1 *2018年7月14日*
+
+__riot__:
+  - _修正_: 新たな `bin` フォルダーのアップロード [to npm](https://github.com/riot/riot/commit/f4b6a76ff28cfed19f944c67e2d0d86832183f62)
+
+## 3.11.0 *2018年7月14日*
+
+__riot__:
+  - _追加_: [pnpm](https://github.com/pnpm/pnpm) ユーザーのためのサポート [riot/2610](https://github.com/riot/riot/issues/2610)
+  - _修正_: `if` ディレクティブでの競合状態問題 [riot/2609](https://github.com/riot/riot/issues/2609)
+
 ## 3.10.3 *2018年6月20日*
 
 __riot__:
