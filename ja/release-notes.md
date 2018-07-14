@@ -6,6 +6,12 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.10.3 *2018年6月20日*
+
+__riot__:
+
+  - _修正:_ ループ中、if属性のインデックス値が変化しない [riot/2603](https://github.com/riot/riot/issues/2603)
+
 ## 3.10.2 *2018年6月16日*
 
 __riot__:
