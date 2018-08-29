@@ -6,6 +6,12 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.11.2 *August 29, 2018*
+
+__riot__:
+  - _Fix_: parentnode check on virtual replace [riot/2615](https://github.com/riot/riot/pull/2615)
+
+
 ## 3.11.1 *July 14, 2018*
 
 __riot__:
