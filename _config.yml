@@ -39,19 +39,19 @@ author:
   email:             hello.riotjs@gmail.com
 
 # Custom vars
-minor_version:       3.11
+minor_version:       3.12
 v2_minor_version:    2.6
 
-version:             3.11.2
+version:             3.12.0
 v2_version:          2.6.8
-version_slurp:       Add support for pnpm users
+version_slurp:       Create components options also via functions
 v2_version_slurp:    Security patch against XSS injections
 repo:                https://github.com/riot/riot
 twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot
 # Vars needed for the compare.md page
 
-size_min:            10.77
+size_min:            10.80
 riot_route_size_min: 1.77
 
 polymer:

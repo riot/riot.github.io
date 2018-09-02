@@ -48,6 +48,18 @@ riot.mount('*')
 
 @returns: an array of the mounted [tag instances](#tag-instance)
 
+<span class="tag red">&gt;=3.12.0</span>
+
+The `opts` argument can be also a function in order to avoid sharing the same object across several tag instances [riot/2613](https://github.com/riot/riot/issues/2613)
+
+``` js
+riot.mount('my-tag', function() {
+  return {
+    custom: 'option'
+  }
+})
+```
+
 ### <a name="mount-tag"></a> riot.mount(selector, tagName, [opts])
 
 Where

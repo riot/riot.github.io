@@ -6,10 +6,15 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.12.0 *September 2, 2018*
+
+__riot__:
+  - _Add_: Components options creation via functions [riot/2613](https://github.com/riot/riot/issues/2613)
+
 ## 3.11.2 *August 29, 2018*
 
 __riot__:
-  - _Fix_: parentnode check on virtual replace [riot/2615](https://github.com/riot/riot/pull/2615)
+  - _Fix_: Parentnode check on virtual replace [riot/2615](https://github.com/riot/riot/pull/2615)
 
 
 ## 3.11.1 *July 14, 2018*
