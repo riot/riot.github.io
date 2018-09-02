@@ -38,16 +38,6 @@ riot.compile(function() {
 })
 ```
 
-### <a name="mount-star"></a> riot.mount('*', [opts])
-
-A special Riot specific selector "*" can be used to mount all custom tags on the page:
-
-``` js
-riot.mount('*')
-```
-
-@returns: an array of the mounted [tag instances](#tag-instance)
-
 <span class="tag red">&gt;=3.12.0</span>
 
 The `opts` argument can be also a function in order to avoid sharing the same object across several tag instances [riot/2613](https://github.com/riot/riot/issues/2613)
@@ -59,6 +49,16 @@ riot.mount('my-tag', function() {
   }
 })
 ```
+
+### <a name="mount-star"></a> riot.mount('*', [opts])
+
+A special Riot specific selector "*" can be used to mount all custom tags on the page:
+
+``` js
+riot.mount('*')
+```
+
+@returns: an array of the mounted [tag instances](#tag-instance)
 
 ### <a name="mount-tag"></a> riot.mount(selector, tagName, [opts])
 
