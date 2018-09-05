@@ -6,16 +6,24 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.12.0 *2018年9月2日*
+  - _追加:_ 関数によるコンポーネントオプションの生成 [riot/2613](https://github.com/riot/riot/issues/2613)
+
+## 3.11.2 *2018年8月29日*
+
+__riot__:
+  - _修正:_ `Parentnode` が `virtual` に置き換わってしまう [riot/2615](https://github.com/riot/riot/pull/2615)
+
 ## 3.11.1 *2018年7月14日*
 
 __riot__:
-  - _修正_: 新たな `bin` フォルダーのアップロード [to npm](https://github.com/riot/riot/commit/f4b6a76ff28cfed19f944c67e2d0d86832183f62)
+  - _修正:_ 新たな `bin` フォルダーのアップロード [to npm](https://github.com/riot/riot/commit/f4b6a76ff28cfed19f944c67e2d0d86832183f62)
 
 ## 3.11.0 *2018年7月14日*
 
 __riot__:
-  - _追加_: [pnpm](https://github.com/pnpm/pnpm) ユーザーのためのサポート [riot/2610](https://github.com/riot/riot/issues/2610)
-  - _修正_: `if` ディレクティブでの競合状態問題 [riot/2609](https://github.com/riot/riot/issues/2609)
+  - _追加:_ [pnpm](https://github.com/pnpm/pnpm) ユーザーのためのサポート [riot/2610](https://github.com/riot/riot/issues/2610)
+  - _修正:_ `if` ディレクティブでの競合状態問題 [riot/2609](https://github.com/riot/riot/issues/2609)
 
 ## 3.10.3 *2018年6月20日*
 
@@ -45,7 +53,7 @@ __riot__:
 __riot__:
 
   - _更新:_ プロジェクトの説明から[Reactの記述を削除](https://github.com/riot/riot/commit/9eb8d615d4f50ce78f30dc1952500f6591d65924#diff-0a08a7565aba4405282251491979bb6bR4)
-  - _修正_: オブザーバブルがmount時に`opt`パラメータとして渡されるとき、on/off などのメソッドを失う [riot/2581](https://github.com/riot/riot/issues/2581)
+  - _修正:_ オブザーバブルがmount時に`opt`パラメータとして渡されるとき、on/off などのメソッドを失う [riot/2581](https://github.com/riot/riot/issues/2581)
 
 
 ## 3.9.5 *2018年5月5日*

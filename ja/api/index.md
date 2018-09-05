@@ -38,6 +38,18 @@ riot.compile(function() {
 })
 ```
 
+<span class="tag red">&gt;=3.12.0</span>
+
+引数 `opts` は複数のタグインスタンス間で同じオブジェクトを共有しないようにする関数にもなりえます。[riot/2613](https://github.com/riot/riot/issues/2613)
+
+``` js
+riot.mount('my-tag', function() {
+  return {
+    custom: 'option'
+  }
+})
+```
+
 ### <a name="mount-star"></a> riot.mount('*', [opts])
 
 ページ上のすべてのカスタムタグをマウントするのに、Riot特有のセレクタとして"*"が使えます。
@@ -78,7 +90,8 @@ riot.mount(document.getElementById('slide'), 'users', api)
 ### <a name="unregister"></a> riot.unregister(tagName)
 
 事前にコンパイラーあるいは`riot.tag()`から作成されたタグを登録解除します。
-このメソッドはアプリケーションをテストする際、同じ名称を使って複数回タグを作る必要があるときに、便利です。例:
+このメソッドはアプリケーションをテストする際、同じ名称を使って複数回
+タグを作る必要があるときに、便利です。例:
 
 ```js
 // テストタグを作る
@@ -572,8 +585,9 @@ mytag.unmount(true)
 
 ```js
 var OptsMixin = {
-  // initメソッドは、タグにロードされ、かつミックスインしたタグから
-  // アクセスできないときにミックスインを初期化できる特別なものです
+  // initメソッドは、タグにロードされ、
+  // かつミックスインしたタグからアクセスできないときに
+  // ミックスインを初期化できる特別なものです
   // ここでは、`opts`はタグで受け取ったオプションオブジェクトです
   init: function(opts) {
     this.on('updated', function() { console.log('Updated!') })
@@ -696,6 +710,7 @@ riot.tag('timer',
 6. スタイル属性式がIEでも動作するように、`style="color: { color }"`は`riot-style="color: { color }"`のように書かなくてはならない
 7. Scoped CSSのプリコンパイル
 
+
 次のように書くことで`<template>`や`<script>`タグの利点を生かすことはできます:
 
 ``` html
@@ -712,7 +727,7 @@ riot.tag('tag-name', my_tmpl.innerHTML, function(opts) {
 ```
 
 
-#### Tags without template
+#### テンプレートを使用しないタグ
 
 <span class="tag red">&gt;=3.5.0</span>
 
@@ -739,6 +754,7 @@ riot.tag('tag-name', false, function(opts) {
 
 このテクニックは、サーバーサイドレンダリングされたテンプレートを強化するために使用されるでしょう。
 また、アプリケーションロジックを処理できるラッパータグと通信する、ロジックに依存しない子コンポーネントをラップするような新しいタグの構成パターンを作成することも可能になります。
+
 
 ```html
 <form-validator>
