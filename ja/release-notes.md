@@ -7,6 +7,8 @@ id: release-notes
 # {{ page.title }}
 
 ## 3.12.0 *2018年9月2日*
+
+__riot__:
   - _追加:_ 関数によるコンポーネントオプションの生成 [riot/2613](https://github.com/riot/riot/issues/2613)
 
 ## 3.11.2 *2018年8月29日*
