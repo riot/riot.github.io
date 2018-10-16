@@ -32,7 +32,7 @@ __riot__:
 
 __riot__:
 
-  - _Fix_: Loops - index value dose not change in "if" statement during iteration [riot/2603](https://github.com/riot/riot/issues/2603)
+  - _Fix_: Loops - index value does not change in "if" statement during iteration [riot/2603](https://github.com/riot/riot/issues/2603)
 
 ## 3.10.2 *June 16, 2018*
 
