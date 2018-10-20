@@ -65,9 +65,6 @@ body {
   margin: 0 auto;
 }
 
-#main {
-  min-height: 18rem;
-}
 
 // No `:visited` state is required by default (browsers will use `a`)
 a {
@@ -86,6 +83,12 @@ a {
 }
 
 #main {
+  position: relative;
+  min-height: 18rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+
   img {
     display: block;
     max-width: 100%;

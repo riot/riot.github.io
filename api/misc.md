@@ -11,12 +11,23 @@ class: apidoc
 
 The current version number as String: `'{{ site.version }}'`
 
+### <a name="keepvalueattributes"></a> riot.settings.keepValueAttributes (default `false`)
+
+<span class="tag red">&gt;= v3.13</span>
+
+Riot removes by default all the falsy attribute expressions. However in some cases like for the `<input>` elements the `value` attribute should be always preserved [see also issue/2629](https://github.com/riot/riot/issues/2629). By setting `keepValueAttributes=true` riot will no longer remove the the `value` attributes even if its value is falsy.
+
+
+``` js
+riot.settings.keepValueAttributes = true
+```
+
 ### <a name="skipanonymoustags"></a> riot.settings.skipAnonymousTags (default `true`)
 
 <span class="tag red">&gt;= v3.2</span>
 
-In riot any new tag in a loop will create new riot tag instance. This will happen for custom tags and also for `anonymous` tags like `<li each={ item in items }>{ item }</li>`. In the last case we riot will create lighter tag instances since the `anonymous` tags should not be observable and neither passed to the riot mixins to massively speed up the rendering process.
-However the riot versions lower than 3.2 used to create all the `anonymous` tags in the same way as they were custom tags being heavier in memory and having poor rendering performance.  With the `skipAnonymousTags = false` the `anonymous` tags will be no longer created as light tag instances and your app might be ~30% slower.
+In riot any new tag in a loop will create new riot tag instance. This will happen for custom tags and also for `anonymous` tags like `<li each={ item in items }>{ item }</li>`. In the last case riot will create lighter tag instances because they should not be observable and don't need to be passed to the riot mixins. This will massively speed up the rendering process.
+However riot versions lower than 3.2 used to instanciate all the `anonymous` tags as full custom tags instances. With the `skipAnonymousTags = false` the `anonymous` tags will be no longer created as light tag instances and your app might become ~30% slower.
 
 ``` js
 riot.settings.skipAnonymousTags = false

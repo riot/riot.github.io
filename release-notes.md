@@ -6,6 +6,11 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.13.0 *October 20, 2018*
+
+__riot__:
+  - _Add_: The `keepValueAttributes` setting to enable falsy `value` attributes removal [riot/2629](https://github.com/riot/riot/issues/2629)
+
 ## 3.12.0 *September 2, 2018*
 
 __riot__:
