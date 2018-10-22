@@ -11,15 +11,25 @@ class: apidoc
 
 現在のバージョン番号を文字列として: `'{{ site.version }}'`
 
+### <a name="keepvalueattributes"></a> riot.settings.keepValueAttributes (default `false`)
+
+<span class="tag red">&gt;= v3.13</span>
+
+Riotはデフォルトで全ての falsy な属性式を削除します。しかし、 `<input>` 要素などの場合では、 `value` という属性は常に維持されるべきです。 [参照 issue/2629](https://github.com/riot/riot/issues/2629) `keepValueAttributes=true` を設定することにより、Riot はその値が falsy でも `value` 属性を削除しなくなります。
+
+
+```js
+riot.settings.keepValueAttributes = true
+```
+
 ### <a name="skipanonymoustags"></a> riot.settings.skipAnonymousTags (default `true`)
 
 <span class="tag red">&gt;= v3.2</span>
 
-Riotでは、ループ内の全ての新しいタグは新しいRiotタグインスタンスを生成します。これはカスタムタグや、`<li each={ item in items }>{ item }</li>`のような`anonymous`タグに対しても発生します。ループの終わりでは、`anonymous`タグは目に見えるべきではなく、かつレンダリングプロセスを大幅に高速化するためにriot mixinsに渡されるべきではないため、私たちRiotは新しいタグインスタンスを生成します。
+Riotでは、ループ内の全ての新しいタグは新しいRiotタグインスタンスを生成します。これはカスタムタグや、`<li each={ item in items }>{ item }</li>`のような`anonymous`タグに対しても発生します。ループの終わりでは、それらは渡されるべきではない、かつ riot mixins に渡す必要がないため、ため、Riotはより軽量なタグインスタンスを生成します。このことがレンダリングの処理を格段に速めるでしょう。
+しかし、バージョンが3.2以下の Riot は、全ての `anonymous` タグを完全にカスタムタグをインスタンス化するために使用されました。`skipAnonymousTags = false`の場合、`anonymous`タグはもはや軽いタグとして生成されなくなり、あなたのアプリケーションは〜30%遅くなります。
 
-しかし、バージョンが3.2以下のRiotは、メモリが重くなったり、レンダリング性能が低下するカスタムタグと同じ方法で、全ての`anonymous`タグを生成するために使われました。`skipAnonymousTags = false`の場合、`anonymous`タグはもはや軽いタグとして生成されなくなり、あなたのアプリケーションは〜30%遅くなります。
-
-``` js
+```js
 riot.settings.skipAnonymousTags = false
 ```
 
@@ -29,7 +39,7 @@ riot.settings.skipAnonymousTags = false
 
 アップデートイベントは、ユーザーがRiotタグのいずれかをディスパッチする際に、DOMハンドラ（`onclick`など）を含むRiotタグ内で自動的にトリガーされます。`autoUpdate`オプションをfalseに設定すると、この動作が無効になり、手動でタグのアップデートをトリガーする必要があります。
 
-``` js
+```js
 riot.settings.autoUpdate = false
 ```
 
@@ -37,7 +47,7 @@ riot.settings.autoUpdate = false
 
 テンプレート変数の開始/終了トークンをカスタマイズするための、Riotのグローバル設定。例:
 
-``` js
+```js
 riot.settings.brackets = '[% %]'
 ```
 
