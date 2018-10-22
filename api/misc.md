@@ -15,7 +15,7 @@ The current version number as String: `'{{ site.version }}'`
 
 <span class="tag red">&gt;= v3.13</span>
 
-Riot removes by default all the falsy attribute expressions. However in some cases like for the `<input>` elements the `value` attribute should be always preserved [see also issue/2629](https://github.com/riot/riot/issues/2629). By setting `keepValueAttributes=true` riot will no longer remove the the `value` attributes even if its value is falsy.
+Riot removes by default all the falsy attribute expressions. However in some cases like for the `<input>` elements the `value` attribute should be always preserved [see also issue/2629](https://github.com/riot/riot/issues/2629). By setting `keepValueAttributes=true` riot will no longer remove the `value` attributes even if its value is falsy.
 
 
 ``` js
