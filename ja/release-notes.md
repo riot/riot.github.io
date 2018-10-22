@@ -6,6 +6,11 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.13.0 *2018年10月20日*
+
+__riot__:
+  - _追加:_ `keepValueAttributes` 設定により falsy な `value` 属性を除外 [riot/2629](https://github.com/riot/riot/issues/2629)
+
 ## 3.12.0 *2018年9月2日*
 
 __riot__:
