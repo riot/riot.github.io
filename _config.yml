@@ -42,7 +42,7 @@ author:
 minor_version:       3.13
 v2_minor_version:    2.6
 
-version:             3.13.0
+version:             3.13.1
 v2_version:          2.6.8
 version_slurp:       More flexible "value" attributes handling
 v2_version_slurp:    Security patch against XSS injections
@@ -51,7 +51,7 @@ twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot
 # Vars needed for the compare.md page
 
-size_min:            10.84
+size_min:            10.85
 riot_route_size_min: 1.77
 
 polymer:

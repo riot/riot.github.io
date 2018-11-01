@@ -6,6 +6,11 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.13.1 *November 1, 2018*
+
+__riot__:
+  - _Fix_: `skipAnonymousTags` setting doesn't effect mount event in global mixin [riot/2635](https://github.com/riot/riot/issues/2635)
+
 ## 3.13.0 *October 20, 2018*
 
 __riot__:
