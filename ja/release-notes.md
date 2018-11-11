@@ -6,6 +6,11 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.13.1 *2018年11月1日*
+
+__riot__:
+  - _修正:_ `skipAnonymousTags` という設定はグローバルミックスインではマウントイベントに効果がない [riot/2635](https://github.com/riot/riot/issues/2635)
+
 ## 3.13.0 *2018年10月20日*
 
 __riot__:
@@ -60,7 +65,7 @@ __riot__:
 __riot__:
 
   - _更新:_ プロジェクトの説明から[Reactの記述を削除](https://github.com/riot/riot/commit/9eb8d615d4f50ce78f30dc1952500f6591d65924#diff-0a08a7565aba4405282251491979bb6bR4)
-  - _修正:_ オブザーバブルがmount時に`opt`パラメータとして渡されるとき、on/off などのメソッドを失う [riot/2581](https://github.com/riot/riot/issues/2581)
+  - _修正:_ オブザーバブルがマウント時に`opt`パラメータとして渡されるとき、on/off などのメソッドを失う [riot/2581](https://github.com/riot/riot/issues/2581)
 
 
 ## 3.9.5 *2018年5月5日*
