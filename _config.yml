@@ -49,6 +49,7 @@ v2_version_slurp:    Security patch against XSS injections
 repo:                https://github.com/riot/riot
 twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot
+
 # Vars needed for the compare.md page
 
 size_min:            10.85
