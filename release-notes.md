@@ -6,6 +6,11 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.13.2 *November 25, 2018*
+
+__riot__:
+  - _Fix_: dynamic import in riot tags [riot/2635](https://github.com/riot/riot/issues/2641)
+
 ## 3.13.1 *November 1, 2018*
 
 __riot__:
