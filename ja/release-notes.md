@@ -6,6 +6,11 @@ id: release-notes
 
 # {{ page.title }}
 
+## 3.13.2 *2018年11月25日*
+
+__riot__:
+  - _修正:_ riot タグにおけるダイナミックインポート [riot/2635](https://github.com/riot/riot/issues/2641)
+
 ## 3.13.1 *2018年11月1日*
 
 __riot__:
