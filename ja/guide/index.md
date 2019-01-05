@@ -171,7 +171,7 @@ Riotが挿入したCSSを上書きしたい場合、`<head>`の中でCSSの挿�
   <!-- riot.jsのインクルード -->
   <script src="riot.min.js"></script>
 
-  <!-- タグtaguのインクルード -->
+  <!-- riotコンパイラがjavascriptに変換したタグをインクルード -->
   <script src="todo.js"></script>
 
   <!-- タグのマウント -->
