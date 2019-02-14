@@ -6,6 +6,12 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.6.9 *February 14, 2019*
+
+__riot__:
+  - _Fix_: mixins `Object.__proto__` inheritance [riot/2661](https://github.com/riot/riot/pull/2661)
+
+
 ## 3.13.2 *November 25, 2018*
 
 __riot__:
