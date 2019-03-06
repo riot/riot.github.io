@@ -270,7 +270,7 @@ A sample tag written in ES6:
 
   <h3>{ test }</h3>
 
-  var type = 'JavaScript'
+  const type = 'JavaScript'
   this.test = `This is ${type}`
 
 </test>
@@ -316,7 +316,7 @@ A sample tag written in TypeScript:
 
   <h3>{ test }</h3>
 
-  var test: string = 'JavaScript';
+  const test: string = 'JavaScript';
   this.test = test;
 
 </test>
