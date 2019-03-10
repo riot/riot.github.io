@@ -6,6 +6,12 @@ id: release-notes
 
 # {{ page.title }}
 
+## 2.6.9 *2019年2月14日*
+
+__riot__:
+  - _修正:_ ミックスインの `Object.__proto__` が遺伝 [riot/2661](https://github.com/riot/riot/pull/2661)
+
+
 ## 3.13.2 *2018年11月25日*
 
 __riot__:
