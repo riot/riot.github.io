@@ -270,7 +270,7 @@ ES6で書かれたタグの例:
 
   <h3>{ test }</h3>
 
-  var type = 'JavaScript'
+  const type = 'JavaScript'
   this.test = `This is ${type}`
 
 </test>
@@ -316,7 +316,7 @@ TypeScriptで書かれたタグの例:
 
   <h3>{ test }</h3>
 
-  var test: string = 'JavaScript';
+  const test: string = 'JavaScript';
   this.test = test;
 
 </test>
