@@ -1031,11 +1031,6 @@ In some cases you may need to loop some html without having a particular wrapper
 
 `virtual` however is not exclusive to looping and can be used in conjuction with `if` for any tag
 
-```html
-<virtual data-is="my-tag" if={condition}>
-  <p>Show me with no wrapper on condition</p>
-</virtual>
-```
 
 ## HTML elements as tags
 
