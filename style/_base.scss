@@ -12,7 +12,6 @@ html, body {
   margin: 0;
   padding: 0;
   position: relative;
-  overflow-x: hidden;
 }
 
 /* Webfont: Lato-Regular */@font-face {
@@ -122,4 +121,25 @@ th {
 tbody tr:nth-child(odd) td,
 tbody tr:nth-child(odd) th {
   background-color: #f9f9f9;
+}
+
+.banner {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: $brand-color;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.8rem 1.6rem;
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: white;
+    text-decoration: underline;
+  }
 }
