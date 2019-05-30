@@ -1,0 +1,51 @@
+.hero {
+  min-height: 100vh;
+  padding: 8rem 0;
+  align-content: center;
+  text-align: center;
+
+  @include mq($until: mobile) {
+    padding-top: 20%;
+  }
+
+  img {
+    margin: 0 auto;
+    width: 50%;
+  }
+
+  h1 {
+    margin-top: 1.2rem;
+  }
+
+  p {
+    color: $light-grey;
+    font-size: ms(1);
+
+    @include mq($until: 'mobile') {
+      font-size: ms(0.8);
+    }
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0;
+
+      a {
+        padding: 0.8rem 1.6rem;
+        display: inline-block;
+        font-size: ms(0.4)
+      }
+
+      @include mq($until: 'mobile') {
+        flex: 1 1 100%;
+      }
+    }
+  }
+}

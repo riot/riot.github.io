@@ -1,0 +1,14 @@
+<div class="sidebar">
+  <a class="logo" href="{{ site.baseurl }}/" title="go to homepage">
+    <img src="{{ '/img/logo/riot-logo.svg' | prepend:site.baseurl }}">
+  </a>
+  <nav class="main-menu">
+    <h2>Main Navigation</h2>
+    {% include main-menu.html %}
+  </nav>
+
+  <nav class="toc">
+    <h2>Table of contents</h2>
+    {% include toc.html html=content sanitize=true class="inline_toc" id="my_toc" h_max=3 %}
+  </nav>
+</div>

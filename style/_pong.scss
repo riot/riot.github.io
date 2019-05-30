@@ -1,0 +1,11 @@
+.pong {
+  margin: 32px 0;
+
+  @include mq($until: 'mobile') {
+    display: none;
+  }
+
+  figure {
+    margin: 0;
+  }
+}

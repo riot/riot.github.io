@@ -1,0 +1,7 @@
+@mixin at-root($parent) {
+  $this: &;
+
+  @at-root #{$parent} #{$this} {
+    @content;
+  }
+}

@@ -1,10 +1,34 @@
-// Sizes
-$screen-md: 960px;
-$small-break-point: 660px;
-$medium-break-point: 960px;
+// grid
+$mq-breakpoints: (
+    mobile: 780px,
+    wide: 1600px,
+);
 
-// Colors
-$footer-background: #222;
-$footer-color: #fff;
-$brand-color: #fc0e49;
-$seach-background: #f0f0f0;
+$container-max-width: 90rem;
+$sidebar-width: 32rem;
+
+
+// Typography
+$modularscale: (
+  base: 1.6em,
+  ratio: 1.3,
+);
+$font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-heavy: 700;
+
+// colors
+$paper-white: #f1f1f2;
+$dark-grey: #333447;
+$carbon-black: #111111;
+$light-carbon-grey: lighten($carbon-black, 15%);
+$white: #ffffff;
+$light-grey: #999999;
+$primary: #ED1846;
+$green: #12cd64;
+$yellow: #f1ec0b;
+$blue: #0088fe;
+
+// Misc
+$border-radius: 0.25rem;

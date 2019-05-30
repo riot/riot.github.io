@@ -1,0 +1,14 @@
+- path: /documentation
+  label: Documentation
+
+- path: /api
+  label: API
+
+- path: /compiler
+  label: Compiler
+
+- path: /faq
+  label: FAQ
+
+- path: /migration-guide
+  label: Migration Guide

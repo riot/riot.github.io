@@ -1,0 +1,206 @@
+// simplify rem font size handling
+html {
+  font-size:62.5%;
+}
+
+body {
+  font-family: $font-family;
+  color: $dark-grey;
+  line-height: 1.4;
+
+  @at-root .dark {
+    background: $carbon-black;
+    color: $white;
+  }
+}
+
+h1 {
+  font-size: ms(5);
+  line-height: 1.2;
+  margin-top: 3.2rem;
+  margin-bottom: 3.2rem;
+
+  @include mq($until: 'mobile') {
+    font-size: ms(3);
+  }
+}
+
+h2 {
+  font-size: ms(3.2);
+  line-height: 1.2;
+  margin-top: 3.2rem;
+  margin-bottom: 3.2rem;
+
+  @include mq($until: 'mobile') {
+    font-size: ms(2);
+  }
+}
+
+h3 {
+  font-size: ms(2);
+  line-height: 1;
+  margin-top: 2.8rem;
+  margin-bottom: 2.8rem;
+
+  @include mq($until: 'mobile') {
+    font-size: ms(1.6);
+  }
+}
+
+h4 {
+  font-size: ms(1.6);
+  line-height: 1;
+  margin-top: 2.2rem;
+  margin-bottom: 2.2rem;
+
+  @include mq($until: 'mobile') {
+    font-size: ms(1.2);
+  }
+}
+
+h5 {
+  font-size: ms(1.2);
+  line-height: 1;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+
+  @include mq($until: 'mobile') {
+    font-size: ms(0.8);
+  }
+}
+
+h6 {
+  font-size: ms(0.8);
+  line-height: 1.2;
+  margin-top: 0.8rem;
+  margin-bottom: 0.6rem;
+
+  @include mq($until: 'mobile') {
+    font-size: ms(0.6);
+  }
+}
+
+h1, h2, h3, h4, h5 {
+  &:target:before {
+    content: "";
+    display: block;
+    padding-top: 11rem;
+  }
+
+  a:empty {
+    display: inline-block;
+
+    &:before {
+      content: '#';
+      display: block;
+      font-size: 1em;
+    }
+  }
+}
+
+
+main {
+  > p, pre, > ul, > ol {
+    font-size: ms(0.6);
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    font-weight: $font-weight-regular;
+
+    @include mq($until: 'mobile') {
+      font-size: ms(0.2);
+    }
+  }
+
+  > p, > li {
+    hyphens: auto;
+  }
+
+  > ul, > ol {
+    margin-top: 1.2rem;
+
+    li {
+      margin-bottom: 0.6rem;
+    }
+  }
+}
+
+
+a {
+  color: $primary;
+  text-decoration: none;
+
+  &:hover, &:focus, &:active {
+    color: darken($primary, 10%);
+    text-decoration: underline;
+
+    @include at-root('body.dark') {
+      color: lighten($primary, 5%);
+    }
+  }
+}
+
+code {
+  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-size: 80%;
+}
+
+li, p {
+  code {
+    padding: .25em .5em;
+    display: inline-block;
+    transform: translate(0, -0.125em);
+    color: #058;
+    background-color: $paper-white;
+    border-radius: 3px;
+
+    @at-root body.dark {
+      li code, p code {
+        color: lighten($carbon-black, 75%);
+        background-color: lighten($carbon-black, 4%);
+      }
+    }
+  }
+}
+
+blockquote {
+  font-family: Georgia, serif;
+  position: relative;
+  font-style: italic;
+  background: lighten($paper-white, 3%);
+  border-left: 0.6rem solid $paper-white;
+  margin: 1.6rem 0 3.2rem;
+  padding: 3.2rem 4.8rem;
+  font-size: 1.8rem;
+  line-height: 1.6;
+  quotes: "\201C""\201D""\2018""\2019";
+  text-indent: -4rem;
+  hyphens: auto;
+
+  @include at-root('body.dark') {
+    border-left-color: $light-carbon-grey;
+    background-color: lighten($carbon-black, 4%);
+  }
+
+
+  &::before,
+  &::after {
+    color: $light-grey;
+    font-size: 4em;
+    line-height: 0.1em;
+    vertical-align: -0.4em;
+  }
+
+  &::before {
+    content: open-quote;
+    margin-right: 1rem;
+  }
+
+  &::after {
+    content: close-quote;
+  }
+
+  p {
+    display: inline;
+  }
+}
+

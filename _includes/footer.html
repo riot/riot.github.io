@@ -1,0 +1,49 @@
+<div class="footer">
+  <div class="container">
+    <aside>
+      <grid columns="12">
+        <c span="6" span-s="row">
+          <nav class="menu">
+            <grid columns="12">
+              <c class="logo" span="row">
+                <a href="{{ site.baseurl }}/">
+                  <img src="{{ '/img/logo/riot-logo.svg' | prepend:site.baseurl }}">
+                </a>
+              </c>
+              <c span="row">
+                {% include main-menu.html %}
+              </c>
+            </grid>
+          </nav>
+        </c>
+        <c class="extra" span="6" span-s="row">
+          <nav>
+            <ul>
+              <li><a target="_blank" rel="nofollow" href="{{ site.data.globals.repo }}"><img title="Riot on github" src="https://img.shields.io/badge/GITHUB-REPO-fc0e49.svg?style=flat-square"></a></li>
+              <li>
+                <a target="_blank" rel="nofollow" href="https://opencollective.com/riot/">
+                  <img title="Do a donation" src="https://img.shields.io/badge/DONATE-%E2%9D%A4-fc0e49.svg?style=flat-square"/>
+                </a>
+              </li>
+              <li>
+                <a target="_blank" rel="nofollow" href="{{ site.data.globals.legacy }}">
+                  <img title="Riot v3,v2 & v1" src="https://img.shields.io/badge/RIOT-v3,v2_& v1-170806.svg?style=flat-square">
+                </a>
+              </li>
+              <li><a target="_blank" rel="nofollow" href="{{ site.data.globals.gitter }}"><img title="Join the chat at https://gitter.im/riot/riot" src="https://img.shields.io/badge/GITTER-JOIN_CHAT-1dce73.svg?style=flat-square"></a></li>
+              <li><a target="_blank" rel="nofollow" href="{{ site.data.globals.twitter_account }}"><img title="follow riot.js on twitter" src="https://img.shields.io/twitter/follow/riotjs_.svg?style=flat-square"></a></li>
+              <li>
+                <a target="_blank" rel="nofollow" href="{{ site.data.globals.showcase }}">
+                  <img title="Made With Riot" src="https://img.shields.io/badge/SHOWCASE-Made_with_riot-17908f.svg?style=flat-square">
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </c>
+      </grid>
+    </aside>
+    <footer class="copy">
+      <small>Copyright &copy; {{ 'now' | date: "%Y" }} - Gianluca Guarini - Riot.js</small>
+    </footer>
+  </div>
+</div>

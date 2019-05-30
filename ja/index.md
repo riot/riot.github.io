@@ -1,199 +1,185 @@
 ---
-layout: ja
+layout: home
 title: Riot.js — Simple and elegant component-based UI library
-description: Riot lets you build user interfaces with custom tags using simple and enjoyable syntax. It uses a virtual DOM similar to React but faster. Riot is very tiny compared to industry standards. We think there is a clear need for another UI library.
+description: Riot.js lets you build user interfaces with custom tags using simple and enjoyable syntax.
 ---
 
-<div id="hero">
-  <img src="/img/logo/riot240x.png">
-  <h1>Simple and elegant component-based UI library</h1>
-  <h4>カスタムタグ • 楽しい文法 • 明解なAPI • コンパクトな実装</h4>
+## なぜ新しいUIライブラリが必要なのか？
 
-  <div id="version-slurp">
-    <a href="/download/" class="tag blue">v{{ site.version }}</a> &mdash;
-    <a href="/ja/release-notes/">{{ site.version_slurp }}&hellip;</a>
-  </div>
-
-</div>
+フロントエンドの世界にはライブラリが溢れてはいるものの、正直なところソリューションはまだ「他にある」と感じています。私たちは、この大きなパズルを解くために、Riot.jsが最良のバランスを提供すると信じています。
 
 
-# なぜ新しいUIライブラリが必要なのか
+だから——私たちには新しいライブラリが必要なのです:
 
-フロントエンドの世界には、ライブラリが溢れてはいるものの、正直なところソリューションはまだ「そこにない」と感じています。私たちは、この大きなパズルを解くために、Riotという最良のバランスを見つけました。Reactが果たしかけたかに見えたものの、重大な弱点を残している点、それをRiotは解決します。
+### 1. カスタム要素
 
-だから——私たちには新しいライブラリが必要なのです。
-
-## 1. カスタムタグ
-
-Riotは全てのブラウザで、カスタムタグを実現します。
+Riot.jsはポリフィルを使用せずにすべての最新ブラウザにカスタム要素をもたらします！
 
 ``` html
 <todo>
-
   <!-- layout -->
-  <h3>{ opts.title }</h3>
+  <h1>{ props.title }</h1>
 
   <ul>
-    <li each={ item, i in items }>{ item }</li>
+    <li each={ item in state.items }>{ item }</li>
   </ul>
 
   <form onsubmit={ add }>
-    <input ref="input">
-    <button>Add #{ items.length + 1 }</button>
+    <input name="todo">
+    <button>Add #{ state.items.length + 1 }</button>
   </form>
 
   <!-- style -->
   <style>
-    h3 {
-      font-size: 14px;
+    :host {
+      padding: 16px;
     }
   </style>
 
   <!-- logic -->
   <script>
-    this.items = []
+    export default {
+      state: {
+        items: []
+      },
+      add(e) {
+        e.preventDefault()
+        const input = e.target.todo
 
-    add(e) {
-      e.preventDefault()
-      var input = this.refs.input
-      this.items.push(input.value)
-      input.value = ''
+        this.state.items.push(input.value)
+        this.update()
+
+        input.value = ''
+      }
     }
   </script>
-
 </todo>
 ```
 
-カスタムタグは、関連するHTMLとJavaScriptをくっつけて再利用可能なコンポーネントとしてまとめます。React + Polymerに、"楽しい"文法と小さな学習曲線が一緒になった、とイメージしてください。
+カスタム要素は関連する HTML と JavaScript を結合し再利用可能なコンポーネントを形成します。React + Polymerも考えられますが、Riot.jsの構文はより楽しく学習曲線も小さいです。
 
+#### ヒューマンリーダブル
 
-### ヒューマンリーダブル
-
-カスタムタグはHTMLで複雑なビューの構築を可能にします。あなたのアプリケーションはこんな感じになるでしょう:
+カスタムタグは複雑な HTML のビューを構成することを可能にします。あなたのアプリケーションは次のようになるでしょう:
 
 ``` html
 <body>
+  <h1>Riot.js application</h1>
 
-  <h1>Acme community</h1>
+  <my-header class="js-component"/>
 
-  <forum-header/>
+  <main>
+    <my-articles class="js-component"/>
+    <my-sidebar class="js-component"/>
+  </main>
 
-  <div class="content">
-    <forum-threads/>
-    <forum-sidebar/>
-  </div>
+  <my-footer class="js-component"/>
 
-  <forum-footer/>
-
-  <script>riot.mount('*', { api: forum_api })</script>
+  <script>
+    riot.mount('.js-component', { store: createApplicationStore() })
+  </script>
 </body>
 ```
 
-HTMLの文法はWebの *デファクト* 言語であり、ユーザインターフェースを構築するためにデザインされています。文法はシンプルで明確、入れ子構造が備わっていて、属性はカスタムタグにオプションを提供するための簡潔な方法です。
+HTML の構文は web の *事実上の* 言語であり、ユーザーインターフェースを構築するために設計されています。その文法は明示的、ネストは言語固有のもの、そして属性はカスタムタグにオプションを与える明確な方法を提供します。
 
-<span class="tag">メモ</span> Riotタグは、ブラウザで実行する前に、純粋なJavaScriptに [変換されます](/ja/guide/compiler/)。
-
-
-### テンプレート変数バインディング (DOM Expressions biding)
-- 最小のDOMの更新とリフロー
-- データは一方通行: 更新とアンマウントは親から子へ伝播します
-- テンプレートは高いパフォーマンスを得るため、プリコンパイルされキャッシュされます
-- 細かい制御のためのライフサイクルイベント
-- ユニバーサル(アイソモーフィック)アプリケーションを実現する、カスタムタグのサーバサイドレンダリング
+Riot.js のタグはブラウザに実行される前に素の javascriptに [コンパイル]({{ '/ja/compiler/' | prepend:site.baseurl }}) されます。
 
 
-### 標準に近い
-- 独自形式のイベントシステムはなし
-- 外部ポリフィルや追加ライブラリ不要
+#### 式、値の DOM へのバインディング
+- DOM 更新の量をできるだけ最小限に
+- 単方向のデータフロー: 更新やアンマウントは親から子へと下に伝搬される
+- 高速化のため、テンプレート構文はプリコンパイルされキャッシュされる
+- より細かく制御するためのライフサイクルイベント
+- ユニバーサル（アイソモーフィック）なアプリケーションのためのカスタムタグのサーバーサイドレンダリング
+
+
+#### 標準に近い
+- 独自のイベントシステムはなし
+- 外部のポリフィルやライブラリの追加は不要
 - レンダリングされたDOMは、自由に他のツールから操作可能
-- 余計なHTMLのルート要素や`data-`属性を使う必要なし
-- jQueryとの親和性が高い
+- HTML のルート要素や `data-` 属性は不要
+- Web Components に似た API
+- モダンな modules 構文
 
 
-### 他のツールと相性がいい
-- タグファイルは、ES6、Typescript、CoffeeScript、Jade、LiveScriptや、その他の好きな[プリプロセッサ](/ja/guide/compiler/#%E3%83%97%E3%83%AA%E3%83%97%E3%83%AD%E3%82%BB%E3%83%83%E3%82%B5)でOK
-- NPMやCommonJS、AMD、Bower、Componentが使えます
-- [Gulp](https://github.com/e-jigsaw/gulp-riot)や[Grunt](https://github.com/ariesjia/grunt-riot)、[Browserify](https://github.com/jhthorsen/riotify)のプラグインでコンパイル
+#### 他ツールとの相性が良い
+- NPM エコシステムに統合
+- Node.js の [require フック](https://github.com/riot/ssr#usage)
+- [webpack](https://github.com/riot/webpack-loader), [rollup](https://github.com/riot/rollup-plugin-riot), [parcel](https://github.com/riot/parcel-plugin-riot) や [browserify](https://github.com/riot/riotify) プラグインを利用した開発
 
 
+## 2. シンプルかつミニマリスト
 
-## 2. シンプルでミニマリスト
-
-ミニマリズムが、Riotを他のライブラリと一線を画すものにしています。
-
+Riot.js はミニマリズムであるということが他のライブラリと一線を画しています:
 
 ### 1. 楽しい文法
 
-デザインのゴールの一つは、できる限り最小の"boilerplate"で使える、強力な文法を導入することです。
+デザインのゴールの一つは、できる限り最小限の ”boilerplate” で使える強力なタグ構文を導入することでした:
 
-- 強力なショートカット: `class={ enabled: is_enabled, hidden: hasErrors() }`
-- 余計なことを考えなくてOK: `render`とか`state`、`constructor`など
-- インターポレーション: `Add #{ items.length + 1 }` あるいは `class="item { selected: flag }"`
-- ロジック部分を`<script>`タグで囲むのはオプション
-- コンパクトなES6のメソッドの書き方
+- `className`, `htmlFor`...のような属性のために脳に余分な負荷をかけない
+- 複数の属性に対するスプレッド演算子を用いたショートカット: `<p { ...attributes }></p>`
+- 式の補間: `Add #{ items.length + 1 }` や `class="item { activeClass }"`
+- タグを定義するための `export default` というパブリックインターフェースの記述
+- 非同期レンダリングや `Proxy` オブジェクトによる副作用はない
+- OOP クラスベースの構文に則った実用的な API
+- `<style>` タグにより shadow DOM と混乱することなく自動で CSS スタイリング可能
 
 
 ### 2. 小さな学習曲線
 
-Riotは他のUIライブラリと比較して、APIの数が10分の1か、100分の1。
+Riot.jsは他の UI ライブラリと比較して API メソッドの数が 10分の1 から 100分の1ほどです。
 
-- 覚えることが少ない / 見なきゃいけない本もチュートリアルも少ない
-- 独自形式なものが少なく、標準的なものが多い
+- 学ぶことが少ない。閲覧する書籍やチュートリアルが少なくなる
+- 学ぶべきテンプレートディレクティブはたったの3つだけ `if`, `each` そして `is`
+- 独自性の物が少ない
+- フードの下プロキシや魔法のようなことは起きていない
+- 暗黙の仮定に覆われた明示的な振る舞い
 
 
 ### 3. サイズが小さい
 
-<small><em>polymer.min.js</em> – {{ site.polymer.size }}KB</small>
-<span class="bar red"></span>
+{% include libraries_comparison.html %}
 
-<small><em>react.min.js</em> – {{ site.react.size }}KB</small>
-<span class="bar red" style="width: {{ site.react.size | divided_by: site.polymer.size | times: 100 }}%"></span>
-
-<small><em>riot.min.js</em> – {{ site.size_min }}KB</small>
-<span class="bar blue" style="width: {{ site.size_min | divided_by: site.polymer.size | times: 100 }}%"></span>
-
-
+- たったの 6kb！
 - 少ないバグ
 - パースが早く、ダウンロードも容易
-- エンベッダブル(組込可能): ライブラリはアプリケーション本体より小さくあるべき
-- メンテナンスの手間が少ない: Riotのメンテナンスのために大きなチームを必要としない
+- 組み込みやすい。ライブラリはアプリケーションよりも小さくなるべきである
+- メンテナンスコストが小さい。我々は Riot を維持するための大きなチームを必要としない
 
 
-### 4. 小さくて、必要十分
+### 4. 小さいが必要十分
 
-Riotはモダンなクライアントサイドのアプリケーションを作るための、基本的な構成単位をすべて備えています。
+Riotはモダンなクライアントサイドのアプリケーションを作るための、基本的な構成単位をすべて備えています:
 
-- ユーザインターフェースを構築するための"Reactive"なビュー
-- 分離されたモジュールのAPIを作るためのイベントライブラリ
-- URLと「戻る」ボタンを処理するルータ (オプション)
+- ユーザーインターフェースを構築するためのモダンなビュー
+- 多くの DOM ノードの場合でもハイパフォーマンス
+- 拡張性が高く、かつ独自性は低い
 
-Riotは「オープンスタック」です。つまり、フレームワーク特有のイディオムを避けたい開発者向けです。一般的であることで、好きなデザインパターンを適用したり、混ぜたりすることができます。Facebook Fluxのようなシステムを[つくることも可能です](https://github.com/jimsparkman/RiotControl)。
-
-
-> [@riotjs_](https://twitter.com/riotjs_) Thanks for creating a library that allows me to make a simple SPA in plain JS without needing to download 13k NPM packages.
-[@coussej](https://twitter.com/coussej/status/763659990250946561)
-
-> Switched my site from #BackboneJS to #RiotJS. Other than compile/mount not blocking for DOM render, it's great! #JavaScript [@riotjs_](https://twitter.com/riotjs_)
-[@richardtallent](https://twitter.com/richardtallent/status/766696802066194432)
-
-> Like all people fed up with the status quo and the development of the world, I'm voting RiotJS <3 Love you baby [@plumpNation](https://twitter.com/plumpNation/status/760803974660390912)
-
-> I looked at the riot.js example, and it feels so clean, it's scary.
-[@paulbjensen](https://twitter.com/paulbjensen/status/558378720403419137)
-
-> I liked the idea of #reactjs with #flux but I like #riotjs with #riotcontrol even better!
-[@tscok](https://twitter.com/tscok/status/580509124598829056)
-
-
-> Played with riot.js and like it so much more than React. Minimalistic, fast and a comprehensible API. [@juriansluiman](https://twitter.com/juriansluiman/status/560399379035865088)
-
+Riot.js は一つの"オープンスタック"です。つまり、フレームワーク固有のイディオムを避けたい開発者のためのもの、を意味します。一般的なツールを使用して、あなたの最も好みのデザインパターンを組み合わせることができます。
 
 ## まとめ
 
-Riotは誰でも使えるWeb Componentsです。React + Polymerから無駄を省いたものを想像してください。ごく自然に使用でき、すごく軽い。それを今日から使えます。車輪の再発明をするのではなく、これらのツールの良いとこ取りで、可能な限りシンプルにしました。
+Riot.js is は誰でも使えるWeb Components です。React + Polymer から無駄を省いたものを想像してください。Vue.js にインスピレーションを受けたその API は豊富で、それでいて現代のフロントエンドプロジェクトを構築するために、最低限必要なもののみを含んでいます。ごく自然に使用でき、とても軽い。そして、今日から使えます。車輪の再発明をするのではなく、むしろそこにあるものの良いとこ取りをし、可能な限り最もシンプルなツールにしました。
 
-私たちは、テンプレートではなく、再利用可能なコンポーネントにフォーカスするべきです。Reactの開発者曰く:
+Riot.js は [*Tim Peters 氏の The Zen of Python*](https://en.wikipedia.org/wiki/Zen_of_Python) という思想（哲学）から駆動し、設計されました。それが我々のマントラです:
 
-> 「テンプレートは、問題ではなく、技術を分けるだけだ」
-
-同じコンポーネントの中で、レイアウトとロジックを一緒に持てば、全体のシステムはより簡潔になります。この重要な洞察について、Reactに敬意を示したいと思います。
+> Beautiful is better than ugly.<br/>
+> Explicit is better than implicit.<br/>
+> Simple is better than complex.<br/>
+> Complex is better than complicated.<br/>
+> Flat is better than nested.<br/>
+> Sparse is better than dense.<br/>
+> Readability counts.<br/>
+> Special cases aren't special enough to break the rules.<br/>
+> Although practicality beats purity.<br/>
+> Errors should never pass silently.<br/>
+> Unless explicitly silenced.<br/>
+> In the face of ambiguity, refuse the temptation to guess.<br/>
+> There should be one-- and preferably only one --obvious way to do it.<br/>
+> Although that way may not be obvious at first unless you're Dutch.<br/>
+> Now is better than never.<br/>
+> Although never is often better than *right* now.<br/>
+> If the implementation is hard to explain, it's a bad idea.<br/>
+> If the implementation is easy to explain, it may be a good idea.<br/>
+> Namespaces are one honking great idea -- let's do more of those!

@@ -1,0 +1,52 @@
+.theme-switcher {
+  position: absolute;
+  top: 2.2rem;
+  right: 2.2rem;
+
+  input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  .text {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    display: block;
+  }
+
+  .handle {
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+
+    background: $dark-grey;
+    border-radius: 1em;
+    height: 1em;
+    width: 2em;
+    box-shadow: inset 0 0.1em 0.1em rgba(0, 0, 0, 0.1);
+    transition: all 300ms;
+
+    @include at-root('body.dark') {
+      background: $white;
+    }
+  }
+
+  .handle span {
+    display: block;
+    height: 1em;
+    width: 1em;
+    border-radius: 1em;
+    background: $white;
+    box-shadow: 0 0.1em 0.1em rgba(0, 0, 0, 0.3);
+    transition: all 300ms;
+  }
+
+  input:checked + .handle span {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+/**
+ * 1. Adjust this to size
+ */

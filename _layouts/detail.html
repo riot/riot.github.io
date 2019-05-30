@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+
+{% include head.html %}
+
+<body id="{{ page.id }}" class="{{ page.class }} detail">
+  {% include sidebar.html %}
+  <main class="container">
+    {% include search.html %}
+    {% include anchor_headings.html html=content beforeHeading=true h_max=3 %}
+  </main>
+
+  {% include footer.html %}
+  {% include banner.html %}
+  {% include scripts.html %}
+</body>
+</html>

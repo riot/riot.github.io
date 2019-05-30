@@ -1,0 +1,33 @@
+.note {
+  padding: 1.2rem;
+  font-size: 1.6em;
+  border-radius: $border-radius;
+  margin: 1.2rem 0 2.4rem;
+  font-weight: 500;
+
+  .emoji {
+    transform: translate(0, 0.3rem);
+  }
+
+  &.note--warning {
+    border: 0.02rem solid $yellow;
+    background: lighten($yellow, 45%);
+    color: darken($yellow, 25%);
+
+    @include at-root('body.dark') {
+      background: darken($yellow, 50%);
+      color: darken($yellow, 5%);
+    }
+  }
+
+  &.note--info {
+    border: 0.02rem solid lighten($blue, 20%);
+    background: lighten($blue, 48%);
+    color: darken($blue, 15%);
+
+     @include at-root('body.dark') {
+      background: darken($blue, 50%);
+      color: darken($blue, 10%);
+    }
+  }
+}

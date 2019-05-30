@@ -1,0 +1,32 @@
+.container {
+  padding: 0 3.2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: $container-max-width;
+
+  @include mq($until: 'mobile') {
+    width: 100%;
+    padding: 0 1.6rem;
+  }
+
+  @at-root .detail {
+    .container {
+      @include mq($from: 'mobile') {
+        max-width: $container-max-width + $sidebar-width;
+        padding-left: $sidebar-width + 3.2rem;
+      }
+    }
+  }
+
+  @at-root .not-found {
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+  }
+}

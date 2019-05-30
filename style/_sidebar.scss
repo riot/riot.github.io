@@ -1,0 +1,88 @@
+.sidebar {
+  padding: 0 1.6rem;
+  background: $white;
+  border-right: 1px solid $paper-white;
+
+
+  @include at-root('body.dark') {
+    background: $carbon-black;
+    border-right: 1px solid $light-carbon-grey;
+  }
+
+  @include mq($from: 'mobile') {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: $sidebar-width;
+    height: 100vh;
+    overflow: auto;
+    padding-bottom: 8rem;
+  }
+
+  .toc {
+    @include mq($from: 'mobile') {
+      padding-bottom: 12rem;
+    }
+  }
+
+
+  .logo {
+    padding: 1.6rem 0 0;
+    display: inline-block;
+    width: 12rem;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  h2 {
+    font-size: ms(0.6);
+    padding-top: 0;
+    margin-bottom: 0;
+  }
+
+  .main-menu {
+    ul {
+      li {
+        a {
+          &.active {
+            color: $primary;
+            font-weight: bold;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    font-size: 1.6rem;
+    padding: 0.6rem 0;
+
+
+    li {
+      ul > li {
+        padding-left: 1.6rem;
+      }
+
+      a {
+        display: inline-block;
+        width: 100%;
+        padding: 0.2rem 0;
+        color: $dark-grey;
+
+        @include at-root('body.dark') {
+          color: lighten($carbon-black, 75%);
+        }
+
+        &:focus, &:active, &:hover, &.active {
+          color: $primary;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

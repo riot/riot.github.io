@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+
+{% include head.html %}
+
+<body id="{{ page.id }}" class="{{ page.class }}">
+  {% include theme_switcher.html %}
+  <main class="container">
+    {% include hero.html %}
+    {{ content }}
+  </main>
+  {% include footer.html %}
+  {% include banner.html %}
+  {% include scripts.html %}
+</body>
+</html>

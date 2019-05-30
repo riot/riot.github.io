@@ -1,0 +1,8 @@
+// Returns E^x, where x is the argument, and E is Euler's constant, the base of the natural logarithms.
+// @param {Number} $x
+// @example
+//     exp(1)  // 2.71828
+//     exp(-1) // 0.36788
+@function exp ($x) {
+    @return pow($E, $x);
+}

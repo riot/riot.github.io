@@ -1,82 +1,82 @@
+.footer {
+  margin: 4rem 0 0;
+  border-top: 0.1rem solid $paper-white;
 
-// structural hierarchy of the site.
-
-
-#footer {
-  margin-top: 5em;
-  background-color: $footer-background;
-  padding: 2em 0;
-
-  img.logo {
-    width: 80px;
-    display: block;
+  @include at-root('body.dark') {
+    border-top-color: $light-carbon-grey;
   }
 
-  nav {
-    margin: .6em 1em 0 .3em;
-    width: 6em;
-    float: left;
+  @include mq($from: 'mobile') {
+    padding: 1.2rem 0 1.2rem;
+  }
 
-    @media (max-width: $small-break-point) {
-      margin-top: 1.2rem;
-      width: 100%;
+  @include mq($until: 'mobile') {
+    padding: 0.6rem 0 1.2rem;
+  }
+
+  .logo {
+    display: flex;
+    margin-bottom: 1.2rem;
+
+    img {
+      width: 12rem;
     }
+  }
 
-    &.extra {
-      width: 8rem;
-      margin: .6em 0 0 .3em;
-      float: right;
+  .menu, .extra {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
 
-      a {
-        text-align: right;
-      }
-
-      @media (max-width: $small-break-point) {
-        float: left;
-        width: auto;
-
+      li {
         a {
-          text-align: left;
+          display: inline-block;
+          font-size: ms(0.4)
         }
       }
     }
+  }
 
-    a {
-      display: block;
-      margin-bottom: .3em;
-      font-size: 85%;
-      color: $footer-color;
-      white-space: nowrap;
+  .menu {
+    margin-top: 1.6rem;
 
-      span {
-        background-color: $footer-color;
-        color: #454545;
-        border-radius: 2px;
-        display: inline-block;
-        width: 30px;
-        text-align: center;
-        margin-right: 3px;
+    ul {
+      li {
+        a {
+          padding: 0.4rem 0;
+
+          &.active {
+            font-weight: bold;
+          }
+        }
       }
     }
   }
 
-  .current {
-    text-decoration: underline;
-    cursor: default;
+  .extra {
+    display: flex;
+    margin-top: 1.6rem;
+
+    @include mq($from: 'mobile') {
+      justify-content: flex-end;
+      text-align: right;
+    }
+
+    @include mq($until: 'mobile') {
+      padding: 0.6rem 0 1.2rem;
+    }
   }
 
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
+  .copy {
+    margin-top: 1.2rem;
+    color: $light-grey;
 
-// slogan of the day
-#slogan {
-  float: right;
-  color: $footer-color;
-  font-size: 300%;
-  font-family: garamond;
-  margin-top: -1rem;
+    small {
+      font-size: 1.2em;
+    }
+  }
 }

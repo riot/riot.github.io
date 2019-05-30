@@ -1,0 +1,9 @@
+<ul>
+  {% for entry in site.data.navigation %}
+    <li>
+      <a href="{{ entry.path | prepend:site.baseurl }}" {% if page.url contains entry.path %}class="active"{%endif%}>
+        {{ entry.label }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,55 @@
+.search {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: white;
+  padding: 1.6rem 0 1.2rem;
+  font-size: ms(0.4);
+  justify-content: stretch;
+  font-weight: bold;
+  z-index: 1;
+  border-bottom: 1px solid $paper-white;
+
+  @include at-root('body.dark') {
+    background: $carbon-black;
+    border-bottom: 1px solid $light-carbon-grey;
+  }
+
+  .label {
+    display: inline-block;
+    margin-bottom: 0.4rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.6rem;
+    border: none;
+    -webkit-appearance: textfield;
+    background: lighten($carbon-black, 90%);
+
+    @include at-root('body.dark') {
+      color: $white;
+      background: lighten($carbon-black, 4%);
+    }
+  }
+
+  .algolia-autocomplete {
+    width: 100%;
+  }
+}
+
+.ds-dropdown-menu {
+  .algolia-docsearch-suggestion--category-header {
+    padding: 1.2rem;
+  }
+
+  /* Main category headers */
+  .algolia-docsearch-suggestion--category-header {
+    background-color: $paper-white;
+  }
+  /* Highlighted search terms */
+  .algolia-docsearch-suggestion--highlight {
+    color: $primary;
+  }
+}

@@ -1,16 +1,29 @@
 ---
 # global style
 ---
-
-// styling based on github.com/poole/poole
+// variables
 @import "vars";
-@import "base";
-@import "type";
+@import "utils";
 
-@import "syntax";
-@import "code";
-@import "widgets";
+// vendor
 
-@import "header";
+@import "vendor/modularscale";
+@import "vendor/mq";
+@import "vendor/raster";
+@import "vendor/mathsass/math";
+// general stuff
+@import "reset";
+@import "typography";
+@import "main";
+
+// components
 @import "footer";
-
+@import "theme-switcher";
+@import "pong";
+@import "banner";
+@import "highlight";
+@import "libraries-comparison";
+@import "hero";
+@import "note";
+@import "sidebar";
+@import "search";

@@ -1,202 +1,185 @@
 ---
-layout: default
+layout: home
 title: Riot.js — Simple and elegant component-based UI library
-description: Riot lets you build user interfaces with custom tags using simple and enjoyable syntax. It uses a virtual DOM similar to React but faster. Riot is very tiny compared to industry standards. We think there is a clear need for another UI library.
+description: Riot.js lets you build user interfaces with custom tags using simple and enjoyable syntax.
 ---
 
-<div id="hero">
-  <img src="/img/logo/riot240x.png">
-  <h1>Simple and elegant component-based UI library</h1>
-  <h4>Custom tags • Enjoyable syntax • Elegant API • Tiny size</h4>
+## Why do we need a new UI library?
 
-  <div id="version-slurp">
-    <a href="/download/" class="tag blue">v{{ site.version }}</a> &mdash;
-    <a href="/release-notes/">{{ site.version_slurp }}&hellip;</a>
-  </div>
-
-</div>
-
-
-# Why do we need a new UI library?
-
-The frontend space is indeed crowded, but we honestly feel the solution is still "out there". We believe Riot offers the right balance for solving the great puzzle. While React seems to do it, they have serious weak points that Riot will solve.
+The frontend space is indeed crowded, but we honestly feel the solution is still "out there". We believe Riot.js offers the right balance for solving the great puzzle.
 
 So — here's why we need one:
 
 
-## 1. Custom tags
+### 1. Custom elements
 
-Riot brings custom tags to all browsers.
+Riot.js brings custom elements to all modern browsers without the use of any polyfill!
 
 ``` html
 <todo>
-
   <!-- layout -->
-  <h3>{ opts.title }</h3>
+  <h1>{ props.title }</h1>
 
   <ul>
-    <li each={ item, i in items }>{ item }</li>
+    <li each={ item in state.items }>{ item }</li>
   </ul>
 
   <form onsubmit={ add }>
-    <input ref="input">
-    <button>Add #{ items.length + 1 }</button>
+    <input name="todo">
+    <button>Add #{ state.items.length + 1 }</button>
   </form>
 
   <!-- style -->
   <style>
-    h3 {
-      font-size: 14px;
+    :host {
+      padding: 16px;
     }
   </style>
 
   <!-- logic -->
   <script>
-    this.items = []
+    export default {
+      state: {
+        items: []
+      },
+      add(e) {
+        e.preventDefault()
+        const input = e.target.todo
 
-    add(e) {
-      e.preventDefault()
-      var input = this.refs.input
-      this.items.push(input.value)
-      input.value = ''
+        this.state.items.push(input.value)
+        this.update()
+
+        input.value = ''
+      }
     }
   </script>
-
 </todo>
 ```
 
-A custom tag glues relevant HTML and JavaScript together forming a reusable component. Think React + Polymer but with enjoyable syntax and a small learning curve.
+A custom element glues relevant HTML and javascript together forming a reusable component. Think React + Polymer but with enjoyable syntax and a small learning curve.
 
-
-### Human-readable
+#### Human-readable
 
 Custom tags let you build complex views with HTML. Your application might look something like this:
 
 ``` html
 <body>
+  <h1>Riot.js application</h1>
 
-  <h1>Acme community</h1>
+  <my-header class="js-component"/>
 
-  <forum-header/>
+  <main>
+    <my-articles class="js-component"/>
+    <my-sidebar class="js-component"/>
+  </main>
 
-  <div class="content">
-    <forum-threads/>
-    <forum-sidebar/>
-  </div>
+  <my-footer class="js-component"/>
 
-  <forum-footer/>
-
-  <script>riot.mount('*', { api: forum_api })</script>
+  <script>
+    riot.mount('.js-component', { store: createApplicationStore() })
+  </script>
 </body>
 ```
 
 HTML syntax is the *de facto* language of the web and it's designed for building user interfaces. The syntax is explicit, nesting is inherent to the language, and attributes offer a clean way to provide options for custom tags.
 
-Riot tags are [converted](/guide/compiler/) to pure JavaScript before browsers can execute them.
+Riot.js tags are [compiled]({{ '/compiler/' | prepend:site.baseurl }}) to pure javascript before browsers can execute them.
 
 
-### DOM Expressions binding
-- Absolutely the smallest possible amount of DOM updates and reflows
+#### DOM Expressions binding
+- Absolutely the smallest possible amount of DOM updates
 - One way data flow: updates and unmounts are propagated downwards from parent to children
 - Expressions are pre-compiled and cached for high performance
 - Lifecycle events for more control
 - Server-side rendering of custom tags for universal (isomorphic) applications
 
 
-### Close to standards
+#### Close to standards
 - No proprietary event system
 - No need for external polyfills or additional libraries
 - The rendered DOM can be freely manipulated with other tools
 - No extra HTML root elements or `data-` attributes
-- Plays well with jQuery
+- Web Components like API
+- Modern modules syntax
 
 
-### Tooling friendly
-- Create tags with ES6, Typescript, CoffeeScript, Jade, LiveScript or [any pre-processor](/guide/compiler/#pre-processors) you want
-- Integrate with NPM, CommonJS, AMD, Bower or Component
-- Develop with [Gulp](https://github.com/e-jigsaw/gulp-riot), [Grunt](https://github.com/ariesjia/grunt-riot) or [Browserify](https://github.com/jhthorsen/riotify) plugins
-
+#### Tooling friendly
+- Integrate NPM ecosystem
+- Node.js [require hooks](https://github.com/riot/ssr#usage)
+- Develop with [webpack](https://github.com/riot/webpack-loader), [rollup](https://github.com/riot/rollup-plugin-riot), [parcel](https://github.com/riot/parcel-plugin-riot) or [browserify](https://github.com/riot/riotify) plugins
 
 
 ## 2. Simple and minimalistic
 
-Minimalism sets Riot apart from others:
-
+Minimalism sets Riot.js apart from others:
 
 ### 1. Enjoyable syntax
 
 One of the design goals was to introduce a powerful tag syntax with as little boilerplate as possible:
 
-- Power shortcuts: `class={ enabled: is_enabled, hidden: hasErrors() }`
-- No extra brain load such as `render`, `state`, `constructor`
-- Interpolation: `Add #{ items.length + 1 }` or `class="item { selected: flag }"`
-- The `<script>` tag to enclose the logic is optional
-- Compact ES6 method syntax
+- No extra brain load for attributes like `className`, `htmlFor`...
+- Shortcut spread operator for multiple attributes: `<p { ...attributes }></p>`
+- Expressions Interpolation: `Add #{ items.length + 1 }` or `class="item { activeClass }"`
+- `export default` statement to define the tags public interfaces
+- No side effects due to asynchronous rendering or `Proxy` objects
+- functional API over OOP class based syntax
+- Automatic CSS styling via `<style>` tag without shadow DOM hassle
 
 
 ### 2. Small learning curve
 
-Riot has between 10 and 100 times fewer API methods than other UI libraries.
+Riot.js has between 10 and 100 times fewer API methods than other UI libraries.
 
 - Less to learn. Fewer books and tutorials to view
-- Less proprietary stuff and more standard stuff
+- Only 3 template directives to learn `if`, `each` and `is`
+- Less proprietary stuff
+- No Proxies or magic happening under the hood
+- Explicit behaviors over implicit assumptions
 
 
 ### 3. Tiny size
 
-<small><em>polymer.html</em> – {{ site.polymer.size }}KB (gzip)</small>
-<span class="bar red"></span>
+{% include libraries_comparison.html %}
 
-<small><em>react.min.js</em> – {{ site.react.size }}KB (gzip)</small>
-<span class="bar red" style="width: {{ site.react.size | divided_by: site.polymer.size | times: 100 }}%"></span>
-
-<small><em>riot.min.js</em> – {{ site.size_min }}KB (gzip)</small>
-<span class="bar blue" style="width: {{ site.size_min | divided_by: site.react.size | times: 100 }}%"></span>
-
+- Only 6kb!
 - Fewer bugs
 - Faster to parse and cheaper to download
 - Embeddable. The library ought to be smaller than the application
 - Less to maintain. We don't need a big team to maintain Riot
 
 
-
 ### 4. Small, but complete
 
-Riot has all the essential building blocks for modern client-side applications:
+Riot.js has all the essential building blocks for modern client-side applications:
 
-- "Reactive" views for building user interfaces
-- Event library for building APIs with isolated modules
-- Optional Router for taking care of URL and the back button
+- Modular views for building user interfaces
+- High performance also with many DOM nodes
+- Highly extensible and not opinionated
 
-Riot is an "open stack". It's meant for developers who want to avoid framework specific idioms. The generic tools let you mix and match design patterns. Systems like Facebook Flux can be [self-made](https://github.com/jimsparkman/RiotControl).
-
-
-> [@riotjs_](https://twitter.com/riotjs_) Thanks for creating a library that allows me to make a simple SPA in plain JS without needing to download 13k NPM packages.
-[@coussej](https://twitter.com/coussej/status/763659990250946561)
-
-> Switched my site from #BackboneJS to #RiotJS. Other than compile/mount not blocking for DOM render, it's great! #JavaScript [@riotjs_](https://twitter.com/riotjs_)
-[@richardtallent](https://twitter.com/richardtallent/status/766696802066194432)
-
-> Like all people fed up with the status quo and the development of the world, I'm voting RiotJS <3 Love you baby [@plumpNation](https://twitter.com/plumpNation/status/760803974660390912)
-
-> I looked at the riot.js example, and it feels so clean, it's scary.
-[@paulbjensen](https://twitter.com/paulbjensen/status/558378720403419137)
-
-> I liked the idea of #reactjs with #flux but I like #riotjs with #riotcontrol even better!
-[@tscok](https://twitter.com/tscok/status/580509124598829056)
-
-
-> Played with riot.js and like it so much more than React. Minimalistic, fast and a comprehensible API. [@juriansluiman](https://twitter.com/juriansluiman/status/560399379035865088)
-
+Riot.js is an "open stack". It's meant for developers who want to avoid framework specific idioms. The generic tools let you mix and match design patterns you prefer most.
 
 ## Conclusion
 
-Riot is Web Components for everyone. Think React + Polymer but without the bloat. It's intuitive to use and it weighs almost nothing. And it works today. No reinventing the wheel, but rather taking the good parts of what's there and making the simplest tool possible.
+Riot.js is Web Components for everyone. Think React + Polymer but without the bloat. Its API is heavily inspired by Vue.js but it contains instead just the bare minimum to build a modern frontend project. It's intuitive to use and it weighs almost nothing. And it works today. No reinventing the wheel, but rather taking the good parts of what's there and making the simplest tool possible.
 
-We should focus on reusable components instead of templates. According to the developers of React:
+The Riot.js design was driven by [*The Zen of Python, by Tim Peters*](https://en.wikipedia.org/wiki/Zen_of_Python) philosophy, that's our mantra:
 
-> "Templates separate technologies, not concerns."
-
-By having related layout and logic together under the same component the overall system becomes cleaner. We respect React for this important insight.
-
-
+> Beautiful is better than ugly.<br/>
+> Explicit is better than implicit.<br/>
+> Simple is better than complex.<br/>
+> Complex is better than complicated.<br/>
+> Flat is better than nested.<br/>
+> Sparse is better than dense.<br/>
+> Readability counts.<br/>
+> Special cases aren't special enough to break the rules.<br/>
+> Although practicality beats purity.<br/>
+> Errors should never pass silently.<br/>
+> Unless explicitly silenced.<br/>
+> In the face of ambiguity, refuse the temptation to guess.<br/>
+> There should be one-- and preferably only one --obvious way to do it.<br/>
+> Although that way may not be obvious at first unless you're Dutch.<br/>
+> Now is better than never.<br/>
+> Although never is often better than *right* now.<br/>
+> If the implementation is hard to explain, it's a bad idea.<br/>
+> If the implementation is easy to explain, it may be a good idea.<br/>
+> Namespaces are one honking great idea -- let's do more of those!

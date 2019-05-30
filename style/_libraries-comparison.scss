@@ -1,0 +1,71 @@
+.libraries-comparison {
+  @mixin bar() {
+    &::-webkit-progress-value {
+      @content;
+    }
+
+    &::-moz-progress-bar {
+      @content;
+    }
+
+    &::-webkit-progress-bar {
+      background: $paper-white;
+
+      @include at-root('body.dark') {
+        background: $light-carbon-grey;
+      }
+    }
+  }
+
+  progress {
+    width: 100%;
+    height: 0.4rem;
+    border: none;
+    margin-top: 0.2rem;
+    color: $primary;
+
+    @include at-root('body.dark') {
+      background-color: $light-carbon-grey;
+    }
+
+
+    &[value] {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+
+    @include bar() {
+      background: $primary;
+      border-radius: 2px;
+    }
+
+    &.riot {
+      color: $green;
+
+      @include bar() {
+        background: $green;
+      }
+    }
+
+    &.preact {
+      color: $blue;
+
+      @include bar() {
+        background: $blue;
+      }
+    }
+  }
+
+  ol {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.2rem;
+      font-size: ms(0.4)
+    }
+  }
+}

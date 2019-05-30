@@ -1,10 +1,4 @@
-
-## Riot website
-
-http://riot.js.org
-
-Pull requests are welcome!
+# next
+The new Riot4 website
 
 [Running the site locally](http://jekyllrb.com/docs/quickstart/)
-
-
