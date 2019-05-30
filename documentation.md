@@ -11,13 +11,13 @@ description: Step by step starting guide
 You can install riot via npm:
 
 ```sh
-npm i -S riot@next
+npm i -S riot
 ```
 
 Or via yarn
 
 ```sh
-yarn add riot@next
+yarn add riot
 ```
 
 ### Usage
