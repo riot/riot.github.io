@@ -39,7 +39,7 @@ Once you have wired all your application bundler that's how your code might look
 </head>
 <body>
   <app></app>
-  <script src="path/to/your/main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
 ```
