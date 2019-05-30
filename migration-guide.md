@@ -6,7 +6,7 @@ description: Migration guide from Riot.js 2 and 3
 
 ## Introduction
 
-Riot.js 4 is a complete rewrite, I will provide a detailed explanation about it on Medium soon so please [let's stay in touch](https://medium.com/@gianluca.guarini){:target="_blank"}.
+Riot.js 4 is a complete rewrite, [read more about it](https://medium.com/@gianluca.guarini/every-revolution-begins-with-a-riot-js-first-6c6a4b090ee){:target="_blank"}.
 
 Migrating older applications written in Riot.js 3 is not recommended because older Riot.js versions will still get security patches and they are stable enough.
 

@@ -224,6 +224,8 @@ interface RiotCoreComponent {
   // automatically generated on any component instance
   props: object;
   root: HTMLElement;
+  name?: string;
+  slots: slot[];
   mount(
     element: HTMLElement,
     initialState?: object,
@@ -416,6 +418,38 @@ If you want to avoid registering global Riot.js components you can map your chil
       components: {
         MyChild,
         'aliased-name': User
+      }
+    }
+  </script>
+</my-component>
+```
+
+The `components` property should be a static attribute of your component export. If you export functions your components should be declared as follows:
+
+```html
+<my-component>
+  <button>{ state.message }</button>
+
+  <script>
+    import MyChild from './my-child.riot'
+    import User from './user.riot'
+
+    // static property
+    MyComponent.components = {
+      MyChild,
+      'aliased-name': User
+    }
+
+    export default function MyComponent() {
+      // remember to return an object
+      return {
+        // the initial state will be always fresh created avoiding surprises
+        state: {
+          nested: {
+            properties: 'are ok now'
+          },
+          message: 'hi'
+        }
       }
     }
   </script>
