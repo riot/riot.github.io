@@ -16,33 +16,39 @@ RiotのコンパイラはriotタグをJavaScriptモジュールにトランス�
 
 ```js
 export default {
-  css: `my-tag { color: red; }`, // コンポーネントcss文字列
-  template: function() {}, // 内部のRiotテンプレートファクトリ関数
+  css: `my-tag { color: red; }`, // コンポーネントのcss文字列
+  template: function() {}, // 内部Riotテンプレートファクトリ関数
   exports: {}, // コンポーネントイベントとライフサイクルメソッド
   name: 'my-tag' // コンポーネントID
 }
 ```
 
 **Each tag file must contain only one tag definition**.
-**各タグファイルで定義できるタグは、１つだけでなければなりません(MUST)**
+
+**ひとつのタグファイルに含められるタグ定義は、ひとつだけです**
 
 ## In-browser compilation
+## インブラウザ・コンパイル
 
 The `riot+compiler.js` bundle lets you compile and execute riot tags directly in your browser for quick prototypes and tests.
 You can load riot tags into your browser by setting a `type="riot"` attribute on your script tags.
 For example:
 
+`riot+compiler.js`によるパンドルは、素早くひな型を作ってテストできるよう、ブラウザでタグを直接コンパイルし、実行する機能を提供しています。
+`<script>`タグの属性に`type="riot"`を指定することで、Riotタグをブラウザにロードすることが可能です。
+例）：
+
 ``` html
-<!-- mount point -->
+<!-- マウント位置 -->
 <my-tag></my-tag>
 
-<!-- <my-tag/> is specified in an external file -->
+<!-- <my-tag/> は外部ファイルで指定されています -->
 <script src="path/to/javascript/my-tag.riot" type="riot"></script>
 
-<!-- include riot.js and the compiler -->
+<!-- riot.jsとコンパイラを含める -->
 <script src="https://unpkg.com/riot@{{ site.data.globals.version }}/riot+compiler.min.js"></script>
 
-<!-- compile and mount -->
+<!-- コンパイルとマウント -->
 <script>
 (async function main() {
   await riot.compile()
