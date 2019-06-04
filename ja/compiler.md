@@ -25,7 +25,7 @@ export default {
 
 **Each tag file must contain only one tag definition**.
 
-**ひとつのタグファイルに含められるタグ定義は、ひとつだけです**
+**ひとつのタグファイルに含められるタグ定義は、ひとつだけです。**
 
 ## In-browser compilation
 ## インブラウザ・コンパイル
@@ -34,7 +34,7 @@ The `riot+compiler.js` bundle lets you compile and execute riot tags directly in
 You can load riot tags into your browser by setting a `type="riot"` attribute on your script tags.
 For example:
 
-`riot+compiler.js`によるパンドルは、素早くひな型を作ってテストできるよう、ブラウザでタグを直接コンパイルし、実行する機能を提供しています。
+`riot+compiler.js`によるバンドルは、素早くひな型を作ってテストできるよう、ブラウザでタグを直接コンパイルし、実行する機能を提供しています。
 以下のように、`<script>`タグの属性に`type="riot"`を指定することで、Riotタグをブラウザにロードすることが可能です：
 
 ``` html
@@ -66,6 +66,8 @@ Riot can compile asynchronously all the external tags included via `<script>` in
 Riotは`<script>`タグを通じて全ての外部タグを非同期にDOMにインクルードすることができ、`riot.mount`を通じてレンダリングすることが可能です。
 
 You might prefer using `data-src` instead of `src` on your `<script>` tags stop your browser prefetching automatically any riot script tag in order to avoid to load the same resources twice. Riot will automatically fetch and compile your tags via ajax.
+
+ブラウザによるRiotスクリプトのプリフェッチ機能を抑止して、同じリソースを複数回読み込むことを防ぐため、`<script>`タグの`src`属性の代わりに`data-src`属性を使いたい場合があるかも知れません。Riotは自動的にajaxを用いて、タグをフェッチしてコンパイルします。
 
 ## Pre-compilation
 
