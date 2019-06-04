@@ -35,8 +35,7 @@ You can load riot tags into your browser by setting a `type="riot"` attribute on
 For example:
 
 `riot+compiler.js`によるパンドルは、素早くひな型を作ってテストできるよう、ブラウザでタグを直接コンパイルし、実行する機能を提供しています。
-`<script>`タグの属性に`type="riot"`を指定することで、Riotタグをブラウザにロードすることが可能です。
-例）：
+以下のように、`<script>`タグの属性に`type="riot"`を指定することで、Riotタグをブラウザにロードすることが可能です：
 
 ``` html
 <!-- マウント位置 -->
@@ -60,7 +59,11 @@ For example:
 
 Notice that in this case riot will internally transform all the `export default` expressions to enable a better support for browsers that don't support javascript modules yet.
 
+この場合、Riotは内部的に、全ての`export default`式を、JavaScriptモジュールではなく、よりブラウザ表示に適した形に変換することに注意してください。
+
 Riot can compile asynchronously all the external tags included via `<script>` into the DOM and via `riot.mount` it will render them.
+
+Riotは`<script>`タグを通じて全ての外部タグを非同期にDOMにインクルードすることができ、`riot.mount`を通じてレンダリングすることが可能です。
 
 You might prefer using `data-src` instead of `src` on your `<script>` tags stop your browser prefetching automatically any riot script tag in order to avoid to load the same resources twice. Riot will automatically fetch and compile your tags via ajax.
 
