@@ -95,7 +95,7 @@ Tools like [`webpack`](https://webpack.js.org/) and [`rollup`](https://rollupjs.
 For such tools we provide riot official loaders to let import natively riot components into your source code:
 
 [`webpack`](https://webpack.js.org/)や[`rollup`](https://rollupjs.org/)といったツールが、Riotタグのバンドルに完全対応しています。
-以下のようなツールでRiotタグをそのままインポートできるよう、公式Riotローダーを提供しています：
+私達はRiotタグをそのままインポートできる、公式Riotローダーを提供しています：
   - [webpack](https://github.com/riot/webpack-loader)
   - [rollup](https://github.com/riot/rollup-plugin-riot)
   - [parcel](https://github.com/riot/parcel-plugin-riot)
