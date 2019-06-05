@@ -70,16 +70,26 @@ You might prefer using `data-src` instead of `src` on your `<script>` tags stop 
 ブラウザによるRiotスクリプトのプリフェッチ機能を抑止して、同じリソースを複数回読み込むことを防ぐため、`<script>`タグの`src`属性の代わりに`data-src`属性を使いたい場合があるかも知れません。Riotは自動的にajaxを用いて、タグをフェッチしてコンパイルします。
 
 ## Pre-compilation
+## プリコンパイル
 
 The Compilation phase is asynchronous and it will not block your application rendering. However you should use the browser compilation only for prototyping or for quick experiments.
 
+コンパイルは非同期に行われ、描画処理をブロックしません。しかし、インブラウザ・コンパイルはひな型作成と簡単な確認のためだけに使うべきです。
+
 Pre-compilation on gives you following benefits:
+
+プリコンパイルを行うと、次のような恩恵を受けられます：
 
 - Ability to compile tags with your [favorite pre-processor](#pre-processors).
 - Big performance benefit. No need to load and execute the compiler on browser.
 - Sourcemaps support for debugging.
 
+- [お好みのプリプロセッサ](#pre-processors)でコンパイルできる。
+- 高いパフォーマンス。ブラウザでのロードとコンパイラの実行を待つ必要がない。
+- ソースマップ出力でデバッグが楽に。
+
 ### Riot loaders
+### Riotローダー
 
 Tools like [`webpack`](https://webpack.js.org/) and [`rollup`](https://rollupjs.org/) are the perfect match to bundle your riot application tags.
 For such tools we provide riot official loaders to let import natively riot components into your source code:
