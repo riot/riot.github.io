@@ -94,8 +94,8 @@ Pre-compilation on gives you following benefits:
 Tools like [`webpack`](https://webpack.js.org/) and [`rollup`](https://rollupjs.org/) are the perfect match to bundle your riot application tags.
 For such tools we provide riot official loaders to let import natively riot components into your source code:
 
-[`webpack`](https://webpack.js.org/)や[`rollup`](https://rollupjs.org/)といったツールが、Riotタグのバンドルに完全対応しています。
-私達はRiotタグをそのままインポートできる、公式Riotローダーを提供しています：
+[`webpack`](https://webpack.js.org/)や[`rollup`](https://rollupjs.org/)といったツールは、Riotタグのバンドルに最適です。
+私達が提供しているこれらのRiot公式ローダーで、Riotタグをあなたのソースコードにそのままインポートできます：
   - [webpack](https://github.com/riot/webpack-loader)
   - [rollup](https://github.com/riot/rollup-plugin-riot)
   - [parcel](https://github.com/riot/parcel-plugin-riot)
@@ -114,18 +114,19 @@ component(MyTag)(document.getElementById('root'))
 ```
 
 ### Compilation via Node
+### Node.jsからのコンパイル
 
 ``` javascript
 import {compile} from '@riotjs/compiler'
 
 const { code, map } = compile('<p>{hello}</p>', {
-  //...options
+  //...オプションの定義
   file: 'my/path/to/my-component.riot',
-  // transform the `:host` css rules
+  // cssの `:host` を変換する
   scopedCss: true,
-  // expressions delimiters
+  // 式のデリミタ
   brackets: ['{', '}'],
-  // keep HTML comments
+  // HTMLのコメントを残すか
   comments: false
 })
 ```
@@ -133,37 +134,49 @@ const { code, map } = compile('<p>{hello}</p>', {
 The compile function takes a string and returns an object containing the `code` and `map` keys.
 You can handle the code generated however you like and use it into your build system.
 
+`compile()`関数は、引数として文字列を取り、`code`と`map`をキーに持つオブジェクトを返します。
+生成されたコードをご自分で好きなように扱うこともできますし、お使いのビルドシステムで使用することもできます。
+
 Remember that the riot compiler outputs javascript modules and you might want to transpile them in your bundle.
 
+Riotコンパイラは、JavaScriptモジュールを出力することにご注意ください。バンドルにはトランスパイルしたコードを含めたほうがいいでしょう。
 
 ### Compilation via Riot.js CLI
+### Riot.js CLIツールによるコンパイル
 
 You can precompile Riot.js files also via the [`riot`](https://github.com/riot/cli) executable, which can be installed with NPM as follows:
+
+Riot.jsを[`riot`](https://github.com/riot/cli)実行コマンドを通してプリコンパイルすることもできます。こちらは以下のように、NPMからインストールできます：
 
 ```sh
 npm install @riotjs/cli -g
 ```
 
 #### Using
+#### 使い方
 
 Here is how `riot` command works:
 
+`riot`コマンドの動作例をご紹介します：
+
 ```sh
-# compile a file to current folder
+# カレントフォルダに、単体のファイルをコンパイル
 riot some.riot
 
-# compile file to target folder
+# ファイルをコンパイルして、指定したフォルダに出力
 riot some.riot --output some-folder
 
-# compile file to target path
+# ファイルをコンパイルして、指定したパスに出力
 riot some.riot --output some-folder/some.js
 
-# compile all files from source folder to target folder
+# ソースフォルダにある全てのファイルをコンパイルして、指定したフォルダに出力
 riot some/folder --output path/to/dist
 
 ```
 
 For more information, type: `riot --help`
+
+より詳しい情報は`riot --help`をタイプしてください。
 
 #### Watch mode
 
