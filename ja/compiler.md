@@ -3,12 +3,7 @@ layout: detail
 title: コンパイラ
 ---
 
-## Introduction
 ## 概要
-
-Custom tags need to be transformed to javascript before the browser can execute them.
-The riot compiler is designed to transpile riot tags into javascript modules.
-A compiled riot tag will look like this:
 
 カスタムタグはブラウザで実行される前にJavaScriptに変換される必要があります。
 RiotのコンパイラはriotタグをJavaScriptモジュールにトランスパイルするよう設計されています。
@@ -23,16 +18,9 @@ export default {
 }
 ```
 
-**Each tag file must contain only one tag definition**.
+**ひとつのタグファイルに含まれるタグ定義は、ひとつだけです。**
 
-**ひとつのタグファイルに含められるタグ定義は、ひとつだけです。**
-
-## In-browser compilation
 ## インブラウザ・コンパイル
-
-The `riot+compiler.js` bundle lets you compile and execute riot tags directly in your browser for quick prototypes and tests.
-You can load riot tags into your browser by setting a `type="riot"` attribute on your script tags.
-For example:
 
 `riot+compiler.js`によるバンドルは、素早くひな型を作ってテストできるよう、ブラウザでタグを直接コンパイルし、実行する機能を提供しています。
 以下のように、`<script>`タグの属性に`type="riot"`を指定することで、Riotタグをブラウザにロードすることが可能です：
@@ -57,19 +45,12 @@ For example:
 </script>
 ```
 
-Notice that in this case riot will internally transform all the `export default` expressions to enable a better support for browsers that don't support javascript modules yet.
+この場合、Riotは全ての`export default`式を内部的に、ブラウザ表示に適した形に変換しますが、まだJavaScriptモジュールをサポートしていないことに注意してください。
 
-この場合、Riotは内部的に、全ての`export default`式を、JavaScriptモジュールではなく、よりブラウザ表示に適した形に変換することに注意してください。
+Riotは、`<script>`を通じてDOMにインクルードされた全ての外部タグを非同期にコンパイルし、`riot.mount`でそれらを描画することが可能です。
 
-Riot can compile asynchronously all the external tags included via `<script>` into the DOM and via `riot.mount` it will render them.
+ブラウザによるRiotスクリプトタグのプリフェッチ機能を抑止し、同じリソースを複数回ロードすることを防ぐため、`<script>`タグの`src`属性の代わりに`data-src`属性を使いたい場合があるかも知れません。Riotは自動的に、ajaxによってタグをフェッチしてコンパイルします。
 
-Riotは`<script>`タグを通じて全ての外部タグを非同期にDOMにインクルードすることができ、`riot.mount`を通じてレンダリングすることが可能です。
-
-You might prefer using `data-src` instead of `src` on your `<script>` tags stop your browser prefetching automatically any riot script tag in order to avoid to load the same resources twice. Riot will automatically fetch and compile your tags via ajax.
-
-ブラウザによるRiotスクリプトのプリフェッチ機能を抑止して、同じリソースを複数回読み込むことを防ぐため、`<script>`タグの`src`属性の代わりに`data-src`属性を使いたい場合があるかも知れません。Riotは自動的にajaxを用いて、タグをフェッチしてコンパイルします。
-
-## Pre-compilation
 ## プリコンパイル
 
 The Compilation phase is asynchronous and it will not block your application rendering. However you should use the browser compilation only for prototyping or for quick experiments.
