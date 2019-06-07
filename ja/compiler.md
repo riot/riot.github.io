@@ -1,6 +1,6 @@
 ---
 layout: detail
-title: コンパイラ
+title: Compiler
 ---
 
 ## 概要
@@ -127,8 +127,6 @@ riot some.riot --output some-folder/some.js
 riot some/folder --output path/to/dist
 
 ```
-
-For more information, type: `riot --help`
 
 より詳しい情報を見るには、`riot --help`をタイプしてください。
 
