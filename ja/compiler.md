@@ -53,39 +53,24 @@ Riotは、`<script>`を通じてDOMにインクルードされた全ての外部
 
 ## プリコンパイル
 
-The Compilation phase is asynchronous and it will not block your application rendering. However you should use the browser compilation only for prototyping or for quick experiments.
-
-コンパイルは非同期に行われ、描画処理をブロックしません。しかし、インブラウザ・コンパイルはひな型作成と簡単な確認のためだけに使うべきです。
-
-Pre-compilation on gives you following benefits:
+上記のコンパイル処理は非同期に行われ、アプリケーションの描画処理をブロックしません。しかし、インブラウザ・コンパイルはひな型作成や簡単な確認のためだけに使うべきです。
 
 プリコンパイルを行うと、次のような恩恵を受けられます：
 
-- Ability to compile tags with your [favorite pre-processor](#pre-processors).
-- Big performance benefit. No need to load and execute the compiler on browser.
-- Sourcemaps support for debugging.
+- [お好みのプリプロセッサ](#pre-processors)でタグをコンパイル。
+- 高いパフォーマンスを得られる。ロードやブラウザによるコンパイラ実行が不要。
+- ソースマップ出力でデバッグをサポート。
 
-- [お好みのプリプロセッサ](#pre-processors)でコンパイルできる。
-- 高いパフォーマンス。ブラウザでのロードとコンパイラの実行を待つ必要がない。
-- ソースマップ出力でデバッグが楽に。
-
-### Riot loaders
 ### Riotローダー
 
-Tools like [`webpack`](https://webpack.js.org/) and [`rollup`](https://rollupjs.org/) are the perfect match to bundle your riot application tags.
-For such tools we provide riot official loaders to let import natively riot components into your source code:
-
-[`webpack`](https://webpack.js.org/)や[`rollup`](https://rollupjs.org/)といったツールは、Riotタグのバンドルに最適です。
-私達が提供しているこれらのRiot公式ローダーで、Riotタグをあなたのソースコードにそのままインポートできます：
+[`webpack`](https://webpack.js.org/)や[`rollup`](https://rollupjs.org/)といったツールは、Riotアプリケーションのタグをバンドルするのに最適です。
+そのようなツールに向けて、Riotコンポーネントをあなたのソースコードにそのままインポートするための、Riot公式ローダーを提供しています：
   - [webpack](https://github.com/riot/webpack-loader)
   - [rollup](https://github.com/riot/rollup-plugin-riot)
   - [parcel](https://github.com/riot/parcel-plugin-riot)
   - [riotify](https://github.com/riot/riotify)
 
-
-With the riot loaders your application entry script might look like this:
-
-Riotローダーを使ったアプリケーションのエントリーポイントは、例えばこのようなスクリプトになります：
+Riotローダーを使ったアプリケーションのエントリースクリプトは、おそらくこのようになるでしょう：
 
 ```js
 import { component } from 'riot'
@@ -94,49 +79,37 @@ import MyTag from './path/to/tags/my-tag.riot'
 component(MyTag)(document.getElementById('root'))
 ```
 
-### Compilation via Node
-### Node.jsからのコンパイル
+### Nodeによるコンパイル
 
 ``` javascript
 import {compile} from '@riotjs/compiler'
 
 const { code, map } = compile('<p>{hello}</p>', {
-  //...オプションの定義
+  // 以下、オプション定義
   file: 'my/path/to/my-component.riot',
-  // cssの `:host` を変換する
+  // cssの `:host` を変換するか
   scopedCss: true,
-  // 式のデリミタ
+  // （テンプレート構文の）式のデリミタ
   brackets: ['{', '}'],
   // HTMLのコメントを残すか
   comments: false
 })
 ```
 
-The compile function takes a string and returns an object containing the `code` and `map` keys.
-You can handle the code generated however you like and use it into your build system.
-
 `compile()`関数は、引数として文字列を取り、`code`と`map`をキーに持つオブジェクトを返します。
-生成されたコードをご自分で好きなように扱うこともできますし、お使いのビルドシステムで使用することもできます。
+生成されたコードは、ご自身で好きなように扱うこともできますし、お使いのビルドシステムで使用することもできます。
 
-Remember that the riot compiler outputs javascript modules and you might want to transpile them in your bundle.
+Riotコンパイラは、JavaScriptモジュールを出力することにご留意ください。バンドルには、これら（訳注：出力されたモジュール）をトランスパイルしたほうがいいでしょう。
 
-Riotコンパイラは、JavaScriptモジュールを出力することにご注意ください。バンドルにはトランスパイルしたコードを含めたほうがいいでしょう。
-
-### Compilation via Riot.js CLI
 ### Riot.js CLIツールによるコンパイル
 
-You can precompile Riot.js files also via the [`riot`](https://github.com/riot/cli) executable, which can be installed with NPM as follows:
-
-Riot.jsを[`riot`](https://github.com/riot/cli)実行コマンドを通してプリコンパイルすることもできます。こちらは以下のように、NPMからインストールできます：
+Riot.jsファイルを、[`riot`](https://github.com/riot/cli)実行コマンドを使ってプリコンパイルすることもできます。こちらは以下のように、NPMでインストールできます：
 
 ```sh
 npm install @riotjs/cli -g
 ```
 
-#### Using
 #### 使い方
-
-Here is how `riot` command works:
 
 `riot`コマンドの動作例をご紹介します：
 
@@ -157,7 +130,7 @@ riot some/folder --output path/to/dist
 
 For more information, type: `riot --help`
 
-より詳しい情報は`riot --help`をタイプしてください。
+より詳しい情報を見るには、`riot --help`をタイプしてください。
 
 #### Watch mode
 
