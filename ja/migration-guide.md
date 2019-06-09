@@ -454,22 +454,22 @@ riot.install(function(component) {
 `<virtual>` タグは削除され、使用できなくなりました。`each` と` if` ディレクティブには、代わりに `<template>` タグを使う予定ですが、今のところ Riot.js 4 の API には含まれていません。
 
 
-### Yield tags
+### Yield タグ
 
-The `<yield>` tags were replaced by the `<slot>`s having a more predictable behavior. Plese check the [slots api]({{ '/ja/api/'|prepend:site.baseurl }}#スロット) to understand how they work.
+`<yield>` タグは、より予測可能な動作を持つ `<slot>`s に置き換えられました。どのように動くのかを理解するために[スロット API]({{ '/ja/api/'|prepend:site.baseurl }}#スロット) を確認してください。
 
 
 <aside class="note note--warning">:warning:
-The <code>yield</code> tags expressions were previously evaluated in the context where they were injected. The <code>slot</code>s expressions instead will be evaluated using the current context in wich they will be used.
+<code>yield</code> タグの式は、それらが注入されたコンテキストにおいて前もって評価されていました。代わりに、<code>slot</code>s 式は彼らが利用される現在のコンテキストを使用して評価されます。
 </aside>
 
 ## CLI
 
-The new CLI is much more powerful than the older one since it can compile single tags but it can also bundle your [entire Riot.js application]({{ '/ja/compiler/'|prepend:site.baseurl }}#アプリケーション全体のビルド).
+新しい CLI は、単一のタグをコンパイルできるだけでなく、[Riot.js アプリケーション全体]({{ '/ja/compiler/'|prepend:site    .baseurl }}#アプリケーション全体のビルド)をバンドルすることもできるので、以前のCLIよりはるかに強力です。
 
-It's designed to simplify the components bundling for quick prototypes and demos however for bigger application it's recommended the use of highly customizable javascript bundlers together with [riot loaders]({{ '/ja/compiler/'|prepend:site.baseurl }}#riot-loaders)
+迅速なプロトタイプやデモのためにコンポーネントのバンドルを簡略化するように設計されていますが、より大きなアプリケーションのために、高度にカスタマイズ可能な javascript のバンドラを [riot ローダー]({{ '/ja/compiler/'|prepend:site.baseurl }}#riotのローダー)と一緒に使用することをお勧めします。
 
-### Installation
+### インストール
 
 In Riot.js v3 it was possible to install the CLI via `npm i -g riot`. In Riot.js 4 it was removed from the `riot` npm package and you will need to install it separately via `npm i -g @riotjs/cli`.
 
