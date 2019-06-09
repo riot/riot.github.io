@@ -456,11 +456,11 @@ The `<virtual>` tag was removed and it can't be used anymore. I am planning to u
 
 ### Yield tags
 
-The `<yield>` tags were replaced by the `<slot>`s having a more predictable behavior. Plese check the [slots api]({{ '/api/'|prepend:site.baseurl }}#slots) to understand how they work.
+The `<yield>` tags were replaced by the `<slot>`s having a more predictable behavior. Please check the [slots api]({{ '/api/'|prepend:site.baseurl }}#slots) to understand how they work.
 
 
 <aside class="note note--warning">:warning:
-The <code>yield</code> tags expressions were previously evaluated in the context where they were injected. The <code>slot</code>s expressions instead will be evaluated using the current context in wich they will be used.
+The <code>yield</code> tags expressions were previously evaluated in the context where they were injected. The <code>slot</code>s expressions instead will be evaluated using the current context in which they will be used.
 </aside>
 
 ## CLI

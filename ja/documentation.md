@@ -1,6 +1,7 @@
 ---
-layout: detail
 title: Documentation
+layout: detail
+description: Step by step starting guide
 ---
 
 ## Basis
@@ -22,7 +23,7 @@ yarn add riot
 ### Usage
 
 You can bundle your Riot.js application via [webpack](https://github.com/riot/webpack-loader), [rollup](https://github.com/riot/rollup-plugin-riot), [parcel](https://github.com/riot/parcel-plugin-riot) or [browserify](https://github.com/riot/riotify).
-Riot tags can be compiled also in directly [in your browser](compiler/#in-browser-compilation) for quick prototypes or tests.
+Riot tags can be compiled also in directly [in your browser]({{ '/compiler/#in-browser-compilation' | prepend:site.baseurl }}) for quick prototypes or tests.
 
 ### Quick Start
 
@@ -38,7 +39,7 @@ Once you have wired all your application bundler that's how your code might look
 </head>
 <body>
   <app></app>
-  <script src="path/to/your/main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
 ```
@@ -78,14 +79,14 @@ Riot custom components are the building blocks for user interfaces. They make th
         <input
           type="checkbox"
           checked={ item.done }
-          onclick={ () => toggle(item) }>
+          onclick={ () => toggle(item) } />
         { item.title }
       </label>
     </li>
   </ul>
 
   <form onsubmit={ add }>
-    <input onkeyup={ edit }>
+    <input onkeyup={ edit } />
     <button disabled={ !state.text }>
       Add #{ state.items.length + 1 }
     </button>
@@ -130,7 +131,7 @@ Riot custom components are the building blocks for user interfaces. They make th
 </todo>
 ```
 
-Custom components are [compiled](/compiler/) to javascript.
+Custom components are [compiled]({{ '/compiler/' | prepend:site.baseurl }}) to javascript.
 
 See the [live demo](https://riot.js.org/examples/plunker/?app=todo-app), browse the [sources](https://github.com/riot/examples/tree/gh-pages/todo-app), or download the [zip](https://github.com/riot/examples/archive/gh-pages.zip).
 
@@ -163,7 +164,7 @@ You can specify a pre-processor with `type` attribute. For example:
 </my-component>
 ````
 
-Your component will be compiled with the preprocessor selected only if it was previously [registered before](/compiler#registerpreprocessor).
+Your component will be compiled with the preprocessor selected only if it was previously [registered before]({{ '/compiler#registerpreprocessor' | prepend:site.baseurl }}).
 
 ## Styling
 
@@ -192,7 +193,7 @@ You can put a `style` tag inside. Riot.js automatically takes it out and injects
 <my-component>
 
   <!-- layout -->
-  <h3>{ opts.title }</h3>
+  <h3>{ props.title }</h3>
 
   <style>
     :host { display: block }
@@ -349,7 +350,7 @@ Inside the tag the properties can be referenced with the `this.props` attribute 
     export default {
       onMounted() {
         // Props in javascript
-        const title = this.opts.title
+        const title = this.props.title
 
         // this.props is frozen and it's immutable
         this.props.description = 'my description' // this will not work
@@ -714,7 +715,7 @@ Result
 </user>
 ```
 
-See [API docs](/api/#slots) for `slots`.
+See [API docs]({{ '/api/#slots' | prepend:site.baseurl }}) for `slots`.
 
 <aside class="note note--info">
 Slots work only in compiled components, all the inner HTML of the components placed directly in your page DOM will be ignored.

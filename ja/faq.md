@@ -1,6 +1,6 @@
 ---
-layout: detail
 title: Riot FAQ
+layout: detail
 description: Questions and Answers about Riot, User Interface (UI) Micro-Libary
 ---
 
