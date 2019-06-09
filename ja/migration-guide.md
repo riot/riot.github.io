@@ -198,7 +198,6 @@ riot.install(function(component) {
 
 オブザーバブルパターンは以前の Riot.js のバージョンに完全に統合されました。これは独断的な決定であり、すべてのユーザーに有効なわけではありません。Riot.js 3 では、アプリケーションでどのプログラミングパターンを使用するかを決めることができます。このため、観察可能なヘルパーはソースコードから完全に削除され、より一般的なアプローチが採用されています。
 
-
 **旧**
 
 ```html
@@ -302,8 +301,8 @@ riot.install(function(componentAPI) {
 
 ### Opts vs props と state
 
-The previous Riot.js versions provided the `opts` key to each component. This key was renamed `props` and it becomes immutable: it's a read only property frozen via `Object.freeze`.
-The `props` object can be only updated outside of the component that reads from it, while the new `state` object is updated via [`update` calls]({{ '/ja/api/'|prepend:site.baseurl }}#ステートハンドリング).
+以前のバージョンの Riot.js は各コンポーネントに `opts` キーを提供していました。このキーは `props` という名前に変更され、不変になりました ー これは `Object.freeze` によって固定された読み取り専用のプロパティです。
+`props` オブジェクトは、それを読み取るコンポーネントの外部でのみ更新できますが、新しい `state` オブジェクトが [`update` のコール]({{ '/ja/api/'|prepend:site.baseurl }}#ステートハンドリング)毎に更新されます。
 
 **旧**
 
