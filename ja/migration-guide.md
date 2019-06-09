@@ -471,7 +471,7 @@ riot.install(function(component) {
 
 ### インストール
 
-In Riot.js v3 it was possible to install the CLI via `npm i -g riot`. In Riot.js 4 it was removed from the `riot` npm package and you will need to install it separately via `npm i -g @riotjs/cli`.
+Riot.js v3 では、`npm i -g riot` というコマンドで CLI をインストールすることが可能でした。Riot.js 4 では、`riot` という npm package から削除されているため、`npm i -g @riotjs/cli` というコマンドで個別にインストールする必要があります。
 
 ### Components registration
 
