@@ -8,7 +8,6 @@ description: Migration guide from Riot.js 2 and 3
 
 Riot.js 4 完全に書き直されています。（[詳しくはこちらを御覧ください](https://medium.com/@gianluca.guarini/every-revolution-begins-with-a-riot-js-first-6c6a4b090ee){:target="_blank"}）
 
-
 Riot.js 3 で書かれた古いアプリケーションを移行することは推奨されていません。なぜなら、Riot.jsの古いバージョンにもセキュリティパッチが適用され、十分に安定しているからです。
 
 このガイドを使用して、Riot.js 3 および 2 から Riot.js 4 のコンポーネントを作成する方法を学ぶことができます。
@@ -57,7 +56,7 @@ Riot.js 3 で書かれた古いアプリケーションを移行することは�
 
 このようにして、エディタや `typescript` のような他のコンパイラは、コンポーネントのi javascript ロジックに惑わされることなく、特別な心配をせずに使用することができます。
 
-この変更は [Riot.js の新しい哲学]({{ '/'|prepend:site.baseurl }}#conclusion)によって推進されたことに言及する価値があります:
+この変更は [Riot.js の新しい哲学]({{ '/ja'|prepend:site.baseurl }}#)によって推進されたことに言及する価値があります:
 
 > ...あいまいさに直面したときには、推測の誘惑を断ろう。<br/>
 それをするための一つの、そしてできればただ一つだけの明確な方法があるべきだ。<br/>
@@ -195,9 +194,10 @@ riot.install(function(component) {
 > ...明示は暗黙よりも優れています...
 
 
-### Observable
+### オブザーバブル
 
-The Observable pattern was completely integrated into the previous Riot.js versions. This was an opinionated decision that might not work for all users. Riot.js 3 leaves you the decision regarding which programming pattern to use in your application and for this reason the observable helpers were completely removed from the source code in favor of a more generic approach.
+オブザーバブルパターンは以前の Riot.js のバージョンに完全に統合されました。これは独断的な決定であり、すべてのユーザーに有効なわけではありません。Riot.js 3 では、アプリケーションでどのプログラミングパターンを使用するかを決めることができます。このため、観察可能なヘルパーはソースコードから完全に削除され、より一般的なアプローチが採用されています。
+
 
 **旧**
 
@@ -229,9 +229,9 @@ The Observable pattern was completely integrated into the previous Riot.js versi
 </my-component>
 ```
 
-Please check also the new components [lifecycle events]({{ '/documentation/'|prepend:site.baseurl }}#lifecycle-callbacks).
+新しいコンポーネントの[ライフサイクルイベント]({{ '/ja/documentation/'|prepend:site.baseurl }}#ライフサイクルコールバック)も確認してください。
 
-This change opens many new possibilities to manage your application state keeping the doors open to the nostalgic users that still prefer the observable lifecycle pattern.
+この変更は、観察可能なライフサイクルパターンを好むノスタルジックなユーザーに門戸を開いたまま、アプリケーションの状態を管理する多くの新しい可能性を開きます。
 
 ```js
 // riot-observable-plugin.js
@@ -261,9 +261,9 @@ riot.install(function(componentAPI) {
       onUnmounted
   } = componentAPI
 
-  // make the riot component observable
+  // riot コンポーネントを観測可能にする
   const component = observable(componentAPI)
-  // remap the new event to the old ones
+  // 新しいイベントを古いイベントに再マップする
   const eventsMap = {
     onBeforeMount: ['before-mount', onBeforeMount],
     onMounted: ['mount', onMounted],
@@ -300,10 +300,10 @@ riot.install(function(componentAPI) {
 </my-component>
 ```
 
-### Opts vs props and state
+### Opts vs props と state
 
 The previous Riot.js versions provided the `opts` key to each component. This key was renamed `props` and it becomes immutable: it's a read only property frozen via `Object.freeze`.
-The `props` object can be only updated outside of the component that reads from it, while the new `state` object is updated via [`update` calls]({{ '/api/'|prepend:site.baseurl }}#state-handling).
+The `props` object can be only updated outside of the component that reads from it, while the new `state` object is updated via [`update` calls]({{ '/ja/api/'|prepend:site.baseurl }}#ステートハンドリング).
 
 **旧**
 
@@ -322,7 +322,7 @@ The `props` object can be only updated outside of the component that reads from 
 
 ### Refs attributes
 
-The `ref` attributes were replaced by the `$` and `$$` [component helpers]({{ '/api/'|prepend:site.baseurl }}#helpers) preferring a functional approach over mutable properties.
+The `ref` attributes were replaced by the `$` and `$$` [component helpers]({{ '/ja/api/'|prepend:site.baseurl }}#helpers) preferring a functional approach over mutable properties.
 
 **旧**
 
@@ -457,7 +457,7 @@ The `<virtual>` tag was removed and it can't be used anymore. I am planning to u
 
 ### Yield tags
 
-The `<yield>` tags were replaced by the `<slot>`s having a more predictable behavior. Plese check the [slots api]({{ '/api/'|prepend:site.baseurl }}#slots) to understand how they work.
+The `<yield>` tags were replaced by the `<slot>`s having a more predictable behavior. Plese check the [slots api]({{ '/ja/api/'|prepend:site.baseurl }}#スロット) to understand how they work.
 
 
 <aside class="note note--warning">:warning:
@@ -466,9 +466,9 @@ The <code>yield</code> tags expressions were previously evaluated in the context
 
 ## CLI
 
-The new CLI is much more powerful than the older one since it can compile single tags but it can also bundle your [entire Riot.js application]({{ '/compiler/'|prepend:site.baseurl }}#build-your-whole-application).
+The new CLI is much more powerful than the older one since it can compile single tags but it can also bundle your [entire Riot.js application]({{ '/ja/compiler/'|prepend:site.baseurl }}#アプリケーション全体のビルド).
 
-It's designed to simplify the components bundling for quick prototypes and demos however for bigger application it's recommended the use of highly customizable javascript bundlers together with [riot loaders]({{ '/compiler/'|prepend:site.baseurl }}#riot-loaders)
+It's designed to simplify the components bundling for quick prototypes and demos however for bigger application it's recommended the use of highly customizable javascript bundlers together with [riot loaders]({{ '/ja/compiler/'|prepend:site.baseurl }}#riot-loaders)
 
 ### Installation
 
