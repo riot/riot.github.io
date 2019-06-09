@@ -423,9 +423,9 @@ riot.install(function(component) {
 </my-component>
 ```
 
-#### Custom events dispatching
+#### 独自イベントのディスパッチング
 
-Listening custom events dispatched in child components can be done simply via properties:
+子コンポーネントにディスパッチされた独自イベントを検知するには、次のプロパティを使用します:
 
 ```html
 <my-component>
