@@ -4,30 +4,31 @@ layout: detail
 description: Migration guide from Riot.js 2 and 3
 ---
 
-## Introduction
+## 導入
 
-Riot.js 4 is a complete rewrite, [read more about it](https://medium.com/@gianluca.guarini/every-revolution-begins-with-a-riot-js-first-6c6a4b090ee){:target="_blank"}.
+Riot.js 4 完全に書き直されています。（[詳しくはこちらを御覧ください](https://medium.com/@gianluca.guarini/every-revolution-begins-with-a-riot-js-first-6c6a4b090ee){:target="_blank"}）
 
-Migrating older applications written in Riot.js 3 is not recommended because older Riot.js versions will still get security patches and they are stable enough.
 
-You can use this guide to learn how to write components for Riot.js 4 coming from Riot.js 3 and 2.
+Riot.js 3 で書かれた古いアプリケーションを移行することは推奨されていません。なぜなら、Riot.jsの古いバージョンにもセキュリティパッチが適用され、十分に安定しているからです。
 
-## Component Syntax and API
+このガイドを使用して、Riot.js 3 および 2 から Riot.js 4 のコンポーネントを作成する方法を学ぶことができます。
 
-The components syntax was updated to match the modern javascript standards avoiding any possible ambiguity.
-Less magic means more clarity and interoperability, Riot.js 4 components are designed to be completely future proof!
+## コンポーネントの構文と API
 
-### The script tag
+コンポーネント構文は、可能な限りあいまいさを避けるために、最新の javascript 標準に合わせて更新されました。
+魔法が少ないということは、より明確で相互運用性があることを意味します。Riot.js 4 コンポーネントは完全に将来のために設計されています!
 
-In the previous Riot.js versions you could just extend to your component instance via `this` keyword in your `<script>` tags. This syntax sugar was removed in favor of a cleaner API relying on the standard javascript ES2018 syntax:
+### script タグ
 
-**old**
+以前の Riot.js のバージョンでは、`<script>` タグ内の `this` というキーワードを介してコンポーネントのインスタンスをただ継承するのみでした。この糖衣構文は、ES2018 という標準の javascript の構文に依存したよりクリーンな API のために削除されました。
+
+**旧**
 
 ```html
 <my-component>
   <p onclick={onClick}>{message}</p>
 
-  <!-- optional <script> tag -->
+  <!-- <script> タグは任意 -->
 
   onClick() {
     this.message = 'hello'
@@ -35,13 +36,13 @@ In the previous Riot.js versions you could just extend to your component instanc
 </my-component>
 ```
 
-**new**
+**新**
 
 ```html
 <my-component>
   <p onclick={onClick}>{message}</p>
 
-  <!-- mandatory <script> tag -->
+  <!-- <script> タグは省略不可能 -->
 
   <script>
     export default {
@@ -54,24 +55,24 @@ In the previous Riot.js versions you could just extend to your component instanc
 </my-component>
 ```
 
-In this way your editor, and other compilers like `typescript` will not get confused by your components javascript logic and can be used along the way without any special concerns.
+このようにして、エディタや `typescript` のような他のコンパイラは、コンポーネントのi javascript ロジックに惑わされることなく、特別な心配をせずに使用することができます。
 
-It's worth to mention that this change was driven by the new [Riot.js philosophy]({{ '/'|prepend:site.baseurl }}#conclusion):
+この変更は [Riot.js の新しい哲学]({{ '/'|prepend:site.baseurl }}#conclusion)によって推進されたことに言及する価値があります:
 
-> ...In the face of ambiguity, refuse the temptation to guess.<br/>
-There should be one– and preferably only one –obvious way to do it.<br/>
-Although that way may not be obvious at first unless you’re Dutch...
+> ...あいまいさに直面したときには、推測の誘惑を断ろう。<br/>
+それをするための一つの、そしてできればただ一つだけの明確な方法があるべきだ。<br/>
+しかしオランダ人でない限り、その方法は最初は明白ではないかもしれないが...
 
 <aside class="note note--info">
-Notice how the use of the <code>&#x3C;script&#x3E;</code> tag becomes mandatory to split your components templates from their javascript logic.
+メモ javascript のロジックからコンポーネントテンプレートを分割するには、<code>&#x3C;script&#x3E;</code> タグの使用が必須になります。
 </aside>
 
 
-### Template shortcuts
+### テンプレートのショートカット
 
-The template shortcuts were completely removed in favor of pure and more explicit javascript expressions. Let's see how it's simple to achieve the same results in a cleaner way in Riot.js 4.
+テンプレートショートカットは完全に削除され、純粋でより明示的な javascript の式が採用されました。Riot.js 4 で、同じ結果をどれほどよりクリーンな方法で簡単に得ることができるか見てみてください。
 
-**old**
+**旧**
 
 ```html
 <my-component>
@@ -79,7 +80,7 @@ The template shortcuts were completely removed in favor of pure and more explici
 </my-component>
 ```
 
-**new**
+**新**
 
 ```js
 // riot-class-names-plugin.js
@@ -98,9 +99,9 @@ function classNames(classes) {
   }, []).join(' ')
 }
 
-// install the classNames plugin
+// classNames プラグインをインストール
 riot.install(function(component) {
-  // add the classNames helper to all the riot components
+  // すべての riot コンポーネントに classNames ヘルパーを追加
   component.classNames = classNames
 
   return component
@@ -118,7 +119,7 @@ riot.install(function(component) {
 </my-component>
 ```
 
-Even better, you can use the `classNames` directly in your components logic keeping your templates clean avoiding the use of `riot.install` for example:
+さらに良いことに、`classNames` をコンポーネントロジックで直接使用することで `riot.install` の使用を避け、テンプレートをクリーンな状態に保つことができます。例:
 
 ```html
 <my-component>
@@ -139,9 +140,9 @@ Even better, you can use the `classNames` directly in your components logic keep
 </my-component>
 ```
 
-The same short cut was available for the `style` attribute but now in Riot.js 4 you will need to handle the `style` attributes by yourselves:
+同じショートカットが `style` 属性にも使用できましたが、今の Riot.js 4 では `style` 属性を自分で処理する必要があります:
 
-**old**
+**旧**
 
 {% raw %}
 ```html
@@ -152,7 +153,7 @@ The same short cut was available for the `style` attribute but now in Riot.js 4 
 ```
 {% endraw %}
 
-**new**
+**新**
 ```js
 // riot-style-attributes-plugin.js
 /**
@@ -168,9 +169,9 @@ function styleAttribute(attributes) {
   }, []).join(';')
 }
 
-// install the styleAttribute plugin
+// styleAttribute プラグインをインストール
 riot.install(function(component) {
-  // add the styleAttribute helper to all the riot components
+  // すべての riot コンポーネントに styleAttribute ヘルパーを追加
   component.styleAttribute = styleAttribute
 
   return component
@@ -188,17 +189,17 @@ riot.install(function(component) {
 </my-component>
 ```
 
-Now your code and your helpers will be completely customizable without relying on the framework built in.
-This means that you will have more freedom and less bugs coming from your third party code...and don't forget to remember that:
+これでコードとヘルパーは、組み込まれたフレームワークに依存せずに完全にカスタマイズ可能になります。
+これは、サードパーティのコードから来るバグが少なく、より自由になることを意味します...次のことを忘れないでください:
 
-> ...Explicit is better than implicit...
+> ...明示は暗黙よりも優れています...
 
 
 ### Observable
 
 The Observable pattern was completely integrated into the previous Riot.js versions. This was an opinionated decision that might not work for all users. Riot.js 3 leaves you the decision regarding which programming pattern to use in your application and for this reason the observable helpers were completely removed from the source code in favor of a more generic approach.
 
-**old**
+**旧**
 
 ```html
 <my-component>
@@ -211,7 +212,7 @@ The Observable pattern was completely integrated into the previous Riot.js versi
 </my-component>
 ```
 
-**new**
+**新**
 
 ```html
 <my-component>
@@ -304,7 +305,7 @@ riot.install(function(componentAPI) {
 The previous Riot.js versions provided the `opts` key to each component. This key was renamed `props` and it becomes immutable: it's a read only property frozen via `Object.freeze`.
 The `props` object can be only updated outside of the component that reads from it, while the new `state` object is updated via [`update` calls]({{ '/api/'|prepend:site.baseurl }}#state-handling).
 
-**old**
+**旧**
 
 ```html
 <my-component>
@@ -312,7 +313,7 @@ The `props` object can be only updated outside of the component that reads from 
 </my-component>
 ```
 
-**new**
+**新**
 ```html
 <my-component>
   <p>{props.message}</p>
@@ -323,7 +324,7 @@ The `props` object can be only updated outside of the component that reads from 
 
 The `ref` attributes were replaced by the `$` and `$$` [component helpers]({{ '/api/'|prepend:site.baseurl }}#helpers) preferring a functional approach over mutable properties.
 
-**old**
+**旧**
 
 ```html
 <my-component>
@@ -335,7 +336,7 @@ The `ref` attributes were replaced by the `$` and `$$` [component helpers]({{ '/
 </my-component>
 ```
 
-**new**
+**新**
 ```html
 <my-component>
   <p>{message}</p>
@@ -360,7 +361,7 @@ The new helpers will never return the children component instances but only DOM 
 
 The `parent` and `tags` keys were heavily abused by Riot.js users. They were the source of many side effects and clear bad practice. For this reason the children/parent components created via Riot.js 4 never expose their internal API, **components communicate only via props** and don't interact directly with the external world.
 
-**old**
+**旧**
 ```html
 <my-component>
   <my-child ref='child'/>
@@ -371,7 +372,7 @@ The `parent` and `tags` keys were heavily abused by Riot.js users. They were the
 </my-component>
 ```
 
-**new**
+**新**
 ```html
 <my-component>
   <my-child message={childMessage}/>
