@@ -319,9 +319,9 @@ riot.install(function(componentAPI) {
 </my-component>
 ```
 
-### Refs attributes
+### Refs 属性
 
-The `ref` attributes were replaced by the `$` and `$$` [component helpers]({{ '/ja/api/'|prepend:site.baseurl }}#helpers) preferring a functional approach over mutable properties.
+`ref` 属性は、可変プロパティよりも関数型アプローチを優先する `$` および `$$` という[コンポーネントヘルパー]({{ '/ja/api/'|prepend:site.baseurl }}#ヘルパー)に置き換えられました。
 
 **旧**
 
@@ -353,7 +353,7 @@ The `ref` attributes were replaced by the `$` and `$$` [component helpers]({{ '/
 ```
 
 <aside class="note note--warning">:warning:
-The new helpers will never return the children component instances but only DOM nodes
+新しいヘルパーは子コンポーネントインスタンスを返さず、DOM ノードのみを返します
 </aside>
 
 ### Parent and children
