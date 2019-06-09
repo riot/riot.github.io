@@ -425,7 +425,7 @@ riot.install(function(component) {
 
 #### 独自イベントのディスパッチング
 
-子コンポーネントにディスパッチされた独自イベントを検知するには、次のプロパティを使用します:
+子コンポーネントにディスパッチされた独自イベントを検知するには、プロパティを介するとシンプルに行うことができます:
 
 ```html
 <my-component>
@@ -449,9 +449,9 @@ riot.install(function(component) {
 </my-child>
 ```
 
-### Virtual tags
+### Virtual タグ
 
-The `<virtual>` tag was removed and it can't be used anymore. I am planning to use the `<template>` tag instead for the `each` and `if` directives but at moment it's not yet part of the Riot.js 4 API.
+`<virtual>` タグは削除され、使用できなくなりました。`each` と` if` ディレクティブには、代わりに `<template>` タグを使う予定ですが、今のところ Riot.js 4 の API には含まれていません。
 
 
 ### Yield tags
