@@ -356,9 +356,9 @@ riot.install(function(componentAPI) {
 新しいヘルパーは子コンポーネントインスタンスを返さず、DOM ノードのみを返します
 </aside>
 
-### Parent and children
+### 親と子
 
-The `parent` and `tags` keys were heavily abused by Riot.js users. They were the source of many side effects and clear bad practice. For this reason the children/parent components created via Riot.js 4 never expose their internal API, **components communicate only via props** and don't interact directly with the external world.
+Riot.js ユーザーは `parent` キーと `tags` キーを過度に乱用していた。多くの副作用や明らかなバッドプラクティスの原因となった。このため、Riot.js 4 で作成された子/親コンポーネントは内部APIを公開せず、**コンポーネントは props を介してのみ通信**し、外部と直接やり取りしません。
 
 **旧**
 ```html
@@ -387,7 +387,7 @@ The `parent` and `tags` keys were heavily abused by Riot.js users. They were the
 </my-component>
 ```
 
-You can of course write your own riot plugin to add the `ref` behaviour but it's highly not recommended:
+もちろん独自の riot プラグインを作成して `ref` の振る舞いを追加することもできますが、お勧めできません:
 
 ```js
 // riot-ref-plugin.js
