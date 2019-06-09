@@ -473,12 +473,12 @@ riot.install(function(component) {
 
 Riot.js v3 では、`npm i -g riot` というコマンドで CLI をインストールすることが可能でした。Riot.js 4 では、`riot` という npm package から削除されているため、`npm i -g @riotjs/cli` というコマンドで個別にインストールする必要があります。
 
-### Components registration
+### コンポーネントの登録
 
-You need to be aware that it previously was automatically registering your Riot.js components but now it will just output them as javascript modules. You will need to register your javascript output by yourself:
+以前は Riot.js のコンポーネントが自動的に登録されていたことに注意する必要があります。しかし現在は、 javascript モジュールとして出力されるようになりました。JavaScript の出力を自分で登録する必要があります:
 
 ```js
-// compiled Riot.js component
+// コンパイルされた Riot.js コンポーネント
 import MyComponent from './my-component.js'
 import {register} from 'riot'
 
