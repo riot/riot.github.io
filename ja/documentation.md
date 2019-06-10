@@ -4,30 +4,30 @@ layout: detail
 description: Step by step starting guide
 ---
 
-## Basis
+## 基本
 
-### Installation
+### インストール
 
-You can install riot via npm:
+npm を介して riot をインストールすることができます:
 
 ```sh
 npm i -S riot
 ```
 
-Or via yarn
+または yarn を介して
 
 ```sh
 yarn add riot
 ```
 
-### Usage
+### 使い方
 
-You can bundle your Riot.js application via [webpack](https://github.com/riot/webpack-loader), [rollup](https://github.com/riot/rollup-plugin-riot), [parcel](https://github.com/riot/parcel-plugin-riot) or [browserify](https://github.com/riot/riotify).
-Riot tags can be compiled also in directly [in your browser]({{ '/compiler/#in-browser-compilation' | prepend:site.baseurl }}) for quick prototypes or tests.
+[webpack](https://github.com/riot/webpack-loader)、[rollup](https://github.com/riot/rollup-plugin-riot)、[parcel](https://github.com/riot/parcel-plugin-riot) または [browserify](https://github.com/riot/riotify) を用いて Riot.js のアプリケーションをバンドルできます。
+またRiot タグは、[ブラウザ上で]({{ '/compiler/#in-browser-compilation' | prepend:site.baseurl }})直接的にコンパイルすることもでき、プロトタイプやテストを素早く行うことができます。
 
-### Quick Start
+### クイックスタート
 
-Once you have wired all your application bundler that's how your code might look like this:
+すべてのアプリケーション・バンドラーをワイヤリングすると、おそらくコードは次のようになります:
 
 `index.html`
 ```html
