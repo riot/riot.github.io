@@ -136,20 +136,20 @@ Riot のカスタムコンポーネントはユーザーインターフェース
 [ライブデモ](https://riot.js.org/examples/plunker/?app=todo-app)をご覧になるか、ブラウザで[ソース](https://github.com/riot/examples/tree/gh-pages/todo-app)を閲覧するか、[zip](https://github.com/riot/examples/archive/gh-pages.zip) ファイルをダウンロードしてください。
 
 
-## Syntax
+## 構文
 
-A Riot component is a combination of layout (HTML) and logic (javascript). Here are the basic rules:
+Riot コンポーネントはレイアウト（HTML）とロジック（javascript）のコンビネーションです。基本的なルールは次のとおりです:
 
-* Each `.riot` file can contain the logic for only a single component
-* HTML is defined first and the logic is enclosed inside a `<script>` tag.
-* Custom components can be empty, HTML only or javascript only
-* All template expressions are "just javascript™️"`: <pre>{ JSON.stringify(props) }</pre>`
-* The `this` keyword is optional: `<p>{ name }</p>` is valid as `<p>{ this.name }</p>`
-* Quotes are optional: `<foo bar={ baz }>` is valid as `<foo bar="{ baz }">`.
-* Boolean attributes (checked, selected etc..) are ignored when the expression value is falsy: `<input checked={ undefined }>` becomes `<input>`.
-* All attribute names *must be lowercase*. This is due to browser specification.
-* Standard HTML tags (`label`, `table`, `a` etc..) can also be customized, but not necessarily a wise thing to do.
-* Tag definition **root** may also have attributes: `<my-component onclick={ click } class={ props.class }>`.
+* 各 `.riot` ファイル含めることができるのは、一つのコンポーネントのロジックのみ
+* HTML は初めに定義され、ロジックは `<script>` タグで囲われる
+* カスタムコンポーネントは空にもでき、HTML のみ、または javascript のみにもできる
+* すべてのテンプレートの式は "javascript™️" `: <pre>{ JSON.stringify(props) }</pre>`
+* `this` というキーワードはオプショナル: `<p>{ name }</p>` は `<p>{ this.name }</p>` として有効
+* 引用符はオプショナル: `<foo bar={ baz }>` は `<foo bar="{ baz }">` として有効
+* 式の値が falsy の場合、Boolean の属性（checked, selected など）は無視される: `<input checked={ undefined }>` は `<input>` となる
+* すべての属性名は *小文字でなければならない*。これはブラウザの仕様によるものである
+* 標準の HTML タグ（`label`、`table`、`a` など）はカスタマイズすることもできるが、必ずしもそうすることが賢明というわけではない
+* **ルート** のタグ定義も属性を保つ場合がある: `<my-component onclick={ click } class={ props.class }>`
 
 
 ## Pre-processor
