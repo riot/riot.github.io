@@ -65,9 +65,9 @@ const app = mountApp(
 )
 ```
 
-## Todo Example
+## Todo の例
 
-Riot custom components are the building blocks for user interfaces. They make the "view" part of the application. Let's start with an extended `<todo>` example highlighting various features of Riot:
+Riot のカスタムコンポーネントはユーザーインターフェースの構成要素です。アプリケーションの "ビュー" 部分を作成します。では、Riot のさまざまな機能を強調し拡張された `<todo>` の例から始めましょう。
 
 ```html
 <todo>
@@ -95,14 +95,14 @@ Riot custom components are the building blocks for user interfaces. They make th
   <script>
     export default {
       onBeforeMount(props, state) {
-        // initial state
+        // state の初期化
         this.state = {
           items: props.items,
           text: ''
         }
       },
       edit(e) {
-        // update only the text state
+        // text の状態のみ更新
         this.update({
           text: e.target.value
         })
@@ -114,7 +114,7 @@ Riot custom components are the building blocks for user interfaces. They make th
           this.update({
             items: [
               ...this.state.items,
-              // add a new item
+              // 新しい item を追加
               {title: this.state.text}
             ],
             text: ''
@@ -123,7 +123,7 @@ Riot custom components are the building blocks for user interfaces. They make th
       },
       toggle(item) {
         item.done = !item.done
-        // trigger a component update
+        // コンポーネントの update を発火
         this.update()
       }
     }
@@ -131,9 +131,9 @@ Riot custom components are the building blocks for user interfaces. They make th
 </todo>
 ```
 
-Custom components are [compiled]({{ '/compiler/' | prepend:site.baseurl }}) to javascript.
+カスタムコンポーネントは javascript に[コンパイル]({{ '/compiler/' | prepend:site.baseurl }})されます。
 
-See the [live demo](https://riot.js.org/examples/plunker/?app=todo-app), browse the [sources](https://github.com/riot/examples/tree/gh-pages/todo-app), or download the [zip](https://github.com/riot/examples/archive/gh-pages.zip).
+[ライブデモ](https://riot.js.org/examples/plunker/?app=todo-app)をご覧になるか、ブラウザで[ソース](https://github.com/riot/examples/tree/gh-pages/todo-app)を閲覧するか、[zip](https://github.com/riot/examples/archive/gh-pages.zip) ファイルをダウンロードしてください。
 
 
 ## Syntax
