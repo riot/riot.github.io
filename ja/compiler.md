@@ -5,16 +5,16 @@ title: Compiler
 
 ## 概要
 
-カスタムタグはブラウザで実行される前にJavaScriptに変換される必要があります。
-RiotのコンパイラはriotタグをJavaScriptモジュールにトランスパイルするよう設計されています。
-コンパイルされたRiotタグは次のようになります：
+カスタムタグはブラウザで実行可能になる前に javascript に変換される必要があります。
+riot のコンパイラは riot タグを javascript モジュールに変換するよう設計されています。
+コンパイルされた riot タグは次のようになります:
 
 ```js
 export default {
   css: `my-tag { color: red; }`, // コンポーネントのcss文字列
-  template: function() {}, // 内部Riotテンプレートファクトリ関数
+  template: function() {}, // 内部 riot テンプレートファクトリ関数
   exports: {}, // コンポーネントイベントとライフサイクルメソッド
-  name: 'my-tag' // コンポーネントID
+  name: 'my-tag' // コンポーネント id
 }
 ```
 
@@ -22,17 +22,17 @@ export default {
 
 ## インブラウザ・コンパイル
 
-`riot+compiler.js`によるバンドルは、素早くひな型を作ってテストできるよう、ブラウザでタグを直接コンパイルし、実行する機能を提供しています。
-以下のように、`<script>`タグの属性に`type="riot"`を指定することで、Riotタグをブラウザにロードすることが可能です：
+`riot+compiler.js` によるバンドルは、素早くひな型を作ってテストできるよう、ブラウザでタグを直接コンパイルし、実行する機能を提供しています。
+以下のように、 `<script>` タグの属性に `type="riot"` を指定することで、 riot タグをブラウザにロードすることが可能です:
 
 ``` html
 <!-- マウント位置 -->
 <my-tag></my-tag>
 
-<!-- <my-tag/> は外部ファイルで指定されています -->
+<!-- <my-tag/> は外部ファイルで指定 -->
 <script src="path/to/javascript/my-tag.riot" type="riot"></script>
 
-<!-- riot.jsとコンパイラを含める -->
+<!-- riot.js とコンパイラを含める -->
 <script src="https://unpkg.com/riot@{{ site.data.globals.version }}/riot+compiler.min.js"></script>
 
 <!-- コンパイルとマウント -->
@@ -45,32 +45,32 @@ export default {
 </script>
 ```
 
-この場合、Riotは全ての`export default`式を内部的に、ブラウザ表示に適した形に変換しますが、まだJavaScriptモジュールをサポートしていないことに注意してください。
+この場合、 riot は全ての `export default` 式を内部的に、ブラウザ表示に適した形に変換しますが、まだ javascript モジュールをサポートしていないことに注意してください。
 
-Riotは、`<script>`を通じてDOMにインクルードされた全ての外部タグを非同期にコンパイルし、`riot.mount`でそれらを描画することが可能です。
+Riot は、 `<script>` を通じてDOMにインクルードされた全ての外部タグを非同期にコンパイルし、 `riot.mount` でそれらを描画することが可能です。
 
-ブラウザによるRiotスクリプトタグのプリフェッチ機能を抑止し、同じリソースを複数回ロードすることを防ぐため、`<script>`タグの`src`属性の代わりに`data-src`属性を使いたい場合があるかも知れません。Riotは自動的に、ajaxによってタグをフェッチしてコンパイルします。
+ブラウザによる riot スクリプトタグのプリフェッチ機能を抑止し、同じリソースを複数回ロードすることを防ぐため、 `<script>` タグの `src` 属性の代わりに `data-src` 属性を使いたい場合があるかも知れません。 Riot は自動的に、 ajax によってタグをフェッチしてコンパイルします。
 
 ## プリコンパイル
 
-上記のコンパイル処理は非同期に行われ、アプリケーションの描画処理をブロックしません。しかし、インブラウザ・コンパイルはひな型作成や簡単な確認のためだけに使うべきです。
+上記のコンパイル段階は非同期に行われ、アプリケーションの描画処理をブロックしません。しかしインブラウザ・コンパイルは、ひな型の作成やちょっとした実験のためだけに使うべきです。
 
-プリコンパイルを行うと、次のような恩恵を受けられます：
+プリコンパイルを行うと、次のような恩恵を受けられます:
 
 - [お好みのプリプロセッサ](#pre-processors)でタグをコンパイル。
 - 高いパフォーマンスを得られる。ロードやブラウザによるコンパイラ実行が不要。
 - ソースマップ出力でデバッグをサポート。
 
-### Riotローダー
+### Riot ローダー
 
-[`webpack`](https://webpack.js.org/)や[`rollup`](https://rollupjs.org/)といったツールは、Riotアプリケーションのタグをバンドルするのに最適です。
-そのようなツールに向けて、Riotコンポーネントをあなたのソースコードにそのままインポートするための、Riot公式ローダーを提供しています：
+[`webpack`](https://webpack.js.org/) や [`rollup`](https://rollupjs.org/) といったツールは、 riot アプリケーションのタグをバンドルするのに最適です。
+そのようなツールに向けて、 riot コンポーネントをあなたのソースコードにそのままインポートするための、 riot 公式ローダーを提供しています:
   - [webpack](https://github.com/riot/webpack-loader)
   - [rollup](https://github.com/riot/rollup-plugin-riot)
   - [parcel](https://github.com/riot/parcel-plugin-riot)
   - [riotify](https://github.com/riot/riotify)
 
-Riotローダーを使ったアプリケーションのエントリースクリプトは、おそらくこのようになるでしょう：
+riot ローダーを使ったアプリケーションのエントリースクリプトは、おそらくこのようになるでしょう:
 
 ```js
 import { component } from 'riot'
@@ -79,7 +79,7 @@ import MyTag from './path/to/tags/my-tag.riot'
 component(MyTag)(document.getElementById('root'))
 ```
 
-### Nodeによるコンパイル
+### Node によるコンパイル
 
 ``` javascript
 import {compile} from '@riotjs/compiler'
@@ -91,19 +91,19 @@ const { code, map } = compile('<p>{hello}</p>', {
   scopedCss: true,
   // （テンプレート構文の）式のデリミタ
   brackets: ['{', '}'],
-  // HTMLのコメントを残すか
+  // HTML のコメントを残すか
   comments: false
 })
 ```
 
-`compile()`関数は、引数として文字列を取り、`code`と`map`をキーに持つオブジェクトを返します。
+`compile()` 関数は、引数として文字列を取り、 `code` と `map` をキーに持つオブジェクトを返します。
 生成されたコードは、ご自身で好きなように扱うこともできますし、お使いのビルドシステムで使用することもできます。
 
-Riotコンパイラは、JavaScriptモジュールを出力することにご留意ください。バンドルには、これら（訳注：出力されたモジュール）をトランスパイルしたほうがいいでしょう。
+riotコンパイラは、 javascript モジュールを出力することにご留意ください。バンドルには、これら（訳注: 出力されたモジュール）をトランスパイルしたほうがいいでしょう。
 
-### Riot.js CLIツールによるコンパイル
+### Riot.js コマンドラインによるコンパイル
 
-Riot.jsファイルを、[`riot`](https://github.com/riot/cli)実行コマンドを使ってプリコンパイルすることもできます。こちらは以下のように、NPMでインストールできます：
+Riot.js ファイルを、 [`riot`](https://github.com/riot/cli) 実行コマンドを使ってプリコンパイルすることもできます。こちらは以下のように、 NPM でインストールできます:
 
 ```sh
 npm install @riotjs/cli -g
@@ -111,7 +111,7 @@ npm install @riotjs/cli -g
 
 #### 使い方
 
-`riot`コマンドの動作例をご紹介します：
+`riot` コマンドの動作例をご紹介します:
 
 ```sh
 # カレントフォルダに、単体のファイルをコンパイル
@@ -128,7 +128,7 @@ riot some/folder --output path/to/dist
 
 ```
 
-より詳しい情報を見るには、`riot --help`をタイプしてください。
+より詳しい情報を見るには、右のようにタイプしてください: `riot --help`
 
 #### Watch mode
 
