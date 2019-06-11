@@ -166,9 +166,9 @@ Riot コンポーネントはレイアウト（HTML）とロジック（javascri
 
 コンポーネントは選択したプリプロセッサによりコンパイルされます。ただし、プリプロセッサが[事前に登録]({{ '/ja/compiler#プリプロセッサ' | prepend:site.baseurl }})されている場合に限ります。
 
-## Styling
+## スタイリング
 
-You can put a `style` tag inside. Riot.js automatically takes it out and injects it into `<head>`. This happens once, no matter how many times the component is initialized.
+`style` タグを中に置くことができます。Riot.js はスタイルを自動的に外に切り出し、`<head>` 内に注入します。これはコンポーネントが初期化される回数に関係なく、一回だけ発生します。
 
 ```html
 <my-component>
@@ -177,9 +177,9 @@ You can put a `style` tag inside. Riot.js automatically takes it out and injects
   <h3>{ props.title }</h3>
 
   <style>
-   /** other component specific styles **/
+    /** 他のコンポーネント固有のスタイル **/
     h3 { font-size: 120% }
-    /** other component specific styles **/
+    /** 他のコンポーネント固有のスタイル **/
   </style>
 
 </my-component>
