@@ -261,12 +261,12 @@ registerPreprocessor('css', 'sass', function(code, { options }) {
 
   console.log('sass のコードをコンパイル中', file)
 
-  const css = sass.renderSync({
+  const {css} = sass.renderSync({
     data: code
   })
 
   return {
-    code: css,
+    code: css.toString(),
     map: null
   }
 })
