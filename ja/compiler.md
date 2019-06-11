@@ -263,12 +263,12 @@ registerPreprocessor('css', 'sass', function(code, { options }) {
 
   console.log('Compile the sass code in', file)
 
-  const css = sass.renderSync({
+  const {css} = sass.renderSync({
     data: code
   })
 
   return {
-    code: css,
+    code: css.toString(),
     map: null
   }
 })
@@ -388,4 +388,3 @@ registerPostprocessor(function(code, { options }) {
 ```
 
 In this case we make sure that the output code will be converted to es2015 via `buble`.
-
