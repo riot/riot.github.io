@@ -152,19 +152,19 @@ Riot コンポーネントはレイアウト（HTML）とロジック（javascri
 * **ルート** のタグ定義も属性を保つ場合がある: `<my-component onclick={ click } class={ props.class }>`
 
 
-## Pre-processor
+## プリプロセッサ
 
-You can specify a pre-processor with `type` attribute. For example:
+`type` 属性でプリプロセッサを指定できます。例:
 
 ```html
 <my-component>
   <script type="coffee">
-    # your coffeescript logic goes here
+    # coffeescript ロジックをここに書く
   </script>
 </my-component>
 ````
 
-Your component will be compiled with the preprocessor selected only if it was previously [registered before]({{ '/compiler#registerpreprocessor' | prepend:site.baseurl }}).
+コンポーネントは選択したプリプロセッサによりコンパイルされます。ただし、プリプロセッサが[事前に登録]({{ '/ja/compiler#プリプロセッサ' | prepend:site.baseurl }})されている場合に限ります。
 
 ## Styling
 
