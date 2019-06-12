@@ -409,7 +409,7 @@ While the `this.props` attribute is frozen the `this.state` object is completely
 
 ### ライフサイクルコールバック
 
-You can setup you component lifecycles as follows:
+コンポーネントのライフサイクルを以下のように設定することができます:
 
 
 ```html
@@ -417,29 +417,29 @@ You can setup you component lifecycles as follows:
   <script>
     export default {
       onBeforeMount(props, state) {
-        // before the component is mounted
+        // コンポーネントのマウント前
       },
       onMounted(props, state) {
-        // right after the component is mounted on the page
+        // コンポーネントがページにマウントされた直後
       },
       onBeforeUpdate(props, state) {
-        // allows recalculation of context data before the update
+        // 更新前にコンテキストデータの再計算が許可されている
       },
       onUpdated(props, state) {
-        // right after the component template is updated after an update call
+        // update が呼び出され、コンポーネントのテンプレートが更新された直後
       },
       onBeforeUnmount(props, state) {
-        // before the component is removed
+        // コンポーネントが削除される前
       },
       onUnmounted(props, state) {
-        // when the component is removed from the page
+        // ページからコンポーネントが削除されたとき
       }
     }
   </script>
 </my-component>
 ```
 
-Any callback receives always the current `this.props` and `this.state` as arguments.
+すべてのコールバックは常に現在の `this.props` と `this.state` という引数を受け取ります。
 
 ## Plugins
 
