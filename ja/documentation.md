@@ -192,41 +192,41 @@ Riot コンポーネントはレイアウト（HTML）とロジック（javascri
 ```html
 <my-component>
 
-  <!-- layout -->
+  <!-- レイアウト -->
   <h3>{ props.title }</h3>
 
   <style>
     :host { display: block }
     h3 { font-size: 120% }
-    /** other component specific styles **/
+    /** 他のコンポーネント固有のスタイル **/
   </style>
 
 </my-component>
 ```
 
-## Mounting
+## マウント
 
-Once a component is created you can mount it on the page as follows:
+コンポーネントを作成したら、次の手順でページにマウントできます:
 
 
 ```html
 <body>
 
-  <!-- place the custom component anywhere inside the body -->
+  <!-- body 内の任意の位置にカスタムコンポーネントを配置 -->
   <my-component></my-component>
 
-  <!-- is attributes are also supported -->
+  <!-- is 属性もサポートされている -->
   <div is="my-component"></div>
 
-  <!-- include riot.js -->
+  <!-- riot.js を導入 -->
   <script src="riot.min.js"></script>
 
-  <!-- mount the component -->
+  <!-- コンポーネントをマウント -->
   <script type="module">
-    // import the component javascript output generated via @riotjs/compiler
+    // @riotjs/compiler で生成されたコンポーネントの javascript の出力をインポートする
     import MyComponent from './my-component.js'
 
-    // register the riot component
+    // the riot コンポーネントを登録
     riot.register('my-component', MyComponent)
 
     riot.mount('my-component')
@@ -235,20 +235,20 @@ Once a component is created you can mount it on the page as follows:
 </body>
 ```
 
-Custom components inside the `body` of the page needs to be closed normally: `<my-component></my-component>` and self-closing: `<my-component/>` is not supported.
+ページの `body` 内のカスタムコンポーネントは通常どおりに閉じる必要があります: `<my-component></my-component>` かつ、自己終了: `<my-component/>` はサポートされていません。
 
 
-Some example uses of the mount method:
+mount メソッドを使用したいくつかの例:
 
 ```js
-// mount an element with a specific id
+// 指定した id の要素をマウント
 riot.mount('#my-element')
 
-// mount selected elements
+// 選択した要素をマウント
 riot.mount('todo, forum, comments')
 ```
 
-A document can contain multiple instances of the same component.
+ドキュメントには、同じコンポーネントのインスタンスを複数含めることができます。
 
 
 ### Accessing DOM elements
