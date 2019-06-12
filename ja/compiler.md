@@ -6,7 +6,7 @@ title: Compiler
 ## 概要
 
 カスタムタグはブラウザで実行可能になる前に javascript に変換される必要があります。
-riot のコンパイラは riot タグを javascript モジュールに変換するよう設計されています。
+Riot のコンパイラは riot タグを javascript モジュールに変換するよう設計されています。
 コンパイルされた riot タグは次のようになります:
 
 ```js
@@ -70,7 +70,7 @@ Riot は、 `<script>` を通じてDOMにインクルードされた全ての外
   - [parcel](https://github.com/riot/parcel-plugin-riot)
   - [riotify](https://github.com/riot/riotify)
 
-riot ローダーを使ったアプリケーションのエントリースクリプトは、おそらくこのようになるでしょう:
+Riot ローダーを使ったアプリケーションのエントリースクリプトは、おそらくこのようになるでしょう:
 
 ```js
 import { component } from 'riot'
@@ -99,7 +99,7 @@ const { code, map } = compile('<p>{hello}</p>', {
 `compile()` 関数は、引数として文字列を取り、 `code` と `map` をキーに持つオブジェクトを返します。
 生成されたコードは、ご自身で好きなように扱うこともできますし、お使いのビルドシステムで使用することもできます。
 
-riot コンパイラは、 javascript モジュールを出力することにご留意ください。バンドルには、これら（訳注: 出力されたモジュール）をトランスパイルしたほうがいいでしょう。
+Riot コンパイラは、 javascript モジュールを出力することにご留意ください。バンドルには、これら（訳注: 出力されたモジュール）をトランスパイルしたほうがいいでしょう。
 
 ### Riot.js コマンドラインによるコンパイル
 
