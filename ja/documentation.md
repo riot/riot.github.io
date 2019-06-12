@@ -302,9 +302,9 @@ Riot 内の DOM にアクセスする必要がある場合、[riot コンポー�
 </my-component>
 ```
 
-### Contexted DOM query
+### コンテキスト DOM クエリ
 
-Now that we know how to get DOM elements in the `onUpdated` or `onMounted` callbacks, we can make this useful by also adding a context to our element queries to the `root element` (the riot tag we're creating).
+`onUpdated` コールバックまたは `onMounted` コールバックで DOM 要素を取得する方法がわかりましたが、要素のクエリにコンテキストを `root element`（作成した riot タグ）に追加することによっても、これを便利なものにすることができます。
 
 ```html
 <my-component>
@@ -315,11 +315,11 @@ Now that we know how to get DOM elements in the `onUpdated` or `onMounted` callb
   <script>
     export default {
       onMounted() {
-        // Contexted jQuery
-        $('p', this.root) // similar to this.$
+        // jQuery コンテキスト
+        $('p', this.root) // this.$ に似ている
 
-        // Contexted Query Selector
-        this.root.querySelectorAll('p') // similar to this.$$
+        // クエリセレクタコンテキスト
+        this.root.querySelectorAll('p') // this.$$ に似ている
       }
     }
   </script>
