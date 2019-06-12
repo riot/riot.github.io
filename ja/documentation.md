@@ -326,9 +326,9 @@ Riot 内の DOM にアクセスする必要がある場合、[riot コンポー�
 </my-component>
 ```
 
-### Properties
+### プロパティ
 
-You can pass initial properties for components in the second argument
+コンポーネントの初期プロパティを2番目の引数に渡すことができます。
 
 ```html
 <script>
@@ -336,24 +336,24 @@ You can pass initial properties for components in the second argument
 </script>
 ```
 
-The passed data can be anything, ranging from a simple object to a full application API. Or it can be a Redux store. Depends on the designed architecture.
+渡されるデータは、単純なオブジェクトから完全なアプリケーションAPIまで、あらゆるものが可能です。または、Redux ストアも許されます。設計されたアーキテクチャに依存します。
 
-Inside the tag the properties can be referenced with the `this.props` attribute as follows:
+タグ内では、プロパティは次のように `this.props` 属性でプロパティを参照できます:
 
 ```html
 <my-component>
 
-  <!-- Props in HTML -->
+  <!-- HTML 内の props -->
   <h3>{ props.title }</h3>
 
   <script>
     export default {
       onMounted() {
-        // Props in javascript
+        // JavaScript 内の props
         const title = this.props.title
 
-        // this.props is frozen and it's immutable
-        this.props.description = 'my description' // this will not work
+        // this.props は固定かつ不変
+        this.props.description = 'my description' // これは動作しない
       }
     }
   </script>
