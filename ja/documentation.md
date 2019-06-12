@@ -275,7 +275,7 @@ Riot は `this.$` と `this.$$` ヘルパーメソッドを介してコンポー
 ```
 
 
-### jQuery、Zepto、querySelector …その他の使い方
+### jQuery、Zepto、querySelector などの使い方
 
 Riot 内の DOM にアクセスする必要がある場合、[riot コンポーネントのライフサイクル](#riot-コンポーネントのライフサイクル) を見たいと思うでしょう。DOM 要素は、最初に `mount` イベントが発生するまでインスタンス化されないことに注意してください。つまり、先に要素を選択しようとすると失敗することを意味しています。
 
@@ -388,26 +388,26 @@ While the `this.props` attribute is frozen the `this.state` object is completely
 </my-component>
 ```
 
-### Riot component lifecycle
+### Riot コンポーネントのライフサイクル
 
-A component is created in following sequence:
+コンポーネントは以下の一連の流れで生成されます:
 
-1. The component object is created
-2. The javascript logic is executed
-3. All HTML expressions are calculated
-4. The component DOM is mounted on the page and "onMounted" callback is called
+1. コンポーネントのオブジェクトが生成される
+2. javascript ロジックが評価、実行される
+3. すべての HTML の式が計算される
+4. コンポーネント DOM がページにマウントされ、"onMounted" コールバックが呼び出される
 
-After the component is mounted the expressions are updated as follows:
+コンポーネントがマウントされた後、テンプレート変数の式は次のように更新されます:
 
-1. When `this.update()` is called on the current component instance
-2. When `this.update()` is called on a parent component, or any parent upwards. Updates flow uni-directionally from parent to child.
+1. 現在のコンポーネントインスタンスで `this.update()` が呼び出されたとき
+2. 親コンポーネントまたは、任意の親方向（上位）のコンポーネントで `this.update()` が呼び出されたとき。　親から子への単方向のフローで更新する。
 
-The "onUpdated" callback is called every time component tag is updated.
+"onUpdated" コールバックはコンポーネントタグが更新される度に呼び出されます。
 
-Since the values are calculated before mounting there are no surprise issues such as failed `<img src={ src }>` calls.
+マウントされる前に値が計算されるため、失敗した `<img src={ src }>` をコールするなどの驚くべき問題はありません。
 
 
-### Lifecycle callbacks
+### ライフサイクルコールバック
 
 You can setup you component lifecycles as follows:
 
