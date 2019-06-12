@@ -4,30 +4,30 @@ layout: detail
 description: Step by step starting guide
 ---
 
-## Basis
+## 基本
 
-### Installation
+### インストール
 
-You can install riot via npm:
+npm を介して riot をインストールすることができます:
 
 ```sh
 npm i -S riot
 ```
 
-Or via yarn
+または yarn を介して
 
 ```sh
 yarn add riot
 ```
 
-### Usage
+### 使い方
 
-You can bundle your Riot.js application via [webpack](https://github.com/riot/webpack-loader), [rollup](https://github.com/riot/rollup-plugin-riot), [parcel](https://github.com/riot/parcel-plugin-riot) or [browserify](https://github.com/riot/riotify).
-Riot tags can be compiled also in directly [in your browser]({{ '/compiler/#in-browser-compilation' | prepend:site.baseurl }}) for quick prototypes or tests.
+[webpack](https://github.com/riot/webpack-loader)、[rollup](https://github.com/riot/rollup-plugin-riot)、[parcel](https://github.com/riot/parcel-plugin-riot) または [browserify](https://github.com/riot/riotify) を用いて Riot.js のアプリケーションをバンドルできます。
+またRiot タグは、[ブラウザ上で]({{ '/compiler/#in-browser-compilation' | prepend:site.baseurl }})直接的にコンパイルすることもでき、プロトタイプやテストを素早く行うことができます。
 
-### Quick Start
+### クイックスタート
 
-Once you have wired all your application bundler that's how your code might look like this:
+すべてのアプリケーション・バンドラーをワイヤリングすると、おそらくコードは次のようになります:
 
 `index.html`
 ```html
@@ -65,9 +65,9 @@ const app = mountApp(
 )
 ```
 
-## Todo Example
+## Todo の例
 
-Riot custom components are the building blocks for user interfaces. They make the "view" part of the application. Let's start with an extended `<todo>` example highlighting various features of Riot:
+Riot のカスタムコンポーネントはユーザーインターフェースの構成要素です。アプリケーションの "ビュー" 部分を作成します。では、Riot のさまざまな機能を強調し拡張された `<todo>` の例から始めましょう。
 
 ```html
 <todo>
@@ -95,14 +95,14 @@ Riot custom components are the building blocks for user interfaces. They make th
   <script>
     export default {
       onBeforeMount(props, state) {
-        // initial state
+        // state の初期化
         this.state = {
           items: props.items,
           text: ''
         }
       },
       edit(e) {
-        // update only the text state
+        // text の状態のみ更新
         this.update({
           text: e.target.value
         })
@@ -114,7 +114,7 @@ Riot custom components are the building blocks for user interfaces. They make th
           this.update({
             items: [
               ...this.state.items,
-              // add a new item
+              // 新しい item を追加
               {title: this.state.text}
             ],
             text: ''
@@ -123,7 +123,7 @@ Riot custom components are the building blocks for user interfaces. They make th
       },
       toggle(item) {
         item.done = !item.done
-        // trigger a component update
+        // コンポーネントの update を発火
         this.update()
       }
     }
@@ -131,44 +131,44 @@ Riot custom components are the building blocks for user interfaces. They make th
 </todo>
 ```
 
-Custom components are [compiled]({{ '/compiler/' | prepend:site.baseurl }}) to javascript.
+カスタムコンポーネントは javascript に[コンパイル]({{ '/compiler/' | prepend:site.baseurl }})されます。
 
-See the [live demo](https://riot.js.org/examples/plunker/?app=todo-app), browse the [sources](https://github.com/riot/examples/tree/gh-pages/todo-app), or download the [zip](https://github.com/riot/examples/archive/gh-pages.zip).
-
-
-## Syntax
-
-A Riot component is a combination of layout (HTML) and logic (javascript). Here are the basic rules:
-
-* Each `.riot` file can contain the logic for only a single component
-* HTML is defined first and the logic is enclosed inside a `<script>` tag.
-* Custom components can be empty, HTML only or javascript only
-* All template expressions are "just javascript™️"`: <pre>{ JSON.stringify(props) }</pre>`
-* The `this` keyword is optional: `<p>{ name }</p>` is valid as `<p>{ this.name }</p>`
-* Quotes are optional: `<foo bar={ baz }>` is valid as `<foo bar="{ baz }">`.
-* Boolean attributes (checked, selected etc..) are ignored when the expression value is falsy: `<input checked={ undefined }>` becomes `<input>`.
-* All attribute names *must be lowercase*. This is due to browser specification.
-* Standard HTML tags (`label`, `table`, `a` etc..) can also be customized, but not necessarily a wise thing to do.
-* Tag definition **root** may also have attributes: `<my-component onclick={ click } class={ props.class }>`.
+[ライブデモ](https://riot.js.org/examples/plunker/?app=todo-app)をご覧になるか、ブラウザで[ソース](https://github.com/riot/examples/tree/gh-pages/todo-app)を閲覧するか、[zip](https://github.com/riot/examples/archive/gh-pages.zip) ファイルをダウンロードしてください。
 
 
-## Pre-processor
+## 構文
 
-You can specify a pre-processor with `type` attribute. For example:
+Riot コンポーネントはレイアウト（HTML）とロジック（javascript）のコンビネーションです。基本的なルールは次のとおりです:
+
+* 各 `.riot` ファイル含めることができるのは、一つのコンポーネントのロジックのみ
+* HTML は初めに定義され、ロジックは `<script>` タグで囲われる
+* カスタムコンポーネントは空にもでき、HTML のみ、または javascript のみにもできる
+* すべてのテンプレートの式は "javascript™️" `: <pre>{ JSON.stringify(props) }</pre>`
+* `this` というキーワードはオプショナル: `<p>{ name }</p>` は `<p>{ this.name }</p>` として有効
+* 引用符はオプショナル: `<foo bar={ baz }>` は `<foo bar="{ baz }">` として有効
+* 式の値が falsy の場合、Boolean の属性（checked, selected など）は無視される: `<input checked={ undefined }>` は `<input>` となる
+* すべての属性名は *小文字でなければならない*。これはブラウザの仕様によるものである
+* 標準の HTML タグ（`label`、`table`、`a` など）はカスタマイズすることもできるが、必ずしもそうすることが賢明というわけではない
+* **ルート** のタグ定義も属性を保つ場合がある: `<my-component onclick={ click } class={ props.class }>`
+
+
+## プリプロセッサ
+
+`type` 属性でプリプロセッサを指定できます。例:
 
 ```html
 <my-component>
   <script type="coffee">
-    # your coffeescript logic goes here
+    # coffeescript ロジックをここに書く
   </script>
 </my-component>
 ````
 
-Your component will be compiled with the preprocessor selected only if it was previously [registered before]({{ '/compiler#registerpreprocessor' | prepend:site.baseurl }}).
+コンポーネントは選択したプリプロセッサによりコンパイルされます。ただし、プリプロセッサが[事前に登録]({{ '/ja/compiler#プリプロセッサ' | prepend:site.baseurl }})されている場合に限ります。
 
-## Styling
+## スタイリング
 
-You can put a `style` tag inside. Riot.js automatically takes it out and injects it into `<head>`. This happens once, no matter how many times the component is initialized.
+`style` タグを中に置くことができます。Riot.js はスタイルを自動的に外に切り出し、`<head>` 内に注入します。これはコンポーネントが初期化される回数に関係なく、一回だけ発生します。
 
 ```html
 <my-component>
@@ -177,17 +177,17 @@ You can put a `style` tag inside. Riot.js automatically takes it out and injects
   <h3>{ props.title }</h3>
 
   <style>
-   /** other component specific styles **/
+    /** 他のコンポーネント固有のスタイル **/
     h3 { font-size: 120% }
-    /** other component specific styles **/
+    /** 他のコンポーネント固有のスタイル **/
   </style>
 
 </my-component>
 ```
 
-### Scoped CSS
+### スコープ付き CSS
 
-[Scoped css and :host pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:host()) is also available for all browsers. Riot.js has its own custom implementation in JS which does not rely on or fallback to the browser implementation. The example below is equivalent to the first one. Notice that the example below uses the `:host` `pseudo-class` instead of relying in the component name to scope the styles.
+[スコープ付き css と :host 擬似クラス](https://developer.mozilla.org/en-US/docs/Web/CSS/:host()) はすべてのブラウザで使用できます。Riot.js は JS に独自のカスタム実装を持っており、ブラウザの実装に依存したり、フォールバックしたりすることはありません。次の例は、最初の例と同じです。注意 次の例では、コンポーネント名を使用してスタイルのスコープを設定する代わりに `:host` `擬似クラス` を使用しています。
 
 ```html
 <my-component>

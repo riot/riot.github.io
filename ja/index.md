@@ -56,7 +56,7 @@ Riot.jsはポリフィルを使用せずにすべての最新ブラウザにカ�
 </todo>
 ```
 
-カスタム要素は関連する HTML と JavaScript を結合し再利用可能なコンポーネントを形成します。React + Polymerも考えられますが、Riot.jsの構文はより楽しく学習曲線も小さいです。
+カスタム要素は関連する HTML と JavaScript を結合し再利用可能なコンポーネントを形成します。Webコンポーネント API がネイティブであることを望むすべてのものを提供するように設計されています。
 
 #### ヒューマンリーダブル
 
@@ -86,8 +86,9 @@ HTML の構文は web の *事実上の* 言語であり、ユーザーインタ
 Riot.js のタグはブラウザに実行される前に素の javascriptに [コンパイル]({{ '/ja/compiler/' | prepend:site.baseurl }}) されます。
 
 
-#### 式、値の DOM へのバインディング
-- DOM 更新の量をできるだけ最小限に
+#### パフォーマンスと予測性
+- DOM 更新とリフローの量をできるだけ最小限に
+- 仮想 DOM メモリのパフォーマンスの問題と欠点のかわりに、高速に式をバインディング
 - 単方向のデータフロー: 更新やアンマウントは親から子へと下に伝搬される
 - 高速化のため、テンプレート構文はプリコンパイルされキャッシュされる
 - より細かく制御するためのライフサイクルイベント
@@ -95,18 +96,19 @@ Riot.js のタグはブラウザに実行される前に素の javascriptに [�
 
 
 #### 標準に近い
-- 独自のイベントシステムはなし
-- 外部のポリフィルやライブラリの追加は不要
-- レンダリングされたDOMは、自由に他のツールから操作可能
-- HTML のルート要素や `data-` 属性は不要
-- Web Components に似た API
-- モダンな modules 構文
+- JavaScript モジュールの構文のおかげで、未来でも使用可能
+- レンダリングされた DOM は他のツールと一緒に自由に操作可能
+- Web コンポーネントライクな API
+- 外部ポリフィルや追加ライブラリが不要
+- 独自のイベントシステムなし
+- 余分な HTML のルート要素、`data-` 属性、または高価なカスタム属性は不要
+
 
 
 #### 他ツールとの相性が良い
-- NPM エコシステムに統合
-- Node.js の [require フック](https://github.com/riot/ssr#usage)
-- [webpack](https://github.com/riot/webpack-loader), [rollup](https://github.com/riot/rollup-plugin-riot), [parcel](https://github.com/riot/parcel-plugin-riot) や [browserify](https://github.com/riot/riotify) プラグインを利用した開発
+- CoffeeScript、Jade、LiveScript、TypeScript、ES6、または[任意のプリプロセッサ](https://riot.js.org/next/#プリプロセッサ)を使ってコンポーネントを作成
+- [@riotjs/cli](https://github.com/riot/cli) 、[webpack](https://github.com/riot/webpack-loader)、[Rollup](https://github.com/riot/rollup-plugin-riot)、[parcel](https://github.com/riot/parcel-plugin-riot)、[Browserify](https://github.com/riot/riotify) を使用してビルド
+- 任意の方法でテストし、[直接ノードに riot タグをロード](https://github.com/riot/ssr#render---to-render-only-markup)可能
 
 
 ## 2. シンプルかつミニマリスト
@@ -133,7 +135,8 @@ Riot.jsは他の UI ライブラリと比較して API メソッドの数が 10�
 - 学ぶことが少ない。閲覧する書籍やチュートリアルが少なくなる
 - 学ぶべきテンプレートディレクティブはたったの3つだけ `if`, `each` そして `is`
 - 独自性の物が少ない
-- フードの下プロキシや魔法のようなことは起きていない
+- 新しく学ぶ構文はない
+- "magic" や "smart" リアクティブプロパティまたはフックはない
 - 暗黙の仮定に覆われた明示的な振る舞い
 
 
@@ -157,6 +160,20 @@ Riotはモダンなクライアントサイドのアプリケーションを作�
 - 拡張性が高く、かつ独自性は低い
 
 Riot.js は一つの"オープンスタック"です。つまり、フレームワーク固有のイディオムを避けたい開発者のためのもの、を意味します。一般的なツールを使用して、あなたの最も好みのデザインパターンを組み合わせることができます。
+
+#### パワフルかつモジュラーなエコシステム
+
+Riot.js のエコシステムは完全にモジュール化しており、必要なものを個別に選択できるように設計されています:
+
+  - [@riotjs/cli](https://github.com/riot/cli) - ローカル上で tags を javascript にコンパイルするための CLI
+  - [@riotjs/ssr](https://github.com/riot/ssr) - 非常にシンプルなサーバーサイドレンダリング
+  - [@riotjs/hydrate](https://github.com/riot/hydrate) - SPA のためのハイドレーション戦略
+  - [@riotjs/hot-reload](https://github.com/riot/hot-reload) - ライブリロード用のプラグイン
+  - [@riotjs/compiler](https://github.com/riot/compiler) - 拡張タグコンパイラ
+  - [@riotjs/parser](https://github.com/riot/parser) - HTML パーサ
+  - [@riotjs/dom-bindings](https://github.com/riot/dom-bindings) - 式ベースのテンプレートエンジン
+  - [@riotjs/now](https://github.com/riot/now) - https://zeit.co/ now の統合
+  - [@riotjs/custom-elements](https://github.com/riot/custom-elements) - ネイティブカスタム要素の実装
 
 ## まとめ
 

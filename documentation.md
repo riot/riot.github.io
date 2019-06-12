@@ -177,7 +177,7 @@ You can put a `style` tag inside. Riot.js automatically takes it out and injects
   <h3>{ props.title }</h3>
 
   <style>
-   /** other component specific styles **/
+    /** other component specific styles **/
     h3 { font-size: 120% }
     /** other component specific styles **/
   </style>
