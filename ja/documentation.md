@@ -361,10 +361,11 @@ Riot 内の DOM にアクセスする必要がある場合、[riot コンポー�
 </my-component>
 ```
 
-### State
+### 状態
 
-Each riot component can use the `this.state` object to store or modify its internal state.
+各 riot コンポーネントは `this.state` オブジェクトを使用して、内部の状態を格納または変更できます。
 While the `this.props` attribute is frozen the `this.state` object is completely mutable and it could be updated manually or via the `this.update()` method:
+`this.props` 属性がフリーズされている間は、`this.state` オブジェクトは完全に変更可能であり、手動または `this.update()` メソッドを使用して更新することができます:
 
 ```html
 <my-component id="{ state.name }-{ state.surname }">
@@ -374,10 +375,10 @@ While the `this.props` attribute is frozen the `this.state` object is completely
   <script>
     export default {
       onMounted() {
-        // this is good but doesn't update the component DOM
+        // これは良いがコンポーネント DOM は更新しない
         this.state.name = 'Jack'
 
-        // this call updates the state and the component DOM as well
+        // このコールは状態とコンポーネント DOM も更新する
         this.update({
           surname: 'Black'
         })
