@@ -251,9 +251,9 @@ riot.mount('todo, forum, comments')
 ドキュメントには、同じコンポーネントのインスタンスを複数含めることができます。
 
 
-### Accessing DOM elements
+### DOM 要素へのアクセス
 
-Riot gives you access to your component DOM elements via `this.$` and `this.$$` helper methods.
+Riot は `this.$` と `this.$$` ヘルパーメソッドを介してコンポーネントの DOM 要素へのアクセスを提供します。
 
 ```html
 <my-component>
@@ -266,8 +266,8 @@ Riot gives you access to your component DOM elements via `this.$` and `this.$$` 
   <script>
     export default {
       onMounted() {
-        const title = this.$('h1') // single element
-        const items = this.$$('li') // multiple elements
+        const title = this.$('h1') // 単体の要素
+        const items = this.$$('li') // 複数の要素
       }
     }
   </script>
