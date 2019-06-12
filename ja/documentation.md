@@ -275,9 +275,9 @@ Riot は `this.$` と `this.$$` ヘルパーメソッドを介してコンポー
 ```
 
 
-### How to use jQuery, Zepto, querySelector, etc...
+### jQuery、Zepto、querySelector …その他の使い方
 
-If you need to access the DOM inside Riot, you'll want to take a look at the [riot component lifecycle](#riot-component-lifecycle). Notice that the DOM elements aren't instantiated until the `mount` event first fires, meaning any attempt to select an element before then will fail.
+Riot 内の DOM にアクセスする必要がある場合、[riot コンポーネントのライフサイクル](#riot-コンポーネントのライフサイクル) を見たいと思うでしょう。DOM 要素は、最初に `mount` イベントが発生するまでインスタンス化されないことに注意してください。つまり、先に要素を選択しようとすると失敗することを意味しています。
 
 ```html
 <my-component>
@@ -286,16 +286,16 @@ If you need to access the DOM inside Riot, you'll want to take a look at the [ri
   <script>
 
     var test1 = document.getElementById('findMe')
-    console.log('test1', test1)  // Fails
+    console.log('test1', test1)  // 失敗
 
     export default {
       onMounted() {
         const test2 = document.getElementById('findMe')
-        console.log('test3', test3) // Succeeds, fires once (per mount)
+        console.log('test3', test3) // 成功、一度発火（マウントごとに）
       },
       onUpdated() {
         const test3 = document.getElementById('findMe')
-        console.log('test2', test2) // Succeeds, fires on every update
+        console.log('test2', test2) // 成功、更新ごとに発火
       }
     }
   </script>
