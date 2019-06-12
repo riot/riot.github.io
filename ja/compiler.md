@@ -300,7 +300,7 @@ compile(source, {
 })
 ```
 
-`css` と `javascript` のプリプロセッサは、直接コンポーネント内で `type="{preprocessor}"` を指定するだけで有効にすることができます
+`css` と `javascript` のプリプロセッサは、コンポーネント内で直接 `type="{preprocessor}"` を指定するだけで有効にすることができます
 
 ```html
 <my-component>
