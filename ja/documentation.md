@@ -192,41 +192,41 @@ Riot コンポーネントはレイアウト（HTML）とロジック（javascri
 ```html
 <my-component>
 
-  <!-- layout -->
+  <!-- レイアウト -->
   <h3>{ props.title }</h3>
 
   <style>
     :host { display: block }
     h3 { font-size: 120% }
-    /** other component specific styles **/
+    /** 他のコンポーネント固有のスタイル **/
   </style>
 
 </my-component>
 ```
 
-## Mounting
+## マウント
 
-Once a component is created you can mount it on the page as follows:
+コンポーネントを作成したら、次の手順でページにマウントできます:
 
 
 ```html
 <body>
 
-  <!-- place the custom component anywhere inside the body -->
+  <!-- body 内の任意の位置にカスタムコンポーネントを配置 -->
   <my-component></my-component>
 
-  <!-- is attributes are also supported -->
+  <!-- is 属性もサポートされている -->
   <div is="my-component"></div>
 
-  <!-- include riot.js -->
+  <!-- riot.js を導入 -->
   <script src="riot.min.js"></script>
 
-  <!-- mount the component -->
+  <!-- コンポーネントをマウント -->
   <script type="module">
-    // import the component javascript output generated via @riotjs/compiler
+    // @riotjs/compiler で生成されたコンポーネントの javascript の出力をインポートする
     import MyComponent from './my-component.js'
 
-    // register the riot component
+    // the riot コンポーネントを登録
     riot.register('my-component', MyComponent)
 
     riot.mount('my-component')
@@ -235,25 +235,25 @@ Once a component is created you can mount it on the page as follows:
 </body>
 ```
 
-Custom components inside the `body` of the page needs to be closed normally: `<my-component></my-component>` and self-closing: `<my-component/>` is not supported.
+ページの `body` 内のカスタムコンポーネントは通常どおりに閉じる必要があります: `<my-component></my-component>` かつ、自己終了: `<my-component/>` はサポートされていません。
 
 
-Some example uses of the mount method:
+mount メソッドを使用したいくつかの例:
 
 ```js
-// mount an element with a specific id
+// 指定した id の要素をマウント
 riot.mount('#my-element')
 
-// mount selected elements
+// 選択した要素をマウント
 riot.mount('todo, forum, comments')
 ```
 
-A document can contain multiple instances of the same component.
+ドキュメントには、同じコンポーネントのインスタンスを複数含めることができます。
 
 
-### Accessing DOM elements
+### DOM 要素へのアクセス
 
-Riot gives you access to your component DOM elements via `this.$` and `this.$$` helper methods.
+Riot は `this.$` と `this.$$` ヘルパーメソッドを介してコンポーネントの DOM 要素へのアクセスを提供します。
 
 ```html
 <my-component>
@@ -266,8 +266,8 @@ Riot gives you access to your component DOM elements via `this.$` and `this.$$` 
   <script>
     export default {
       onMounted() {
-        const title = this.$('h1') // single element
-        const items = this.$$('li') // multiple elements
+        const title = this.$('h1') // 単体の要素
+        const items = this.$$('li') // 複数の要素
       }
     }
   </script>
@@ -275,9 +275,9 @@ Riot gives you access to your component DOM elements via `this.$` and `this.$$` 
 ```
 
 
-### How to use jQuery, Zepto, querySelector, etc...
+### jQuery、Zepto、querySelector などの使い方
 
-If you need to access the DOM inside Riot, you'll want to take a look at the [riot component lifecycle](#riot-component-lifecycle). Notice that the DOM elements aren't instantiated until the `mount` event first fires, meaning any attempt to select an element before then will fail.
+Riot 内の DOM にアクセスする必要がある場合、[riot コンポーネントのライフサイクル](#riot-コンポーネントのライフサイクル) を見たいと思うでしょう。DOM 要素は、最初に `mount` イベントが発生するまでインスタンス化されないことに注意してください。つまり、先に要素を選択しようとすると失敗することを意味しています。
 
 ```html
 <my-component>
@@ -286,25 +286,25 @@ If you need to access the DOM inside Riot, you'll want to take a look at the [ri
   <script>
 
     var test1 = document.getElementById('findMe')
-    console.log('test1', test1)  // Fails
+    console.log('test1', test1)  // 失敗
 
     export default {
       onMounted() {
         const test2 = document.getElementById('findMe')
-        console.log('test3', test3) // Succeeds, fires once (per mount)
+        console.log('test3', test3) // 成功、一度発火（マウントごとに）
       },
       onUpdated() {
         const test3 = document.getElementById('findMe')
-        console.log('test2', test2) // Succeeds, fires on every update
+        console.log('test2', test2) // 成功、更新ごとに発火
       }
     }
   </script>
 </my-component>
 ```
 
-### Contexted DOM query
+### コンテキスト DOM クエリ
 
-Now that we know how to get DOM elements in the `onUpdated` or `onMounted` callbacks, we can make this useful by also adding a context to our element queries to the `root element` (the riot tag we're creating).
+`onUpdated` コールバックまたは `onMounted` コールバックで DOM 要素を取得する方法がわかりましたが、要素のクエリにコンテキストを `root element`（作成した riot タグ）に追加することによっても、これを便利なものにすることができます。
 
 ```html
 <my-component>
@@ -315,20 +315,20 @@ Now that we know how to get DOM elements in the `onUpdated` or `onMounted` callb
   <script>
     export default {
       onMounted() {
-        // Contexted jQuery
-        $('p', this.root) // similar to this.$
+        // jQuery コンテキスト
+        $('p', this.root) // this.$ に似ている
 
-        // Contexted Query Selector
-        this.root.querySelectorAll('p') // similar to this.$$
+        // クエリセレクタコンテキスト
+        this.root.querySelectorAll('p') // this.$$ に似ている
       }
     }
   </script>
 </my-component>
 ```
 
-### Properties
+### プロパティ
 
-You can pass initial properties for components in the second argument
+コンポーネントの初期プロパティを2番目の引数に渡すことができます。
 
 ```html
 <script>
@@ -336,24 +336,24 @@ You can pass initial properties for components in the second argument
 </script>
 ```
 
-The passed data can be anything, ranging from a simple object to a full application API. Or it can be a Redux store. Depends on the designed architecture.
+渡されるデータは、単純なオブジェクトから完全なアプリケーションAPIまで、あらゆるものが可能です。または、Redux ストアも許されます。設計されたアーキテクチャに依存します。
 
-Inside the tag the properties can be referenced with the `this.props` attribute as follows:
+タグ内では、プロパティは次のように `this.props` 属性でプロパティを参照できます:
 
 ```html
 <my-component>
 
-  <!-- Props in HTML -->
+  <!-- HTML 内の props -->
   <h3>{ props.title }</h3>
 
   <script>
     export default {
       onMounted() {
-        // Props in javascript
+        // JavaScript 内の props
         const title = this.props.title
 
-        // this.props is frozen and it's immutable
-        this.props.description = 'my description' // this will not work
+        // this.props は固定かつ不変
+        this.props.description = 'my description' // これは動作しない
       }
     }
   </script>
@@ -361,10 +361,10 @@ Inside the tag the properties can be referenced with the `this.props` attribute 
 </my-component>
 ```
 
-### State
+### 状態
 
-Each riot component can use the `this.state` object to store or modify its internal state.
-While the `this.props` attribute is frozen the `this.state` object is completely mutable and it could be updated manually or via the `this.update()` method:
+各 riot コンポーネントは `this.state` オブジェクトを使用して、内部の状態を格納または変更できます。
+`this.props` 属性がフリーズされている間は、`this.state` オブジェクトは完全に変更可能であり、手動または `this.update()` メソッドを使用して更新することができます:
 
 ```html
 <my-component id="{ state.name }-{ state.surname }">
@@ -374,10 +374,10 @@ While the `this.props` attribute is frozen the `this.state` object is completely
   <script>
     export default {
       onMounted() {
-        // this is good but doesn't update the component DOM
+        // これは良いがコンポーネント DOM は更新しない
         this.state.name = 'Jack'
 
-        // this call updates the state and the component DOM as well
+        // このコールは状態とコンポーネント DOM も更新する
         this.update({
           surname: 'Black'
         })
@@ -387,28 +387,28 @@ While the `this.props` attribute is frozen the `this.state` object is completely
 </my-component>
 ```
 
-### Riot component lifecycle
+### Riot コンポーネントのライフサイクル
 
-A component is created in following sequence:
+コンポーネントは以下の一連の流れで生成されます:
 
-1. The component object is created
-2. The javascript logic is executed
-3. All HTML expressions are calculated
-4. The component DOM is mounted on the page and "onMounted" callback is called
+1. コンポーネントのオブジェクトが生成される
+2. javascript ロジックが評価、実行される
+3. すべての HTML の式が計算される
+4. コンポーネント DOM がページにマウントされ、"onMounted" コールバックが呼び出される
 
-After the component is mounted the expressions are updated as follows:
+コンポーネントがマウントされた後、テンプレート変数の式は次のように更新されます:
 
-1. When `this.update()` is called on the current component instance
-2. When `this.update()` is called on a parent component, or any parent upwards. Updates flow uni-directionally from parent to child.
+1. 現在のコンポーネントインスタンスで `this.update()` が呼び出されたとき
+2. 親コンポーネントまたは、任意の親方向（上位）のコンポーネントで `this.update()` が呼び出されたとき。　親から子への単方向のフローで更新する。
 
-The "onUpdated" callback is called every time component tag is updated.
+"onUpdated" コールバックはコンポーネントタグが更新される度に呼び出されます。
 
-Since the values are calculated before mounting there are no surprise issues such as failed `<img src={ src }>` calls.
+マウントされる前に値が計算されるため、失敗した `<img src={ src }>` をコールするなどの驚くべき問題はありません。
 
 
-### Lifecycle callbacks
+### ライフサイクルコールバック
 
-You can setup you component lifecycles as follows:
+コンポーネントのライフサイクルを以下のように設定することができます:
 
 
 ```html
@@ -416,40 +416,40 @@ You can setup you component lifecycles as follows:
   <script>
     export default {
       onBeforeMount(props, state) {
-        // before the component is mounted
+        // コンポーネントのマウント前
       },
       onMounted(props, state) {
-        // right after the component is mounted on the page
+        // コンポーネントがページにマウントされた直後
       },
       onBeforeUpdate(props, state) {
-        // allows recalculation of context data before the update
+        // 更新前にコンテキストデータの再計算が許可されている
       },
       onUpdated(props, state) {
-        // right after the component template is updated after an update call
+        // update が呼び出され、コンポーネントのテンプレートが更新された直後
       },
       onBeforeUnmount(props, state) {
-        // before the component is removed
+        // コンポーネントが削除される前
       },
       onUnmounted(props, state) {
-        // when the component is removed from the page
+        // ページからコンポーネントが削除されたとき
       }
     }
   </script>
 </my-component>
 ```
 
-Any callback receives always the current `this.props` and `this.state` as arguments.
+すべてのコールバックは常に現在の `this.props` と `this.state` という引数を受け取ります。
 
-## Plugins
+## プラグイン
 
-Riot provides an easy way to upgrade its components. When a component is created it can be enhanced by the plugins registered via `riot.install`.
+Riot は自身のコンポーネントをアップグレードする簡単な方法を提供します。コンポーネントが生成されたとき、`riot.install` を介して登録されたプラグインにより拡張されます。
 
 ```js
 // riot-observable.js
 let id = 0
 
 riot.install(function(component) {
-  // all components will pass through here
+  // すべてのコンポーネントはここを通過する
   component.uid = id++
 })
 
