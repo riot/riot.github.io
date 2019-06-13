@@ -364,7 +364,6 @@ Riot 内の DOM にアクセスする必要がある場合、[riot コンポー�
 ### 状態
 
 各 riot コンポーネントは `this.state` オブジェクトを使用して、内部の状態を格納または変更できます。
-While the `this.props` attribute is frozen the `this.state` object is completely mutable and it could be updated manually or via the `this.update()` method:
 `this.props` 属性がフリーズされている間は、`this.state` オブジェクトは完全に変更可能であり、手動または `this.update()` メソッドを使用して更新することができます:
 
 ```html
