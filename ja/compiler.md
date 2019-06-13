@@ -3,40 +3,40 @@ title: Compiler
 layout: detail
 ---
 
-## Introduction
+## 概要
 
-Custom tags need to be transformed to javascript before the browser can execute them.
-The riot compiler is designed to transform riot tags into javascript modules.
-A compiled riot tag will look like this:
+カスタムタグはブラウザで実行可能になる前に javascript に変換される必要があります。
+Riot のコンパイラは riot タグを javascript モジュールに変換するよう設計されています。
+コンパイルされた riot タグは次のようになります:
 
 ```js
 export default {
-  css: `my-tag { color: red; }`, // component css string
-  template: function() {}, // internal riot template factory function
-  exports: {}, // component events and lifecycle methods
-  name: 'my-tag' // component id
+  css: `my-tag { color: red; }`, // コンポーネントのcss文字列
+  template: function() {}, // 内部 riot テンプレートファクトリ関数
+  exports: {}, // コンポーネントイベントとライフサイクルメソッド
+  name: 'my-tag' // コンポーネント id
 }
 ```
 
-**Each tag file must contain only one tag definition**.
+**ひとつのタグファイルに含まれるタグ定義は、ひとつだけです。**
 
-## In-browser compilation
+## インブラウザ・コンパイル
 
-The `riot+compiler.js` bundle lets you compile and execute riot tags directly in your browser for quick prototypes and tests.
-You can load riot tags into your browser by setting a `type="riot"` attribute on your script tags.
-For example:
+`riot+compiler.js` によるバンドルは、素早くひな型を作ってテストできるよう、ブラウザでタグを直接コンパイルし、実行する機能を提供しています。
+以下のように、 `<script>` タグの属性に `type="riot"` を指定することで、 riot タグをブラウザにロードすることが可能です。
+例:
 
 ``` html
-<!-- mount point -->
+<!-- マウント位置 -->
 <my-tag></my-tag>
 
-<!-- <my-tag/> is specified in an external file -->
+<!-- <my-tag/> は外部ファイルで指定 -->
 <script src="path/to/javascript/my-tag.riot" type="riot"></script>
 
-<!-- include riot.js and the compiler -->
+<!-- riot.js とコンパイラを含める -->
 <script src="https://unpkg.com/riot@{{ site.data.globals.version }}/riot+compiler.min.js"></script>
 
-<!-- compile and mount -->
+<!-- コンパイルとマウント -->
 <script>
 (async function main() {
   await riot.compile()
@@ -46,32 +46,32 @@ For example:
 </script>
 ```
 
-Notice that in this case riot will internally transform all the `export default` expressions to enable a better support for browsers that don't support javascript modules yet.
+この場合、 riot は全ての `export default` 式を内部的に、ブラウザ表示に適した形に変換しますが、まだ javascript モジュールをサポートしていないことに注意してください。
 
-Riot can compile asynchronously all the external tags included via `<script>` into the DOM and via `riot.mount` it will render them.
+Riot は、 `<script>` を通じてDOMにインクルードされた全ての外部タグを非同期にコンパイルし、 `riot.mount` でそれらを描画することが可能です。
 
-You might prefer using `data-src` instead of `src` on your `<script>` tags stop your browser prefetching automatically any riot script tag in order to avoid to load the same resources twice. Riot will automatically fetch and compile your tags via ajax.
+ブラウザによる riot スクリプトタグのプリフェッチ機能を抑止し、同じリソースを複数回ロードすることを防ぐため、 `<script>` タグの `src` 属性の代わりに `data-src` 属性を使いたい場合があるかも知れません。 Riot は自動的に、 ajax によってタグをフェッチしてコンパイルします。
 
-## Pre-compilation
+## プリコンパイル
 
-The Compilation phase is asynchronous and it will not block your application rendering. However you should use the browser compilation only for prototyping or for quick experiments.
+上記のコンパイル段階は非同期に行われ、アプリケーションの描画処理をブロックしません。しかしインブラウザ・コンパイルは、ひな型の作成やちょっとした実験のためだけに使うべきです。
 
-Pre-compilation on gives you following benefits:
+プリコンパイルを行うと、次のような恩恵を受けられます:
 
-- Ability to compile tags with your [favorite pre-processor](#pre-processors).
-- Big performance benefit. No need to load and execute the compiler on browser.
-- Sourcemaps support for debugging.
+- [お好みのプリプロセッサ](#プリプロセッサ)でタグをコンパイル。
+- 高いパフォーマンスを得られる。ロードやブラウザによるコンパイラ実行が不要。
+- ソースマップ出力でデバッグをサポート。
 
-### Riot loaders
+### Riot ローダー
 
-Tools like [`webpack`](https://webpack.js.org/) and [`rollup`](https://rollupjs.org/) are the perfect match to bundle your riot application tags.
-For such tools we provide riot official loaders to let import natively riot components into your source code:
+[`webpack`](https://webpack.js.org/) や [`rollup`](https://rollupjs.org/) といったツールは、 riot アプリケーションのタグをバンドルするのに最適です。
+そのようなツールに向けて、 riot コンポーネントをあなたのソースコードにそのままインポートするための、 riot 公式ローダーを提供しています:
   - [webpack](https://github.com/riot/webpack-loader)
   - [rollup](https://github.com/riot/rollup-plugin-riot)
   - [parcel](https://github.com/riot/parcel-plugin-riot)
   - [riotify](https://github.com/riot/riotify)
 
-With the riot loaders your application entry script might look like this:
+Riot ローダーを使ったアプリケーションのエントリースクリプトは、おそらくこのようになるでしょう:
 
 ```js
 import { component } from 'riot'
@@ -80,97 +80,97 @@ import MyTag from './path/to/tags/my-tag.riot'
 component(MyTag)(document.getElementById('root'))
 ```
 
-### Compilation via Node
+### Node によるコンパイル
 
 ``` javascript
 import {compile} from '@riotjs/compiler'
 
 const { code, map } = compile('<p>{hello}</p>', {
-  //...options
+  // 以下、オプション定義
   file: 'my/path/to/my-component.riot',
-  // transform the `:host` css rules
+  // cssの `:host` を変換するか
   scopedCss: true,
-  // expressions delimiters
+  // （テンプレート構文の）式のデリミタ
   brackets: ['{', '}'],
-  // keep HTML comments
+  // HTML のコメントを残すか
   comments: false
 })
 ```
 
-The compile function takes a string and returns an object containing the `code` and `map` keys.
-You can handle the code generated however you like and use it into your build system.
+`compile()` 関数は、引数として文字列を取り、 `code` と `map` をキーに持つオブジェクトを返します。
+生成されたコードは、ご自身で好きなように扱うこともできますし、お使いのビルドシステムで使用することもできます。
 
-Remember that the riot compiler outputs javascript modules and you might want to transpile them in your bundle.
+Riot コンパイラは、 javascript モジュールを出力することにご留意ください。バンドルには、これら（訳注: 出力されたモジュール）をトランスパイルしたほうがいいでしょう。
 
 
-### Compilation via Riot.js CLI
+### Riot.js コマンドラインによるコンパイル
 
-You can precompile Riot.js files also via the [`riot`](https://github.com/riot/cli) executable, which can be installed with NPM as follows:
+Riot.js ファイルを、 [`riot`](https://github.com/riot/cli) 実行コマンドを使ってプリコンパイルすることもできます。こちらは以下のように、 NPM でインストールできます:
 
 ```sh
 npm install @riotjs/cli -g
 ```
 
-#### Using
+#### 使い方
 
-Here is how `riot` command works:
+`riot` コマンドの動作例をご紹介します:
 
 ```sh
-# compile a file to current folder
+# カレントフォルダに、単体のファイルをコンパイル
 riot some.riot
 
-# compile file to target folder
+# ファイルをコンパイルして、指定したフォルダに出力
 riot some.riot --output some-folder
 
-# compile file to target path
+# ファイルをコンパイルして、指定したパスに出力
 riot some.riot --output some-folder/some.js
 
-# compile all files from source folder to target folder
+# ソースフォルダにある全てのファイルをコンパイルして、指定したフォルダに出力
 riot some/folder --output path/to/dist
 
 ```
 
-For more information, type: `riot --help`
+より詳しい情報を見るには、右のようにタイプしてください: `riot --help`
 
-#### Watch mode
+#### ファイル変更の監視
 
-You can watch directories and automatically transform files when they are changed.
+ディレクトリを監視し、ファイルが変更されたら自動的に変換することができます。
 
 ```sh
-# watch for
+# 特定のディレクトリ（訳注: ここでは `src` ディレクトリ）を監視
 riot -w src -o dist
 ```
 
 
-#### Custom extension
+#### ファイルの拡張子を変更
 
-You're free to use any file extension for your tags (instead of default `.riot`):
+Riotタグファイルの拡張子は、お好きなものをお使いください（デフォルトでは `.riot` です）:
 
 ```sh
 riot --extension html
 ```
 
-#### ES6 Config file
+#### ES6形式の設定ファイル
 
-You can use a config file to store and configure easily all your `@riotjs/cli` options and create your custom parsers
+設定ファイルを使えば、 `@riotjs/cli` のすべてのオプションの設定を保存して楽に設定できるようにしたり、新しいカスタムパーサを作成したりできます
 
 ```sh
 riot --config riot.config src
 ```
 
-The riot `riot.config.js` file:
+`riot.config.js` ファイルは、このような形式になります:
 
 ```js
 export default {
   output: 'tags/dist',
-  // sourcemap type
+  // ソースマップ形式
   sourcemap: 'inline',
-  // files extension
+  // ファイル拡張子
   extension: 'foo'
 }
 ```
 
-If you want to use custom preprocessors in your project you should install `@riotjs/cli` as `devDependency` running it via npm scripts as follows:
+作成するプロジェクトでカスタムプリプロセッサを使いたい場合、 package.json の `devDependency` から `@riotjs/cli` をインストールし、 npm スクリプトから以下のように起動します:
 
 
 ```json
@@ -187,13 +187,13 @@ If you want to use custom preprocessors in your project you should install `@rio
 }
 ```
 
-That's how your `riot.config.js` file might look like in case you want to use `pug` as components template engine
+以下はコンポーネント（訳注: タグファイル）のテンプレートエンジンとして `pug` を使いたい場合の、 `riot.config.js` の典型例です
 
 ```js
 import { registerPreprocessor } from '@riotjs/compiler'
 import { render } from 'pug'
 
-// register the pug preprocessor
+// pug のプリプロセッサを登録
 registerPreprocessor('template', 'pug', (code, options) => {
   const { file } = options
 
@@ -209,18 +209,18 @@ registerPreprocessor('template', 'pug', (code, options) => {
 export default {
   extension: 'pug',
 
-  // assign the pug preprocessor to the riot compiler options
+  // pug のプリプロセッサを riot コンパイラオプションに割り当てる
   riot: {
     template: 'pug'
   }
 }
 ```
 
-#### Build your whole application
+#### アプリケーション全体のビルド
 
-You can also use the CLI to bundle your entire application.
+CLI ツールを使って、アプリケーション全体をバンドルすることもできます。
 
-The `app.js` file:
+`app.js` ファイル:
 
 ```js
 import {component} from 'riot'
@@ -233,13 +233,13 @@ component(App)(document.getElementById('root'))
 riot app.js -o dist/app.js
 ```
 
-Your `dist/app.js` file will contain all the Riot.js components imported in your application and the code to run it.
+上記の場合、作成したアプリケーションにインポートされた全ての Riot.js コンポーネントは `dist/app.js` ファイルに含まれ、コードが実行されるようになります。
 
-## Pre-processors
+## プリプロセッサ
 
-You can pre-process your components contents using your favorite programming language.
+お好きなプログラム言語を用いて、コンポーネントの内容をプリプロセスすることができます。
 
-The `@riotjs/compiler` gives you the possibility to register your preprocessors:
+`@riotjs/compiler` は、任意のプリプロセッサを登録する機能を提供しています:
 
 ```js
 import { registerPreprocessor } from '@riotjs/compiler'
@@ -249,11 +249,11 @@ import ts from 'ts'
 
 registerPreprocessor('template', 'pug', function(code, { options }) {
   const { file } = options
-  console.log('Preprocess the template', file)
+  console.log('テンプレートのプリプロセス', file)
 
   return {
     code: pug.render(code),
-    // no sourcemap here
+    // ソースマップ出力をしない
     map: null
   }
 })
@@ -261,7 +261,7 @@ registerPreprocessor('template', 'pug', function(code, { options }) {
 registerPreprocessor('css', 'sass', function(code, { options }) {
   const { file } = options
 
-  console.log('Compile the sass code in', file)
+  console.log('sass のコードをコンパイル中', file)
 
   const {css} = sass.renderSync({
     data: code
@@ -291,8 +291,8 @@ registerPreprocessor('javascript', 'ts', function(code, { options }) {
 })
 ```
 
-The Riot.js preprocessors can be only of three types `template`, `css`, `javascript` (the first argument of the `registerPreprocessor` function).
-To compile your components with a different template engine you will need to specify the `template` option via compiler:
+Riot.js のプリプロセッサは、 `template`, `css`, `javascript` の３種類の、いずれかでなければなりません（ `registerPreprocessor` 関数の最初の引数です）。
+別のテンプレートエンジンでコンポーネントをコンパイルするには、コンパイラを介して `template` オプションを指定する必要があります:
 
 ```js
 import { compile } from '@riotjs/compiler'
@@ -302,7 +302,7 @@ compile(source, {
 })
 ```
 
-For the `css` and `javascript` preprocessors you can simply enable them directly in your components via `type="{preprocessor}"` attribute
+`css` と `javascript` のプリプロセッサは、コンポーネント内で直接 `type="{preprocessor}"` を指定するだけで有効にすることができます
 
 ```html
 <my-component>
@@ -326,9 +326,9 @@ For the `css` and `javascript` preprocessors you can simply enable them directly
 </my-component>
 ```
 
-### Pre-processors Caveats
+### プリプロセッサの注意事項
 
-The Riot.js compiler generates sourcempas out of the code provided by the pre-processors. If your preprocessor will not provide any `map` output the compiler will not output proper sourcemaps.
+Riot.js のコンパイラは、プリプロセッサによって提供されたコードからソースマップを生成します。もしご利用のプリプロセッサが `map` を返さない場合、コンパイラは適切なソースマップを出力しません。
 
 ```js
 
@@ -336,10 +336,10 @@ import { registerPreprocessor } from '@riotjs/compiler'
 import babel from '@babel/core'
 
 registerPreprocessor('javascript', 'babel', function(code, { options }) {
-  // the babel.transform returns properly an object containing the keys {map, code}
+  // babel.transform はキーに {map, code} を含んだ、有効なオブジェクトを返す
   return babel.transform(code, {
     sourceMaps: true,
-    // notice that whitelines should be preserved
+    // 空行を保つ必要があることに注意
     retainLines: true,
     sourceFileName: options.file,
     presets: [[
@@ -358,7 +358,7 @@ registerPreprocessor('javascript', 'babel', function(code, { options }) {
 
 
 registerPreprocessor('javascript', 'my-js-preprocessor', function(code, { options }) {
-  // the Riot.js compiler will not be able to generate sourcemaps
+  // Riot.js コンパイラはソースマップを生成できない（訳注: {map} に値が含まれていないため）
   return {
     code: myPreprocessor(code),
     map: null
@@ -367,24 +367,24 @@ registerPreprocessor('javascript', 'my-js-preprocessor', function(code, { option
 
 ```
 
-The javascript preprocessors should preserve the code whitelines of the original source code otherwise the resulting sourcemap will have a broken offset.
+利用する javascript プリプロセッサは、元コードの空行を保つようにしてください。さもなければ、オフセットの壊れたソースマップを結果として受け取ってしまいます。
 
-## Post-processors
+## ポストプロセッサ
 
-Similar to the preprocessor the compiler output can be modified via `registerPostprocessor`
+プリプロセッサ同様、コンパイラは `registerPostprocessor` を使って、出力結果を整形することができます。
 
 ```js
 import { registerPostprocessor } from '@riotjs/compiler'
 import buble from 'buble'
 
-// your compiler output will pass from here
+// コンパイラによる出力は、ここから渡される
 registerPostprocessor(function(code, { options }) {
   const { file } = options
-  console.log('your file path is:', file)
+  console.log('ファイルパス:', file)
 
-  // notice that buble.transform returns {code, map}
+  // buble.transform は戻り値として {code, map} を返すことに注意
   return buble.transform(code)
 })
 ```
 
-In this case we make sure that the output code will be converted to es2015 via `buble`.
+この場合、最終的に出力されるコードは `buble` によって es2015 に変換されたものになります。
