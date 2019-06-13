@@ -441,16 +441,16 @@ While the `this.props` attribute is frozen the `this.state` object is completely
 
 すべてのコールバックは常に現在の `this.props` と `this.state` という引数を受け取ります。
 
-## Plugins
+## プラグイン
 
-Riot provides an easy way to upgrade its components. When a component is created it can be enhanced by the plugins registered via `riot.install`.
+Riot は自身のコンポーネントをアップグレードする簡単な方法を提供します。コンポーネントが生成されたとき、`riot.install` を介して登録されたプラグインにより拡張されます。
 
 ```js
 // riot-observable.js
 let id = 0
 
 riot.install(function(component) {
-  // all components will pass through here
+  // すべてのコンポーネントはここを通過する
   component.uid = id++
 })
 
