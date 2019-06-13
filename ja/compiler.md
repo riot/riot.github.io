@@ -292,7 +292,7 @@ registerPreprocessor('javascript', 'ts', function(code, { options }) {
 ```
 
 Riot.js のプリプロセッサは、 `template`, `css`, `javascript` の３種類の、いずれかでなければなりません（ `registerPreprocessor` 関数の最初の引数です）。
-別のテンプレートエンジンでコンポーネントをコンパイルするには、 `template` オプションを設定し、コンパイラに渡す必要があります:
+別のテンプレートエンジンでコンポーネントをコンパイルするには、コンパイラを介して `template` オプションを指定する必要があります:
 
 ```js
 import { compile } from '@riotjs/compiler'
