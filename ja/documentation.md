@@ -574,9 +574,9 @@ W3C では、属性が存在していれば（その値が `false`、空であ�
 
 `style` タグ内の式は無視されます。
 
-### Render unescaped HTML
+### エスケープされていない HTML のレンダリング
 
-Riot expressions can only render text values without HTML formatting. However you can make a custom tag to do the job. For example:
+Riot の式では、HTML フォーマットなしのテキスト値のみをレンダリングできます。ただし、カスタムタグを作成してジョブを行うことができます。例
 
 ```html
 <raw>
@@ -596,7 +596,7 @@ Riot expressions can only render text values without HTML formatting. However yo
 </raw>
 ```
 
-After the tag is defined you can use it inside other tags. For example
+タグが定義されると、そのタグを他のタグ内で使うことができます。例:
 
 ```html
 <my-component>
@@ -612,9 +612,9 @@ After the tag is defined you can use it inside other tags. For example
 </my-component>
 ```
 
-[demo on jsfiddle](http://jsfiddle.net/23g73yvx/)
+[jsfiddle でのデモ](http://jsfiddle.net/23g73yvx/)
 
-<aside class="note note--warning">:warning: this could expose the user to XSS attacks so make sure you never load data from an untrusted source.</aside>
+<aside class="note note--warning">:warning: これによりユーザーが XSS 攻撃を受ける可能性があるため、信頼できないソースからデータをロードしないようにしてください。</aside>
 
 ## Nested components
 
