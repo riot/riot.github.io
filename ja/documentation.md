@@ -509,21 +509,22 @@ HTMLは、中カッコで囲まれた式と混在させることができます:
 </my-component>
 ```
 
-### Boolean attributes
+### Boolean 属性
 
-Boolean attributes (checked, selected etc..) are ignored when the expression value is falsy:
+式の値が falsy の場合、Boolean 属性（checked、selected …など）は無視されます:
 
-`<input checked={ null }>` becomes `<input>`.
+`<input checked={ null }>` は `<input>` となります。
 
 W3C states that a boolean property is true if the attribute is present at all — even if the value is empty of `false`.
+W3C では、属性が存在していれば（その値が `false`、空であっても）boolean 型のプロパティは true であると記述しています。
 
-The following expression does not work:
+以下の式は動作しません:
 
 ```html
 <input type="checkbox" { true ? 'checked' : ''}>
 ```
 
-since only attribute and nested text expressions are valid. Riot detects automatically all the valid html boolean attributes.
+属性式とネストされたテキスト式のみが有効です。Riot は有効な html の boolean 属性をすべて自動的に検出します。
 
 
 ### Object spread attribute
