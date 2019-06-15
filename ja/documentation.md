@@ -678,11 +678,11 @@ Riot の式では、HTML フォーマットなしのテキスト値のみをレ�
 </account>
 ```
 
-### Slots
+### スロット
 
-Using the `<slot>` tag you can inject custom HTML templates in a child component from its parent
+`<slot>` タグを使用すると、カスタム HTML テンプレートを親コンポーネントから子コンポーネントに挿入できます。
 
-Child component definition
+子コンポーネントの定義
 
 ```html
 <greeting>
@@ -690,7 +690,7 @@ Child component definition
 </greeting>
 ```
 
-The child component is placed in a parent component injecting custom HTML into it
+子コンポーネントは、カスタム HTML を挿入する親コンポーネントの中に配置されます。
 
 ```html
 <user>
@@ -706,7 +706,7 @@ The child component is placed in a parent component injecting custom HTML into i
 </user>
 ```
 
-Result
+結果
 
 ```html
 <user>
@@ -716,14 +716,14 @@ Result
 </user>
 ```
 
-See [API docs]({{ '/api/#slots' | prepend:site.baseurl }}) for `slots`.
+[API ドキュメント]({{ '/api/#スロット' | prepend:site.baseurl }}) の `slots` を参照ください。
 
 <aside class="note note--info">
-Slots work only in compiled components, all the inner HTML of the components placed directly in your page DOM will be ignored.
+スロットはコンパイルされたコンポーネントでのみ動作し、ページ DOM に直接配置されたコンポーネントのすべての内部 HTML は無視されます。
 </aside>
 
 <aside class="note note--warning">
-:warning: Riot <code>if</code>, <code>each</code> and <code>is</code> directives are not supported on slot tags
+:warning: スロットタグでは、Riot<code>if</code>、<code>each</code> および <code>is</code> ディレクティブはサポートされていません。
 </aside>
 
 
