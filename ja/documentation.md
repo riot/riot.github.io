@@ -570,10 +570,9 @@ W3C では、属性が存在していれば（その値が `false`、空であ�
 </my-component>
 ```
 
-### Etc
+### その他
 
-Expressions inside `style` tags are ignored.
-
+`style` タグ内の式は無視されます。
 
 ### Render unescaped HTML
 
