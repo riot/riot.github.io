@@ -1,5 +1,4 @@
-version:             4.0.0
-version_slurp:       Reboot
+version:             4
 repo:                https://github.com/riot/riot
 twitter_account:     https://twitter.com/riotjs_
 gitter:              https://gitter.im/riot/riot
