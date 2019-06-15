@@ -527,9 +527,9 @@ W3C では、属性が存在していれば（その値が `false`、空であ�
 属性式とネストされたテキスト式のみが有効です。Riot は有効な html の boolean 属性をすべて自動的に検出します。
 
 
-### Object spread attribute
+### スプレッド属性のオブジェクト
 
-You can also use an object spread expression to define multiple attributes. For example:
+ 複数の属性を定義するために、スプレッド式のオブジェクトを使うこともできます。例:
 
 ```html
 <my-component>
@@ -546,7 +546,7 @@ You can also use an object spread expression to define multiple attributes. For 
 </my-component>
 ```
 
-evaluates to `<p id="my-id" role="contentinfo" class="main-paragraph">`.
+`<p id="my-id" role="contentinfo" class="main-paragraph">` と評価されます。
 
 ### Printing brackets
 
