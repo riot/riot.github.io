@@ -548,13 +548,13 @@ W3C では、属性が存在していれば（その値が `false`、空であ�
 
 `<p id="my-id" role="contentinfo" class="main-paragraph">` と評価されます。
 
-### Printing brackets
+### 括弧の出力
 
-You can output an expression without evaluation by escaping the opening bracket:
+括弧の開始をエスケープすることで、式を評価することなしに出力できます:
 
-`\{ this is not evaluated }` outputs `{ this is not evaluated }`
+`\{ this is not evaluated }` は `{ this is not evaluated }` と出力されます。
 
-Be sure to escape brackets in any situation where they should not be evaluated. For example, the Regex pattern below will fail to validate the intended input (any two numeric characters) and instead only accept a single numeric character followed by the number "2":
+括弧を評価すべきでない場合は、必ず括弧をエスケープしてください。例えば、以下の Regex パターンは意図した入力（任意の2つの数字）を検証することに失敗し、代わりに単一の数字（以下では数字の "2"）のみを受け付けます。
 
 ```html
 <my-component>
@@ -562,7 +562,7 @@ Be sure to escape brackets in any situation where they should not be evaluated. 
 </my-component>
 ```
 
-The correct implementation would be:
+正しい実装は次のとおりです:
 
 ```html
 <my-component>
