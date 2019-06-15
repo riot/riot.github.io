@@ -616,9 +616,9 @@ Riot の式では、HTML フォーマットなしのテキスト値のみをレ�
 
 <aside class="note note--warning">:warning: これによりユーザーが XSS 攻撃を受ける可能性があるため、信頼できないソースからデータをロードしないようにしてください。</aside>
 
-## Nested components
+## ネストしたコンポーネント
 
-Let's define a parent tag `<account>` and with a nested tag `<subscription>`:
+ネストしたタグ `<subscription>` とセットで親タグ `<account>` を定義してみてください:
 
 
 ```html
@@ -634,7 +634,7 @@ Let's define a parent tag `<account>` and with a nested tag `<subscription>`:
   <script>
     export default {
       onMounted(props) {
-        // Get JS handle to props
+        // props への JS のハンドルを取得
         const {plan, showDetails} = props
       }
     }
@@ -643,10 +643,10 @@ Let's define a parent tag `<account>` and with a nested tag `<subscription>`:
 ```
 
 <aside class="note note--info">
-Note how we named the <code>show-details</code> attribute, it is written in dash case but it will be converted to camel case inside the <code>this.props</code> object.
+<code>show-details</code> 属性にどのような名前を付けたかに注意してください。これはダッシュケースで書かれていますが、<code>this.props</code> オブジェクト内ではキャメルケースに変換されます。
 </aside>
 
-Then we mount the `account` component to the page with a `plan` configuration object:
+次に、`plan` 設定オブジェクトを持つページに `account` コンポーネントをマウントします。
 
 ```html
 <body>
@@ -658,9 +658,9 @@ Then we mount the `account` component to the page with a `plan` configuration ob
 </script>
 ```
 
-Parent component properties are passed with the `riot.mount` method and child component ones are passed via the tag attribute.
+親コンポーネントのプロパティは `riot.mount` メソッドで渡され、子コンポーネントのプロパティはタグの属性を介して渡されます。
 
-Nested tags should be registered via `riot.register` call or they can be directly imported into the parent component. If you bundle your application your `<account>` template might look like this:
+ネストしたタグは `riot.register` をコールして登録すべきか、または親コンポーネントに直接読み込むことができます。もしアプリケーションをバンドルすると、`<account>` テンプレートは次のようになります:
 
 ```html
 <account>
