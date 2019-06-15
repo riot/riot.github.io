@@ -462,23 +462,24 @@ riot.install(function(component) {
 </my-component>
 ```
 
-## Expressions
+## 式（テンプレート変数）
 
-HTML can be mixed with expressions that are enclosed in curly braces:
+HTMLは、中カッコで囲まれた式と混在させることができます:
 
 ```js
-{ /* my_expression goes here */ }
+{ /* 自分の式をここに書く */ }
 ```
 
-Expressions can set attributes or nested text nodes:
+
+式には、属性やネストしたテキストノードを設定することができます:
 
 ```html
-<h3 id={ /* attribute_expression */ }>
-  { /* nested_expression */ }
+<h3 id={ /* 属性式 */ }>
+  { /* ネストされた式 */ }
 </h3>
 ```
 
-Expressions are 100% javascript. A few examples:
+式は 100% javascript です。いくつかの例:
 
 ```js
 { title || 'Untitled' }
@@ -488,19 +489,19 @@ Expressions are 100% javascript. A few examples:
 { Math.round(rating) }
 ```
 
-The goal is to keep the expressions small so your HTML stays as clean as possible. If your expression grows in complexity consider moving some of logic to the "onBeforeUpdate" callback. For example:
+目標は、式を小さくして、HTML をできるだけクリーンな状態に保つことです。もし式が複雑になってきたら、ロジックの一部を "onBeforeUpdate" コールバックに移すことを検討してください。例:
 
 
 ```html
 <my-component>
 
-  <!-- the `val` is calculated below .. -->
+  <!-- `val` は以下で計算された値〜 -->
   <p>{ val }</p>
 
   <script>
     export default {
       onBeforeUpdate() {
-        // ..on every update
+        // 〜更新ごとに
         this.val = some / complex * expression ^ here
       }
     }
