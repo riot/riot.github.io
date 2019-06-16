@@ -856,9 +856,9 @@ each ディレクティブは内部的に`Array.from` を使用しています�
 `name` は要素の名前で、`index` はインデックスの番号です。どちらのラベルも、状況に最も適したものにすることができます。
 
 
-### Object loops
+### オブジェクトのループ
 
-Plain objects can be looped via [`Object.entries`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries). For example:
+プレーンオブジェクトは [`Object.entries`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries) でループすることができます。例:
 
 ```html
 <my-component>
@@ -880,7 +880,7 @@ Plain objects can be looped via [`Object.entries`](https://developer.mozilla.org
 </my-component>
 ```
 
-You can use [`Object.keys`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) and [`Object.values`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values) if you just want to loop only fragments your object.
+オブジェクトのフラグメントだけをループしたい場合は、[`Object.keys`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) や [`Object.values`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values) を使うことができます。
 
 ```html
 <my-component>
