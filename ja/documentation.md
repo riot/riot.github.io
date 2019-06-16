@@ -830,9 +830,9 @@ DOM イベントを処理する関数は "イベントハンドラ" と呼ばれ
 現在ループされているアイテムのプロパティは、ループしているタグに直接渡すことができます。
 
 
-### Non-object arrays
+### 非オブジェクト配列
 
-The each directive uses internally `Array.from`. This means that you can loop strings, Map, Sets containing also only primitive values:
+each ディレクティブは内部的に`Array.from` を使用しています。これは、プリミティブな値のみを含む文字列、マップ、セットもループできることを意味します:
 
 
 ```html
@@ -853,7 +853,7 @@ The each directive uses internally `Array.from`. This means that you can loop st
 </my-component>
 ```
 
-The `name` is the name of the element and `index` is the index number. Both of these labels can be anything that's best suited for the situation.
+`name` は要素の名前で、`index` はインデックスの番号です。どちらのラベルも、状況に最も適したものにすることができます。
 
 
 ### Object loops
