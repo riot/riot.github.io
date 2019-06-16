@@ -903,11 +903,11 @@ each ディレクティブは内部的に`Array.from` を使用しています�
 </my-component>
 ```
 
-### Loops advanced tips
+### ループの発展的な tips
 
-#### Key
+#### キー
 
-Adding the `key` attribute to the looped tags you will provide a more precise strategy to track your items position. This will highly improve the loop performance in case your collections are immutable.
+ループされたタグに `key` 属性を追加すると、より正確な方法でアイテムの位置を追跡できます。これにより、コレクションが不変の場合のループパフォーマンスが大幅に向上します。
 
 ```html
 <loop>
@@ -927,7 +927,7 @@ Adding the `key` attribute to the looped tags you will provide a more precise st
 </loop>
 ```
 
-The `key` attribute can be also generated in runtime via expressions
+`key` 属性は式を使用してランタイムでも生成できます。
 
 ```html
 <loop>
