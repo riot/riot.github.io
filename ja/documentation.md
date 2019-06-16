@@ -727,9 +727,9 @@ Riot の式では、HTML フォーマットなしのテキスト値のみをレ�
 </aside>
 
 
-## Event handlers
+## イベントハンドラ
 
-A function that deals with DOM events is called an "event handler". Event handlers are defined as follows:
+DOM イベントを処理する関数は "イベントハンドラ" と呼ばれます。イベントハンドラは次のように定義されます:
 
 ```html
 <login>
@@ -739,7 +739,7 @@ A function that deals with DOM events is called an "event handler". Event handle
 
   <script>
     export default {
-      // this method is called when above form is submitted
+      // このメソッドは上記のフォームがサブミットされたときに呼び出される
       submit(e) {
 
       }
@@ -748,16 +748,16 @@ A function that deals with DOM events is called an "event handler". Event handle
 </login>
 ```
 
-Attributes beginning with "on" (`onclick`, `onsubmit`, `oninput` etc...) accept a function value which is called when the event occurs. This function can also be defined dynamically with an expression. For example:
+"on" で始まる属性（`onclick`、`onsubmit`、`oninput`...など）は、イベントが発火した際に呼び出される関数の値を受け取ります。この関数は、式とともに直接定義することもできます。例:
 
 
 ```html
 <form onsubmit={ condition ? method_a : method_b }>
 ```
 
-All the event handlers are auto-bound and `this` refers to the current component instance.
+すべてのイベントハンドラは自動でバインドされ、`this` は現在のコンポーネントインスタンスを参照します。
 
-Event handlers do not update components so you might combine them with a `this.update()` call:
+イベントハンドラはコンポーネントを更新しません。ゆえに、`this.update()` を呼び出すことで更新内容をコンポーネントに結びつける必要があります:
 
 ```html
 <login>
