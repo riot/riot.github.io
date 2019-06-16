@@ -793,9 +793,9 @@ DOM イベントを処理する関数は "イベントハンドラ" と呼ばれ
   - `true or (truthy)`: ネストされたコンポーネントをマウントする、または要素をテンプレートに追加する
   - `false or (falsy)`: 要素またはコンポーネントをアンマウントする
 
-## Loops
+## ループ
 
-Loops are implemented with `each` attribute as follows:
+以下のように、ループは `each` 属性にて実装されます:
 
 ```html
 <my-component>
@@ -817,7 +817,7 @@ Loops are implemented with `each` attribute as follows:
 </my-component>
 ```
 
-The element with the `each` attribute will be repeated for all items in the array. New elements are automatically added / created when the items array is manipulated using `push()`, `slice()` or `splice` methods for example.
+`each` 属性を持つ要素は、配列内のすべての項目に対して繰り返されます。例えば、 `push()`、`slice()`、`splice` などのメソッドを使用して items 配列を操作すると、新しい要素が自動的に追加 / 作成されます。
 
 ### Looping custom components
 
