@@ -1011,11 +1011,11 @@ const html = render('timer', Timer, { start: 42 })
 console.log(html) // <timer><p>Seconds Elapsed: 42</p></timer>
 ```
 
-## Riot DOM Caveats
+## Riot DOM の注意事項
 
-Riot components rely on browsers rendering so you must be aware of certain situations where your components might not render properly their template.
+Riot コンポーネントはブラウザのレンダリングに依存するため、コンポーネントがテンプレートを正しくレンダリングできない場合があることに注意する必要があります。
 
-Consider the following tag:
+以下のタグを考えてみましょう:
 
 ``` html
 
@@ -1025,18 +1025,18 @@ Consider the following tag:
 </my-fancy-options>
 ```
 
-This markup is not valid if not injected in a `<select>` tag:
+`<select>` タグに挿入されていない場合、このマークアップは無効です:
 
 ``` html
 
-<!-- not valid, a select tag allows only <option> children -->
+<!-- 無効、select タグは <option> 子どもたちのみを許可 -->
 <select>
   <my-fancy-options />
 </select>
 
-<!-- valid because we will render the <option> tags using <select> as root node -->
+<!-- 有効、 なぜなら <select> をルートノードとして使用して <option> タグをレンダリングするから -->
 <select is='my-fancy-options'></select>
 
 ```
 
-Tags like `table, select, svg...` don't allow custom children tags so the use of custom riot tags is forbidden. Use `is` instead like demonstrated above. [more info](https://github.com/riot/riot/issues/2206)
+`table, select, svg...` のようなタグは、カスタムの子タグを許可していません。したがって、 カスタム riot タグの使用は禁止されています。代わりに、上記のデモのように `is` を使用してください。[詳細情報](https://github.com/riot/riot/issues/2206)
