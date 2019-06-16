@@ -470,7 +470,6 @@ HTMLは、中カッコで囲まれた式と混在させることができます:
 { /* 自分の式をここに書く */ }
 ```
 
-
 式には、属性やネストしたテキストノードを設定することができます:
 
 ```html
@@ -515,7 +514,6 @@ HTMLは、中カッコで囲まれた式と混在させることができます:
 
 `<input checked={ null }>` は `<input>` となります。
 
-W3C states that a boolean property is true if the attribute is present at all — even if the value is empty of `false`.
 W3C では、属性が存在していれば（その値が `false`、空であっても）boolean 型のプロパティは true であると記述しています。
 
 以下の式は動作しません:
@@ -573,6 +571,7 @@ W3C では、属性が存在していれば（その値が `false`、空であ�
 ### その他
 
 `style` タグ内の式は無視されます。
+
 
 ### エスケープされていない HTML のレンダリング
 
