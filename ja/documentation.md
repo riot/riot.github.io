@@ -819,15 +819,15 @@ DOM イベントを処理する関数は "イベントハンドラ" と呼ばれ
 
 `each` 属性を持つ要素は、配列内のすべての項目に対して繰り返されます。例えば、 `push()`、`slice()`、`splice` などのメソッドを使用して items 配列を操作すると、新しい要素が自動的に追加 / 作成されます。
 
-### Looping custom components
+### カスタムコンポーネントのループ
 
-Custom components can also be looped. For example:
+カスタムコンポーネントもループが可能です。例:
 
 ```html
 <todo-item each="{ item in items }" { ...item }></todo-item>
 ```
 
-The currently looped item properties can directly be passed to the looped tag.
+現在ループされているアイテムのプロパティは、ループしているタグに直接渡すことができます。
 
 
 ### Non-object arrays
