@@ -779,9 +779,9 @@ DOM イベントを処理する関数は "イベントハンドラ" と呼ばれ
 </login>
 ```
 
-## Conditionals
+## 条件
 
-Conditionals let you mount / unmount dom and components based on a condition. For example:
+条件付きでは、その条件に基づいて dom およびコンポーネントをマウント / アンマウントできます。例:
 
 ```html
 <div if={ isPremium }>
@@ -789,9 +789,9 @@ Conditionals let you mount / unmount dom and components based on a condition. Fo
 </div>
 ```
 
-Again, the expression can be just a simple property or a full javascript expression. The `if` directive is a special attribute:
-  - `true or (truthy)`: mount a nested component or add an element to the template
-  - `false or (falsy)`: unmount an element or a component
+この場合も、式はシンプルはプロパティか、または完全な javascript の式になりえます。`if` ディレクティブは特殊な属性です:
+  - `true or (truthy)`: ネストされたコンポーネントをマウントする、または要素をテンプレートに追加する
+  - `false or (falsy)`: 要素またはコンポーネントをアンマウントする
 
 ## Loops
 
