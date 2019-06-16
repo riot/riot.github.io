@@ -961,8 +961,7 @@ riot.mount('my-list')
 
 will mount the `ul` element shown above as if it were `<my-list></my-list>`
 
-Note that you can use also an expression in the `is` attribute and riot will be able to
-render dynamically also different tags on the same DOM node
+Note that you can use also an expression in the `is` attribute and riot will be able to render dynamically also different tags on the same DOM node
 
 ```html
 <my-component>

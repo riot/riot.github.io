@@ -946,28 +946,27 @@ each ディレクティブは内部的に`Array.from` を使用しています�
 </loop>
 ```
 
-## HTML elements as components
+## コンポーネントとしての HTML 要素
 
-Standard HTML elements can be used as riot components in the page body with the addition of the `is` attribute.
+標準の HTML 要素は、`is` 属性を追加することで、ページの body 内で riot コンポーネントとして使用できます。
 
 ```html
 <ul is="my-list"></ul>
 ```
 
-This provides users with an alternative that can provide greater compatibility with css frameworks. The tags are treated like any other custom component.
+これにより、css フレームワークとの互換性を高めることができる代替手段がユーザーに提供されます。タグは、他のカスタムコンポーネントと同様に扱われます。
 
 ```js
 riot.mount('my-list')
 ```
 
-will mount the `ul` element shown above as if it were `<my-list></my-list>`
+まるで `<my-list></my-list>` のように、上で示された `ul` 要素をマウントします。
 
-Note that you can use also an expression in the `is` attribute and riot will be able to
-render dynamically also different tags on the same DOM node
+メモ `is` 属性には式も使用でき、riot は同じ DOM ノード上で異なるタグを動的にレンダリングできます。
 
 ```html
 <my-component>
-  <!-- dynamic component -->
+  <!-- 動的なコンポーネント -->
   <div is={ animal }></div>
   <button onclick={ switchComponent }>
     Switch
@@ -977,8 +976,8 @@ render dynamically also different tags on the same DOM node
     export default {
       animal: 'dog',
       switchComponent() {
-        // riot will render the <dog> component
-        // replacing <cat>
+        // riot は<dog> コンポーネントをレンダリングする
+        // <cat> に置換する
         this.animal = 'cat'
         this.update()
       }
@@ -987,21 +986,21 @@ render dynamically also different tags on the same DOM node
 </my-component>
 ```
 
-Note that when using the `is` attribute, the tag name should be rendered in all lowercase, regardless of how it's defined.
+メモ `is` 属性を使用する場合は、どのように定義されているかにかかわらず、タグ名をすべて小文字で表示する必要があります。
 
 ```html
-  <MyComponent></MyComponent> <!-- Correct -->
-  <div is="mycomponent"></div> <!-- Also Correct -->
-  <div is="MyComponent"></div> <!-- Incorrect -->
+  <MyComponent></MyComponent> <!-- 正しい -->
+  <div is="mycomponent"></div> <!-- これも正しい -->
+  <div is="MyComponent"></div> <!-- 誤り -->
   <script>
     riot.mount('MyComponent');
   </script>
 ```
 
 
-## Server-side rendering
+## サーバーサイドレンダリング
 
-Riot [supports server-side rendering](https://github.com/riot/ssr) with Node.js. You can `require` components and render them:
+Riot は Node.js を使用して[サーバーサイドレンダリングをサポート](https://github.com/riot/ssr) しています。コンポーネントを `require` し、それらをレンダリングできます:
 
 ```js
 const render = require('@riotjs/ssr')
