@@ -760,7 +760,7 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 </my-component>
 ```
 
-<aside class="note note--warning">:警告:
+<aside class="note note--warning">:warning:
 ヘルパー <code>$</code> と <code>$$</code> は 、 HTML テンプレートに含まれた子タグが Riot.js が生成するコンポーネントであっても、 DOM クエリの検索対象として動作することに気をつけてください。
 </aside>
 
