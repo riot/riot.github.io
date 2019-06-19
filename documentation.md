@@ -38,7 +38,7 @@ Once you have wired all your application bundler that's how your code might look
   <title>Riot App</title>
 </head>
 <body>
-  <app></app>
+  <div id="root"></div>
   <script src="main.js"></script>
 </body>
 </html>
