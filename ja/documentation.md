@@ -38,7 +38,7 @@ yarn add riot
   <title>Riot App</title>
 </head>
 <body>
-  <app></app>
+  <div id="root"></div>
   <script src="main.js"></script>
 </body>
 </html>
