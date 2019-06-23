@@ -1,0 +1,8 @@
+- japanese:
+  path: '/ja'
+  name: 'Japanese'
+  color: 551a8b
+- english:
+  path: '/'
+  name: 'English'
+  color: 333447

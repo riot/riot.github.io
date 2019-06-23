@@ -16,10 +16,15 @@
             </grid>
           </nav>
         </c>
+
         <c class="extra" span="6" span-s="row">
           <nav>
             <ul>
-              <li><a target="_blank" rel="nofollow" href="{{ site.data.globals.repo }}"><img title="Riot on github" src="https://img.shields.io/badge/GITHUB-REPO-fc0e49.svg?style=flat-square"></a></li>
+              <li>
+                <a target="_blank" rel="nofollow" href="{{ site.data.globals.repo }}">
+                  <img title="Riot on github" src="https://img.shields.io/badge/GITHUB-REPO-fc0e49.svg?style=flat-square">
+                </a>
+              </li>
               <li>
                 <a target="_blank" rel="nofollow" href="https://opencollective.com/riot/">
                   <img title="Do a donation" src="https://img.shields.io/badge/DONATE-%E2%9D%A4-fc0e49.svg?style=flat-square"/>
@@ -37,6 +42,15 @@
                   <img title="Made With Riot" src="https://img.shields.io/badge/SHOWCASE-Made_with_riot-17908f.svg?style=flat-square">
                 </a>
               </li>
+            </ul>
+            <ul class="languages">
+              {% for language in site.data.languages %}
+                <li>
+                  <a href="{{ language.path }}">
+                    <img title="{{language.name}}" src="https://img.shields.io/badge/Switch to-{{language.name}}-{{language.color}}.svg?style=flat-square">
+                  </a>
+                </li>
+              {% endfor %}
             </ul>
           </nav>
         </c>
