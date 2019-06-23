@@ -32,6 +32,12 @@
       flex-direction: column;
       flex-wrap: wrap;
 
+      &.languages {
+        border-top: 1px solid $paper-white;
+        margin-top: 0.4rem;
+        padding-top: 0.8rem;
+      }
+
       li {
         a {
           display: inline-block;
