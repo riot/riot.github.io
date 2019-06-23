@@ -792,6 +792,22 @@ Again, the expression can be just a simple property or a full javascript express
   - `true or (truthy)`: mount a nested component or add an element to the template
   - `false or (falsy)`: unmount an element or a component
 
+### Fragments conditional
+
+{% include version_badge.html version=">=4.2.0" %}
+
+The `if` directives can be used also without the use of a wrapper tag. Thanks to the `<template>` tag you can render only the content of an if condition:
+
+```html
+<template if="isReady">
+  <header></header>
+  <main></main>
+  <footer></footer>
+</template>
+```
+
+The `<template>` tag will be just used to wrap a html fragment that depends on a Riot.js directive, this feature is available [also for loops](#fragments-loops)
+
 ## Loops
 
 Loops are implemented with `each` attribute as follows:
@@ -901,6 +917,23 @@ You can use [`Object.keys`](https://developer.mozilla.org/en-US/docs/Web/JavaScr
 
 </my-component>
 ```
+
+### Fragments loops
+
+{% include version_badge.html version=">=4.2.0" %}
+
+In some cases you may need to loop some html without having a particular wrapper tag. In that case you can use the <template> tag that will be removed rendering just the html tags wrapped in it. For example:
+
+```html
+<dl>
+  <template each={item in items}>
+    <dt>{item.key}</dt>
+    <dd>{item.value}</dd>
+  </template>
+</dl>
+```
+
+This html fragments strategy is not exclusive to looping and can be used in [conjunction with `if`](#fragments-conditional) for any tag.
 
 ### Loops advanced tips
 
