@@ -52,6 +52,33 @@ Riot can compile asynchronously all the external tags included via `<script>` in
 
 You might prefer using `data-src` instead of `src` on your `<script>` tags stop your browser prefetching automatically any riot script tag in order to avoid to load the same resources twice. Riot will automatically fetch and compile your tags via ajax.
 
+### In-browser compilation with inline templates
+
+Your Riot.js components could be also be included directly in your page via `<template>` tags. For example:
+
+```html
+<!-- somewhere in your page -->
+<template id="my-tag">
+  <my-tag>
+    <p>{ props.message }</p>
+  </my-tag>
+</template>
+```
+
+The `riot+compiler.js` bundle exposes the `compileFromString` and `inject` methods that can help you compiling the above component:
+
+```js
+const tagString = document.getElementById('my-tag').innerHTML
+
+// get the compiled code
+const {code} = riot.compileFromString(tagString)
+
+// create the riot component in runtime
+riot.inject(code, 'my-tag', './my-tag.html')
+
+riot.mount('my-tag')
+```
+
 ## Pre-compilation
 
 The Compilation phase is asynchronous and it will not block your application rendering. However you should use the browser compilation only for prototyping or for quick experiments.
