@@ -6,7 +6,7 @@ permalink:           pretty
 title:               Riot.js
 tagline:             Simple and elegant component-based UI library
 url:                 http://riot.js.org
-baseurl:             "/"
+baseurl:             ""
 
 # Markdown
 markdown:           kramdown
