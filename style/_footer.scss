@@ -36,6 +36,10 @@
         border-top: 1px solid $paper-white;
         margin-top: 0.4rem;
         padding-top: 0.8rem;
+
+        @include at-root('body.dark') {
+          border-top-color: $light-carbon-grey;
+        }
       }
 
       li {
