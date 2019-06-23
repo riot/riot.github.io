@@ -65,7 +65,7 @@ Your Riot.js components could be also be included directly in your page via `<te
 </template>
 ```
 
-The `riot+compiler.js` bundle exposes the `compileFromString` and `inject` methods that can help you compiling the above component:
+The `riot+compiler.js` bundle exposes the `compileFromString` and `inject` methods that combined together, can help you compiling the above component:
 
 ```js
 const tagString = document.getElementById('my-tag').innerHTML
