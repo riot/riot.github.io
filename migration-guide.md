@@ -451,7 +451,7 @@ Listening custom events dispatched in child components can be done simply via pr
 
 ### Virtual tags
 
-The `<virtual>` tag was removed and it can't be used anymore. I am planning to use the `<template>` tag instead for the `each` and `if` directives but at moment it's not yet part of the Riot.js 4 API.
+The `<virtual>` tag was removed and it can't be used anymore. Please use the `<template>` tag instead [more info]({{ '/documentation/'|prepend:site.baseurl }}#fragments-conditional)
 
 
 ### Yield tags
