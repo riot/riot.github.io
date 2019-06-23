@@ -220,46 +220,50 @@ If you familiar with Typescript here you can read how a Riot.js component interf
 
 ```ts
 // This interface is only exposed and any Riot component will receive the following properties
-interface RiotCoreComponent {
+interface RiotCoreComponent<P = object, S = object> {
   // automatically generated on any component instance
-  props: object;
-  root: HTMLElement;
-  name?: string;
-  slots: slot[];
+  readonly props: P
+  readonly root: HTMLElement
+  readonly name?: string
+  // TODO: add the @riotjs/dom-bindings types
+  readonly slots: any[]
   mount(
     element: HTMLElement,
-    initialState?: object,
+    initialState?: S,
     parentScope?: object
-  ): RiotComponent;
+  ): RiotComponent<P, S>
   update(
-    newState?:object,
+    newState?: Partial<S>,
     parentScope?: object
-  ): RiotComponent;
-  unmount(keepRootElement: boolean): RiotComponent;
+  ): RiotComponent<P, S>
+  unmount(keepRootElement: boolean): RiotComponent<P, S>
 
   // Helpers
-  $(selector: string): HTMLElement;
-  $$(selector: string): [HTMLElement];
+  $(selector: string): HTMLElement
+  $$(selector: string): [HTMLElement]
 }
 
 // All the RiotComponent Public interface properties are optional
-interface RiotComponent extends RiotCoreComponent {
+interface RiotComponent extends RiotCoreComponent<P = object, S = object> {
   // optional on the component object
-  state?: object;
+  state?: S
 
   // optional alias to map the children component names
-  components?: object;
+  components?: {
+    [key: string]: RiotComponentShell<P, S>
+  }
 
   // state handling methods
-  shouldUpdate?(newProps:object, currentProps:object): boolean;
+  shouldUpdate?(newProps: P, currentProps: P): boolean
 
   // lifecycle methods
-  onBeforeMount?(currentProps:object, currentState:object): void;
-  onMounted?(currentProps:object, currentState:object): void;
-  onBeforeUpdate?(currentProps:object, currentState:object): void;
-  onUpdated?(currentProps:object, currentState:object): void;
-  onBeforeUnmount?(currentProps:object, currentState:object): void;
-  onUnmounted?(currentProps:object, currentState:object): void;
+  onBeforeMount?(currentProps: P, currentState: S): void
+  onMounted?(currentProps: P, currentState: S): void
+  onBeforeUpdate?(currentProps: P, currentState: S): void
+  onUpdated?(currentProps: P, currentState: S): void
+  onBeforeUnmount?(currentProps: P, currentState: S): void
+  onUnmounted?(currentProps: P, currentState: S): void
+  [key: string]: any
 }
 ```
 
@@ -773,11 +777,11 @@ Riot.js components are meant to be compiled to javascript via [@riotjs/compiler]
 The Riot.js compiler just creates a shell object that will be transformed internally by riot to create the [component object](#component-interface). If want to build this shell object manually it's worth to understand its interface first:
 
 ```ts
-interface RiotComponentShell {
-  css?: string;
-  exports?: object|function|class;
-  name?: string;
-  template(): RiotComponentTemplate;
+interface RiotComponentShell<P = object, S = object> {
+  readonly css?: string
+  readonly exports?: () => RiotComponentExport<P, S>|object
+  readonly name?: string
+  template(): any
 }
 ```
 
