@@ -799,7 +799,7 @@ Again, the expression can be just a simple property or a full javascript express
 The `if` directives can be used also without the use of a wrapper tag. Thanks to the `<template>` tag you can render only the content of an if condition:
 
 ```html
-<template if="isReady">
+<template if={isReady}>
   <header></header>
   <main></main>
   <footer></footer>
