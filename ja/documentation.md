@@ -792,6 +792,22 @@ DOM イベントを処理する関数は "イベントハンドラ" と呼ばれ
   - `true or (truthy)`: ネストされたコンポーネントをマウントする、または要素をテンプレートに追加する
   - `false or (falsy)`: 要素またはコンポーネントをアンマウントする
 
+### 条件付き html フラグメント
+
+{% include version_badge.html version=">=4.2.0" %}
+
+`if` ディレクティブを利用するだけのために、わざわざラッパータグを用意する必要はありません。`<template>` タグを使えば、if 条件によってその内容だけを描画することができます:
+
+```html
+<template if="isReady">
+  <header></header>
+  <main></main>
+  <footer></footer>
+</template>
+```
+
+`<template>` タグは Riot.js ディレクティブに依存する HTML フラグメントをラップする目的で使われます。この機能は[ループでも](#html-フラグメントのループ)有効です
+
 ## ループ
 
 以下のように、ループは `each` 属性にて実装されます:
@@ -901,6 +917,23 @@ each ディレクティブは内部的に`Array.from` を使用しています�
 
 </my-component>
 ```
+
+### Html フラグメントのループ
+
+{% include version_badge.html version=">=4.2.0" %}
+
+Html のループの際、特定のラッパータグを使わないほうがいいケースがあります。そのときには <template> タグの出番です。次の例のように記述すると、タグ自体は取り除かれ、ラップされた html タグだけがレンダリングされるようになります:
+
+```html
+<dl>
+  <template each={item in items}>
+    <dt>{item.key}</dt>
+    <dd>{item.value}</dd>
+  </template>
+</dl>
+```
+
+この html フラグメント戦略は、ループ専用というものではありません。任意のタグに対して、 [`if` と組み合わせて](#条件付き-html-フラグメント)使用できます。
 
 ### ループの発展的な tips
 
