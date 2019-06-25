@@ -52,9 +52,9 @@ Riot は、 `<script>` を通じてDOMにインクルードされた全ての外
 
 ブラウザによる riot スクリプトタグのプリフェッチ機能を抑止し、同じリソースを複数回ロードすることを防ぐため、 `<script>` タグの `src` 属性の代わりに `data-src` 属性を使いたい場合があるかも知れません。 Riot は自動的に、 ajax によってタグをフェッチしてコンパイルします。
 
-### インライン template を含むインブラウザ・コンパイル
+### インラインテンプレートを含むインブラウザ・コンパイル
 
-Riot.js のコンポーネントは、 <template> タグを用いて直接ページに追加することも可能です。例:
+Riot.js のコンポーネントは、 `<template>` タグを用いて直接ページに追加することも可能です。例:
 
 ```html
 <!-- ページのいずれかの箇所 -->
@@ -65,7 +65,7 @@ Riot.js のコンポーネントは、 <template> タグを用いて直接ペー
 </template>
 ```
 
-`riot+compiler.js` によるバンドルは、 `compileFromString` と `inject` メソッドを一つにまとめたものを、外部アクセス可能にします。これは上記のコンポーネントをコンパイルする際に役立つことでしょう:
+バンドル `riot+compiler.js` は、 `compileFromString` と `inject` メソッドを一緒に外部に公開しています。この公開メソッドは、上記のコンポーネントのコンパイルに役立ちます:
 
 ```js
 const tagString = document.getElementById('my-tag').innerHTML
