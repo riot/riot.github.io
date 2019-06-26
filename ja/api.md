@@ -219,46 +219,50 @@ TypeScript に詳しい人は、ここに書かれているように Riot.js コ
 
 ```ts
 // このインターフェースはただ公開されているのみで、どんな Riot コンポーネントも以下のプロパティを受け取る
-interface RiotCoreComponent {
+interface RiotCoreComponent<P = object, S = object> {
   // 任意のコンポーネントインスタンスで自動的に生成
-  props: object;
-  root: HTMLElement;
-  name?: string;
-  slots: slot[];
+  readonly props: P
+  readonly root: HTMLElement
+  readonly name?: string
+  // TODO: add the @riotjs/dom-bindings types
+  readonly slots: any[]
   mount(
     element: HTMLElement,
-    initialState?: object,
+    initialState?: S,
     parentScope?: object
-  ): RiotComponent;
+  ): RiotComponent<P, S>
   update(
-    newState?:object,
+    newState?: Partial<S>,
     parentScope?: object
-  ): RiotComponent;
-  unmount(keepRootElement: boolean): RiotComponent;
+  ): RiotComponent<P, S>
+  unmount(keepRootElement: boolean): RiotComponent<P, S>
 
   // ヘルパー
-  $(selector: string): HTMLElement;
-  $$(selector: string): [HTMLElement];
+  $(selector: string): HTMLElement
+  $$(selector: string): [HTMLElement]
 }
 
 // パブリックな RiotComponent インターフェースのプロパティはすべてオプショナル
-interface RiotComponent extends RiotCoreComponent {
+interface RiotComponent extends RiotCoreComponent<P = object, S = object> {
   // コンポーネントオブジェクトでオプショナル
-  state?: object;
+  state?: S
 
   // 子コンポーネントの名前をマップするオプションの別名
-  components?: object;
+  components?: {
+    [key: string]: RiotComponentShell<P, S>
+  }
 
   // ステートハンドリングメソッド
-  shouldUpdate?(newProps:object, currentProps:object): boolean;
+  shouldUpdate?(newProps: P, currentProps: P): boolean
 
   // ライフサイクルメソッド
-  onBeforeMount?(currentProps:object, currentState:object): void;
-  onMounted?(currentProps:object, currentState:object): void;
-  onBeforeUpdate?(currentProps:object, currentState:object): void;
-  onUpdated?(currentProps:object, currentState:object): void;
-  onBeforeUnmount?(currentProps:object, currentState:object): void;
-  onUnmounted?(currentProps:object, currentState:object): void;
+  onBeforeMount?(currentProps: P, currentState: S): void
+  onMounted?(currentProps: P, currentState: S): void
+  onBeforeUpdate?(currentProps: P, currentState: S): void
+  onUpdated?(currentProps: P, currentState: S): void
+  onBeforeUnmount?(currentProps: P, currentState: S): void
+  onUnmounted?(currentProps: P, currentState: S): void
+  [key: string]: any
 }
 ```
 
@@ -370,7 +374,6 @@ myComponent.unmount(true)
 この場合、初期状態のステートと一緒にコンポーネントが生成され、`component.update` を使用して内部的に修正できます。
 
 ネストされた javascript のオブジェクトをステートプロパティに格納することは避けてください。なぜなら、ネストされた javascript の参照は複数のコンポーネントで共有され、副作用が発生する可能性があるからです。予期しない事態を避けるために、ファクトリ関数を使用してコンポーネントを生成することもできます
-
 
 ```html
 <my-component>
@@ -773,11 +776,11 @@ Riot.jsコンポーネントは [@riotjs/compiler](/ja/compiler) を使って ja
 Riot.js コンパイラは、単に [コンポーネントオブジェクト](#コンポーネントインターフェース) を作成するために、riot によって内部的に変換されるシェルオブジェクトを作成する。このシェルオブジェクトを手動で作成する場合は、まずそのインターフェースを理解する必要があります:
 
 ```ts
-interface RiotComponentShell {
-  css?: string;
-  exports?: object|function|class;
-  name?: string;
-  template(): RiotComponentTemplate;
+interface RiotComponentShell<P = object, S = object> {
+  readonly css?: string
+  readonly exports?: () => RiotComponentExport<P, S>|object
+  readonly name?: string
+  template(): any
 }
 ```
 
