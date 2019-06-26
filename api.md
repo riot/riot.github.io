@@ -160,8 +160,7 @@ mount('my-component')
 <strong>@returns: </strong> a javascript `Map` containing the remaining registered components factory functions
 
 Unregistering a tag previously created via compiler or via `riot.register()`
-This method could be handy in case you need to test your app and you want to create multiple
-tags using the same name for example
+This method could be handy in case you need to test your app and you want to create multiple tags using the same name for example
 
 ```js
 import { register, unregister } from 'riot'
