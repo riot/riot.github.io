@@ -375,7 +375,6 @@ myComponent.unmount(true)
 
 ネストされた javascript のオブジェクトをステートプロパティに格納することは避けてください。なぜなら、ネストされた javascript の参照は複数のコンポーネントで共有され、副作用が発生する可能性があるからです。予期しない事態を避けるために、ファクトリ関数を使用してコンポーネントを生成することもできます
 
-
 ```html
 <my-component>
   <button>{ state.message }</button>
