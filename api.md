@@ -58,13 +58,12 @@ riot.mount('my-component', () => ({
 `riot.unmount(selector: string, keepRootElement?: boolean): [HTMLElement]`
 
 1. `selector` selects elements from the page and unmounts them if they were mounted before.
+2. `keepRootElement` boolean optional parameter that can be used to avoid removing the root nodes from the DOM {% include version_badge.html version=">=4.3.0" %}
 
 ```js
 // Select all the <user> tags and unmount them
 riot.unmount('user')
 ```
-
-{% include version_badge.html version=">=4.3.0" %}
 
 If the `keepRootElement` parameter will be true the root nodes will be left into the DOM
 
