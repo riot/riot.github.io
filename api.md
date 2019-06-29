@@ -55,13 +55,22 @@ riot.mount('my-component', () => ({
 ```
 ### riot.unmount
 
-`riot.unmount(selector: string): [HTMLElement]`
+`riot.unmount(selector: string, keepRootElement?: boolean): [HTMLElement]`
 
 1. `selector` selects elements from the page and unmounts them if they were mounted before.
 
 ```js
 // Select all the <user> tags and unmount them
 riot.unmount('user')
+```
+
+{% include version_badge.html version=">=4.3.0" %}
+
+If the `keepRootElement` parameter will be true the root nodes will be left into the DOM
+
+```js
+// Select all the <user> tags, unmount them but leave their root nodes into the DOM
+riot.unmount('user', true)
 ```
 
 <strong>@returns: </strong>an array of the mounted [component objects](#component-object)
@@ -235,7 +244,7 @@ interface RiotCoreComponent<P = object, S = object> {
     newState?: Partial<S>,
     parentScope?: object
   ): RiotComponent<P, S>
-  unmount(keepRootElement: boolean): RiotComponent<P, S>
+  unmount(keepRootElement?: boolean): RiotComponent<P, S>
 
   // Helpers
   $(selector: string): HTMLElement
