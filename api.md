@@ -85,7 +85,7 @@ riot.unmount('user', true)
 The `riot.component` method can be used to create and mount component without registering them globally:
 
 ```js
-import * from riot from 'riot'
+import * as riot from 'riot'
 import App from './app.riot'
 
 const createApp = riot.component(App)
