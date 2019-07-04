@@ -17,7 +17,7 @@ Absolutely. The project is enough mature.
 
 ### Which browsers are supported?
 
-Riot.js 4 supports all the major modern browsers. Browsers like IE11 are not supported: if you need to support such old browsers you might consider using an [older Riot version](/v3)
+Riot.js 4 supports all the major modern browsers. Browsers like IE11 are not supported: if you need to support such old browsers you might consider using an [older Riot version]({{ site.data.globals.legacy }})
 
 ### Should I use dash on the tag name?
 W3C specification demands you use a dash in the tag name. Instead of `<person>` you must write `<my-person>`. Obey this rule if you care about W3C. Both work fine.
