@@ -77,7 +77,7 @@ riot.unmount('user')
 `riot.component` メソッドを使用すると、コンポーネントをグローバルに登録せずにコンポーネントを生成、およびマウントできます:
 
 ```js
-import * from riot from 'riot'
+import * as riot from 'riot'
 import App from './app.riot'
 
 const createApp = riot.component(App)
