@@ -86,7 +86,7 @@ Riot のカスタムコンポーネントはユーザーインターフェース
   </ul>
 
   <form onsubmit={ add }>
-    <input onkeyup={ edit } />
+    <input onkeyup={ edit } value={ state.text } />
     <button disabled={ !state.text }>
       Add #{ state.items.length + 1 }
     </button>
