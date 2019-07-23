@@ -172,12 +172,12 @@ Riot.js のエコシステムは完全にモジュール化しており、必要
   - [@riotjs/compiler](https://github.com/riot/compiler) - 拡張タグコンパイラ
   - [@riotjs/parser](https://github.com/riot/parser) - HTML パーサ
   - [@riotjs/dom-bindings](https://github.com/riot/dom-bindings) - 式ベースのテンプレートエンジン
-  - [@riotjs/now](https://github.com/riot/now) - https://zeit.co/ now の統合
+  - [@riotjs/now](https://github.com/riot/now) - https://zeit.co/now の統合
   - [@riotjs/custom-elements](https://github.com/riot/custom-elements) - ネイティブカスタム要素の実装
 
 ## まとめ
 
-Riot.js is は誰でも使えるWeb Components です。React + Polymer から無駄を省いたものを想像してください。Vue.js にインスピレーションを受けたその API は豊富で、それでいて現代のフロントエンドプロジェクトを構築するために、最低限必要なもののみを含んでいます。ごく自然に使用でき、とても軽い。そして、今日から使えます。車輪の再発明をするのではなく、むしろそこにあるものの良いとこ取りをし、可能な限り最もシンプルなツールにしました。
+Riot.js は誰でも使えるWeb Components です。React + Polymer から無駄を省いたものを想像してください。Vue.js にインスピレーションを受けたその API は豊富で、それでいて現代のフロントエンドプロジェクトを構築するために、最低限必要なもののみを含んでいます。ごく自然に使用でき、とても軽い。そして、今日から使えます。車輪の再発明をするのではなく、むしろそこにあるものの良いとこ取りをし、可能な限り最もシンプルなツールにしました。
 
 Riot.js は [*Tim Peters 氏の The Zen of Python*](https://en.wikipedia.org/wiki/Zen_of_Python) という思想（哲学）から駆動し、設計されました。それが我々のマントラです:
 
