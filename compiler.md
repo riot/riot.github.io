@@ -272,7 +272,7 @@ The `@riotjs/compiler` gives you the possibility to register your preprocessors:
 import { registerPreprocessor } from '@riotjs/compiler'
 import pug from 'pug'
 import sass from 'node-sass'
-import ts from 'ts'
+import ts from 'typescript'
 
 registerPreprocessor('template', 'pug', function(code, { options }) {
   const { file } = options
