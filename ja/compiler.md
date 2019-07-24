@@ -272,7 +272,7 @@ riot app.js -o dist/app.js
 import { registerPreprocessor } from '@riotjs/compiler'
 import pug from 'pug'
 import sass from 'node-sass'
-import ts from 'ts'
+import ts from 'typescript'
 
 registerPreprocessor('template', 'pug', function(code, { options }) {
   const { file } = options
