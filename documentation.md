@@ -556,7 +556,7 @@ Be sure to escape brackets in any situation where they should not be evaluated. 
 
 ```html
 <my-component>
-  <input type='text' pattern="\d{2}">
+  <input type="text" pattern="\d{2}">
 </my-component>
 ```
 
@@ -564,7 +564,7 @@ The correct implementation would be:
 
 ```html
 <my-component>
-  <input type='text' pattern="\d\{2}">
+  <input type="text" pattern="\d\{2}">
 </my-component>
 ```
 
@@ -1067,7 +1067,7 @@ This markup is not valid if not injected in a `<select>` tag:
 </select>
 
 <!-- valid because we will render the <option> tags using <select> as root node -->
-<select is='my-fancy-options'></select>
+<select is="my-fancy-options"></select>
 
 ```
 
