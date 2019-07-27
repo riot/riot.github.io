@@ -852,7 +852,7 @@ The each directive uses internally `Array.from`. This means that you can loop st
 
 ```html
 <my-component>
-  <p each={ (name, index) in stuff }">{ index }: { name }</p>
+  <p each={ (name, index) in stuff }>{ index }: { name }</p>
 
   <p each={ letter in letters }>{ letter }</p>
 
