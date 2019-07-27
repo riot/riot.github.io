@@ -556,7 +556,7 @@ W3C では、属性が存在していれば（その値が `false`、空であ�
 
 ```html
 <my-component>
-  <input type='text' pattern="\d{2}">
+  <input type="text" pattern="\d{2}">
 </my-component>
 ```
 
@@ -564,7 +564,7 @@ W3C では、属性が存在していれば（その値が `false`、空であ�
 
 ```html
 <my-component>
-  <input type='text' pattern="\d\{2}">
+  <input type="text" pattern="\d\{2}">
 </my-component>
 ```
 
@@ -1067,7 +1067,7 @@ Riot コンポーネントはブラウザのレンダリングに依存するた
 </select>
 
 <!-- 有効、 なぜなら <select> をルートノードとして使用して <option> タグをレンダリングするから -->
-<select is='my-fancy-options'></select>
+<select is="my-fancy-options"></select>
 
 ```
 
