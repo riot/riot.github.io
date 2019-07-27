@@ -143,7 +143,7 @@ A Riot component is a combination of layout (HTML) and logic (javascript). Here 
 * Each `.riot` file can contain the logic for only a single component
 * HTML is defined first and the logic is enclosed inside a `<script>` tag.
 * Custom components can be empty, HTML only or javascript only
-* All template expressions are "just javascript™️"`: <pre>{ JSON.stringify(props) }</pre>`
+* All template expressions are "just javascript™️": `<pre>{ JSON.stringify(props) }</pre>`
 * The `this` keyword is optional: `<p>{ name }</p>` is valid as `<p>{ this.name }</p>`
 * Quotes are optional: `<foo bar={ baz }>` is valid as `<foo bar="{ baz }">`.
 * Boolean attributes (checked, selected etc..) are ignored when the expression value is falsy: `<input checked={ undefined }>` becomes `<input>`.
