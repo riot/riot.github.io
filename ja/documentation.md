@@ -143,7 +143,7 @@ Riot コンポーネントはレイアウト（HTML）とロジック（javascri
 * 各 `.riot` ファイル含めることができるのは、一つのコンポーネントのロジックのみ
 * HTML は初めに定義され、ロジックは `<script>` タグで囲われる
 * カスタムコンポーネントは空にもでき、HTML のみ、または javascript のみにもできる
-* すべてのテンプレートの式は "javascript™️" `: <pre>{ JSON.stringify(props) }</pre>`
+* すべてのテンプレートの式は "javascript™️": `<pre>{ JSON.stringify(props) }</pre>`
 * `this` というキーワードはオプショナル: `<p>{ name }</p>` は `<p>{ this.name }</p>` として有効
 * 引用符はオプショナル: `<foo bar={ baz }>` は `<foo bar="{ baz }">` として有効
 * 式の値が falsy の場合、Boolean の属性（checked, selected など）は無視される: `<input checked={ undefined }>` は `<input>` となる
