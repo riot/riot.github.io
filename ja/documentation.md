@@ -291,11 +291,11 @@ Riot 内の DOM にアクセスする必要がある場合、[riot コンポー�
     export default {
       onMounted() {
         const test2 = document.getElementById('findMe')
-        console.log('test3', test3) // 成功、一度発火（マウントごとに）
+        console.log('test2', test2) // 成功、一度発火（マウントごとに）
       },
       onUpdated() {
         const test3 = document.getElementById('findMe')
-        console.log('test2', test2) // 成功、更新ごとに発火
+        console.log('test3', test3) // 成功、更新ごとに発火
       }
     }
   </script>

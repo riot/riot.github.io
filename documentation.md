@@ -291,11 +291,11 @@ If you need to access the DOM inside Riot, you'll want to take a look at the [ri
     export default {
       onMounted() {
         const test2 = document.getElementById('findMe')
-        console.log('test3', test3) // Succeeds, fires once (per mount)
+        console.log('test2', test2) // Succeeds, fires once (per mount)
       },
       onUpdated() {
         const test3 = document.getElementById('findMe')
-        console.log('test2', test2) // Succeeds, fires on every update
+        console.log('test3', test3) // Succeeds, fires on every update
       }
     }
   </script>
