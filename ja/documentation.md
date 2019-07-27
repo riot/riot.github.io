@@ -852,7 +852,7 @@ each ディレクティブは内部的に`Array.from` を使用しています�
 
 ```html
 <my-component>
-  <p each={ (name, index) in stuff }">{ index }: { name }</p>
+  <p each={ (name, index) in stuff }>{ index }: { name }</p>
 
   <p each={ letter in letters }>{ letter }</p>
 
