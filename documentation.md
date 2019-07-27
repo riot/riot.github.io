@@ -815,7 +815,7 @@ Loops are implemented with `each` attribute as follows:
 ```html
 <my-component>
   <ul>
-    <li each={ item in items } class={ item.completed ? 'done' : null }>
+    <li each={ item in items } class={ item.done ? 'completed' : null }>
       <input type="checkbox" checked={ item.done }> { item.title }
     </li>
   </ul>

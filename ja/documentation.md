@@ -815,7 +815,7 @@ DOM イベントを処理する関数は "イベントハンドラ" と呼ばれ
 ```html
 <my-component>
   <ul>
-    <li each={ item in items } class={ item.completed ? 'done' : null }>
+    <li each={ item in items } class={ item.done ? 'completed' : null }>
       <input type="checkbox" checked={ item.done }> { item.title }
     </li>
   </ul>
