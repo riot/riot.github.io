@@ -1008,8 +1008,8 @@ riot.mount('my-list')
     export default {
       animal: 'dog',
       switchComponent() {
-        // riot は<dog> コンポーネントをレンダリングする
-        // <cat> に置換する
+        // riot は<cat> コンポーネントをレンダリングする
+        // <dog> に置換する
         this.animal = 'cat'
         this.update()
       }
