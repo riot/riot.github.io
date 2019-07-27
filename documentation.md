@@ -146,9 +146,9 @@ A Riot component is a combination of layout (HTML) and logic (javascript). Here 
 * All template expressions are "just javascript™️": `<pre>{ JSON.stringify(props) }</pre>`
 * The `this` keyword is optional: `<p>{ name }</p>` is valid as `<p>{ this.name }</p>`
 * Quotes are optional: `<foo bar={ baz }>` is valid as `<foo bar="{ baz }">`.
-* Boolean attributes (checked, selected etc..) are ignored when the expression value is falsy: `<input checked={ undefined }>` becomes `<input>`.
+* Boolean attributes (checked, selected, etc.) are ignored when the expression value is falsy: `<input checked={ undefined }>` becomes `<input>`.
 * All attribute names *must be lowercase*. This is due to browser specification.
-* Standard HTML tags (`label`, `table`, `a` etc..) can also be customized, but not necessarily a wise thing to do.
+* Standard HTML tags (`label`, `table`, `a`, etc.) can also be customized, but not necessarily a wise thing to do.
 * Tag definition **root** may also have attributes: `<my-component onclick={ click } class={ props.class }>`.
 
 
@@ -275,7 +275,7 @@ Riot gives you access to your component DOM elements via `this.$` and `this.$$` 
 ```
 
 
-### How to use jQuery, Zepto, querySelector, etc...
+### How to use jQuery, Zepto, querySelector, etc.
 
 If you need to access the DOM inside Riot, you'll want to take a look at the [riot component lifecycle](#riot-component-lifecycle). Notice that the DOM elements aren't instantiated until the `mount` event first fires, meaning any attempt to select an element before then will fail.
 
@@ -510,7 +510,7 @@ The goal is to keep the expressions small so your HTML stays as clean as possibl
 
 ### Boolean attributes
 
-Boolean attributes (checked, selected etc..) are ignored when the expression value is falsy:
+Boolean attributes (checked, selected, etc.) are ignored when the expression value is falsy:
 
 `<input checked={ null }>` becomes `<input>`.
 
@@ -747,7 +747,7 @@ A function that deals with DOM events is called an "event handler". Event handle
 </login>
 ```
 
-Attributes beginning with "on" (`onclick`, `onsubmit`, `oninput` etc...) accept a function value which is called when the event occurs. This function can also be defined dynamically with an expression. For example:
+Attributes beginning with "on" (`onclick`, `onsubmit`, `oninput`, etc.) accept a function value which is called when the event occurs. This function can also be defined dynamically with an expression. For example:
 
 
 ```html
