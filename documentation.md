@@ -164,7 +164,7 @@ You can specify a pre-processor with `type` attribute. For example:
 </my-component>
 ````
 
-Your component will be compiled with the preprocessor selected only if it was previously [registered before]({{ '/compiler#registerpreprocessor' | prepend:site.baseurl }}).
+Your component will be compiled with the preprocessor selected only if it was previously [registered before]({{ '/compiler#pre-processors' | prepend:site.baseurl }}).
 
 ## Styling
 
