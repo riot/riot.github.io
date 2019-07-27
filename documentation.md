@@ -1008,8 +1008,8 @@ Note that you can use also an expression in the `is` attribute and riot will be 
     export default {
       animal: 'dog',
       switchComponent() {
-        // riot will render the <dog> component
-        // replacing <cat>
+        // riot will render the <cat> component
+        // replacing <dog>
         this.animal = 'cat'
         this.update()
       }
