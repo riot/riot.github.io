@@ -143,7 +143,7 @@ Riot コンポーネントはレイアウト（HTML）とロジック（javascri
 * 各 `.riot` ファイル含めることができるのは、一つのコンポーネントのロジックのみ
 * HTML は初めに定義され、ロジックは `<script>` タグで囲われる
 * カスタムコンポーネントは空にもでき、HTML のみ、または javascript のみにもできる
-* すべてのテンプレートの式は "javascript™️" `: <pre>{ JSON.stringify(props) }</pre>`
+* すべてのテンプレートの式は "javascript™️": `<pre>{ JSON.stringify(props) }</pre>`
 * `this` というキーワードはオプショナル: `<p>{ name }</p>` は `<p>{ this.name }</p>` として有効
 * 引用符はオプショナル: `<foo bar={ baz }>` は `<foo bar="{ baz }">` として有効
 * 式の値が falsy の場合、Boolean の属性（checked, selected など）は無視される: `<input checked={ undefined }>` は `<input>` となる
@@ -291,11 +291,11 @@ Riot 内の DOM にアクセスする必要がある場合、[riot コンポー�
     export default {
       onMounted() {
         const test2 = document.getElementById('findMe')
-        console.log('test3', test3) // 成功、一度発火（マウントごとに）
+        console.log('test2', test2) // 成功、一度発火（マウントごとに）
       },
       onUpdated() {
         const test3 = document.getElementById('findMe')
-        console.log('test2', test2) // 成功、更新ごとに発火
+        console.log('test3', test3) // 成功、更新ごとに発火
       }
     }
   </script>
@@ -556,7 +556,7 @@ W3C では、属性が存在していれば（その値が `false`、空であ�
 
 ```html
 <my-component>
-  <input type='text' pattern="\d{2}">
+  <input type="text" pattern="\d{2}">
 </my-component>
 ```
 
@@ -564,7 +564,7 @@ W3C では、属性が存在していれば（その値が `false`、空であ�
 
 ```html
 <my-component>
-  <input type='text' pattern="\d\{2}">
+  <input type="text" pattern="\d\{2}">
 </my-component>
 ```
 
@@ -815,7 +815,7 @@ DOM イベントを処理する関数は "イベントハンドラ" と呼ばれ
 ```html
 <my-component>
   <ul>
-    <li each={ item in items } class={ item.completed ? 'done' : null }>
+    <li each={ item in items } class={ item.done ? 'completed' : null }>
       <input type="checkbox" checked={ item.done }> { item.title }
     </li>
   </ul>
@@ -852,7 +852,7 @@ each ディレクティブは内部的に`Array.from` を使用しています�
 
 ```html
 <my-component>
-  <p each={ (name, index) in stuff }">{ index }: { name }</p>
+  <p each={ (name, index) in stuff }>{ index }: { name }</p>
 
   <p each={ letter in letters }>{ letter }</p>
 
@@ -1008,8 +1008,8 @@ riot.mount('my-list')
     export default {
       animal: 'dog',
       switchComponent() {
-        // riot は<dog> コンポーネントをレンダリングする
-        // <cat> に置換する
+        // riot は<cat> コンポーネントをレンダリングする
+        // <dog> に置換する
         this.animal = 'cat'
         this.update()
       }
@@ -1067,7 +1067,7 @@ Riot コンポーネントはブラウザのレンダリングに依存するた
 </select>
 
 <!-- 有効、 なぜなら <select> をルートノードとして使用して <option> タグをレンダリングするから -->
-<select is='my-fancy-options'></select>
+<select is="my-fancy-options"></select>
 
 ```
 

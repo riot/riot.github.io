@@ -143,12 +143,12 @@ A Riot component is a combination of layout (HTML) and logic (javascript). Here 
 * Each `.riot` file can contain the logic for only a single component
 * HTML is defined first and the logic is enclosed inside a `<script>` tag.
 * Custom components can be empty, HTML only or javascript only
-* All template expressions are "just javascript™️"`: <pre>{ JSON.stringify(props) }</pre>`
+* All template expressions are "just javascript™️": `<pre>{ JSON.stringify(props) }</pre>`
 * The `this` keyword is optional: `<p>{ name }</p>` is valid as `<p>{ this.name }</p>`
 * Quotes are optional: `<foo bar={ baz }>` is valid as `<foo bar="{ baz }">`.
-* Boolean attributes (checked, selected etc..) are ignored when the expression value is falsy: `<input checked={ undefined }>` becomes `<input>`.
+* Boolean attributes (checked, selected, etc.) are ignored when the expression value is falsy: `<input checked={ undefined }>` becomes `<input>`.
 * All attribute names *must be lowercase*. This is due to browser specification.
-* Standard HTML tags (`label`, `table`, `a` etc..) can also be customized, but not necessarily a wise thing to do.
+* Standard HTML tags (`label`, `table`, `a`, etc.) can also be customized, but not necessarily a wise thing to do.
 * Tag definition **root** may also have attributes: `<my-component onclick={ click } class={ props.class }>`.
 
 
@@ -164,7 +164,7 @@ You can specify a pre-processor with `type` attribute. For example:
 </my-component>
 ````
 
-Your component will be compiled with the preprocessor selected only if it was previously [registered before]({{ '/compiler#registerpreprocessor' | prepend:site.baseurl }}).
+Your component will be compiled with the preprocessor selected only if it was previously [registered before]({{ '/compiler#pre-processors' | prepend:site.baseurl }}).
 
 ## Styling
 
@@ -275,7 +275,7 @@ Riot gives you access to your component DOM elements via `this.$` and `this.$$` 
 ```
 
 
-### How to use jQuery, Zepto, querySelector, etc...
+### How to use jQuery, Zepto, querySelector, etc.
 
 If you need to access the DOM inside Riot, you'll want to take a look at the [riot component lifecycle](#riot-component-lifecycle). Notice that the DOM elements aren't instantiated until the `mount` event first fires, meaning any attempt to select an element before then will fail.
 
@@ -291,11 +291,11 @@ If you need to access the DOM inside Riot, you'll want to take a look at the [ri
     export default {
       onMounted() {
         const test2 = document.getElementById('findMe')
-        console.log('test3', test3) // Succeeds, fires once (per mount)
+        console.log('test2', test2) // Succeeds, fires once (per mount)
       },
       onUpdated() {
         const test3 = document.getElementById('findMe')
-        console.log('test2', test2) // Succeeds, fires on every update
+        console.log('test3', test3) // Succeeds, fires on every update
       }
     }
   </script>
@@ -510,7 +510,7 @@ The goal is to keep the expressions small so your HTML stays as clean as possibl
 
 ### Boolean attributes
 
-Boolean attributes (checked, selected etc..) are ignored when the expression value is falsy:
+Boolean attributes (checked, selected, etc.) are ignored when the expression value is falsy:
 
 `<input checked={ null }>` becomes `<input>`.
 
@@ -556,7 +556,7 @@ Be sure to escape brackets in any situation where they should not be evaluated. 
 
 ```html
 <my-component>
-  <input type='text' pattern="\d{2}">
+  <input type="text" pattern="\d{2}">
 </my-component>
 ```
 
@@ -564,7 +564,7 @@ The correct implementation would be:
 
 ```html
 <my-component>
-  <input type='text' pattern="\d\{2}">
+  <input type="text" pattern="\d\{2}">
 </my-component>
 ```
 
@@ -747,7 +747,7 @@ A function that deals with DOM events is called an "event handler". Event handle
 </login>
 ```
 
-Attributes beginning with "on" (`onclick`, `onsubmit`, `oninput` etc...) accept a function value which is called when the event occurs. This function can also be defined dynamically with an expression. For example:
+Attributes beginning with "on" (`onclick`, `onsubmit`, `oninput`, etc.) accept a function value which is called when the event occurs. This function can also be defined dynamically with an expression. For example:
 
 
 ```html
@@ -815,7 +815,7 @@ Loops are implemented with `each` attribute as follows:
 ```html
 <my-component>
   <ul>
-    <li each={ item in items } class={ item.completed ? 'done' : null }>
+    <li each={ item in items } class={ item.done ? 'completed' : null }>
       <input type="checkbox" checked={ item.done }> { item.title }
     </li>
   </ul>
@@ -852,7 +852,7 @@ The each directive uses internally `Array.from`. This means that you can loop st
 
 ```html
 <my-component>
-  <p each={ (name, index) in stuff }">{ index }: { name }</p>
+  <p each={ (name, index) in stuff }>{ index }: { name }</p>
 
   <p each={ letter in letters }>{ letter }</p>
 
@@ -1008,8 +1008,8 @@ Note that you can use also an expression in the `is` attribute and riot will be 
     export default {
       animal: 'dog',
       switchComponent() {
-        // riot will render the <dog> component
-        // replacing <cat>
+        // riot will render the <cat> component
+        // replacing <dog>
         this.animal = 'cat'
         this.update()
       }
@@ -1067,7 +1067,7 @@ This markup is not valid if not injected in a `<select>` tag:
 </select>
 
 <!-- valid because we will render the <option> tags using <select> as root node -->
-<select is='my-fancy-options'></select>
+<select is="my-fancy-options"></select>
 
 ```
 
