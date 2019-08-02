@@ -1028,7 +1028,7 @@ Note that when using the `is` attribute, the tag name should be rendered in all 
     riot.mount('MyComponent');
   </script>
 ```
-
+Note that you can use `is` attribute with any HTML tags, but not with [`template` tag](#fragments-loops).
 
 ## Server-side rendering
 
