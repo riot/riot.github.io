@@ -756,6 +756,12 @@ Attributes beginning with "on" (`onclick`, `onsubmit`, `oninput`, etc.) accept a
 
 All the event handlers are auto-bound and `this` refers to the current component instance.
 
+So you can also call a function dynamically from a property value like this:
+
+```html
+<button onclick={ this[props.myfunc] }>Reset</button>
+```
+
 Event handlers do not update components so you might combine them with a `this.update()` call:
 
 ```html
