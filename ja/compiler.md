@@ -1,24 +1,30 @@
 ---
-title: Compiler
 layout: detail
+title: コンパイラ
 ---
 
 ## Introduction
+## 概要
 
 Custom tags need to be transformed to javascript before the browser can execute them.
 The riot compiler is designed to transform riot tags into javascript modules.
 A compiled riot tag will look like this:
 
+カスタムタグはブラウザで実行される前にJavaScriptに変換される必要があります。
+RiotのコンパイラはriotタグをJavaScriptモジュールにトランスパイルするよう設計されています。
+コンパイルされたRiotタグは次のようになります：
+
 ```js
 export default {
-  css: `my-tag { color: red; }`, // component css string
-  template: function() {}, // internal riot template factory function
-  exports: {}, // component events and lifecycle methods
-  name: 'my-tag' // component id
+  css: `my-tag { color: red; }`, // コンポーネントcss文字列
+  template: function() {}, // 内部のRiotテンプレートファクトリ関数
+  exports: {}, // コンポーネントイベントとライフサイクルメソッド
+  name: 'my-tag' // コンポーネントID
 }
 ```
 
 **Each tag file must contain only one tag definition**.
+**各タグファイルで定義できるタグは、１つだけでなければなりません(MUST)**
 
 ## In-browser compilation
 
