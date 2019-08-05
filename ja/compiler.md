@@ -1,6 +1,6 @@
 ---
-title: Compiler
 layout: detail
+title: Compiler
 ---
 
 ## 概要
