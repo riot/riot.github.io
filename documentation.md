@@ -149,6 +149,7 @@ A Riot component is a combination of layout (HTML) and logic (javascript). Here 
 * Boolean attributes (checked, selected, etc.) are ignored when the expression value is falsy: `<input checked={ undefined }>` becomes `<input>`.
 * All attribute names *must be lowercase*. This is due to browser specification.
 * Standard HTML tags (`label`, `table`, `a`, etc.) can also be customized, but not necessarily a wise thing to do.
+* Note : redefining native tags is a bad practice. If you want to stay safe you should use dashed names, see ([FAQ](https://riot.js.org/faq/#should-i-use-dash-on-the-tag-name
 * Tag definition **root** may also have attributes: `<my-component onclick={ click } class={ props.class }>`.
 
 
