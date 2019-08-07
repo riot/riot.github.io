@@ -151,6 +151,8 @@ A Riot component is a combination of layout (HTML) and logic (javascript). Here 
 * Standard HTML tags (`label`, `table`, `a`, etc.) can also be customized, but not necessarily a wise thing to do.
 * Tag definition **root** may also have attributes: `<my-component onclick={ click } class={ props.class }>`.
 
+Note : redefining native tags is a bad practice. If you want to stay safe you should use dashed names, see ([FAQ](https://riot.js.org/faq/#should-i-use-dash-on-the-tag-name))
+
 
 ## Pre-processor
 

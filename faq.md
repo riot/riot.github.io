@@ -20,7 +20,7 @@ Absolutely. The project is enough mature.
 Riot.js 4 supports all the major modern browsers. Browsers like IE11 are not supported: if you need to support such old browsers you might consider using an [older Riot version]({{ site.data.globals.legacy }})
 
 ### Should I use dash on the tag name?
-W3C specification demands you use a dash in the tag name. Instead of `<person>` you must write `<my-person>`. Obey this rule if you care about W3C. Both work fine.
+W3C specification demands you use a dash in the tag name. Instead of `<person>` you must write `<my-person>`. Obey this rule if you care about W3C. Both work fine. [More info](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) 
 
 ### Why are there no semicolons in the source code?
 Leaving out semicolons makes the code less crowded. This is aligned with our general minimalistic approach. We use single quotes for the same reason. If you contribute to Riot, please leave out semicolons and double quotes.
