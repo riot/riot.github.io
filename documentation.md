@@ -731,7 +731,7 @@ Slots work only in compiled components, all the inner HTML of the components pla
 ## Event handlers
 
 A function that deals with DOM events is called an "event handler". Event handlers are defined as follows:
-
+> Note: The default event handler will be called. Use e.preventDefault() to stop it.
 ```html
 <login>
   <form onsubmit={ submit }>
@@ -742,7 +742,7 @@ A function that deals with DOM events is called an "event handler". Event handle
     export default {
       // this method is called when above form is submitted
       submit(e) {
-
+        e.preventDefault() // Optional
       }
     }
   </script>
