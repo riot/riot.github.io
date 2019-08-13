@@ -731,7 +731,7 @@ Slots work only in compiled components, all the inner HTML of the components pla
 ## Event handlers
 
 A function that deals with DOM events is called an "event handler". Event handlers are defined as follows:
-> Note: The default event handler will be called. Use e.preventDefault() to stop it.
+<aside class="note note--warning"> Note: The default event handler will be called. Use e.preventDefault() to stop it. </aside>
 
 ```html
 <login>
