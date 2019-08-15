@@ -151,6 +151,8 @@ Riot コンポーネントはレイアウト（HTML）とロジック（javascri
 * 標準の HTML タグ（`label`、`table`、`a` など）はカスタマイズすることもできるが、必ずしもそうすることが賢明というわけではない
 * **ルート** のタグ定義も属性を保つ場合がある: `<my-component onclick={ click } class={ props.class }>`
 
+注意: ネイティブのタグを再定義するのはあまりよろしくありません。もし安全性を確保したいのならばダッシュ（-）付きの名前をつけるべきです。詳しくは [FAQ](https://riot.js.org/ja/faq/#タグ名にダッシュを使うべき) を参照してください。
+
 
 ## プリプロセッサ
 
@@ -730,6 +732,10 @@ Riot の式では、HTML フォーマットなしのテキスト値のみをレ�
 
 DOM イベントを処理する関数は "イベントハンドラ" と呼ばれます。イベントハンドラは次のように定義されます:
 
+<aside class="note note--warning">
+  注意: デフォルトのイベントハンドラが呼ばれます。e.preventDefault() を使用してそれを停止してください。
+</aside>
+
 ```html
 <login>
   <form onsubmit={ submit }>
@@ -740,7 +746,7 @@ DOM イベントを処理する関数は "イベントハンドラ" と呼ばれ
     export default {
       // このメソッドは上記のフォームがサブミットされたときに呼び出される
       submit(e) {
-
+        e.preventDefault() // 任意
       }
     }
   </script>
