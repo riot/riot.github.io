@@ -717,14 +717,14 @@ Riot の式では、HTML フォーマットなしのテキスト値のみをレ�
 </user>
 ```
 
-[API ドキュメント]({{ '/api/#スロット' | prepend:site.baseurl }}) の `slots` を参照ください。
+[API ドキュメント]({{ '/ja/api/#スロット' | prepend:site.baseurl }}) の `slots` を参照ください。
 
 <aside class="note note--info">
 スロットはコンパイルされたコンポーネントでのみ動作し、ページ DOM に直接配置されたコンポーネントのすべての内部 HTML は無視されます。
 </aside>
 
 <aside class="note note--warning">
-:warning: スロットタグでは、Riot<code>if</code>、<code>each</code> および <code>is</code> ディレクティブはサポートされていません。
+:warning: slot タグでは、Riot の <code>if</code>、<code>each</code>、<code>is</code> ディレクティブはサポートされていません。
 </aside>
 
 
