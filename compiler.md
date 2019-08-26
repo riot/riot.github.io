@@ -295,7 +295,7 @@ registerPreprocessor('css', 'sass', function(code, { options }) {
   })
 
   return {
-    code: css.css.toString(),
+    code: css.toString(),
     map: null
   }
 })
