@@ -243,7 +243,7 @@ interface RiotCoreComponent<P = object, S = object> {
     newState?: Partial<S>,
     parentScope?: object
   ): RiotComponent<P, S>
-  unmount(keepRootElement?: boolean): RiotComponent<P, S>
+  unmount(keepRootElement: boolean): RiotComponent<P, S>
 
   // Helpers
   $(selector: string): HTMLElement
@@ -621,18 +621,27 @@ once mounted it will be rendered in this way:
 </my-post>
 ```
 
-The expressions in slot tags will not have access to the properties of the components in which they are injected
+The expressions in slot tags by default will not have access to the properties of the components in which they are injected unless you are passing them via slot attribute as we will learn in the [Higher Order Components Paragraph]({{ '/api/#higher-order-components' | prepend:site.baseurl }})
 
 ``` html
 <!-- This tag just inherits the yielded DOM -->
 <child-tag>
   <slot/>
+
+  <script>
+    export default {
+      internalProp: 'secret message'
+    }
+  </script>
 </child-tag>
 
 <my-component>
   <child-tag>
-    <!-- here the child-tag internal properties are not available -->
+    <!-- this attribute will be properly rendered -->
     <p>{ message }</p>
+
+    <!-- this expression will fail because "internalProp" is not available here -->
+    <p>{ internalProp }</p>
   </child-tag>
   <script>
     export default {
@@ -688,6 +697,38 @@ once mounted it will be rendered in this way:
   </article>
 </my-other-post>
 ```
+
+#### Higher Order Components
+
+{% include version_badge.html version=">=4.6.0" %}
+
+You can use `<slot>` tags to create Higer Order Components. All the attributes set on the slot tags will be available in their injected html templates.
+Let's imagine for example that you want to have a themable application and you want to use a `<theme-provider>` component for it:
+
+```html
+<theme-provider>
+  <slot theme={theme}/>
+
+  <script>
+    export default {
+      theme: 'dark'
+    }
+  </script>
+</theme-provider>
+```
+
+Now you can wrap your components in a `<theme-provider>` tag to read always the current application theme in a flexible and composible way:
+
+```html
+<app>
+  <theme-provider>
+    <!-- notice how the "theme" variable will be available here -->
+    <sidebar class="sidebar sidebar__{theme}"/>
+  </theme-provider>
+</app>
+```
+
+The use of Higher Order Components could simplify a lot the communication between child and parent components giving you enough flexibility to handle the data flow across your whole application
 
 ### Lifecycle
 
