@@ -343,7 +343,7 @@ riot.install(function(componentAPI) {
   <script>
     export default {
       onMounted() {
-        const paragraph = $('p')
+        const paragraph = this.$('p')
 
         paragraph.innerHTML = '<b>hello</b>'
       }

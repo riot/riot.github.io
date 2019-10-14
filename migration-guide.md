@@ -343,7 +343,7 @@ The `ref` attributes were replaced by the `$` and `$$` [component helpers]({{ '/
   <script>
     export default {
       onMounted() {
-        const paragraph = $('p')
+        const paragraph = this.$('p')
 
         paragraph.innerHTML = '<b>hello</b>'
       }
