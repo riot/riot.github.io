@@ -660,7 +660,7 @@ For example using the following riot tag `my-other-post`
 ``` html
 <my-other-post>
   <article>
-    <h1>{ opts.title }</h1>
+    <h1>{ props.title }</h1>
     <h2><slot name="summary"/></h2>
     <article>
       <slot name="content"/>

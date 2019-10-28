@@ -643,7 +643,7 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 ``` html
 <my-other-post>
   <article>
-    <h1>{ opts.title }</h1>
+    <h1>{ props.title }</h1>
     <h2><slot name="summary"/></h2>
     <article>
       <slot name="content"/>
