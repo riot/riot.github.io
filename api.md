@@ -53,6 +53,10 @@ riot.mount('my-component', () => ({
   custom: 'option'
 }))
 ```
+
+`riot.mount` won't clean existent children nodes under the target component. After SSR and want to mount the component in client side for user interaction, there is an different way to solve that. Please check [@riotjs/hydrate](https://github.com/riot/hydrate#usage).
+
+
 ### riot.unmount
 
 `riot.unmount(selector: string, keepRootElement?: boolean): [HTMLElement]`
