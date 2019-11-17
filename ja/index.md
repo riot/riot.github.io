@@ -1,7 +1,7 @@
 ---
-layout: home
+layout: ja/home
 title: Riot.js — Simple and elegant component-based UI library
-description: Riot.js lets you build user interfaces with custom tags using simple and enjoyable syntax.
+description: Riot.jsでは、簡単で楽しい構文を使ってカスタムタグを使ったユーザーインターフェースを構築することができます。
 ---
 
 ## なぜ新しいUIライブラリが必要なのか？

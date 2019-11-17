@@ -1,7 +1,7 @@
 ---
 title: API
-layout: detail
-description: Framework API, methods and properties
+layout: ja/detail
+description: フレームワーク API, メソッドとプロパティ
 ---
 
 

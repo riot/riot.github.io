@@ -1,6 +1,6 @@
 ---
-title: Documentation
-layout: detail
+title: ドキュメンテーション
+layout: ja/detail
 description: Step by step starting guide
 ---
 

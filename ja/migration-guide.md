@@ -1,7 +1,7 @@
 ---
-title: Migration Guide
-layout: detail
-description: Migration guide from Riot.js 2 and 3
+title: マイグレーションガイド
+layout: ja/detail
+description: Riot.js 2 や 3 からのマイグレーションガイド
 ---
 
 ## 導入

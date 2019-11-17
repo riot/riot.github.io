@@ -2,7 +2,7 @@
   {% for entry in site.data.navigation %}
     <li>
       <a
-        href="{% if page.url contains 'ja' %}/ja{% endif %}{{ entry.path }}"
+        href="{{ entry.path }}"
         {% if page.url contains entry.path %}class="active"{% endif %}
       >
         {{ entry.label }}

@@ -1,6 +1,6 @@
 ---
-layout: detail
-title: Compiler
+layout: ja/detail
+title: コンパイラ
 ---
 
 ## 概要
@@ -415,4 +415,3 @@ registerPostprocessor(function(code, { options }) {
 ```
 
 この場合、最終的に出力されるコードは `buble` によって es2015 に変換されたものになります。
-
