@@ -53,15 +53,27 @@ riot.mount('my-component', () => ({
   custom: 'option'
 }))
 ```
+
+`riot.mount` はターゲットコンポーネント下に存在する子ノードを消去しません。SSR 後に、ユーザーと対話的にコンポーネントをクライアント側でマウントする場合は、別の解決方法があります。[@riotjs/hydrate](https://github.com/riot/hydrate#usage) を確認してください。
+
+
 ### riot.unmount
 
 `riot.unmount(selector: string): [HTMLElement]`
 
 1. `selector` はページから要素を選択肢し、それらが既にマウントされていた場合はアンマウントします。
+2. DOMからルートノードを削除しないようにするために使用できる `keepRootElement` というブーリアンのオプションパラメータ {% include version_badge.html version=">=4.3.0" %}
 
 ```js
 // 全ての <user> タグを選択し、それらをアンマウントする
 riot.unmount('user')
+```
+
+`keepRootElement` パラメータが true だった場合、ルートノードは DOM に残されます
+
+```js
+// 全ての <user> タグを選択すると、そのタグをアンマウントするが ルートノードは DOM に残される
+riot.unmount('user', true)
 ```
 
 <strong>@returns: </strong>マウントされた [コンポーネントオブジェクト](#コンポーネントオブジェクト) の配列
@@ -613,18 +625,27 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 </my-post>
 ```
 
-スロットタグ内の式は、挿入されるコンポーネントのプロパティにアクセスできません
+デフォルトのスロットタグ内の式は、スロット属性経由で渡さない限り、挿入されるコンポーネントのプロパティにアクセスできません。詳しくは [上位コンポーネント]({{ '/ja/api/#上位コンポーネント' | prepend:site.baseurl }}) の項を参照してください。
 
 ``` html
 <!-- このタグは生成された DOM を継承するだけ -->
 <child-tag>
   <slot/>
+
+  <script>
+    export default {
+      internalProp: 'secret message'
+    }
+  </script>
 </child-tag>
 
 <my-component>
   <child-tag>
     <!-- ここでは子タグの内部プロパティは使用不可 -->
     <p>{ message }</p>
+
+    <!-- "internalProp" はここでは許可されていないため、この式は失敗する -->
+    <p>{ internalProp }</p>
   </child-tag>
   <script>
     export default {
@@ -680,6 +701,38 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
   </article>
 </my-other-post>
 ```
+
+#### 上位コンポーネント
+
+{% include version_badge.html version=">=4.6.0" %}
+
+`<slot>` タグを使用して上位コンポーネントを作成できます。スロットタグにセットされたすべての属性は、そのタグに挿入された html テンプレートで使用できます。
+たとえば、テーマ設定可能なアプリケーションを作成し、そのアプリケーションに `<theme-provider>` コンポーネントを使用することを想像してください:
+
+```html
+<theme-provider>
+  <slot theme={theme}/>
+
+  <script>
+    export default {
+      theme: 'dark'
+    }
+  </script>
+</theme-provider>
+```
+
+今、コンポーネントを `<theme-provider>` タグにラップし、常に現在のアプリケーションテーマを柔軟かつ合成可能な方法で読み取ることが可能になりました:
+
+```html
+<app>
+  <theme-provider>
+    <!-- ここで "theme" 変数が利用可能になることに注意 -->
+    <sidebar class="sidebar sidebar__{theme}"/>
+  </theme-provider>
+</app>
+```
+
+上位コンポーネントを使用すると、子コンポーネントと親コンポーネントの大量のやり取りが簡略化され、アプリケーション全体のデータフローを扱うための十分な柔軟性が得られます。
 
 ### ライフサイクル
 

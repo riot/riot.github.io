@@ -168,6 +168,7 @@ Riot.js のエコシステムは完全にモジュール化しており、必要
   - [@riotjs/cli](https://github.com/riot/cli) - ローカル上で tags を javascript にコンパイルするための CLI
   - [@riotjs/ssr](https://github.com/riot/ssr) - 非常にシンプルなサーバーサイドレンダリング
   - [@riotjs/hydrate](https://github.com/riot/hydrate) - SPA のためのハイドレーション戦略
+  - [@riotjs/route](https://github.com/riot/route) - 同形のルーター
   - [@riotjs/hot-reload](https://github.com/riot/hot-reload) - ライブリロード用のプラグイン
   - [@riotjs/compiler](https://github.com/riot/compiler) - 拡張タグコンパイラ
   - [@riotjs/parser](https://github.com/riot/parser) - HTML パーサ
