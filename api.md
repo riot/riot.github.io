@@ -99,6 +99,34 @@ const app = createApp(document.getElementById('root'), {
 })
 ```
 
+{% include version_badge.html version=">=4.7.0" %}
+
+The factory function created by `riot.component` accepts also a third optional argument that can contain [valid `slots` and `attributes` objects](https://github.com/riot/dom-bindings).
+
+```js
+import { expressionTypes } from '@riotjs/dom-bindings'
+import * as riot from 'riot'
+import App from './app.riot'
+
+const createApp = riot.component(App)
+
+const app = createApp(document.getElementById('root'), {
+  name: 'This is a custom property',
+  class: 'custom-class'
+}, {
+  slots: [{
+    id: 'default',
+    html: 'Hello there',
+    bindings: []
+  }],
+  attributes: [{
+    type: expressionTypes.ATTRIBUTE,
+    name: 'class',
+    evaluate: scope => scope.props.class
+  }]
+})
+```
+
 ### riot.install
 
 `riot.install(plugin: function): Set`
