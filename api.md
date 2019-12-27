@@ -221,6 +221,43 @@ unregister('test-component')
 register('test-component', TestComponent2)
 ```
 
+### riot.pure
+
+`riot.pure(PureComponentFactoryFunction): PureComponentFactoryFunction`
+
+1. `slots` - the slot list found in your component
+2. `attributes` - the component attribute expressions that can be evaluated to infer the component properties from the context
+3. `props` - the initial component user properties that can be only set via `riot.component` calls
+
+<strong>@returns: </strong> the user defined factory function that will be used internally by Riot.js to create pure components
+
+This function is a Riot.js primitive that is meant to be used only for particular cases where the default rendering engine might be not provide all the features you are looking for (lazy loading or custom directives...).
+
+The `PureComponentFactoryFunction` should return always an object containing the `mount`, `update` and `unmount` methods in order to let Riot.js properly render the pure components for example:
+
+```html
+<lit-element>
+  <script>
+    import { pure } from 'riot'
+    import { html, render } from 'lit-html'
+
+    export default pure(({ attributes, slots, props }) => ({
+      mount(el, context) {
+        this.el = el
+        this.render(context)
+      },
+      // context here is either the parent component or undefined
+      render(context) {
+        render(html`<p>{ context ? context.message : 'no message defined' }</p>`, this.el)
+      },
+      unmount() {
+        this.el.parentNode.removeChild(this.el)
+      }
+    }))
+  </script>
+</lit-element>
+```
+
 ### riot.version
 
 `riot.version(): string`
