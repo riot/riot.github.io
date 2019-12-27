@@ -5,4 +5,4 @@ showcase:            /made-with-riot/
 legacy:              https://v3.riotjs.now.sh
 discord:             https://discord.gg/PagXe5Y
 online_compiler:     https://riot.js.org/online-compiler/
-online_compiler:     https://github.com/riot/examples
+examples:            https://github.com/riot/examples
