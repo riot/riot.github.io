@@ -217,9 +217,6 @@ Once a component is created you can mount it on the page as follows:
   <!-- place the custom component anywhere inside the body -->
   <my-component></my-component>
 
-  <!-- is attributes are also supported -->
-  <div is="my-component"></div>
-
   <!-- include riot.js -->
   <script src="riot.min.js"></script>
 
@@ -1001,7 +998,7 @@ Standard HTML elements can be used as riot components in the page body with the 
 This provides users with an alternative that can provide greater compatibility with css frameworks. The tags are treated like any other custom component.
 
 ```js
-riot.mount('my-list')
+riot.mount('[is="my-list"]')
 ```
 
 will mount the `ul` element shown above as if it were `<my-list></my-list>`
@@ -1037,7 +1034,7 @@ Note that when using the `is` attribute, the tag name should be rendered in all 
   <div is="mycomponent"></div> <!-- Also Correct -->
   <div is="MyComponent"></div> <!-- Incorrect -->
   <script>
-    riot.mount('MyComponent');
+    riot.mount('[is="mycomponent"');
   </script>
 ```
 Note that you can use `is` attribute with any HTML tags, but not with [`template` tag](#fragments-loops).
