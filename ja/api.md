@@ -99,6 +99,34 @@ const app = createApp(document.getElementById('root'), {
 })
 ```
 
+{% include version_badge.html version=">=4.7.0" %}
+
+`riot.component` によって生成されたファクトリ関数は、[有効な `slots` と `attributes` オブジェクト](https://github.com/riot/dom-bindings) を含むことができる3つ目の任意の引数も受け入れます。
+
+```js
+import { expressionTypes } from '@riotjs/dom-bindings'
+import * as riot from 'riot'
+import App from './app.riot'
+
+const createApp = riot.component(App)
+
+const app = createApp(document.getElementById('root'), {
+  name: 'This is a custom property',
+  class: 'custom-class'
+}, {
+  slots: [{
+    id: 'default',
+    html: 'Hello there',
+    bindings: []
+  }],
+  attributes: [{
+    type: expressionTypes.ATTRIBUTE,
+    name: 'class',
+    evaluate: scope => scope.props.class
+  }]
+})
+```
+
 ### riot.install
 
 `riot.install(plugin: function): Set`
@@ -191,6 +219,43 @@ unregister('test-component')
 
 // 異なるテンプレートを利用して同じコンポーネントを再生成
 register('test-component', TestComponent2)
+```
+
+### riot.pure
+
+`riot.pure(PureComponentFactoryFunction): PureComponentFactoryFunction`
+
+1. `slots` - コンポーネント内で見つかった slot リスト
+2. `attributes` - コンテキストからコンポーネントプロパティを推測するために評価可能なコンポーネントの属性式
+3. `props` - `riot.component` 呼び出しによってのみ設定できる初期コンポーネントユーザープロパティ
+
+<strong>@returns: </strong> 純粋なコンポーネントを生成するために Riot.js によって内部的に使用されるユーザーが定義したファクトリ関数
+
+この関数は Riot.js の根本であり、デフォルトのレンダリングエンジンでは探している全ての機能(遅延読み込みやカスタムディレクティブなど…)が提供されないかもしれないような、特定の場合にのみ使用されることを意味します。
+
+`PureComponentFactoryFunction` は、Riot.js が純粋なコンポーネントを適切にレンダーできるようにするために、常に `mount`, `update`, `unmount` メソッドを含んでいるオブジェクトを返すべきです。例:
+
+```html
+<lit-element>
+  <script>
+    import { pure } from 'riot'
+    import { html, render } from 'lit-html'
+
+    export default pure(({ attributes, slots, props }) => ({
+      mount(el, context) {
+        this.el = el
+        this.render(context)
+      },
+      // ここでのコンテキストは親コンポーネントかundefinedのいずれかです
+      render(context) {
+        render(html`<p>{ context ? context.message : 'no message defined' }</p>`, this.el)
+      },
+      unmount() {
+        this.el.parentNode.removeChild(this.el)
+      }
+    }))
+  </script>
+</lit-element>
 ```
 
 ### riot.version
