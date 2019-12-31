@@ -1037,7 +1037,7 @@ riot.mount('my-list')
     riot.mount('MyComponent');
   </script>
 ```
-注意 `is` 属性は任意の HTML タグで使用できますが、[`template` タグ](#html-フラグメントのループ) では使用できません。
+メモ `is` 属性は任意の HTML タグで使用できますが、[`template` タグ](#html-フラグメントのループ) では使用できません。
 
 ## 純粋なコンポーネント
 
