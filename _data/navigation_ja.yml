@@ -1,0 +1,14 @@
+- path: /ja/documentation
+  label: ドキュメンテーション
+
+- path: /ja/api
+  label: API
+
+- path: /ja/compiler
+  label: コンパイラ
+
+- path: /ja/faq
+  label: FAQ
+
+- path: /ja/migration-guide
+  label: マイグレーションガイド

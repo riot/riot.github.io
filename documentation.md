@@ -217,9 +217,6 @@ Once a component is created you can mount it on the page as follows:
   <!-- place the custom component anywhere inside the body -->
   <my-component></my-component>
 
-  <!-- is attributes are also supported -->
-  <div is="my-component"></div>
-
   <!-- include riot.js -->
   <script src="riot.min.js"></script>
 
@@ -1001,12 +998,12 @@ Standard HTML elements can be used as riot components in the page body with the 
 This provides users with an alternative that can provide greater compatibility with css frameworks. The tags are treated like any other custom component.
 
 ```js
-riot.mount('my-list')
+riot.mount('[is="my-list"]')
 ```
 
 will mount the `ul` element shown above as if it were `<my-list></my-list>`
 
-Note that you can use also an expression in the `is` attribute and riot will be able to render dynamically also different tags on the same DOM node
+Notice that you can use also an expression in the `is` attribute and riot will be able to render dynamically also different tags on the same DOM node
 
 ```html
 <my-component>
@@ -1037,10 +1034,40 @@ Note that when using the `is` attribute, the tag name should be rendered in all 
   <div is="mycomponent"></div> <!-- Also Correct -->
   <div is="MyComponent"></div> <!-- Incorrect -->
   <script>
-    riot.mount('MyComponent');
+    riot.mount('[is="mycomponent"');
   </script>
 ```
 Note that you can use `is` attribute with any HTML tags, but not with [`template` tag](#fragments-loops).
+
+## Pure components
+
+If you want to have complete control over your components rendering you can use `riot.pure` to bypass the Riot.js internal logic, for example:
+
+```html
+<my-pure-component>
+  <script>
+  import { pure } from 'riot'
+
+  export default pure(() => {
+    return {
+      mount(el) {
+        this.el = el
+        this.el.innerHTML = 'Hello There'
+      },
+      update() {
+        this.el.innerHTML = 'I got updated!'
+      },
+      unmount() {
+        this.el.parentNode.removeChild(this.el)
+      }
+    }
+  })
+  </script>
+</my-pure-component>
+```
+
+<aside class="note note--warning">:warning: Pure components can not contain html or css. They can only have a pure function call as default export statement.</aside>
+
 
 ## Server-side rendering
 

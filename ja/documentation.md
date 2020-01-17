@@ -1,6 +1,6 @@
 ---
-title: Documentation
-layout: detail
+title: ドキュメンテーション
+layout: ja/detail
 description: Step by step starting guide
 ---
 
@@ -216,9 +216,6 @@ Riot コンポーネントはレイアウト（HTML）とロジック（javascri
 
   <!-- body 内の任意の位置にカスタムコンポーネントを配置 -->
   <my-component></my-component>
-
-  <!-- is 属性もサポートされている -->
-  <div is="my-component"></div>
 
   <!-- riot.js を導入 -->
   <script src="riot.min.js"></script>
@@ -1040,7 +1037,37 @@ riot.mount('my-list')
     riot.mount('MyComponent');
   </script>
 ```
-注意 `is` 属性は任意の HTML タグで使用できますが、[`template` タグ](#html-フラグメントのループ) では使用できません。
+メモ `is` 属性は任意の HTML タグで使用できますが、[`template` タグ](#html-フラグメントのループ) では使用できません。
+
+## 純粋なコンポーネント
+
+コンポーネントのレンダリングを完全にコントロールしたい場合、`riot.pure` を使うことで Riot.js の内部ロジックを迂回することができます。例:
+
+```html
+<my-pure-component>
+  <script>
+  import { pure } from 'riot'
+
+  export default pure(() => {
+    return {
+      mount(el) {
+        this.el = el
+        this.el.innerHTML = 'Hello There'
+      },
+      update() {
+        this.el.innerHTML = 'I got updated!'
+      },
+      unmount() {
+        this.el.parentNode.removeChild(this.el)
+      }
+    }
+  })
+  </script>
+</my-pure-component>
+```
+
+<aside class="note note--warning">:warning: 純粋なコンポーネントに html または css を含めることはできません。これらは、default エクスポートステートメントとして純粋な関数呼び出しのみを持つことができます。</aside>
+
 
 ## サーバーサイドレンダリング
 

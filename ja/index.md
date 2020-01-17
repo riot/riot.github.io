@@ -1,7 +1,7 @@
 ---
-layout: home
+layout: ja/home
 title: Riot.js — Simple and elegant component-based UI library
-description: Riot.js lets you build user interfaces with custom tags using simple and enjoyable syntax.
+description: Riot.jsでは、簡単で楽しい構文を使ってカスタムタグを使ったユーザーインターフェースを構築することができます。
 ---
 
 ## なぜ新しいUIライブラリが必要なのか？
@@ -168,6 +168,7 @@ Riot.js のエコシステムは完全にモジュール化しており、必要
   - [@riotjs/cli](https://github.com/riot/cli) - ローカル上で tags を javascript にコンパイルするための CLI
   - [@riotjs/ssr](https://github.com/riot/ssr) - 非常にシンプルなサーバーサイドレンダリング
   - [@riotjs/hydrate](https://github.com/riot/hydrate) - SPA のためのハイドレーション戦略
+  - [@riotjs/route](https://github.com/riot/route) - 同形のルーター
   - [@riotjs/hot-reload](https://github.com/riot/hot-reload) - ライブリロード用のプラグイン
   - [@riotjs/compiler](https://github.com/riot/compiler) - 拡張タグコンパイラ
   - [@riotjs/parser](https://github.com/riot/parser) - HTML パーサ

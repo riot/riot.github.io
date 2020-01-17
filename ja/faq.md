@@ -1,7 +1,7 @@
 ---
 title: Riot FAQ
-layout: detail
-description: Questions and Answers about Riot, User Interface (UI) Micro-Libary
+layout: ja/detail
+description: Riot に関する質疑応答, ユーザーインターフェース(UI) マイクロライブラリ
 ---
 
 ## よくある質問と答え
@@ -34,4 +34,3 @@ W3C 仕様 はタグ名にダッシュを使うことを要求しています。
 ### 今後のプランは？
 
 もちろんです。 Riot のコアは箱から出してそのままでは提供できませんが、`riot.install` メソッドを使えば新しい機能を追加することができます。デフォルトのコンポーネントAPIを拡張するためのたくさんの Riot プラグインを作ることが私の TODO です。
-
