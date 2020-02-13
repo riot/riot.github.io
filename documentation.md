@@ -11,7 +11,7 @@ description: Step by step starting guide
 You can install riot via npm:
 
 ```sh
-npm i -S riot
+npm i riot
 ```
 
 Or via yarn
