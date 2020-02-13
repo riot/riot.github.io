@@ -248,7 +248,7 @@ The `PureComponentFactoryFunction` should return always an object containing the
       },
       // context here is either the parent component or undefined
       render(context) {
-        render(html`<p>{ context ? context.message : 'no message defined' }</p>`, this.el)
+        render(html`<p>${ context ? context.message : 'no message defined' }</p>`, this.el)
       },
       unmount() {
         this.el.parentNode.removeChild(this.el)
