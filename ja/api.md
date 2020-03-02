@@ -248,7 +248,7 @@ register('test-component', TestComponent2)
       },
       // ここでのコンテキストは親コンポーネントかundefinedのいずれかです
       render(context) {
-        render(html`<p>{ context ? context.message : 'no message defined' }</p>`, this.el)
+        render(html`<p>${ context ? context.message : 'no message defined' }</p>`, this.el)
       },
       unmount() {
         this.el.parentNode.removeChild(this.el)
