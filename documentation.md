@@ -787,6 +787,16 @@ Event handlers do not update components so you might combine them with a `this.u
 </login>
 ```
 
+### Event handlers options
+
+You can use [native event listener options](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) passing an array instead a callback to your event listeners:
+
+```html
+<div onscroll={ [updateScroll, { passive: true }] }></div>
+```
+
+{% include version_badge.html version=">=4.11.0" %}
+
 ## Conditionals
 
 Conditionals let you mount / unmount dom and components based on a condition. For example:
