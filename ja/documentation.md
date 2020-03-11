@@ -581,8 +581,8 @@ Riot の式では、HTML フォーマットなしのテキスト値のみをレ�
   <script>
     export default {
       setInnerHTML() {
-        this.root.innerHTML = props.html
-      }
+        this.root.innerHTML = this.props.html
+      },
       onMounted() {
         this.setInnerHTML()
       },
