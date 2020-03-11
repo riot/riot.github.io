@@ -581,8 +581,8 @@ Riot expressions can only render text values without HTML formatting. However yo
   <script>
     export default {
       setInnerHTML() {
-        this.root.innerHTML = props.html
-      }
+        this.root.innerHTML = this.props.html
+      },
       onMounted() {
         this.setInnerHTML()
       },
