@@ -456,7 +456,7 @@ riot.install(function(component) {
 
 ### Yield タグ
 
-`<yield>` タグは、より予測可能な動作を持つ `<slot>`s に置き換えられました。どのように動くのかを理解するために[スロット API]({{ '/ja/documentation/'|prepend:site.baseurl }}#スロット) を確認してください。
+`<yield>` タグは、より予測可能な動作を持つ `<slot>` に置き換えられました。どのように動くのかを理解するために[スロット API]({{ '/ja/documentation/'|prepend:site.baseurl }}#スロット) を確認してください。
 
 
 <aside class="note note--warning">:warning:

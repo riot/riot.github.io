@@ -787,6 +787,16 @@ DOM イベントを処理する関数は "イベントハンドラ" と呼ばれ
 </login>
 ```
 
+### イベントハンドラのオプション
+
+イベントリスナのコールバックの代わりに配列を介して [ネイティブのイベントリスナオプション](https://developer.mozilla.org/ja/docs/Web/API/EventTarget/addEventListener) を使うことができます:
+
+```html
+<div onscroll={ [updateScroll, { passive: true }] }></div>
+```
+
+{% include version_badge.html version=">=4.11.0" %}
+
 ## 条件
 
 条件付きでは、その条件に基づいて dom およびコンポーネントをマウント / アンマウントできます。例:
