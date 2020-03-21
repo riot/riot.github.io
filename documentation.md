@@ -1044,7 +1044,7 @@ Note that when using the `is` attribute, the tag name should be rendered in all 
   <div is="mycomponent"></div> <!-- Also Correct -->
   <div is="MyComponent"></div> <!-- Incorrect -->
   <script>
-    riot.mount('[is="mycomponent"');
+    riot.mount('[is="mycomponent"]');
   </script>
 ```
 Note that you can use `is` attribute with any HTML tags, but not with [`template` tag](#fragments-loops).
