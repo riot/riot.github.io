@@ -1044,7 +1044,7 @@ riot.mount('my-list')
   <div is="mycomponent"></div> <!-- これも正しい -->
   <div is="MyComponent"></div> <!-- 誤り -->
   <script>
-    riot.mount('MyComponent');
+    riot.mount('[is="mycomponent"]');
   </script>
 ```
 メモ `is` 属性は任意の HTML タグで使用できますが、[`template` タグ](#html-フラグメントのループ) では使用できません。
