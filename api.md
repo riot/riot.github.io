@@ -53,6 +53,10 @@ riot.mount('my-component', () => ({
   custom: 'option'
 }))
 ```
+
+`riot.mount` won't clean existent children nodes under the target component. After SSR and want to mount the component in client side for user interaction, there is an different way to solve that. Please check [@riotjs/hydrate](https://github.com/riot/hydrate#usage).
+
+
 ### riot.unmount
 
 `riot.unmount(selector: string, keepRootElement?: boolean): [HTMLElement]`
@@ -72,7 +76,7 @@ If the `keepRootElement` parameter will be true the root nodes will be left into
 riot.unmount('user', true)
 ```
 
-<strong>@returns: </strong>an array of the mounted [component objects](#component-object)
+<strong>@returns: </strong>list of unmounted nodes
 
 ### riot.component
 
@@ -95,6 +99,34 @@ const app = createApp(document.getElementById('root'), {
 })
 ```
 
+{% include version_badge.html version=">=4.7.0" %}
+
+The factory function created by `riot.component` accepts also a third optional argument that can contain [valid `slots` and `attributes` objects](https://github.com/riot/dom-bindings).
+
+```js
+import { expressionTypes } from '@riotjs/dom-bindings'
+import * as riot from 'riot'
+import App from './app.riot'
+
+const createApp = riot.component(App)
+
+const app = createApp(document.getElementById('root'), {
+  name: 'This is a custom property',
+  class: 'custom-class'
+}, {
+  slots: [{
+    id: 'default',
+    html: 'Hello there',
+    bindings: []
+  }],
+  attributes: [{
+    type: expressionTypes.ATTRIBUTE,
+    name: 'class',
+    evaluate: scope => scope.props.class
+  }]
+})
+```
+
 ### riot.install
 
 `riot.install(plugin: function): Set`
@@ -103,7 +135,7 @@ const app = createApp(document.getElementById('root'), {
 
 <strong>@returns: </strong> a javascript `Set` containing all the plugin functions installed
 
-Once installed a plugin function will be called for any Riot.js component created
+Once installed a plugin function will be called for any Riot.js component created:
 
 ```js
 import { install } from 'riot'
@@ -126,7 +158,7 @@ install(function(component) {
 
 <strong>@returns: </strong> a javascript `Set` containing all the plugin remaining functions installed
 
-A plugin can be installe and uninstalled:
+A plugin can be installed and uninstalled:
 
 ```js
 import { install, uninstall } from 'riot'
@@ -167,8 +199,8 @@ mount('my-component')
 
 <strong>@returns: </strong> a javascript `Map` containing the remaining registered components factory functions
 
-Unregistering a tag previously created via compiler or via `riot.register()`
-This method could be handy in case you need to test your app and you want to create multiple tags using the same name for example
+Unregistering a tag previously created via compiler or via `riot.register()`.
+This method could be handy in case you need to test your app and you want to create multiple tags using the same name for example.
 
 ```js
 import { register, unregister } from 'riot'
@@ -187,6 +219,45 @@ unregister('test-component')
 
 // recreate the same component using a different template
 register('test-component', TestComponent2)
+```
+
+### riot.pure
+
+`riot.pure(PureComponentFactoryFunction): PureComponentFactoryFunction`
+
+`PureComponentFactoryFunction` is a function that accepts an object with the following fields:
+
+1. `slots` - the slot list found in your component
+2. `attributes` - the component attribute expressions that can be evaluated to infer the component properties from the context
+3. `props` - the initial component user properties that can be only set via `riot.component` calls
+
+<strong>@returns: </strong> the user defined factory function that will be used internally by Riot.js to create pure components
+
+This function is a Riot.js primitive that is meant to be used only for particular cases where the default rendering engine might be not provide all the features you are looking for (lazy loading or custom directives...).
+
+The `PureComponentFactoryFunction` should return always an object containing the `mount`, `update` and `unmount` methods in order to let Riot.js properly render the pure components, for example:
+
+```html
+<lit-element>
+  <script>
+    import { pure } from 'riot'
+    import { html, render } from 'lit-html'
+
+    export default pure(({ attributes, slots, props }) => ({
+      mount(el, context) {
+        this.el = el
+        this.render(context)
+      },
+      // context here is either the parent component or undefined
+      render(context) {
+        render(html`<p>${ context ? context.message : 'no message defined' }</p>`, this.el)
+      },
+      unmount() {
+        this.el.parentNode.removeChild(this.el)
+      }
+    }))
+  </script>
+</lit-element>
 ```
 
 ### riot.version
@@ -243,7 +314,7 @@ interface RiotCoreComponent<P = object, S = object> {
     newState?: Partial<S>,
     parentScope?: object
   ): RiotComponent<P, S>
-  unmount(keepRootElement?: boolean): RiotComponent<P, S>
+  unmount(keepRootElement: boolean): RiotComponent<P, S>
 
   // Helpers
   $(selector: string): HTMLElement
@@ -343,7 +414,7 @@ You will likely never call the `component.mount` method by yourself, you will us
 `component.mount(keepRoot?: boolean): RiotComponent`
 
 Detaches the custom component and its children from the page.
-If you want to unmount a tag without removing the root node you need to pass `true` to the unmount method
+If you want to unmount a tag without removing the root node you need to pass `true` to the unmount method.
 
 Unmount the tag and remove it template from the DOM:
 
@@ -381,7 +452,7 @@ Any Riot.js component created has a `state` object property. The `state` object 
 
 In this case the component is created with an initial state that can be modified internally via `component.update`.
 
-You should avoid to store nested javascript objects into the state property because their references will be shared across multiple component and might generate side effects. To avoid undesired surprises you can create your components also using a factory function
+You should avoid to store nested javascript objects into the state property because their references will be shared across multiple component and might generate side effects. To avoid undesired surprises you can create your components also using a factory function:
 
 ```html
 <my-component>
@@ -473,7 +544,7 @@ The `components` property should be a static attribute of your component export.
 
 #### component.update
 
-`component.update(newState?:object, parentScope?: object): RiotComponent;`
+`component.update(newState?: object, parentScope?: object): RiotComponent;`
 
 Updates the component `state` object re-rendering all its expressions. This method can be usually called every time an event handler is dispatched when the user interacts with the application.
 
@@ -526,7 +597,7 @@ You can call this method also manually whenever you need to update your componen
 On above example the error message is displayed on the UI after the `update()` method has been called.
 
 If you want to have more control over your tags DOM updates you can set rely on the `shouldUpdate` function return.
-Riot.js will update your component only if that function will return `true`
+Riot.js will update your component only if that function will return `true`.
 
 ``` html
 <my-component>
@@ -621,18 +692,27 @@ once mounted it will be rendered in this way:
 </my-post>
 ```
 
-The expressions in slot tags will not have access to the properties of the components in which they are injected
+The expressions in slot tags by default will not have access to the properties of the components in which they are injected unless you are passing them via slot attribute as we will learn in the [Higher Order Components Paragraph]({{ '/api/#higher-order-components' | prepend:site.baseurl }}).
 
 ``` html
 <!-- This tag just inherits the yielded DOM -->
 <child-tag>
   <slot/>
+
+  <script>
+    export default {
+      internalProp: 'secret message'
+    }
+  </script>
 </child-tag>
 
 <my-component>
   <child-tag>
-    <!-- here the child-tag internal properties are not available -->
+    <!-- this attribute will be properly rendered -->
     <p>{ message }</p>
+
+    <!-- this expression will fail because "internalProp" is not available here -->
+    <p>{ internalProp }</p>
   </child-tag>
   <script>
     export default {
@@ -644,14 +724,14 @@ The expressions in slot tags will not have access to the properties of the compo
 
 #### Named Slots
 
-The `<slot>` tag provides also a mechanism to inject html in specific sections of a component template
+The `<slot>` tag provides also a mechanism to inject html in specific sections of a component template.
 
 For example using the following riot tag `my-other-post`
 
 ``` html
 <my-other-post>
   <article>
-    <h1>{ opts.title }</h1>
+    <h1>{ props.title }</h1>
     <h2><slot name="summary"/></h2>
     <article>
       <slot name="content"/>
@@ -688,6 +768,38 @@ once mounted it will be rendered in this way:
   </article>
 </my-other-post>
 ```
+
+#### Higher Order Components
+
+{% include version_badge.html version=">=4.6.0" %}
+
+You can use `<slot>` tags to create Higher Order Components. All the attributes set on the slot tags will be available in their injected html templates.
+Let's imagine for example that you want to have a themable application and you want to use a `<theme-provider>` component for it:
+
+```html
+<theme-provider>
+  <slot theme={theme}/>
+
+  <script>
+    export default {
+      theme: 'dark'
+    }
+  </script>
+</theme-provider>
+```
+
+Now you can wrap your components in a `<theme-provider>` tag to read always the current application theme in a flexible and composable way:
+
+```html
+<app>
+  <theme-provider>
+    <!-- notice how the "theme" variable will be available here -->
+    <sidebar class="sidebar sidebar__{theme}"/>
+  </theme-provider>
+</app>
+```
+
+The use of Higher Order Components could simplify a lot the communication between child and parent components giving you enough flexibility to handle the data flow across your whole application.
 
 ### Lifecycle
 
@@ -781,7 +893,7 @@ Riot.js components are meant to be compiled to javascript via [@riotjs/compiler]
 
 #### Component shell interface
 
-The Riot.js compiler just creates a shell object that will be transformed internally by riot to create the [component object](#component-interface). If want to build this shell object manually it's worth to understand its interface first:
+The Riot.js compiler just creates a shell object that will be transformed internally by riot to create the [component object](#component-interface). If you want to build this shell object manually it's worth to understand its interface first:
 
 ```ts
 interface RiotComponentShell<P = object, S = object> {
@@ -823,7 +935,7 @@ The `RiotComponentTemplate` is an object and it's responsible to handle the comp
 
 #### Examples
 
-This example uses the [@riotjs/dom-bindings (riot core template engine)](https://github.com/riot/dom-bindings)
+This example uses the [@riotjs/dom-bindings (riot core template engine)](https://github.com/riot/dom-bindings):
 
 ```js
 import { template, expressionTypes } from '@riotjs/dom-bindings'
@@ -851,10 +963,10 @@ riot.register('my-component', {
 })
 ```
 
-Read about the [template engine API](https://github.com/riot/dom-bindings)
+Read about the [template engine API](https://github.com/riot/dom-bindings).
 
 You can also use any other kind of template engine if you like.
-This example uses [lit-html](https://lit-html.polymer-project.org/) as template engine
+This example uses [lit-html](https://lit-html.polymer-project.org/) as template engine:
 
 ```js
 import {html, render} from 'lit-html'

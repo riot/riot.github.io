@@ -108,7 +108,7 @@ Riot.js tags are [compiled]({{ '/compiler/' | prepend:site.baseurl }}) to pure j
 #### Tooling friendly
 - Create components with CoffeeScript, Jade, LiveScript, TypeScript, ES6 or [any pre-processor](https://riot.js.org/compiler/#pre-processors) you want.
 - Build with [@riotjs/cli](https://github.com/riot/cli), [webpack](https://github.com/riot/webpack-loader), [Rollup](https://github.com/riot/rollup-plugin-riot), [parcel](https://github.com/riot/parcel-plugin-riot), [Browserify](https://github.com/riot/riotify).
-- Test with however you like, you can [load your riot tags directly in node](https://github.com/riot/ssr#render---to-render-only-markup)
+- Test with whatever you like, you can [load your riot tags directly in node](https://github.com/riot/ssr#render---to-render-only-markup)
 
 
 ## 2. Simple and minimalistic
@@ -168,6 +168,8 @@ The Riot.js ecosystem is completely modular, it's designed to let you pick only 
   - [@riotjs/cli](https://github.com/riot/cli) - CLI to compile locally your tags to javascript
   - [@riotjs/ssr](https://github.com/riot/ssr) - Super simple server side rendering
   - [@riotjs/hydrate](https://github.com/riot/hydrate) - Hydration strategy for your SPA
+  - [@riotjs/route](https://github.com/riot/route) - Isomorphic router
+  - [@riotjs/lazy](https://github.com/riot/lazy) - Lazy components loader
   - [@riotjs/hot-reload](https://github.com/riot/hot-reload) - Live reload plugin
   - [@riotjs/compiler](https://github.com/riot/compiler) - Advanced tags compiler
   - [@riotjs/parser](https://github.com/riot/parser) - HTML parser

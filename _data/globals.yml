@@ -1,7 +1,8 @@
 version:             4
 repo:                https://github.com/riot/riot
 twitter_account:     https://twitter.com/riotjs_
-gitter:              https://gitter.im/riot/riot
 showcase:            /made-with-riot/
 legacy:              https://v3.riotjs.now.sh
-discord:             https://discord.gg/EGxw2e
+discord:             https://discord.gg/PagXe5Y
+online_compiler:     https://riot.js.org/online-compiler/
+examples:            https://github.com/riot/examples

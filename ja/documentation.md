@@ -1,6 +1,6 @@
 ---
-title: Documentation
-layout: detail
+title: ドキュメンテーション
+layout: ja/detail
 description: Step by step starting guide
 ---
 
@@ -23,7 +23,7 @@ yarn add riot
 ### 使い方
 
 [webpack](https://github.com/riot/webpack-loader)、[rollup](https://github.com/riot/rollup-plugin-riot)、[parcel](https://github.com/riot/parcel-plugin-riot) または [browserify](https://github.com/riot/riotify) を用いて Riot.js のアプリケーションをバンドルできます。
-またRiot タグは、[ブラウザ上で]({{ '/compiler/#in-browser-compilation' | prepend:site.baseurl }})直接的にコンパイルすることもでき、プロトタイプやテストを素早く行うことができます。
+またRiot タグは、[ブラウザ上で]({{ '/ja/compiler/#in-browser-compilation' | prepend:site.baseurl }})直接的にコンパイルすることもでき、プロトタイプやテストを素早く行うことができます。
 
 ### クイックスタート
 
@@ -151,6 +151,8 @@ Riot コンポーネントはレイアウト（HTML）とロジック（javascri
 * 標準の HTML タグ（`label`、`table`、`a` など）はカスタマイズすることもできるが、必ずしもそうすることが賢明というわけではない
 * **ルート** のタグ定義も属性を保つ場合がある: `<my-component onclick={ click } class={ props.class }>`
 
+注意: ネイティブのタグを再定義するのはあまりよろしくありません。もし安全性を確保したいのならばダッシュ（-）付きの名前をつけるべきです。詳しくは [FAQ](https://riot.js.org/ja/faq/#タグ名にダッシュを使うべき) を参照してください。
+
 
 ## プリプロセッサ
 
@@ -214,9 +216,6 @@ Riot コンポーネントはレイアウト（HTML）とロジック（javascri
 
   <!-- body 内の任意の位置にカスタムコンポーネントを配置 -->
   <my-component></my-component>
-
-  <!-- is 属性もサポートされている -->
-  <div is="my-component"></div>
 
   <!-- riot.js を導入 -->
   <script src="riot.min.js"></script>
@@ -582,8 +581,8 @@ Riot の式では、HTML フォーマットなしのテキスト値のみをレ�
   <script>
     export default {
       setInnerHTML() {
-        this.root.innerHTML = props.html
-      }
+        this.root.innerHTML = this.props.html
+      },
       onMounted() {
         this.setInnerHTML()
       },
@@ -715,20 +714,24 @@ Riot の式では、HTML フォーマットなしのテキスト値のみをレ�
 </user>
 ```
 
-[API ドキュメント]({{ '/api/#スロット' | prepend:site.baseurl }}) の `slots` を参照ください。
+[API ドキュメント]({{ '/ja/api/#スロット' | prepend:site.baseurl }}) の `slots` を参照ください。
 
 <aside class="note note--info">
 スロットはコンパイルされたコンポーネントでのみ動作し、ページ DOM に直接配置されたコンポーネントのすべての内部 HTML は無視されます。
 </aside>
 
 <aside class="note note--warning">
-:warning: スロットタグでは、Riot<code>if</code>、<code>each</code> および <code>is</code> ディレクティブはサポートされていません。
+:warning: slot タグでは、Riot の <code>if</code>、<code>each</code>、<code>is</code> ディレクティブはサポートされていません。
 </aside>
 
 
 ## イベントハンドラ
 
 DOM イベントを処理する関数は "イベントハンドラ" と呼ばれます。イベントハンドラは次のように定義されます:
+
+<aside class="note note--warning">
+  注意: デフォルトのイベントハンドラが呼ばれます。e.preventDefault() を使用してそれを停止してください。
+</aside>
 
 ```html
 <login>
@@ -740,7 +743,7 @@ DOM イベントを処理する関数は "イベントハンドラ" と呼ばれ
     export default {
       // このメソッドは上記のフォームがサブミットされたときに呼び出される
       submit(e) {
-
+        e.preventDefault() // 任意
       }
     }
   </script>
@@ -783,6 +786,16 @@ DOM イベントを処理する関数は "イベントハンドラ" と呼ばれ
   </script>
 </login>
 ```
+
+### イベントハンドラのオプション
+
+イベントリスナのコールバックの代わりに配列を介して [ネイティブのイベントリスナオプション](https://developer.mozilla.org/ja/docs/Web/API/EventTarget/addEventListener) を使うことができます:
+
+```html
+<div onscroll={ [updateScroll, { passive: true }] }></div>
+```
+
+{% include version_badge.html version=">=4.11.0" %}
 
 ## 条件
 
@@ -1031,10 +1044,40 @@ riot.mount('my-list')
   <div is="mycomponent"></div> <!-- これも正しい -->
   <div is="MyComponent"></div> <!-- 誤り -->
   <script>
-    riot.mount('MyComponent');
+    riot.mount('[is="mycomponent"]');
   </script>
 ```
-注意 `is` 属性は任意の HTML タグで使用できますが、[`template` タグ](#html-フラグメントのループ) では使用できません。
+メモ `is` 属性は任意の HTML タグで使用できますが、[`template` タグ](#html-フラグメントのループ) では使用できません。
+
+## 純粋なコンポーネント
+
+コンポーネントのレンダリングを完全にコントロールしたい場合、`riot.pure` を使うことで Riot.js の内部ロジックを迂回することができます。例:
+
+```html
+<my-pure-component>
+  <script>
+  import { pure } from 'riot'
+
+  export default pure(() => {
+    return {
+      mount(el) {
+        this.el = el
+        this.el.innerHTML = 'Hello There'
+      },
+      update() {
+        this.el.innerHTML = 'I got updated!'
+      },
+      unmount() {
+        this.el.parentNode.removeChild(this.el)
+      }
+    }
+  })
+  </script>
+</my-pure-component>
+```
+
+<aside class="note note--warning">:warning: 純粋なコンポーネントに html または css を含めることはできません。これらは、default エクスポートステートメントとして純粋な関数呼び出しのみを持つことができます。</aside>
+
 
 ## サーバーサイドレンダリング
 

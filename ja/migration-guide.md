@@ -1,7 +1,7 @@
 ---
-title: Migration Guide
-layout: detail
-description: Migration guide from Riot.js 2 and 3
+title: マイグレーションガイド
+layout: ja/detail
+description: Riot.js 2 や 3 からのマイグレーションガイド
 ---
 
 ## 導入
@@ -343,7 +343,7 @@ riot.install(function(componentAPI) {
   <script>
     export default {
       onMounted() {
-        const paragraph = $('p')
+        const paragraph = this.$('p')
 
         paragraph.innerHTML = '<b>hello</b>'
       }
@@ -451,12 +451,12 @@ riot.install(function(component) {
 
 ### Virtual タグ
 
-`<virtual>` タグは削除され、使用できなくなりました。`each` と` if` ディレクティブには、代わりに `<template>` タグを使う予定ですが、今のところ Riot.js 4 の API には含まれていません。
+`<virtual>` タグは削除され、使用できなくなりました。代わりに `<template>` タグを使用してください。詳しくは[条件付き html フラグメント]({{ '/ja/api/'|prepend:site.baseurl }}#条件付き-html-フラグメント)を参照してください。
 
 
 ### Yield タグ
 
-`<yield>` タグは、より予測可能な動作を持つ `<slot>`s に置き換えられました。どのように動くのかを理解するために[スロット API]({{ '/ja/api/'|prepend:site.baseurl }}#スロット) を確認してください。
+`<yield>` タグは、より予測可能な動作を持つ `<slot>` に置き換えられました。どのように動くのかを理解するために[スロット API]({{ '/ja/documentation/'|prepend:site.baseurl }}#スロット) を確認してください。
 
 
 <aside class="note note--warning">:warning:
