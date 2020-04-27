@@ -416,3 +416,8 @@ registerPostprocessor(function(code, { options }) {
 
 In this case we make sure that the output code will be converted to es2015 via `buble`.
 
+### Compilation via Riot.js Online Compiler
+
+Finally, you can also compile a tag on line 
+
+[Riot.js Online Compiler](https://riot.js.org/online-compiler)
