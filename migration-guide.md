@@ -14,12 +14,12 @@ You can use this guide to learn how to write components for Riot.js 4 coming fro
 
 ## Component Syntax and API
 
-The components syntax was updated to match the modern javascript standards avoiding any possible ambiguity.
-Less magic means more clarity and interoperability, Riot.js 4 components are designed to be completely future proof!
+The components syntax was updated to match the modern JavaScript standards to avoid any possible ambiguity.
+Less magic means more clarity and interoperability. Riot.js 4 components are designed to be completely future proof!
 
 ### The script tag
 
-In the previous Riot.js versions you could just extend to your component instance via `this` keyword in your `<script>` tags. This syntax sugar was removed in favor of a cleaner API relying on the standard javascript ES2018 syntax:
+In the previous Riot.js versions you could just extend your component instance via `this` keyword in your `<script>` tags. This syntax sugar was removed in favor of a cleaner API relying on the standard JavaScript ES2018 syntax:
 
 **old**
 
@@ -54,22 +54,22 @@ In the previous Riot.js versions you could just extend to your component instanc
 </my-component>
 ```
 
-In this way your editor, and other compilers like `typescript` will not get confused by your components javascript logic and can be used along the way without any special concerns.
+In this way your editor, and other compilers like `typescript` will not get confused by your component's JavaScript logic and can be used along the way without any special concerns.
 
-It's worth to mention that this change was driven by the new [Riot.js philosophy]({{ '/'|prepend:site.baseurl }}#conclusion):
+It's worth mentioning that this change was driven by the new [Riot.js philosophy]({{ '/'|prepend:site.baseurl }}#conclusion):
 
 > ...In the face of ambiguity, refuse the temptation to guess.<br/>
-There should be one– and preferably only one –obvious way to do it.<br/>
+There should be one – and preferably only one – obvious way to do it.<br/>
 Although that way may not be obvious at first unless you’re Dutch...
 
 <aside class="note note--info">
-Notice how the use of the <code>&#x3C;script&#x3E;</code> tag becomes mandatory to split your components templates from their javascript logic.
+Notice how the use of the <code>&#x3C;script&#x3E;</code> tag becomes mandatory to split your components templates from their JavaScript logic.
 </aside>
 
 
 ### Template shortcuts
 
-The template shortcuts were completely removed in favor of pure and more explicit javascript expressions. Let's see how it's simple to achieve the same results in a cleaner way in Riot.js 4.
+The template shortcuts were completely removed in favor of pure and more explicit JavaScript expressions. Let's see how simple it is to achieve the same results in a cleaner way in Riot.js 4.
 
 **old**
 
@@ -118,7 +118,7 @@ riot.install(function(component) {
 </my-component>
 ```
 
-Even better, you can use the `classNames` directly in your components logic keeping your templates clean avoiding the use of `riot.install` for example:
+Even better, you can use the `classNames` directly in your component's logic, keeping your templates clean avoiding the use of `riot.install`. For example:
 
 ```html
 <my-component>
@@ -139,7 +139,7 @@ Even better, you can use the `classNames` directly in your components logic keep
 </my-component>
 ```
 
-The same short cut was available for the `style` attribute but now in Riot.js 4 you will need to handle the `style` attributes by yourselves:
+The same shortcut was available for the `style` attribute but now in Riot.js 4 you will need to handle the `style` attributes by yourself:
 
 **old**
 
@@ -189,14 +189,14 @@ riot.install(function(component) {
 ```
 
 Now your code and your helpers will be completely customizable without relying on the framework built in.
-This means that you will have more freedom and less bugs coming from your third party code...and don't forget to remember that:
+This means that you will have more freedom and fewer bugs coming from your third party code...and don't forget to remember that:
 
 > ...Explicit is better than implicit...
 
 
 ### Observable
 
-The Observable pattern was completely integrated into the previous Riot.js versions. This was an opinionated decision that might not work for all users. Riot.js 3 leaves you the decision regarding which programming pattern to use in your application and for this reason the observable helpers were completely removed from the source code in favor of a more generic approach.
+The Observable pattern was completely integrated into the previous Riot.js versions. This was an opinionated decision that might not work for all users. Riot.js 4 lets you decide which programming pattern to use in your application and for this reason the observable helpers were completely removed from the source code in favor of a more generic approach.
 
 **old**
 
@@ -228,9 +228,9 @@ The Observable pattern was completely integrated into the previous Riot.js versi
 </my-component>
 ```
 
-Please check also the new components [lifecycle events]({{ '/documentation/'|prepend:site.baseurl }}#lifecycle-callbacks).
+Please check also the new component [lifecycle events]({{ '/documentation/'|prepend:site.baseurl }}#lifecycle-callbacks).
 
-This change opens many new possibilities to manage your application state keeping the doors open to the nostalgic users that still prefer the observable lifecycle pattern.
+This change opens many new possibilities to manage your application state, keeping the doors open to the nostalgic users that still prefer the observable lifecycle pattern.
 
 ```js
 // riot-observable-plugin.js
@@ -301,8 +301,8 @@ riot.install(function(componentAPI) {
 
 ### Opts vs props and state
 
-The previous Riot.js versions provided the `opts` key to each component. This key was renamed `props` and it becomes immutable: it's a read only property frozen via `Object.freeze`.
-The `props` object can be only updated outside of the component that reads from it, while the new `state` object is updated via [`update` calls]({{ '/api/'|prepend:site.baseurl }}#state-handling).
+The previous Riot.js versions provided the `opts` key to each component. This key was renamed `props` and it becomes immutable: it's a readonly property frozen via `Object.freeze`.
+The `props` object can only be updated outside of the component that reads from it, while the new `state` object is updated via [`update` calls]({{ '/api/'|prepend:site.baseurl }}#state-handling).
 
 **old**
 
@@ -321,7 +321,7 @@ The `props` object can be only updated outside of the component that reads from 
 
 ### Refs attributes
 
-The `ref` attributes were replaced by the `$` and `$$` [component helpers]({{ '/api/'|prepend:site.baseurl }}#helpers) preferring a functional approach over mutable properties.
+The `ref` attribute was replaced by the `$` and `$$` [component helpers]({{ '/api/'|prepend:site.baseurl }}#helpers) preferring a functional approach over mutable properties.
 
 **old**
 
@@ -353,12 +353,12 @@ The `ref` attributes were replaced by the `$` and `$$` [component helpers]({{ '/
 ```
 
 <aside class="note note--warning">:warning:
-The new helpers will never return the children component instances but only DOM nodes
+The new helpers will never return the children component instances, only the DOM nodes.
 </aside>
 
 ### Parent and children
 
-The `parent` and `tags` keys were heavily abused by Riot.js users. They were the source of many side effects and clear bad practice. For this reason the children/parent components created via Riot.js 4 never expose their internal API, **components communicate only via props** and don't interact directly with the external world.
+The `parent` and `tags` keys were heavily abused by Riot.js users. They were the source of many side effects and clearly bad practices. For this reason the children/parent components created via Riot.js 4 never expose their internal API, **components communicate only via props** and don't interact directly with the external world.
 
 **old**
 ```html
@@ -387,7 +387,7 @@ The `parent` and `tags` keys were heavily abused by Riot.js users. They were the
 </my-component>
 ```
 
-You can of course write your own riot plugin to add the `ref` behaviour but it's highly not recommended:
+You can of course write your own Riot plugin to add the `ref` behaviour but it's highly not recommended:
 
 ```js
 // riot-ref-plugin.js
@@ -425,7 +425,7 @@ riot.install(function(component) {
 
 #### Custom events dispatching
 
-Listening custom events dispatched in child components can be done simply via properties:
+Listening to custom events dispatched in child components can be done simply via properties:
 
 ```html
 <my-component>
@@ -456,7 +456,7 @@ The `<virtual>` tag was removed and it can't be used anymore. Please use the `<t
 
 ### Yield tags
 
-The `<yield>` tags were replaced by the `<slot>`s having a more predictable behavior. Please check the [slots api]({{ '/api/'|prepend:site.baseurl }}#slots) to understand how they work.
+The `<yield>` tag was replaced by the `<slot>` tag, which has more predictable behavior. Please check the [slots api]({{ '/api/'|prepend:site.baseurl }}#slots) to understand how they work.
 
 
 <aside class="note note--warning">:warning:
@@ -467,7 +467,7 @@ The <code>yield</code> tags expressions were previously evaluated in the context
 
 The new CLI is much more powerful than the older one since it can compile single tags but it can also bundle your [entire Riot.js application]({{ '/compiler/'|prepend:site.baseurl }}#build-your-whole-application).
 
-It's designed to simplify the components bundling for quick prototypes and demos however for bigger application it's recommended the use of highly customizable javascript bundlers together with [riot loaders]({{ '/compiler/'|prepend:site.baseurl }}#riot-loaders)
+It's designed to simplify component bundling for quick prototypes and demos, however for bigger application it's recommended that you use highly customizable JavaScript bundlers together with [riot loaders]({{ '/compiler/'|prepend:site.baseurl }}#riot-loaders)
 
 ### Installation
 
@@ -475,7 +475,7 @@ In Riot.js v3 it was possible to install the CLI via `npm i -g riot`. In Riot.js
 
 ### Components registration
 
-You need to be aware that it previously was automatically registering your Riot.js components but now it will just output them as javascript modules. You will need to register your javascript output by yourself:
+You need to be aware that Riot.js components were automatically registered before, but now it will just output them as JavaScript modules. You will need to register your JavaScript output manually:
 
 ```js
 // compiled Riot.js component
