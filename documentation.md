@@ -8,13 +8,13 @@ description: Step by step starting guide
 
 ### Installation
 
-You can install riot via npm:
+You can install Riot via npm:
 
 ```sh
 npm i riot
 ```
 
-Or via yarn
+Or via yarn:
 
 ```sh
 yarn add riot
@@ -22,12 +22,12 @@ yarn add riot
 
 ### Usage
 
-You can bundle your Riot.js application via [webpack](https://github.com/riot/webpack-loader), [rollup](https://github.com/riot/rollup-plugin-riot), [parcel](https://github.com/riot/parcel-plugin-riot) or [browserify](https://github.com/riot/riotify).
-Riot tags can be compiled also in directly [in your browser]({{ '/compiler/#in-browser-compilation' | prepend:site.baseurl }}) for quick prototypes or tests.
+You can bundle your Riot.js application via [webpack](https://github.com/riot/webpack-loader), [Rollup](https://github.com/riot/rollup-plugin-riot), [Parcel](https://github.com/riot/parcel-plugin-riot) or [Browserify](https://github.com/riot/riotify).
+Riot tags can also be compiled directly [in your browser]({{ '/compiler/#in-browser-compilation' | prepend:site.baseurl }}) for quick prototypes or tests.
 
 ### Quick Start
 
-Once you have wired all your application bundler that's how your code might look like this:
+Once you have wired up your application bundler, your code might look like this:
 
 `index.html`
 ```html
@@ -131,27 +131,27 @@ Riot custom components are the building blocks for user interfaces. They make th
 </todo>
 ```
 
-Custom components are [compiled]({{ '/compiler/' | prepend:site.baseurl }}) to javascript.
+Custom components are [compiled]({{ '/compiler/' | prepend:site.baseurl }}) to JavaScript.
 
 See the [live demo](https://riot.js.org/examples/plunker/?app=todo-app), browse the [sources](https://github.com/riot/examples/tree/gh-pages/todo-app), or download the [zip](https://github.com/riot/examples/archive/gh-pages.zip).
 
 
 ## Syntax
 
-A Riot component is a combination of layout (HTML) and logic (javascript). Here are the basic rules:
+A Riot component is a combination of layout (HTML) and logic (JavaScript). Here are the basic rules:
 
 * Each `.riot` file can contain the logic for only a single component
 * HTML is defined first and the logic is enclosed inside a `<script>` tag.
-* Custom components can be empty, HTML only or javascript only
-* All template expressions are "just javascript™️": `<pre>{ JSON.stringify(props) }</pre>`
-* The `this` keyword is optional: `<p>{ name }</p>` is valid as `<p>{ this.name }</p>`
-* Quotes are optional: `<foo bar={ baz }>` is valid as `<foo bar="{ baz }">`.
+* Custom components can be empty, HTML only, or JavaScript only
+* All template expressions are "just JavaScript™️": `<pre>{ JSON.stringify(props) }</pre>`
+* The `this` keyword is optional: `<p>{ name }</p>` and `<p>{ this.name }</p>` are both valid
+* Quotes are optional: `<foo bar={ baz }>` and `<foo bar="{ baz }">` are both valid
 * Boolean attributes (checked, selected, etc.) are ignored when the expression value is falsy: `<input checked={ undefined }>` becomes `<input>`.
 * All attribute names *must be lowercase*. This is due to browser specification.
 * Standard HTML tags (`label`, `table`, `a`, etc.) can also be customized, but not necessarily a wise thing to do.
 * Tag definition **root** may also have attributes: `<my-component onclick={ click } class={ props.class }>`.
 
-Note : redefining native tags is a bad practice. If you want to stay safe you should use dashed names, see ([FAQ](https://riot.js.org/faq/#should-i-use-dash-on-the-tag-name))
+Note : redefining native tags is a bad practice. If you want to stay safe you should use dashed names (see [FAQ](https://riot.js.org/faq/#should-i-use-dash-on-the-tag-name))
 
 
 ## Pre-processor
@@ -166,7 +166,7 @@ You can specify a pre-processor with `type` attribute. For example:
 </my-component>
 ````
 
-Your component will be compiled with the preprocessor selected only if it was previously [registered before]({{ '/compiler#pre-processors' | prepend:site.baseurl }}).
+Your component will be compiled with the selected preprocessor only if it was previously [registered before]({{ '/compiler#pre-processors' | prepend:site.baseurl }}).
 
 ## Styling
 
@@ -189,7 +189,7 @@ You can put a `style` tag inside. Riot.js automatically takes it out and injects
 
 ### Scoped CSS
 
-[Scoped css and :host pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:host()) is also available for all browsers. Riot.js has its own custom implementation in JS which does not rely on or fallback to the browser implementation. The example below is equivalent to the first one. Notice that the example below uses the `:host` `pseudo-class` instead of relying in the component name to scope the styles.
+[Scoped css and :host pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:host()) are also available for all browsers. Riot.js has its own custom implementation in JS which does not rely on or fallback to the browser implementation. The example below is equivalent to the first one. Notice that the example below uses the `:host` `pseudo-class` instead of relying in the component name to scope the styles.
 
 ```html
 <my-component>
@@ -222,7 +222,7 @@ Once a component is created you can mount it on the page as follows:
 
   <!-- mount the component -->
   <script type="module">
-    // import the component javascript output generated via @riotjs/compiler
+    // import the component JavaScript output generated via @riotjs/compiler
     import MyComponent from './my-component.js'
 
     // register the riot component
@@ -303,7 +303,7 @@ If you need to access the DOM inside Riot, you'll want to take a look at the [ri
 
 ### Contexted DOM query
 
-Now that we know how to get DOM elements in the `onUpdated` or `onMounted` callbacks, we can make this useful by also adding a context to our element queries to the `root element` (the riot tag we're creating).
+Now that we know how to get DOM elements in the `onUpdated` or `onMounted` callbacks, we can make this useful by also adding a context to our element queries to the `root element` (the Riot tag we're creating).
 
 ```html
 <my-component>
@@ -327,7 +327,7 @@ Now that we know how to get DOM elements in the `onUpdated` or `onMounted` callb
 
 ### Properties
 
-You can pass initial properties for components in the second argument
+You can pass initial properties for components in the second argument.
 
 ```html
 <script>
@@ -348,7 +348,7 @@ Inside the tag the properties can be referenced with the `this.props` attribute 
   <script>
     export default {
       onMounted() {
-        // Props in javascript
+        // Props in JavaScript
         const title = this.props.title
 
         // this.props is frozen and it's immutable
@@ -362,7 +362,7 @@ Inside the tag the properties can be referenced with the `this.props` attribute 
 
 ### State
 
-Each riot component can use the `this.state` object to store or modify its internal state.
+Each Riot component can use the `this.state` object to store or modify its internal state.
 While the `this.props` attribute is frozen the `this.state` object is completely mutable and it could be updated manually or via the `this.update()` method:
 
 ```html
@@ -388,10 +388,10 @@ While the `this.props` attribute is frozen the `this.state` object is completely
 
 ### Riot component lifecycle
 
-A component is created in following sequence:
+A component is created in the following sequence:
 
 1. The component object is created
-2. The javascript logic is executed
+2. The JavaScript logic is executed
 3. All HTML expressions are calculated
 4. The component DOM is mounted on the page and "onMounted" callback is called
 
@@ -400,7 +400,7 @@ After the component is mounted the expressions are updated as follows:
 1. When `this.update()` is called on the current component instance
 2. When `this.update()` is called on a parent component, or any parent upwards. Updates flow uni-directionally from parent to child.
 
-The "onUpdated" callback is called every time component tag is updated.
+The "onUpdated" callback is called every time the component tag is updated.
 
 Since the values are calculated before mounting there are no surprise issues such as failed `<img src={ src }>` calls.
 
@@ -437,7 +437,7 @@ You can setup you component lifecycles as follows:
 </my-component>
 ```
 
-Any callback receives always the current `this.props` and `this.state` as arguments.
+Each callback always receives the current `this.props` and `this.state` as arguments.
 
 ## Plugins
 
@@ -477,7 +477,7 @@ Expressions can set attributes or nested text nodes:
 </h3>
 ```
 
-Expressions are 100% javascript. A few examples:
+Expressions are 100% JavaScript. A few examples:
 
 ```js
 { title || 'Untitled' }
@@ -513,7 +513,7 @@ Boolean attributes (checked, selected, etc.) are ignored when the expression val
 
 `<input checked={ null }>` becomes `<input>`.
 
-W3C states that a boolean property is true if the attribute is present at all — even if the value is empty of `false`.
+W3C states that a boolean property is true if the attribute is present — even if the value is empty or `false`.
 
 The following expression does not work:
 
@@ -521,7 +521,7 @@ The following expression does not work:
 <input type="checkbox" { true ? 'checked' : ''}>
 ```
 
-since only attribute and nested text expressions are valid. Riot detects automatically all the valid html boolean attributes.
+since only attribute and nested text expressions are valid. Riot automatically detects all of the valid HTML boolean attributes.
 
 
 ### Object spread attribute
@@ -551,7 +551,7 @@ You can output an expression without evaluation by escaping the opening bracket:
 
 `\{ this is not evaluated }` outputs `{ this is not evaluated }`
 
-Be sure to escape brackets in any situation where they should not be evaluated. For example, the Regex pattern below will fail to validate the intended input (any two numeric characters) and instead only accept a single numeric character followed by the number "2":
+Be sure to escape brackets in any situation where they should not be evaluated. For example, the regex pattern below will fail to validate the intended input (any two numeric characters) and instead only accept a single numeric character followed by the number "2":
 
 ```html
 <my-component>
@@ -574,7 +574,7 @@ Expressions inside `style` tags are ignored.
 
 ### Render unescaped HTML
 
-Riot expressions can only render text values without HTML formatting. However you can make a custom tag to do the job. For example:
+Riot expressions can only render text values without HTML formatting. However, you can make a custom tag to do the job. For example:
 
 ```html
 <raw>
@@ -594,7 +594,7 @@ Riot expressions can only render text values without HTML formatting. However yo
 </raw>
 ```
 
-After the tag is defined you can use it inside other tags. For example
+After the tag is defined you can use it inside other tags. For example:
 
 ```html
 <my-component>
@@ -612,7 +612,7 @@ After the tag is defined you can use it inside other tags. For example
 
 [demo on jsfiddle](http://jsfiddle.net/23g73yvx/)
 
-<aside class="note note--warning">:warning: this could expose the user to XSS attacks so make sure you never load data from an untrusted source.</aside>
+<aside class="note note--warning">:warning: This could expose the user to XSS attacks so make sure you never load data from an untrusted source.</aside>
 
 ## Nested components
 
@@ -641,7 +641,7 @@ Let's define a parent tag `<account>` and with a nested tag `<subscription>`:
 ```
 
 <aside class="note note--info">
-Note how we named the <code>show-details</code> attribute, it is written in dash case but it will be converted to camel case inside the <code>this.props</code> object.
+Note how we named the <code>show-details</code> attribute. It is written in dash case but it will be converted to camel case inside the <code>this.props</code> object.
 </aside>
 
 Then we mount the `account` component to the page with a `plan` configuration object:
@@ -678,9 +678,9 @@ Nested tags should be registered via `riot.register` call or they can be directl
 
 ### Slots
 
-Using the `<slot>` tag you can inject custom HTML templates in a child component from its parent
+Using the `<slot>` tag you can inject custom HTML templates in a child component from its parent.
 
-Child component definition
+Child component definition:
 
 ```html
 <greeting>
@@ -688,7 +688,7 @@ Child component definition
 </greeting>
 ```
 
-The child component is placed in a parent component injecting custom HTML into it
+The child component is placed in a parent component injecting custom HTML into it:
 
 ```html
 <user>
@@ -704,7 +704,7 @@ The child component is placed in a parent component injecting custom HTML into i
 </user>
 ```
 
-Result
+Result:
 
 ```html
 <user>
@@ -717,11 +717,11 @@ Result
 See [API docs]({{ '/api/#slots' | prepend:site.baseurl }}) for `slots`.
 
 <aside class="note note--info">
-Slots work only in compiled components, all the inner HTML of the components placed directly in your page DOM will be ignored.
+Slots only work in compiled components. All of the inner HTML of the components placed directly in your page DOM will be ignored.
 </aside>
 
 <aside class="note note--warning">
-:warning: Riot <code>if</code>, <code>each</code> and <code>is</code> directives are not supported on slot tags
+:warning: Riot <code>if</code>, <code>each</code> and <code>is</code> directives are not supported on slot tags.
 </aside>
 
 
@@ -807,9 +807,9 @@ Conditionals let you mount / unmount dom and components based on a condition. Fo
 </div>
 ```
 
-Again, the expression can be just a simple property or a full javascript expression. The `if` directive is a special attribute:
-  - `true or (truthy)`: mount a nested component or add an element to the template
-  - `false or (falsy)`: unmount an element or a component
+Again, the expression can be just a simple property or a full JavaScript expression. The `if` directive is a special attribute:
+  - `true (or truthy)`: mount a nested component or add an element to the template
+  - `false (or falsy)`: unmount an element or a component
 
 ### Fragments conditional
 
@@ -825,11 +825,11 @@ The `if` directives can be used also without the use of a wrapper tag. Thanks to
 </template>
 ```
 
-The `<template>` tag will be just used to wrap a html fragment that depends on a Riot.js directive, this feature is available [also for loops](#fragments-loops)
+The `<template>` tag will be just used to wrap a html fragment that depends on a Riot.js directive, this feature is also available for [loops](#fragments-loops)
 
 ## Loops
 
-Loops are implemented with `each` attribute as follows:
+Loops are implemented with the `each` attribute as follows:
 
 ```html
 <my-component>
@@ -851,7 +851,7 @@ Loops are implemented with `each` attribute as follows:
 </my-component>
 ```
 
-The element with the `each` attribute will be repeated for all items in the array. New elements are automatically added / created when the items array is manipulated using `push()`, `slice()` or `splice` methods for example.
+The element with the `each` attribute will be repeated for all items in the array. New elements are automatically added / created when the items array is manipulated using methods like `push()`, `slice()`, or `splice`.
 
 ### Looping custom components
 
@@ -861,12 +861,12 @@ Custom components can also be looped. For example:
 <todo-item each="{ item in items }" { ...item }></todo-item>
 ```
 
-The currently looped item properties can directly be passed to the looped tag.
+The currently looped item properties can be passed directly to the looped tag.
 
 
 ### Non-object arrays
 
-The each directive uses internally `Array.from`. This means that you can loop strings, Map, Sets containing also only primitive values:
+The `each` directive internally uses `Array.from`. This means that you can loop over strings, Map, and Sets that only contain primitive values:
 
 
 ```html
@@ -914,7 +914,7 @@ Plain objects can be looped via [`Object.entries`](https://developer.mozilla.org
 </my-component>
 ```
 
-You can use [`Object.keys`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) and [`Object.values`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values) if you just want to loop only fragments your object.
+You can use [`Object.keys`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) and [`Object.values`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values) if you only want to loop over fragments of an object:
 
 ```html
 <my-component>
@@ -952,13 +952,13 @@ In some cases you may need to loop some html without having a particular wrapper
 </dl>
 ```
 
-This html fragments strategy is not exclusive to looping and can be used in [conjunction with `if`](#fragments-conditional) for any tag.
+This HTML fragments strategy is not exclusive to looping and can be used in [conjunction with `if`](#fragments-conditional) for any tag.
 
 ### Loops advanced tips
 
 #### Key
 
-Adding the `key` attribute to the looped tags you will provide a more precise strategy to track your items position. This will highly improve the loop performance in case your collections are immutable.
+Adding the `key` attribute to the looped tags you will provide a more precise strategy to track your item's position. This will greatly improve the loop performance in case your collections are immutable.
 
 ```html
 <loop>
@@ -978,7 +978,7 @@ Adding the `key` attribute to the looped tags you will provide a more precise st
 </loop>
 ```
 
-The `key` attribute can be also generated in runtime via expressions
+The `key` attribute can be also generated in runtime via expressions.
 
 ```html
 <loop>
@@ -999,21 +999,21 @@ The `key` attribute can be also generated in runtime via expressions
 
 ## HTML elements as components
 
-Standard HTML elements can be used as riot components in the page body with the addition of the `is` attribute.
+Standard HTML elements can be used as Riot components in the page body with the addition of the `is` attribute.
 
 ```html
 <ul is="my-list"></ul>
 ```
 
-This provides users with an alternative that can provide greater compatibility with css frameworks. The tags are treated like any other custom component.
+This provides users with an alternative that can provide greater compatibility with CSS frameworks. The tags are treated like any other custom component.
 
 ```js
 riot.mount('[is="my-list"]')
 ```
 
-will mount the `ul` element shown above as if it were `<my-list></my-list>`
+will mount the `ul` element shown above as if it were `<my-list></my-list>`.
 
-Notice that you can use also an expression in the `is` attribute and riot will be able to render dynamically also different tags on the same DOM node
+Notice that you can use also an expression in the `is` attribute and Riot will also be able to dynamically render different tags on the same DOM node.
 
 ```html
 <my-component>
@@ -1047,11 +1047,11 @@ Note that when using the `is` attribute, the tag name should be rendered in all 
     riot.mount('[is="mycomponent"]');
   </script>
 ```
-Note that you can use `is` attribute with any HTML tags, but not with [`template` tag](#fragments-loops).
+Note that you can use `is` attribute with any HTML tags, but not with the [`template` tag](#fragments-loops).
 
 ## Pure components
 
-If you want to have complete control over your components rendering you can use `riot.pure` to bypass the Riot.js internal logic, for example:
+If you want to have complete control over the rendering of your components you can use `riot.pure` to bypass the Riot.js internal logic, for example:
 
 ```html
 <my-pure-component>
@@ -1076,7 +1076,7 @@ If you want to have complete control over your components rendering you can use 
 </my-pure-component>
 ```
 
-<aside class="note note--warning">:warning: Pure components can not contain html or css. They can only have a pure function call as default export statement.</aside>
+<aside class="note note--warning">:warning: Pure components cannot contain HTML or CSS. They can only have a pure function call as a default export statement.</aside>
 
 
 ## Server-side rendering
@@ -1094,7 +1094,7 @@ console.log(html) // <timer><p>Seconds Elapsed: 42</p></timer>
 
 ## Riot DOM Caveats
 
-Riot components rely on browsers rendering so you must be aware of certain situations where your components might not render properly their template.
+Riot components rely on browsers rendering so you must be aware of certain situations where your components might not render their template properly.
 
 Consider the following tag:
 
@@ -1120,4 +1120,4 @@ This markup is not valid if not injected in a `<select>` tag:
 
 ```
 
-Tags like `table, select, svg...` don't allow custom children tags so the use of custom riot tags is forbidden. Use `is` instead like demonstrated above. [more info](https://github.com/riot/riot/issues/2206)
+Tags like `table, select, svg...` don't allow custom children tags so the use of custom Riot tags is forbidden. Use `is` instead like demonstrated above ([more info](https://github.com/riot/riot/issues/2206)).
