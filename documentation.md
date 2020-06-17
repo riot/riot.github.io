@@ -797,6 +797,33 @@ You can use [native event listener options](https://developer.mozilla.org/en-US/
 
 {% include version_badge.html version=">=4.11.0" %}
 
+## Input Fields
+
+The input field values can be simply updated using the `value={newValue}` expression. Riot.js normalizes this behavior for input, select and textarea elements.
+
+### Case note - Textarea and value
+
+It againsts HTML standard that textarea has no such `value` attribute, but for Riot.js seeing textarea as an input component, it identifies the `value` attribute for its context updating.
+```html
+<textarea value={state.value}>{state.text}</textarea>
+<button onclick={updateText}>update</button>
+<script>
+  export default {
+    state: {
+      value: '',
+      text: ''
+    },
+
+    updateText (event) {
+      this.update({
+        text: 'this does not work',
+        value: 'this works'
+      });
+    }
+  }
+</script>
+```
+
 ## Conditionals
 
 Conditionals let you mount / unmount dom and components based on a condition. For example:
