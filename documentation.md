@@ -25,9 +25,19 @@ yarn add riot
 You can bundle your Riot.js application via [webpack](https://github.com/riot/webpack-loader), [Rollup](https://github.com/riot/rollup-plugin-riot), [Parcel](https://github.com/riot/parcel-plugin-riot) or [Browserify](https://github.com/riot/riotify).
 Riot tags can also be compiled directly [in your browser]({{ '/compiler/#in-browser-compilation' | prepend:site.baseurl }}) for quick prototypes or tests.
 
+### Start from a template
+
+If you want to start your project using one of our official templates you can use:
+
+```sh
+npm init riot
+```
+
+This command will let you pick your favourite bundler and will create in the current folder all the files necessary to start coding your first Riot.js application.
+
 ### Quick Start
 
-Once you have wired up your application bundler, your code might look like this:
+Once you have wired up your application bundler (or used one of our official templates), your code might look like this:
 
 `index.html`
 ```html
@@ -39,7 +49,7 @@ Once you have wired up your application bundler, your code might look like this:
 </head>
 <body>
   <div id="root"></div>
-  <script src="main.js"></script>
+  <script src="dist/bundle.js"></script>
 </body>
 </html>
 ```
