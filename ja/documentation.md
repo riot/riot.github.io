@@ -807,6 +807,33 @@ DOM イベントを処理する関数は "イベントハンドラ" と呼ばれ
 
 {% include version_badge.html version=">=4.11.0" %}
 
+## 入力フィールド
+
+入力フィールドの値は、`value={newValue}` 式を使って簡単に更新することができます。Riot.js は、入力、選択、テキストエリア要素に対してこの動作を正規化しています。
+
+### ノートのケース - テキストエリアと値
+
+テキストエリアがそのような `value` 属性を持たないのは HTML 標準に反していますが、Riot.js ではテキストエリアを入力コンポーネントとして見るため、コンテキスト更新のために `value` 属性を識別しています。
+```html
+<textarea value={state.value}>{state.text}</textarea>
+<button onclick={updateText}>update</button>
+<script>
+  export default {
+    state: {
+      value: '',
+      text: ''
+    },
+
+    updateText (event) {
+      this.update({
+        text: 'this does not work',
+        value: 'this works'
+      });
+    }
+  }
+</script>
+```
+
 ## 条件
 
 条件付きでは、その条件に基づいて dom およびコンポーネントをマウント / アンマウントできます。例:
