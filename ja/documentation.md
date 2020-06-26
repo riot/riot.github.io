@@ -25,9 +25,19 @@ yarn add riot
 [webpack](https://github.com/riot/webpack-loader)、[rollup](https://github.com/riot/rollup-plugin-riot)、[parcel](https://github.com/riot/parcel-plugin-riot) または [browserify](https://github.com/riot/riotify) を用いて Riot.js のアプリケーションをバンドルできます。
 またRiot タグは、[ブラウザ上で]({{ '/ja/compiler/#in-browser-compilation' | prepend:site.baseurl }})直接的にコンパイルすることもでき、プロトタイプやテストを素早く行うことができます。
 
+### テンプレートを用いてスタート
+
+もしプロジェクトを我々の公式テンプレートを用いてスタートしたい場合は、以下のコマンドが使用できます:
+
+```sh
+npm init riot
+```
+
+このコマンドは好きなバンドラを選択させ、最初にRiot.js アプリケーションのコーディングを開始するために必要な全てのファイルを現在のフォルダ内に生成されます。
+
 ### クイックスタート
 
-すべてのアプリケーション・バンドラーをワイヤリングすると、おそらくコードは次のようになります:
+すべてのアプリケーション・バンドラーをワイヤリングする(または、我々の公式テンプレートの一つを利用する)と、おそらくコードは次のようになります:
 
 `index.html`
 ```html
@@ -39,7 +49,7 @@ yarn add riot
 </head>
 <body>
   <div id="root"></div>
-  <script src="main.js"></script>
+  <script src="dist/bundle.js"></script>
 </body>
 </html>
 ```
