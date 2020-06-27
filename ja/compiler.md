@@ -415,3 +415,9 @@ registerPostprocessor(function(code, { options }) {
 ```
 
 この場合、最終的に出力されるコードは `buble` によって es2015 に変換されたものになります。
+
+### Riot.js を介したオンラインコンパイラによるコンパイル
+
+最後に、オンラインでタグをコンパイルすることもできます
+
+[Riot.js Online Compiler](https://riot.js.org/online-compiler)
