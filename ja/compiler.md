@@ -5,9 +5,9 @@ title: コンパイラ
 
 ## 概要
 
-カスタムタグはブラウザで実行可能になる前に javascript に変換される必要があります。
-Riot のコンパイラは riot タグを javascript モジュールに変換するよう設計されています。
-コンパイルされた riot タグは次のようになります:
+カスタムタグはブラウザで実行可能になる前に JavaScript に変換される必要があります。
+Riot のコンパイラは Riot タグを JavaScript モジュールに変換するよう設計されています。
+コンパイルされた Riot タグは次のようになります:
 
 ```js
 export default {
@@ -22,8 +22,8 @@ export default {
 
 ## インブラウザ・コンパイル
 
-`riot+compiler.js` によるバンドルは、素早くひな型を作ってテストできるよう、ブラウザでタグを直接コンパイルし、実行する機能を提供しています。
-以下のように、 `<script>` タグの属性に `type="riot"` を指定することで、 riot タグをブラウザにロードすることが可能です。
+`riot+compiler.js` によるバンドルは、素早くひな型を作ってテストできるよう、ブラウザでRiot タグを直接コンパイルし、実行する機能を提供しています。
+以下のように、 `<script>` タグの属性に `type="riot"` を指定することで、 Riot タグをブラウザにロードすることが可能です。
 例:
 
 ``` html
@@ -46,11 +46,11 @@ export default {
 </script>
 ```
 
-この場合、 riot は全ての `export default` 式を内部的に、ブラウザ表示に適した形に変換しますが、まだ javascript モジュールをサポートしていないことに注意してください。
+この場合、 Riot は全ての `export default` 式を内部的に、ブラウザ表示に適した形に変換しますが、まだ JavaScript モジュールをサポートしていないことに注意してください。
 
 Riot は、 `<script>` を通じてDOMにインクルードされた全ての外部タグを非同期にコンパイルし、 `riot.mount` でそれらを描画することが可能です。
 
-ブラウザによる riot スクリプトタグのプリフェッチ機能を抑止し、同じリソースを複数回ロードすることを防ぐため、 `<script>` タグの `src` 属性の代わりに `data-src` 属性を使いたい場合があるかも知れません。 Riot は自動的に、 ajax によってタグをフェッチしてコンパイルします。
+ブラウザによる Riot スクリプトタグのプリフェッチ機能を抑止し、同じリソースを複数回ロードすることを防ぐため、 `<script>` タグの `src` 属性の代わりに `data-src` 属性を使いたい場合があるかも知れません。 Riot は自動的に、 ajax によってタグをフェッチしてコンパイルします。
 
 ### インラインテンプレートを含むインブラウザ・コンパイル
 
@@ -83,7 +83,7 @@ riot.mount('my-tag')
 
 上記のコンパイル段階は非同期に行われ、アプリケーションの描画処理をブロックしません。しかしインブラウザ・コンパイルは、ひな型の作成やちょっとした実験のためだけに使うべきです。
 
-プリコンパイルを行うと、次のような恩恵を受けられます:
+プリコンパイルを行うと、次のような利点があります:
 
 - [お好みのプリプロセッサ](#プリプロセッサ)でタグをコンパイル。
 - 高いパフォーマンスを得られる。ロードやブラウザによるコンパイラ実行が不要。
@@ -91,12 +91,12 @@ riot.mount('my-tag')
 
 ### Riot ローダー
 
-[`webpack`](https://webpack.js.org/) や [`rollup`](https://rollupjs.org/) といったツールは、 riot アプリケーションのタグをバンドルするのに最適です。
-そのようなツールに向けて、 riot コンポーネントをあなたのソースコードにそのままインポートするための、 riot 公式ローダーを提供しています:
+[`webpack`](https://webpack.js.org/) や [`rollup`](https://rollupjs.org/) といったツールは、 Riot アプリケーションのタグをバンドルするのに最適です。
+そのようなツールに向けて、 Riot コンポーネントをあなたのソースコードにそのままインポートするための、 Riot 公式ローダーを提供しています:
   - [webpack](https://github.com/riot/webpack-loader)
-  - [rollup](https://github.com/riot/rollup-plugin-riot)
-  - [parcel](https://github.com/riot/parcel-plugin-riot)
-  - [riotify](https://github.com/riot/riotify)
+  - [Rollup](https://github.com/riot/rollup-plugin-riot)
+  - [Parcel](https://github.com/riot/parcel-plugin-riot)
+  - [Riotify](https://github.com/riot/riotify)
 
 Riot ローダーを使ったアプリケーションのエントリースクリプトは、おそらくこのようになるでしょう:
 
@@ -109,7 +109,7 @@ component(MyTag)(document.getElementById('root'))
 
 ### Node によるコンパイル
 
-``` javascript
+```javascript
 import {compile} from '@riotjs/compiler'
 
 const { code, map } = compile('<p>{hello}</p>', {
@@ -127,12 +127,12 @@ const { code, map } = compile('<p>{hello}</p>', {
 `compile()` 関数は、引数として文字列を取り、 `code` と `map` をキーに持つオブジェクトを返します。
 生成されたコードは、ご自身で好きなように扱うこともできますし、お使いのビルドシステムで使用することもできます。
 
-Riot コンパイラは、 javascript モジュールを出力することにご留意ください。バンドルには、これら（訳注: 出力されたモジュール）をトランスパイルしたほうがいいでしょう。
+Riot コンパイラは、JavaScript モジュールを出力することにご留意ください。バンドルには、これら（訳注: 出力されたモジュール）をトランスパイルしたほうがいいでしょう。
 
 
 ### Riot.js コマンドラインによるコンパイル
 
-Riot.js ファイルを、 [`riot`](https://github.com/riot/cli) 実行コマンドを使ってプリコンパイルすることもできます。こちらは以下のように、 NPM でインストールできます:
+Riot.js ファイルを、 [`riot`](https://github.com/riot/cli) 実行コマンドを使ってプリコンパイルすることもできます。こちらは以下のように、NPM でインストールできます:
 
 ```sh
 npm install @riotjs/cli -g
@@ -179,7 +179,7 @@ riot --extension html
 
 #### ES6形式の設定ファイル
 
-設定ファイルを使えば、 `@riotjs/cli` のすべてのオプションの設定を保存して楽に設定できるようにしたり、新しいカスタムパーサを作成したりできます
+設定ファイルを使えば、`@riotjs/cli` のすべてのオプションの設定を保存して楽に設定できるようにしたり、新しいカスタムパーサを作成したりできます
 
 ```sh
 riot --config riot.config src
@@ -197,7 +197,7 @@ export default {
 }
 ```
 
-作成するプロジェクトでカスタムプリプロセッサを使いたい場合、 package.json の `devDependency` から `@riotjs/cli` をインストールし、 npm スクリプトから以下のように起動します:
+作成するプロジェクトでカスタムプリプロセッサを使いたい場合、package.json の `devDependency` から `@riotjs/cli` をインストールし、npm スクリプトから以下のように起動します:
 
 
 ```json
@@ -214,7 +214,7 @@ export default {
 }
 ```
 
-以下はコンポーネント（訳注: タグファイル）のテンプレートエンジンとして `pug` を使いたい場合の、 `riot.config.js` の典型例です
+以下はコンポーネント（訳注: タグファイル）のテンプレートエンジンとして `pug` を使いたい場合の、`riot.config.js` の典型例です。
 
 ```js
 import { registerPreprocessor } from '@riotjs/compiler'
@@ -318,7 +318,7 @@ registerPreprocessor('javascript', 'ts', function(code, { options }) {
 })
 ```
 
-Riot.js のプリプロセッサは、 `template`, `css`, `javascript` の３種類の、いずれかでなければなりません（ `registerPreprocessor` 関数の最初の引数です）。
+Riot.js のプリプロセッサは、`template`, `css`, `javascript` の３種類の、いずれかでなければなりません（ `registerPreprocessor` 関数の最初の引数です）。
 別のテンプレートエンジンでコンポーネントをコンパイルするには、コンパイラを介して `template` オプションを指定する必要があります:
 
 ```js
@@ -394,7 +394,7 @@ registerPreprocessor('javascript', 'my-js-preprocessor', function(code, { option
 
 ```
 
-利用する javascript プリプロセッサは、元コードの空行を保つようにしてください。さもなければ、オフセットの壊れたソースマップを結果として受け取ってしまいます。
+利用する JavaScript プリプロセッサは、元コードの空行を保つようにしてください。さもなければ、オフセットの壊れたソースマップを結果として受け取ってしまいます。
 
 ## ポストプロセッサ
 

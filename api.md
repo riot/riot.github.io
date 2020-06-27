@@ -294,7 +294,7 @@ Each Riot.js component is created as a lightweight object. The object that you e
 
 ### Component Interface
 
-If you're familiar with [Typescript](https://www.typescriptlang.org/), here is what a Riot.js component interface looks like:
+If you're familiar with [TypeScript](https://www.typescriptlang.org/), here is what a Riot.js component interface looks like:
 
 ```ts
 // This interface is only exposed and any Riot component will receive the following properties

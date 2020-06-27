@@ -54,7 +54,7 @@ In the previous Riot.js versions you could just extend your component instance v
 </my-component>
 ```
 
-In this way your editor, and other compilers like `typescript` will not get confused by your component's JavaScript logic and can be used along the way without any special concerns.
+In this way your editor, and other compilers like `TypeScript` will not get confused by your component's JavaScript logic and can be used along the way without any special concerns.
 
 It's worth mentioning that this change was driven by the new [Riot.js philosophy]({{ '/'|prepend:site.baseurl }}#conclusion):
 

@@ -15,7 +15,7 @@ description: フレームワーク API, メソッドとプロパティ
 
 2. 消費するために `props` というオプショナルなオブジェクトがコンポーネントに渡されます。これには、単純なオブジェクトから完全なアプリケーション API まで、あらゆるものを使用できます。もしくは Flux ストアの場合もあります。実際には、クライアント側のアプリケーションをどのように構成するかによって異なります。*注意* タグに設定した属性は、`props` 引数で同じ名前を指定した属性よりも優先されます。
 
-3. `componentName` は、マウントするノードが riot によって自動マウントされない場合のオプショナルなコンポーネントの名前です。
+3. `componentName` は、マウントするノードが Riot によって自動マウントされない場合のオプショナルなコンポーネントの名前です。
 
 <strong>@returns: </strong>マウントされた [コンポーネントオブジェクト](#コンポーネントオブジェクト) の配列
 
@@ -46,7 +46,7 @@ const components = riot.mount('#root', api, 'app')
 }())
 ```
 
-`props` 引数には、複数のタグインスタンス間で同じオブジェクトを共有することを避けるために関数を指定することも可能です。[riot/2613](https://github.com/riot/riot/issues/2613)
+`props` 引数には、複数のタグインスタンス間で同じオブジェクトを共有することを避けるために関数を指定することも可能です。[riot/2613 を参照](https://github.com/riot/riot/issues/2613)
 
 ``` js
 riot.mount('my-component', () => ({
@@ -69,7 +69,7 @@ riot.mount('my-component', () => ({
 riot.unmount('user')
 ```
 
-`keepRootElement` パラメータが true だった場合、ルートノードは DOM に残されます
+`keepRootElement` パラメータが true だった場合、ルートノードは DOM に残されます。
 
 ```js
 // 全ての <user> タグを選択すると、そのタグをアンマウントするが ルートノードは DOM に残される
@@ -133,9 +133,9 @@ const app = createApp(document.getElementById('root'), {
 
 1. `plugin` - 生成された任意のコンポーネントの [コンポーネントオブジェクト](#コンポーネントオブジェクト) を受け取る関数
 
-<strong>@returns: </strong> インストールされた全てのプラグイン関数を含む javascript `Set`
+<strong>@returns: </strong> インストールされた全てのプラグイン関数を含む JavaScript `Set`
 
-一度インストールされたプラグイン関数 は生成された任意の Riot.js コンポーネントに対しコールされます
+一度インストールされると、プラグイン関数 は生成された任意の Riot.js コンポーネントに対しコールされます:
 
 ```js
 import { install } from 'riot'
@@ -156,7 +156,7 @@ install(function(component) {
 
 1. `plugin` - 既にインストールされた関数プラグイン
 
-<strong>@returns: </strong> インストールされた残りのプラグイン関数を含む javascript `Set`
+<strong>@returns: </strong> インストールされた残りのプラグイン関数を含む JavaScript `Set`
 
 プラグインはインストールおよびアンインストールできます:
 
@@ -177,7 +177,7 @@ uninstall(uid)
 1. `name` - コンポーネント名
 2. `component` - [コンポーネントシェルオブジェクト](#component-shell-interface)
 
-<strong>@returns: </strong> 全ての登録済みコンポーネントのファクトリ関数を含む javascript `Map`
+<strong>@returns: </strong> 全ての登録済みコンポーネントのファクトリ関数を含む JavaScript `Map`
 
 ```js
 import { register, mount } from 'riot'
@@ -195,9 +195,9 @@ mount('my-component')
 
 `riot.unregister(name: string): Map`
 
-1. `name` - the component name
+1. `name` - コンポーネント名
 
-<strong>@returns: </strong> アンマウント されていない残りのコンポーネントから生成された関数を含む javascript の `Map`
+<strong>@returns: </strong> アンマウント されていない残りのコンポーネントから生成された関数を含む JavaScript の `Map`
 
 既にコンパイラか `riot.register()` を介して生成されたタグの登録を解除します。
 このメソッドは、例えばアプリケーションをテストする必要があり、かつ同じ名前を使用して複数のタグを生成したい時などに有効かもしれません。
@@ -224,6 +224,8 @@ register('test-component', TestComponent2)
 ### riot.pure
 
 `riot.pure(PureComponentFactoryFunction): PureComponentFactoryFunction`
+
+`PureComponentFactoryFunction` は以下のフィールドを持つオブジェクトを受け取る関数です:
 
 1. `slots` - コンポーネント内で見つかった slot リスト
 2. `attributes` - コンテキストからコンポーネントプロパティを推測するために評価可能なコンポーネントの属性式
@@ -262,7 +264,7 @@ register('test-component', TestComponent2)
 
 `riot.version(): string`
 
-<strong>@returns: </strong> 現在使用しているの riot のバージョンを文字列として返す
+<strong>@returns: </strong> 現在使用しているの Riot のバージョンを文字列として返す
 
 ## コンポーネントオブジェクト
 
@@ -292,7 +294,7 @@ register('test-component', TestComponent2)
 
 ### コンポーネントインターフェース
 
-TypeScript に詳しい人は、ここに書かれているように Riot.js コンポーネントインタフェースがどのように見えるを読むことができます:
+ [TypeScript](https://www.typescriptlang.org/) に詳しい人は、ここに書かれているように Riot.js コンポーネントインタフェースがどのように見えるを読むことができます:
 
 ```ts
 // このインターフェースはただ公開されているのみで、どんな Riot コンポーネントも以下のプロパティを受け取る
@@ -537,7 +539,7 @@ myComponent.unmount(true)
 ```
 
 <div class="note note--info">
-  この例では、webpack, rollup, parcel, browserify を介してアプリケーションをバンドルすることを想定しています
+  この例では、webpack, Rollup, Parcel, Browserify を介してアプリケーションをバンドルすることを想定しています
 </div>
 
 #### component.update
@@ -624,7 +626,7 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 </my-component>
 ```
 
-`shouldUpdate` メソッドは常に2つの引数を受け取ります。最初の引数には新しいコンポーネントプロパティが含まれ、2番目の引数には現在のプロパティが含まれます。
+`shouldUpdate` メソッドは常に2つの引数を受け取ります: 最初の引数には新しいコンポーネントプロパティが含まれ、2番目の引数には現在のプロパティが含まれます。
 
 ``` html
 <my-component>
@@ -664,7 +666,7 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 ###  スロット
 
 `<slot>` タグは、実行時にテンプレート内の任意のカスタムコンポーネントの内容を注入してコンパイルすることができる、Riot.js の特別なコア機能です。
-例えば以下の riot タグ `my-post` 使ってみましょう
+例えば、以下の riot タグ `my-post` 使ってみましょう
 
 ``` html
 <my-post>
@@ -828,7 +830,7 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 </my-component>
 ```
 
-すべてのライフサイクルメソッドは、`props` と `state` の2つの引数を受け取ります。これらの引数は `this.props` と `this.state` というコンポーネント属性のエイリアスです。
+すべてのライフサイクルメソッドは `props` と `state` の2つの引数を受け取り、それぞれ `this.props` と `this.state` というコンポーネント属性のエイリアスです。
 
 ```html
 <my-component>
@@ -887,11 +889,11 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 
 ### 手動でのタグ構築
 
-Riot.jsコンポーネントは [@riotjs/compiler](/ja/compiler) を使って javascript にコンパイルされるようになっています。ただし、あなたの好きな任意のレンダリングエンジンを使用して手動でビルドすることもできます。
+Riot.jsコンポーネントは [@riotjs/compiler](/ja/compiler) を使って JavaScript にコンパイルされるようになっています。ただし、あなたの好きな任意のレンダリングエンジンを使用して手動でビルドすることもできます。
 
 #### コンポーネントシェルインターフェース
 
-Riot.js コンパイラは、単に [コンポーネントオブジェクト](#コンポーネントインターフェース) を作成するために、riot によって内部的に変換されるシェルオブジェクトを作成する。このシェルオブジェクトを手動で作成する場合は、まずそのインターフェースを理解する必要があります:
+Riot.js コンパイラは、単に [コンポーネントオブジェクト](#コンポーネントインターフェース) を作成するために、Riot によって内部的に変換されるシェルオブジェクトを作成する。このシェルオブジェクトを手動で作成する場合は、まずそのインターフェースを理解する必要があります:
 
 ```ts
 interface RiotComponentShell<P = object, S = object> {
@@ -904,7 +906,7 @@ interface RiotComponentShell<P = object, S = object> {
 
 `RiotComponentShell` オブジェクトは4つのプロパティで構成されています:
 
-- `css` - コンポーネントの css  の文字列
+- `css` - コンポーネントの CSS の文字列
 - `exports` - コンポーネントのパブリック API `export default`
 - `name` - コンポーネント名
 - `template` - コンポーネントテンプレートを管理するファクトリ機能
@@ -933,7 +935,7 @@ interface RiotComponentTemplate {
 
 #### 例
 
-この例では [@riotjs/dom-bindings (riot core template engine)](https://github.com/riot/dom-bindings) を使用しています。
+この例では [@riotjs/dom-bindings (Riot core template engine)](https://github.com/riot/dom-bindings) を使用しています。
 
 ```js
 import { template, expressionTypes } from '@riotjs/dom-bindings'

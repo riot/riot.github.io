@@ -1135,7 +1135,7 @@ Riot components rely on browsers rendering so you must be aware of certain situa
 
 Consider the following tag:
 
-``` html
+```html
 
 <my-fancy-options>
   <option>foo</option>
@@ -1145,7 +1145,7 @@ Consider the following tag:
 
 This markup is not valid if not injected in a `<select>` tag:
 
-``` html
+```html
 
 <!-- not valid, a select tag allows only <option> children -->
 <select>
