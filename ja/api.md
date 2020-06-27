@@ -76,7 +76,7 @@ riot.unmount('user')
 riot.unmount('user', true)
 ```
 
-<strong>@returns: </strong>マウントされた [コンポーネントオブジェクト](#コンポーネントオブジェクト) の配列
+<strong>@returns: </strong>アンマウントされたノードの配列
 
 ### riot.component
 
@@ -452,7 +452,7 @@ myComponent.unmount(true)
 
 この場合、初期状態のステートと一緒にコンポーネントが生成され、`component.update` を使用して内部的に修正できます。
 
-ネストされた javascript のオブジェクトをステートプロパティに格納することは避けてください。なぜなら、ネストされた javascript の参照は複数のコンポーネントで共有され、副作用が発生する可能性があるからです。予期しない事態を避けるために、ファクトリ関数を使用してコンポーネントを生成することもできます
+ネストされた javascript のオブジェクトをステートプロパティに格納することは避けてください。なぜなら、ネストされた javascript の参照は複数のコンポーネントで共有され、副作用が発生する可能性があるからです。予期しない事態を避けるために、ファクトリ関数を使用してコンポーネントを生成することもできます:
 
 ```html
 <my-component>
@@ -544,7 +544,7 @@ myComponent.unmount(true)
 
 #### component.update
 
-`component.update(newState?:object, parentScope?: object): RiotComponent;`
+`component.update(newState?: object, parentScope?: object): RiotComponent;`
 
 コンポーネントの `state` オブジェクトを更新し、すべてのテンプレート変数を再レンダリングします。このメソッドは通常、ユーザーがアプリケーションと対話するときにイベントハンドラがディスパッチされるたびに呼び出すことができます:
 
@@ -726,7 +726,7 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 
 `<slot>` タグは、コンポーネントテンプレートの特定のセクションにhtmlを挿入するメカニズムも提供します。
 
-例えば以下の riot タグ `my-other-post` 使ってみましょう
+例えば以下の riot タグ `my-other-post` 使ってみましょう:
 
 ``` html
 <my-other-post>
@@ -894,7 +894,6 @@ Riot.jsコンポーネントは [@riotjs/compiler](/ja/compiler) を使って Ja
 #### コンポーネントシェルインターフェース
 
 Riot.js コンパイラは、単に [コンポーネントオブジェクト](#コンポーネントインターフェース) を作成するために、Riot によって内部的に変換されるシェルオブジェクトを作成する。このシェルオブジェクトを手動で作成する場合は、まずそのインターフェースを理解する必要があります:
-
 ```ts
 interface RiotComponentShell<P = object, S = object> {
   readonly css?: string
@@ -935,7 +934,7 @@ interface RiotComponentTemplate {
 
 #### 例
 
-この例では [@riotjs/dom-bindings (Riot core template engine)](https://github.com/riot/dom-bindings) を使用しています。
+この例では [@riotjs/dom-bindings (Riot core template engine)](https://github.com/riot/dom-bindings) を使用しています:
 
 ```js
 import { template, expressionTypes } from '@riotjs/dom-bindings'
@@ -966,7 +965,7 @@ riot.register('my-component', {
 [テンプレートエンジン API](https://github.com/riot/dom-bindings) についてご参照ください。
 
 必要に応じて、あなたの好きな他の種類のテンプレートエンジンを使用することもできます。
-この例ではテンプレートエンジンとして [lit-html](https://lit-html.polymer-project.org/) を使用しています。
+この例ではテンプレートエンジンとして [lit-html](https://lit-html.polymer-project.org/) を使用しています:
 
 ```js
 import {html, render} from 'lit-html'
