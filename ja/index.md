@@ -183,22 +183,22 @@ Riot.js は誰でも使えるWeb Components です。React + Polymer から無�
 
 Riot.js は [*Tim Peters 氏の The Zen of Python*](https://en.wikipedia.org/wiki/Zen_of_Python) という思想（哲学）から駆動し、設計されました。それが我々のマントラです:
 
-> Beautiful is better than ugly.<br/>
-> Explicit is better than implicit.<br/>
-> Simple is better than complex.<br/>
-> Complex is better than complicated.<br/>
-> Flat is better than nested.<br/>
-> Sparse is better than dense.<br/>
-> Readability counts.<br/>
-> Special cases aren't special enough to break the rules.<br/>
-> Although practicality beats purity.<br/>
-> Errors should never pass silently.<br/>
-> Unless explicitly silenced.<br/>
-> In the face of ambiguity, refuse the temptation to guess.<br/>
-> There should be one-- and preferably only one --obvious way to do it.<br/>
-> Although that way may not be obvious at first unless you're Dutch.<br/>
-> Now is better than never.<br/>
-> Although never is often better than *right* now.<br/>
-> If the implementation is hard to explain, it's a bad idea.<br/>
-> If the implementation is easy to explain, it may be a good idea.<br/>
-> Namespaces are one honking great idea -- let's do more of those!
+> 醜いものより美しいものが良い。<br/>
+> 暗黙的なものより明示的なものが良い。<br/>
+> 複雑なものよりシンプルなものが良い。<br/>
+> でも、わかりにくいくらいなら複雑なほうが良い。<br/>
+> ネストするよりフラットなほうが良い。<br/>
+> 密集しているより隙間があるほうが良い。<br/>
+> 読みやすさこそが重要。<br/>
+> 特別だからといってルールを破ってはいけない。<br/>
+> ただし、実用性は純正に勝る。<br/>
+> エラーは見逃されるべきではない。<br/>
+> 明示的にそうしないかぎり。<br/>
+> あいまいさに直面しても、推測したくなる誘惑に負けてはいけない。<br/>
+> 明白なただ1つの方法（なるべく1つの方法）があるはず。<br/>
+> でもそれはあなたがオランダ人でないとしたら、最初はそれほど明白ではないかもしれない。<br/>
+> やらないより、今やるべき。<br/>
+> でも*すぐに*やるより、やらないほうがいいこともある。<br/>
+> 実現方法の説明が難しければ、それは悪いアイディア。<br/>
+> 実現方法の説明が容易であれば、それはおそらく良いアイディア。<br/>
+> 名前空間は素晴らしいアイディアの1つ。もっとそれらを使っていこう！
