@@ -5,9 +5,9 @@ layout: detail
 
 ## Introduction
 
-Custom tags need to be transformed to javascript before the browser can execute them.
-The riot compiler is designed to transform riot tags into javascript modules.
-A compiled riot tag will look like this:
+Custom tags need to be transformed to JavaScript before the browser can execute them.
+The Riot compiler is designed to transform Riot tags into JavaScript modules.
+A compiled Riot tag will look like this:
 
 ```js
 export default {
@@ -22,8 +22,8 @@ export default {
 
 ## In-browser compilation
 
-The `riot+compiler.js` bundle lets you compile and execute riot tags directly in your browser for quick prototypes and tests.
-You can load riot tags into your browser by setting a `type="riot"` attribute on your script tags.
+The `riot+compiler.js` bundle lets you compile and execute Riot tags directly in your browser for quick prototypes and tests.
+You can load Riot tags into your browser by setting a `type="riot"` attribute on your script tags.
 For example:
 
 ``` html
@@ -46,11 +46,11 @@ For example:
 </script>
 ```
 
-Notice that in this case riot will internally transform all the `export default` expressions to enable a better support for browsers that don't support javascript modules yet.
+Notice that in this case Riot will internally transform all of the `export default` expressions to enable better support for browsers that don't support JavaScript modules yet.
 
-Riot can compile asynchronously all the external tags included via `<script>` into the DOM and via `riot.mount` it will render them.
+Riot can asynchronously compile all of the external tags included via `<script>` into the DOM and it will render them via `riot.mount`.
 
-You might prefer using `data-src` instead of `src` on your `<script>` tags stop your browser prefetching automatically any riot script tag in order to avoid to load the same resources twice. Riot will automatically fetch and compile your tags via ajax.
+You might prefer using `data-src` instead of `src` on your `<script>` tags to prevent the browser from  automatically prefetching any Riot script tag in order and avoid loading the same resources twice. Riot will automatically fetch and compile your tags via AJAX.
 
 ### In-browser compilation with inline templates
 
@@ -83,22 +83,22 @@ riot.mount('my-tag')
 
 The Compilation phase is asynchronous and it will not block your application rendering. However you should use the browser compilation only for prototyping or for quick experiments.
 
-Pre-compilation on gives you following benefits:
+Pre-compilation has the following benefits:
 
 - Ability to compile tags with your [favorite pre-processor](#pre-processors).
-- Big performance benefit. No need to load and execute the compiler on browser.
+- Big performance benefit. No need to load and execute the compiler on the browser.
 - Sourcemaps support for debugging.
 
 ### Riot loaders
 
-Tools like [`webpack`](https://webpack.js.org/) and [`rollup`](https://rollupjs.org/) are the perfect match to bundle your riot application tags.
-For such tools we provide riot official loaders to let import natively riot components into your source code:
+Tools like [`webpack`](https://webpack.js.org/) and [`Rollup`](https://rollupjs.org/) are the perfect match to bundle your Riot application tags.
+For such tools we provide Riot official loaders to natively import riot components into your source code:
   - [webpack](https://github.com/riot/webpack-loader)
-  - [rollup](https://github.com/riot/rollup-plugin-riot)
-  - [parcel](https://github.com/riot/parcel-plugin-riot)
-  - [riotify](https://github.com/riot/riotify)
+  - [Rollup](https://github.com/riot/rollup-plugin-riot)
+  - [Parcel](https://github.com/riot/parcel-plugin-riot)
+  - [Browserify](https://github.com/riot/riotify)
 
-With the riot loaders your application entry script might look like this:
+With the Riot loaders your application entry script might look like this:
 
 ```js
 import { component } from 'riot'
@@ -125,9 +125,9 @@ const { code, map } = compile('<p>{hello}</p>', {
 ```
 
 The compile function takes a string and returns an object containing the `code` and `map` keys.
-You can handle the code generated however you like and use it into your build system.
+You can handle the code generated however you like and use it in your build system.
 
-Remember that the riot compiler outputs javascript modules and you might want to transpile them in your bundle.
+Remember that the Riot compiler outputs JavaScript modules and you might want to transpile them in your bundle.
 
 
 ### Compilation via Riot.js CLI
@@ -179,7 +179,7 @@ riot --extension html
 
 #### ES6 Config file
 
-You can use a config file to store and configure easily all your `@riotjs/cli` options and create your custom parsers
+You can use a config file to store and easily configure all of your `@riotjs/cli` options and create your custom parsers:
 
 ```sh
 riot --config riot.config src
@@ -197,7 +197,7 @@ export default {
 }
 ```
 
-If you want to use custom preprocessors in your project you should install `@riotjs/cli` as `devDependency` running it via npm scripts as follows:
+If you want to use custom preprocessors in your project you should install `@riotjs/cli` as a `devDependency` and run it via npm scripts:
 
 
 ```json
@@ -214,7 +214,7 @@ If you want to use custom preprocessors in your project you should install `@rio
 }
 ```
 
-That's how your `riot.config.js` file might look like in case you want to use `pug` as components template engine
+That's how your `riot.config.js` file might look like in case you want to use `pug` as components template engine.
 
 ```js
 import { registerPreprocessor } from '@riotjs/compiler'
@@ -264,7 +264,7 @@ Your `dist/app.js` file will contain all the Riot.js components imported in your
 
 ## Pre-processors
 
-You can pre-process your components contents using your favorite programming language.
+You can pre-process your components' contents using your favorite programming language.
 
 The `@riotjs/compiler` gives you the possibility to register your preprocessors:
 
@@ -318,7 +318,7 @@ registerPreprocessor('javascript', 'ts', function(code, { options }) {
 })
 ```
 
-The Riot.js preprocessors can be only of three types `template`, `css`, `javascript` (the first argument of the `registerPreprocessor` function).
+The Riot.js preprocessors can be only of three types: `template`, `css`, `javascript` (the first argument of the `registerPreprocessor` function).
 To compile your components with a different template engine you will need to specify the `template` option via compiler:
 
 ```js
@@ -394,11 +394,11 @@ registerPreprocessor('javascript', 'my-js-preprocessor', function(code, { option
 
 ```
 
-The javascript preprocessors should preserve the code whitelines of the original source code otherwise the resulting sourcemap will have a broken offset.
+The JavaScript preprocessors should preserve the code whitelines of the original source code. Otherwise the resulting sourcemap will have a broken offset.
 
 ## Post-processors
 
-Similar to the preprocessor the compiler output can be modified via `registerPostprocessor`
+Similar to the preprocessor, the compiler output can be modified via `registerPostprocessor`:
 
 ```js
 import { registerPostprocessor } from '@riotjs/compiler'
@@ -416,3 +416,8 @@ registerPostprocessor(function(code, { options }) {
 
 In this case we make sure that the output code will be converted to es2015 via `buble`.
 
+### Compilation via Riot.js Online Compiler
+
+Finally, you can also compile a tag online
+
+[Riot.js Online Compiler](https://riot.js.org/online-compiler)

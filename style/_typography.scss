@@ -7,6 +7,7 @@ body {
   font-family: $font-family;
   color: $dark-grey;
   line-height: 1.4;
+  -webkit-text-size-adjust: 100%;
 
   @at-root .dark {
     background: $carbon-black;

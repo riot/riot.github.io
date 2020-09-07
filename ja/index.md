@@ -6,14 +6,14 @@ description: Riot.jsでは、簡単で楽しい構文を使ってカスタムタ
 
 ## なぜ新しいUIライブラリが必要なのか？
 
-フロントエンドの世界にはライブラリが溢れてはいるものの、正直なところソリューションはまだ「他にある」と感じています。私たちは、この大きなパズルを解くために、Riot.jsが最良のバランスを提供すると信じています。
+フロントエンドの世界にはライブラリが溢れてはいるものの、正直なところソリューションはまだ「他にある」と感じています。私たちは、この大きなパズルを解くために、Riot.js が最良のバランスを提供すると信じています。
 
 
 だから——私たちには新しいライブラリが必要なのです:
 
 ### 1. カスタム要素
 
-Riot.jsはポリフィルを使用せずにすべての最新ブラウザにカスタム要素をもたらします！
+Riot.js はポリフィルを使用せずにすべての最新ブラウザにカスタム要素をもたらします！
 
 ``` html
 <todo>
@@ -56,7 +56,7 @@ Riot.jsはポリフィルを使用せずにすべての最新ブラウザにカ�
 </todo>
 ```
 
-カスタム要素は関連する HTML と JavaScript を結合し再利用可能なコンポーネントを形成します。Webコンポーネント API がネイティブであることを望むすべてのものを提供するように設計されています。
+カスタム要素は関連する HTML と JavaScript を結合し再利用可能なコンポーネントを形成します。Web コンポーネント API がネイティブであることを望むすべてのものを提供するように設計されています。
 
 #### ヒューマンリーダブル
 
@@ -83,7 +83,7 @@ Riot.jsはポリフィルを使用せずにすべての最新ブラウザにカ�
 
 HTML の構文は web の *事実上の* 言語であり、ユーザーインターフェースを構築するために設計されています。その文法は明示的、ネストは言語固有のもの、そして属性はカスタムタグにオプションを与える明確な方法を提供します。
 
-Riot.js のタグはブラウザに実行される前に素の javascriptに [コンパイル]({{ '/ja/compiler/' | prepend:site.baseurl }}) されます。
+Riot.js のタグはブラウザに実行される前に素の JavaScript に [コンパイル]({{ '/ja/compiler/' | prepend:site.baseurl }}) されます。
 
 
 #### パフォーマンスと予測性
@@ -101,13 +101,13 @@ Riot.js のタグはブラウザに実行される前に素の javascriptに [�
 - Web コンポーネントライクな API
 - 外部ポリフィルや追加ライブラリが不要
 - 独自のイベントシステムなし
-- 余分な HTML のルート要素、`data-` 属性、または高価なカスタム属性は不要
+- 余分な HTML のルート要素、data-属性、または高価なカスタム属性は不要
 
 
 
 #### 他ツールとの相性が良い
 - CoffeeScript、Jade、LiveScript、TypeScript、ES6、または[任意のプリプロセッサ](https://riot.js.org/next/#プリプロセッサ)を使ってコンポーネントを作成
-- [@riotjs/cli](https://github.com/riot/cli) 、[webpack](https://github.com/riot/webpack-loader)、[Rollup](https://github.com/riot/rollup-plugin-riot)、[parcel](https://github.com/riot/parcel-plugin-riot)、[Browserify](https://github.com/riot/riotify) を使用してビルド
+- [@riotjs/cli](https://github.com/riot/cli) 、[webpack](https://github.com/riot/webpack-loader)、[Rollup](https://github.com/riot/rollup-plugin-riot)、[Parcel](https://github.com/riot/parcel-plugin-riot)、[Browserify](https://github.com/riot/riotify) を使用してビルド
 - 任意の方法でテストし、[直接ノードに riot タグをロード](https://github.com/riot/ssr#render---to-render-only-markup)可能
 
 
@@ -144,7 +144,7 @@ Riot.jsは他の UI ライブラリと比較して API メソッドの数が 10�
 
 {% include libraries_comparison.html %}
 
-- たったの 6kb！
+- たったの 7kb！
 - 少ないバグ
 - パースが早く、ダウンロードも容易
 - 組み込みやすい。ライブラリはアプリケーションよりも小さくなるべきである
@@ -165,10 +165,11 @@ Riot.js は一つの"オープンスタック"です。つまり、フレーム�
 
 Riot.js のエコシステムは完全にモジュール化しており、必要なものを個別に選択できるように設計されています:
 
-  - [@riotjs/cli](https://github.com/riot/cli) - ローカル上で tags を javascript にコンパイルするための CLI
+  - [@riotjs/cli](https://github.com/riot/cli) - ローカル上で tags を JavaScript にコンパイルするための CLI
   - [@riotjs/ssr](https://github.com/riot/ssr) - 非常にシンプルなサーバーサイドレンダリング
   - [@riotjs/hydrate](https://github.com/riot/hydrate) - SPA のためのハイドレーション戦略
   - [@riotjs/route](https://github.com/riot/route) - 同形のルーター
+  - [@riotjs/lazy](https://github.com/riot/lazy) - レイジーコンポーネントローダー
   - [@riotjs/hot-reload](https://github.com/riot/hot-reload) - ライブリロード用のプラグイン
   - [@riotjs/compiler](https://github.com/riot/compiler) - 拡張タグコンパイラ
   - [@riotjs/parser](https://github.com/riot/parser) - HTML パーサ
