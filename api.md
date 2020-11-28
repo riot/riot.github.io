@@ -769,6 +769,24 @@ once it's mounted, it will be rendered in this way:
 </my-other-post>
 ```
 
+If you don't want to add a root html node for your slots, you can use also a `<template>` tags. In this case Riot.js will render only its content in the proper slot position:
+
+``` html
+<my-other-post title="What a great title">
+  <template slot="summary">
+    My beautiful post is just awesome
+  </template>
+  <template slot="content">
+    <p>And the next paragraph describes just how awesome it is</p>
+    <p>Another Paragraph</p>
+  </template>
+</my-other-post>
+```
+
+<aside class="note note--info">
+If you are using a <code>template</code> tag for your default slot you need to specify the attribute <code>name="default"</code> in order to be sure its content will be properly rendered
+</aside>
+
 #### Higher Order Components
 
 {% include version_badge.html version=">=4.6.0" %}
