@@ -769,7 +769,7 @@ once it's mounted, it will be rendered in this way:
 </my-other-post>
 ```
 
-If you don't want to add a root html node for your slots, you can use also a `<template>` tags. In this case Riot.js will render only its content in the proper slot position:
+If you don't want to add a root html node for your slots, you can use also a `<template>` tag. In this case Riot.js will render only its content in the proper slot position:
 
 ``` html
 <my-other-post title="What a great title">
