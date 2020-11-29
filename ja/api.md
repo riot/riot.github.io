@@ -769,6 +769,25 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 </my-other-post>
 ```
 
+もし、コンポーネントのルート要素が、スロット部分にレンダリングされることに不都合があれば、 `<template>` タグを使用することもできます。
+この場合、Riot.js はそのコンポーネントの中のコンテンツのみを、スロット位置にレンダリングします。
+
+``` html
+<my-other-post title="What a great title">
+  <template slot="summary">
+    My beautiful post is just awesome
+  </template>
+  <template slot="content">
+    <p>And the next paragraph describes just how awesome it is</p>
+    <p>Another Paragraph</p>
+  </template>
+</my-other-post>
+```
+
+<aside class="note note--info">
+もしデフォルトのスロットとして <code>template</code> タグを使う場合、コンテンツを正しくレンダリングするために <code>name="default"</code> 属性が必要です。
+</aside>
+
 #### 上位コンポーネント
 
 {% include version_badge.html version=">=4.6.0" %}
