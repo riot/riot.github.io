@@ -18,6 +18,10 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+
+    @include mq($until: 'mobile') {
+      display: block;
+    }
   }
 
   p {
