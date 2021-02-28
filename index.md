@@ -144,7 +144,7 @@ Riot.js has between 10 and 100 times fewer API methods than other UI libraries.
 
 {% include libraries_comparison.html %}
 
-- Only 7kb!
+- Only {{ site.data.libraries.riot.size }}kb!
 - Fewer bugs
 - Faster to parse and cheaper to download
 - Embeddable. The library ought to be smaller than the application
@@ -174,12 +174,11 @@ The Riot.js ecosystem is completely modular. It's designed to let you pick only 
   - [@riotjs/compiler](https://github.com/riot/compiler) - Advanced tags compiler
   - [@riotjs/parser](https://github.com/riot/parser) - HTML parser
   - [@riotjs/dom-bindings](https://github.com/riot/dom-bindings) - Expressions based template engine
-  - [@riotjs/now](https://github.com/riot/now) - https://zeit.co/ now integration
   - [@riotjs/custom-elements](https://github.com/riot/custom-elements) - native custom elements implementation
 
 ## Conclusion
 
-Riot.js is Web Components for everyone. Think React + Polymer but without the bloat. Its API is heavily inspired by Vue.js but it contains just the bare minimum to build a modern frontend project. It's intuitive to use and it weighs almost nothing. And it works today. No reinventing the wheel, but rather taking the good parts of what's there and making the simplest tool possible.
+Riot.js is Web Components for everyone. Its API is heavily inspired by Vue.js but it contains just the bare minimum to build a modern frontend project. It's intuitive to use and it weighs almost nothing. It works today. No reinventing the wheel, but rather taking the good parts of what's there and making the simplest tool possible.
 
 The Riot.js design was driven by [*The Zen of Python, by Tim Peters*](https://en.wikipedia.org/wiki/Zen_of_Python) philosophy, that's our mantra:
 

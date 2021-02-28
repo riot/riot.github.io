@@ -144,7 +144,7 @@ Riot.jsは他の UI ライブラリと比較して API メソッドの数が 10�
 
 {% include libraries_comparison.html %}
 
-- たったの 7kb！
+- たったの {{ site.data.libraries.riot.size }}kb！
 - 少ないバグ
 - パースが早く、ダウンロードも容易
 - 組み込みやすい。ライブラリはアプリケーションよりも小さくなるべきである
@@ -174,7 +174,6 @@ Riot.js のエコシステムは完全にモジュール化しており、必要
   - [@riotjs/compiler](https://github.com/riot/compiler) - 拡張タグコンパイラ
   - [@riotjs/parser](https://github.com/riot/parser) - HTML パーサ
   - [@riotjs/dom-bindings](https://github.com/riot/dom-bindings) - 式ベースのテンプレートエンジン
-  - [@riotjs/now](https://github.com/riot/now) - https://zeit.co/now の統合
   - [@riotjs/custom-elements](https://github.com/riot/custom-elements) - ネイティブカスタム要素の実装
 
 ## まとめ

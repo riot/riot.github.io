@@ -1,17 +1,14 @@
+angular:
+  size: 89.4
+
 riot:
-  size: 6.1
+  size: 6.44
 
 preact:
-  size: 3.87
+  size: 4
 
 vue:
-  size: 23.46
+  size: 29.3
 
 react:
-  size: 43.00
-
-angular:
-  size: 56.73
-
-polymer:
-  size: 89.62
+  size: 42.2

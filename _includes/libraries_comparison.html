@@ -1,28 +1,24 @@
 <aside class="libraries-comparison">
   <ol>
     <li>
-      <small><em>polymer</em> – {{ site.data.libraries.polymer.size }}KB (gzip)</small>
+      <small><em>@angular/core</em> – {{ site.data.libraries.angular.size }}KB (gzip)</small>
   <progress value="1" max="1"></progress>
     </li>
     <li>
-      <small><em>angular</em> – {{ site.data.libraries.angular.size }}KB (gzip)</small>
-  <progress value="{{ site.data.libraries.angular.size | divided_by: site.data.libraries.polymer.size }}" max="1"></progress>
-    </li>
-    <li>
       <small><em>react</em> – {{ site.data.libraries.react.size }}KB (gzip)</small>
-  <progress max="1" value="{{ site.data.libraries.react.size | divided_by: site.data.libraries.polymer.size }}"></progress>
+  <progress max="1" value="{{ site.data.libraries.react.size | divided_by: site.data.libraries.angular.size }}"></progress>
     </li>
     <li>
         <small><em>vue</em> – {{ site.data.libraries.vue.size }}KB (gzip)</small>
-  <progress max="1" value="{{ site.data.libraries.vue.size | divided_by: site.data.libraries.polymer.size }}"></progress>
+  <progress max="1" value="{{ site.data.libraries.vue.size | divided_by: site.data.libraries.angular.size }}"></progress>
     </li>
     <li>
       <small><em>riot</em> – {{ site.data.libraries.riot.size }}KB (gzip)</small>
-      <progress class="riot" max="1" value="{{ site.data.libraries.riot.size | divided_by: site.data.libraries.polymer.size }}"></progress>
+      <progress class="riot" max="1" value="{{ site.data.libraries.riot.size | divided_by: site.data.libraries.angular.size }}"></progress>
     </li>
     <li>
       <small><em>preact</em> – {{ site.data.libraries.preact.size }}KB (gzip)</small>
-      <progress class="preact" max="1" value="{{ site.data.libraries.preact.size | divided_by: site.data.libraries.polymer.size }}"></progress>
+      <progress class="preact" max="1" value="{{ site.data.libraries.preact.size | divided_by: site.data.libraries.angular.size }}"></progress>
     </li>
   </ol>
 </aside>
