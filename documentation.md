@@ -811,7 +811,7 @@ You can use [native event listener options](https://developer.mozilla.org/en-US/
 
 The input field values can be simply updated using the `value={newValue}` expression. Riot.js normalizes this behavior for input, select and textarea elements.
 
-### Note about Textarea and value
+### Note about Textarea tags and value
 
 Textarea tags are a special kind of Input nodes and if you want to update their values you should prefer the use the `value` attribute. 
 Riot.js in this case will set the native `input.value` attribute for you as expected.
