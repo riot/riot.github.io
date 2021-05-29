@@ -811,9 +811,11 @@ You can use [native event listener options](https://developer.mozilla.org/en-US/
 
 The input field values can be simply updated using the `value={newValue}` expression. Riot.js normalizes this behavior for input, select and textarea elements.
 
-### Case note - Textarea and value
+### Note about Textarea and value
 
-It againsts HTML standard that textarea has no such `value` attribute, but for Riot.js seeing textarea as an input component, it identifies the `value` attribute for its context updating.
+Textarea tags are a special kind of Input nodes and if you want to update their values you should prefer the use the `value` attribute. 
+Riot.js in this case will set the native `input.value` attribute for you as expected.
+
 ```html
 <textarea value={state.value}>{state.text}</textarea>
 <button onclick={updateText}>update</button>
@@ -826,7 +828,7 @@ It againsts HTML standard that textarea has no such `value` attribute, but for R
 
     updateText (event) {
       this.update({
-        text: 'this does not work',
+        text: 'this might not work as expected',
         value: 'this works'
       });
     }
@@ -836,7 +838,7 @@ It againsts HTML standard that textarea has no such `value` attribute, but for R
 
 ## Conditionals
 
-Conditionals let you mount / unmount dom and components based on a condition. For example:
+Conditionals let you mount / unmount DOM and components based on a condition. For example:
 
 ```html
 <div if={ isPremium }>
