@@ -17,7 +17,12 @@ Absolutely. The project is mature enough.
 
 ### Which browsers are supported?
 
-Riot.js 4 supports all of the major modern browsers. Browsers like IE11 are not supported: if you need to support older browsers you might consider using an [older Riot version]({{ site.data.globals.legacy }})
+<a target="_blank" rel="nofollow" href="https://saucelabs.com/u/testsriotjs">
+<img src="https://saucelabs.com/browser-matrix/testsriotjs.svg" alt="Browser Support Matrix"/>
+</a>
+
+Riot.js supports all the major modern browsers
+Browsers like IE11 are not supported: if you need to support older browsers you might consider using an [older Riot version]({{ site.data.globals.legacy }})
 
 ### Should I use a dash (-) in the tag name?
 W3C specification demands you use a dash in the tag name. Instead of `<person>` you must write `<my-person>`. Obey this rule if you care about W3C. Both work fine. [More info](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) 
@@ -33,5 +38,5 @@ It's not evil, it just looks "old". To have JS and HTML under the same module is
 
 ### Any future plans?
 
-Sure. The Riot core doesn't provide much out of the box but the `riot.install` method allows us to plug in new features. A bunch of Riot plugins to enhance the default components API is on my TODO list.
+Sure. Please make sure to check our [Github Discussions Page](https://github.com/riot/riot/discussions)
 
