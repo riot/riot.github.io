@@ -1115,6 +1115,11 @@ If you want to have complete control over the rendering of your components you c
 </my-pure-component>
 ```
 
+#### Getting props in pure components
+Pure components do not receive an object with props on every update, you should get them yourself. 
+You can use a [getProps](https://www.npmjs.com/package/riot-pure-props) helper for this.
+
+
 <aside class="note note--warning">:warning: Pure components cannot contain HTML or CSS. They can only have a pure function call as a default export statement.</aside>
 
 
