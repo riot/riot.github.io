@@ -809,11 +809,13 @@ DOM イベントを処理する関数は "イベントハンドラ" と呼ばれ
 
 ## 入力フィールド
 
-入力フィールドの値は、`value={newValue}` 式を使って簡単に更新することができます。Riot.js は、入力、選択、テキストエリア要素に対してこの動作を正規化しています。
+入力フィールドの値は、`value={newValue}` 式を使って簡単に更新できます。Riot.js は、入力、選択、テキストエリア要素に対してこの動作を正規化しています。
 
 ### ノートのケース - テキストエリアと値
 
 テキストエリアがそのような `value` 属性を持たないのは HTML 標準に反していますが、Riot.js ではテキストエリアを入力コンポーネントとして見るため、コンテキスト更新のために `value` 属性を識別しています。
+Riot.js はこの場合、期待通りにネイティブの `input.value` 属性を設定してくれます。
+
 ```html
 <textarea value={state.value}>{state.text}</textarea>
 <button onclick={updateText}>update</button>
@@ -1088,7 +1090,7 @@ riot.mount('my-list')
 
 ## 純粋なコンポーネント
 
-コンポーネントのレンダリングを完全にコントロールしたい場合、`riot.pure` を使うことで Riot.js の内部ロジックを迂回することができます。例:
+コンポーネントのレンダリングを完全にコントロールしたい場合、`riot.pure` を使うことで Riot.js の内部ロジックを迂回できます。例:
 
 ```html
 <my-pure-component>
@@ -1112,6 +1114,10 @@ riot.mount('my-list')
   </script>
 </my-pure-component>
 ```
+
+#### 純粋なコンポーネントでの props の取得
+純粋なコンポーネントは更新のたびに props を含むオブジェクトを受け取らないため、自分で props を取得する必要があります。
+それには [getProps](https://www.npmjs.com/package/riot-pure-props) が利用可能です。
 
 <aside class="note note--warning">:warning: 純粋なコンポーネントに HTML または CSS を含めることはできません。これらは、default エクスポートステートメントとして純粋な関数呼び出しのみを持つことができます。</aside>
 
