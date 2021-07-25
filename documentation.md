@@ -813,7 +813,7 @@ The input field values can be simply updated using the `value={newValue}` expres
 
 ### Note about Textarea tags and value
 
-Textarea tags are a special kind of Input nodes and if you want to update their values you should prefer the use the `value` attribute. 
+Textarea tags are a special kind of Input nodes and if you want to update their values you should prefer the use the `value` attribute.
 Riot.js in this case will set the native `input.value` attribute for you as expected.
 
 ```html
@@ -1079,12 +1079,12 @@ Notice that you can use also an expression in the `is` attribute and Riot will a
 Note that when using the `is` attribute, the tag name should be rendered in all lowercase, regardless of how it's defined.
 
 ```html
-  <MyComponent></MyComponent> <!-- Correct -->
-  <div is="mycomponent"></div> <!-- Also Correct -->
-  <div is="MyComponent"></div> <!-- Incorrect -->
-  <script>
-    riot.mount('[is="mycomponent"]');
-  </script>
+<MyComponent></MyComponent> <!-- Correct -->
+<div is="mycomponent"></div> <!-- Also Correct -->
+<div is="MyComponent"></div> <!-- Incorrect -->
+<script>
+  riot.mount('[is="mycomponent"]');
+</script>
 ```
 Note that you can use `is` attribute with any HTML tags, but not with the [`template` tag](#fragments-loops).
 
@@ -1095,28 +1095,28 @@ If you want to have complete control over the rendering of your components you c
 ```html
 <my-pure-component>
   <script>
-  import { pure } from 'riot'
+    import { pure } from 'riot'
 
-  export default pure(() => {
-    return {
-      mount(el) {
-        this.el = el
-        this.el.innerHTML = 'Hello There'
-      },
-      update() {
-        this.el.innerHTML = 'I got updated!'
-      },
-      unmount() {
-        this.el.parentNode.removeChild(this.el)
+    export default pure(() => {
+      return {
+        mount(el) {
+          this.el = el
+          this.el.innerHTML = 'Hello There'
+        },
+        update() {
+          this.el.innerHTML = 'I got updated!'
+        },
+        unmount() {
+          this.el.parentNode.removeChild(this.el)
+        }
       }
-    }
-  })
+    })
   </script>
 </my-pure-component>
 ```
 
 #### Getting props in pure components
-Pure components do not receive an object with props on every update, you should get them yourself. 
+Pure components do not receive an object with props on every update, you should get them yourself.
 You can use a [getProps](https://www.npmjs.com/package/riot-pure-props) helper for this.
 
 

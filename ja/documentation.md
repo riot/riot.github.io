@@ -8,7 +8,7 @@ description: Step by step starting guide
 
 ### インストール
 
-npm を介して Riot をインストールすることができます:
+npm を介して Riot をインストールできます:
 
 ```sh
 npm i -S riot
@@ -37,7 +37,7 @@ npm init riot
 
 ### クイックスタート
 
-すべてのアプリケーション・バンドラーをワイヤリングする(または、我々の公式テンプレートの一つを利用する)と、おそらくコードは次のようになります:
+すべてのアプリケーション・バンドラーをワイヤリングする(または、我々の公式テンプレートの１つを利用する)と、おそらくコードは次のようになります:
 
 `index.html`
 ```html
@@ -77,7 +77,7 @@ const app = mountApp(
 
 ## Todo の例
 
-Riot のカスタムコンポーネントはユーザーインターフェースの構成要素です。アプリケーションの "ビュー" 部分を作成します。では、Riot のさまざまな機能を強調し拡張された `<todo>` の例から始めましょう。
+Riot のカスタムコンポーネントはユーザーインターフェイスの構成要素です。アプリケーションの "ビュー" 部分を作成します。では、Riot のさまざまな機能を強調し拡張された `<todo>` の例から始めましょう。
 
 ```html
 <todo>
@@ -150,13 +150,13 @@ Riot のカスタムコンポーネントはユーザーインターフェース
 
 Riot コンポーネントはレイアウト（HTML）とロジック（JavaScript）のコンビネーションです。基本的なルールは次のとおりです:
 
-* 各 `.riot` ファイル含めることができるのは、一つのコンポーネントのロジックのみ
+* 各 `.riot` ファイル含めることができるのは、１つのコンポーネントのロジックのみ
 * HTML は初めに定義され、ロジックは `<script>` タグで囲われる
 * カスタムコンポーネントは空にもでき、HTML のみ、または JavaScript のみにもできる
 * すべてのテンプレートの式は "JavaScript™️": `<pre>{ JSON.stringify(props) }</pre>`
-* `this` というキーワードはオプショナル: `<p>{ name }</p>` は `<p>{ this.name }</p>` として有効
-* 引用符はオプショナル: `<foo bar={ baz }>` は `<foo bar="{ baz }">` として有効
-* 式の値が falsy の場合、Boolean の属性（checked, selected など）は無視される: `<input checked={ undefined }>` は `<input>` となる
+* `this` というキーワードはオプショナル: `<p>{ name }</p>` と `<p>{ this.name }</p>` はともに有効
+* 引用符はオプショナル: `<foo bar={ baz }>` と `<foo bar="{ baz }">` はともに有効
+* 式の値が falsy の場合、Boolean の属性（checked, selected など）は無視される: `<input checked={ undefined }>` を `<input>` として評価する
 * すべての属性名は *小文字でなければならない*。これはブラウザの仕様によるものである
 * 標準の HTML タグ（`label`、`table`、`a` など）はカスタマイズすることもできるが、必ずしもそうすることが賢明というわけではない
 * **ルート** のタグ定義も属性を保つ場合がある: `<my-component onclick={ click } class={ props.class }>`
@@ -180,7 +180,7 @@ Riot コンポーネントはレイアウト（HTML）とロジック（JavaScri
 
 ## スタイリング
 
-`style` タグを中に置くことができます。Riot.js はスタイルを自動的に外に切り出し、`<head>` 内に注入します。これはコンポーネントが初期化される回数に関係なく、一回だけ発生します。
+`style` タグを中に置くことができます。Riot.js はスタイルを自動的に切り出し、`<head>` 内に注入します。これはコンポーネントが何回初期化される回数に関係なく、ただ１回だけ発生します。
 
 ```html
 <my-component>
@@ -199,7 +199,7 @@ Riot コンポーネントはレイアウト（HTML）とロジック（JavaScri
 
 ### スコープ付き CSS
 
-[スコープ付き css と :host 擬似クラス](https://developer.mozilla.org/en-US/docs/Web/CSS/:host()) はすべてのブラウザで使用できます。Riot.js は JS に独自のカスタム実装を持っており、ブラウザの実装に依存したり、フォールバックしたりすることはありません。次の例は、最初の例と同じです。注意 次の例では、コンポーネント名を使用してスタイルのスコープを設定する代わりに `:host` `擬似クラス` を使用しています。
+[スコープ付き css と :host 擬似クラス](https://developer.mozilla.org/en-US/docs/Web/CSS/:host()) はすべてのブラウザで使用できます。Riot.js は JS に独自のカスタム実装を持っており、ブラウザの実装に依存したり、フォールバックしたりすることはありません。次の例は、最初の例と同じです。メモ:次の例では、コンポーネント名を使用してスタイルのスコープを設定する代わりに `:host` `擬似クラス` を使用しています。
 
 ```html
 <my-component>
@@ -286,7 +286,7 @@ Riot は `this.$` と `this.$$` ヘルパーメソッドを介してコンポー
 
 ### jQuery、Zepto、querySelector などの使い方
 
-Riot 内の DOM にアクセスする必要がある場合、[riot コンポーネントのライフサイクル](#riot-コンポーネントのライフサイクル) を見たいと思うでしょう。DOM 要素は、最初に `mount` イベントが発生するまでインスタンス化されないことに注意してください。つまり、先に要素を選択しようとすると失敗することを意味しています。
+Riot 内の DOM にアクセスする必要がある場合、[riot コンポーネントのライフサイクル](#riot-コンポーネントのライフサイクル) を見たいと思うでしょう。DOM 要素は最初に `mount` イベントが発火するまで、インスタンス化されないことに注意してください。つまり、先に要素の選択を試みると失敗することを意味しています。
 
 ```html
 <my-component>
@@ -313,7 +313,7 @@ Riot 内の DOM にアクセスする必要がある場合、[riot コンポー�
 
 ### コンテキスト DOM クエリ
 
-`onUpdated` コールバックまたは `onMounted` コールバックで DOM 要素を取得する方法がわかりましたが、要素のクエリにコンテキストを `root element`（作成した Riot タグ）に追加することによっても、これを便利なものにすることができます。
+`onUpdated` コールバックまたは `onMounted` コールバックで DOM 要素を取得する方法がわかりましたが、要素のクエリにコンテキストを `root element`（作成した Riot タグ）に追加することによっても、これを便利なものにできます。
 
 ```html
 <my-component>
@@ -373,7 +373,7 @@ Riot 内の DOM にアクセスする必要がある場合、[riot コンポー�
 ### 状態
 
 各 Riot コンポーネントは `this.state` オブジェクトを使用して、内部の状態を格納または変更できます。
-`this.props` 属性がフリーズされている間は、`this.state` オブジェクトは完全に変更可能であり、手動または `this.update()` メソッドを使用して更新することができます:
+`this.props` 属性がフリーズされている間は、`this.state` オブジェクトは完全に変更可能であり、手動または `this.update()` メソッドを使用して更新できます:
 
 ```html
 <my-component id="{ state.name }-{ state.surname }">
@@ -417,7 +417,7 @@ Riot 内の DOM にアクセスする必要がある場合、[riot コンポー�
 
 ### ライフサイクルコールバック
 
-コンポーネントのライフサイクルを以下のように設定することができます:
+コンポーネントのライフサイクルを以下のように設定できます:
 
 
 ```html
@@ -479,7 +479,7 @@ HTMLは、中カッコで囲まれた式と混在させることができます:
 { /* 自分の式をここに書く */ }
 ```
 
-式には、属性やネストしたテキストノードを設定することができます:
+式には、属性やネストしたテキストノードを設定できます:
 
 ```html
 <h3 id={ /* 属性式 */ }>
@@ -811,9 +811,9 @@ DOM イベントを処理する関数は "イベントハンドラ" と呼ばれ
 
 入力フィールドの値は、`value={newValue}` 式を使って簡単に更新できます。Riot.js は、入力、選択、テキストエリア要素に対してこの動作を正規化しています。
 
-### ノートのケース - テキストエリアと値
+### ノートのケース - テキストエリアタグと値
 
-テキストエリアがそのような `value` 属性を持たないのは HTML 標準に反していますが、Riot.js ではテキストエリアを入力コンポーネントとして見るため、コンテキスト更新のために `value` 属性を識別しています。
+テキストエリアタグがそのような `value` 属性を持たないのは HTML 標準に反していますが、Riot.js ではテキストエリアを入力コンポーネントとして見るため、コンテキスト更新のために `value` 属性を識別しています。
 Riot.js はこの場合、期待通りにネイティブの `input.value` 属性を設定してくれます。
 
 ```html
@@ -846,15 +846,15 @@ Riot.js はこの場合、期待通りにネイティブの `input.value` 属性
 </div>
 ```
 
-この場合も、式はシンプルはプロパティか、または完全な JavaScript の式になりえます。`if` ディレクティブは特殊な属性です:
+この場合も、式はシンプルなプロパティか、または完全な JavaScript の式になりえます。`if` ディレクティブは特殊な属性です:
   - `true (or truthy)`: ネストされたコンポーネントをマウントする、または要素をテンプレートに追加する
   - `false (or falsy)`: 要素またはコンポーネントをアンマウントする
 
-### 条件付き html フラグメント
+### 条件付きフラグメント
 
 {% include version_badge.html version=">=4.2.0" %}
 
-`if` ディレクティブを利用するだけのために、わざわざラッパータグを用意する必要はありません。`<template>` タグを使えば、if 条件によってその内容だけを描画することができます:
+`if` ディレクティブを利用するだけのために、わざわざラッパータグを用意する必要はありません。`<template>` タグを使えば、if 条件によってその内容だけを描画できます:
 
 ```html
 <template if="isReady">
@@ -926,12 +926,12 @@ Riot.js はこの場合、期待通りにネイティブの `input.value` 属性
 </my-component>
 ```
 
-`name` は要素の名前で、`index` はインデックスの番号です。どちらのラベルも、状況に最も適したものにすることができます。
+`name` は要素の名前で、`index` はインデックスの番号です。どちらのラベルも、状況に応じて最も適したものにできます。
 
 
 ### オブジェクトのループ
 
-プレーンオブジェクトは [`Object.entries`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries) でループすることができます。例:
+プレーンオブジェクトは [`Object.entries`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries) でループできます。例:
 
 ```html
 <my-component>
@@ -980,7 +980,7 @@ Riot.js はこの場合、期待通りにネイティブの `input.value` 属性
 
 {% include version_badge.html version=">=4.2.0" %}
 
-Html のループの際、特定のラッパータグを使わないほうがいいケースがあります。そのときには <template> タグの出番です。次の例のように記述すると、タグ自体は取り除かれ、ラップされた HTML タグだけがレンダリングされるようになります:
+Html のループの際、特定のラッパータグを使わないほうがいいケースもあります。そのときには <template> タグの出番です。次の例のように記述すると、タグ自体は取り除かれ、ラップされた HTML タグだけがレンダリングされるようになります:
 
 ```html
 <dl>
@@ -1044,7 +1044,7 @@ Html のループの際、特定のラッパータグを使わないほうがい
 <ul is="my-list"></ul>
 ```
 
-これにより、CSS フレームワークとの互換性を高めることができる代替手段がユーザーに提供されます。タグは、他のカスタムコンポーネントと同様に扱われます。
+これにより、CSS フレームワークとの互換性を高められる代替手段がユーザーに提供されます。タグは、他のカスタムコンポーネントと同様に扱われます。
 
 ```js
 riot.mount('my-list')
@@ -1079,12 +1079,12 @@ riot.mount('my-list')
 メモ `is` 属性を使用する場合は、どのように定義されているかにかかわらず、タグ名をすべて小文字で表示する必要があります。
 
 ```html
-  <MyComponent></MyComponent> <!-- 正しい -->
-  <div is="mycomponent"></div> <!-- これも正しい -->
-  <div is="MyComponent"></div> <!-- 誤り -->
-  <script>
-    riot.mount('[is="mycomponent"]');
-  </script>
+<MyComponent></MyComponent> <!-- 正しい -->
+<div is="mycomponent"></div> <!-- これも正しい -->
+<div is="MyComponent"></div> <!-- 誤り -->
+<script>
+  riot.mount('[is="mycomponent"]');
+</script>
 ```
 メモ `is` 属性は任意の HTML タグで使用できますが、[`template` タグ](#html-フラグメントのループ) では使用できません。
 
@@ -1095,22 +1095,22 @@ riot.mount('my-list')
 ```html
 <my-pure-component>
   <script>
-  import { pure } from 'riot'
+    import { pure } from 'riot'
 
-  export default pure(() => {
-    return {
-      mount(el) {
-        this.el = el
-        this.el.innerHTML = 'Hello There'
-      },
-      update() {
-        this.el.innerHTML = 'I got updated!'
-      },
-      unmount() {
-        this.el.parentNode.removeChild(this.el)
+    export default pure(() => {
+      return {
+        mount(el) {
+          this.el = el
+          this.el.innerHTML = 'Hello There'
+        },
+        update() {
+          this.el.innerHTML = 'I got updated!'
+        },
+        unmount() {
+          this.el.parentNode.removeChild(this.el)
+        }
       }
-    }
-  })
+    })
   </script>
 </my-pure-component>
 ```
@@ -1118,6 +1118,7 @@ riot.mount('my-list')
 #### 純粋なコンポーネントでの props の取得
 純粋なコンポーネントは更新のたびに props を含むオブジェクトを受け取らないため、自分で props を取得する必要があります。
 それには [getProps](https://www.npmjs.com/package/riot-pure-props) が利用可能です。
+
 
 <aside class="note note--warning">:warning: 純粋なコンポーネントに HTML または CSS を含めることはできません。これらは、default エクスポートステートメントとして純粋な関数呼び出しのみを持つことができます。</aside>
 

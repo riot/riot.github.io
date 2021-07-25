@@ -5,7 +5,7 @@ title: コンパイラ
 
 ## 概要
 
-カスタムタグはブラウザで実行可能になる前に JavaScript に変換される必要があります。
+カスタムタグをブラウザで実行可能するには、JavaScript に変換する必要があります。
 Riot のコンパイラは Riot タグを JavaScript モジュールに変換するよう設計されています。
 コンパイルされた Riot タグは次のようになります:
 
@@ -46,9 +46,9 @@ export default {
 </script>
 ```
 
-この場合、 Riot は全ての `export default` 式を内部的に、ブラウザ表示に適した形に変換しますが、まだ JavaScript モジュールをサポートしていないことに注意してください。
+この場合、 Riot はすべての `export default` 式を内部的に変換し、まだ JavaScript モジュールをサポートしていないブラウザへのサポートをすることに注意してください。
 
-Riot は、 `<script>` を通じてDOMにインクルードされた全ての外部タグを非同期にコンパイルし、 `riot.mount` でそれらを描画することが可能です。
+Riot は、 `<script>` を通じてDOMにインクルードされたすべての外部タグを非同期にコンパイルし、 `riot.mount` でそれらを描画することが可能です。
 
 ブラウザによる Riot スクリプトタグのプリフェッチ機能を抑止し、同じリソースを複数回ロードすることを防ぐため、 `<script>` タグの `src` 属性の代わりに `data-src` 属性を使いたい場合があるかも知れません。 Riot は自動的に、 ajax によってタグをフェッチしてコンパイルします。
 
@@ -65,7 +65,7 @@ Riot.js のコンポーネントは、 `<template>` タグを用いて直接ペ�
 </template>
 ```
 
-バンドル `riot+compiler.js` は、 `compileFromString` と `inject` メソッドを一緒に外部に公開しています。この公開メソッドは、上記のコンポーネントのコンパイルに役立ちます:
+`riot+compiler.js` バンドルは `compileFromString` と `inject` メソッドを公開しており、これらを組み合わせることで、上記のコンポーネントをコンパイルするのに役立ちます:
 
 ```js
 const tagString = document.getElementById('my-tag').innerHTML
@@ -161,7 +161,7 @@ riot some/folder --output path/to/dist
 
 #### ファイル変更の監視
 
-ディレクトリを監視し、ファイルが変更されたら自動的に変換することができます。
+ディレクトリを監視し、ファイルが変更されたら自動的に変換できます。
 
 ```sh
 # 特定のディレクトリ（訳注: ここでは `src` ディレクトリ）を監視
@@ -260,11 +260,11 @@ component(App)(document.getElementById('root'))
 riot app.js -o dist/app.js
 ```
 
-上記の場合、作成したアプリケーションにインポートされた全ての Riot.js コンポーネントは `dist/app.js` ファイルに含まれ、コードが実行されるようになります。
+上記の場合、作成したアプリケーションにインポートされたすべての Riot.js コンポーネントは `dist/app.js` ファイルに含まれ、コードが実行されるようになります。
 
 ## プリプロセッサ
 
-お好きなプログラム言語を用いて、コンポーネントの内容をプリプロセスすることができます。
+お好きなプログラム言語を用いて、コンポーネントの内容をプリプロセスできます。
 
 `@riotjs/compiler` は、任意のプリプロセッサを登録する機能を提供しています:
 
@@ -318,7 +318,7 @@ registerPreprocessor('javascript', 'ts', function(code, { options }) {
 })
 ```
 
-Riot.js のプリプロセッサは、`template`, `css`, `javascript` の３種類の、いずれかでなければなりません（ `registerPreprocessor` 関数の最初の引数です）。
+Riot.js のプリプロセッサは、`template`, `css`, `javascript` の3種類の、いずれかでなければなりません（`registerPreprocessor` 関数の最初の引数です）。
 別のテンプレートエンジンでコンポーネントをコンパイルするには、コンパイラを介して `template` オプションを指定する必要があります:
 
 ```js
@@ -329,7 +329,7 @@ compile(source, {
 })
 ```
 
-`css` と `javascript` のプリプロセッサは、コンポーネント内で直接 `type="{preprocessor}"` を指定するだけで有効にすることができます
+`css` と `javascript` のプリプロセッサは、コンポーネント内で直接 `type="{preprocessor}"` を指定するだけで有効にできます
 
 ```html
 <my-component>
@@ -398,7 +398,7 @@ registerPreprocessor('javascript', 'my-js-preprocessor', function(code, { option
 
 ## ポストプロセッサ
 
-プリプロセッサ同様、コンパイラは `registerPostprocessor` を使って、出力結果を整形することができます。
+プリプロセッサ同様、コンパイラは `registerPostprocessor` を使って、出力結果を整形できます。
 
 ```js
 import { registerPostprocessor } from '@riotjs/compiler'
@@ -414,7 +414,7 @@ registerPostprocessor(function(code, { options }) {
 })
 ```
 
-この場合、最終的に出力されるコードは `buble` によって es2015 に変換されたものになります。
+この場合、最終的に出力されるコードは `buble` によって es2015 に変換されることができます。
 
 ### Riot.js を介したオンラインコンパイラによるコンパイル
 

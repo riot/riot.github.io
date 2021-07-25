@@ -23,10 +23,10 @@ description: フレームワーク API, メソッドとプロパティ
 例:
 
 ``` js
-// 選択し、そしてページ上の全ての <pricing> タグをマウント
+// 選択し、そしてページ上のすべての <pricing> タグをマウント
 const components = riot.mount('pricing')
 
-// クラス名が .customer である全てのタグをマウント
+// クラス名が .customer であるすべてのタグをマウント
 const components = riot.mount('.customer')
 
 // <account> タグをマウントし、オプションとして API オブジェクトを渡す
@@ -61,18 +61,18 @@ riot.mount('my-component', () => ({
 
 `riot.unmount(selector: string): [HTMLElement]`
 
-1. `selector` はページから要素を選択肢し、それらが既にマウントされていた場合はアンマウントします。
-2. DOMからルートノードを削除しないようにするために使用できる `keepRootElement` というブーリアンのオプションパラメータ {% include version_badge.html version=">=4.3.0" %}
+1. `selector`: ページから要素を選択肢し、それらが既にマウントされていた場合はアンマウントします。
+2. `keepRootElement`: ブーリアンのオプションパラメータ 。DOM からルートノードを削除することを避けるために使用できる {% include version_badge.html version=">=4.3.0" %}
 
 ```js
-// 全ての <user> タグを選択し、それらをアンマウントする
+// すべての <user> タグを選択し、それらをアンマウントする
 riot.unmount('user')
 ```
 
 `keepRootElement` パラメータが true だった場合、ルートノードは DOM に残されます。
 
 ```js
-// 全ての <user> タグを選択すると、そのタグをアンマウントするが ルートノードは DOM に残される
+// すべての <user> タグを選択すると、そのタグをアンマウントするが ルートノードは DOM に残される
 riot.unmount('user', true)
 ```
 
@@ -82,11 +82,11 @@ riot.unmount('user', true)
 
 `riot.component(component: RiotComponentShell): function`
 
-1. `component` - [コンポーネントシェルオブジェクト](#コンポーネントシェルインターフェース)
+1. `component` - [コンポーネントシェルオブジェクト](#コンポーネントシェルインターフェイス)
 
 <strong>@returns: </strong>[コンポーネントオブジェクト](#component-object) 生成のための関数
 
-`riot.component` メソッドを使用すると、コンポーネントをグローバルに登録せずにコンポーネントを生成、およびマウントできます:
+`riot.component` メソッドを使用すると、コンポーネントをグローバルに登録しないでコンポーネントを生成、およびマウントできます:
 
 ```js
 import * as riot from 'riot'
@@ -133,9 +133,9 @@ const app = createApp(document.getElementById('root'), {
 
 1. `plugin` - 生成された任意のコンポーネントの [コンポーネントオブジェクト](#コンポーネントオブジェクト) を受け取る関数
 
-<strong>@returns: </strong> インストールされた全てのプラグイン関数を含む JavaScript `Set`
+<strong>@returns: </strong> インストールされたすべてのプラグイン関数を含む JavaScript `Set`
 
-一度インストールされると、プラグイン関数 は生成された任意の Riot.js コンポーネントに対しコールされます:
+一度インストールされると、プラグイン関数は生成された任意の Riot.js コンポーネントに対しコールされます:
 
 ```js
 import { install } from 'riot'
@@ -177,7 +177,7 @@ uninstall(uid)
 1. `name` - コンポーネント名
 2. `component` - [コンポーネントシェルオブジェクト](#component-shell-interface)
 
-<strong>@returns: </strong> 全ての登録済みコンポーネントのファクトリ関数を含む JavaScript `Map`
+<strong>@returns: </strong> すべての登録済みコンポーネントのファクトリ関数を含む JavaScript `Map`
 
 ```js
 import { register, mount } from 'riot'
@@ -197,7 +197,7 @@ mount('my-component')
 
 1. `name` - コンポーネント名
 
-<strong>@returns: </strong> アンマウント されていない残りのコンポーネントから生成された関数を含む JavaScript の `Map`
+<strong>@returns: </strong> アンマウントされていない残りのコンポーネントから生成された関数を含む JavaScript の `Map`
 
 既にコンパイラか `riot.register()` を介して生成されたタグの登録を解除します。
 このメソッドは、例えばアプリケーションをテストする必要があり、かつ同じ名前を使用して複数のタグを生成したい時などに有効かもしれません。
@@ -233,9 +233,9 @@ register('test-component', TestComponent2)
 
 <strong>@returns: </strong> 純粋なコンポーネントを生成するために Riot.js によって内部的に使用されるユーザーが定義したファクトリ関数
 
-この関数は Riot.js の根本であり、デフォルトのレンダリングエンジンでは探している全ての機能(遅延読み込みやカスタムディレクティブなど…)が提供されないかもしれないような、特定の場合にのみ使用されることを意味します。
+この関数は Riot.js の根本であり、デフォルトのレンダリングエンジンでは探しているすべての機能（遅延読み込みやカスタムディレクティブなど…）が提供されないかもしれないような、特定の場合にのみ使用されることを意味します。
 
-`PureComponentFactoryFunction` は、Riot.js が純粋なコンポーネントを適切にレンダーできるようにするために、常に `mount`, `update`, `unmount` メソッドを含んでいるオブジェクトを返すべきです。例:
+`PureComponentFactoryFunction` は、Riot.js が純粋なコンポーネントを適切にレンダリングするために、常に `mount`, `update`, `unmount` メソッドを含んでいるオブジェクトを返すべきです。例:
 
 ```html
 <lit-element>
@@ -276,7 +276,7 @@ register('test-component', TestComponent2)
   - `root` - ルート DOM ノード
 - [生成と破壊](#生成と破壊)
   - `mount` - コンポーネントの初期化
-  - `unmount` - DOM から コンポーネントを壊し、取り除く
+  - `unmount` - DOM からコンポーネントを壊し、取り除く
 - [ステートハンドリング](#ステートハンドリング) メソッド
   - `update` - コンポーネントのステートを更新するメソッド
   - `shouldUpdate` - コンポーネントレンダリングを一時停止するメソッド
@@ -292,12 +292,12 @@ register('test-component', TestComponent2)
   - `$$` - `document.querySelectorAll` に似たメソッド
 
 
-### コンポーネントインターフェース
+### コンポーネントインターフェイス
 
  [TypeScript](https://www.typescriptlang.org/) に詳しい人は、ここに書かれているように Riot.js コンポーネントインタフェースがどのように見えるを読むことができます:
 
 ```ts
-// このインターフェースはただ公開されているのみで、どんな Riot コンポーネントも以下のプロパティを受け取る
+// このインターフェイスはただ公開されているのみで、どんな Riot コンポーネントも以下のプロパティを受け取る
 interface RiotCoreComponent<P = object, S = object> {
   // 任意のコンポーネントインスタンスで自動的に生成
   readonly props: P
@@ -321,7 +321,7 @@ interface RiotCoreComponent<P = object, S = object> {
   $$(selector: string): [HTMLElement]
 }
 
-// パブリックな RiotComponent インターフェースのプロパティはすべてオプショナル
+// パブリックな RiotComponent インターフェイスのプロパティはすべてオプショナル
 interface RiotComponent extends RiotCoreComponent<P = object, S = object> {
   // コンポーネントオブジェクトでオプショナル
   state?: S
@@ -405,7 +405,7 @@ window.someGlobalVariable = 'Hello!'
 
 `component.mount(element: HTMLElement, initialState?: object, parentScope?: object): RiotComponent;`
 
-テンプレートをインタラクティブにレンダリングするために、任意のコンポーネントオブジェクトが DOM ノードにマウントされます。
+任意のコンポーネントオブジェクトは、そのテンプレートをレンダリングしインタラクティブ化するために、DOM ノードにマウントされます。
 
 `component.mount` メソッドを自分で呼び出すことはまずありませんが、代わりに [riot.mount](#riotmount) または [riot.component](#riotcomponent) を使用します。
 
@@ -452,7 +452,7 @@ myComponent.unmount(true)
 
 この場合、初期状態のステートと一緒にコンポーネントが生成され、`component.update` を使用して内部的に修正できます。
 
-ネストされた javascript のオブジェクトをステートプロパティに格納することは避けてください。なぜなら、ネストされた javascript の参照は複数のコンポーネントで共有され、副作用が発生する可能性があるからです。予期しない事態を避けるために、ファクトリ関数を使用してコンポーネントを生成することもできます:
+ネストされた javascript のオブジェクトをステートプロパティに格納することは避けてください。なぜなら、ネストされた javascript の参照は複数のコンポーネントで共有され、副作用が発生し得るからです。予期しない事態を避けるために、ファクトリ関数を使用してコンポーネントを生成することもできます:
 
 ```html
 <my-component>
@@ -479,7 +479,7 @@ myComponent.unmount(true)
 
 #### component.components
 
-グローバルに Riot.js のコンポーネントを登録したくない場合、子コンポーネントをコンポーネントオブジェクトに直接マッピングすることができます。例:
+グローバルに Riot.js のコンポーネントを登録したくない場合、子コンポーネントをコンポーネントオブジェクトに直接マッピングできます。例:
 
 ```html
 <my-component>
@@ -546,7 +546,7 @@ myComponent.unmount(true)
 
 `component.update(newState?: object, parentScope?: object): RiotComponent;`
 
-コンポーネントの `state` オブジェクトを更新し、すべてのテンプレート変数を再レンダリングします。このメソッドは通常、ユーザーがアプリケーションと対話するときにイベントハンドラがディスパッチされるたびに呼び出すことができます:
+コンポーネントの `state` オブジェクトを更新し、すべてのテンプレート変数を再レンダリングします。このメソッドは通常、ユーザーがアプリケーションと対話するときにイベントハンドラがディスパッチされるたびに呼び出せます:
 
 ``` html
 <my-component>
@@ -594,7 +594,7 @@ myComponent.unmount(true)
 </my-component>
 ```
 
-上記の例では、`update()` メソッドがコールされた後に UI 上にエラーメッセージが表示されます。
+上記の例では、`update()` メソッドがコールされた後に UI 上でエラーメッセージが表示されます。
 
 タグの DOM 更新をより細かくコントロールしたい場合、`shouldUpdate` 関数の戻り値を利用して設定できます。
 Riot.js はその関数の戻り値が `true` の場合にのみ、コンポーネントを更新します。
@@ -769,8 +769,7 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 </my-other-post>
 ```
 
-もし、コンポーネントのルート要素が、スロット部分にレンダリングされることに不都合があれば、 `<template>` タグを使用することもできます。
-この場合、Riot.js はそのコンポーネントの中のコンテンツのみを、スロット位置にレンダリングします。
+もし、コンポーネントのルート HTML ノードが、スロット部分に追加したくない場合は、`<template>` タグを使用することもできます。この場合、Riot.js はそのコンポーネントの中のコンテンツのみを、スロット位置にレンダリングします。
 
 ``` html
 <my-other-post title="What a great title">
@@ -908,11 +907,12 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 
 ### 手動でのタグ構築
 
-Riot.jsコンポーネントは [@riotjs/compiler](/ja/compiler) を使って JavaScript にコンパイルされるようになっています。ただし、あなたの好きな任意のレンダリングエンジンを使用して手動でビルドすることもできます。
+Riot.js コンポーネントは [@riotjs/compiler](/ja/compiler) を介して JavaScript にコンパイルされます。ただし、あなたの好きな任意のレンダリングエンジンを使用して手動でビルドすることもできます。
 
-#### コンポーネントシェルインターフェース
+#### コンポーネントシェルインターフェイス
 
-Riot.js コンパイラは、単に [コンポーネントオブジェクト](#コンポーネントインターフェース) を作成するために、Riot によって内部的に変換されるシェルオブジェクトを作成する。このシェルオブジェクトを手動で作成する場合は、まずそのインターフェースを理解する必要があります:
+
+Riot.js コンパイラは、単に [コンポーネントオブジェクト](#コンポーネントインターフェイス) を作成するために、Riot によって内部的に変換されるシェルオブジェクトを作成する。このシェルオブジェクトを手動で作成する場合は、まずそのインターフェイスを理解する必要があります:
 ```ts
 interface RiotComponentShell<P = object, S = object> {
   readonly css?: string
@@ -929,7 +929,7 @@ interface RiotComponentShell<P = object, S = object> {
 - `name` - コンポーネント名
 - `template` - コンポーネントテンプレートを管理するファクトリ機能
 
-#### テンプレートインターフェース
+#### テンプレートインターフェイス
 
 テンプレート関数は、次のものと互換性のあるインタフェースを返す必要があります:
 
@@ -946,10 +946,10 @@ interface RiotComponentTemplate {
 `RiotComponentTemplate` はオブジェクトであり、レスポンシブルにコンポーネントのレンダリングを処理します:
 
 - `update` - メソッド: コンポーネントデータを受け取り、テンプレートの更新に使用する必要がある
-- `mount` - メソッド: コンポーネントテンプレートを DOM ノードに接続するために使用する必要がある
-- `createDOM` - ファクトリ関数: テンプレート DOM の構造を一度だけ作成する必要がある場合がある
+- `mount` - メソッド: コンポーネントテンプレートを DOM ノードと接続するために使用する必要がある
+- `createDOM` - ファクトリ関数: テンプレート DOM の構造を一度だけ作成する必要がある場合もある
 - `unmount` -  メソッド: コンポーネントDOMをクリーンアップする
-- `clone` - メソッド: 複数のインスタンスを操作するためにオリジナルのテンプレートオブジェクトのクローンを作成する必要がある場合がある
+- `clone` - メソッド: 複数のインスタンスを操作するためにオリジナルのテンプレートオブジェクトのクローンを作成する必要がある場合もある
 
 #### 例
 
@@ -1036,7 +1036,7 @@ riot.register('my-component', {
 
 ```
 
-この場合、`my-component` という名前のタグをマウントすると、riot はコンポーネントのマークアップを解析せずにそのままにするでしょう:
+この場合、`my-component` という名前のタグをマウントすると、Riot はコンポーネントのマークアップを解析せずにそのまま置いておくでしょう:
 
 ```html
 <html>

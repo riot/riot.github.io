@@ -1,7 +1,7 @@
 ---
 title: Riot FAQ
 layout: ja/detail
-description: Riot に関する質疑応答, ユーザーインターフェース(UI) マイクロライブラリ
+description: Riot に関する質疑応答, ユーザーインターフェイス(UI) マイクロライブラリ
 ---
 
 ## よくある質問と答え
