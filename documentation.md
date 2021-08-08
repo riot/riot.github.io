@@ -157,7 +157,6 @@ A Riot component is a combination of layout (HTML) and logic (JavaScript). Here 
 * The `this` keyword is optional: `<p>{ name }</p>` and `<p>{ this.name }</p>` are both valid
 * Quotes are optional: `<foo bar={ baz }>` and `<foo bar="{ baz }">` are both valid
 * Boolean attributes (checked, selected, etc.) are ignored when the expression value is falsy: `<input checked={ undefined }>` becomes `<input>`.
-* All attribute names *must be lowercase*. This is due to browser specification.
 * Standard HTML tags (`label`, `table`, `a`, etc.) can also be customized, but not necessarily a wise thing to do.
 * Tag definition **root** may also have attributes: `<my-component onclick={ click } class={ props.class }>`.
 
@@ -373,7 +372,7 @@ Inside the tag the properties can be referenced with the `this.props` attribute 
 ### State
 
 Each Riot component can use the `this.state` object to store or modify its internal state.
-While the `this.props` attribute is frozen the `this.state` object is completely mutable and it could be updated manually or via the `this.update()` method:
+While the `this.props` attribute is frozen the `this.state` object is completely mutable, and it can be updated manually or via the `this.update()` method:
 
 ```html
 <my-component id="{ state.name }-{ state.surname }">
@@ -405,15 +404,12 @@ A component is created in the following sequence:
 3. All HTML expressions are calculated
 4. The component DOM is mounted on the page and "onMounted" callback is called
 
-After the component is mounted the expressions are updated as follows:
+Once mounted the expressions a component can be updated as follows:
 
 1. When `this.update()` is called on the current component instance
 2. When `this.update()` is called on a parent component, or any parent upwards. Updates flow uni-directionally from parent to child.
 
 The "onUpdated" callback is called every time the component tag is updated.
-
-Since the values are calculated before mounting there are no surprise issues such as failed `<img src={ src }>` calls.
-
 
 ### Lifecycle callbacks
 
@@ -451,7 +447,7 @@ Each callback always receives the current `this.props` and `this.state` as argum
 
 ## Plugins
 
-Riot provides an easy way to upgrade its components. When a component is created it can be enhanced by the plugins registered via `riot.install`.
+Riot provides an easy way to upgrade its components API. When a component is created it can be enhanced by the plugins registered via `riot.install`.
 
 ```js
 // riot-observable.js
@@ -497,7 +493,7 @@ Expressions are 100% JavaScript. A few examples:
 { Math.round(rating) }
 ```
 
-The goal is to keep the expressions small so your HTML stays as clean as possible. If your expression grows in complexity consider moving some of logic to the "onBeforeUpdate" callback. For example:
+The goal is to keep the expressions small so your HTML stays as clean as possible. If your expression grows in complexity consider moving some logic to the "onBeforeUpdate" callback. For example:
 
 
 ```html
@@ -531,7 +527,7 @@ The following expression does not work:
 <input type="checkbox" { true ? 'checked' : ''}>
 ```
 
-since only attribute and nested text expressions are valid. Riot automatically detects all of the valid HTML boolean attributes.
+since only attribute and nested text expressions are valid. Riot automatically detects all the valid HTML boolean attributes.
 
 
 ### Object spread attribute

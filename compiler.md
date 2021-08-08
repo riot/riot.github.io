@@ -107,6 +107,28 @@ import MyTag from './path/to/tags/my-tag.riot'
 component(MyTag)(document.getElementById('root'))
 ```
 
+### Typescript support
+
+The Riot.js compiler supports typescript syntax out of the box. 
+If you want to enable the type checking for your component API and expressions you will export its `RiotComponent` interface as it follows:
+
+```html
+<my-component>
+  <!-- notice that lang="ts" is optional and eventually needed just for your IDE code highlighting -->
+  <script lang="ts">
+    import { RiotComponent } from 'riot'
+    
+    export interface MyComonent extends RiotComponent<MyComponentProps, MyComponentState> {
+      /* additional component custom methods and properties */
+    }
+  </script>
+</my-component>
+```
+
+If you want to enhance your component types you might want to check also the [`riot.withTypes`](/api/#riotwithtypes) method 
+
+You might want to check the Riot.js [typescript example](https://github.com/riot/examples/tree/gh-pages/typescript) to setup your project config files.
+
 ### Compilation via Node
 
 ``` javascript
@@ -127,7 +149,7 @@ const { code, map } = compile('<p>{hello}</p>', {
 The compile function takes a string and returns an object containing the `code` and `map` keys.
 You can handle the code generated however you like and use it in your build system.
 
-Remember that the Riot compiler outputs JavaScript modules and you might want to transpile them in your bundle.
+Remember that the Riot compiler outputs JavaScript modules, and you might want to transpile them in your bundle.
 
 
 ### Compilation via Riot.js CLI
@@ -266,13 +288,13 @@ Your `dist/app.js` file will contain all the Riot.js components imported in your
 
 You can pre-process your components' contents using your favorite programming language.
 
-The `@riotjs/compiler` gives you the possibility to register your preprocessors:
+The `@riotjs/compiler` gives the possibility to register your preprocessors:
 
 ```js
 import { registerPreprocessor } from '@riotjs/compiler'
 import pug from 'pug'
 import sass from 'node-sass'
-import ts from 'typescript'
+import babel from '@babel/core'
 
 registerPreprocessor('template', 'pug', function(code, { options }) {
   const { file } = options
@@ -301,20 +323,12 @@ registerPreprocessor('css', 'sass', function(code, { options }) {
 })
 
 
-registerPreprocessor('javascript', 'ts', function(code, { options }) {
+registerPreprocessor('javascript', 'babel', function(code, { options }) {
   const { file } = options
 
-  const result = ts.transpileModule(code, {
-    fileName: file,
-    compilerOptions: {
-      module: ts.ModuleKind.ESNext
-    }
+  return babel.transform(code, {
+    sourceFileName: file
   })
-
-  return {
-    code: result.outputText,
-    map: null
-  }
 })
 ```
 
