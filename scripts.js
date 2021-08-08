@@ -22,7 +22,6 @@ const isDark = storedThemePreference === 'dark' || !storedThemePreference && win
 function updateSidebarLinks(links) {
   const activeLinks = links.filter(link => getAttr(link, 'href') === window.location.hash)
   const oldActiveLinks = links.filter(link => link.classList.contains(ACTIVE_LINK_CLASS))
-  const [lastActiveLink] = activeLinks
 
   activeLinks.forEach(link => link.classList.add(ACTIVE_LINK_CLASS))
   oldActiveLinks.forEach(link => link.classList.remove(ACTIVE_LINK_CLASS))

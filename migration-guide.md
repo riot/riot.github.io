@@ -6,7 +6,7 @@ description: Migration guide from Riot.js 2 and 3
 
 ## Introduction
 
-Riot.js 4 is a complete rewrite, [read more about it](https://medium.com/@gianluca.guarini/every-revolution-begins-with-a-riot-js-first-6c6a4b090ee){:target="_blank"}.
+Riot.js >=4 is a complete rewrite, [read more about it](https://medium.com/@gianluca.guarini/every-revolution-begins-with-a-riot-js-first-6c6a4b090ee){:target="_blank"}.
 
 Migrating older applications written in Riot.js 3 is not recommended because older Riot.js versions will still get security patches and they are stable enough.
 
@@ -14,8 +14,8 @@ You can use this guide to learn how to write components for Riot.js 4 coming fro
 
 ## Component Syntax and API
 
-The components syntax was updated to match the modern JavaScript standards to avoid any possible ambiguity.
-Less magic means more clarity and interoperability. Riot.js 4 components are designed to be completely future proof!
+The components' syntax was updated to match the modern JavaScript standards to avoid any possible ambiguity.
+Less magic means more clarity and interoperability. Riot.js 4 components are designed to be completely future-proof!
 
 ### The script tag
 

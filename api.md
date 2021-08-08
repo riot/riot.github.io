@@ -9,7 +9,7 @@ description: Framework API, methods and properties
 
 ### riot.mount
 
-`riot.mount(selector: string, props?: object, componentName?: string): [RiotComponent]`
+`riot.mount(selector: string, props?: object, componentName?: string): RiotComponent[]`
 
 1. `selector` selects elements from the page and mounts them with a custom component. The selected elements' name must match the custom tag name. DOM nodes having the `is` attribute can also be automounted.
 
@@ -59,7 +59,7 @@ riot.mount('my-component', () => ({
 
 ### riot.unmount
 
-`riot.unmount(selector: string, keepRootElement?: boolean): [HTMLElement]`
+`riot.unmount(selector: string, keepRootElement?: boolean): HTMLElement[]`
 
 1. `selector` selects elements from the page and unmounts them if they were mounted before.
 2. `keepRootElement` boolean optional parameter that can be used to avoid removing the root nodes from the DOM {% include version_badge.html version=">=4.3.0" %}
@@ -80,9 +80,9 @@ riot.unmount('user', true)
 
 ### riot.component
 
-`riot.component(component: RiotComponentShell): function`
+`riot.component(component: RiotComponentWrapper): function`
 
-1. `component` - [a component shell object](#component-shell-interface)
+1. `component` - [a component wrapper](#component-wrapper-interface)
 
 <strong>@returns: </strong>a function to create [component objects](#component-object)
 
@@ -172,10 +172,10 @@ uninstall(uid)
 
 ### riot.register
 
-`riot.register(name: string, component: RiotComponentShell): Map`
+`riot.register(name: string, component: RiotComponentWrapper): Map`
 
 1. `name` - the component name
-2. `component` - [a component shell object](#component-shell-interface)
+2. `component` - [a component wrapper object](#component-wrapper-interface)
 
 <strong>@returns: </strong> a JavaScript `Map` containing all registered components factory functions
 
@@ -223,7 +223,7 @@ register('test-component', TestComponent2)
 
 ### riot.pure
 
-`riot.pure(PureComponentFactoryFunction): PureComponentFactoryFunction`
+`riot.pure(PureComponentFactoryFunction): RiotComponentFactoryFunction`
 
 `PureComponentFactoryFunction` is a function that accepts an object with the following fields:
 
@@ -259,6 +259,52 @@ The `PureComponentFactoryFunction` should always return an object containing the
   </script>
 </lit-element>
 ```
+
+### riot.withTypes 
+
+`riot.withTypes(object | function | class): RiotComponent`
+
+This method is only needed to improve your components typescript support in your IDE.
+It might allow code autocompletion and adds the proper Riot.js types to the component exported API for example:
+
+```html
+<my-component>
+  <h1>
+    { props.title }
+  </h1>
+  
+  <p if={ state.isReady }>
+    Hello
+  </p>
+
+  <script lang="ts">
+    import {RiotComponent, withTypes} from 'riot'
+    
+    interface MyComponentProps {
+      title: string
+    }
+    
+    interface MyComponentState {
+      isReady: boolean
+    }
+
+    // This export is needed to let typescript check your bindings types
+    export interface MyComponent extends RiotComponent<MyComponentProps, MyComponentState> {
+      // custom methods
+      sayHello: () => void
+    }
+
+    export default withTypes<MyComponent>({
+      state: {
+        isReady: false
+      },
+      sayHello: () => console.log('Hello!')
+    })
+  </script>
+</my-component>
+```
+
+If you want to know more about Typescript compilation you might check [the Riot.js typescript support](/compiler/#typescript-support)
 
 ### riot.version
 
@@ -297,51 +343,43 @@ Each Riot.js component is created as a lightweight object. The object that you e
 If you're familiar with [TypeScript](https://www.typescriptlang.org/), here is what a Riot.js component interface looks like:
 
 ```ts
-// This interface is only exposed and any Riot component will receive the following properties
-interface RiotCoreComponent<P = object, S = object> {
+export interface RiotComponent<Props = any, State = any> {
   // automatically generated on any component instance
-  readonly props: P
+  readonly props: Props
   readonly root: HTMLElement
   readonly name?: string
-  // TODO: add the @riotjs/dom-bindings types
-  readonly slots: any[]
+  readonly slots: SlotBindingData[]
+
+  // mutable state property
+  state: State
+  // optional alias to map the children component names
+  components?: RiotComponentsMap
+
   mount(
     element: HTMLElement,
-    initialState?: S,
+    initialState?: State,
     parentScope?: object
-  ): RiotComponent<P, S>
+  ): RiotComponent<Props, State>
   update(
-    newState?: Partial<S>,
+    newState?: Partial<State>,
     parentScope?: object
-  ): RiotComponent<P, S>
-  unmount(keepRootElement: boolean): RiotComponent<P, S>
+  ): RiotComponent<Props, State>
+  unmount(keepRootElement?: boolean): RiotComponent<Props, State>
 
   // Helpers
-  $(selector: string): HTMLElement
-  $$(selector: string): [HTMLElement]
-}
-
-// All the RiotComponent Public interface properties are optional
-interface RiotComponent extends RiotCoreComponent<P = object, S = object> {
-  // optional on the component object
-  state?: S
-
-  // optional alias to map the children component names
-  components?: {
-    [key: string]: RiotComponentShell<P, S>
-  }
+  $(selector: string): Element | null
+  $$(selector: string): Element[]
 
   // state handling methods
-  shouldUpdate?(newProps: P, currentProps: P): boolean
+  shouldUpdate?(newProps: Props, oldProps: Props): boolean
 
   // lifecycle methods
-  onBeforeMount?(currentProps: P, currentState: S): void
-  onMounted?(currentProps: P, currentState: S): void
-  onBeforeUpdate?(currentProps: P, currentState: S): void
-  onUpdated?(currentProps: P, currentState: S): void
-  onBeforeUnmount?(currentProps: P, currentState: S): void
-  onUnmounted?(currentProps: P, currentState: S): void
-  [key: string]: any
+  onBeforeMount?(props: Props, state: State): void
+  onMounted?(props: Props, state: State): void
+  onBeforeUpdate?(props: Props, state: State): void
+  onUpdated?(props: Props, state: State): void
+  onBeforeUnmount?(props: Props, state: State): void
+  onUnmounted?(props: Props, state: State): void
 }
 ```
 
@@ -909,12 +947,12 @@ Beware that the <code>$</code> and <code>$$</code> helpers will also perform a D
 
 Riot.js components are meant to be compiled to JavaScript via [@riotjs/compiler]({{ '/compiler' | prepend:site.baseurl }}). However you can build them manually with any rendering engine you like.
 
-#### Component shell interface
+#### Component wrapper interface
 
 
-The Riot.js compiler just creates a shell object that will be transformed internally by Riot to create the [component object](#component-interface). If you want to build this shell object manually it's worth understanding its interface first:
+The Riot.js compiler just creates a wrapper object that will be transformed internally by Riot to create the [component object](#component-interface). If you want to build this wrappers object manually it's worth understanding its interface first:
 ```ts
-interface RiotComponentShell<P = object, S = object> {
+interface RiotComponentWrapper<RiotComponent> {
   readonly css?: string
   readonly exports?: () => RiotComponentExport<P, S>|object
   readonly name?: string
@@ -922,7 +960,7 @@ interface RiotComponentShell<P = object, S = object> {
 }
 ```
 
-The `RiotComponentShell` object consists of 4 properties:
+The `RiotComponentWrapper` object consists of 4 properties:
 
 - `css` - the component CSS as string
 - `exports` - the component `export default` public API
@@ -937,17 +975,15 @@ The template function should return an interface that's compatible with the foll
 interface RiotComponentTemplate {
   update(scope: object): RiotComponentTemplate;
   mount(element: HTMLElement, scope: object): RiotComponentTemplate;
-  createDOM(element: HTMLElement): RiotComponentTemplate;
   unmount(scope: object): RiotComponentTemplate;
   clone(): RiotComponentTemplate;
 }
 ```
 
-The `RiotComponentTemplate` is an object and it's responsible for handling the component rendering:
+The `RiotComponentTemplate` is an object, and it's responsible for handling the component rendering:
 
 - `update` - method that will receive the component data and must be used to update the template
 - `mount` - method that must be used to connect the component template to a DOM node
-- `createDOM` - factory function might be needed to create the template DOM structure only once
 - `unmount` - method to clean up the component DOM
 - `clone` - method might be needed to clone the original template object in order to work with multiple instances
 
