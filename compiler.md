@@ -118,7 +118,7 @@ If you want to enable the type checking for your component API and expressions y
   <script lang="ts">
     import { RiotComponent } from 'riot'
 
-    export interface MyComonent extends RiotComponent<MyComponentProps, MyComponentState> {
+    export interface MyComponent extends RiotComponent<MyComponentProps, MyComponentState> {
       /* additional component custom methods and properties */
     }
   </script>
