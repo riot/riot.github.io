@@ -106,7 +106,7 @@ Riot.js のタグはブラウザで実行される前に素の JavaScript に [�
 
 
 #### 他ツールとの相性が良い
-- TypeScript、Rust、JavaScript Next、または[任意のプリプロセッサ](https://riot.js.org/next/#プリプロセッサ)を使ってコンポーネントを作成
+- TypeScript、Rust、JavaScript Next、または[任意のプリプロセッサ](https://riot.js.org/ja/compiler/#プリプロセッサ)を使ってコンポーネントを作成
 - [@riotjs/cli](https://github.com/riot/cli) 、[webpack](https://github.com/riot/webpack-loader)、[Rollup](https://github.com/riot/rollup-plugin-riot)、[Parcel](https://github.com/riot/parcel-plugin-riot)、[Browserify](https://github.com/riot/riotify) を使用してビルド
 - 任意の方法でテストし、[直接ノードに riot タグをロード](https://github.com/riot/ssr#render---to-render-only-markup)可能
 
