@@ -6,7 +6,7 @@ description: Riot.js 2 や 3 からのマイグレーションガイド
 
 ## 導入
 
-Riot.js 4 完全に書き直されています。（[詳しくはこちらを御覧ください](https://medium.com/@gianluca.guarini/every-revolution-begins-with-a-riot-js-first-6c6a4b090ee){:target="_blank"}）
+Riot.js >=4 は完全に書き直されています。（[詳しくはこちらを御覧ください](https://medium.com/@gianluca.guarini/every-revolution-begins-with-a-riot-js-first-6c6a4b090ee){:target="_blank"}）
 
 Riot.js 3 で書かれた古いアプリケーションを移行することは推奨されていません。なぜなら、Riot.js の古いバージョンにもセキュリティパッチが適用され、十分に安定しているからです。
 
@@ -14,7 +14,7 @@ Riot.js 3 で書かれた古いアプリケーションを移行することは�
 
 ## コンポーネントの構文と API
 
-コンポーネント構文は、可能な限りあいまいさを避けるために、最新の JavaScript 標準に合わせて更新されました。
+コンポーネントの構文は可能な限りあいまいさを避けるために、最新の JavaScript 標準に合わせて更新されました。
 魔法が少ないということは、より明確で相互運用性があることを意味します。Riot.js 4 コンポーネントは完全に将来のために設計されています!
 
 ### script タグ

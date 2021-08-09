@@ -9,11 +9,11 @@ description: フレームワーク API, メソッドとプロパティ
 
 ### riot.mount
 
-`riot.mount(selector: string, props?: object, componentName?: string): [RiotComponent]`
+`riot.mount(selector: string, props?: object, componentName?: string): RiotComponent[]`
 
-1. `selector` はページから要素を選択し、それらをカスタムコンポーネントとともにマウントします。選択したエレメントの名前は、カスタムタグの名前と一致する必要があります。is属性を持つDOMノードも自動マウントできます。
+1. `selector` はページから要素を選択し、それらをカスタムコンポーネントとともにマウントします。選択したエレメントの名前は、カスタムタグの名前と一致する必要があります。is 属性を持つ DOM ノードも自動マウントできます。
 
-2. 消費するために `props` というオプショナルなオブジェクトがコンポーネントに渡されます。これには、単純なオブジェクトから完全なアプリケーション API まで、あらゆるものを使用できます。もしくは Flux ストアの場合もあります。実際には、クライアント側のアプリケーションをどのように構成するかによって異なります。*注意* タグに設定した属性は、`props` 引数で同じ名前を指定した属性よりも優先されます。
+2. 消費するために `props` というオプショナルなオブジェクトがコンポーネントに渡されます。これには、単純なオブジェクトから完全なアプリケーション API まで、あらゆるものを使用できます。もしくは Flux ストアの場合もあります。実際には、クライアント側のアプリケーションをどのように構成するかによって異なります。_注意_ タグに設定した属性は、`props` 引数で同じ名前を指定した属性よりも優先されます。
 
 3. `componentName` は、マウントするノードが Riot によって自動マウントされない場合のオプショナルなコンポーネントの名前です。
 
@@ -22,7 +22,7 @@ description: フレームワーク API, メソッドとプロパティ
 
 例:
 
-``` js
+```js
 // 選択し、そしてページ上のすべての <pricing> タグをマウント
 const components = riot.mount('pricing')
 
@@ -48,9 +48,9 @@ const components = riot.mount('#root', api, 'app')
 
 `props` 引数には、複数のタグインスタンス間で同じオブジェクトを共有することを避けるために関数を指定することも可能です。[riot/2613 を参照](https://github.com/riot/riot/issues/2613)
 
-``` js
+```js
 riot.mount('my-component', () => ({
-  custom: 'option'
+  custom: 'option',
 }))
 ```
 
@@ -59,7 +59,7 @@ riot.mount('my-component', () => ({
 
 ### riot.unmount
 
-`riot.unmount(selector: string): [HTMLElement]`
+`riot.unmount(selector: string): HTMLElement[]`
 
 1. `selector`: ページから要素を選択肢し、それらが既にマウントされていた場合はアンマウントします。
 2. `keepRootElement`: ブーリアンのオプションパラメータ 。DOM からルートノードを削除することを避けるために使用できる {% include version_badge.html version=">=4.3.0" %}
@@ -80,9 +80,9 @@ riot.unmount('user', true)
 
 ### riot.component
 
-`riot.component(component: RiotComponentShell): function`
+`riot.component(component: RiotComponentWrapper): function`
 
-1. `component` - [コンポーネントシェルオブジェクト](#コンポーネントシェルインターフェイス)
+1. `component` - [コンポーネントラッパー](#コンポーネントラッパーインターフェイス)
 
 <strong>@returns: </strong>[コンポーネントオブジェクト](#component-object) 生成のための関数
 
@@ -95,13 +95,13 @@ import App from './app.riot'
 const createApp = riot.component(App)
 
 const app = createApp(document.getElementById('root'), {
-  name: 'This is a custom property'
+  name: 'This is a custom property',
 })
 ```
 
 {% include version_badge.html version=">=4.7.0" %}
 
-`riot.component` によって生成されたファクトリ関数は、[有効な `slots` と `attributes` オブジェクト](https://github.com/riot/dom-bindings) を含むことができる3つ目の任意の引数も受け入れます。
+`riot.component` によって生成されたファクトリ関数は、[有効な `slots` と `attributes` オブジェクト](https://github.com/riot/dom-bindings) を含められる 3 つ目の任意の引数も受け入れます。
 
 ```js
 import { expressionTypes } from '@riotjs/dom-bindings'
@@ -172,7 +172,7 @@ uninstall(uid)
 
 ### riot.register
 
-`riot.register(name: string, component: RiotComponentShell): Map`
+`riot.register(name: string, component: RiotComponentWrapper): Map`
 
 1. `name` - コンポーネント名
 2. `component` - [コンポーネントシェルオブジェクト](#component-shell-interface)
@@ -223,7 +223,7 @@ register('test-component', TestComponent2)
 
 ### riot.pure
 
-`riot.pure(PureComponentFactoryFunction): PureComponentFactoryFunction`
+`riot.pure(PureComponentFactoryFunction): RiotComponentFactoryFunction`
 
 `PureComponentFactoryFunction` は以下のフィールドを持つオブジェクトを受け取る関数です:
 
@@ -260,6 +260,52 @@ register('test-component', TestComponent2)
 </lit-element>
 ```
 
+### riot.withTypes
+
+`riot.withTypes(object | function | class): RiotComponent`
+
+このメソッドは IDE でコンポーネントの TypeScript をより良くサポートするために必要です。
+これにより、コードの自動補完が可能になり、エクスポートされたAPIのコンポーネントに適切な Riot.js の型が追加されます。 例:
+
+```html
+<my-component>
+  <h1>
+    { props.title }
+  </h1>
+
+  <p if={ state.isReady }>
+    Hello
+  </p>
+
+  <script lang="ts">
+    import {RiotComponent, withTypes} from 'riot'
+
+    interface MyComponentProps {
+      title: string
+    }
+
+    interface MyComponentState {
+      isReady: boolean
+    }
+
+    // この export は TypeScript がバインディングの 型 をチェックするために必要です
+    export interface MyComponent extends RiotComponent<MyComponentProps, MyComponentState> {
+      // カスタムメソッド
+      sayHello: () => void
+    }
+
+    export default withTypes<MyComponent>({
+      state: {
+        isReady: false
+      },
+      sayHello: () => console.log('Hello!')
+    })
+  </script>
+</my-component>
+```
+
+コンパイルについて知りたい場合は、[Riot.js の TypeScript サポート](/compiler/#typescript-support) をチェックしてみてください。
+
 ### riot.version
 
 `riot.version(): string`
@@ -294,68 +340,60 @@ register('test-component', TestComponent2)
 
 ### コンポーネントインターフェイス
 
- [TypeScript](https://www.typescriptlang.org/) に詳しい人は、ここに書かれているように Riot.js コンポーネントインタフェースがどのように見えるを読むことができます:
+[TypeScript](https://www.typescriptlang.org/) に詳しい人は、ここに書かれているように Riot.js コンポーネントインタフェースがどのように見えるを読むことができます:
 
 ```ts
-// このインターフェイスはただ公開されているのみで、どんな Riot コンポーネントも以下のプロパティを受け取る
-interface RiotCoreComponent<P = object, S = object> {
+export interface RiotComponent<Props = any, State = any> {
   // 任意のコンポーネントインスタンスで自動的に生成
-  readonly props: P
+  readonly props: Props
   readonly root: HTMLElement
   readonly name?: string
-  // TODO: add the @riotjs/dom-bindings types
-  readonly slots: any[]
+  readonly slots: SlotBindingData[]
+
+  // 変更可能な state プロパティ
+  state: State
+  // 子コンポーネントの名前をマッピングするオプションのエイリアス
+  components?: RiotComponentsMap
+
   mount(
     element: HTMLElement,
-    initialState?: S,
+    initialState?: State,
     parentScope?: object
-  ): RiotComponent<P, S>
+  ): RiotComponent<Props, State>
   update(
-    newState?: Partial<S>,
+    newState?: Partial<State>,
     parentScope?: object
-  ): RiotComponent<P, S>
-  unmount(keepRootElement: boolean): RiotComponent<P, S>
+  ): RiotComponent<Props, State>
+  unmount(keepRootElement?: boolean): RiotComponent<Props, State>
 
   // ヘルパー
-  $(selector: string): HTMLElement
-  $$(selector: string): [HTMLElement]
-}
+  $(selector: string): Element | null
+  $$(selector: string): Element[]
 
-// パブリックな RiotComponent インターフェイスのプロパティはすべてオプショナル
-interface RiotComponent extends RiotCoreComponent<P = object, S = object> {
-  // コンポーネントオブジェクトでオプショナル
-  state?: S
-
-  // 子コンポーネントの名前をマップするオプションの別名
-  components?: {
-    [key: string]: RiotComponentShell<P, S>
-  }
-
-  // ステートハンドリングメソッド
-  shouldUpdate?(newProps: P, currentProps: P): boolean
+  // state 管理用メソッド
+  shouldUpdate?(newProps: Props, oldProps: Props): boolean
 
   // ライフサイクルメソッド
-  onBeforeMount?(currentProps: P, currentState: S): void
-  onMounted?(currentProps: P, currentState: S): void
-  onBeforeUpdate?(currentProps: P, currentState: S): void
-  onUpdated?(currentProps: P, currentState: S): void
-  onBeforeUnmount?(currentProps: P, currentState: S): void
-  onUnmounted?(currentProps: P, currentState: S): void
-  [key: string]: any
+  onBeforeMount?(props: Props, state: State): void
+  onMounted?(props: Props, state: State): void
+  onBeforeUpdate?(props: Props, state: State): void
+  onUpdated?(props: Props, state: State): void
+  onBeforeUnmount?(props: Props, state: State): void
+  onUnmounted?(props: Props, state: State): void
 }
 ```
 
 HTML と JavaScript コードの両方で任意のコンポーネントプロパティを使用できます。例:
 
 
-``` html
+```html
 <my-component>
   <h3>{ props.title }</h3>
 
   <script>
     export default {
       onBeforeMount() {
-        const {title} = this.props
+        const { title } = this.props
       }
     }
   </script>
@@ -364,7 +402,7 @@ HTML と JavaScript コードの両方で任意のコンポーネントプロパ
 
 コンポーネントスコープには任意のプロパティを自由に設定でき、HTML に式で使用できます。例:
 
-``` html
+```html
 <my-component>
   <h3>{ title }</h3>
 
@@ -414,22 +452,22 @@ window.someGlobalVariable = 'Hello!'
 `component.mount(keepRoot?: boolean): RiotComponent`
 
 カスタムコンポーネントとその子をページから切り離します。
-ルートノードを削除せずにタグをアンマウントしたい場合は、unmountメソッドに `true` を渡す必要があります。
+ルートノードを削除せずにタグをアンマウントしたい場合は、unmount メソッドに `true` を渡す必要があります。
 
 タグをアンマウントし、DOM からテンプレートを削除します:
 
-``` js
+```js
 myComponent.unmount()
 ```
 
 ルートノードを DOM に保持したままコンポーネントをアンマウントします:
 
-``` js
+```js
 myComponent.unmount(true)
 ```
 
 
-### ステートハンドリング
+### 状態管理
 
 #### component.state
 
@@ -484,13 +522,13 @@ myComponent.unmount(true)
 ```html
 <my-component>
   <!-- このコンポーネントは `<my-component>` 内でのみ利用可能 -->
-  <my-child/>
+  <my-child />
 
   <!-- このコンポーネントには別の名前が付けられ、エイリアスが設定される -->
-  <aliased-name/>
+  <aliased-name />
 
   <!-- このコンポーネントは riot.register を介して既に登録されている -->
-  <global-component/>
+  <global-component />
 
   <script>
     import MyChild from './my-child.riot'
@@ -548,7 +586,7 @@ myComponent.unmount(true)
 
 コンポーネントの `state` オブジェクトを更新し、すべてのテンプレート変数を再レンダリングします。このメソッドは通常、ユーザーがアプリケーションと対話するときにイベントハンドラがディスパッチされるたびに呼び出せます:
 
-``` html
+```html
 <my-component>
   <button onclick={ onClick }>{ state.message }</button>
 
@@ -569,20 +607,20 @@ myComponent.unmount(true)
 
 このメソッドは、コンポーネントの UI を更新する必要があるときに、手動で呼び出すこともできます。これは通常 UI に関連しないイベント（`setTimeout` の後、AJAX のコール、または何らかのサーバーのイベント）の後に発生します。例:
 
-``` html
+```html
 <my-component>
 
-  <input name="username" onblur={ validate }>
+  <input name="username" onblur={ validate } />
   <span class="tooltip" if={ state.error }>{ state.error }</span>
 
   <script>
     export default {
       async validate() {
         try {
-          const {username} = this.props
+          const { username } = this.props
           const response = await fetch(`/validate/username/${username}`)
           const json = response.json()
-          // レスポンスで何かをする
+          // レスポンスを用いて何かをする
         } catch (error) {
           this.update({
             error: error.message
@@ -599,18 +637,18 @@ myComponent.unmount(true)
 タグの DOM 更新をより細かくコントロールしたい場合、`shouldUpdate` 関数の戻り値を利用して設定できます。
 Riot.js はその関数の戻り値が `true` の場合にのみ、コンポーネントを更新します。
 
-``` html
+```html
 <my-component>
   <button onclick={ onClick }>{ state.message }</button>
 
   <script>
     export default {
       state: {
-        message: 'hi'
+        message: 'hi',
       },
       onClick(e) {
         this.update({
-          message: 'goodbye'
+          message: 'goodbye',
         })
       },
       shouldUpdate(newProps, currentProps) {
@@ -618,17 +656,15 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
         if (this.state.message === 'goodbye') return false
         // this.state.message が 'goodbye' と異なる場合、コンポーネントを更新可能
         return true
-      }
+      },
     }
-
-
   </script>
 </my-component>
 ```
 
-`shouldUpdate` メソッドは常に2つの引数を受け取ります: 最初の引数には新しいコンポーネントプロパティが含まれ、2番目の引数には現在のプロパティが含まれます。
+`shouldUpdate` メソッドは常に 2 つの引数を受け取ります: 最初の引数には新しいコンポーネントプロパティが含まれ、2 番目の引数には現在のプロパティが含まれます。
 
-``` html
+```html
 <my-component>
   <child-tag message={ state.message }></child-tag>
   <button onclick={ onClick }>Say goodbye</button>
@@ -663,21 +699,21 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 
 
 
-###  スロット
+### スロット
 
 `<slot>` タグは、実行時にテンプレート内の任意のカスタムコンポーネントの内容を注入してコンパイルすることができる、Riot.js の特別なコア機能です。
 例えば、以下の riot タグ `my-post` 使ってみましょう
 
-``` html
+```html
 <my-post>
   <h1>{ props.title }</h1>
-  <p><slot/></p>
+  <p><slot /></p>
 </my-post>
 ```
 
 いつもアプリケーションに `<my-post>` タグを入れることになるでしょう
 
-``` html
+```html
 <my-post title="What a great title">
   My beautiful post is <b>just awesome</b>
 </my-post>
@@ -685,7 +721,7 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 
 一度マウントされると、このようにレンダリングされます:
 
-``` html
+```html
 <my-post>
   <h1>What a great title</h1>
   <p>My beautiful post is <b>just awesome</b></p>
@@ -694,10 +730,10 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 
 デフォルトのスロットタグ内の式は、スロット属性経由で渡さない限り、挿入されるコンポーネントのプロパティにアクセスできません。詳しくは [上位コンポーネント]({{ '/ja/api/#上位コンポーネント' | prepend:site.baseurl }}) の項を参照してください。
 
-``` html
+```html
 <!-- このタグは生成された DOM を継承するだけ -->
 <child-tag>
-  <slot/>
+  <slot />
 
   <script>
     export default {
@@ -724,17 +760,17 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 
 #### 名前付きスロット
 
-`<slot>` タグは、コンポーネントテンプレートの特定のセクションにhtmlを挿入するメカニズムも提供します。
+`<slot>` タグは、コンポーネントテンプレートの特定のセクションに html を挿入するメカニズムも提供します。
 
-例えば以下の riot タグ `my-other-post` 使ってみましょう:
+例えば、以下の riot タグ `my-other-post` 使ってみましょう:
 
-``` html
+```html
 <my-other-post>
   <article>
     <h1>{ props.title }</h1>
-    <h2><slot name="summary"/></h2>
+    <h2><slot name="summary" /></h2>
     <article>
-      <slot name="content"/>
+      <slot name="content" />
     </article>
   </article>
 </my-other-post>
@@ -742,7 +778,7 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 
 いつもアプリケーションに `<my-other-post>` タグを入れることになるでしょう
 
-``` html
+```html
 <my-other-post title="What a great title">
   <span slot="summary">
     My beautiful post is just awesome
@@ -755,7 +791,7 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 
 一度マウントされると、このようにレンダリングされます:
 
-``` html
+```html
 <my-other-post>
   <article>
     <h1>What a great title</h1>
@@ -771,7 +807,7 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 
 もし、コンポーネントのルート HTML ノードが、スロット部分に追加したくない場合は、`<template>` タグを使用することもできます。この場合、Riot.js はそのコンポーネントの中のコンテンツのみを、スロット位置にレンダリングします。
 
-``` html
+```html
 <my-other-post title="What a great title">
   <template slot="summary">
     My beautiful post is just awesome
@@ -796,7 +832,7 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 
 ```html
 <theme-provider>
-  <slot theme={theme}/>
+  <slot theme="{theme}" />
 
   <script>
     export default {
@@ -812,7 +848,7 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 <app>
   <theme-provider>
     <!-- ここで "theme" 変数が利用可能になることに注意 -->
-    <sidebar class="sidebar sidebar__{theme}"/>
+    <sidebar class="sidebar sidebar__{theme}" />
   </theme-provider>
 </app>
 ```
@@ -823,12 +859,12 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 
 各コンポーネントオブジェクトは、次のコールバックに依存して内部状態を処理できます:
 
-  - `onBeforeMount` - コンポーネントがマウントされる前にコールされる
-  - `onMounted` - コンポーネントがレンダリングされた後にコールされる
-  - `onBeforeUpdate` - コンポーネント更新される前にコールされる
-  - `onUpdated` - コンポーネントが更新された後にコールされる
-  - `onBeforeUnmount` - コンポーネントが削除される前にコールされる
-  - `onUnmounted` - コンポーネントの削除が完了した時にコールされる
+- `onBeforeMount` - コンポーネントがマウントされる前にコールされる
+- `onMounted` - コンポーネントがレンダリングされた後にコールされる
+- `onBeforeUpdate` - コンポーネント更新される前にコールされる
+- `onUpdated` - コンポーネントが更新された後にコールされる
+- `onBeforeUnmount` - コンポーネントが削除される前にコールされる
+- `onUnmounted` - コンポーネントの削除が完了した時にコールされる
 
 例:
 
@@ -848,7 +884,7 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 </my-component>
 ```
 
-すべてのライフサイクルメソッドは `props` と `state` の2つの引数を受け取り、それぞれ `this.props` と `this.state` というコンポーネント属性のエイリアスです。
+すべてのライフサイクルメソッドは `props` と `state` の 2 つの引数を受け取り、それぞれ `this.props` と `this.state` というコンポーネント属性のエイリアスです。
 
 ```html
 <my-component>
@@ -862,7 +898,7 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
       onBeforeMount(props, state) {
         console.assert(this.state === state) // ok!
         console.log(state.message) // Hello there
-      }
+      },
     }
   </script>
 </my-component>
@@ -870,10 +906,10 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 
 ### ヘルパー
 
-どんな Riotjs コンポーネントにも、レンダリングされたテンプレートに含まれる DOM ノードを照会するための2つのヘルパーが用意されています。
+どんな Riotjs コンポーネントにも、レンダリングされたテンプレートに含まれる DOM ノードを照会するための 2 つのヘルパーが用意されています。
 
- - `component.$(selector: string): HTMLElement` - コンポーネントのマークアップにある1つのノードを返す
- - `component.$$(selector: string): [HTMLElemet]` - コンポーネントのマークアップを含むセレクタに一致するすべての DOM ノードを戻す
+- `component.$(selector: string): HTMLElement` - コンポーネントのマークアップにある 1 つのノードを返す
+- `component.$$(selector: string): [HTMLElemet]` - コンポーネントのマークアップを含むセレクタに一致するすべての DOM ノードを戻す
 
 コンポーネントヘルパーを使用して簡単な DOM クエリを実行できます:
 
@@ -909,12 +945,12 @@ Riot.js はその関数の戻り値が `true` の場合にのみ、コンポー�
 
 Riot.js コンポーネントは [@riotjs/compiler](/ja/compiler) を介して JavaScript にコンパイルされます。ただし、あなたの好きな任意のレンダリングエンジンを使用して手動でビルドすることもできます。
 
-#### コンポーネントシェルインターフェイス
+#### コンポーネントラッパーインターフェイス
 
+Riot.js コンパイラは、単に [コンポーネントオブジェクト](#コンポーネントインターフェイス) を作成するために、Riot によって内部的に変換されるラッパーオブジェクトを作成する。このラッパーオブジェクトを手動で作成する場合は、まずそのインターフェイスを理解する必要があります:
 
-Riot.js コンパイラは、単に [コンポーネントオブジェクト](#コンポーネントインターフェイス) を作成するために、Riot によって内部的に変換されるシェルオブジェクトを作成する。このシェルオブジェクトを手動で作成する場合は、まずそのインターフェイスを理解する必要があります:
 ```ts
-interface RiotComponentShell<P = object, S = object> {
+interface RiotComponentWrapper<RiotComponent> {
   readonly css?: string
   readonly exports?: () => RiotComponentExport<P, S>|object
   readonly name?: string
@@ -922,7 +958,7 @@ interface RiotComponentShell<P = object, S = object> {
 }
 ```
 
-`RiotComponentShell` オブジェクトは4つのプロパティで構成されています:
+`RiotComponentWrapper` オブジェクトは 4 つのプロパティで構成されています:
 
 - `css` - コンポーネントの CSS の文字列
 - `exports` - コンポーネントのパブリック API `export default`
@@ -937,7 +973,6 @@ interface RiotComponentShell<P = object, S = object> {
 interface RiotComponentTemplate {
   update(scope: object): RiotComponentTemplate;
   mount(element: HTMLElement, scope: object): RiotComponentTemplate;
-  createDOM(element: HTMLElement): RiotComponentTemplate;
   unmount(scope: object): RiotComponentTemplate;
   clone(): RiotComponentTemplate;
 }
@@ -947,8 +982,7 @@ interface RiotComponentTemplate {
 
 - `update` - メソッド: コンポーネントデータを受け取り、テンプレートの更新に使用する必要がある
 - `mount` - メソッド: コンポーネントテンプレートを DOM ノードと接続するために使用する必要がある
-- `createDOM` - ファクトリ関数: テンプレート DOM の構造を一度だけ作成する必要がある場合もある
-- `unmount` -  メソッド: コンポーネントDOMをクリーンアップする
+- `unmount` - メソッド: コンポーネント DOM をクリーンアップする
 - `clone` - メソッド: 複数のインスタンスを操作するためにオリジナルのテンプレートオブジェクトのクローンを作成する必要がある場合もある
 
 #### 例
@@ -1024,7 +1058,7 @@ riot.register('my-component', {
 
 次のように、テンプレートなしで "ラッパータグ" を作成することもできます:
 
-``` js
+```js
 riot.register('my-component', {
   name: 'my-component',
   exports: {
@@ -1033,7 +1067,6 @@ riot.register('my-component', {
     }
   }
 })
-
 ```
 
 この場合、`my-component` という名前のタグをマウントすると、Riot はコンポーネントのマークアップを解析せずにそのまま置いておくでしょう:

@@ -107,6 +107,28 @@ import MyTag from './path/to/tags/my-tag.riot'
 component(MyTag)(document.getElementById('root'))
 ```
 
+### TypeScript サポート
+
+Riot.js コンパイラは typescript の構文をサポートします。
+コンポーネントの API や式の型チェックを有効にしたい場合は、以下のように `RiotComponent` インターフェイスをエクスポートします:
+
+```html
+<my-component>
+  <!-- lang="ts" はオプションで、最終的には IDE のコードハイライトのためだけに必要であることに注意してください -->
+  <script lang="ts">
+    import { RiotComponent } from 'riot'
+
+    export interface MyComonent extends RiotComponent<MyComponentProps, MyComponentState> {
+      /* コンポーネントのカスタムメソッドやプロパティを追加 */
+    }
+  </script>
+</my-component>
+```
+
+コンポーネントの型を強化したい場合は [`riot.withTypes`](/api/#riotwithtypes) メソッドもチェックすると良いでしょう。
+
+プロジェクトの config ファイルをセットアップする際には、Riot.js の [typescript の例](https://github.com/riot/examples/tree/gh-pages/typescript) を参考にすると良いでしょう。
+
 ### Node によるコンパイル
 
 ```javascript
@@ -272,7 +294,7 @@ riot app.js -o dist/app.js
 import { registerPreprocessor } from '@riotjs/compiler'
 import pug from 'pug'
 import sass from 'node-sass'
-import ts from 'typescript'
+import babel from '@babel/core'
 
 registerPreprocessor('template', 'pug', function(code, { options }) {
   const { file } = options
@@ -301,20 +323,12 @@ registerPreprocessor('css', 'sass', function(code, { options }) {
 })
 
 
-registerPreprocessor('javascript', 'ts', function(code, { options }) {
+registerPreprocessor('javascript', 'babel', function(code, { options }) {
   const { file } = options
 
-  const result = ts.transpileModule(code, {
-    fileName: file,
-    compilerOptions: {
-      module: ts.ModuleKind.ESNext
-    }
+  return babel.transform(code, {
+    sourceFileName: file
   })
-
-  return {
-    code: result.outputText,
-    map: null
-  }
 })
 ```
 

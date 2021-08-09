@@ -1,16 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
+  {% include head.html %}
 
-{% include head.html %}
-
-<body id="{{ page.id }}" class="{{ page.class }}">
-  {% include theme_switcher.html %}
-  <main class="container">
-    {% include ja/hero.html %}
-    {{ content }}
-  </main>
-  {% include ja/banner.html %}
-  {% include ja/footer.html %}
-  {% include scripts.html %}
-</body>
+  <body id="{{ page.id }}" class="{{ page.class }}">
+    {% include theme_switcher.html %}
+    <main class="container">{% include ja/hero.html %} {{ content }}</main>
+    {% include ja/footer.html %} {% include scripts.html %}
+  </body>
 </html>

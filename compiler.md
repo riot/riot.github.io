@@ -107,9 +107,9 @@ import MyTag from './path/to/tags/my-tag.riot'
 component(MyTag)(document.getElementById('root'))
 ```
 
-### Typescript support
+### TypeScript support
 
-The Riot.js compiler supports typescript syntax out of the box. 
+The Riot.js compiler supports typescript syntax out of the box.
 If you want to enable the type checking for your component API and expressions you will export its `RiotComponent` interface as it follows:
 
 ```html
@@ -117,7 +117,7 @@ If you want to enable the type checking for your component API and expressions y
   <!-- notice that lang="ts" is optional and eventually needed just for your IDE code highlighting -->
   <script lang="ts">
     import { RiotComponent } from 'riot'
-    
+
     export interface MyComonent extends RiotComponent<MyComponentProps, MyComponentState> {
       /* additional component custom methods and properties */
     }
@@ -125,7 +125,7 @@ If you want to enable the type checking for your component API and expressions y
 </my-component>
 ```
 
-If you want to enhance your component types you might want to check also the [`riot.withTypes`](/api/#riotwithtypes) method 
+If you want to enhance your component types you might want to check also the [`riot.withTypes`](/api/#riotwithtypes) method
 
 You might want to check the Riot.js [typescript example](https://github.com/riot/examples/tree/gh-pages/typescript) to setup your project config files.
 

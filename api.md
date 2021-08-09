@@ -22,7 +22,7 @@ description: Framework API, methods and properties
 
 Examples:
 
-``` js
+```js
 // selects and mounts all <pricing> tags on the page
 const components = riot.mount('pricing')
 
@@ -38,7 +38,7 @@ const components = riot.mount('#root', api, 'app')
 
 Note: users of [in-browser compilation]({{ '/compiler/#in-browser-compilation' | prepend:site.baseurl }}) will need to wait for the compilation of components before calling the `riot.mount` method.
 
-```javascript
+```js
 (async function main() {
   await riot.compile()
 
@@ -48,7 +48,7 @@ Note: users of [in-browser compilation]({{ '/compiler/#in-browser-compilation' |
 
 The `props` argument can be also a function in order to avoid sharing the same object across several tag instances ([see riot/2613](https://github.com/riot/riot/issues/2613)).
 
-``` js
+```js
 riot.mount('my-component', () => ({
   custom: 'option'
 }))
@@ -260,7 +260,7 @@ The `PureComponentFactoryFunction` should always return an object containing the
 </lit-element>
 ```
 
-### riot.withTypes 
+### riot.withTypes
 
 `riot.withTypes(object | function | class): RiotComponent`
 
@@ -272,18 +272,18 @@ It might allow code autocompletion and adds the proper Riot.js types to the comp
   <h1>
     { props.title }
   </h1>
-  
+
   <p if={ state.isReady }>
     Hello
   </p>
 
   <script lang="ts">
     import {RiotComponent, withTypes} from 'riot'
-    
+
     interface MyComponentProps {
       title: string
     }
-    
+
     interface MyComponentState {
       isReady: boolean
     }
@@ -304,7 +304,7 @@ It might allow code autocompletion and adds the proper Riot.js types to the comp
 </my-component>
 ```
 
-If you want to know more about Typescript compilation you might check [the Riot.js typescript support](/compiler/#typescript-support)
+If you want to know more about TypeScript compilation you might check [the Riot.js typescript support](/compiler/#typescript-support)
 
 ### riot.version
 
@@ -386,7 +386,7 @@ export interface RiotComponent<Props = any, State = any> {
 You can use any of the component properties in both the HTML and JavaScript code. For example:
 
 
-``` html
+```html
 <my-component>
   <h3>{ props.title }</h3>
 
@@ -402,7 +402,7 @@ You can use any of the component properties in both the HTML and JavaScript code
 
 You can freely set any property to the component scope and it will be available in the HTML expressions. For example:
 
-``` html
+```html
 <my-component>
   <h3>{ title }</h3>
 
@@ -422,7 +422,7 @@ Note: if you have some globals, you can also use these references in both the HT
 window.someGlobalVariable = 'Hello!'
 ```
 
-``` html
+```html
 <my-component>
   <h3>{ window.someGlobalVariable }</h3>
 
@@ -456,13 +456,13 @@ If you want to unmount a tag without removing the root node you need to pass `tr
 
 Unmount the tag and remove its template from the DOM:
 
-``` js
+```js
 myComponent.unmount()
 ```
 
 Unmount the component and keep the root node in the DOM:
 
-``` js
+```js
 myComponent.unmount(true)
 ```
 
@@ -586,7 +586,7 @@ The `components` property should be a static attribute of your component export.
 
 Updates the component `state` object and re-render all of its expressions. This method can usually be called every time an event handler is dispatched when the user interacts with the application.
 
-``` html
+```html
 <my-component>
   <button onclick={ onClick }>{ state.message }</button>
 
@@ -607,7 +607,7 @@ Updates the component `state` object and re-render all of its expressions. This 
 
 You can also call this method manually whenever you need to update your component's UI. This typically happens after some non-UI related event: after `setTimeout`, AJAX call, or on some server event. For example:
 
-``` html
+```html
 <my-component>
 
   <input name="username" onblur={ validate }>
@@ -637,7 +637,7 @@ On above example the error message is displayed on the UI after the `update()` m
 If you want to have more control over your tag's DOM updates you can rely on the return value of the `shouldUpdate` function.
 Riot.js will update your component only if that function returns `true`.
 
-``` html
+```html
 <my-component>
   <button onclick={ onClick }>{ state.message }</button>
 
@@ -658,15 +658,13 @@ Riot.js will update your component only if that function returns `true`.
         return true
       }
     }
-
-
   </script>
 </my-component>
 ```
 
 The `shouldUpdate` method will always receive 2 arguments: the first one contains the new component properties and the second argument contains the current ones.
 
-``` html
+```html
 <my-component>
   <child-tag message={ state.message }></child-tag>
   <button onclick={ onClick }>Say goodbye</button>
@@ -706,7 +704,7 @@ The `shouldUpdate` method will always receive 2 arguments: the first one contain
 The `<slot>` tag is a special Riot.js core feature that allows you to inject and compile the content of any custom component inside its template in runtime.
 For example, using the following riot tag `my-post`:
 
-``` html
+```html
 <my-post>
   <h1>{ props.title }</h1>
   <p><slot/></p>
@@ -715,7 +713,7 @@ For example, using the following riot tag `my-post`:
 
 any time you include the `<my-post>` tag in your app
 
-``` html
+```html
 <my-post title="What a great title">
   My beautiful post is <b>just awesome</b>
 </my-post>
@@ -723,7 +721,7 @@ any time you include the `<my-post>` tag in your app
 
 once it's mounted, it will be rendered in this way:
 
-``` html
+```html
 <my-post>
   <h1>What a great title</h1>
   <p>My beautiful post is <b>just awesome</b></p>
@@ -732,7 +730,7 @@ once it's mounted, it will be rendered in this way:
 
 The expressions in slot tags by default will not have access to the properties of the components in which they are injected unless you are passing them via slot attribute, as we will learn in the [Higher Order Components section]({{ '/api/#higher-order-components' | prepend:site.baseurl }}).
 
-``` html
+```html
 <!-- This tag just inherits the yielded DOM -->
 <child-tag>
   <slot/>
@@ -766,7 +764,7 @@ The `<slot>` tag provides also a mechanism to inject HTML in specific sections o
 
 For example, using the following Riot tag `my-other-post`:
 
-``` html
+```html
 <my-other-post>
   <article>
     <h1>{ props.title }</h1>
@@ -780,7 +778,7 @@ For example, using the following Riot tag `my-other-post`:
 
 any time you include the `<my-other-post>` tag in your app
 
-``` html
+```html
 <my-other-post title="What a great title">
   <span slot="summary">
     My beautiful post is just awesome
@@ -793,7 +791,7 @@ any time you include the `<my-other-post>` tag in your app
 
 once it's mounted, it will be rendered in this way:
 
-``` html
+```html
 <my-other-post>
   <article>
     <h1>What a great title</h1>
@@ -809,7 +807,7 @@ once it's mounted, it will be rendered in this way:
 
 If you don't want to add a root html node for your slots, you can use also a `<template>` tag. In this case Riot.js will render only its content in the proper slot position:
 
-``` html
+```html
 <my-other-post title="What a great title">
   <template slot="summary">
     My beautiful post is just awesome
@@ -1060,7 +1058,7 @@ riot.register('my-component', {
 
 You can also create "wrapper tags" without any template as follows:
 
-``` js
+```js
 riot.register('my-component', {
   name: 'my-component',
   exports: {
@@ -1069,7 +1067,6 @@ riot.register('my-component', {
     }
   }
 })
-
 ```
 
 In this case, any time you will mount a tag named `my-component` Riot will leave the component markup as it is without parsing it:

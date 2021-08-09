@@ -106,7 +106,7 @@ Riot.js tags are [compiled]({{ '/compiler/' | prepend:site.baseurl }}) to pure J
 
 
 #### Tooling friendly
-- Create components with Typescript, Rust, Javascript Next or [any pre-processor](https://riot.js.org/compiler/#pre-processors) you want.
+- Create components with TypeScript, Rust, JavaScript Next or [any pre-processor](https://riot.js.org/compiler/#pre-processors) you want.
 - Build with [@riotjs/cli](https://github.com/riot/cli), [webpack](https://github.com/riot/webpack-loader), [Rollup](https://github.com/riot/rollup-plugin-riot), [Parcel](https://github.com/riot/parcel-plugin-riot), [Browserify](https://github.com/riot/riotify).
 - Test with whatever you like, you can [load your Riot tags directly in node](https://github.com/riot/ssr#render---to-render-only-markup)
 
