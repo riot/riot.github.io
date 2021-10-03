@@ -175,7 +175,7 @@ uninstall(uid)
 `riot.register(name: string, component: RiotComponentWrapper): Map`
 
 1. `name` - コンポーネント名
-2. `component` - [コンポーネントラッパーインターフェイス](#コンポーネントラッパーインターフェイス)
+2. `component` - [コンポーネントラッパーオブジェクト](#コンポーネントラッパーインターフェイス)
 
 <strong>@returns: </strong> すべての登録済みコンポーネントのファクトリ関数を含む JavaScript `Map`
 
