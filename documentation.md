@@ -1124,7 +1124,7 @@ You can use a [getProps](https://www.npmjs.com/package/riot-pure-props) helper f
 Riot [supports server-side rendering](https://github.com/riot/ssr) with Node.js. You can `require` components and render them:
 
 ```js
-const render = require('@riotjs/ssr')
+const { render } = require('@riotjs/ssr')
 const Timer = require('timer.riot')
 
 const html = render('timer', Timer, { start: 42 })
