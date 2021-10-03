@@ -82,7 +82,7 @@ riot.unmount('user', true)
 
 `riot.component(component: RiotComponentWrapper): function`
 
-1. `component` - [コンポーネントラッパー](#コンポーネントラッパーインターフェイス)
+1. `component` - [コンポーネントラッパーオブジェクト](#コンポーネントラッパーインターフェイス)
 
 <strong>@returns: </strong>[コンポーネントオブジェクト](#component-object) 生成のための関数
 
@@ -175,7 +175,7 @@ uninstall(uid)
 `riot.register(name: string, component: RiotComponentWrapper): Map`
 
 1. `name` - コンポーネント名
-2. `component` - [コンポーネントシェルオブジェクト](#component-shell-interface)
+2. `component` - [コンポーネントラッパーインターフェイス](#コンポーネントラッパーインターフェイス)
 
 <strong>@returns: </strong> すべての登録済みコンポーネントのファクトリ関数を含む JavaScript `Map`
 
