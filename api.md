@@ -308,7 +308,7 @@ If you want to know more about TypeScript compilation you might check [the Riot.
 
 ### riot.version
 
-`riot.version(): string`
+`riot.version: string`
 
 <strong>@returns: </strong> the current Riot version in use as a string
 

@@ -308,7 +308,7 @@ register('test-component', TestComponent2)
 
 ### riot.version
 
-`riot.version(): string`
+`riot.version: string`
 
 <strong>@returns: </strong> 現在使用しているの Riot のバージョンを文字列として返す
 
