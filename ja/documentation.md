@@ -1124,7 +1124,7 @@ riot.mount('my-list')
 Riot は Node.js を使用して[サーバーサイドレンダリングをサポート](https://github.com/riot/ssr) しています。コンポーネントを `require` し、それらをレンダリングできます:
 
 ```js
-const render = require('@riotjs/ssr')
+const { render } = require('@riotjs/ssr')
 const Timer = require('timer.riot')
 
 const html = render('timer', Timer, { start: 42 })
