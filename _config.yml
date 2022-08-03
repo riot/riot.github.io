@@ -36,5 +36,5 @@ plugins:
 # About/contact
 author:
   name:              Riot
-  url:               http://riot.js.org
+  url:               https://riot.js.org
   email:             hello.riotjs@gmail.com
