@@ -96,7 +96,7 @@ Riot.js tags are [compiled]({{ '/compiler/' | prepend:site.baseurl }}) to pure J
 
 
 #### Close to standards
-- Future proof thanks to the JavaScript module syntax.
+- Future-proof thanks to the JavaScript module syntax.
 - The rendered DOM can be freely manipulated with other tools
 - Web Components like API
 - No need for external polyfills or additional libraries
@@ -178,7 +178,7 @@ The Riot.js ecosystem is completely modular. It's designed to let you pick only 
 
 ## Conclusion
 
-Riot.js is Web Components for everyone. Its API is heavily inspired by Vue.js but it contains just the bare minimum to build a modern frontend project. It's intuitive to use and it weighs almost nothing. It works today. No reinventing the wheel, but rather taking the good parts of what's there and making the simplest tool possible.
+Riot.js is Web Components for everyone. Its API contains just the bare minimum to build a modern frontend project. It's intuitive to use and it weighs almost nothing. It works today. No reinventing the wheel, but rather taking the good parts of what's there and making the simplest tool possible.
 
 The Riot.js design was driven by [*The Zen of Python, by Tim Peters*](https://en.wikipedia.org/wiki/Zen_of_Python) philosophy, that's our mantra:
 

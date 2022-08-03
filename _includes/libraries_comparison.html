@@ -13,6 +13,10 @@
   <progress max="1" value="{{ site.data.libraries.vue.size | divided_by: site.data.libraries.angular.size }}"></progress>
     </li>
     <li>
+      <small><em>solid</em> – {{ site.data.libraries.solid.size }}KB (gzip)</small>
+      <progress class="solid" max="1" value="{{ site.data.libraries.solid.size | divided_by: site.data.libraries.angular.size }}"></progress>
+    </li>
+    <li>
       <small><em>riot</em> – {{ site.data.libraries.riot.size }}KB (gzip)</small>
       <progress class="riot" max="1" value="{{ site.data.libraries.riot.size | divided_by: site.data.libraries.angular.size }}"></progress>
     </li>

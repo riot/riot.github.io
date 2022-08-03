@@ -40,6 +40,14 @@
       border-radius: 2px;
     }
 
+    &.solid {
+      color: $yellow;
+
+      @include bar() {
+        background: $yellow;
+      }
+    }
+
     &.riot {
       color: $green;
 
