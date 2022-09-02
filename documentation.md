@@ -723,7 +723,10 @@ Result:
 See [API docs]({{ '/api/#slots' | prepend:site.baseurl }}) for `slots`.
 
 <aside class="note note--info">
-Slots only work in compiled components. All of the inner HTML of the components placed directly in your page DOM will be ignored.
+If you are using the `Riot.js` bundle, slots will work only in pre-compiled components.<br/>
+All of the inner HTML of the components placed directly in your page DOM will be ignored.<br/><br/>
+However with Riot.js >= 7, you might consider using the `riot+compiler.js` bundle to render the slots
+placed directly in your raw markup (<a target="_blank" href="https://github.com/riot/riot/discussions/2917">see also runtime slots</a>).
 </aside>
 
 <aside class="note note--warning">

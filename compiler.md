@@ -22,7 +22,7 @@ export default {
 
 ## In-browser compilation
 
-The `riot+compiler.js` bundle lets you compile and execute Riot tags directly in your browser for quick prototypes and tests.
+The `riot+compiler.js` (~90kb Gzip) bundle lets you compile and execute Riot tags directly in your browser.
 You can load Riot tags into your browser by setting a `type="riot"` attribute on your script tags.
 For example:
 
