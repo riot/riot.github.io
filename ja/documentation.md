@@ -173,7 +173,7 @@ Riot コンポーネントはレイアウト（HTML）とロジック（JavaScri
     # coffeescript ロジックをここに書く
   </script>
 </my-component>
-````
+```
 
 コンポーネントは選択したプリプロセッサによりコンパイルされます。ただし、プリプロセッサが[事前に登録]({{ '/ja/compiler#プリプロセッサ' | prepend:site.baseurl }})されている場合に限ります。
 
@@ -723,7 +723,9 @@ Riot の式では、HTML フォーマットなしのテキスト値のみをレ�
 [API ドキュメント]({{ '/ja/api/#スロット' | prepend:site.baseurl }}) の `slots` を参照ください。
 
 <aside class="note note--info">
-スロットはコンパイルされたコンポーネントでのみ動作し、ページ DOM に直接配置されたコンポーネントのすべての内部 HTML は無視されます。
+`Riot.js` バンドルを使う場合、スロットはプリコンパイルされたコンポーネントでのみ動作するでしょう。<br/>
+ページ DOM に直接配置されたコンポーネントのすべての内部 HTML は無視されます。<br/><br/>
+しかし Riot.js 7 以上では、生のマークアップに直接置かれたスロットをレンダリングするために、 `riot+compiler.js` バンドルを使うことを検討するかもしれません（<a target="_blank" href="https://github.com/riot/riot/discussions/2917">ランタイムスロットもご参照ください</a>）。
 </aside>
 
 <aside class="note note--warning">
