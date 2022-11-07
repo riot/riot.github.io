@@ -71,7 +71,7 @@ const mountApp = riot.component(App)
 
 const app = mountApp(
   document.getElementById('root'),
-  { message: 'Hello World' }
+  { message: 'Hello World', items: [] }
 )
 ```
 
