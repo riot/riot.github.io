@@ -293,7 +293,7 @@ The `@riotjs/compiler` gives the possibility to register your preprocessors:
 ```js
 import { registerPreprocessor } from '@riotjs/compiler'
 import pug from 'pug'
-import sass from 'node-sass'
+import sass from 'sass'
 import babel from '@babel/core'
 
 registerPreprocessor('template', 'pug', function(code, { options }) {
@@ -309,15 +309,10 @@ registerPreprocessor('template', 'pug', function(code, { options }) {
 
 registerPreprocessor('css', 'sass', function(code, { options }) {
   const { file } = options
-
   console.log('Compile the sass code in', file)
 
-  const {css} = sass.renderSync({
-    data: code
-  })
-
   return {
-    code: css.toString(),
+    code: sass.compileString(code, {syntax: 'indented'}).css,
     map: null
   }
 })
