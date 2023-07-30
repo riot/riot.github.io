@@ -513,22 +513,46 @@ The goal is to keep the expressions small so your HTML stays as clean as possibl
 </my-component>
 ```
 
+### Text attributes
+
+Elements attributes can be set using expressions. <br/>
+Only `text`, `boolean` and `number` expression values can be rendered:<br/>
+
+`<p class={'green'}>` becomes `<p class='green'>` <br/>
+`<li tabindex={-1}>` becomes `<li tabindex='-1'>` <br/>
+`<div draggable={true}>` becomes `<div draggable='true'>` <br/>
+`<div draggable={false}>` becomes `<div draggable='false'>` <br/>
+
+If the expression value can not be rendered the attribute will be skipped:<br/>
+
+`<p class={null}>` becomes `<p>` <br/>
+`<li tabindex={undefined}>` becomes `<li>` <br/>
+`<div draggable={new Array()}>` becomes `<div>` <br/>
+
+
 ### Boolean attributes
+
+W3C states that a boolean property is true if the attribute is present — even if the value is empty or false.
+Riot.js automatically fixes this behaviour when using expressions.
 
 Boolean attributes (checked, selected, etc.) are ignored when the expression value is falsy:
 
-`<input checked={ null }>` becomes `<input>`.
+`<input checked={ null }>` becomes `<input>` <br/>
+`<input checked={ '' }>` becomes `<input>` <br/>
+`<input checked={ false }>` becomes `<input>` <br/>
 
-W3C states that a boolean property is true if the attribute is present — even if the value is empty or `false`.
+In case the expression is truthy they will be correctly rendered according to the specs:
+
+`<input checked={ true }>` becomes `<input checked='checked'>` <br/>
+`<input checked={ 1 }>` becomes `<input checked='checked'>` <br/>
+`<input checked={ 'is-valid' }>` becomes `<input checked='checked'>` <br/>
+
 
 The following expression does not work:
 
 ```html
 <input type="checkbox" { true ? 'checked' : ''}>
 ```
-
-since only attribute and nested text expressions are valid. Riot automatically detects all the valid HTML boolean attributes.
-
 
 ### Object spread attribute
 
