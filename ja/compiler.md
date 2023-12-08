@@ -229,8 +229,8 @@ export default {
     "build": "npx riot -c riot.config src"
   },
   "devDependencies": {
-    "@riotjs/cli": "^4.0.0",
-    "@riotjs/compiler": "^4.0.0",
+    "@riotjs/cli": "^9.0.0",
+    "@riotjs/compiler": "^9.0.0",
     "pug": "^2.0.3"
   }
 }
