@@ -50,3 +50,20 @@ if (sidebar) syncSidebar(sidebar)
 if (docSearch) initSearch()
 if (themeToggle) handleThemeSwitcher(Boolean(isDark))
 if (isDark) updateTheme(isDark)
+
+const isCute = () => {
+  if(!location.search) return null
+  const params = location.search.match(/^\?(.*)$/)[1].split('&')
+  let object = {}
+  params.forEach(param => {
+    const paramArray = param.split('=')
+    if(paramArray.length > 1) object[paramArray[0]] = paramArray[1]
+  })
+  return object.cute === 'true'
+}
+
+if(isCute()){
+  document.querySelector('[src="/img/logo/square.svg"]')?.setAttribute('src', '/img/logo/riot-kawaii-logo.svg')
+  document.querySelector('[src="/img/logo/riot-kawaii-logo.svg"]')?.setAttribute('style', `width: 100%`)
+  document.querySelectorAll('[src="/img/logo/riot-logo.svg"]')?.forEach(element => element.setAttribute('src', '/img/logo/riot-kawaii-logo.svg'))
+}
