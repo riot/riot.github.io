@@ -533,7 +533,7 @@ If the expression value can not be rendered the attribute will be skipped:<br/>
 ### Boolean attributes
 
 W3C states that a boolean property is true if the attribute is present — even if the value is empty or false.
-Riot.js automatically fixes this behaviour when using expressions.
+Riot.js automatically fixes this behavior when using expressions.
 
 Boolean attributes (checked, selected, etc.) are ignored when the expression value is falsy:
 

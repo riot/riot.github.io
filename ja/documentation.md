@@ -513,13 +513,40 @@ HTMLは、中カッコで囲まれた式と混在させることができます:
 </my-component>
 ```
 
+### テキスト属性
+
+要素の属性は式を使用して設定できます。<br/>
+レンダリングできるのは `text`、`boolean`、`number` の値のみです:<br/>
+
+`<p class={'green'}>` は `<p class='green'>` となります。<br/>
+`<li tabindex={-1}>` は `<li tabindex='-1'>` となります。<br/>
+`<div draggable={true}>` は `<div draggable='true'>` となります。<br/>
+`<div draggable={false}>` は `<div draggable=となります。'false'>` <br/>
+
+表現したい値がレンダリングできない場合、属性はスキップされます：:<br/>
+
+`<p class={null}>` は `<p>` となります。<br/>
+`<li tabindex={undefined}>` は `<li>` となります。<br/>
+`<div draggable={new Array()}>` は `<div>` となります。<br/>
+
+
 ### Boolean 属性
+
+W3C では、属性が存在していれば（その値が空でも `false` でも）boolean 型のプロパティは true であると記述しています。
+Riot.jsは、式を使用するときに、この動作を自動的に修正します。
 
 式の値が falsy の場合、Boolean 属性（checked、selected …など）は無視されます:
 
-`<input checked={ null }>` は `<input>` となります。
+`<input checked={ null }>` は `<input>` となります。<br />
+`<input checked={ '' }>` は `<input>` となります。<br/>
+`<input checked={ false }>` は `<input>` となります。<br/>
 
-W3C では、属性が存在していれば（その値が `false`、空であっても）boolean 型のプロパティは true であると記述しています。
+式が真な値である場合、それらは仕様に従って正しくレンダリングされます。:
+
+`<input checked={ true }>` は `<input checked='checked'>` となります。<br/>
+`<input checked={ 1 }>` は `<input checked='checked'>` となります。<br/>
+`<input checked={ 'is-valid' }>` は `<input checked='checked'>` となります。<br/>
+
 
 以下の式は動作しません:
 
@@ -527,12 +554,9 @@ W3C では、属性が存在していれば（その値が `false`、空であ�
 <input type="checkbox" { true ? 'checked' : ''}>
 ```
 
-属性式とネストされたテキスト式のみが有効です。Riot は有効な html の boolean 属性をすべて自動的に検出します。
-
-
 ### スプレッド属性のオブジェクト
 
- 複数の属性を定義するために、スプレッド式のオブジェクトを使うこともできます。例:
+複数の属性を定義するために、スプレッド式のオブジェクトを使うこともできます。例:
 
 ```html
 <my-component>
@@ -725,7 +749,8 @@ Riot の式では、HTML フォーマットなしのテキスト値のみをレ�
 <aside class="note note--info">
 `Riot.js` バンドルを使う場合、スロットはプリコンパイルされたコンポーネントでのみ動作するでしょう。<br/>
 ページ DOM に直接配置されたコンポーネントのすべての内部 HTML は無視されます。<br/><br/>
-しかし Riot.js 7 以上では、生のマークアップに直接置かれたスロットをレンダリングするために、 `riot+compiler.js` バンドルを使うことを検討するかもしれません（<a target="_blank" href="https://github.com/riot/riot/discussions/2917">ランタイムスロットもご参照ください</a>）。
+しかし Riot.js 7 以上では、生のマークアップに直接置かれたスロットをレンダリングするために、
+`riot+compiler.js` バンドルを使うことを検討するかもしれません（<a target="_blank" href="https://github.com/riot/riot/discussions/2917">ランタイムスロットもご参照ください</a>）。
 </aside>
 
 <aside class="note note--warning">
