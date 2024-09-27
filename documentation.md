@@ -282,6 +282,25 @@ Riot gives you access to your component DOM elements via `this.$` and `this.$$` 
 </my-component>
 ```
 
+Alternatively you can use also the `ref` attribute to get a reference to a DOM element.
+
+{% include version_badge.html version=">=9.4.0" %}
+
+```html
+<my-component>
+  <p ref={ paragraphRef }>hello there</p>
+  <script>
+    export default {
+      paragraphRef(paragraph) {
+        // paragraph here is the DOM element when the component is mounted otherwise it will be null
+        paragraph.style.color = 'red'
+      }
+    }
+  </script>
+</my-component>
+```
+The `ref` attribute is a function that receives the DOM element as an argument. It is called when the Node is rendered for the first time or when it is removed. In the latter case, it will receive `null` as the argument.
+
 
 ### How to use jQuery, Zepto, querySelector, etc.
 
