@@ -1,8 +1,8 @@
-version:             9
-repo:                https://github.com/riot/riot
-twitter_account:     https://twitter.com/riotjs_
-showcase:            /made-with-riot/
-legacy:              https://v3.riotjs.now.sh
-discord:             https://discord.gg/PagXe5Y
-online_compiler:     https://riot.js.org/online-compiler/
-examples:            https://github.com/riot/examples
+version: 9
+repo: https://github.com/riot/riot
+bluesky: https://bsky.app/profile/riot.js.org
+showcase: /made-with-riot/
+legacy: https://v3.riotjs.now.sh
+discord: https://discord.gg/PagXe5Y
+online_compiler: https://riot.js.org/online-compiler/
+examples: https://github.com/riot/examples
