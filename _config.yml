@@ -1,33 +1,32 @@
 # Permalinks
 #
-permalink:           pretty
+permalink: pretty
 
 # Setup
-title:               Riot.js
-tagline:             Simple and elegant component-based UI library
-url:                 http://riot.js.org
-baseurl:             ""
+title: Riot.js
+tagline: Simple and elegant component-based UI library
+url: http://riot.js.org
+baseurl: ""
 
 # Markdown
-markdown:           kramdown
-highlighter:        rouge
-extensions:         [fenced_code_blocks]
+markdown: kramdown
+highlighter: rouge
+extensions: [fenced_code_blocks]
 redcarpet:
-  extensions:       [with_toc_data,autolink,smart]
+  extensions: [with_toc_data, autolink, smart]
 
 # Handling Reading
-safe:               false
-include:            [".htaccess"]
-exclude:            ["*.tag"]
-encoding:           "utf-8"
-markdown_ext:       "markdown,md"
+safe: false
+include: [".well-known"]
+encoding: "utf-8"
+markdown_ext: "markdown,md"
 
 # Assets
 #
 # We specify the directory for Jekyll so we can use @imports.
 sass:
-  sass_dir:         style
-  style:            :compressed
+  sass_dir: style
+  style: :compressed
 
 plugins:
   - jemoji
@@ -35,6 +34,6 @@ plugins:
 
 # About/contact
 author:
-  name:              Riot
-  url:               https://riot.js.org
-  email:             hello.riotjs@gmail.com
+  name: Riot
+  url: https://riot.js.org
+  email: hello.riotjs@gmail.com
