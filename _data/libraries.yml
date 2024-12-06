@@ -5,13 +5,13 @@ solid:
   size: 8
 
 riot:
-  size: 5.8
+  size: 6 
 
 preact:
-  size: 4.3
+  size: 4.7
 
 vue:
-  size: 34.7
+  size: 45 
 
 react:
   size: 44.5
