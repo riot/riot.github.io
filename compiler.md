@@ -79,6 +79,8 @@ riot.inject(code, 'my-tag', './my-tag.html')
 riot.mount('my-tag')
 ```
 
+Note that `.innerHTML` will turn ampersands `&` within your template to HTML entities `&amp` which will break the compiler. To avoid that for tags with attribute expressions like `<div class="{ condition1 && condition2 ? 'someclass': '' }">...</div>` you can simply replace with `el.innerHTML.replace(/&amp;/g, '&')`.
+
 ## Pre-compilation
 
 The Compilation phase is asynchronous and it will not block your application rendering. However you should use the browser compilation only for prototyping or for quick experiments.
