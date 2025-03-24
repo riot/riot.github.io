@@ -817,7 +817,7 @@ So you can also call a function dynamically from a property value like this:
 <button onclick={ this[props.myfunc] }>Reset</button>
 ```
 
-Event handlers do not update components so you might combine them with a `this.update()` call:
+Event handlers do not update components, so you might combine them with a `this.update()` call:
 
 ```html
 <login>
@@ -851,7 +851,7 @@ You can use [native event listener options](https://developer.mozilla.org/en-US/
 
 ## Input Fields
 
-The input field values can be simply updated using the `value={newValue}` expression. Riot.js normalizes this behavior for input, select and textarea elements.
+The input field values can be simply updated using the `value={newValue}` expression. Riot.js normalizes this behavior for input, select and textarea elements. User input also affects the value of the input field, but the input value is not synchronized unless `newValue` is updated; this behavior is unlike other UI libraries that prioritize implicitly synchronizing the expression with the input value while discarding user input.
 
 ### Note about Textarea tags and value
 
