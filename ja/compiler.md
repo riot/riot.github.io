@@ -1,6 +1,6 @@
 ---
-layout: ja/detail
 title: コンパイラ
+layout: ja/detail
 ---
 
 ## 概要
@@ -293,7 +293,7 @@ riot app.js -o dist/app.js
 ```js
 import { registerPreprocessor } from '@riotjs/compiler'
 import pug from 'pug'
-import sass from 'node-sass'
+import sass from 'sass'
 import babel from '@babel/core'
 
 registerPreprocessor('template', 'pug', function(code, { options }) {
@@ -309,15 +309,10 @@ registerPreprocessor('template', 'pug', function(code, { options }) {
 
 registerPreprocessor('css', 'sass', function(code, { options }) {
   const { file } = options
-
   console.log('sass のコードをコンパイル中', file)
 
-  const {css} = sass.renderSync({
-    data: code
-  })
-
   return {
-    code: css.toString(),
+    code: sass.compileString(code, {syntax: 'indented'}).css,
     map: null
   }
 })

@@ -282,6 +282,25 @@ Riot は `this.$` と `this.$$` ヘルパーメソッドを介してコンポー
 </my-component>
 ```
 
+また、DOM 要素の参照を取得するために `ref` 属性を使用することもできます。
+
+{% include version_badge.html version=">=9.4.0" %}
+
+```html
+<my-component>
+  <p ref={ paragraphRef }>hello there</p>
+  <script>
+    export default {
+      paragraphRef(paragraph) {
+        // この paragraph はコンポーネントがマウントされている場合は DOM 要素になり、そうではない場合は null になります
+        paragraph.style.color = 'red'
+      }
+    }
+  </script>
+</my-component>
+```
+`ref` 属性は DOM 要素を引数として受け取る関数です。ノードが初めてレンダリングされるときか，または削除される際に呼ばれます。 後者の場合、引数として `null` を受け取ります。
+
 
 ### jQuery、Zepto、querySelector などの使い方
 
@@ -832,7 +851,7 @@ DOM イベントを処理する関数は "イベントハンドラ" と呼ばれ
 
 ## 入力フィールド
 
-入力フィールドの値は、`value={newValue}` 式を使って簡単に更新できます。Riot.js は、入力、選択、テキストエリア要素に対してこの動作を正規化しています。
+入力フィールドの値は、`value={newValue}` 式を使って簡単に更新できます。Riot.js は、入力、選択、テキストエリア要素に対してこの動作を正規化しています。ユーザーの入力は、入力フィールドの値にも影響しますが、`newValue` が更新されない限り入力値は同期されません。この動作は、ユーザー入力を破棄して式と入力値を暗黙的に同期させることを優先する他のUIライブラリとは異なります。
 
 ### ノートのケース - テキストエリアタグと値
 
