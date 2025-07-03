@@ -79,6 +79,29 @@ riot.inject(code, 'my-tag', './my-tag.html')
 riot.mount('my-tag')
 ```
 
+<aside class="note note--warning">
+Note that `document.getElementById('my-tag').innerHTML` will show ampersands `&` within your template as HTML entities `&amp;`, which will break the compiler. To avoid that for tags with attribute expressions like `<div class="{ condition1 && condition2 ? 'someclass': '' }">...</div>`, you can simply replace with `.innerHTML.replace(/&amp;/g, '&')`.
+</aside>
+
+<aside class="note note--warning">
+:warning: When using in-browser rendering, take extra care to use valid HTML, especially when writing attributes.
+</aside>
+
+For example, the following will not compile correctly because the `onclick` handler is not surrounded in quotes:
+
+```html
+<!-- will not compile correctly when using in-browser compilation -->
+<button onclick={ helloAgain }>Click Me!</button>
+```
+
+Instead, either enclose the attribute value in quotes or avoid spaces:
+
+```html
+<!-- both of these should compile correctly -->
+<button onclick="{ helloAgain }">Click Me!</button>
+<button onclick={helloAgain}>Click Me!</button>
+```
+
 ## Pre-compilation
 
 The Compilation phase is asynchronous and it will not block your application rendering. However you should use the browser compilation only for prototyping or for quick experiments.
