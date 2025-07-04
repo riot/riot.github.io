@@ -80,7 +80,7 @@ riot.mount('my-tag')
 ```
 
 <aside class="note note--warning">
-Note that <code>document.getElementById('my-tag').innerHTML</code> will show ampersands <code>&</code> within your template as HTML entities <code>&amp;</code>, which will break the compiler.
+Note that <code>document.getElementById('my-tag').innerHTML</code> will show ampersands <code>&amp;</code> within your template as HTML entities <code>&amp;amp;</code>, which will break the compiler.
 </aside>
 
 To compile tags with attribute expressions like `<div class="{ condition1 && condition2 ? 'someclass': '' }">...</div>`, you can simply replace with `.innerHTML.replace(/&amp;/g, '&')`.
