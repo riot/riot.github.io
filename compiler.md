@@ -26,7 +26,7 @@ The `riot+compiler.js` (~90kb Gzip) bundle lets you compile and execute Riot tag
 You can load Riot tags into your browser by setting a `type="riot"` attribute on your script tags.
 For example:
 
-``` html
+```html
 <!-- mount point -->
 <my-tag></my-tag>
 
@@ -156,7 +156,7 @@ You might want to check the Riot.js [typescript example](https://github.com/riot
 
 ### Compilation via Node
 
-``` javascript
+```js
 import {compile} from '@riotjs/compiler'
 
 const { code, map } = compile('<p>{hello}</p>', {
@@ -248,7 +248,6 @@ If you want to use custom preprocessors in your project you should install `@rio
 
 
 ```json
-
 {
   "scripts": {
     "build": "npx riot -c riot.config src"
@@ -392,7 +391,6 @@ For the `css` and `javascript` preprocessors you can simply enable them directly
 The Riot.js compiler generates sourcempas out of the code provided by the pre-processors. If your preprocessor will not provide any `map` output the compiler will not output proper sourcemaps.
 
 ```js
-
 import { registerPreprocessor } from '@riotjs/compiler'
 import babel from '@babel/core'
 
@@ -425,7 +423,6 @@ registerPreprocessor('javascript', 'my-js-preprocessor', function(code, { option
     map: null
   }
 })
-
 ```
 
 The JavaScript preprocessors should preserve the code whitelines of the original source code. Otherwise the resulting sourcemap will have a broken offset.

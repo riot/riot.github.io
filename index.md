@@ -15,7 +15,7 @@ So — here's why we need one:
 
 Riot.js brings custom elements to all modern browsers without the use of any polyfill!
 
-``` html
+```html
 <todo>
   <!-- layout -->
   <h1>{ props.title }</h1>
@@ -62,7 +62,7 @@ A custom element glues relevant HTML and JavaScript together forming a reusable 
 
 Custom tags let you build complex views with HTML. Your application might look something like this:
 
-``` html
+```html
 <body>
   <h1>Riot.js application</h1>
 
