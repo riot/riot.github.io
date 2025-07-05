@@ -12,10 +12,10 @@ Riot のコンパイラは Riot タグを JavaScript モジュールに変換す
 ```js
 export default {
   css: `my-tag { color: red; }`, // コンポーネントのcss文字列
-  template: function() {}, // 内部 riot テンプレートファクトリ関数
+  template: function () {}, // 内部 riot テンプレートファクトリ関数
   exports: {}, // コンポーネントイベントとライフサイクルメソッド
-  name: 'my-tag' // コンポーネント id
-}
+  name: 'my-tag', // コンポーネント id
+};
 ```
 
 **ひとつのタグファイルに含まれるタグ定義は、ひとつだけです。**
@@ -38,17 +38,17 @@ export default {
 
 <!-- コンパイルとマウント -->
 <script>
-(async function main() {
-  await riot.compile()
+  (async function main() {
+    await riot.compile();
 
-  riot.mount('my-tag')
-}())
+    riot.mount('my-tag');
+  })();
 </script>
 ```
 
 この場合、 Riot はすべての `export default` 式を内部的に変換し、まだ JavaScript モジュールをサポートしていないブラウザへのサポートをすることに注意してください。
 
-Riot は、 `<script>` を通じてDOMにインクルードされたすべての外部タグを非同期にコンパイルし、 `riot.mount` でそれらを描画することが可能です。
+Riot は、 `<script>` を通じて DOM にインクルードされたすべての外部タグを非同期にコンパイルし、 `riot.mount` でそれらを描画することが可能です。
 
 ブラウザによる Riot スクリプトタグのプリフェッチ機能を抑止し、同じリソースを複数回ロードすることを防ぐため、 `<script>` タグの `src` 属性の代わりに `data-src` 属性を使いたい場合があるかも知れません。 Riot は自動的に、 ajax によってタグをフェッチしてコンパイルします。
 
@@ -68,15 +68,40 @@ Riot.js のコンポーネントは、 `<template>` タグを用いて直接ペ�
 `riot+compiler.js` バンドルは `compileFromString` と `inject` メソッドを公開しており、これらを組み合わせることで、上記のコンポーネントをコンパイルするのに役立ちます:
 
 ```js
-const tagString = document.getElementById('my-tag').innerHTML
+const tagString = document.getElementById('my-tag').innerHTML;
 
 // コンパイルされたコードを得る
-const {code} = riot.compileFromString(tagString)
+const { code } = riot.compileFromString(tagString);
 
 // riot コンポーネントをランタイム生成
-riot.inject(code, 'my-tag', './my-tag.html')
+riot.inject(code, 'my-tag', './my-tag.html');
 
-riot.mount('my-tag')
+riot.mount('my-tag');
+```
+
+<aside class="note note--warning">
+注意: <code>document.getElementById('my-tag').innerHTML</code> は、テンプレート内のアンパサンド <code>&amp;</code> を HTML エンティティ <code>&amp;amp;</code> として表示し、コンパイラを壊してしまいます。
+</aside>
+
+`<div class="{ condition1 && condition2 ? 'someclass': '' }">...</div>` のような属性式をもつタグをコンパイルするには、`.innerHTML.replace(/&amp;/g, '&')` に置き換えるだけです。
+
+<aside class="note note--warning">
+:warning: ブラウザ内レンダリングを使用する場合は、特に属性を記述する際に、妥当なHTMLを使用するように細心の注意を払ってください。
+</aside>
+
+例えば、`onclick`ハンドラが引用符で囲まれていないため、次のようにすると正しくコンパイルできません：
+
+```html
+<!-- インブラウザコンパイルでは、ただしくコンパイルされない -->
+<button onclick="{" helloAgain }>Click Me!</button>
+```
+
+代わりに、属性値を引用符で囲むか空白を避けてください。:
+
+```html
+<!-- 以下のどちらも正しくコンパイルされる -->
+<button onclick="{ helloAgain }">Click Me!</button>
+<button onclick="{helloAgain}">Click Me!</button>
 ```
 
 ## プリコンパイル
@@ -93,18 +118,18 @@ riot.mount('my-tag')
 
 [`webpack`](https://webpack.js.org/) や [`rollup`](https://rollupjs.org/) といったツールは、 Riot アプリケーションのタグをバンドルするのに最適です。
 そのようなツールに向けて、 Riot コンポーネントをあなたのソースコードにそのままインポートするための、 Riot 公式ローダーを提供しています:
-  - [webpack](https://github.com/riot/webpack-loader)
-  - [Rollup](https://github.com/riot/rollup-plugin-riot)
-  - [Parcel](https://github.com/riot/parcel-plugin-riot)
-  - [Riotify](https://github.com/riot/riotify)
+- [webpack](https://github.com/riot/webpack-loader)
+- [Rollup](https://github.com/riot/rollup-plugin-riot)
+- [Parcel](https://github.com/riot/parcel-plugin-riot)
+- [Riotify](https://github.com/riot/riotify)
 
 Riot ローダーを使ったアプリケーションのエントリースクリプトは、おそらくこのようになるでしょう:
 
 ```js
-import { component } from 'riot'
-import MyTag from './path/to/tags/my-tag.riot'
+import { component } from 'riot';
+import MyTag from './path/to/tags/my-tag.riot';
 
-component(MyTag)(document.getElementById('root'))
+component(MyTag)(document.getElementById('root'));
 ```
 
 ### TypeScript サポート
@@ -116,9 +141,10 @@ Riot.js コンパイラは typescript の構文をサポートします。
 <my-component>
   <!-- lang="ts" はオプションで、最終的には IDE のコードハイライトのためだけに必要であることに注意してください -->
   <script lang="ts">
-    import { RiotComponent } from 'riot'
+    import { RiotComponent } from 'riot';
 
-    export interface MyComonent extends RiotComponent<MyComponentProps, MyComponentState> {
+    export interface MyComonent
+      extends RiotComponent<MyComponentProps, MyComponentState> {
       /* コンポーネントのカスタムメソッドやプロパティを追加 */
     }
   </script>
@@ -131,8 +157,8 @@ Riot.js コンパイラは typescript の構文をサポートします。
 
 ### Node によるコンパイル
 
-```javascript
-import {compile} from '@riotjs/compiler'
+```js
+import { compile } from '@riotjs/compiler';
 
 const { code, map } = compile('<p>{hello}</p>', {
   // 以下、オプション定義
@@ -142,8 +168,8 @@ const { code, map } = compile('<p>{hello}</p>', {
   // （テンプレート構文の）式のデリミタ
   brackets: ['{', '}'],
   // HTML のコメントを残すか
-  comments: false
-})
+  comments: false,
+});
 ```
 
 `compile()` 関数は、引数として文字列を取り、 `code` と `map` をキーに持つオブジェクトを返します。
@@ -151,8 +177,7 @@ const { code, map } = compile('<p>{hello}</p>', {
 
 Riot コンパイラは、JavaScript モジュールを出力することにご留意ください。バンドルには、これら（訳注: 出力されたモジュール）をトランスパイルしたほうがいいでしょう。
 
-
-### Riot.js コマンドラインによるコンパイル
+### Riot.js CLI によるコンパイル
 
 Riot.js ファイルを、 [`riot`](https://github.com/riot/cli) 実行コマンドを使ってプリコンパイルすることもできます。こちらは以下のように、NPM でインストールできます:
 
@@ -193,13 +218,13 @@ riot -w src -o dist
 
 #### ファイルの拡張子を変更
 
-Riotタグファイルの拡張子は、お好きなものをお使いください（デフォルトでは `.riot` です）:
+Riot タグファイルの拡張子は、お好きなものをお使いください（デフォルトでは `.riot` です）:
 
 ```sh
 riot --extension html
 ```
 
-#### ES6形式の設定ファイル
+#### ES6 形式の設定ファイル
 
 設定ファイルを使えば、`@riotjs/cli` のすべてのオプションの設定を保存して楽に設定できるようにしたり、新しいカスタムパーサを作成したりできます
 
@@ -215,15 +240,14 @@ export default {
   // ソースマップ形式
   sourcemap: 'inline',
   // ファイル拡張子
-  extension: 'foo'
-}
+  extension: 'foo',
+};
 ```
 
 作成するプロジェクトでカスタムプリプロセッサを使いたい場合、package.json の `devDependency` から `@riotjs/cli` をインストールし、npm スクリプトから以下のように起動します:
 
 
 ```json
-
 {
   "scripts": {
     "build": "npx riot -c riot.config src"
@@ -239,30 +263,30 @@ export default {
 以下はコンポーネント（訳注: タグファイル）のテンプレートエンジンとして `pug` を使いたい場合の、`riot.config.js` の典型例です。
 
 ```js
-import { registerPreprocessor } from '@riotjs/compiler'
-import { render } from 'pug'
+import { registerPreprocessor } from '@riotjs/compiler';
+import { render } from 'pug';
 
 // pug のプリプロセッサを登録
 registerPreprocessor('template', 'pug', (code, options) => {
-  const { file } = options
+  const { file } = options;
 
   return {
     code: render(code, {
       filename: file,
       pretty: true,
-      doctype: 'html'
-    })
-  }
-})
+      doctype: 'html',
+    }),
+  };
+});
 
 export default {
   extension: 'pug',
 
   // pug のプリプロセッサを riot コンパイラオプションに割り当てる
   riot: {
-    template: 'pug'
-  }
-}
+    template: 'pug',
+  },
+};
 ```
 
 #### アプリケーション全体のビルド
@@ -272,10 +296,10 @@ CLI ツールを使って、アプリケーション全体をバンドルする�
 `app.js` ファイル:
 
 ```js
-import {component} from 'riot'
-import App from './app.riot'
+import { component } from 'riot';
+import App from './app.riot';
 
-component(App)(document.getElementById('root'))
+component(App)(document.getElementById('root'));
 ```
 
 ```sh
@@ -291,51 +315,51 @@ riot app.js -o dist/app.js
 `@riotjs/compiler` は、任意のプリプロセッサを登録する機能を提供しています:
 
 ```js
-import { registerPreprocessor } from '@riotjs/compiler'
-import pug from 'pug'
-import sass from 'sass'
-import babel from '@babel/core'
+import { registerPreprocessor } from '@riotjs/compiler';
+import pug from 'pug';
+import sass from 'sass';
+import babel from '@babel/core';
 
-registerPreprocessor('template', 'pug', function(code, { options }) {
-  const { file } = options
-  console.log('テンプレートのプリプロセス', file)
+registerPreprocessor('template', 'pug', function (code, { options }) {
+  const { file } = options;
+  console.log('テンプレートのプリプロセス', file);
 
   return {
     code: pug.render(code),
     // ソースマップ出力をしない
-    map: null
-  }
-})
+    map: null,
+  };
+});
 
-registerPreprocessor('css', 'sass', function(code, { options }) {
-  const { file } = options
-  console.log('sass のコードをコンパイル中', file)
+registerPreprocessor('css', 'sass', function (code, { options }) {
+  const { file } = options;
+  console.log('sass のコードをコンパイル中', file);
 
   return {
-    code: sass.compileString(code, {syntax: 'indented'}).css,
-    map: null
-  }
-})
+    code: sass.compileString(code, { syntax: 'indented' }).css,
+    map: null,
+  };
+});
 
 
-registerPreprocessor('javascript', 'babel', function(code, { options }) {
-  const { file } = options
+registerPreprocessor('javascript', 'babel', function (code, { options }) {
+  const { file } = options;
 
   return babel.transform(code, {
-    sourceFileName: file
-  })
-})
+    sourceFileName: file,
+  });
+});
 ```
 
-Riot.js のプリプロセッサは、`template`, `css`, `javascript` の3種類の、いずれかでなければなりません（`registerPreprocessor` 関数の最初の引数です）。
+Riot.js のプリプロセッサは、`template`, `css`, `javascript` の 3 種類の、いずれかでなければなりません（`registerPreprocessor` 関数の最初の引数です）。
 別のテンプレートエンジンでコンポーネントをコンパイルするには、コンパイラを介して `template` オプションを指定する必要があります:
 
 ```js
-import { compile } from '@riotjs/compiler'
+import { compile } from '@riotjs/compiler';
 
 compile(source, {
-  template: 'pug'
-})
+  template: 'pug',
+});
 ```
 
 `css` と `javascript` のプリプロセッサは、コンポーネント内で直接 `type="{preprocessor}"` を指定するだけで有効にできます
@@ -367,11 +391,10 @@ compile(source, {
 Riot.js のコンパイラは、プリプロセッサによって提供されたコードからソースマップを生成します。もしご利用のプリプロセッサが `map` を返さない場合、コンパイラは適切なソースマップを出力しません。
 
 ```js
+import { registerPreprocessor } from '@riotjs/compiler';
+import babel from '@babel/core';
 
-import { registerPreprocessor } from '@riotjs/compiler'
-import babel from '@babel/core'
-
-registerPreprocessor('javascript', 'babel', function(code, { options }) {
+registerPreprocessor('javascript', 'babel', function (code, { options }) {
   // babel.transform はキーに {map, code} を含んだ、有効なオブジェクトを返す
   return babel.transform(code, {
     sourceMaps: true,
@@ -382,25 +405,24 @@ registerPreprocessor('javascript', 'babel', function(code, { options }) {
       '@babel/env',
       {
         targets: {
-          edge: true
+          edge: true,
         },
         loose: true,
         modules: false,
-        useBuiltIns: 'usage'
+        useBuiltIns: 'usage',
       }
     ]]
   })
 })
 
 
-registerPreprocessor('javascript', 'my-js-preprocessor', function(code, { options }) {
+registerPreprocessor('javascript', 'my-js-preprocessor' function (code, { options }) {
   // Riot.js コンパイラはソースマップを生成できない（訳注: {map} に値が含まれていないため）
   return {
     code: myPreprocessor(code),
     map: null
   }
 })
-
 ```
 
 利用する JavaScript プリプロセッサは、元コードの空行を保つようにしてください。さもなければ、オフセットの壊れたソースマップを結果として受け取ってしまいます。
@@ -410,17 +432,17 @@ registerPreprocessor('javascript', 'my-js-preprocessor', function(code, { option
 プリプロセッサ同様、コンパイラは `registerPostprocessor` を使って、出力結果を整形できます。
 
 ```js
-import { registerPostprocessor } from '@riotjs/compiler'
-import buble from 'buble'
+import { registerPostprocessor } from '@riotjs/compiler';
+import buble from 'buble';
 
 // コンパイラによる出力は、ここから渡される
-registerPostprocessor(function(code, { options }) {
-  const { file } = options
-  console.log('ファイルパス:', file)
+registerPostprocessor(function (code, { options }) {
+  const { file } = options;
+  console.log('ファイルパス:', file);
 
   // buble.transform は戻り値として {code, map} を返すことに注意
-  return buble.transform(code)
-})
+  return buble.transform(code);
+});
 ```
 
 この場合、最終的に出力されるコードは `buble` によって es2015 に変換されることができます。

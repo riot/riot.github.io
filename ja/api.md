@@ -38,7 +38,7 @@ const components = riot.mount('#root', api, 'app')
 
 メモ: [インブラウザコンパイル](/compiler/#インブラウザコンパイル) を利用しているユーザーは、`riot.mount` メソッドをコールする前にコンポーネントのコンパイルを待つ必要があるでしょう。
 
-```javascript
+```js
 (async function main() {
   await riot.compile()
 
