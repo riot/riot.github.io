@@ -269,7 +269,7 @@ The `PureComponentFactoryFunction` should always return an object containing the
 
 1. `slots` - the slot list found in your component
 2. `attributes` - the component attribute expressions that can be evaluated to infer the component properties from the context
-3. `props` - the initial component user properties that can be only set via `riot.component` calls
+3. `props` - the initial component user properties that can only be set via `riot.component` calls
 
 <strong>@returns: </strong> A RiotComponentWrapper that can be passed to `riot.component` or `riot.`  
 
