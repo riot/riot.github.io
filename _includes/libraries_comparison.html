@@ -2,19 +2,19 @@
   <ol>
     <li>
       <small><em>@angular/core</em> – {{ site.data.libraries.angular.size }}KB (gzip)</small>
-  <progress value="1" max="1"></progress>
+      <progress value="1" max="1"></progress>
+    </li>
+    <li>
+      <small><em>vue</em> – {{ site.data.libraries.vue.size }}KB (gzip)</small>
+      <progress max="1" value="{{ site.data.libraries.vue.size | divided_by: site.data.libraries.angular.size }}"></progress>
     </li>
     <li>
       <small><em>react</em> – {{ site.data.libraries.react.size }}KB (gzip)</small>
-  <progress max="1" value="{{ site.data.libraries.react.size | divided_by: site.data.libraries.angular.size }}"></progress>
+      <progress max="1" value="{{ site.data.libraries.react.size | divided_by: site.data.libraries.angular.size }}"></progress>
     </li>
     <li>
-        <small><em>vue</em> – {{ site.data.libraries.vue.size }}KB (gzip)</small>
-  <progress max="1" value="{{ site.data.libraries.vue.size | divided_by: site.data.libraries.angular.size }}"></progress>
-    </li>
-    <li>
-      <small><em>solid</em> – {{ site.data.libraries.solid.size }}KB (gzip)</small>
-      <progress class="solid" max="1" value="{{ site.data.libraries.solid.size | divided_by: site.data.libraries.angular.size }}"></progress>
+      <small><em>alpine</em> – {{ site.data.libraries.alpine.size }}KB (gzip)</small>
+      <progress class="alpine" max="1" value="{{ site.data.libraries.alpine.size | divided_by: site.data.libraries.angular.size }}"></progress>
     </li>
     <li>
       <small><em>riot</em> – {{ site.data.libraries.riot.size }}KB (gzip)</small>
@@ -23,6 +23,10 @@
     <li>
       <small><em>preact</em> – {{ site.data.libraries.preact.size }}KB (gzip)</small>
       <progress class="preact" max="1" value="{{ site.data.libraries.preact.size | divided_by: site.data.libraries.angular.size }}"></progress>
+    </li>
+    <li>
+      <small><em>solid</em> – {{ site.data.libraries.solid.size }}KB (gzip)</small>
+      <progress class="solid" max="1" value="{{ site.data.libraries.solid.size | divided_by: site.data.libraries.angular.size }}"></progress>
     </li>
   </ol>
 </aside>
