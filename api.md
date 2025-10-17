@@ -260,6 +260,61 @@ The `PureComponentFactoryFunction` should always return an object containing the
 </lit-element>
 ```
 
+
+### riot.createPureComponent
+
+`riot.createPureComponent(PureComponentFactoryFunction): RiotComponentWrapper`
+
+`PureComponentFactoryFunction` is a function that accepts an object with the following fields:
+
+1. `slots` - the slot list found in your component
+2. `attributes` - the component attribute expressions that can be evaluated to infer the component properties from the context
+3. `props` - the initial component user properties that can be only set via `riot.component` calls
+
+<strong>@returns: </strong> A RiotComponentWrapper that can be passed to `riot.component` or `riot.`  
+
+This method is similar to `riot.pure`, but allows you to avoid creating a separate `.riot` tag file.
+
+`createPureComponent` is especially useful when working with TypeScript, as it provides improved type inference and better developer experience
+
+
+```ts
+import { createPureComponent, component, RiotPureComponent } from 'riot'
+import { html, render } from 'lit-html'
+
+type IRiotLitComponent<
+  Context = { message?: string }
+> = RiotPureComponent<Context> & {
+  el: HTMLElement | null
+  render: (context?: Context) => unknown
+}
+
+const RiotLitComponent = createPureComponent(({ 
+  attributes, 
+  slots, 
+  props 
+}) => ({
+  el: null,
+  mount(el, context) {
+    this.el = el
+    this.render(context)
+  },
+  update(context) {
+     this.render(context)
+  },
+  // context here is either the parent component or undefined
+  render(context) {
+    render(
+      html`<p>${ context ? context.message : 'no message defined' }</p>`, 
+      this.el
+    )
+  },
+  unmount() {
+    this.el.parentNode.removeChild(this.el)
+  }
+}) satisfies IRiotLitComponent)
+```
+
 ### riot.withTypes
 
 `riot.withTypes(object | function | class): RiotComponent`
